@@ -1,0 +1,12 @@
+
+> levelup-mini@1.0.0 test:e2e
+> playwright test --config=playwright.accounts.config.ts interactions.spec.ts --grep 任意切题
+
+
+Running 1 test using 1 worker
+
+(node:40064) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 e2e-accounts\interactions.spec.ts:23:5 › 任意切题、草稿保留、未答完不结算、进阶奖励与白色星星 (2.7s)
+
+  1 passed (3.9s)

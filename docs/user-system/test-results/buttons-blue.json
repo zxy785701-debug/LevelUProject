@@ -1,0 +1,47 @@
+{
+  "prototype": [
+    {
+      "file": "01-core-learning.html",
+      "primary_buttons": 18,
+      "passed": true
+    },
+    {
+      "file": "02-review-center.html",
+      "primary_buttons": 10,
+      "passed": true
+    },
+    {
+      "file": "03-knowledge-library.html",
+      "primary_buttons": 7,
+      "passed": true
+    },
+    {
+      "file": "04-social-challenge.html",
+      "primary_buttons": 7,
+      "passed": true
+    },
+    {
+      "file": "05-account-and-extensions.html",
+      "primary_buttons": 8,
+      "passed": true
+    },
+    {
+      "file": "06-states.html",
+      "primary_buttons": 10,
+      "passed": true
+    }
+  ],
+  "frontend": [
+    {
+      "page": "home",
+      "primary_blue": true,
+      "disabled_gray": true
+    },
+    {
+      "page": "history-empty",
+      "primary_blue": true
+    }
+  ],
+  "errors": [],
+  "prototype_screens": 69
+}

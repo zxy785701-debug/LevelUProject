@@ -1,0 +1,15 @@
+
+> levelup-mini@1.0.0 test
+> vitest run
+
+
+ RUN  v3.2.7 D:/nbproject/LevelUpProject/frontend
+
+ ✓ tests/domain.test.ts (9 tests) 39ms
+ ✓ tests/accounts-api.test.ts (4 tests) 15ms
+
+ Test Files  2 passed (2)
+      Tests  13 passed (13)
+   Start at  16:38:26
+   Duration  920ms (transform 128ms, setup 0ms, collect 394ms, tests 53ms, environment 0ms, prepare 485ms)
+

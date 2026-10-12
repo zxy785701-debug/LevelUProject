@@ -37,6 +37,16 @@ const session = (mode: Session['mode'] = 'new'): Session => ({
   mode,
 })
 describe('本机学习状态', () => {
+  it('进阶奖励使用关卡快照，旧关卡与重闯不追溯奖励', () => {
+    const s = session()
+    s.quiz.difficulty = 'medium'
+    s.answers = s.quiz.questions.map(q => ({ question_id: q.id, selected: q.answers, elapsed_ms: 1000 }))
+    expect(stats(s).xp).toBe(30)
+    s.quiz.reward = { xp: 15, coins: 3 }
+    expect(stats(s)).toMatchObject({ xp: 45, coins: 9 })
+    s.mode = 'replay'
+    expect(stats(s)).toMatchObject({ xp: 0, coins: 0 })
+  })
   it('历史按日历周和月筛选', () => {
     const now = new Date(2026, 9, 12, 12)
     expect(inHistoryRange(new Date(2026, 9, 11).toISOString(), 1, now)).toBe(false)

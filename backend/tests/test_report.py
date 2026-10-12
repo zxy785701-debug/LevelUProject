@@ -5,6 +5,7 @@ from app.main import create_app
 from app.models import Quiz, ReportRequest
 from app.scoring import score
 from tests.helpers import FakeGateway, REPORT, quiz_payload
+from tests.test_mysql_accounts import system, login, generate, answer
 
 def request_payload(count=3, mode="new"):
     q={**quiz_payload(count),"id":"quiz1","created_at":"2026-10-12T00:00:00Z","source_text":"HTTP 基础","difficulty":"easy"}
@@ -49,10 +50,14 @@ def test_invalid_answers(bad):
     with pytest.raises(ValueError): ReportRequest.model_validate(p)
 
 @pytest.mark.anyio
-async def test_report_recomputes_stats():
+async def test_report_recomputes_stats(system):
     g=FakeGateway(REPORT)
-    async with httpx.AsyncClient(transport=httpx.ASGITransport(app=create_app(Settings(_env_file=None),g)),base_url="http://test") as c:
-        r=await c.post("/api/v1/report/generate",json=request_payload())
+    async with httpx.AsyncClient(transport=httpx.ASGITransport(app=system),base_url="http://test") as c:
+        await login(c)
+        session = await generate(c)
+        for q in quiz_payload()['questions']: await answer(c, session, q['id'], q['answers'])
+        system.state.gateway = g
+        r=await c.post("/api/v1/report/generate",json={'attempt_id': session['id']})
     assert r.status_code==200
     d=r.json()["data"]
     assert d["stats"]["accuracy"]==100 and d["share_quote"]==REPORT["share_quote"]

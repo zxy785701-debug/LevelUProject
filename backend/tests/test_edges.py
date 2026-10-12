@@ -9,6 +9,7 @@ from app.models import Question,ReportContent,QuizContent,ReportRequest
 from app.llm import ModelGateway
 from tests.helpers import quiz_payload,REPORT
 from tests.test_report import request_payload
+from tests.test_mysql_accounts import system, login, generate, answer
 
 def test_four_choice_options_required():
     q=quiz_payload()["questions"][0];q["options"]=q["options"][:2]
@@ -26,25 +27,37 @@ def test_report_empty_line_rejected(field):
     with pytest.raises(ValidationError):ReportContent.model_validate(p)
 
 @pytest.mark.anyio
-async def test_report_failure_preserves_explicit_error():
+async def test_report_failure_preserves_explicit_error(system):
     class Fail:
         async def generate(self,*args,**kwargs):raise AppError("MODEL_TIMEOUT","AI 响应超时，请重试",504)
-    async with httpx.AsyncClient(transport=httpx.ASGITransport(app=create_app(Settings(_env_file=None),Fail())),base_url="http://test") as c:
-        r=await c.post("/api/v1/report/generate",json=request_payload())
+    async with httpx.AsyncClient(transport=httpx.ASGITransport(app=system),base_url="http://test") as c:
+        await login(c)
+        session = await generate(c)
+        for q in quiz_payload()['questions']: await answer(c, session, q['id'], q['answers'])
+        system.state.gateway = Fail()
+        r=await c.post("/api/v1/report/generate",json={'attempt_id': session['id']})
     assert r.status_code==504 and r.json()["code"]=="MODEL_TIMEOUT"
 
 @pytest.mark.anyio
-async def test_unhandled_error_is_sanitized():
+async def test_unhandled_error_is_sanitized(system):
     class Fail:
         async def generate(self,*args,**kwargs):raise RuntimeError("secret-upstream-detail")
-    async with httpx.AsyncClient(transport=httpx.ASGITransport(app=create_app(Settings(_env_file=None),Fail()),raise_app_exceptions=False),base_url="http://test") as c:
+    system.state.gateway = Fail()
+    async with httpx.AsyncClient(transport=httpx.ASGITransport(app=system,raise_app_exceptions=False),base_url="http://test") as c:
+        await login(c)
         r=await c.post("/api/v1/quiz/generate",json={"text":"HTTP"})
     assert r.status_code==500 and r.json()=={"code":"INTERNAL_ERROR","message":"服务暂时遇到问题，请稍后重试","data":None}
 
 @pytest.mark.anyio
-async def test_missing_report_key():
-    async with httpx.AsyncClient(transport=httpx.ASGITransport(app=create_app(Settings(_env_file=None,deepseek_api_key=""))),base_url="http://test") as c:
-        assert (await c.post("/api/v1/report/generate",json=request_payload())).status_code==503
+async def test_missing_report_key(system):
+    from pydantic import SecretStr
+    async with httpx.AsyncClient(transport=httpx.ASGITransport(app=system),base_url="http://test") as c:
+        await login(c)
+        session = await generate(c)
+        for q in quiz_payload()['questions']: await answer(c, session, q['id'], q['answers'])
+        system.state.gateway = None
+        system.state.settings.deepseek_api_key = SecretStr('')
+        assert (await c.post("/api/v1/report/generate",json={'attempt_id': session['id']})).status_code==503
 
 @pytest.mark.anyio
 async def test_real_langchain_json_parser_with_mock_transport():

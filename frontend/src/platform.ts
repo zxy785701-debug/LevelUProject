@@ -158,6 +158,22 @@ export async function savePoster(path: string) {
     throw new Error('海报已保留，可再次点击保存')
   }
 }
+export async function saveAvatarImage(path: string) {
+  if (h5) {
+    const link = document.createElement('a')
+    link.href = path
+    link.download = 'LevelUp-头像.jpg'
+    link.click()
+    return
+  }
+  try { await Taro.saveImageToPhotosAlbum({ filePath: path }) }
+  catch (error) {
+    if (/cancel/i.test((error as { errMsg?: string }).errMsg || '')) throw new Error('已取消保存，头像仍然保留。')
+    const result = await Taro.showModal({ title: '需要允许保存图片', content: '可在设置中允许访问相册，然后再次保存头像。', confirmText: '打开设置', cancelText: '稍后再试' })
+    if (result.confirm) await Taro.openSetting()
+    throw new Error('头像仍然保留，可再次点击保存。')
+  }
+}
 function csvCell(value: unknown) {
   return '"' + String(value ?? '').replace(/"/g, '""') + '"'
 }

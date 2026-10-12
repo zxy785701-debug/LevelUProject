@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Taro, { useDidHide, useDidShow, useShareAppMessage } from '@tarojs/taro'
 import { View, Text, ScrollView, Textarea, Input, Canvas, Image } from '@tarojs/components'
-import { useStore } from '../../store'
+import { Provider, useStore } from '../../store'
 import {
   Quiz,
   Question,
@@ -15,8 +15,11 @@ import {
   typeName,
   inRange,
   inHistoryRange,
+  rewardRate,
 } from '../../domain'
-import { generateQuiz, generateReport, cancelRequest } from '../../api'
+import { generateQuiz, generateReport, cancelRequest, operationKey, submitAnswer, saveProgress, replayQuiz, reviewWrongs, api, getLearning, User, ApiError } from '../../api'
+import { useAuth, wechatCode, PRIVACY, TERMS } from '../../auth'
+import { clearCredentials } from '../../credentials'
 import { Trend } from '../../Trend'
 import { WeeklyReview } from '../../WeeklyReview'
 import { Mine, SettingsView } from '../../account'
@@ -82,7 +85,7 @@ const labels: Record<Screen, string> = {
   reviewResult: '复习完成',
   mine: '我的',
   settings: '设置',
-  data: '本机数据',
+  data: '数据与账户管理',
   question: '逐题回看',
   error: '稍等一下',
 }
@@ -122,8 +125,13 @@ const optionText = (q: Question, selected: string[]) =>
   selected.map((x) => `${x} ${q.options.find((o) => o.id === x)?.text || ''}`).join('；')
 
 export default function Index() {
-  const { data, dispatch } = useStore(),
-    profile = totals(data),
+  const auth = useAuth()
+  return auth.user && !auth.loading ? <Provider key={auth.user.id}><LearningPage /></Provider> : <>{auth.loginView}</>
+}
+function LearningPage() {
+  const { data, dispatch, upsert, refresh, loading: cloudLoading, error: cloudError } = useStore()
+  const auth = useAuth()
+  const profile = { ...totals(data), ...auth.user.stats },
     wrongs = wrongList(data)
   const [screen, setScreen] = useState<Screen>(() => (data.welcome ? 'home' : 'welcome'))
   const [recordId, setRecordId] = useState(data.activeId || ''),
@@ -142,6 +150,12 @@ export default function Index() {
     [error, setError] = useState({ message: '', kind: 'quiz' as 'quiz' | 'report' })
   const [poster, setPoster] = useState(''),
     [saving, setSaving] = useState(false)
+  const quizOperation = useRef<{ signature: string; key: string }>()
+  const scrollPositions = useRef<Record<string, number>>({})
+  const selectionDrafts = useRef<Record<string, string[]>>({})
+  const answerTimes = useRef<Record<string, number>>({})
+  const [questionBusy, setQuestionBusy] = useState(false)
+  const reportOperations = useRef<Record<string, string>>({})
   const stack = useRef<Screen[]>([]),
     token = useRef(0),
     visible = useRef(true),
@@ -155,6 +169,9 @@ export default function Index() {
     answered = active?.answers.find((a) => a.question_id === current?.id)
   const sStats = record ? stats(record) : undefined,
     pending = wrongs.filter((w) => !w.status.mastered)
+  const scrollKey = screen === 'quiz' ? `quiz-${active?.id}-${active?.cursor}`
+    : ['detail', 'question', 'report', 'share'].includes(screen) ? `${screen}-${recordId}-${screen === 'question' ? qid : ''}`
+    : screen === 'wrong' ? `wrong-${wrongKey}` : screen
   const go = (next: Screen) => {
     if (next !== screen) {
       stack.current.push(screen)
@@ -197,34 +214,35 @@ export default function Index() {
     setRecordId(s.id)
     go(next)
   }
-  function createSession(quiz: Quiz, mode: Session['mode'] = 'new', reviewKeys?: string[]) {
-    const s: Session = {
-      id: uid(),
-      quiz,
-      mode,
-      answers: [],
-      cursor: 0,
-      pending_ms: 0,
-      started_at: new Date().toISOString(),
-      review_keys: reviewKeys,
-    }
-    if (dispatch({ type: 'START', session: s })) {
+  function openSession(s: Session) {
+      upsert(s)
       setRecordId(s.id)
       setSelected([])
       setExpanded(false)
-      setScreen(mode === 'review' ? 'quiz' : 'ready')
+      setScreen(s.mode === 'review' ? 'quiz' : 'ready')
       stack.current = []
-    }
+  }
+  async function createSession(quiz: Quiz, mode: Session['mode'] = 'replay') {
+    if (busy.current) return
+    busy.current = true
+    try { openSession(await replayQuiz(quiz.id)) }
+    catch (e) { setDialog({ title: '暂时无法开始', message: (e as Error).message }) }
+    finally { busy.current = false }
   }
   async function start() {
-    if (!data.draft.text.trim() || busy.current) return
+    if (!data.draft.text.trim() || busy.current || cloudLoading) return
     busy.current = true
     const ticket = ++token.current
     setScreen('generating')
     try {
-      const quiz = await generateQuiz(data.draft.text, data.draft.count, data.draft.difficulty)
-      if (token.current === ticket) createSession(quiz)
+      const signature = JSON.stringify(data.draft)
+      if (quizOperation.current?.signature !== signature) quizOperation.current = { signature, key: operationKey() }
+      const session = await generateQuiz(data.draft.text, data.draft.count, data.draft.difficulty, quizOperation.current!.key)
+      quizOperation.current = undefined
+      if (token.current === ticket) openSession(session)
+      void api<User>('/api/v1/me').then(auth.update).catch(() => {})
     } catch (e) {
+      if (!(e instanceof ApiError) || !['NETWORK_ERROR', 'AI_BUSY'].includes(e.code)) quizOperation.current = undefined
       if (token.current === ticket) {
         setError({ message: (e as Error).message, kind: 'quiz' })
         setScreen('error')
@@ -239,30 +257,49 @@ export default function Index() {
     busy.current = false
     root('home')
   }
-  function submit(values: string[]) {
-    if (!active || answered) return
-    if (dispatch({ type: 'ANSWER', selected: values })) {
+  async function submit(values: string[]) {
+    if (!active || !current || answered || busy.current) return
+    busy.current = true
+    setQuestionBusy(true)
+    setSelected(values)
+    try {
+      const result = await submitAnswer(active.id, current.id, values, active.pending_ms)
+      upsert(result.session)
+      auth.update(result.user)
       setSelected(values)
       setExpanded(false)
-    }
+      void refresh(true).catch(() => {})
+    } catch (e) { setDialog({ title: '答案尚未确认', message: (e as Error).message + ' 请保留当前选择并重新提交。' }) }
+    finally { busy.current = false; setQuestionBusy(false) }
   }
   function choose(value: string) {
-    if (answered) return
+    if (answered || busy.current) return
     if (current?.type === 'multi')
-      setSelected((old) => (old.includes(value) ? old.filter((x) => x !== value) : [...old, value]))
+      setSelected((old) => {
+        const next = old.includes(value) ? old.filter((x) => x !== value) : [...old, value]
+        selectionDrafts.current[`${active!.id}:${current.id}`] = next
+        return next
+      })
     else submit([value])
   }
-  function next() {
-    if (!active || !answered) return
-    const last = active.cursor === active.quiz.questions.length - 1
-    if (dispatch({ type: 'NEXT' })) {
-      setSelected([])
+  async function jumpQuestion(index: number) {
+    if (!active || !current || busy.current || index === active.cursor || index < 0 || index >= active.quiz.questions.length) return
+    busy.current = true
+    setQuestionBusy(true)
+    answerTimes.current[`${active.id}:${current.id}`] = active.pending_ms
+    try {
+      const session = await saveProgress(active.id, index)
+      const key = `${active.id}:${session.quiz.questions[index].id}`
+      upsert({ ...session, pending_ms: answerTimes.current[key] || 0 })
+      setSelected(selectionDrafts.current[key] || [])
       setExpanded(false)
-      if (last) {
-        setRecordId(active.id)
-        setScreen(active.mode === 'review' ? 'reviewResult' : 'result')
-      }
-    }
+    } catch (e) { setDialog({ title: '进度尚未确认', message: (e as Error).message }) }
+    finally { busy.current = false; setQuestionBusy(false) }
+  }
+  function finishQuiz() {
+    if (!active || busy.current || active.answers.length !== active.quiz.questions.length) return
+    setRecordId(active.id)
+    setScreen(active.mode === 'review' ? 'reviewResult' : 'result')
   }
   async function reportFor(s: Session) {
     setRecordId(s.id)
@@ -275,10 +312,13 @@ export default function Index() {
     const ticket = ++token.current
     go('reportLoading')
     try {
-      const report = await generateReport(s)
+      const key = reportOperations.current[s.id] || (reportOperations.current[s.id] = operationKey())
+      const report = await generateReport(s, key)
+      delete reportOperations.current[s.id]
       if (dispatch({ type: 'REPORT', id: s.id, report }) && token.current === ticket)
         setScreen('report')
     } catch (e) {
+      if (!(e instanceof ApiError) || !['NETWORK_ERROR', 'AI_BUSY'].includes(e.code)) delete reportOperations.current[s.id]
       if (token.current === ticket) {
         setError({ message: (e as Error).message, kind: 'report' })
         setScreen('error')
@@ -293,22 +333,12 @@ export default function Index() {
     setSelected([])
     setScreen(s.completed_at ? (s.mode === 'review' ? 'reviewResult' : 'result') : 'quiz')
   }
-  function review(items: Wrong[]) {
-    if (!items.length) return
-    const quiz: Quiz = {
-      id: uid(),
-      created_at: new Date().toISOString(),
-      source_text: '本机错题重温',
-      title: '旧识重温',
-      summary: '把模糊的知识擦清楚',
-      difficulty: 'easy',
-      questions: items.map((w, i) => ({ ...w.question, id: `review-${i}` })),
-    }
-    createSession(
-      quiz,
-      'review',
-      items.map((w) => w.key),
-    )
+  async function review(items: Wrong[]) {
+    if (!items.length || busy.current) return
+    busy.current = true
+    try { openSession(await reviewWrongs(items.map(w => w.key))) }
+    catch (e) { setDialog({ title: '暂时无法开始复习', message: (e as Error).message }) }
+    finally { busy.current = false }
   }
   function openWrong(w: Wrong) {
     setWrongKey(w.key)
@@ -333,9 +363,9 @@ export default function Index() {
   }
   async function exportRecords() {
     try {
-      await saveExport(data)
+      await saveExport(await getLearning())
     } catch (e) {
-      setDialog({ title: '导出暂时未完成', message: '记录仍保存在本机，请稍后重试。' })
+      setDialog({ title: '导出暂时未完成', message: (e as Error).message })
     }
   }
   useEffect(() => {
@@ -353,12 +383,12 @@ export default function Index() {
     setPoster('')
   }, [recordId])
   useEffect(() => {
-    if (screen !== 'quiz' || paused || answered) return
+    if (screen !== 'quiz' || paused || answered || questionBusy) return
     const timer = setInterval(() => {
       if (visible.current) dispatch({ type: 'TICK', ms: 1000 })
     }, 1000)
     return () => clearInterval(timer)
-  }, [screen, paused, active?.id, active?.cursor, !!answered])
+  }, [screen, paused, active?.id, active?.cursor, !!answered, questionBusy])
   useDidHide(() => {
     visible.current = false
     if (screenRef.current === 'quiz') setPaused(true)
@@ -502,7 +532,7 @@ export default function Index() {
           <Text className="kicker">你好，学习搭子</Text>
           <Text className="xp" onClick={() => future('搭子装扮')}>
             <Icon name="coin" />
-            {profile.coins}
+            {profile.coins} 金币
           </Text>
         </View>
         <Hero sub={draft.text ? '一个问题，就是一关。' : '让搭子帮你拆成几个好问题。'}>
@@ -571,9 +601,10 @@ export default function Index() {
             </View>
           </>
         )}
-        <Btn disabled={!draft.text.trim()} onClick={start}>
-          生成我的关卡 <Icon name="spark" />
+        <Btn disabled={!draft.text.trim() || cloudLoading} onClick={start}>
+          生成我的关卡 <Icon name="spark-white" />
         </Btn>
+        <View className="small muted mt">今天还可生成 {auth.user.quota.remaining} / {auth.user.quota.daily_limit} 个新关卡</View>
         <Section>{draft.text ? '换个脑洞试试' : '没有灵感？从这里开始'}</Section>
         <View className="example-chips">
           {['HTTP 为什么是无状态的？', '什么是复利？', '怎么理解条件概率？'].map((text) => (
@@ -670,7 +701,7 @@ export default function Index() {
         </View>
         <View className="small muted mt">
           {active.mode === 'new'
-            ? '每题首次答对 +10 XP、+2 金币；答错不扣已有奖励。'
+            ? `每题首次答对 +${rewardRate(active.quiz).xp} XP、+${rewardRate(active.quiz).coins} 金币；答错不扣已有奖励。`
             : '这是重闯，保留练习记录，不重复发放奖励。'}
         </View>
       </>
@@ -687,11 +718,14 @@ export default function Index() {
           <Text>
             {active.cursor + 1} / {active.quiz.questions.length}
           </Text>
-          <View className="progress-track">
-            <View
-              className="progress-fill"
-              style={{ width: `${((active.cursor + 1) / active.quiz.questions.length) * 100}%` }}
-            />
+          <View className="quiz-steps" role="navigation" aria-label="切换题目">
+            {active.quiz.questions.map((q, index) => (
+              <View key={q.id} role="button" aria-label={`第 ${index + 1} 题`} aria-current={index === active.cursor ? 'step' : undefined}
+                className={`quiz-step ${index === active.cursor ? 'current' : ''} ${active.answers.some(answer => answer.question_id === q.id) ? 'answered' : ''}`}
+                onClick={() => void jumpQuestion(index)}>
+                <Text className="quiz-step-number">{index + 1}</Text>
+              </View>
+            ))}
           </View>
           <Text className="xp">
             <Icon name="bolt" />
@@ -733,8 +767,8 @@ export default function Index() {
             {feedback(current, a)}
             {ok && active.mode === 'new' ? (
               <View className="reward-row">
-                <Text className="reward">+10 XP</Text>
-                <Text className="reward">+2 金币</Text>
+                <Text className="reward">+{rewardRate(active.quiz).xp} XP</Text>
+                <Text className="reward">+{rewardRate(active.quiz).coins} 金币</Text>
               </View>
             ) : (
               !ok && (
@@ -761,21 +795,16 @@ export default function Index() {
         )}
       </>
     )
-    footer = a ? (
-      <Btn onClick={next}>
-        {active.cursor === active.quiz.questions.length - 1
-          ? '完成这一关'
-          : ok
-            ? '下一题'
-            : '看懂了，继续下一题'}
-      </Btn>
-    ) : current.type === 'multi' ? (
-      <Btn disabled={!selected.length} onClick={() => submit(selected)}>
-        提交答案
-      </Btn>
-    ) : (
-      <View className="small muted center">每次弄懂一点，就是在前进。</View>
-    )
+    footer = <>
+      {!a && current.type === 'multi' && <View className="quiz-submit"><Btn disabled={!selected.length || questionBusy} onClick={() => submit(selected)}>提交答案</Btn></View>}
+      <View className="quiz-navigation">
+        <Btn secondary disabled={active.cursor === 0 || questionBusy} onClick={() => void jumpQuestion(active.cursor - 1)}>上一题</Btn>
+        <Btn disabled={active.cursor === active.quiz.questions.length - 1 || questionBusy} onClick={() => void jumpQuestion(active.cursor + 1)}>下一题</Btn>
+      </View>
+      {active.answers.length === active.quiz.questions.length
+        ? <View className="quiz-finish"><Btn disabled={questionBusy} onClick={finishQuiz}>完成这一关</Btn></View>
+        : <View className="small muted center quiz-completion">已答 {active.answers.length} / {active.quiz.questions.length} 题，全部作答后可完成本关</View>}
+    </>
   }
   if ((screen === 'result' || screen === 'reviewResult') && record && sStats) {
     const reviewDone = screen === 'reviewResult'
@@ -1425,7 +1454,7 @@ export default function Index() {
         <View
           className="setting-row"
           onClick={() =>
-            dispatch({ type: 'WRONG', key: wrong.key, mastered: !wrong.status.mastered })
+            void api('/api/v1/wrongs', 'PUT', { key: wrong.key, mastered: !wrong.status.mastered }).then(() => refresh()).catch(e => setDialog({ title: '状态未保存', message: e.message }))
           }
         >
           <Text>{wrong.status.mastered ? '重新设为待复习' : '标记为已掌握'}</Text>
@@ -1488,14 +1517,12 @@ export default function Index() {
           setDialog(
             kind === 'privacy'
               ? {
-                  title: '本机数据与隐私',
-                  message:
-                    '学习记录、题库、报告与错题状态保存在当前设备。生成题库和报告时，你的文本和本轮作答会发送到所配置的后端及 DeepSeek。首版没有账号与云端记录备份；卸载或清理应用数据可能丢失本机记录。',
+                  title: '隐私说明',
+                  message: PRIVACY,
                 }
               : {
                   title: '关于这个学习搭子',
-                  message:
-                    'AI 出题和讲解可能有误，请结合原始资料核实。首次新学答对获得 10 XP、2 金币；每 100 XP 升一级。重闯和复习不重复发奖。数据分析仅统计完成的新学记录。',
+                  message: TERMS,
                 },
           )
         }
@@ -1504,17 +1531,17 @@ export default function Index() {
   if (screen === 'data')
     body = (
       <>
-        <Title>给本机数据，留点空间</Title>
+        <Title>管理你的学习数据</Title>
         <View className="hint-note">清理前可以先导出记录。学习历史、题库与已发放奖励会保留。</View>
         <Row title="导出全部学习记录" icon="download" onClick={exportRecords} />
         <Row
-          title="清理输入草稿"
-          sub="清空首页文本，保留学习历史"
+          title="清理本机缓存"
+          sub="清空缓存和输入草稿，保留云端学习历史"
           icon="trash"
           onClick={() =>
             setDialog({
-              title: '清理输入草稿？',
-              message: '首页输入会清空，已保存的题库、作答和报告会保留。',
+              title: '清理本机缓存？',
+              message: '本机缓存与首页输入会清空，云端题库、作答和报告会保留。',
               confirm: () => dispatch({ type: 'CLEAR_CACHE' }),
             })
           }
@@ -1527,10 +1554,17 @@ export default function Index() {
             setDialog({
               title: '清空待复习队列？',
               message: '现有错题将移入「已掌握」，可在错题详情重新设为待复习。',
-              confirm: () => dispatch({ type: 'CLEAR_WRONGS' }),
+              confirm: () => { void api('/api/v1/wrongs/clear', 'POST').then(() => refresh()).catch(e => void Taro.showModal({ title: '清理暂未完成', content: e.message, showCancel: false })) },
             })
           }
         />
+        <Row title="退出登录" icon="user" onClick={() => setDialog({ title: '退出当前账号？', message: '云端学习记录会保留，再次登录可以继续学习。', confirm: () => { void auth.logout().catch(e => void Taro.showModal({ title: '退出暂未完成', content: e.message, showCancel: false })) } })} />
+        <Row title="注销账号" icon="trash" onClick={() => setDialog({ title: '注销并删除学习数据？', message: '资料、云端学习记录和奖励将删除，无法恢复。当天额度不会因重新注册而重置。', confirm: () => { void (async () => {
+          const second = await Taro.showModal({ title: '最后确认注销', content: '确认删除全部账号数据，并重新验证微信身份？' })
+          if (!second.confirm) return
+          try { await api('/api/v1/me/delete', 'POST', { code: await wechatCode(), confirmation: '注销账号' }); Taro.removeStorageSync('levelup.account.v1.' + auth.user.id); clearCredentials() }
+          catch (e) { void Taro.showModal({ title: '注销未完成', content: (e as Error).message, showCancel: false }) }
+        })() } })} />
       </>
     )
   if (screen === 'error') {
@@ -1614,9 +1648,11 @@ export default function Index() {
       <ScrollView
         scrollY
         className="phone-scroll"
-        key={screen === 'quiz' ? `quiz-${active?.cursor}` : screen}
+        key={scrollKey}
+        scrollTop={scrollPositions.current[scrollKey] || 0}
+        onScroll={e => { scrollPositions.current[scrollKey] = e.detail.scrollTop }}
       >
-        <View className="content">{body}</View>
+        <View className="content">{cloudLoading && <View className="notice">正在同步云端学习记录…</View>}{cloudError && <View className="notice" onClick={() => void refresh().catch(() => {})}>{cloudError} 点击重试同步</View>}{body}</View>
       </ScrollView>
       {footer && <View className="phone-bottom">{footer}</View>}
       {['home', 'review', 'mine'].includes(screen) && (

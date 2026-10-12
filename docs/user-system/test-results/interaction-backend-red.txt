@@ -1,0 +1,79 @@
+FFF.                                                                     [100%]
+================================== FAILURES ===================================
+______ test_navigation_any_order_rewards_and_report_snapshot[easy-10-2] _______
+
+system = <fastapi.applications.FastAPI object at 0x0000018A1E9F1590>
+difficulty = 'easy', xp = 10, coins = 2
+
+    @pytest.mark.anyio
+    @pytest.mark.parametrize('difficulty,xp,coins', [('easy', 10, 2), ('medium', 15, 3)])
+    async def test_navigation_any_order_rewards_and_report_snapshot(system, difficulty, xp, coins):
+        from app.accounts.database import Reward
+        async with httpx.AsyncClient(transport=httpx.ASGITransport(app=system), base_url='http://test') as c:
+            user = await login(c)
+            response = await c.post('/api/v1/quiz/generate', json={'text': 'HTTP', 'question_count': 3, 'difficulty': difficulty})
+            session = response.json()['data']
+>           assert session['quiz']['reward'] == {'xp': xp, 'coins': coins}
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+E           KeyError: 'reward'
+
+tests\test_mysql_accounts.py:471: KeyError
+---------------------------- Captured stderr call -----------------------------
+[levelup] app.accounts.repository ai_call operation=ad36fc27-d88c-436e-9917-2e476dae4bdd kind=quiz minute_calls=1
+[levelup] app.accounts.repository ai_finished operation=ad36fc27-d88c-436e-9917-2e476dae4bdd status=succeeded
+------------------------------ Captured log call ------------------------------
+INFO     app.accounts.repository:repository.py:351 ai_call operation=ad36fc27-d88c-436e-9917-2e476dae4bdd kind=quiz minute_calls=1
+INFO     app.accounts.repository:repository.py:188 ai_finished operation=ad36fc27-d88c-436e-9917-2e476dae4bdd status=succeeded
+_____ test_navigation_any_order_rewards_and_report_snapshot[medium-15-3] ______
+
+system = <fastapi.applications.FastAPI object at 0x0000018A1EE26850>
+difficulty = 'medium', xp = 15, coins = 3
+
+    @pytest.mark.anyio
+    @pytest.mark.parametrize('difficulty,xp,coins', [('easy', 10, 2), ('medium', 15, 3)])
+    async def test_navigation_any_order_rewards_and_report_snapshot(system, difficulty, xp, coins):
+        from app.accounts.database import Reward
+        async with httpx.AsyncClient(transport=httpx.ASGITransport(app=system), base_url='http://test') as c:
+            user = await login(c)
+            response = await c.post('/api/v1/quiz/generate', json={'text': 'HTTP', 'question_count': 3, 'difficulty': difficulty})
+            session = response.json()['data']
+>           assert session['quiz']['reward'] == {'xp': xp, 'coins': coins}
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+E           KeyError: 'reward'
+
+tests\test_mysql_accounts.py:471: KeyError
+---------------------------- Captured stderr call -----------------------------
+[levelup] app.accounts.repository ai_call operation=7ef092aa-dcf1-404c-9e5a-031a85d35989 kind=quiz minute_calls=1
+[levelup] app.accounts.repository ai_finished operation=7ef092aa-dcf1-404c-9e5a-031a85d35989 status=succeeded
+------------------------------ Captured log call ------------------------------
+INFO     app.accounts.repository:repository.py:351 ai_call operation=7ef092aa-dcf1-404c-9e5a-031a85d35989 kind=quiz minute_calls=1
+INFO     app.accounts.repository:repository.py:188 ai_finished operation=7ef092aa-dcf1-404c-9e5a-031a85d35989 status=succeeded
+______ test_review_out_of_order_updates_matching_wrong_and_never_rewards ______
+
+system = <fastapi.applications.FastAPI object at 0x0000018A1EEF5590>
+
+    @pytest.mark.anyio
+    async def test_review_out_of_order_updates_matching_wrong_and_never_rewards(system):
+        async with httpx.AsyncClient(transport=httpx.ASGITransport(app=system), base_url='http://test') as c:
+            await login(c)
+            original = await generate(c)
+            for qid in ['q0', 'q1', 'q2']:
+                assert (await answer(c, original, qid, ['B'])).status_code == 200
+            keys = [f"{original['id']}:q0", f"{original['id']}:q1"]
+            review = (await c.post('/api/v1/attempts/review', json={'keys': keys})).json()['data']
+>           assert (await answer(c, review, 'review-1', ['A', 'B'])).status_code == 200
+E           assert 422 == 200
+E            +  where 422 = <Response [422 Unprocessable Entity]>.status_code
+
+tests\test_mysql_accounts.py:513: AssertionError
+---------------------------- Captured stderr call -----------------------------
+[levelup] app.accounts.repository ai_call operation=b3283f3b-8cef-4852-83b0-fb1dc653b94f kind=quiz minute_calls=1
+[levelup] app.accounts.repository ai_finished operation=b3283f3b-8cef-4852-83b0-fb1dc653b94f status=succeeded
+------------------------------ Captured log call ------------------------------
+INFO     app.accounts.repository:repository.py:351 ai_call operation=b3283f3b-8cef-4852-83b0-fb1dc653b94f kind=quiz minute_calls=1
+INFO     app.accounts.repository:repository.py:188 ai_finished operation=b3283f3b-8cef-4852-83b0-fb1dc653b94f status=succeeded
+=========================== short test summary info ===========================
+FAILED tests/test_mysql_accounts.py::test_navigation_any_order_rewards_and_report_snapshot[easy-10-2]
+FAILED tests/test_mysql_accounts.py::test_navigation_any_order_rewards_and_report_snapshot[medium-15-3]
+FAILED tests/test_mysql_accounts.py::test_review_out_of_order_updates_matching_wrong_and_never_rewards
+3 failed, 1 passed, 21 deselected in 6.87s

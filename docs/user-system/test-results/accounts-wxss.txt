@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "files": [
+    "app.wxss"
+  ],
+  "exit_code": 0,
+  "diagnostics": ""
+}

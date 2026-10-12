@@ -30,3 +30,5 @@ docs/comic-implementation/playwright-report/
 docs/comic-implementation/e2e-results/
 /project.config.json
 /cc.txt
+docs/user-system/playwright-report/
+docs/user-system/e2e-results/

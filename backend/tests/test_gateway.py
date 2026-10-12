@@ -60,3 +60,13 @@ def test_adapter_configuration(monkeypatch):
     ModelGateway(Settings(_env_file=None,deepseek_api_key="local-test")).runnable(QuizContent)
     assert seen["extra_body"]=={"thinking":{"type":"disabled"}}
     assert seen["method"]=="json_mode" and seen["include_raw"] is True and seen["max_retries"]==0
+
+
+@pytest.mark.anyio
+async def test_usage_audit_does_not_log_prompts_or_model_content(caplog):
+    payload = good()
+    payload['raw'] = AIMessage(content='private generated content', usage_metadata={'input_tokens': 12, 'output_tokens': 8, 'total_tokens': 20})
+    with caplog.at_level('INFO', logger='app.llm'):
+        await ModelGateway(Settings(_env_file=None), Runnable([payload])).generate(QuizContent, 'private learning material')
+    assert 'input_tokens' in caplog.text and '20' in caplog.text
+    assert 'private generated content' not in caplog.text and 'private learning material' not in caplog.text

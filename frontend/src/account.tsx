@@ -1,6 +1,10 @@
-import React from 'react'
-import { View, Text } from '@tarojs/components'
+import React, { useEffect, useRef, useState } from 'react'
+import Taro from '@tarojs/taro'
+import { View, Text, Image, Button, Form, Input } from '@tarojs/components'
+import { useAuth } from './auth'
+import { api, User, uploadAvatar, downloadAvatar } from './api'
 import { Icon, Title, Stat, Row } from './components'
+import { saveAvatarImage } from './platform'
 
 export function Mine({
   profile,
@@ -11,14 +15,54 @@ export function Mine({
   go: (s: 'settings') => void
   future: (s: string) => void
 }) {
+  const { user, update } = useAuth()
+  const [avatar, setAvatar] = useState(''), [editing, setEditing] = useState(false), [saving, setSaving] = useState(false)
+  const [nicknameDraft, setNicknameDraft] = useState(user.nickname)
+  const saveBusy = useRef(false)
+  const [avatarMenu, setAvatarMenu] = useState(false), [avatarPreview, setAvatarPreview] = useState(false), [avatarBusy, setAvatarBusy] = useState(false)
+  useEffect(() => {
+    let alive = true
+    setAvatar('')
+    if (user.avatar_version) void downloadAvatar().then(path => { if (alive) setAvatar(path) }).catch(() => {})
+    return () => { alive = false }
+  }, [user.id, user.avatar_version])
+  async function saveNickname(value: string) {
+    if (saveBusy.current) return
+    saveBusy.current = true
+    setSaving(true)
+    try { update(await api<User>('/api/v1/me', 'PUT', { nickname: value })); setEditing(false) }
+    catch (e) { void Taro.showModal({ title: '昵称未保存', content: (e as Error).message, showCancel: false }) }
+    finally { setSaving(false); saveBusy.current = false }
+  }
+  async function avatarAction(save: boolean) {
+    if (avatarBusy || !user.avatar_version) return
+    setAvatarBusy(true)
+    try {
+      const path = avatar || await downloadAvatar()
+      setAvatar(path)
+      if (save) {
+        await saveAvatarImage(path)
+        void Taro.showToast({ title: process.env.TARO_ENV === 'h5' ? '头像已下载' : '头像已保存', icon: 'success' })
+      } else setAvatarPreview(true)
+      setAvatarMenu(false)
+    } catch (e) { void Taro.showModal({ title: '头像暂时无法操作', content: (e as Error).message, showCancel: false }) }
+    finally { setAvatarBusy(false) }
+  }
+  async function chooseAvatar(path: string) {
+    if (avatarBusy) return
+    setAvatarBusy(true)
+    try { update(await uploadAvatar(path)); setAvatarMenu(false) }
+    catch (e) { void Taro.showModal({ title: '头像未保存', content: (e as Error).message, showCancel: false }) }
+    finally { setAvatarBusy(false) }
+  }
   return (
     <>
       <View className="row">
         <View className="row">
-          <View className="avatar large">我</View>
+          <Button className="avatar large profile-avatar" onClick={() => setAvatarMenu(true)} aria-label="头像操作">{avatar ? <Image src={avatar} mode="aspectFill" className="profile-avatar-image" /> : '我'}</Button>
           <View>
-            <View className="strong" style={{ fontSize: 23 }}>
-              本机学习者
+            <View className="strong" style={{ fontSize: 23 }} onClick={() => { setNicknameDraft(user.nickname); setEditing(true) }}>
+              {user.nickname}
             </View>
             <View className="small muted">第 {profile.streak} 天，一点点变厉害</View>
           </View>
@@ -83,6 +127,29 @@ export function Mine({
         icon="file"
         onClick={() => future('订单与权益记录')}
       />
+      {avatarMenu && <View className="sheet-overlay"><View className="sheet avatar-actions">
+        <View className="sheet-handle" />
+        <View className="sheet-title">头像</View>
+        {!user.avatar_version && <View className="small muted mb">先选择头像，即可查看或保存。</View>}
+        <Button className={`btn secondary ${!user.avatar_version || avatarBusy ? 'is-disabled' : ''}`} disabled={!user.avatar_version || avatarBusy} onClick={() => void avatarAction(false)}>查看头像</Button>
+        <Button className={`btn primary ${!user.avatar_version || avatarBusy ? 'is-disabled' : ''}`} disabled={!user.avatar_version || avatarBusy} onClick={() => void avatarAction(true)}>{avatarBusy ? '正在处理…' : '保存头像图片'}</Button>
+        <Button className="btn secondary" disabled={avatarBusy} openType="chooseAvatar" onChooseAvatar={e => void chooseAvatar(e.detail.avatarUrl)}>更换头像</Button>
+        <Button className="btn secondary" disabled={avatarBusy} onClick={() => setAvatarMenu(false)}>取消</Button>
+      </View></View>}
+      {avatarPreview && <View className="global-dialog"><View className="dialog-card">
+        <View className="dialog-title">我的头像</View>
+        <Image className="avatar-preview-image" src={avatar} mode="aspectFit" />
+        <Button className="btn primary" disabled={avatarBusy} onClick={() => void avatarAction(true)}>保存头像图片</Button>
+        <Button className="btn secondary" onClick={() => setAvatarPreview(false)}>关闭</Button>
+      </View></View>}
+      {editing && <View className="global-dialog"><View className="dialog-card">
+        <View className="dialog-title">编辑昵称</View>
+        <Form onSubmit={e => void saveNickname(String(e.detail.value?.nickname || '').trim())}>
+          <Input className="profile-nickname" name="nickname" type="nickname" maxlength={32} value={nicknameDraft} onInput={e => setNicknameDraft(e.detail.value)} placeholder="填写你的昵称" />
+          <Button className="btn primary" formType="submit" disabled={saving} onClick={process.env.TARO_ENV === 'h5' ? () => void saveNickname(nicknameDraft.trim()) : undefined}>{saving ? '正在保存…' : '保存昵称'}</Button>
+        </Form>
+        <Button className="btn secondary" onClick={() => setEditing(false)}>暂不修改</Button>
+      </View></View>}
     </>
   )
 }

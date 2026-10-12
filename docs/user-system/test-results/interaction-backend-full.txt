@@ -1,0 +1,41 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.9, pytest-9.1.1, pluggy-1.6.0
+rootdir: D:\nbproject\LevelUpProject\backend
+configfile: pytest.ini
+testpaths: tests
+plugins: anyio-4.15.1, cov-7.1.0
+collected 111 items
+
+tests\test_account_foundation.py ...............                         [ 13%]
+tests\test_base.py ................                                      [ 27%]
+tests\test_content.py .......                                            [ 34%]
+tests\test_edges.py .........                                            [ 42%]
+tests\test_gateway.py ..........                                         [ 51%]
+tests\test_mysql_accounts.py .........................                   [ 73%]
+tests\test_quiz.py ...............                                       [ 87%]
+tests\test_report.py ..............                                      [100%]
+
+=============================== tests coverage ================================
+_______________ coverage: platform win32, python 3.13.9-final-0 _______________
+
+Name                         Stmts   Miss Branch BrPart  Cover   Missing
+------------------------------------------------------------------------
+app\__init__.py                  0      0      0      0   100%
+app\accounts\__init__.py         0      0      0      0   100%
+app\accounts\api.py            133      1     12      3    97%   93->exit, 134->exit, 144
+app\accounts\database.py       112      1      4      1    98%   122
+app\accounts\repository.py     372      7    126     30    93%   63, 78, 83, 96, 160, 198->exit, 200->exit, 212->exit, 238->exit, 240->exit, 244, 251->263, 260->263, 304->exit, 314->exit, 315->exit, 316->exit, 319, 322->exit, 323->exit, 324->exit, 325->exit, 329->exit, 330->exit, 348->exit, 351->exit, 363->exit, 367->373, 386->exit, 406->exit
+app\accounts\wechat.py          19      1      4      1    91%   12
+app\config.py                   35      1      6      1    95%   34
+app\content.py                   7      0      2      0   100%
+app\errors.py                    4      0      0      0   100%
+app\llm.py                      49      1      8      1    96%   35
+app\main.py                     83     18     12      0    79%   30-46, 64-65
+app\migrate.py                  10     10      2      0     0%   2-12
+app\models.py                  103      0     30      0   100%
+app\rewards.py                   4      0      0      0   100%
+app\scoring.py                  19      0      2      0   100%
+app\services.py                 21      0      2      0   100%
+------------------------------------------------------------------------
+TOTAL                          971     40    210     37    93%
+============================ 111 passed in 38.16s =============================

@@ -1,0 +1,41 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.9, pytest-9.1.1, pluggy-1.6.0
+rootdir: D:\nbproject\LevelUpProject\backend
+configfile: pytest.ini
+testpaths: tests
+plugins: anyio-4.15.1, cov-7.1.0
+collected 107 items
+
+tests\test_account_foundation.py ...............                         [ 14%]
+tests\test_base.py ................                                      [ 28%]
+tests\test_content.py .......                                            [ 35%]
+tests\test_edges.py .........                                            [ 43%]
+tests\test_gateway.py ..........                                         [ 53%]
+tests\test_mysql_accounts.py .....................                       [ 72%]
+tests\test_quiz.py ...............                                       [ 86%]
+tests\test_report.py ..............                                      [100%]
+
+=============================== tests coverage ================================
+_______________ coverage: platform win32, python 3.13.9-final-0 _______________
+
+Name                         Stmts   Miss Branch BrPart  Cover   Missing
+------------------------------------------------------------------------
+app\__init__.py                  0      0      0      0   100%
+app\accounts\__init__.py         0      0      0      0   100%
+app\accounts\api.py            133      1     12      3    97%   93->exit, 134->exit, 144
+app\accounts\database.py       112      1      4      1    98%   122
+app\accounts\repository.py     365      7    124     29    93%   61, 76, 81, 94, 158, 195->exit, 197->exit, 209->exit, 235->exit, 239, 245->256, 253->256, 297->exit, 307->exit, 308->exit, 309->exit, 312, 315->exit, 316->exit, 317->exit, 318->exit, 322->exit, 323->exit, 341->exit, 344->exit, 356->exit, 360->366, 379->exit, 399->exit
+app\accounts\wechat.py          19      1      4      1    91%   12
+app\config.py                   35      1      6      1    95%   34
+app\content.py                   7      0      2      0   100%
+app\errors.py                    4      0      0      0   100%
+app\llm.py                      49      1      8      1    96%   35
+app\main.py                     83     18     12      0    79%   30-46, 64-65
+app\migrate.py                  10     10      2      0     0%   2-12
+app\models.py                   99      0     30      0   100%
+app\scoring.py                  17      0      2      0   100%
+app\services.py                 21      0      2      0   100%
+------------------------------------------------------------------------
+TOTAL                          954     40    208     36    93%
+Coverage JSON written to file test-results/accounts-coverage.json
+======================= 107 passed in 64.23s (0:01:04) ========================

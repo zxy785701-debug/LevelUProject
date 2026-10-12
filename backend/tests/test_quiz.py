@@ -6,16 +6,19 @@ from app.config import Settings
 from app.main import create_app
 from app.models import QuizContent, Question
 from tests.helpers import FakeGateway, quiz_payload
+from tests.test_mysql_accounts import system, login
 
 @pytest.mark.parametrize("count", [3,5])
 @pytest.mark.parametrize("difficulty", ["easy","medium"])
 @pytest.mark.anyio
-async def test_quiz_contract(count,difficulty):
+async def test_quiz_contract(count,difficulty,system):
     gateway = FakeGateway(quiz_payload(count))
-    async with httpx.AsyncClient(transport=httpx.ASGITransport(app=create_app(Settings(_env_file=None),gateway)),base_url="http://test") as c:
+    system.state.gateway = gateway
+    async with httpx.AsyncClient(transport=httpx.ASGITransport(app=system),base_url="http://test") as c:
+        await login(c)
         r=await c.post("/api/v1/quiz/generate",json={"text":"HTTP 基础","question_count":count,"difficulty":difficulty})
     assert r.status_code == 200
-    data=r.json()["data"]
+    data=r.json()["data"]['quiz']
     assert data["id"] and data["created_at"] and len(data["questions"])==count
     assert data["source_text"]=="HTTP 基础" and data["difficulty"]==difficulty
     assert "JSON" in gateway.calls[0] and "HTTP 基础" in gateway.calls[0]
@@ -41,8 +44,10 @@ def test_duplicate_question_id():
     with pytest.raises(ValidationError): QuizContent.model_validate(q)
 
 @pytest.mark.anyio
-async def test_wrong_mix_rejected():
+async def test_wrong_mix_rejected(system):
     gateway=FakeGateway(quiz_payload(5))
-    async with httpx.AsyncClient(transport=httpx.ASGITransport(app=create_app(Settings(_env_file=None),gateway)),base_url="http://test") as c:
+    system.state.gateway = gateway
+    async with httpx.AsyncClient(transport=httpx.ASGITransport(app=system),base_url="http://test") as c:
+        await login(c)
         r=await c.post("/api/v1/quiz/generate",json={"text":"HTTP","question_count":3})
     assert r.status_code==502 and r.json()["code"]=="MODEL_INVALID_OUTPUT"

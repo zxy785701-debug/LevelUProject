@@ -1,4 +1,5 @@
 from .models import ReportRequest
+from .rewards import question_reward
 
 def score(body: ReportRequest) -> dict:
     answers = {a.question_id:a for a in body.answers}
@@ -15,7 +16,8 @@ def score(body: ReportRequest) -> dict:
         details.append({"question_id":q.id,"is_correct":ok})
     total = len(body.quiz.questions)
     for point in points.values(): point["accuracy"] = round(point["correct"] / point["total"] * 100)
+    reward = question_reward(body.quiz.model_dump())
     return {"total":total,"correct_count":correct,"accuracy":round(correct/total*100),
             "duration_ms":sum(a.elapsed_ms for a in body.answers),
-            "xp":correct*10 if body.mode == "new" else 0,"coins":correct*2 if body.mode == "new" else 0,
+            "xp":correct*reward['xp'] if body.mode == "new" else 0,"coins":correct*reward['coins'] if body.mode == "new" else 0,
             "knowledge_points":list(points.values()),"results":details}

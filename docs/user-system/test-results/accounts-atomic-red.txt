@@ -1,0 +1,79 @@
+FFF                                                                      [100%]
+================================== FAILURES ===================================
+_______________ test_quiz_and_operation_success_commit_together _______________
+
+system = <fastapi.applications.FastAPI object at 0x000001F3ED960A50>
+
+    @pytest.mark.anyio
+    async def test_quiz_and_operation_success_commit_together(system):
+        from sqlalchemy import event
+        from sqlalchemy.orm import Session
+        from app.accounts.database import Operation
+        async with httpx.AsyncClient(transport=httpx.ASGITransport(app=system, raise_app_exceptions=False), base_url='http://test') as c:
+            await login(c)
+            def fail(session, *_):
+                if any(isinstance(v, Operation) and v.status == 'succeeded' for v in session.dirty):
+                    raise RuntimeError('simulate completion write failure')
+            event.listen(Session, 'before_flush', fail)
+            try:
+                response = await c.post('/api/v1/quiz/generate', headers={'Idempotency-Key': 'atomic'}, json={'text': 'HTTP', 'question_count': 3})
+                assert response.status_code == 500
+            finally:
+                event.remove(Session, 'before_flush', fail)
+>           assert (await c.get('/api/v1/learning')).json()['data']['sessions'] == []
+E           AssertionError: assert [{'id': '4fde...rs': [], ...}] == []
+E             
+E             Left contains one more item: {'id': '4fde0818-47de-40ae-96a8-f58951da5d35', 'quiz': {'id': '9e8fbf3f-7382-4fce-9e6e-69ae2adf1b01', 'title': 'HTTP ��... ...}, {'id': 'q2', 'stem': '�� 3 �����⣿', 'type': 'judge', 'answers': [], ...}], ...}, 'mode': 'new', 'answers': [], ...}
+E             Use -v to get more diff
+
+tests\test_mysql_accounts.py:332: AssertionError
+_________ test_expired_operation_same_key_can_be_retried_with_new_key _________
+
+system = <fastapi.applications.FastAPI object at 0x000001F3EDD9EFD0>
+
+    def test_expired_operation_same_key_can_be_retried_with_new_key(system):
+        from app.errors import AppError
+        accounts = system.state.accounts
+        now = [accounts.clock()]
+        accounts.clock = lambda: now[0]
+        uid = accounts.login({'openid': 'expired-operation', 'unionid': None}, '2026-10-12')['user']['id']
+        accounts.reserve(uid, 'old', 'quiz', {})
+        now[0] += 100000
+        with pytest.raises(AppError) as exc:
+            accounts.reserve(uid, 'old', 'quiz', {})
+>       assert exc.value.code == 'OPERATION_EXPIRED'
+E       AssertionError: assert 'AI_BUSY' == 'OPERATION_EXPIRED'
+E         
+E         - OPERATION_EXPIRED
+E         + AI_BUSY
+
+tests\test_mysql_accounts.py:346: AssertionError
+_____________ test_expired_generation_does_not_store_late_result ______________
+
+system = <fastapi.applications.FastAPI object at 0x000001F3ED9625D0>
+
+    @pytest.mark.anyio
+    async def test_expired_generation_does_not_store_late_result(system):
+        accounts = system.state.accounts
+        now = [accounts.clock()]
+        accounts.clock = lambda: now[0]
+        original = system.state.gateway
+        class Late:
+            async def generate(self, *args):
+                result = await original.generate(*args)
+                now[0] += 100000
+                return result
+        system.state.gateway = Late()
+        async with httpx.AsyncClient(transport=httpx.ASGITransport(app=system), base_url='http://test') as c:
+            await login(c)
+            response = await c.post('/api/v1/quiz/generate', headers={'Idempotency-Key': 'late'}, json={'text': 'HTTP', 'question_count': 3})
+>           assert response.status_code == 409
+E           assert 200 == 409
+E            +  where 200 = <Response [200 OK]>.status_code
+
+tests\test_mysql_accounts.py:367: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_mysql_accounts.py::test_quiz_and_operation_success_commit_together
+FAILED tests/test_mysql_accounts.py::test_expired_operation_same_key_can_be_retried_with_new_key
+FAILED tests/test_mysql_accounts.py::test_expired_generation_does_not_store_late_result
+3 failed, 13 deselected in 3.77s

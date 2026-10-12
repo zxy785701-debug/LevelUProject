@@ -15,6 +15,7 @@ export interface Quiz {
   title: string
   summary: string
   difficulty: 'easy' | 'medium'
+  reward?: { xp: number; coins: number }
   questions: Question[]
 }
 export interface Answer {
@@ -101,12 +102,13 @@ export function stats(s: Session): Stats {
     correct_count: correct,
     accuracy: Math.round((correct / total) * 100),
     duration_ms: s.answers.reduce((n, a) => n + a.elapsed_ms, 0),
-    xp: s.mode === 'new' ? correct * 10 : 0,
-    coins: s.mode === 'new' ? correct * 2 : 0,
+    xp: s.mode === 'new' ? correct * rewardRate(s.quiz).xp : 0,
+    coins: s.mode === 'new' ? correct * rewardRate(s.quiz).coins : 0,
     knowledge_points: points,
     results,
   }
 }
+export const rewardRate = (quiz: Quiz) => quiz.reward || { xp: 10, coins: 2 }
 export function wrongList(data: Data) {
   return data.sessions
     .filter((s) => s.mode === 'new')

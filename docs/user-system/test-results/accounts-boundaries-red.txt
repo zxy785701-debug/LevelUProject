@@ -1,0 +1,22 @@
+..F.                                                                     [100%]
+================================== FAILURES ===================================
+______________ test_history_pagination_filters_and_account_scope ______________
+
+system = <fastapi.applications.FastAPI object at 0x00000225C2CC3B10>
+
+    @pytest.mark.anyio
+    async def test_history_pagination_filters_and_account_scope(system):
+        async with httpx.AsyncClient(transport=httpx.ASGITransport(app=system), base_url='http://test') as c:
+            await login(c)
+            first = await generate(c, 'history-one')
+            for q in quiz_payload()['questions']: await answer(c, first, q['id'], q['answers'])
+            await generate(c, 'history-two')
+            r = await c.get('/api/v1/attempts?page=1&page_size=1&status=completed&mode=new')
+>           assert r.status_code == 200
+E           assert 405 == 200
+E            +  where 405 = <Response [405 Method Not Allowed]>.status_code
+
+tests\test_mysql_accounts.py:409: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_mysql_accounts.py::test_history_pagination_filters_and_account_scope
+1 failed, 3 passed, 16 deselected in 8.49s

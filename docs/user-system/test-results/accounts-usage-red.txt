@@ -1,0 +1,20 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+___________ test_usage_audit_does_not_log_prompts_or_model_content ____________
+
+caplog = <_pytest.logging.LogCaptureFixture object at 0x000002250D513B60>
+
+    @pytest.mark.anyio
+    async def test_usage_audit_does_not_log_prompts_or_model_content(caplog):
+        payload = good()
+        payload['raw'] = AIMessage(content='private generated content', usage_metadata={'input_tokens': 12, 'output_tokens': 8, 'total_tokens': 20})
+        with caplog.at_level('INFO', logger='app.llm'):
+            await ModelGateway(Settings(_env_file=None), Runnable([payload])).generate(QuizContent, 'private learning material')
+>       assert 'input_tokens' in caplog.text and '20' in caplog.text
+E       AssertionError: assert ('input_tokens' in '')
+E        +  where '' = <_pytest.logging.LogCaptureFixture object at 0x000002250D513B60>.text
+
+tests\test_gateway.py:71: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_gateway.py::test_usage_audit_does_not_log_prompts_or_model_content
+1 failed, 9 deselected in 7.64s

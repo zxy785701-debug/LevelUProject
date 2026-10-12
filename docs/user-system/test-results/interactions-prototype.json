@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "screens": 69,
+  "arbitrary_navigation": true,
+  "medium_reward": {
+    "xp": 45,
+    "coins": 9
+  },
+  "avatar_preview_and_download": true,
+  "scroll_restored": true,
+  "errors": []
+}

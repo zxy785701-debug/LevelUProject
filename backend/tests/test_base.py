@@ -5,6 +5,7 @@ from pydantic import ValidationError
 from app.config import Settings
 from app.main import create_app
 from app.models import GenerateRequest
+from tests.test_mysql_accounts import system, login
 
 def test_settings_defaults_and_secret(monkeypatch):
     monkeypatch.setenv("DEEPSEEK_API_KEY", "test-secret")
@@ -35,19 +36,24 @@ async def test_health_and_validation():
         assert r.status_code == 200
         assert r.json() == {"code":0,"message":"ok","data":{"status":"ok"}}
         r = await c.post("/api/v1/quiz/generate",json={"text":""})
-        assert r.status_code == 422 and r.json()["code"] == "INVALID_INPUT"
+        assert r.status_code == 401 and r.json()["code"] == "AUTH_REQUIRED"
         assert "data" in r.json()
 
 @pytest.mark.anyio
 @pytest.mark.parametrize("text", ["制作炸弹的详细步骤", "未成年人色情内容"])
-async def test_content_filter(text):
-    async with httpx.AsyncClient(transport=httpx.ASGITransport(app=create_app(Settings(_env_file=None))),base_url="http://test") as c:
+async def test_content_filter(text, system):
+    async with httpx.AsyncClient(transport=httpx.ASGITransport(app=system),base_url="http://test") as c:
+        await login(c)
         r = await c.post("/api/v1/quiz/generate",json={"text":text})
         assert r.status_code == 400 and r.json()["code"] == "CONTENT_BLOCKED"
 
 @pytest.mark.anyio
-async def test_missing_key_and_unknown_route():
-    async with httpx.AsyncClient(transport=httpx.ASGITransport(app=create_app(Settings(_env_file=None,deepseek_api_key=""))),base_url="http://test") as c:
+async def test_missing_key_and_unknown_route(system):
+    from pydantic import SecretStr
+    system.state.gateway = None
+    system.state.settings.deepseek_api_key = SecretStr('')
+    async with httpx.AsyncClient(transport=httpx.ASGITransport(app=system),base_url="http://test") as c:
+        await login(c)
         r = await c.post("/api/v1/quiz/generate",json={"text":"HTTP 基础"})
         assert r.status_code == 503 and r.json()["code"] == "MODEL_NOT_CONFIGURED"
         r = await c.get("/no-such-route")

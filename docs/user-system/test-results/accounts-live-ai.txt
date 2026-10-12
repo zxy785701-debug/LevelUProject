@@ -1,0 +1,7 @@
+[levelup] app.accounts.repository ai_call operation=1bedcd5f-2d6b-4ab2-a2d1-f47bb12422c9 kind=quiz minute_calls=1
+[levelup] app.llm model_response operation=1bedcd5f-2d6b-4ab2-a2d1-f47bb12422c9 attempt=1 usage={'input_tokens': 708, 'output_tokens': 546, 'total_tokens': 1254}
+[levelup] app.accounts.repository ai_finished operation=1bedcd5f-2d6b-4ab2-a2d1-f47bb12422c9 status=succeeded
+[levelup] app.accounts.repository ai_call operation=ae720fc9-bc0c-473d-bc27-1acf8c876744 kind=report minute_calls=2
+[levelup] app.llm model_response operation=ae720fc9-bc0c-473d-bc27-1acf8c876744 attempt=1 usage={'input_tokens': 1239, 'output_tokens': 199, 'total_tokens': 1438}
+[levelup] app.accounts.repository ai_finished operation=ae720fc9-bc0c-473d-bc27-1acf8c876744 status=succeeded error_code=None
+{"database": "levelup_test", "wechat": "test adapter", "ai": "real provider", "quiz_generated": true, "answers_hidden": true, "report_generated": true, "report_cached": true, "rewards_correct": true, "cloud_record_saved": true, "passed": true}

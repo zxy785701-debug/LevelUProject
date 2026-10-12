@@ -1,0 +1,12 @@
+{
+  "database": "levelup_test",
+  "wechat": "test adapter",
+  "ai": "real provider",
+  "quiz_generated": true,
+  "answers_hidden": true,
+  "report_generated": true,
+  "report_cached": true,
+  "rewards_correct": true,
+  "cloud_record_saved": true,
+  "passed": true
+}

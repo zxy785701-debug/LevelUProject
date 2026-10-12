@@ -70,11 +70,16 @@ class QuizContent(StrictModel):
             raise ValueError("题目 ID 不可重复")
         return self
 
+class RewardRate(StrictModel):
+    xp: Literal[10, 15]
+    coins: Literal[2, 3]
+
 class Quiz(QuizContent):
     id: str = Field(min_length=1, max_length=64)
     created_at: datetime
     source_text: str = Field(min_length=1, max_length=6000)
     difficulty: Literal["easy", "medium"]
+    reward: RewardRate | None = None
 
 class Answer(StrictModel):
     question_id: str = Field(min_length=1, max_length=64)

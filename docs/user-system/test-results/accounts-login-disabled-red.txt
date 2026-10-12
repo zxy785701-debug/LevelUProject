@@ -1,0 +1,41 @@
+
+> levelup-mini@1.0.0 test:e2e
+> playwright test --config=playwright.accounts.config.ts --grep 320px
+
+
+Running 1 test using 1 worker
+
+(node:30560) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 e2e-accounts\accounts.spec.ts:38:5 › 未登录强制登录，无游客入口；320px 布局 (5.7s)
+
+
+  1) e2e-accounts\accounts.spec.ts:38:5 › 未登录强制登录，无游客入口；320px 布局 ───────────────────────────────────
+
+    Error: expect(locator).toHaveCSS(expected) failed
+
+    Locator:  locator('.phone-bottom .btn')
+    Expected: "rgb(237, 240, 245)"
+    Received: "rgb(51, 106, 232)"
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveCSS" locator('.phone-bottom .btn') with timeout 5000ms
+      - waiting for locator('.phone-bottom .btn')
+        14 × locator resolved to <taro-button-core type="" disabled class="btn primary is-disabled">…</taro-button-core>
+           - unexpected value "rgb(51, 106, 232)"
+
+
+      44 |   const loginButton = page.locator('.phone-bottom .btn')
+      45 |   await expect(loginButton).toHaveAttribute('disabled', '')
+    > 46 |   await expect(loginButton).toHaveCSS('background-color', 'rgb(237, 240, 245)')
+         |                             ^
+      47 |   await page.locator('taro-checkbox-core').click()
+      48 |   await expect(loginButton).not.toHaveAttribute('disabled', '')
+      49 |   await page.locator('.phone-scroll').evaluate(element => { element.scrollTop = 0 })
+        at D:\nbproject\LevelUpProject\frontend\e2e-accounts\accounts.spec.ts:46:29
+
+    Error Context: ..\docs\user-system\e2e-results\accounts-未登录强制登录，无游客入口；320px-布局\error-context.md
+
+  1 failed
+    e2e-accounts\accounts.spec.ts:38:5 › 未登录强制登录，无游客入口；320px 布局 ────────────────────────────────────
