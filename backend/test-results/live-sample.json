@@ -1,0 +1,231 @@
+{
+  "quiz": {
+    "title": "HTTP 无状态基础练习",
+    "summary": "围绕 HTTP 无状态的含义、原因与影响，练习 5 道基础题。",
+    "questions": [
+      {
+        "id": "q1",
+        "type": "single",
+        "stem": "HTTP 被称为“无状态”协议，主要含义是什么？",
+        "options": [
+          {
+            "id": "A",
+            "text": "服务器不会保存客户端之前的请求信息，每个请求独立处理"
+          },
+          {
+            "id": "B",
+            "text": "客户端不能发送多次请求"
+          },
+          {
+            "id": "C",
+            "text": "服务器必须为每个用户建立永久连接"
+          },
+          {
+            "id": "D",
+            "text": "HTTP 不能传输文本数据"
+          }
+        ],
+        "answers": [
+          "A"
+        ],
+        "explanation": "HTTP 的无状态指协议本身不要求服务器记住之前的请求。每个请求通常独立处理，服务器不会自动保留客户端状态。",
+        "knowledge_point": "HTTP 无状态的含义"
+      },
+      {
+        "id": "q2",
+        "type": "single",
+        "stem": "HTTP 设计为无状态，一个主要好处是什么？",
+        "options": [
+          {
+            "id": "A",
+            "text": "服务器更容易扩展，能处理大量并发请求"
+          },
+          {
+            "id": "B",
+            "text": "浏览器不需要解析 HTML"
+          },
+          {
+            "id": "C",
+            "text": "网络传输完全不会出错"
+          },
+          {
+            "id": "D",
+            "text": "用户不需要输入网址"
+          }
+        ],
+        "answers": [
+          "A"
+        ],
+        "explanation": "无状态使服务器不必为每个客户端保存会话信息，请求可以分散到多台服务器处理，从而更容易扩展和负载均衡。",
+        "knowledge_point": "HTTP 无状态的优点"
+      },
+      {
+        "id": "q3",
+        "type": "single",
+        "stem": "HTTP 本身无状态，但网站仍能识别登录用户，通常依靠什么？",
+        "options": [
+          {
+            "id": "A",
+            "text": "Cookie 或 Session 等机制"
+          },
+          {
+            "id": "B",
+            "text": "改变 HTTP 的端口号"
+          },
+          {
+            "id": "C",
+            "text": "把网页全部改成图片"
+          },
+          {
+            "id": "D",
+            "text": "关闭浏览器缓存"
+          }
+        ],
+        "answers": [
+          "A"
+        ],
+        "explanation": "HTTP 协议本身不保存状态，但可以通过 Cookie、Session、Token 等机制在客户端或服务器端保存会话信息，从而识别用户。",
+        "knowledge_point": "无状态与状态保持机制"
+      },
+      {
+        "id": "q4",
+        "type": "multi",
+        "stem": "关于 HTTP 无状态，下列说法正确的有哪些？",
+        "options": [
+          {
+            "id": "A",
+            "text": "每个 HTTP 请求默认相互独立"
+          },
+          {
+            "id": "B",
+            "text": "服务器不会自动记住上一次请求的内容"
+          },
+          {
+            "id": "C",
+            "text": "无状态意味着 HTTP 无法传输任何数据"
+          },
+          {
+            "id": "D",
+            "text": "可以通过 Cookie 等机制弥补无状态带来的不便"
+          }
+        ],
+        "answers": [
+          "A",
+          "B",
+          "D"
+        ],
+        "explanation": "无状态指请求之间默认独立、服务器不自动保存上下文；但 HTTP 仍能传输数据，并可用 Cookie 等机制保持状态。因此 C 错误。",
+        "knowledge_point": "HTTP 无状态的含义与补充机制"
+      },
+      {
+        "id": "q5",
+        "type": "judge",
+        "stem": "HTTP 是无状态协议，因此服务器在任何情况下都不可能识别同一个用户的多次请求。",
+        "options": [
+          {
+            "id": "A",
+            "text": "正确"
+          },
+          {
+            "id": "B",
+            "text": "错误"
+          }
+        ],
+        "answers": [
+          "B"
+        ],
+        "explanation": "HTTP 协议本身无状态，但借助 Cookie、Session、Token 等机制，服务器可以识别同一用户的多次请求。因此该说法错误。",
+        "knowledge_point": "无状态不等于无法识别用户"
+      }
+    ],
+    "id": "8e64c812-fb99-463e-b1cf-2d85e7d826df",
+    "created_at": "2026-10-12T02:27:40.869418+00:00",
+    "source_text": "HTTP 为什么是无状态的?",
+    "difficulty": "easy"
+  },
+  "report": {
+    "summary": [
+      "本轮共作答 5 题，全部答对，正确率 100%。",
+      "用时约 10 秒，平均每题 2 秒，作答节奏稳定。",
+      "本轮覆盖 HTTP 无状态的含义、优点、状态保持机制及常见误区等知识点。"
+    ],
+    "mastered_points": [
+      "HTTP 无状态的含义",
+      "HTTP 无状态的优点",
+      "无状态与状态保持机制",
+      "HTTP 无状态的含义与补充机制",
+      "无状态不等于无法识别用户"
+    ],
+    "weak_points": [],
+    "suggestions": [
+      "用一句话复述“HTTP 无状态”的定义，并举例说明服务器为何不自动记住上次请求。",
+      "整理 Cookie、Session、Token 三种状态保持机制的适用场景，做一张对比小卡片。",
+      "针对“无状态不等于无法识别用户”这一易错点，自己出 1 道判断题并说明理由。",
+      "隔天再快速重做本轮 5 题，确认对多选题的选项边界仍然清楚。"
+    ],
+    "share_quote": "理解无状态，才能更好地设计有状态的会话。",
+    "quiz_id": "8e64c812-fb99-463e-b1cf-2d85e7d826df",
+    "stats": {
+      "total": 5,
+      "correct_count": 5,
+      "accuracy": 100,
+      "duration_ms": 10000,
+      "xp": 50,
+      "coins": 10,
+      "knowledge_points": [
+        {
+          "name": "HTTP 无状态的含义",
+          "total": 1,
+          "correct": 1,
+          "accuracy": 100
+        },
+        {
+          "name": "HTTP 无状态的优点",
+          "total": 1,
+          "correct": 1,
+          "accuracy": 100
+        },
+        {
+          "name": "无状态与状态保持机制",
+          "total": 1,
+          "correct": 1,
+          "accuracy": 100
+        },
+        {
+          "name": "HTTP 无状态的含义与补充机制",
+          "total": 1,
+          "correct": 1,
+          "accuracy": 100
+        },
+        {
+          "name": "无状态不等于无法识别用户",
+          "total": 1,
+          "correct": 1,
+          "accuracy": 100
+        }
+      ],
+      "results": [
+        {
+          "question_id": "q1",
+          "is_correct": true
+        },
+        {
+          "question_id": "q2",
+          "is_correct": true
+        },
+        {
+          "question_id": "q3",
+          "is_correct": true
+        },
+        {
+          "question_id": "q4",
+          "is_correct": true
+        },
+        {
+          "question_id": "q5",
+          "is_correct": true
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,88 @@
+
+> levelup-mini@1.0.0 build:h5
+> taro build --type h5
+
+👽 Taro v4.3.0
+
+Tips:
+1. 建议开启持久化缓存功能，能有效提升二次编译速度，详情请参考: https://docs.taro.zone/docs/config-detail#cache。
+
+
+
+
+● Webpack █████████████████████████  (0%)  
+ 
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ setup (9%) compilation 
+ TaroH5Plugin
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ setup (9%) compilation 
+ CssMinimizerPlugin
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%)  
+ import loader .\node_modules\babel-loader\lib\index.js
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%)  
+ import loader .\node_modules\@tarojs\taro-loader\lib\h5.js
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/1 entries 1/1 dependencie
+s 0/1 modules 1 active 
+ babel-loader › src\app.config.ts
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/1 entries 1/1 dependencie
+s 1/1 modules 0 active 
+ 
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (92%) asset processing 
+ CssMinimizerPlugin
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+× Webpack
+  Compiled with some errors in 6.97s
+
+- 即将开始启动编译，请稍等~
+✖ Errors: 
+
+ModuleBuildError: Module build failed (from ./node_modules/babel-loader/lib/index.js):
+Error: [BABEL] D:\nbproject\LevelUpProject\frontend\src\app.config.ts: Cannot find module '@babel/preset-react'
+Require stack:
+- D:\nbproject\LevelUpProject\frontend\node_modules\babel-preset-taro\index.js
+- D:\nbproject\LevelUpProject\frontend\node_modules\@babel\core\lib\config\files\module-types.js
+- D:\nbproject\LevelUpProject\frontend\node_modules\@babel\core\lib\config\files\configuration.js
+- D:\nbproject\LevelUpProject\frontend\node_modules\@babel\core\lib\config\files\index.js
+- D:\nbproject\LevelUpProject\frontend\node_modules\@babel\core\lib\index.js
+- D:\nbproject\LevelUpProject\frontend\node_modules\@tarojs\helper\dist\utils.js
+- D:\nbproject\LevelUpProject\frontend\node_modules\@tarojs\helper\dist\npm.js
+- D:\nbproject\LevelUpProject\frontend\node_modules\@tarojs\helper\dist\index.js
+- D:\nbproject\LevelUpProject\frontend\node_modules\@tarojs\helper\index.js
+- D:\nbproject\LevelUpProject\frontend\node_modules\@tarojs\cli\dist\util\index.js
+- D:\nbproject\LevelUpProject\frontend\node_modules\@tarojs\cli\bin\taro (While processing: "D:\\nbproject\\LevelUpProject\\frontend\\node_modules\\babel-preset-taro\\index.js")
+    at Generator.next (<anonymous>)
+    at Generator.next (<anonymous>)
+    at Generator.next (<anonymous>)
+    at Generator.next (<anonymous>)
+    at cachedFunction.next (<anonymous>)
+    at loadPresetDescriptor.next (<anonymous>)
+    at recursePresetDescriptors.next (<anonymous>)
+    at Generator.next (<anonymous>)
+    at loadFullConfig.next (<anonymous>)
+    at transform.next (<anonymous>)
+    at new Promise (<anonymous>)
+    at Generator.next (<anonymous>)
+    at new Promise (<anonymous>)
+

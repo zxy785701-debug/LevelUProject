@@ -1,0 +1,30 @@
+
+Running 1 test using 1 worker
+
+(node:40232) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 e2e\core.spec.ts:37:5 › 01–03：游客、独立存储、首页、设置和扩展入口 (1.0m)
+
+
+  1) e2e\core.spec.ts:37:5 › 01–03：游客、独立存储、首页、设置和扩展入口 ──────────────────────────────────────────────
+
+    Test timeout of 60000ms exceeded.
+
+    Error: locator.click: Test timeout of 60000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: '微信一键登录', exact: true })
+
+
+      37 | test('01–03：游客、独立存储、首页、设置和扩展入口',async({page})=>{
+      38 |  await page.goto('/');await shot(page,'01-welcome')
+    > 39 |  await page.getByRole('button',{name:'微信一键登录',exact:true}).click()
+         |                                                            ^
+      40 |  await expect(page.locator('.global-dialog')).toContainText('后续开放')
+      41 |  await page.getByRole('button',{name:'知道了',exact:true}).click()
+      42 |  await page.getByRole('button',{name:'先随便逛逛',exact:true}).click()
+        at D:\nbproject\LevelUpProject\frontend-comic\e2e\core.spec.ts:39:60
+
+    Error Context: ..\docs\comic-implementation\e2e-results\core-01–03：游客、独立存储、首页、设置和扩展入口\error-context.md
+
+  1 failed
+    e2e\core.spec.ts:37:5 › 01–03：游客、独立存储、首页、设置和扩展入口 ───────────────────────────────────────────────

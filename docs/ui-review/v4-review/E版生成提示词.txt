@@ -1,0 +1,41 @@
+Use case: precise-object-edit.
+Asset type: high-fidelity Chinese mini-program UI approval image for LevelUProject.
+Input image 1 is the EDIT TARGET: the user's latest screenshot of a phone mockup on the left and a style-control panel on the right. The user personally tuned this UI and sent back the HTML. Preserve the exact visual geometry and typography of the LEFT PHONE.
+Input image 2 is supporting original mascot artwork: preserve this paper-ball character identity.
+
+Primary request: Draw a clean standalone portrait approval image of the LEFT PHONE ONLY, using the user's final tuned parameters. REMOVE the entire right-hand adjustment panel, all sliders and desktop workspace UI. Do NOT invent new design changes. Put one complete front-facing phone on the same quiet pale gray background, with a restrained outside caption “LevelUProject / 错题本” and “E · 参数调整版”. Thin pale rounded phone outline. Show complete status bar through home indicator. No perspective or black hardware frame.
+
+Exact typography and spacing at a 390px wide x812px high mobile artboard:
+- Main heading: 28px bold, two lines “错过一次，” and “再懂一次。”, line-height1.36. Do NOT enlarge the font proportionally compared with other elements; preserve the user's screenshot.
+- Subtitle13px: “不是没学会，是还差一次相遇。”
+- Knowledge-point row titles16px semibold.
+- Metadata12px regular.
+- “今天复习” badge11px.
+- Bottom note12px with20px line-height.
+- Quantity/time12px, digits 8 and4 bold dark ink; words normal muted gray.
+- Blue button16px semibold white text.
+
+User's selected YELLOW and spacing parameters (these override earlier thin-underline versions):
+- Heading yellow highlighter underline MAXIMUM thickness8px, not2px. Color #FFD84D. A natural elongated marker stroke with gently tapered ends, faithfully like the yellow stroke seen under “再懂一次。” in the latest screenshot. Only underline second heading line. Line shifted down3px relative to the heading line box, not covering the characters. Do not add yellow behind the whole title. Preserve the observed stroke shape from screenshot rather than a broad rectangular bar.
+- Note's yellow vertical line2px wide.
+- Gap from heading to subtitle18px, with visible breathing room.
+- Each list row minimum height80px. Keep whitespace balanced as in target screenshot.
+
+Preserve all content and features from the left phone:
+1. iOS9:41 status bar and signal/wifi/battery. Back chevron, “错题本”, top-right mini-program capsule.
+2. The same original paper-ball mascot with blue backpack/shoes and yellow scarf at hero upper right, exactly the same modest size as screenshot, not enlarged or redesigned.
+3. Pale-gray segmented control, selected white left “待复习 8” in blue and unselected right “已掌握 12” in gray.
+4. Filter pills “全部主题” selected pale blue, “计算机”, “数学”.
+5. Flat text-only list, NO book icons, NO colored icon tiles:
+   First row title “HTTP 会话识别”; metadata “多选题 · 今天答错”; small pale-red pill “今天复习” on right, and subtle gray chevron.
+   Second title “闭包中的变量释放”; metadata “JavaScript · 单选题 · 昨天答错”; subtle gray chevron.
+   Third title “条件概率的分母”; metadata “概率 · 单选题 · 10月9日答错”; subtle gray chevron.
+   Fine #EDF0F5 dividers.
+6. Under list, a 2px #FFD84D vertical rule on left. To its right two lines exactly:
+   “答对后移入「已掌握」，”
+   “历史答案仍会保留。”
+   No background box.
+7. Bottom white action area with thin top separator. Centered line “8 道题，预计 4 分钟”, with ONLY 8 and4 bold. Solid #336AE8 blue button, no dark outline, 50px tall, rounded12px, “开始复习”. Black home indicator below.
+8. White canvas, navy #202A3D text, muted metadata #66758A, pale-red badge background #FFF0EE and muted dark coral text #B84B43.
+
+Preserve the exact readable compact type scale and layout proportions of the screenshot. This should look like a crisp higher-resolution presentation of the user's own adjusted phone, not a reinterpreted UI. No added arrows inside the button, no explanatory annotations, no alternate variants, no extra badges, no AI decorative iconography. All Chinese text accurate.

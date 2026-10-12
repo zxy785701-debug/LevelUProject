@@ -1,0 +1,17 @@
+
+> levelup-mini@1.0.0 test:e2e
+> playwright test
+
+
+Running 6 tests using 1 worker
+
+(node:37624) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 e2e\learning.spec.ts:11:5 › 5 题闭环：全对、PNG 海报、重闯不重复奖励 (4.6s)
+  ok 2 e2e\learning.spec.ts:19:5 › 暂停、重启恢复锁定答案，离线完成，报告失败后重试 (2.7s)
+  ok 3 e2e\learning.spec.ts:26:5 › 320px 长文本、未开放弹窗与搜索空态无横向溢出 (806ms)
+  ok 4 e2e\learning.spec.ts:29:5 › 真实后端：3 题生成、作答和报告接口联调 (8.1s)
+  ok 5 e2e\more.spec.ts:4:5 › 全部答错、真实分析、历史搜索、CSV 与本机数据操作 (3.7s)
+  ok 6 e2e\more.spec.ts:12:5 › 报告生成中离开，完成后保持当前页面 (1.3s)
+
+  6 passed (22.8s)

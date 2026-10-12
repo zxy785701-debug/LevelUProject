@@ -1,0 +1,30 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.9, pytest-9.1.1, pluggy-1.6.0
+rootdir: D:\nbproject\LevelUpProject\backend
+configfile: pytest.ini
+testpaths: tests
+plugins: anyio-4.15.1, cov-7.1.0
+collected 54 items
+
+tests\test_base.py ................                                      [ 29%]
+tests\test_gateway.py .........                                          [ 46%]
+tests\test_quiz.py ...............                                       [ 74%]
+tests\test_report.py ..............                                      [100%]
+
+- generated xml file: D:\nbproject\LevelUpProject\backend\test-results\pytest.xml -
+=============================== tests coverage ================================
+_______________ coverage: platform win32, python 3.13.9-final-0 _______________
+
+Name              Stmts   Miss Branch BrPart  Cover   Missing
+-------------------------------------------------------------
+app\__init__.py       0      0      0      0   100%
+app\config.py        11      0      0      0   100%
+app\errors.py         4      0      0      0   100%
+app\llm.py           40      0      6      0   100%
+app\main.py          43      1      6      1    96%   47
+app\models.py        97      3     28      3    95%   49, 97, 111
+app\scoring.py       17      0      2      0   100%
+app\services.py      21      0      2      0   100%
+-------------------------------------------------------------
+TOTAL               233      4     44      4    97%
+============================= 54 passed in 11.65s =============================

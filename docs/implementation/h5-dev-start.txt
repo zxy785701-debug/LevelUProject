@@ -1,0 +1,46 @@
+
+> levelup-mini@1.0.0 dev:h5
+> taro build --type h5 --watch
+
+👽 Taro v4.3.0
+
+Tips:
+1. 建议开启持久化缓存功能，能有效提升二次编译速度，详情请参考: https://docs.taro.zone/docs/config-detail#cache。
+
+
+node:internal/modules/cjs/loader:1456
+  const err = new Error(message);
+              ^
+
+Error: Cannot find module '@pmmmwh/react-refresh-webpack-plugin'
+Require stack:
+- D:\nbproject\LevelUpProject\frontend\node_modules\@tarojs\plugin-framework-react\dist\index.js
+- D:\nbproject\LevelUpProject\frontend\node_modules\@tarojs\plugin-framework-react\index.js
+- D:\nbproject\LevelUpProject\frontend\node_modules\@tarojs\service\dist\utils\index.js
+- D:\nbproject\LevelUpProject\frontend\node_modules\@tarojs\service\dist\Config.js
+- D:\nbproject\LevelUpProject\frontend\node_modules\@tarojs\service\dist\index.js
+- D:\nbproject\LevelUpProject\frontend\node_modules\@tarojs\cli\dist\cli.js
+- D:\nbproject\LevelUpProject\frontend\node_modules\@tarojs\cli\bin\taro
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1456:15)
+    at defaultResolveImpl (node:internal/modules/cjs/loader:1066:19)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1071:22)
+    at Module._load (node:internal/modules/cjs/loader:1242:25)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.require (node:internal/modules/cjs/loader:1556:12)
+    at require (node:internal/modules/helpers:152:16)
+    at setPlugin (D:\nbproject\LevelUpProject\frontend\node_modules\@tarojs\plugin-framework-react\src\webpack.h5.ts:71:45)
+    at modifyH5WebpackChain (D:\nbproject\LevelUpProject\frontend\node_modules\@tarojs\plugin-framework-react\src\webpack.h5.ts:12:3)
+    at Object.fn (D:\nbproject\LevelUpProject\frontend\node_modules\@tarojs\plugin-framework-react\src\index.ts:33:7) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'D:\\nbproject\\LevelUpProject\\frontend\\node_modules\\@tarojs\\plugin-framework-react\\dist\\index.js',
+    'D:\\nbproject\\LevelUpProject\\frontend\\node_modules\\@tarojs\\plugin-framework-react\\index.js',
+    'D:\\nbproject\\LevelUpProject\\frontend\\node_modules\\@tarojs\\service\\dist\\utils\\index.js',
+    'D:\\nbproject\\LevelUpProject\\frontend\\node_modules\\@tarojs\\service\\dist\\Config.js',
+    'D:\\nbproject\\LevelUpProject\\frontend\\node_modules\\@tarojs\\service\\dist\\index.js',
+    'D:\\nbproject\\LevelUpProject\\frontend\\node_modules\\@tarojs\\cli\\dist\\cli.js',
+    'D:\\nbproject\\LevelUpProject\\frontend\\node_modules\\@tarojs\\cli\\bin\\taro'
+  ]
+}
+
+Node.js v24.14.1

@@ -1,0 +1,11 @@
+{"index": 1, "topic": "HTTP Ϊʲô����״̬�ģ�", "success": true, "attempts": 1, "seconds": 5.37}
+{"index": 2, "topic": "ʲô�Ǹ�����", "success": true, "attempts": 1, "seconds": 3.98}
+{"index": 3, "topic": "����������������������", "success": true, "attempts": 1, "seconds": 5.15}
+{"index": 4, "topic": "JavaScript �հ�", "success": true, "attempts": 1, "seconds": 4.29}
+{"index": 5, "topic": "����Ϊʲô������", "success": true, "attempts": 1, "seconds": 4.19}
+{"index": 6, "topic": "ţ�ٵ�һ����", "success": true, "attempts": 1, "seconds": 4.4}
+{"index": 7, "topic": "Python �б���Ԫ�������", "success": true, "attempts": 1, "seconds": 3.87}
+{"index": 8, "topic": "������õĻ�������", "success": true, "attempts": 1, "seconds": 3.06}
+{"index": 9, "topic": "���ֲ��ҵ�ԭ��", "success": true, "attempts": 1, "seconds": 4.99}
+{"index": 10, "topic": "ΪʲôҪ���ڸ�ϰ֪ʶ��", "success": true, "attempts": 1, "seconds": 3.21}
+{"model": "deepseek-flash", "thinking": "disabled", "first_attempt_successes": 10, "successes": 10, "report_success": true}

@@ -1,0 +1,9 @@
+
+Running 2 tests using 1 worker
+
+(node:33572) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 e2e\learning.spec.ts:51:5 › 5 题闭环：全对、PNG 海报、重闯不重复奖励 (2.3s)
+  ok 2 e2e\learning.spec.ts:127:5 › 320px 长文本、未开放弹窗与搜索空态无横向溢出 (872ms)
+
+  2 passed (4.5s)

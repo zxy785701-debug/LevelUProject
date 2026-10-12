@@ -1,0 +1,893 @@
+{
+  "date": "2026-10-12",
+  "status": "待用户验收",
+  "basis": "用户保存的错题本参数与已确认 E 版",
+  "tokens": {
+    "title": 28,
+    "subtitle": 13,
+    "listTitle": 16,
+    "metadata": 12,
+    "badge": 11,
+    "note": 12,
+    "summary": 12,
+    "button": 16,
+    "underlineHeight": 8,
+    "underlineOffset": 3,
+    "noteLine": 2,
+    "subtitleGap": 18,
+    "rowMinHeight": 80,
+    "buttonColor": "#336AE8"
+  },
+  "scope": {
+    "count": 55,
+    "footer": 51,
+    "dynamic": 3,
+    "sheet": 1,
+    "updated": [
+      {
+        "id": "L02",
+        "kind": "footer",
+        "name": "文档导入",
+        "url": "01-core-learning.html?screen=L02"
+      },
+      {
+        "id": "L03",
+        "kind": "footer",
+        "name": "网页导入",
+        "url": "01-core-learning.html?screen=L03"
+      },
+      {
+        "id": "L04",
+        "kind": "footer",
+        "name": "视频导入",
+        "url": "01-core-learning.html?screen=L04"
+      },
+      {
+        "id": "L05",
+        "kind": "footer",
+        "name": "材料解析中",
+        "url": "01-core-learning.html?screen=L05"
+      },
+      {
+        "id": "L06",
+        "kind": "footer",
+        "name": "来源与范围确认",
+        "url": "01-core-learning.html?screen=L06"
+      },
+      {
+        "id": "L07",
+        "kind": "footer",
+        "name": "AI 获取知识与出题中",
+        "url": "01-core-learning.html?screen=L07"
+      },
+      {
+        "id": "L08",
+        "kind": "footer",
+        "name": "本轮关卡准备",
+        "url": "01-core-learning.html?screen=L08"
+      },
+      {
+        "id": "L09",
+        "kind": "dynamic",
+        "name": "单选题",
+        "url": "01-core-learning.html?screen=L09"
+      },
+      {
+        "id": "L10",
+        "kind": "footer",
+        "name": "多选题",
+        "url": "01-core-learning.html?screen=L10"
+      },
+      {
+        "id": "L11",
+        "kind": "dynamic",
+        "name": "判断题",
+        "url": "01-core-learning.html?screen=L11"
+      },
+      {
+        "id": "L12",
+        "kind": "footer",
+        "name": "答对反馈与讲解",
+        "url": "01-core-learning.html?screen=L12"
+      },
+      {
+        "id": "L13",
+        "kind": "footer",
+        "name": "答错反馈与讲解",
+        "url": "01-core-learning.html?screen=L13"
+      },
+      {
+        "id": "L14",
+        "kind": "sheet",
+        "name": "暂停与退出确认",
+        "url": "01-core-learning.html?screen=L14"
+      },
+      {
+        "id": "L15",
+        "kind": "footer",
+        "name": "通关结算",
+        "url": "01-core-learning.html?screen=L15"
+      },
+      {
+        "id": "L16",
+        "kind": "footer",
+        "name": "复盘报告生成中",
+        "url": "01-core-learning.html?screen=L16"
+      },
+      {
+        "id": "L17",
+        "kind": "footer",
+        "name": "本轮知识总结与报告",
+        "url": "01-core-learning.html?screen=L17"
+      },
+      {
+        "id": "L18",
+        "kind": "footer",
+        "name": "分享海报与好友入口",
+        "url": "01-core-learning.html?screen=L18"
+      },
+      {
+        "id": "L19",
+        "kind": "footer",
+        "name": "启动与首次进入",
+        "url": "01-core-learning.html?screen=L19"
+      },
+      {
+        "id": "L21",
+        "kind": "footer",
+        "name": "连击反馈",
+        "url": "01-core-learning.html?screen=L21"
+      },
+      {
+        "id": "R03",
+        "kind": "footer",
+        "name": "历史学习详情",
+        "url": "02-review-center.html?screen=R03"
+      },
+      {
+        "id": "R06",
+        "kind": "footer",
+        "name": "周期报告设置与生成",
+        "url": "02-review-center.html?screen=R06"
+      },
+      {
+        "id": "R07",
+        "kind": "footer",
+        "name": "周期复盘报告",
+        "url": "02-review-center.html?screen=R07"
+      },
+      {
+        "id": "R08",
+        "kind": "footer",
+        "name": "错题本",
+        "url": "02-review-center.html?screen=R08"
+      },
+      {
+        "id": "R09",
+        "kind": "footer",
+        "name": "错题详情",
+        "url": "02-review-center.html?screen=R09"
+      },
+      {
+        "id": "R10",
+        "kind": "footer",
+        "name": "待复习队列",
+        "url": "02-review-center.html?screen=R10"
+      },
+      {
+        "id": "R11",
+        "kind": "footer",
+        "name": "错题重温答题",
+        "url": "02-review-center.html?screen=R11"
+      },
+      {
+        "id": "R12",
+        "kind": "footer",
+        "name": "重温结果",
+        "url": "02-review-center.html?screen=R12"
+      },
+      {
+        "id": "R13",
+        "kind": "footer",
+        "name": "宝藏复习提醒",
+        "url": "02-review-center.html?screen=R13"
+      },
+      {
+        "id": "K01",
+        "kind": "footer",
+        "name": "知识库文件夹列表",
+        "url": "03-knowledge-library.html?screen=K01"
+      },
+      {
+        "id": "K02",
+        "kind": "footer",
+        "name": "文件夹详情",
+        "url": "03-knowledge-library.html?screen=K02"
+      },
+      {
+        "id": "K03",
+        "kind": "footer",
+        "name": "新建与编辑文件夹",
+        "url": "03-knowledge-library.html?screen=K03"
+      },
+      {
+        "id": "K04",
+        "kind": "footer",
+        "name": "导入与处理材料",
+        "url": "03-knowledge-library.html?screen=K04"
+      },
+      {
+        "id": "K05",
+        "kind": "footer",
+        "name": "材料详情与引用",
+        "url": "03-knowledge-library.html?screen=K05"
+      },
+      {
+        "id": "K06",
+        "kind": "footer",
+        "name": "从知识库出题",
+        "url": "03-knowledge-library.html?screen=K06"
+      },
+      {
+        "id": "S02",
+        "kind": "footer",
+        "name": "邀请好友",
+        "url": "04-social-challenge.html?screen=S02"
+      },
+      {
+        "id": "S03",
+        "kind": "footer",
+        "name": "好友加入与准备",
+        "url": "04-social-challenge.html?screen=S03"
+      },
+      {
+        "id": "S04",
+        "kind": "footer",
+        "name": "双人 PK 作答",
+        "url": "04-social-challenge.html?screen=S04"
+      },
+      {
+        "id": "S05",
+        "kind": "footer",
+        "name": "对战结果与复盘",
+        "url": "04-social-challenge.html?screen=S05"
+      },
+      {
+        "id": "S07",
+        "kind": "footer",
+        "name": "好友列表",
+        "url": "04-social-challenge.html?screen=S07"
+      },
+      {
+        "id": "A02",
+        "kind": "footer",
+        "name": "微信登录与资料授权",
+        "url": "05-account-and-extensions.html?screen=A02"
+      },
+      {
+        "id": "A04",
+        "kind": "footer",
+        "name": "VIP 与套餐比较",
+        "url": "05-account-and-extensions.html?screen=A04"
+      },
+      {
+        "id": "A05",
+        "kind": "footer",
+        "name": "高级解析包与用量确认",
+        "url": "05-account-and-extensions.html?screen=A05"
+      },
+      {
+        "id": "A06",
+        "kind": "footer",
+        "name": "订单与支付确认",
+        "url": "05-account-and-extensions.html?screen=A06"
+      },
+      {
+        "id": "A07",
+        "kind": "footer",
+        "name": "交易结果与权益记录",
+        "url": "05-account-and-extensions.html?screen=A07"
+      },
+      {
+        "id": "A08",
+        "kind": "dynamic",
+        "name": "配图题与播报",
+        "url": "05-account-and-extensions.html?screen=A08"
+      },
+      {
+        "id": "A09",
+        "kind": "footer",
+        "name": "语音作答",
+        "url": "05-account-and-extensions.html?screen=A09"
+      },
+      {
+        "id": "E01",
+        "kind": "footer",
+        "name": "暂无记录与空知识库",
+        "url": "06-states.html?screen=E01"
+      },
+      {
+        "id": "E02",
+        "kind": "footer",
+        "name": "输入校验与主题调整",
+        "url": "06-states.html?screen=E02"
+      },
+      {
+        "id": "E03",
+        "kind": "footer",
+        "name": "链接无法访问",
+        "url": "06-states.html?screen=E03"
+      },
+      {
+        "id": "E04",
+        "kind": "footer",
+        "name": "文件格式或额度限制",
+        "url": "06-states.html?screen=E04"
+      },
+      {
+        "id": "E05",
+        "kind": "footer",
+        "name": "上传或解析失败",
+        "url": "06-states.html?screen=E05"
+      },
+      {
+        "id": "E06",
+        "kind": "footer",
+        "name": "AI 出题失败与超时",
+        "url": "06-states.html?screen=E06"
+      },
+      {
+        "id": "E07",
+        "kind": "footer",
+        "name": "AI 报告失败",
+        "url": "06-states.html?screen=E07"
+      },
+      {
+        "id": "E08",
+        "kind": "footer",
+        "name": "断网与进度恢复",
+        "url": "06-states.html?screen=E08"
+      },
+      {
+        "id": "E09",
+        "kind": "footer",
+        "name": "权限未授予",
+        "url": "06-states.html?screen=E09"
+      }
+    ],
+    "excluded": [
+      {
+        "id": "L01",
+        "name": "主题与长文本输入"
+      },
+      {
+        "id": "L20",
+        "name": "首页空输入态"
+      },
+      {
+        "id": "R01",
+        "name": "学习概览"
+      },
+      {
+        "id": "R02",
+        "name": "历史记录"
+      },
+      {
+        "id": "R04",
+        "name": "知识地图"
+      },
+      {
+        "id": "R05",
+        "name": "学习数据分析"
+      },
+      {
+        "id": "S01",
+        "name": "挑战入口"
+      },
+      {
+        "id": "S06",
+        "name": "领域排行榜"
+      },
+      {
+        "id": "S08",
+        "name": "邀请有礼"
+      },
+      {
+        "id": "A01",
+        "name": "我的学习档案"
+      },
+      {
+        "id": "A03",
+        "name": "设置与学习提醒"
+      },
+      {
+        "id": "A10",
+        "name": "金币装扮商店"
+      },
+      {
+        "id": "A11",
+        "name": "成就徽章墙"
+      },
+      {
+        "id": "E10",
+        "name": "账户与数据操作确认"
+      }
+    ],
+    "commonDialogs": "确认弹窗主按钮同步蓝色；危险操作保留红色"
+  },
+  "verification": {
+    "layout": {
+      "results": [
+        {
+          "width": 1440,
+          "file": "index.html",
+          "cards": 3,
+          "columns": 3,
+          "overflow": [],
+          "bodyOverflow": false,
+          "yellow": []
+        },
+        {
+          "width": 1440,
+          "file": "00-design-system.html",
+          "cards": 0,
+          "columns": null,
+          "overflow": [],
+          "bodyOverflow": false,
+          "yellow": []
+        },
+        {
+          "width": 1440,
+          "file": "07-footer-review.html",
+          "cards": 55,
+          "columns": 3,
+          "overflow": [],
+          "bodyOverflow": false,
+          "yellow": []
+        },
+        {
+          "width": 1440,
+          "file": "01-core-learning.html",
+          "cards": 21,
+          "columns": 3,
+          "overflow": [],
+          "bodyOverflow": false,
+          "yellow": []
+        },
+        {
+          "width": 1440,
+          "file": "02-review-center.html",
+          "cards": 13,
+          "columns": 3,
+          "overflow": [],
+          "bodyOverflow": false,
+          "yellow": []
+        },
+        {
+          "width": 1440,
+          "file": "03-knowledge-library.html",
+          "cards": 6,
+          "columns": 3,
+          "overflow": [],
+          "bodyOverflow": false,
+          "yellow": []
+        },
+        {
+          "width": 1440,
+          "file": "04-social-challenge.html",
+          "cards": 8,
+          "columns": 3,
+          "overflow": [],
+          "bodyOverflow": false,
+          "yellow": []
+        },
+        {
+          "width": 1440,
+          "file": "05-account-and-extensions.html",
+          "cards": 11,
+          "columns": 3,
+          "overflow": [],
+          "bodyOverflow": false,
+          "yellow": []
+        },
+        {
+          "width": 1440,
+          "file": "06-states.html",
+          "cards": 10,
+          "columns": 3,
+          "overflow": [],
+          "bodyOverflow": false,
+          "yellow": []
+        },
+        {
+          "width": 900,
+          "file": "index.html",
+          "cards": 3,
+          "columns": 2,
+          "overflow": [],
+          "bodyOverflow": false,
+          "yellow": []
+        },
+        {
+          "width": 900,
+          "file": "00-design-system.html",
+          "cards": 0,
+          "columns": null,
+          "overflow": [],
+          "bodyOverflow": false,
+          "yellow": []
+        },
+        {
+          "width": 900,
+          "file": "07-footer-review.html",
+          "cards": 55,
+          "columns": 2,
+          "overflow": [],
+          "bodyOverflow": false,
+          "yellow": []
+        },
+        {
+          "width": 900,
+          "file": "01-core-learning.html",
+          "cards": 21,
+          "columns": 2,
+          "overflow": [],
+          "bodyOverflow": false,
+          "yellow": []
+        },
+        {
+          "width": 900,
+          "file": "02-review-center.html",
+          "cards": 13,
+          "columns": 2,
+          "overflow": [],
+          "bodyOverflow": false,
+          "yellow": []
+        },
+        {
+          "width": 900,
+          "file": "03-knowledge-library.html",
+          "cards": 6,
+          "columns": 2,
+          "overflow": [],
+          "bodyOverflow": false,
+          "yellow": []
+        },
+        {
+          "width": 900,
+          "file": "04-social-challenge.html",
+          "cards": 8,
+          "columns": 2,
+          "overflow": [],
+          "bodyOverflow": false,
+          "yellow": []
+        },
+        {
+          "width": 900,
+          "file": "05-account-and-extensions.html",
+          "cards": 11,
+          "columns": 2,
+          "overflow": [],
+          "bodyOverflow": false,
+          "yellow": []
+        },
+        {
+          "width": 900,
+          "file": "06-states.html",
+          "cards": 10,
+          "columns": 2,
+          "overflow": [],
+          "bodyOverflow": false,
+          "yellow": []
+        },
+        {
+          "width": 390,
+          "file": "index.html",
+          "cards": 3,
+          "columns": 1,
+          "overflow": [],
+          "bodyOverflow": false,
+          "yellow": []
+        },
+        {
+          "width": 390,
+          "file": "00-design-system.html",
+          "cards": 0,
+          "columns": null,
+          "overflow": [],
+          "bodyOverflow": false,
+          "yellow": []
+        },
+        {
+          "width": 390,
+          "file": "07-footer-review.html",
+          "cards": 55,
+          "columns": 1,
+          "overflow": [],
+          "bodyOverflow": false,
+          "yellow": []
+        },
+        {
+          "width": 390,
+          "file": "01-core-learning.html",
+          "cards": 21,
+          "columns": 1,
+          "overflow": [],
+          "bodyOverflow": false,
+          "yellow": []
+        },
+        {
+          "width": 390,
+          "file": "02-review-center.html",
+          "cards": 13,
+          "columns": 1,
+          "overflow": [],
+          "bodyOverflow": false,
+          "yellow": []
+        },
+        {
+          "width": 390,
+          "file": "03-knowledge-library.html",
+          "cards": 6,
+          "columns": 1,
+          "overflow": [],
+          "bodyOverflow": false,
+          "yellow": []
+        },
+        {
+          "width": 390,
+          "file": "04-social-challenge.html",
+          "cards": 8,
+          "columns": 1,
+          "overflow": [],
+          "bodyOverflow": false,
+          "yellow": []
+        },
+        {
+          "width": 390,
+          "file": "05-account-and-extensions.html",
+          "cards": 11,
+          "columns": 1,
+          "overflow": [],
+          "bodyOverflow": false,
+          "yellow": []
+        },
+        {
+          "width": 390,
+          "file": "06-states.html",
+          "cards": 10,
+          "columns": 1,
+          "overflow": [],
+          "bodyOverflow": false,
+          "yellow": []
+        },
+        {
+          "width": 320,
+          "file": "index.html",
+          "cards": 3,
+          "columns": 1,
+          "overflow": [],
+          "bodyOverflow": false,
+          "yellow": []
+        },
+        {
+          "width": 320,
+          "file": "00-design-system.html",
+          "cards": 0,
+          "columns": null,
+          "overflow": [],
+          "bodyOverflow": false,
+          "yellow": []
+        },
+        {
+          "width": 320,
+          "file": "07-footer-review.html",
+          "cards": 55,
+          "columns": 1,
+          "overflow": [],
+          "bodyOverflow": false,
+          "yellow": []
+        },
+        {
+          "width": 320,
+          "file": "01-core-learning.html",
+          "cards": 21,
+          "columns": 1,
+          "overflow": [],
+          "bodyOverflow": false,
+          "yellow": []
+        },
+        {
+          "width": 320,
+          "file": "02-review-center.html",
+          "cards": 13,
+          "columns": 1,
+          "overflow": [],
+          "bodyOverflow": false,
+          "yellow": []
+        },
+        {
+          "width": 320,
+          "file": "03-knowledge-library.html",
+          "cards": 6,
+          "columns": 1,
+          "overflow": [],
+          "bodyOverflow": false,
+          "yellow": []
+        },
+        {
+          "width": 320,
+          "file": "04-social-challenge.html",
+          "cards": 8,
+          "columns": 1,
+          "overflow": [],
+          "bodyOverflow": false,
+          "yellow": []
+        },
+        {
+          "width": 320,
+          "file": "05-account-and-extensions.html",
+          "cards": 11,
+          "columns": 1,
+          "overflow": [],
+          "bodyOverflow": false,
+          "yellow": []
+        },
+        {
+          "width": 320,
+          "file": "06-states.html",
+          "cards": 10,
+          "columns": 1,
+          "overflow": [],
+          "bodyOverflow": false,
+          "yellow": []
+        }
+      ],
+      "errors": []
+    },
+    "interactions": {
+      "dynamic": [
+        {
+          "id": "L09",
+          "answered": "true",
+          "bg": "rgb(51, 106, 232)"
+        },
+        {
+          "id": "L11",
+          "answered": "true",
+          "bg": "rgb(51, 106, 232)"
+        },
+        {
+          "id": "A08",
+          "answered": "true",
+          "bg": "rgb(51, 106, 232)"
+        }
+      ],
+      "enabled": [
+        {
+          "id": "A02",
+          "disabled": false,
+          "bg": "rgb(51, 106, 232)"
+        },
+        {
+          "id": "A06",
+          "disabled": false,
+          "bg": "rgb(51, 106, 232)"
+        },
+        {
+          "id": "L10",
+          "disabled": false,
+          "bg": "rgb(51, 106, 232)"
+        },
+        {
+          "id": "R11",
+          "disabled": false,
+          "bg": "rgb(51, 106, 232)"
+        },
+        {
+          "id": "S04",
+          "disabled": false,
+          "bg": "rgb(51, 106, 232)"
+        }
+      ],
+      "math": [
+        "条件概率的分母"
+      ],
+      "mastered": [
+        "条件概率的计算"
+      ],
+      "groupCount": 9,
+      "searchCount": 1,
+      "emptyVisible": true
+    },
+    "flow": {
+      "pause": {
+        "bg": "rgb(51, 106, 232)",
+        "label": "继续答题"
+      },
+      "restored": "true",
+      "score": {
+        "rate": "100%",
+        "xp": "+50 XP",
+        "coins": "+10 金币",
+        "round": {
+          "answers": [
+            {
+              "selected": [
+                1
+              ],
+              "correct": true
+            },
+            {
+              "selected": [
+                0,
+                1,
+                3
+              ],
+              "correct": true
+            },
+            {
+              "selected": [
+                1
+              ],
+              "correct": true
+            },
+            {
+              "selected": [
+                2
+              ],
+              "correct": true
+            },
+            {
+              "selected": [
+                1
+              ],
+              "correct": true
+            }
+          ],
+          "started": 1791767603713,
+          "complete": true,
+          "total": 5,
+          "current": 4,
+          "time": "00:11"
+        },
+        "bg": "rgb(51, 106, 232)"
+      },
+      "payment": {
+        "text": "模拟支付未完成",
+        "underline": true
+      },
+      "dialog": {
+        "label": "知道了",
+        "bg": "rgb(51, 106, 232)"
+      }
+    },
+    "sheet": [
+      {
+        "width": 1440,
+        "overflow": false,
+        "attached": true,
+        "bg": "rgb(51, 106, 232)"
+      },
+      {
+        "width": 900,
+        "overflow": false,
+        "attached": true,
+        "bg": "rgb(51, 106, 232)"
+      },
+      {
+        "width": 390,
+        "overflow": false,
+        "attached": true,
+        "bg": "rgb(51, 106, 232)"
+      },
+      {
+        "width": 320,
+        "overflow": false,
+        "attached": true,
+        "bg": "rgb(51, 106, 232)"
+      }
+    ],
+    "brokenImages": []
+  }
+}

@@ -1,0 +1,58 @@
+F.....F..                                                                [100%]
+================================== FAILURES ===================================
+______________________ test_four_choice_options_required ______________________
+
+    def test_four_choice_options_required():
+        q=quiz_payload()["questions"][0];q["options"]=q["options"][:2]
+>       with pytest.raises(ValidationError):Question.model_validate(q)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValidationError
+
+tests\test_edges.py:15: Failed
+______________________ test_unhandled_error_is_sanitized ______________________
+
+    @pytest.mark.anyio
+    async def test_unhandled_error_is_sanitized():
+        class Fail:
+            async def generate(self,*args,**kwargs):raise RuntimeError("secret-upstream-detail")
+        async with httpx.AsyncClient(transport=httpx.ASGITransport(app=create_app(Settings(_env_file=None),Fail()),raise_app_exceptions=False),base_url="http://test") as c:
+            r=await c.post("/api/v1/quiz/generate",json={"text":"HTTP"})
+>       assert r.status_code==500 and r.json()=={"code":"INTERNAL_ERROR","message":"������ʱ�������⣬���Ժ�����","data":None}
+                                      ^^^^^^^^
+
+tests\test_edges.py:42: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv\Lib\site-packages\httpx\_models.py:832: in json
+    return jsonlib.loads(self.content, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+D:\anaconda3\Lib\json\__init__.py:346: in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+D:\anaconda3\Lib\json\decoder.py:345: in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <json.decoder.JSONDecoder object at 0x000001D96A93F230>
+s = 'Internal Server Error', idx = 0
+
+    def raw_decode(self, s, idx=0):
+        """Decode a JSON document from ``s`` (a ``str`` beginning with
+        a JSON document) and return a 2-tuple of the Python
+        representation and the index in ``s`` where the document ended.
+    
+        This can be used to decode a JSON document from a string that may
+        have extraneous data at the end.
+    
+        """
+        try:
+            obj, end = self.scan_once(s, idx)
+        except StopIteration as err:
+>           raise JSONDecodeError("Expecting value", s, err.value) from None
+E           json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+D:\anaconda3\Lib\json\decoder.py:363: JSONDecodeError
+=========================== short test summary info ===========================
+FAILED tests/test_edges.py::test_four_choice_options_required - Failed: DID N...
+FAILED tests/test_edges.py::test_unhandled_error_is_sanitized - json.decoder....
+2 failed, 7 passed in 4.52s

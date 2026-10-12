@@ -1,0 +1,79 @@
+
+> levelup-mini@1.0.0 test:e2e
+> playwright test
+
+
+Running 4 tests using 1 worker
+
+(node:32660) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 e2e\learning.spec.ts:11:5 › 5 题闭环：全对、PNG 海报、重闯不重复奖励 (6.8s)
+(node:29672) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  2 e2e\learning.spec.ts:19:5 › 暂停、重启恢复锁定答案，离线完成，报告失败后重试 (1.7s)
+(node:31872) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 3 e2e\learning.spec.ts:26:5 › 320px 长文本、未开放弹窗与搜索空态无横向溢出 (1.2s)
+  x  4 e2e\learning.spec.ts:29:5 › 真实后端：3 题生成、作答和报告接口联调 (7.9s)
+
+
+  1) e2e\learning.spec.ts:11:5 › 5 题闭环：全对、PNG 海报、重闯不重复奖励 ───────────────────────────────────────────
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('100', { exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByText('100', { exact: true }) with timeout 5000ms
+      - waiting for getByText('100', { exact: true })
+
+
+      12 |  await welcome(page);await page.screenshot({path:'../docs/implementation/screenshots/L20-390.png'});await begin(page)
+      13 |  for(const [i,q]of quiz().questions.entries()){await answer(page,q);if(i===0)await page.screenshot({path:'../docs/implementation/screenshots/L12-390.png'});await next(page,i===4)}
+    > 14 |  await expect(page.getByText('100',{exact:true})).toBeVisible();const before=await data(page);expect(before.sessions[0].answers).toHaveLength(5)
+         |                                                   ^
+      15 |  await page.route('**/api/v1/report/generate',r=>r.fulfill({json:{code:0,message:'ok',data:sample.report}}));await page.getByText('看看这关学到了什么',{exact:true}).click();await page.getByText('分享这次收获',{exact:true}).click();await page.screenshot({path:'../docs/implementation/screenshots/L18-390.png'})
+      16 |  const download=page.waitForEvent('download');await page.getByText('保存海报图片',{exact:true}).click();const file=await download;await file.saveAs('../docs/implementation/screenshots/generated-poster.png');expect(fs.readFileSync('../docs/implementation/screenshots/generated-poster.png').subarray(1,4).toString()).toBe('PNG')
+      17 |  await page.locator('.mini-back').click();await page.getByText('逐题回看',{exact:true}).click();await page.getByText('再闯一次这一关',{exact:true}).click();await page.getByText('开始这一关',{exact:true}).click();await answer(page,quiz().questions[0]);const after=await data(page);expect(after.sessions[1].mode).toBe('replay');expect(after.sessions[0].answers).toHaveLength(5)
+        at D:\nbproject\LevelUpProject\frontend\e2e\learning.spec.ts:14:51
+
+    Error Context: ..\docs\implementation\e2e-results\learning-5-题闭环：全对、PNG-海报、重闯不重复奖励\error-context.md
+
+  2) e2e\learning.spec.ts:19:5 › 暂停、重启恢复锁定答案，离线完成，报告失败后重试 ──────────────────────────────────────────
+
+    TypeError: Cannot read properties of undefined (reading '0')
+
+      19 | test('暂停、重启恢复锁定答案，离线完成，报告失败后重试',async({page})=>{
+      20 |  await welcome(page);await begin(page,3);const qs=quiz(3).questions
+    > 21 |  await answer(page,qs[0],false);await page.locator('.mini-back').click();await expect(page.getByText('先歇一下？',{exact:true})).toBeVisible();await page.screenshot({path:'../docs/implementation/screenshots/L14-390.png'});await page.getByText('保存进度并离开',{exact:true}).click();await page.reload();await page.getByText('继续',{exact:true}).click();await expect(page.locator('.feedback')).toBeVisible();await page.locator('.option').first().click();expect((await data(page)).sessions[0].answers).toHaveLength(1)
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ^
+      22 |  await page.route('**/api/**',r=>r.abort());await next(page);for(const [i,q] of qs.slice(1).entries()){await answer(page,q);await next(page,i===1)}
+      23 |  await page.getByText('看看这关学到了什么',{exact:true}).click();await expect(page.getByText('重新试一次',{exact:true})).toBeVisible();expect((await data(page)).sessions[0].completed_at).toBeTruthy();await page.unroute('**/api/**');await page.route('**/api/v1/report/generate',r=>r.fulfill({json:{code:0,message:'ok',data:sample.report}}));await page.getByText('重新试一次',{exact:true}).click();await expect(page.getByText('三句话，带走这关',{exact:true})).toBeVisible()
+      24 |  await page.getByText('前往个人学习中心',{exact:true}).click();await page.getByText('错题本',{exact:true}).click();await page.screenshot({path:'../docs/implementation/screenshots/R08-390.png'});await page.getByText('开始复习',{exact:true}).click();await answer(page,qs[0]);await next(page,true);await page.getByText('回到错题本',{exact:true}).click();await page.getByText('已掌握 1',{exact:true}).click();await expect(page.getByText(qs[0].stem,{exact:true})).toBeVisible()
+        at D:\nbproject\LevelUpProject\frontend\e2e\learning.spec.ts:21:473
+
+    Error Context: ..\docs\implementation\e2e-results\learning-暂停、重启恢复锁定答案，离线完成，报告失败后重试\error-context.md
+
+  3) e2e\learning.spec.ts:29:5 › 真实后端：3 题生成、作答和报告接口联调 ──────────────────────────────────────────────
+
+    TypeError: Cannot read properties of undefined (reading '0')
+
+      28 | })
+      29 | test('真实后端：3 题生成、作答和报告接口联调',async({page})=>{
+    > 30 |  test.setTimeout(180000);await welcome(page);await page.locator('textarea').fill('HTTP 为什么是无状态的？');await page.getByText('出题设置',{exact:false}).click();await page.getByText('3 题',{exact:true}).click();await page.getByText('生成我的关卡',{exact:false}).click();await page.getByText('开始这一关',{exact:true}).click({timeout:100000});const q=(await data(page)).sessions[0].quiz
+         |                                                                                                                                                                                                                                                                                                                                                                   ^
+      31 |  for(const [i,x]of q.questions.entries()){await answer(page,x,i!==1);await next(page,i===2)}await page.getByText('看看这关学到了什么',{exact:true}).click();await expect(page.getByText('三句话，带走这关',{exact:true})).toBeVisible({timeout:100000});const d=await data(page);expect(d.sessions[0].report.stats.correct_count).toBe(2);await page.screenshot({path:'../docs/implementation/screenshots/L17-real-390.png'})
+      32 | })
+      33 |
+        at D:\nbproject\LevelUpProject\frontend\e2e\learning.spec.ts:30:355
+
+    Error Context: ..\docs\implementation\e2e-results\learning-真实后端：3-题生成、作答和报告接口联调\error-context.md
+
+  3 failed
+    e2e\learning.spec.ts:11:5 › 5 题闭环：全对、PNG 海报、重闯不重复奖励 ────────────────────────────────────────────
+    e2e\learning.spec.ts:19:5 › 暂停、重启恢复锁定答案，离线完成，报告失败后重试 ───────────────────────────────────────────
+    e2e\learning.spec.ts:29:5 › 真实后端：3 题生成、作答和报告接口联调 ───────────────────────────────────────────────
+  1 passed (21.6s)

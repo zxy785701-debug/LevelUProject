@@ -1,0 +1,10 @@
+Failed to find real location of D:\anaconda3\python.exe
+============================= test session starts =============================
+platform win32 -- Python 3.13.9, pytest-9.1.1, pluggy-1.6.0
+rootdir: D:\nbproject\LevelUpProject\backend
+configfile: pytest.ini
+testpaths: tests
+plugins: anyio-4.15.1, langsmith-0.14.7, cov-7.1.0
+collected 54 items
+
+tests\test_base.py ............

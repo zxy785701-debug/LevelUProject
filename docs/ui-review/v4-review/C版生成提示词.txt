@@ -1,0 +1,34 @@
+Use case: precise-object-edit
+Asset type: high-fidelity Chinese mobile UI design approval image for LevelUProject.
+Input image 1 (edit target): The previous two-phone comparison board of the 错题本 screen. Use the LEFT phone as the layout and content target.
+Input image 2 (style reference only): The user-supplied 个人学习中心 screenshot. Refer ONLY to its yellow hand-drawn underline near the main title and its yellow button. Do NOT turn this into the personal learning center screen.
+
+Primary request: Produce ONE refined version of the 错题本 screen where a yellow marker underline beneath the main headline echoes a yellow bottom primary button. Keep the improved text-only list from the previous approval image. This is a preview image, no HTML.
+
+Composition: single complete front-facing mobile screen centered in a portrait design board, pale cool gray background, restrained thin pale phone outline, white screen, no perspective or hardware detail. Outside the phone at top a small tasteful label “C · 黄色呼应版”. A small secondary board label “LevelUProject / 错题本”. The phone should occupy most of the board height and show every element, including home indicator. Sharp and readable Chinese typography.
+
+Preserve the previous LEFT phone exactly in all elements except the 2 requested yellow changes:
+1. Add a single hand-drawn YELLOW marker underline, #FFD84D, under the second headline line “再懂一次。” The irregular stroke should sit slightly behind the lower edge of the characters, like the user’s reference. It should extend just a little past the first and last character, be about 4–5px thick at a 390px screen width, slightly angled, not a heavy rectangular highlight. Keep dark ink letters unobscured and readable. Do not underline the whole hero, do not add random yellow stickers or additional decorative icons.
+2. Change bottom primary button to solid warm yellow #FFD84D with dark ink #202A3D semibold text “开始复习”. 50px high at 390px screen scale, 342px wide, radius12. A delicate 1px dark ink outline and a restrained 2px dark lower edge are permitted to connect to the comic mascot; avoid thick or bulky shadows. No gradient.
+
+Exact screen content and hierarchy:
+- iOS 9:41 status bar, signal/wifi/battery.
+- Back chevron and header “错题本”, top-right mini-program capsule with ellipsis and circle.
+- Dark navy hero, two lines “错过一次，” then “再懂一次。” in bold roughly28px type.
+- Underline only the second line in yellow.
+- Hero subtitle “不是没学会，是还差一次相遇。” in quiet blue-gray.
+- SAME existing white crumpled-paper mascot with blue backpack, yellow scarf and raised finger at hero upper right. Do not redesign mascot.
+- Segmented control left selected “待复习 8”, right “已掌握 12”, pale gray track, selected white panel, blue selected text.
+- Filter pills “全部主题”, “计算机”, “数学”, first selected pale blue, others white.
+- Flat list, no book icons, no icon tiles, no filled status badges, no numbered tiles.
+- First row title “HTTP 会话识别”; subtext “多选题 · 今天答错”; small unfilled coral text “今天复习” on right and a subtle gray chevron.
+- Second row title “闭包中的变量释放”; subtext “JavaScript · 单选题 · 昨天答错”; subtle gray chevron.
+- Third row title “条件概率的分母”; subtext “概率 · 单选题 · 10月9日答错”; subtle gray chevron.
+- Airy aligned rows, fine light-gray dividers. Titles semibold17px, secondary12–13px, 24px screen-side padding. Keep question titles aligned to left edge of hero.
+- Under list small helper, two lines: “答对后移入「已掌握」，” then “历史答案仍会保留。”
+- Preserve white breathing room and white bottom footer with hairline divider.
+- Above yellow button centered quiet text “8 道题，预计 4 分钟”.
+- Button text “开始复习” in dark navy.
+- Black iOS home indicator in safe area below button.
+
+Art direction: clean, mature, original comic-inspired learning mini-program for adults. Yellow should create a clearly intentional connection among the marker underline, mascot scarf and bottom action button. White remains dominant; navy readable text, blue only for selected navigation states. No yellow backgrounds behind list, no sparkles, no extra badges, no fake AI iconography, no changes to other content. All text must be correct.

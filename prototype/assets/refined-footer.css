@@ -1,0 +1,153 @@
+@charset "UTF-8";
+/* E 版验收样式。调整以下变量，可统一修改本次涉及的 55 个页面 / 状态。 */
+.footer-refined,
+.footer-style-sample,
+.global-dialog {
+  --title-font-size: 28px;       /* 标题字号 */
+  --subtitle-font-size: 13px;    /* 副标题字号 */
+  --question-font-size: 16px;    /* 列表题名字号；作答题干单独保留 21px */
+  --meta-font-size: 12px;        /* 题型、来源、时间字号 */
+  --badge-font-size: 11px;       /* 小标签字号 */
+  --note-font-size: 12px;        /* 说明文字字号 */
+  --summary-font-size: 12px;     /* 按钮上方题量 / 时长字号 */
+  --button-font-size: 16px;      /* 底部按钮字号 */
+  --underline-height: 8px;      /* 标题黄线粗细，沿用你保存的 8px */
+  --underline-offset: 3px;      /* 标题黄线向下偏移 */
+  --note-line-width: 2px;       /* 说明左侧黄线粗细 */
+  --subtitle-gap: 18px;         /* 标题到副标题的距离 */
+  --question-row-height: 80px;  /* 题目和资料列表的最小行高 */
+}
+
+/* 只覆盖底部主行动与暂停弹层主行动，保留次要、危险和禁用语义。 */
+:is(.footer-refined .phone-bottom, .footer-refined .sheet, .footer-style-sample, .global-dialog)
+  .btn:not(.secondary):not(.danger) {
+  min-height: 50px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  background: #336ae8;
+  color: #fff;
+  box-shadow: 0 4px 10px #336ae80b;
+  font-size: var(--button-font-size);
+  font-weight: 800;
+  transition: background .15s, transform .15s;
+}
+:is(.footer-refined .phone-bottom, .footer-refined .sheet, .footer-style-sample, .global-dialog)
+  .btn:not(.secondary):not(.danger):hover:not(:disabled) { background: #285cda; }
+:is(.footer-refined .phone-bottom, .footer-refined .sheet, .footer-style-sample, .global-dialog)
+  .btn:not(.secondary):not(.danger):active:not(:disabled) { transform: translateY(1px); box-shadow: none; }
+:is(.footer-refined .phone-bottom, .footer-refined .sheet, .footer-style-sample, .global-dialog)
+  .btn:not(.secondary):not(.danger):disabled { background: #edf0f5; color: #909bae; border-color: #e0e5ee; box-shadow: none; }
+.footer-refined :is(.phone-bottom, .sheet) .btn.secondary {
+  min-height: 46px; border: 1px solid #dce3ee; border-radius: 12px;
+  box-shadow: none; font-size: 14px;
+}
+.footer-refined .phone-bottom { padding-top: 14px; padding-bottom: 20px; }
+.footer-refined .phone-bottom .btn + .btn { margin-top: 10px; }
+
+.footer-refined .page-title {
+  font-size: var(--title-font-size);
+  font-weight: 800;
+  line-height: 1.36;
+  letter-spacing: -.7px;
+  margin-bottom: var(--subtitle-gap);
+}
+.footer-refined .page-title + .body-copy {
+  font-size: var(--subtitle-font-size); line-height: 1.65; color: #66758a;
+}
+.footer-refined .handline::after {
+  height: var(--underline-height);
+  bottom: calc(-1 * var(--underline-offset));
+  left: 0; right: -3px;
+  border-radius: 40% 20% 45% 15%;
+  background: #ffd84d;
+  transform: rotate(-1deg);
+  clip-path: polygon(0 32%, 97% 0, 100% 44%, 97% 88%, 0 100%);
+}
+.footer-refined .hero-small { padding-top: 18px; padding-bottom: 20px; }
+.footer-refined .hero-small .mascot { width: 102px; height: 119px; right: -4px; }
+.footer-refined .tag { font-size: var(--badge-font-size); }
+.footer-refined .tag.red { color: #b84b43; background: #fff0ee; border-radius: 999px; }
+.footer-refined .list-row {
+  min-height: var(--question-row-height); gap: 10px; padding: 16px 0;
+}
+.footer-refined .text-led > .icon-tile { display: none; }
+.footer-refined .list-row .list-text strong {
+  font-size: var(--question-font-size); line-height: 1.55; font-weight: 700;
+}
+.footer-refined .list-row .list-text p {
+  font-size: var(--meta-font-size); line-height: 1.6; margin-top: 4px; color: #66758a;
+}
+.footer-refined .list-row .chevron { color: #a0aec3; width: 17px; }
+.footer-refined .review-note {
+  border-left: var(--note-line-width) solid #ffd84d;
+  padding-left: 10px; margin-top: 16px;
+  color: #66758a; font-size: var(--note-font-size); line-height: 1.75;
+}
+.footer-refined .footer-summary {
+  text-align: center; color: #66758a; font-size: var(--summary-font-size);
+  line-height: 1.6; margin: 0 0 10px;
+}
+.footer-refined .footer-summary strong { color: #202a3d; font-weight: 800; }
+
+/* 作答页面不在题干上画线：页头和题后说明承接黄色。 */
+.footer-refined.question-layout .mini-label {
+  background: linear-gradient(#ffd84d, #ffd84d) no-repeat left bottom / 100% 3px;
+  padding-bottom: 3px;
+}
+.footer-refined .question-hint {
+  justify-content: flex-start;
+  font-size: var(--note-font-size); line-height: 1.7;
+  border-left: var(--note-line-width) solid #ffd84d; padding-left: 10px;
+  color: #66758a;
+}
+.footer-refined .sheet h2 { margin-bottom: 20px; }
+.footer-refined[data-id="L14"] .phone-scroll { position: relative; overflow: hidden; }
+.footer-refined[data-id="L14"] .content { height: 100%; min-height: 0; }
+.footer-refined[data-id="L14"] .modal-preview { height: calc(100% + 42px); min-height: 0; }
+.global-dialog .dialog-inner h2 { position: relative; display: table; z-index: 0; margin-bottom: 18px; }
+.global-dialog .dialog-inner h2::after {
+  content: ""; position: absolute; left: 0; bottom: -3px; width: 52px; height: 5px;
+  background: #ffd84d; z-index: -1; border-radius: 40%; transform: rotate(-1deg);
+}
+.global-dialog .btn.secondary { border: 1px solid #dce3ee; box-shadow: none; border-radius: 12px; }
+
+/* R08 严格沿用用户调整版的文本、字号和留白。 */
+.footer-refined[data-id="R08"] .content { padding-top: 36px; }
+.footer-refined[data-id="R08"] .hero-small {
+  padding: 0; min-height: 116px; margin-bottom: 24px; justify-content: flex-start;
+}
+.footer-refined[data-id="R08"] .hero-small .page-title { max-width: calc(100% - 96px); }
+.footer-refined[data-id="R08"] .hero-small .mascot { width: 91px; height: 112px; top: -3px; right: 0; }
+.footer-refined[data-id="R08"] .hero-small .body-copy { width: 100%; }
+.footer-refined[data-id="R08"] .list-row { border-bottom: 1px solid #edf0f5; }
+.footer-refined[data-id="R08"] .segmented { margin-bottom: 14px; }
+.footer-refined[data-id="R08"] .chips { margin-bottom: 14px; }
+.footer-refined[data-id="R08"] .list-end:empty { display: none; }
+.footer-refined[data-id="R08"] .review-note { margin-top: 16px; }
+
+/* 本次验收入口：沿用原型的一行三列、平板两列、手机一列。 */
+.footer-review-intro {
+  padding: 16px 18px; margin-bottom: 22px; background: #fff;
+  border-left: 3px solid #ffd84d; border-radius: 0 10px 10px 0;
+  font-size: 13px; color: #66758a;
+}
+.footer-review-intro strong { color: #202a3d; }
+.footer-review-tabs button {
+  padding: 7px 11px; border-radius: 8px; font-size: 13px; color: #66758a; font-weight: 700;
+}
+.footer-review-tabs button.active { background: #202a3d; color: #fff; }
+.footer-review-tabs button small { font-size: 11px; opacity: .75; margin-left: 4px; }
+.footer-review-link { margin: 22px 0; }
+@media (max-width:730px) {
+  .footer-review-tabs button { padding: 6px 8px; font-size: 12px; }
+  .footer-refined[data-id="R08"] .content { padding-top: 32px; }
+  .footer-refined .modal-preview { margin: -18px -20px -24px; padding: 18px 20px; }
+}
+@media (max-width:380px) {
+  .footer-refined .modal-preview { margin: -18px -16px -24px; padding: 18px 16px; }
+  .footer-refined .hero-small { padding-right: 87px; }
+  .footer-refined .hero-small .mascot { width: 88px; height: 103px; }
+  .footer-refined[data-id="R08"] .hero-small { padding-right: 0; }
+  .footer-refined[data-id="R08"] .hero-small .mascot { width: 76px; height: 98px; top: 5px; }
+  .footer-refined[data-id="R08"] .hero-small .page-title { max-width: calc(100% - 78px); }
+}

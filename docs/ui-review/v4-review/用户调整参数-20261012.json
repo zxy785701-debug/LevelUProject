@@ -1,0 +1,15 @@
+{
+  "--title-font-size": "28px",
+  "--subtitle-font-size": "13px",
+  "--question-font-size": "16px",
+  "--meta-font-size": "12px",
+  "--badge-font-size": "11px",
+  "--note-font-size": "12px",
+  "--summary-font-size": "12px",
+  "--button-font-size": "16px",
+  "--underline-height": "8px",
+  "--underline-offset": "3px",
+  "--note-line-width": "2px",
+  "--subtitle-gap": "18px",
+  "--question-row-height": "80px"
+}

@@ -1,0 +1,15 @@
+{
+  "weapp": {
+    "files": 24,
+    "bytes": 1021568,
+    "mib": 0.974,
+    "secret_in_build": false,
+    "under_2_mib": true
+  },
+  "h5": {
+    "files": 14,
+    "bytes": 1119907,
+    "mib": 1.068,
+    "secret_in_build": false
+  }
+}

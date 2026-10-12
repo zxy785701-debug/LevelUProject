@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "measurements": [
+    {
+      "width": 390,
+      "icons": 5,
+      "horizontal_overflow": 0,
+      "question_overflow": 0,
+      "icon_width": 28
+    },
+    {
+      "width": 320,
+      "icons": 5,
+      "horizontal_overflow": 0,
+      "question_overflow": 0,
+      "icon_width": 28
+    }
+  ],
+  "types": [
+    "single",
+    "single",
+    "single",
+    "multi",
+    "judge"
+  ],
+  "question_navigation": true,
+  "errors": []
+}

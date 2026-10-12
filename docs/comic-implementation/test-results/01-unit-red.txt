@@ -1,0 +1,83 @@
+
+ RUN  v3.2.7 D:/nbproject/LevelUpProject/frontend-comic
+
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/api.test.ts [ tests/api.test.ts ]
+Error: Cannot find module '../src/api' imported from 'D:/nbproject/LevelUpProject/frontend-comic/tests/api.test.ts'
+ ❯ tests/api.test.ts:4:1
+      2| const mock=vi.hoisted(()=>({request:vi.fn()}))
+      3| vi.mock('@tarojs/taro',()=>({default:{request:mock.request}}))
+      4| import { generateQuiz, generateReport, cancelRequest } from '../src/ap…
+       | ^
+      5| describe('真实 API 协议与失败恢复',()=>{
+      6|   beforeEach(()=>mock.request.mockReset())
+
+Caused by: Error: Failed to load url ../src/api (resolved id: ../src/api) in D:/nbproject/LevelUpProject/frontend-comic/tests/api.test.ts. Does the file exist?
+ ❯ loadAndTransform ../frontend/node_modules/vitest/node_modules/vite/dist/node/chunks/config.js:22907:33
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+ FAIL  tests/domain.test.ts [ tests/domain.test.ts ]
+Error: Cannot find module '../src/domain' imported from 'D:/nbproject/LevelUpProject/frontend-comic/tests/domain.test.ts'
+ ❯ tests/domain.test.ts:2:1
+      1| import { describe, it, expect } from 'vitest'
+      2| import {
+       | ^
+      3|   emptyData,
+      4|   reducer,
+
+Caused by: Error: Failed to load url ../src/domain (resolved id: ../src/domain) in D:/nbproject/LevelUpProject/frontend-comic/tests/domain.test.ts. Does the file exist?
+ ❯ loadAndTransform ../frontend/node_modules/vitest/node_modules/vite/dist/node/chunks/config.js:22907:33
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/5]⎯
+
+ FAIL  tests/learning.test.ts [ tests/learning.test.ts ]
+Error: Cannot find module '../src/learning' imported from 'D:/nbproject/LevelUpProject/frontend-comic/tests/learning.test.ts'
+ ❯ tests/learning.test.ts:2:1
+      1| import { describe, it, expect } from 'vitest'
+      2| import { validateInput, toggleOption, optionState, combo, RequestGuard…
+       | ^
+      3| import { emptyData } from '../src/domain'
+      4| const q = { id:'q', type:'multi' as const, stem:'题干', options:['A','B'…
+
+Caused by: Error: Failed to load url ../src/learning (resolved id: ../src/learning) in D:/nbproject/LevelUpProject/frontend-comic/tests/learning.test.ts. Does the file exist?
+ ❯ loadAndTransform ../frontend/node_modules/vitest/node_modules/vite/dist/node/chunks/config.js:22907:33
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/5]⎯
+
+ FAIL  tests/poster.test.ts [ tests/poster.test.ts ]
+Error: Cannot find module '../src/poster-layout' imported from 'D:/nbproject/LevelUpProject/frontend-comic/tests/poster.test.ts'
+ ❯ tests/poster.test.ts:2:1
+      1| import { describe,it,expect } from 'vitest'
+      2| import { wrapText, posterContent } from '../src/poster-layout'
+       | ^
+      3| describe('漫画海报排版',()=>{
+      4|   it('长标题与金句按实测宽度换行，超出行数省略',()=>{
+
+Caused by: Error: Failed to load url ../src/poster-layout (resolved id: ../src/poster-layout) in D:/nbproject/LevelUpProject/frontend-comic/tests/poster.test.ts. Does the file exist?
+ ❯ loadAndTransform ../frontend/node_modules/vitest/node_modules/vite/dist/node/chunks/config.js:22907:33
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/5]⎯
+
+ FAIL  tests/storage.test.ts [ tests/storage.test.ts ]
+Error: Cannot find module '../src/storage' imported from 'D:/nbproject/LevelUpProject/frontend-comic/tests/storage.test.ts'
+ ❯ tests/storage.test.ts:2:1
+      1| import { describe,it,expect,vi } from 'vitest'
+      2| import { readData, commitData } from '../src/storage'
+       | ^
+      3| import { emptyData } from '../src/domain'
+      4| describe('独立本机存储',()=>{
+
+Caused by: Error: Failed to load url ../src/storage (resolved id: ../src/storage) in D:/nbproject/LevelUpProject/frontend-comic/tests/storage.test.ts. Does the file exist?
+ ❯ loadAndTransform ../frontend/node_modules/vitest/node_modules/vite/dist/node/chunks/config.js:22907:33
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/5]⎯
+
+
+ Test Files  5 failed (5)
+      Tests  no tests
+   Start at  12:46:13
+   Duration  584ms (transform 110ms, setup 0ms, collect 0ms, tests 0ms, environment 1ms, prepare 949ms)
+

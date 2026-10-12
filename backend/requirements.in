@@ -1,0 +1,10 @@
+fastapi>=0.115,<1
+uvicorn>=0.34,<1
+pydantic>=2.10,<3
+pydantic-settings>=2.7,<3
+langchain>=1,<2
+langchain-openai>=1,<2
+httpx>=0.28,<1
+pytest>=8,<10
+pytest-cov>=6,<8
+anyio>=4,<5

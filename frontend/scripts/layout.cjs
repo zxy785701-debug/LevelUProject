@@ -1,0 +1,2 @@
+const {chromium}=require('playwright');
+(async()=>{const b=await chromium.launch({channel:'chrome',headless:true});const p=await b.newPage({viewport:{width:390,height:812}});await p.goto('http://127.0.0.1:10086');await p.getByText('先体验一关',{exact:true}).click();console.log(await p.locator('.notebook').evaluate(e=>({html:e.outerHTML,children:[...e.querySelectorAll('*')].map(n=>({tag:n.tagName,class:n.className,rect:{w:n.getBoundingClientRect().width,h:n.getBoundingClientRect().height,y:n.getBoundingClientRect().y},display:getComputedStyle(n).display}))})));await b.close()})()

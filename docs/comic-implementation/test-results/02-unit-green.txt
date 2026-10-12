@@ -1,0 +1,18 @@
+
+> levelup-comic-mini@1.0.0 test
+> vitest run
+
+
+ RUN  v3.2.7 D:/nbproject/LevelUpProject/frontend-comic
+
+ ✓ tests/poster.test.ts (2 tests) 4ms
+ ✓ tests/api.test.ts (7 tests) 9ms
+ ✓ tests/storage.test.ts (3 tests) 6ms
+ ✓ tests/learning.test.ts (7 tests) 10ms
+ ✓ tests/domain.test.ts (9 tests) 32ms
+
+ Test Files  5 passed (5)
+      Tests  28 passed (28)
+   Start at  12:50:27
+   Duration  752ms (transform 211ms, setup 0ms, collect 484ms, tests 61ms, environment 1ms, prepare 1.19s)
+

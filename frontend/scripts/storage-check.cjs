@@ -1,0 +1,2 @@
+const {chromium}=require('playwright');
+(async()=>{const b=await chromium.launch({channel:'chrome',headless:true});const p=await b.newPage({viewport:{width:390,height:812}});await p.goto('http://127.0.0.1:10086');await p.getByText('先体验一关',{exact:true}).click();console.log(await p.evaluate(()=>({...localStorage})));console.log(await p.locator('.app-shell').evaluate(e=>({width:e.getBoundingClientRect().width,font:getComputedStyle(e).fontSize,button:getComputedStyle(document.querySelector('.btn')).color})));await b.close()})()

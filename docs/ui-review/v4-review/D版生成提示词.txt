@@ -1,0 +1,47 @@
+第一轮绘制
+
+Use case: precise-object-edit
+Asset type: LevelUProject Chinese mobile UI approval mockup, preview only.
+Image 1 = EDIT TARGET: previous “C · 黄色呼应版” 错题本 full-phone mockup.
+Image 2 = USER'S REFINEMENT REFERENCE: supplied white 错题本 screenshot with blue button, pale red review badge, small metadata and yellow left rule. Follow its layout refinements, but DO NOT use its replacement simplified mascot.
+
+Produce ONE updated high-fidelity portrait mockup labelled “D · 细节优化版”, retaining the same restrained pale gray background, thin rounded phone outline, white mobile canvas, top status bar and bottom safe area as Image 1. Small outer board title “LevelUProject / 错题本”. Phone fills most of board height, all content visible. Sharp native-looking Chinese typography.
+
+Apply EXACTLY these six changes to Image 1:
+1. Retain the yellow highlighter underline beneath the second hero line “再懂一次。”, but make it HALF as thick as C: approximately 2.5–3px on a 390px mobile screen. Move it slightly LOWER so that it sits just below the letters, not through the characters. A gently irregular marker stroke, #FFD84D, slightly extending past the text ends. Leave clear space, at least 16px on mobile scale, from underline to the subtitle. The subtitle must not look squeezed.
+2. Bottom primary button becomes BLUE #336AE8, white semibold text “开始复习”. Same 342px wide, 50px tall, radius12 on 390px artboard. Remove dark outline and heavy bottom edge. Use solid blue with only a very light soft shadow; no strong gradient. No button icon.
+3. The first-row “今天复习” becomes a SMALL PALE RED rounded badge, background #FFF0EE, text #D95E56, 11px medium type on mobile scale, about 24px high, horizontal padding8px. Softer than pure red text; retain its position to the right of the first title, before a subtle chevron.
+4. Add a thin YELLOW VERTICAL RULE to the LEFT of the two-line helper below the list. Rule #FFD84D, 2px wide, around36px high on mobile scale. Align the rule with the left content margin. Helper text starts 10px to the right of the rule. No surrounding box, no colored fill. This separates the note from the list and echoes the yellow headline underline.
+5. Bottom line reads exactly “8 道题，预计 4 分钟”. Make ONLY the two numbers 8 and 4 bold and dark navy; remaining words regular-weight muted gray. Keep all text the same 12px size, centered above button, with comfortable space.
+6. Reduce the list question-information metadata slightly: 12px regular weight, #778397, with 18px line-height on mobile scale. The three row TITLES remain readable and semibold, about16px. Increase breathing space between titles and metadata to6px. Keep spacious flat rows and subtle separators, no cramped text.
+
+Invariants, preserve unchanged:
+- Original paper-ball mascot from Image 1, white crumpled paper body, blue backpack and shoes, yellow scarf and raised finger; keep original appearance and pose. Do not replace with the simple circular mascot in Image 2.
+- Main title two lines “错过一次，” then “再懂一次。” dark navy bold28px.
+- Subtitle exactly “不是没学会，是还差一次相遇。”
+- Status bar9:41, back chevron, “错题本” header and mini-program ellipsis/close capsule.
+- Segmented control “待复习 8” (selected blue text, white panel) and “已掌握 12” (gray); gray track.
+- Filter pills “全部主题” (selected pale blue), “计算机”, “数学”.
+- Flat three-row list with NO book icons, NO colored icon tiles, NO numbered tiles.
+  Row1 title “HTTP 会话识别”; metadata “多选题 · 今天答错”; pale-red “今天复习” badge plus subtle chevron.
+  Row2 title “闭包中的变量释放”; metadata “JavaScript · 单选题 · 昨天答错”; subtle chevron.
+  Row3 title “条件概率的分母”; metadata “概率 · 单选题 · 10月9日答错”; subtle chevron.
+- Helper exactly two lines “答对后移入「已掌握」，” and “历史答案仍会保留。” Set12px regular muted gray with comfortable20px line-height. Now with yellow vertical rule.
+- Maintain 24px side margins. White-dominant, navy titles, blue selected states, yellow only as restrained accents on underline/rule and existing mascot.
+- Bottom white action area with subtle top hairline, small quantity/time line, blue button, black home indicator.
+
+Overall style: mature, precise, readable, clean comic-inspired Chinese learning UI. Show the hierarchy improvement clearly. No extra stickers, stars, art assets, callout annotations, extra pages or alternative variants. Preserve all Chinese text accurately.
+
+第二轮局部精修
+
+Use case: precise-object-edit. Edit ONLY two fine details in this provided D-version mockup. Keep every other pixel, text, mascot, layout, phone, board heading, blue button, red badge, yellow note rule, bold numbers, row dividers and screen positions unchanged. Output same portrait image with the same “D · 细节优化版” label.
+
+1. Refine the yellow underline under “再懂一次。”: it is still too thick and touches the characters. On the input 1024x1536 canvas, the underline currently lies around y445–462. Replace it with a much thinner 3px yellow marker stroke around y467–470, extending from approximately x216 to x498. It must sit completely BELOW the character bottoms, leave clear white separation from the dark letters, and still leave about20px clear space before the subtitle. Almost horizontal, very slight natural taper; not a rectangular highlight, not a broad ribbon. #FFD84D. Do NOT move the title or subtitle.
+
+2. Make ONLY the three list METADATA lines smaller: use roughly20px type in this 1024px wide output, equivalent to12px on the mobile artboard. The title and metadata should have a clear size difference. Preserve their current line positions, regular weight and gray color. Exact metadata:
+“多选题 · 今天答错”
+“JavaScript · 单选题 · 昨天答错”
+“概率 · 单选题 · 10月9日答错”
+Do not shrink the three bold question titles, do not shrink filter tabs, do not move separators. Leave all other text as is.
+
+This is precise UI refinement, preserve the illustration and all other elements completely. No extra elements, no HTML, no new composition.
