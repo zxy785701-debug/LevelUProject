@@ -1,0 +1,8 @@
+
+Running 1 test using 1 worker
+
+(node:41320) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 e2e\core.spec.ts:37:5 › 01–03：游客、独立存储、首页、设置和扩展入口 (1.0s)
+
+  1 passed (1.9s)

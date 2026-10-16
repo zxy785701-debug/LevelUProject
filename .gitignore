@@ -1,6 +1,7 @@
 backend/.venv/
 backend/.env
 backend/.packages/
+backend/logs/
 **/__pycache__/
 **/.pytest_cache/
 **/.coverage
@@ -9,6 +10,8 @@ frontend/.swc/
 frontend/.taro/
 frontend/dist/
 frontend/dist-h5/
+frontend/logs/*
+!frontend/logs/README.md
 artifacts/
 *.log
 
@@ -32,3 +35,9 @@ docs/comic-implementation/e2e-results/
 /cc.txt
 docs/user-system/playwright-report/
 docs/user-system/e2e-results/
+docs/quiz-grounding/playwright-report/
+docs/quiz-grounding/e2e-results/
+docs/quiz-grounding/account-playwright-report/
+docs/quiz-grounding/account-e2e-results/
+# Legacy environment diagnostics contain local database credentials.
+backend/test-results/multisource/dependencies.txt

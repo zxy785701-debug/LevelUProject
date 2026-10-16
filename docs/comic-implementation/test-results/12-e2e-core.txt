@@ -1,0 +1,36 @@
+
+Running 6 tests using 1 worker
+
+(node:27724) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 e2e\core.spec.ts:37:5 › 01–03：游客、独立存储、首页、设置和扩展入口 (1.0s)
+  ok 2 e2e\core.spec.ts:53:5 › 06–14：5题全对、即时反馈、连击、报告和真实PNG海报 (2.5s)
+  x  3 e2e\core.spec.ts:77:5 › 08、15：全部答错、离线可答、暂停重启与报告重试 (1.0m)
+Testing stopped early after 1 maximum allowed failures.
+
+
+  1) e2e\core.spec.ts:77:5 › 08、15：全部答错、离线可答、暂停重启与报告重试 ─────────────────────────────────────────────
+
+    Test timeout of 60000ms exceeded.
+
+    Error: locator.click: Test timeout of 60000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: '暂停闯关', exact: true })
+
+
+      78 |  await welcome(page);await start(page,3);const qs=quiz(3).questions
+      79 |  await answer(page,qs[0],false);await shot(page,'08-incorrect')
+    > 80 |  await page.getByRole('button',{name:'暂停闯关',exact:true}).click()
+         |                                                          ^
+      81 |  await page.getByRole('button',{name:'保存进度并离开',exact:true}).click()
+      82 |  await page.reload();await page.getByRole('button',{name:'继续闯关',exact:true}).click()
+      83 |  await expect(page.locator('.feedback')).toBeVisible();expect((await data(page)).sessions[0].answers).toHaveLength(1)
+        at D:\nbproject\LevelUpProject\frontend-comic\e2e\core.spec.ts:80:58
+
+    Error Context: ..\docs\comic-implementation\e2e-results\core-08、15：全部答错、离线可答、暂停重启与报告重试\error-context.md
+
+  1 failed
+    e2e\core.spec.ts:77:5 › 08、15：全部答错、离线可答、暂停重启与报告重试 ──────────────────────────────────────────────
+  3 did not run
+  2 passed (1.1m)
+  1 error was not a part of any test, see above for details

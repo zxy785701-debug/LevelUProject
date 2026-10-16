@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-14",
+  "powershell": "5.1.26100.9444",
+  "before": {"success_exit": null, "failure_exit": null},
+  "after": {"success_exit": 0, "failure_exit": 7},
+  "passed": true,
+  "actual_launch": {
+    "migration": "completed",
+    "backend": "started on 127.0.0.1:8000",
+    "weapp": "Compiled successfully in 45.60s; Watching"
+  }
+}

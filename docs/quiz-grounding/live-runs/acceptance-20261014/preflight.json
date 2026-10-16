@@ -1,0 +1,213 @@
+{
+  "run_id": "acceptance-20261014",
+  "providers": [
+    "Tavily official LangChain Search/Extract",
+    "existing DeepSeek model"
+  ],
+  "configured": {
+    "tavily": true,
+    "deepseek": true
+  },
+  "database": "levelup_test",
+  "model": "deepseek-flash",
+  "minute_limit": 3,
+  "preparation_deadline_seconds": 240.0,
+  "generation_deadline_seconds": 300.0,
+  "cases": [
+    {
+      "id": "harness-1",
+      "text": "Harness Engineering",
+      "expected": "AI 编码智能体工程，先消除与线束工程的歧义",
+      "tags": [
+        "harness",
+        "global",
+        "complex"
+      ]
+    },
+    {
+      "id": "harness-2",
+      "text": "学习 AI 编码智能体中的 Harness Engineering：工具、环境与反馈循环",
+      "expected": "AI 智能体的工具环境及反馈循环",
+      "tags": [
+        "harness",
+        "global",
+        "complex"
+      ]
+    },
+    {
+      "id": "harness-3",
+      "text": "Harness engineering for coding agents: tools, environments, evaluation and feedback loops",
+      "expected": "Coding agent harness engineering",
+      "tags": [
+        "harness",
+        "english",
+        "global",
+        "complex"
+      ]
+    },
+    {
+      "id": "huashao-1",
+      "text": "花少2",
+      "expected": "确认花儿与少年第二季的热门网络梗与名场面方向",
+      "tags": [
+        "huashao",
+        "memes"
+      ],
+      "expect_meme_majority": true
+    },
+    {
+      "id": "huashao-2",
+      "text": "花儿与少年第二季：学习网上流行的梗与名场面，弄清出处和原场景",
+      "expected": "热门梗的出处与节目场景",
+      "tags": [
+        "huashao",
+        "memes"
+      ],
+      "expect_meme_majority": true
+    },
+    {
+      "id": "huashao-3",
+      "text": "花少2 为什么经常被网友拿来做梗？重点学经典场景、语境与梗的含义",
+      "expected": "节目名场面及网络梗，区分原话与二次创作",
+      "tags": [
+        "huashao",
+        "memes"
+      ],
+      "expect_meme_majority": true
+    },
+    {
+      "id": "url-search",
+      "text": "https://docs.langchain.com/oss/python/integrations/tools/tavily_search 学习官方 Search 工具的构造参数和动态搜索策略",
+      "expected": "指定网页中的 Tavily Search 用法",
+      "tags": [
+        "url",
+        "english",
+        "complex"
+      ]
+    },
+    {
+      "id": "url-extract",
+      "text": "https://docs.langchain.com/oss/python/integrations/tools/tavily_extract 学习全文提取与定向片段的区别",
+      "expected": "指定网页中的 Tavily Extract 用法",
+      "tags": [
+        "url",
+        "english",
+        "complex"
+      ]
+    },
+    {
+      "id": "url-python",
+      "text": "https://docs.python.org/3/library/asyncio-task.html 重点学 TaskGroup 的并发和异常语义",
+      "expected": "指定 Python 文档中的 TaskGroup",
+      "tags": [
+        "url",
+        "english",
+        "complex"
+      ]
+    },
+    {
+      "id": "url-react",
+      "text": "https://react.dev/reference/react/useEffect 学习 Effect 清理和网络请求竞争",
+      "expected": "指定 React 文档中的清理与竞争",
+      "tags": [
+        "url",
+        "english",
+        "complex"
+      ]
+    },
+    {
+      "id": "bilingual-otel",
+      "text": "中英资料结合学习 OpenTelemetry 中 trace 和 span 的区别与关联",
+      "expected": "分布式可观测性中的 trace/span",
+      "tags": [
+        "bilingual",
+        "global"
+      ]
+    },
+    {
+      "id": "bilingual-python",
+      "text": "中英资料结合学习 Python structured concurrency 与 TaskGroup",
+      "expected": "结构化并发及 TaskGroup",
+      "tags": [
+        "bilingual",
+        "global",
+        "complex"
+      ]
+    },
+    {
+      "id": "global-utc",
+      "text": "学习 UTC 与时区的区别，使用全球资料，不限定国家",
+      "expected": "UTC 与时区基本概念",
+      "tags": [
+        "global",
+        "simple"
+      ]
+    },
+    {
+      "id": "country-japan",
+      "text": "学习日本新干线的基础知识与列车分类，优先日本来源",
+      "expected": "日本新干线基础分类，不静默换成其他国家铁路",
+      "tags": [
+        "country",
+        "simple"
+      ]
+    },
+    {
+      "id": "city-cambridge",
+      "text": "学习英国剑桥市的主要博物馆和特色，注意不是美国马萨诸塞州 Cambridge",
+      "expected": "英国剑桥市的文化场馆，核对实际地域",
+      "tags": [
+        "city",
+        "disambiguation"
+      ]
+    },
+    {
+      "id": "city-hangzhou",
+      "text": "学习中国杭州西湖的自然与文化特色，只研究杭州，不扩展到其他同名景区",
+      "expected": "杭州西湖的地域和特色",
+      "tags": [
+        "city",
+        "country"
+      ]
+    },
+    {
+      "id": "simple-http",
+      "text": "HTTP 状态码 200、404 和 500 分别表示什么？",
+      "expected": "HTTP 状态码基础语义",
+      "tags": [
+        "simple",
+        "global"
+      ]
+    },
+    {
+      "id": "complex-k8s",
+      "text": "学习 Kubernetes 中 Deployment 滚动更新、readiness probe 与流量切换的关系",
+      "expected": "滚动更新、就绪探针和服务流量",
+      "tags": [
+        "complex",
+        "global"
+      ]
+    },
+    {
+      "id": "english-rag",
+      "text": "Learn retrieval augmented generation: how retrieval evidence differs from a model's prior knowledge",
+      "expected": "RAG retrieval evidence and model prior knowledge",
+      "tags": [
+        "english",
+        "global"
+      ]
+    },
+    {
+      "id": "fresh-mcp",
+      "text": "学习 MCP 的工具、资源和提示词的区别，优先最新官方资料",
+      "expected": "Model Context Protocol，避免其他缩写领域",
+      "tags": [
+        "fresh",
+        "complex",
+        "global"
+      ]
+    }
+  ],
+  "executed": false,
+  "blocked_reason": null
+}

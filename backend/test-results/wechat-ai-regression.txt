@@ -1,0 +1,53 @@
+........................................................................ [ 19%]
+........................................................................ [ 38%]
+........................................................................ [ 58%]
+........................................................................ [ 77%]
+........................................................................ [ 96%]
+............                                                             [100%]
+=============================== tests coverage ================================
+_______________ coverage: platform win32, python 3.13.9-final-0 _______________
+
+Name                                Stmts   Miss  Cover
+-------------------------------------------------------
+app\__init__.py                         0      0   100%
+app\accounts\__init__.py                0      0   100%
+app\accounts\api.py                   146      2    99%
+app\accounts\database.py              171      1    99%
+app\accounts\repository.py            446      7    98%
+app\accounts\wechat.py                 19      1    95%
+app\analytics.py                      127      1    99%
+app\config.py                          73      1    99%
+app\content.py                          7      0   100%
+app\errors.py                           4      0   100%
+app\llm.py                            133      4    97%
+app\main.py                            97     20    79%
+app\materials\__init__.py               0      0   100%
+app\materials\api.py                  181     18    90%
+app\materials\parsers.py              107      1    99%
+app\materials\repository.py            91      0   100%
+app\materials\services.py              81     12    85%
+app\materials\sources.py               96      9    91%
+app\migrate.py                         10     10     0%
+app\models.py                         139      0   100%
+app\quiz_grounding\__init__.py          0      0   100%
+app\quiz_grounding\agent.py           185     12    94%
+app\quiz_grounding\api.py              51      1    98%
+app\quiz_grounding\capability.py       45      7    84%
+app\quiz_grounding\countries.py         1      0   100%
+app\quiz_grounding\evidence.py         91      4    96%
+app\quiz_grounding\generation.py      150      4    97%
+app\quiz_grounding\models.py          226      2    99%
+app\quiz_grounding\policy.py            7      0   100%
+app\quiz_grounding\preparation.py      85      6    93%
+app\quiz_grounding\reporting.py        19      1    95%
+app\quiz_grounding\repository.py      313     23    93%
+app\quiz_grounding\runtime.py          11      1    91%
+app\quiz_grounding\selection.py        29      0   100%
+app\quiz_grounding\snapshots.py        85      5    94%
+app\quiz_grounding\tavily.py          144     16    89%
+app\rewards.py                          4      0   100%
+app\scoring.py                         19      0   100%
+app\services.py                        26      1    96%
+-------------------------------------------------------
+TOTAL                                3419    170    95%
+372 passed in 175.70s (0:02:55)

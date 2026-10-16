@@ -3,18 +3,30 @@ import unicodedata
 from typing import Literal
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
+from .quiz_grounding.snapshots import GroundingStatus, Identifier, LearningScopeSnapshot, QuizSource, QuestionOrigin
 
 class StrictModel(BaseModel):
     model_config = ConfigDict(extra="forbid", str_strip_whitespace=True)
 
 class GenerateRequest(StrictModel):
-    text: str = Field(min_length=1, max_length=6000)
+    text: str | None = Field(default=None, min_length=1, max_length=6000)
+    material_id: str | None = Field(default=None, min_length=1, max_length=36)
+    point_ids: list[str] = Field(default_factory=list, max_length=1000)
+    supplement: bool = False
+    preparation_id: str | None = Field(default=None, min_length=1, max_length=36)
+    scope_version: int | None = Field(default=None, ge=1, strict=True)
+    candidate_id: Identifier | None = None
+    candidate_ids: list[Identifier] = Field(default_factory=list, max_length=5)
+    focus_id: Identifier | None = None
+    scope_point_ids: list[Identifier] = Field(default_factory=list, max_length=12)
+    execution: Literal["sync", "background"] = "sync"
     question_count: Literal[3, 5] = 5
     difficulty: Literal["easy", "medium"] = "easy"
 
     @field_validator("text", mode="before")
     @classmethod
     def clean(cls, value):
+        if value is None: return value
         if not isinstance(value, str):
             raise ValueError("请输入文本")
         value = unicodedata.normalize("NFKC", value).replace("\r\n", "\n").replace("\r", "\n")
@@ -26,6 +38,25 @@ class GenerateRequest(StrictModel):
         if type(value) is not int:
             raise ValueError("题量仅支持 3 或 5")
         return value
+
+    @model_validator(mode='after')
+    def source_required(self):
+        if sum(bool(v) for v in (self.text, self.material_id, self.preparation_id)) != 1: raise ValueError('请选择唯一的文本、材料或已确认主题来源')
+        if not self.material_id and (self.point_ids or self.supplement): raise ValueError('请先选择材料')
+        if len(set(self.point_ids)) != len(self.point_ids): raise ValueError('知识范围不能重复')
+        scope_values = (self.scope_version, self.candidate_id, self.focus_id, self.scope_point_ids)
+        if self.preparation_id:
+            if self.candidate_ids:
+                if not self.scope_version or self.candidate_id or self.focus_id or self.scope_point_ids:
+                    raise ValueError('多主题确认不能混用旧的方向或知识点选择')
+                if len(set(self.candidate_ids)) != len(self.candidate_ids): raise ValueError('学习主题不能重复')
+            elif not all(scope_values): raise ValueError('请提供完整的学习范围确认')
+            if len(set(self.scope_point_ids)) != len(self.scope_point_ids): raise ValueError('知识范围不能重复')
+            self.execution = 'background'
+        elif any(scope_values) or self.candidate_ids:
+            raise ValueError('请先选择主题准备记录')
+        if self.text and self.execution != 'sync': raise ValueError('请先确认学习范围')
+        return self
 
 class Option(StrictModel):
     id: Literal["A", "B", "C", "D"]
@@ -39,6 +70,9 @@ class Question(StrictModel):
     answers: list[str] = Field(min_length=1, max_length=4)
     explanation: str = Field(min_length=1, max_length=2000)
     knowledge_point: str = Field(min_length=1, max_length=100)
+    source_ids: list[str] = Field(default_factory=list, max_length=20)
+    grounding: GroundingStatus | None = None
+    origin: QuestionOrigin | None = None
 
     @model_validator(mode="after")
     def coherent(self):
@@ -80,6 +114,9 @@ class Quiz(QuizContent):
     source_text: str = Field(min_length=1, max_length=6000)
     difficulty: Literal["easy", "medium"]
     reward: RewardRate | None = None
+    source: QuizSource | None = None
+    learning_scope: LearningScopeSnapshot | None = None
+    grounding: GroundingStatus | None = None
 
 class Answer(StrictModel):
     question_id: str = Field(min_length=1, max_length=64)

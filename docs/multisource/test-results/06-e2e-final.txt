@@ -1,0 +1,23 @@
+
+> levelup-mini@1.0.0 test:e2e
+> playwright test --config=playwright.accounts.config.ts
+
+
+Running 12 tests using 1 worker
+
+(node:47184) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 e2e-accounts\accounts.spec.ts:38:5 › 未登录强制登录，无游客入口；320px 布局 (682ms)
+  ok  2 e2e-accounts\accounts.spec.ts:56:5 › 真实 MySQL 闭环：答题、报告、海报、昵称、退出 (2.9s)
+  ok  3 e2e-accounts\accounts.spec.ts:83:5 › 暂停刷新恢复、断网不入账、错题复习不加奖励 (2.8s)
+  ok  4 e2e-accounts\accounts.spec.ts:119:5 › 账号隔离与过期回登录 (951ms)
+  ok  5 e2e-accounts\interactions.spec.ts:23:5 › 任意切题、草稿保留、未答完不结算、进阶奖励与白色星星 (2.7s)
+  ok  6 e2e-accounts\interactions.spec.ts:70:5 › 头像操作菜单、预览与实际图片下载 (1.2s)
+  ok  7 e2e-accounts\interactions.spec.ts:98:5 › 长页面进入历史再返回，恢复原滚动位置 (970ms)
+  ok  8 e2e-accounts\materials.spec.ts:22:5 › 文档上传、真实材料确认、来源阅读、出题和答题闭环 (2.8s)
+  ok  9 e2e-accounts\materials.spec.ts:44:5 › 知识地图与周期报告空态、网页错误和 320px 布局 (1.0s)
+  ok 10 e2e-accounts\materials.spec.ts:56:5 › 历史作答聚合、知识节点和周期报告生成导出 (2.0s)
+  ok 11 e2e-accounts\materials.spec.ts:94:5 › 已清理的缓存解析任务能退出轮询并重新选择材料 (661ms)
+  ok 12 e2e-accounts\materials.spec.ts:105:5 › 取消解析后迟到的材料响应不能跳回学习范围 (829ms)
+
+  12 passed (20.8s)

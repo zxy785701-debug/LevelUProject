@@ -1,0 +1,4 @@
+{
+  "connected": false,
+  "error": "Failed connecting to ws://127.0.0.1:9421, check if target project window is opened with automation enabled"
+}

@@ -1,0 +1,100 @@
+{
+  "checked_at": "2026-10-13T04:48:49.823560+00:00",
+  "versions": {
+    "langchain-tavily": "0.2.18",
+    "langchain": "1.4.4",
+    "langchain-core": "1.6.9",
+    "langchain-openai": "1.7.0",
+    "langgraph": "1.2.14",
+    "aiohttp": "3.14.5"
+  },
+  "create_agent_available": true,
+  "tools": {
+    "tavily_search": {
+      "native_async": true,
+      "constructor_fields": [
+        "api_wrapper",
+        "args_schema",
+        "auto_parameters",
+        "callbacks",
+        "country",
+        "description",
+        "exact_match",
+        "exclude_domains",
+        "extras",
+        "handle_tool_error",
+        "handle_validation_error",
+        "include_answer",
+        "include_domains",
+        "include_favicon",
+        "include_image_descriptions",
+        "include_images",
+        "include_raw_content",
+        "include_usage",
+        "max_results",
+        "metadata",
+        "name",
+        "response_format",
+        "return_direct",
+        "search_depth",
+        "tags",
+        "time_range",
+        "topic",
+        "verbose"
+      ],
+      "invocation_fields": [
+        "end_date",
+        "exclude_domains",
+        "include_domains",
+        "include_images",
+        "query",
+        "search_depth",
+        "start_date",
+        "time_range",
+        "topic"
+      ]
+    },
+    "tavily_extract": {
+      "native_async": true,
+      "constructor_fields": [
+        "apiwrapper",
+        "args_schema",
+        "callbacks",
+        "chunks_per_source",
+        "description",
+        "extract_depth",
+        "extras",
+        "format",
+        "handle_tool_error",
+        "handle_validation_error",
+        "include_favicon",
+        "include_images",
+        "include_usage",
+        "metadata",
+        "name",
+        "query",
+        "response_format",
+        "return_direct",
+        "tags",
+        "verbose"
+      ],
+      "invocation_fields": [
+        "extract_depth",
+        "include_images",
+        "query",
+        "urls"
+      ]
+    }
+  },
+  "model": {
+    "status": "passed",
+    "model": "deepseek-flash",
+    "model_requests": 2,
+    "tool_calls": 1,
+    "usage": {
+      "input_tokens": 696,
+      "output_tokens": 60,
+      "total_tokens": 756
+    }
+  }
+}

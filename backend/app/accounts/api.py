@@ -1,6 +1,6 @@
 from uuid import uuid4
 from typing import Literal
-from fastapi import APIRouter, Request, UploadFile, File, Query
+from fastapi import APIRouter, Request, UploadFile, File, Query, BackgroundTasks
 from fastapi.responses import Response
 from pydantic import Field
 from starlette.concurrency import run_in_threadpool
@@ -9,6 +9,7 @@ from ..errors import AppError
 from ..content import check_content
 from ..llm import ModelGateway
 from ..services import generate_quiz, generate_report
+from ..quiz_grounding.models import GenerateEnvelope
 
 router = APIRouter(prefix='/api/v1')
 
@@ -84,6 +85,10 @@ def history(request: Request, page: int = Query(1, ge=1), page_size: int = Query
 def attempt(aid: str, request: Request):
     return ok(request.app.state.accounts.attempt(request.state.user_id, aid))
 
+@router.delete('/attempts/{aid}')
+def delete_attempt(aid: str, request: Request):
+    return ok(request.app.state.accounts.delete_attempt(request.state.user_id, aid))
+
 @router.post('/attempts')
 def replay(body: AttemptBody, request: Request):
     return ok(request.app.state.accounts.replay(request.state.user_id, body.quiz_id))
@@ -139,11 +144,8 @@ async def run_ai(request, kind, payload, aid=None):
             raise AppError('MODEL_NOT_CONFIGURED', '请先在后端配置 DeepSeek 密钥', 503)
         async def before_call():
             await run_in_threadpool(a.model_call, uid, oid)
-        gateway = state.gateway
-        if gateway is None:
-            gateway = ModelGateway(state.settings, before_call=before_call, operation_id=oid)
-        else:
-            await before_call()
+        from ..quiz_grounding.runtime import counted_gateway
+        gateway = counted_gateway(state.settings, state.gateway, before_call, oid)
         if kind == 'quiz':
             quiz = await generate_quiz(GenerateRequest.model_validate(payload), state.settings, gateway)
             result = await run_in_threadpool(a.store_quiz, uid, quiz, oid)
@@ -156,10 +158,21 @@ async def run_ai(request, kind, payload, aid=None):
         await run_in_threadpool(a.finish, uid, oid, None, exc.code if isinstance(exc, AppError) else 'MODEL_UNAVAILABLE')
         raise
 
-@router.post('/quiz/generate')
-async def quiz(body: GenerateRequest, request: Request):
-    check_content(body.text)
-    return ok(await run_ai(request, 'quiz', body.model_dump()))
+@router.post('/quiz/generate', response_model=GenerateEnvelope)
+async def quiz(body: GenerateRequest, request: Request, background: BackgroundTasks):
+    if body.text:
+        check_content(body.text)
+        raise AppError('SCOPE_CONFIRMATION_REQUIRED', '请先准备并确认学习范围', 409)
+    if body.material_id and body.execution == 'sync':
+        from ..materials.api import generate_from_material
+        return ok(await generate_from_material(body, request))
+    from ..materials.api import operation_key
+    from ..quiz_grounding.generation import process_generation
+    state, uid = request.app.state, request.state.user_id
+    oid, operation, fresh, context = await run_in_threadpool(state.grounding.submit_generation, uid, operation_key(request), body)
+    if fresh:
+        background.add_task(process_generation, state, uid, oid, body, context)
+    return ok(operation)
 
 @router.post('/report/generate')
 async def report(body: ReportBody, request: Request):

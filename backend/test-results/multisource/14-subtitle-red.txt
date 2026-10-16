@@ -1,0 +1,112 @@
+...FF                                                                    [100%]
+================================== FAILURES ===================================
+_____ test_video_selects_public_chinese_caption_and_applies_slice[False] ______
+
+self = <tests.test_sources.test_video_selects_public_chinese_caption_and_applies_slice.<locals>.YDL object at 0x0000026C392282F0>
+options = {'skip_download': True, 'noplaylist': True, 'quiet': True, 'logger': <app.materials.sources.Sources.video.<locals>.extract.<locals>.Quiet object at 0x0000026C39228590>, ...}
+
+    def __init__(self, options):
+        assert options['skip_download'] and not options['usenetrc']
+>       assert options['writesubtitles'] and options['writeautomaticsub']
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'writesubtitles'
+
+tests\test_sources.py:69: KeyError
+
+During handling of the above exception, another exception occurred:
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000026C38A46470>
+inline = False
+
+    @pytest.mark.anyio
+    @pytest.mark.parametrize('inline', [False, True])
+    async def test_video_selects_public_chinese_caption_and_applies_slice(monkeypatch, inline):
+        import app.materials.sources as sources
+        import yt_dlp
+        monkeypatch.setattr(sources, 'validate_url', lambda url: url)
+        monkeypatch.setattr(sources, 'public_read', lambda *args: ('https://captions.example.com', b'WEBVTT\n\n00:00:01.000 --> 00:00:02.000\nFirst\n\n00:00:03.000 --> 00:00:05.000\nSecond\n', 'text/vtt'))
+        class YDL:
+            def __init__(self, options):
+                assert options['skip_download'] and not options['usenetrc']
+                assert options['writesubtitles'] and options['writeautomaticsub']
+            def __enter__(self): return self
+            def __exit__(self, *args): pass
+            def extract_info(self, url, download):
+                assert not download
+                track = {'ext':'srt','data':'1\n00:00:01,000 --> 00:00:02,000\nFirst\n\n2\n00:00:03,000 --> 00:00:05,000\nSecond\n'} if inline else {'ext':'vtt','url':'https://captions.example.com'}
+                return {'title':'�����γ�', 'duration':10, 'subtitles':{'zh-CN':[track]}}
+        monkeypatch.setattr(yt_dlp, 'YoutubeDL', YDL)
+>       result = await Sources(Settings()).video('https://www.bilibili.com/video/BV1test', 2, 5)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_sources.py:77: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\materials\sources.py:120: in video
+    except Exception: fail('��Ƶ��Ļ��ʱ�޷����ʣ������Ի�ճ���ʼ�', 'SOURCE_UNAVAILABLE', 502)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+message = '��Ƶ��Ļ��ʱ�޷����ʣ������Ի�ճ���ʼ�', code = 'SOURCE_UNAVAILABLE', status = 502
+
+    def fail(message, code='MATERIAL_INVALID', status=422):
+>       raise AppError(code, message, status)
+E       app.errors.AppError: ��Ƶ��Ļ��ʱ�޷����ʣ������Ի�ճ���ʼ�
+
+app\materials\parsers.py:14: AppError
+______ test_video_selects_public_chinese_caption_and_applies_slice[True] ______
+
+self = <tests.test_sources.test_video_selects_public_chinese_caption_and_applies_slice.<locals>.YDL object at 0x0000026C39228EC0>
+options = {'skip_download': True, 'noplaylist': True, 'quiet': True, 'logger': <app.materials.sources.Sources.video.<locals>.extract.<locals>.Quiet object at 0x0000026C392286E0>, ...}
+
+    def __init__(self, options):
+        assert options['skip_download'] and not options['usenetrc']
+>       assert options['writesubtitles'] and options['writeautomaticsub']
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'writesubtitles'
+
+tests\test_sources.py:69: KeyError
+
+During handling of the above exception, another exception occurred:
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000026C38A458C0>
+inline = True
+
+    @pytest.mark.anyio
+    @pytest.mark.parametrize('inline', [False, True])
+    async def test_video_selects_public_chinese_caption_and_applies_slice(monkeypatch, inline):
+        import app.materials.sources as sources
+        import yt_dlp
+        monkeypatch.setattr(sources, 'validate_url', lambda url: url)
+        monkeypatch.setattr(sources, 'public_read', lambda *args: ('https://captions.example.com', b'WEBVTT\n\n00:00:01.000 --> 00:00:02.000\nFirst\n\n00:00:03.000 --> 00:00:05.000\nSecond\n', 'text/vtt'))
+        class YDL:
+            def __init__(self, options):
+                assert options['skip_download'] and not options['usenetrc']
+                assert options['writesubtitles'] and options['writeautomaticsub']
+            def __enter__(self): return self
+            def __exit__(self, *args): pass
+            def extract_info(self, url, download):
+                assert not download
+                track = {'ext':'srt','data':'1\n00:00:01,000 --> 00:00:02,000\nFirst\n\n2\n00:00:03,000 --> 00:00:05,000\nSecond\n'} if inline else {'ext':'vtt','url':'https://captions.example.com'}
+                return {'title':'�����γ�', 'duration':10, 'subtitles':{'zh-CN':[track]}}
+        monkeypatch.setattr(yt_dlp, 'YoutubeDL', YDL)
+>       result = await Sources(Settings()).video('https://www.bilibili.com/video/BV1test', 2, 5)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_sources.py:77: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\materials\sources.py:120: in video
+    except Exception: fail('��Ƶ��Ļ��ʱ�޷����ʣ������Ի�ճ���ʼ�', 'SOURCE_UNAVAILABLE', 502)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+message = '��Ƶ��Ļ��ʱ�޷����ʣ������Ի�ճ���ʼ�', code = 'SOURCE_UNAVAILABLE', status = 502
+
+    def fail(message, code='MATERIAL_INVALID', status=422):
+>       raise AppError(code, message, status)
+E       app.errors.AppError: ��Ƶ��Ļ��ʱ�޷����ʣ������Ի�ճ���ʼ�
+
+app\materials\parsers.py:14: AppError
+=========================== short test summary info ===========================
+FAILED tests/test_sources.py::test_video_selects_public_chinese_caption_and_applies_slice[False]
+FAILED tests/test_sources.py::test_video_selects_public_chinese_caption_and_applies_slice[True]
+2 failed, 3 passed in 0.73s

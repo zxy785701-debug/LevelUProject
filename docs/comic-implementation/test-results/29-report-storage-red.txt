@@ -1,0 +1,39 @@
+
+> levelup-comic-mini@1.0.0 test:e2e
+> playwright test --grep 存储失败
+
+
+Running 1 test using 1 worker
+
+(node:40936) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 e2e\core.spec.ts:264:5 › 存储失败不发奖励，报告保存失败可返回战报重试 (6.7s)
+
+
+  1) e2e\core.spec.ts:264:5 › 存储失败不发奖励，报告保存失败可返回战报重试 ───────────────────────────────────────────────
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: locator('.result')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" locator('.result') with timeout 5000ms
+      - waiting for locator('.result')
+
+
+      292 |   await expect(page.getByText('记录暂时无法保存',{exact:true})).toBeVisible();
+      293 |   await page.getByText('确定',{exact:true}).click();
+    > 294 |   await expect(page.locator('.result')).toBeVisible();
+          |                                         ^
+      295 |   expect((await data(page)).sessions[0].report).toBeUndefined();
+      296 |   await page.evaluate(()=>(window as any).restoreStorage());
+      297 |   await page.getByRole('button',{name:'查看复盘报告',exact:true}).click();
+        at D:\nbproject\LevelUpProject\frontend-comic\e2e\core.spec.ts:294:41
+
+    Error Context: ..\docs\comic-implementation\e2e-results\core-存储失败不发奖励，报告保存失败可返回战报重试\error-context.md
+
+  1 failed
+    e2e\core.spec.ts:264:5 › 存储失败不发奖励，报告保存失败可返回战报重试 ────────────────────────────────────────────────

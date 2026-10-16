@@ -1,0 +1,755 @@
+{
+  "case": {
+    "id": "url-search",
+    "text": "https://docs.langchain.com/oss/python/integrations/tools/tavily_search 学习官方 Search 工具的构造参数和动态搜索策略",
+    "expected": "指定网页中的 Tavily Search 用法",
+    "tags": [
+      "url",
+      "english",
+      "complex"
+    ]
+  },
+  "error_code": null,
+  "status": "awaiting_human_evidence_review",
+  "material_job": {
+    "id": "46ad2a67-9aa3-4783-99c4-524e02d3f251",
+    "status": "succeeded",
+    "stage": "ready",
+    "material_id": "b5c1e81f-414a-45f6-a3a6-8bdbda949f72",
+    "preparation_id": null,
+    "error_code": null,
+    "message": null
+  },
+  "material": {
+    "id": "b5c1e81f-414a-45f6-a3a6-8bdbda949f72",
+    "url": "https://docs.langchain.com/oss/python/integrations/tools/tavily_search",
+    "title": "Tavily search integration - Docs by LangChain",
+    "points": [
+      {
+        "name": "Tavily 搜索集成概览与工具特性",
+        "segment_ids": [
+          "s1"
+        ]
+      },
+      {
+        "name": "安装 langchain-tavily 与配置 TAVILY_API_KEY",
+        "segment_ids": [
+          "s1"
+        ]
+      },
+      {
+        "name": "实例化 TavilySearch 及构造参数列表",
+        "segment_ids": [
+          "s1",
+          "s2"
+        ]
+      },
+      {
+        "name": "构造参数示例代码（max_results、topic 等）",
+        "segment_ids": [
+          "s2"
+        ]
+      },
+      {
+        "name": "直接使用 query 参数调用工具",
+        "segment_ids": [
+          "s2"
+        ]
+      },
+      {
+        "name": "调用时可动态设置的参数与不可修改的参数限制",
+        "segment_ids": [
+          "s2"
+        ]
+      },
+      {
+        "name": "使用模型生成的 ToolCall 调用并返回 ToolMessage",
+        "segment_ids": [
+          "s2"
+        ]
+      },
+      {
+        "name": "在 agent 中绑定工具实现动态参数设置",
+        "segment_ids": [
+          "s2",
+          "s3"
+        ]
+      },
+      {
+        "name": "agent 动态设置 include_domains 的完整示例与结果",
+        "segment_ids": [
+          "s3",
+          "s4",
+          "s5"
+        ]
+      },
+      {
+        "name": "API 参考与文档延伸入口",
+        "segment_ids": [
+          "s5"
+        ]
+      }
+    ],
+    "summary": "本学习范围基于 LangChain 文档中 Tavily search integration 页面，围绕官方 Search 工具的构造参数与动态搜索策略整理。内容涵盖集成信息与工具特性、安装与 API key 配置、实例化时可设置的参数（max_results、topic、include_answer、include_raw_content、include_images、include_image_descriptions、search_depth、time_range、include_domains、exclude_domains）、直接调用与 ToolCall 调用方式、调用时可动态设置的参数及不可在调用时修改的参数限制，以及在 agent 中绑定工具后由模型动态设置参数完成搜索的示例。",
+    "segments": [
+      {
+        "id": "s1",
+        "url": "https://docs.langchain.com/oss/python/integrations/tools/tavily_search",
+        "text": "> ## Documentation Index\n>\n> Fetch the complete documentation index at:</llms.txt>\n>\n> Use this file to discover all available pages before exploring further.\n\nInterrupt is coming to London on October 13! [Get tickets](https://interrupt.langchain.com/london)\n\n[Docs by LangChain home page![light logo](https://mintcdn.com/langchain-5e9cc07a/nQm-sjd_MByLhgeW/images/brand/langchain-docs-dark-blue.png?fit=max&auto=format&n=nQm-sjd_MByLhgeW&q=85&s=5babf1a1962208fd7eed942fa2432ecb)![dark logo](https://mintcdn.com/langchain-5e9cc07a/nQm-sjd_MByLhgeW/images/brand/langchain-docs-light-blue.png?fit=max&auto=format&n=nQm-sjd_MByLhgeW&q=85&s=0bcd2a1f2599ed228bcedf0f535b45b1)](/)\n\n[Overview](/build-overview)[Deep Agents](/oss/python/deepagents/overview)[Managed Deep Agents](/langsmith/python/managed-deep-agents-overview)[LangChain](/oss/python/langchain/overview)[LangGraph](/oss/python/langgraph/overview)[OpenWiki](/oss/openwiki/overview)[Integrations](/oss/python/integrations/providers/overview)[Learn](/oss/python/learn)[Reference](/oss/python/reference/overview)[Contribute](/oss/python/contributing/overview)\n\n# Tavily search integration\n\nIntegrate with the Tavily search tool using LangChain Python.\n\n[Tavily’s Search API](https://tavily.com) is a search engine built specifically for AI agents (LLMs), delivering real-time, accurate, and factual results at speed.\n\n## [​](#overview) Overview\n\n### [​](#integration-details) Integration details\n\n| Class | Package | Serializable | [JS support](https://js.langchain.com/docs/integrations/tools/tavily_search) | Version |\n| --- | --- | --- | --- | --- |\n| [`TavilySearch`](https://reference.langchain.com/python/langchain-tavily/tavily_search/TavilySearch) | [`langchain-tavily`](https://reference.langchain.com/python/langchain-tavily/) | ✅ | ✅ |\n\n### [​](#tool-features) Tool features\n\n| [Returns artifact](/oss/python/langchain/tools) | Native async | Return data | Pricing |\n| --- | --- | --- | --- |\n| ❌ | ✅ | title, URL, content snippet, raw\\_content, answer, images | 1,000 free searches / month |\n\n## [​](#setup) Setup\n\nThe integration lives in the `langchain-tavily` package.\n\n```\npip install -qU langchain-tavily pip install - qU langchain - tavily\n```\n\n### [​](#credentials) Credentials\n\nWe also need to set our Tavily API key. You can get an API key by visiting [this site](https://app.tavily.com/sign-in) and creating an account.\n\n```\nimport getpass import  getpass import os import  os if not os.environ.get(\"TAVILY_API_KEY\"): if  not  os. environ. get(\"TAVILY_API_KEY\"): os.environ[\"TAVILY_API_KEY\"] = getpass.getpass(\"Tavily API key:\\n\")  os. environ[\" TAVILY_API_KEY \"] =  getpass. getpass(\"Tavily API key: \\n \")\n```\n\n## [​](#instantiation) Instantiation\n\nHere we show how to instantiate an instance of the Tavily search tool. The tool accepts various parameters during instantiation:\n\n* max\\_results (optional, int): Maximum number of search results to return. Default is 5.\n* topic (optional, str): Category of the search. Can be “general”, “news”, or “finance”. Default is “general”.\n* include\\_answer (optional, bool): Include an answer to original query in results. Default is False.\n* include\\_raw\\_content (optional, bool): Include cleaned and parsed HTML of each search result. Default is False.\n* include\\_images (optional, bool): Include a list of query related images in the response. Default is False.\n* include\\_image\\_descriptions (optional, bool): Include descriptive text for each image. Default is False.\n* search\\_depth (optional, str): Depth of the search, either “basic” or “advanced”. Default is “basic”.\n* time\\_range (optional, str): The time range back from the current date to filter results - “day”, “week”, “month”, or “year”. Default is None.\n* include\\_domains (optional, List[str]): List of domains to specifically include. Default is None.\n* exclude\\_domains (optional, List[str]): List of domains to specifically exclude. Default is None.\n\nFor a comprehensive overview of the available parameters,",
+        "title": "Tavily search integration - Docs by LangChain",
+        "truncated": false,
+        "supplement": false,
+        "content_hash": "c334b262b3b7cba3f28b456002724923d5af6e608837293c74d38a290f76e1c7",
+        "content_kind": "full_extract",
+        "original_url": "https://docs.langchain.com/oss/python/integrations/tools/tavily_search",
+        "retrieved_at": "2026-10-14T12:16:43.892138Z",
+        "source_chars": 18924,
+        "context_truncated": false,
+        "acquisition_status": "available"
+      },
+      {
+        "id": "s2",
+        "url": "https://docs.langchain.com/oss/python/integrations/tools/tavily_search",
+        "text": "refer to the [Tavily Search API documentation](https://docs.tavily.com/documentation/api-reference/endpoint/search)\n\n```\nfrom langchain_tavily import TavilySearch from  langchain_tavily import  TavilySearch tool = TavilySearch(tool =  TavilySearch( max_results=5,  max_results = 5, topic=\"general\",  topic = \"general\", # include_answer=False, # include_answer=False, # include_raw_content=False, # include_raw_content=False, # include_images=False, # include_images=False, # include_image_descriptions=False, # include_image_descriptions=False, # search_depth=\"basic\", # search_depth=\"basic\", # time_range=\"day\", # time_range=\"day\", # include_domains=None, # include_domains=None, # exclude_domains=None # exclude_domains=None))\n```\n\n## [​](#invocation) Invocation\n\n### [​](#invoke-directly-with-args) [Invoke directly with args](/oss/python/langchain/tools)\n\nThe Tavily search tool accepts the following arguments during invocation:\n\n* `query` (required): A natural language search query\n* The following arguments can also be set during invocation: `include_images`, `search_depth`, `time_range`, `include_domains`, `exclude_domains`\n* For reliability and performance reasons, certain parameters that affect response size cannot be modified during invocation: `include_answer` and `include_raw_content`. These limitations prevent unexpected context window issues and ensure consistent results.\n\nNOTE: The optional arguments are available for agents to dynamically set, if you set an argument during instantiation and then invoke the tool with a different value, the tool will use the value you passed during invocation.\n\n```\ntool.invoke({\"query\": \"What happened at the last wimbledon\"}) tool. invoke({\"query\":  \"What happened at the last wimbledon\"})\n```\n\n### [​](#invoke-with-toolcall) [Invoke with ToolCall](/oss/python/langchain/tools)\n\nWe can also invoke the tool with a model-generated ToolCall, in which case a ToolMessage will be returned:\n\n```\n# This is usually generated by a model, but we'll create a tool call directly for demo purposes.# This is usually generated by a model, but we'll create a tool call directly for demo purposes.model_generated_tool_call = {model_generated_tool_call = { \"args\": {\"query\": \"euro 2024 host nation\"},  \"args\": {\"query\":  \"euro 2024 host nation\"}, \"id\": \"1\",  \"id\":  \"1\", \"name\": \"tavily\",  \"name\":  \"tavily\", \"type\": \"tool_call\",  \"type\":  \"tool_call\",}}tool_msg = tool.invoke(model_generated_tool_call) tool_msg =  tool. invoke(model_generated_tool_call) # The content is a JSON string of results # The content is a JSON string of resultsprint(tool_msg.content[:400]) print(tool_msg. content[: 400])\n```\n\n```\n{\"query\": \"euro 2024 host nation\", \"follow_up_questions\": null, \"answer\": null, \"images\": [], \"results\": [{\"title\": \"UEFA Euro 2024 - Wikipedia\", \"url\": \"https://en.wikipedia.org/wiki/UEFA_Euro_2024\", \"content\": \"Tournament details Host country Germany Dates 14 June – 14 July Teams 24 Venue(s) 10 (in 10 host cities) Final positions Champions Spain (4th title) Runners-up England Tournament statisti{\" query \":  \"euro 2024 host nation\",  \" follow_up_questions \":  null,  \" answer \":  null,  \" images \": [],  \" results \": [{\" title \": \"UEFA Euro 2024 - Wikipedia\",  \" url \": \"https://en.wikipedia.org/wiki/UEFA_Euro_2024\",  \" content \": \"Tournament details Host country Germany Dates 14 June – 14 July Teams 24 Venue(s) 10 (in 10 host cities) Final positions Champions Spain (4th title) Runners-up England Tournament statisti\n```\n\n## [​](#use-within-an-agent) Use within an agent\n\nWe can use our tools directly with an agent executor by binding the tool to the agent. This gives the agent the ability to dynamically set the available arguments to the Tavily search tool. In the below example when we ask the agent to find “What nation hosted the Euro 2024? Include only wikipedia sources.” the agent will dynamically set the arguments and invoke Tavily search tool : Invoking `tavily_search` with `{'query': 'Euro 2024 host nation', 'include_d",
+        "title": "Tavily search integration - Docs by LangChain",
+        "truncated": false,
+        "supplement": false,
+        "content_hash": "c334b262b3b7cba3f28b456002724923d5af6e608837293c74d38a290f76e1c7",
+        "content_kind": "full_extract",
+        "original_url": "https://docs.langchain.com/oss/python/integrations/tools/tavily_search",
+        "retrieved_at": "2026-10-14T12:16:43.892138Z",
+        "source_chars": 18924,
+        "context_truncated": false,
+        "acquisition_status": "available"
+      },
+      {
+        "id": "s3",
+        "url": "https://docs.langchain.com/oss/python/integrations/tools/tavily_search",
+        "text": "omains': ['wikipedia.org']`\n\n```\nif not os.environ.get(\"OPENAI_API_KEY\"): if  not  os. environ. get(\"OPENAI_API_KEY\"): os.environ[\"OPENAI_API_KEY\"] = getpass.getpass(\"OPENAI_API_KEY:\\n\")  os. environ[\" OPENAI_API_KEY \"] =  getpass. getpass(\"OPENAI_API_KEY: \\n \")\n```\n\n```\nfrom langchain.chat_models import init_chat_model from  langchain. chat_models import  init_chat_model model = init_chat_model(model=\"gpt-5.5\", model_provider=\"openai\", temperature=0) model =  init_chat_model(model =\"gpt-5.5\",  model_provider = \"openai\",  temperature = 0)\n```\n\nWe will need to install langgraph:\n\n```\npip install -qU langgraph pip install - qU langgraph\n```\n\n```\nfrom langchain_tavily import TavilySearch from  langchain_tavily import  TavilySearchfrom langchain.agents import create_agent from  langchain. agents import  create_agent  # Initialize Tavily Search Tool # Initialize Tavily Search Tooltavily_search_tool = TavilySearch(tavily_search_tool =  TavilySearch( max_results=5,  max_results = 5, topic=\"general\",  topic = \"general\",)) agent = create_agent(model, [tavily_search_tool]) agent =  create_agent(model, [tavily_search_tool]) user_input = \"What nation hosted the Euro 2024? Include only wikipedia sources.\" user_input = \"What nation hosted the Euro 2024? Include only wikipedia sources.\" stream = agent.stream_events({\"messages\": user_input}, version=\"v3\") stream =  agent. stream_events({\"messages\":  user_input},  version = \"v3\")for snapshot in stream.values: for  snapshot in  stream. values: snapshot[\"messages\"][-1].pretty_print()  snapshot[\" messages \"][- 1]. pretty_print()\n```\n\n```\n================================ Human Message ================================= ================================ Human Message ================================= What nation hosted the Euro 2024? Include only wikipedia sources.What nation hosted the Euro 2024? Include only wikipedia sources. ================================== Ai Message ================================== ================================== Ai Message ==================================Tool Calls:Tool Calls: tavily_search (call_yxmR4K2uadsQ8LKoyi8JyoLD) tavily_search (call_yxmR4K2uadsQ8LKoyi8JyoLD) Call ID: call_yxmR4K2uadsQ8LKoyi8JyoLD Call ID: call_yxmR4K2uadsQ8LKoyi8JyoLD Args: Args: query: Euro 2024 host nation query: Euro 2024 host nation include_domains: ['wikipedia.org'] include_domains: ['wikipedia.org'] ================================= Tool Message ================================= ================================= Tool Message =================================Name: tavily_searchName: tavily_search {\"query\": \"Euro 2024 host nation\", \"follow_up_questions\": null, \"answer\": null, \"images\": [], \"results\": [{\"title\": \"UEFA Euro 2024 - Wikipedia\", \"url\": \"https://en.wikipedia.org/wiki/UEFA_Euro_2024\", \"content\": \"Tournament details Host country Germany Dates 14 June – 14 July Teams 24 Venue(s) 10 (in 10 host cities) Final positions Champions Spain (4th title) Runners-up England Tournament statistics Matches played 51 Goals scored 117 (2.29 per match) Attendance 2,681,288 (52,574 per match) Top scorer(s) Harry Kane Georges Mikautadze Jamal Musiala Cody Gakpo Ivan Schranz Dani Olmo (3 goals each) Best player(s) Rodri Best young player Lamine Yamal ← 2020 2028 → The 2024 UEFA European Football Championship, commonly referred to as UEFA Euro 2024 (stylised as UEFA EURO 2024) or simply Euro 2024, was the 17th UEFA European Championship, the quadrennial international football championship organised by UEFA for the European men's national teams of their member associations. Germany hosted the tournament, which took place from 14 June to 14 July 2024. The tournament involved 24 teams, with Georgia making their European Championship debut. [4] Host nation Germany were eliminated by Spain in the quarter-finals; Spain went on to win the tournament for a record fourth time after defeating England 2–1 in the final.\", \"score\": 0.9104262, \"raw_content\": null}, {\"title\": \"UEFA Euro 2024 - Simple English Wikiped",
+        "title": "Tavily search integration - Docs by LangChain",
+        "truncated": false,
+        "supplement": false,
+        "content_hash": "c334b262b3b7cba3f28b456002724923d5af6e608837293c74d38a290f76e1c7",
+        "content_kind": "full_extract",
+        "original_url": "https://docs.langchain.com/oss/python/integrations/tools/tavily_search",
+        "retrieved_at": "2026-10-14T12:16:43.892138Z",
+        "source_chars": 18924,
+        "context_truncated": false,
+        "acquisition_status": "available"
+      },
+      {
+        "id": "s4",
+        "url": "https://docs.langchain.com/oss/python/integrations/tools/tavily_search",
+        "text": "ia, the free encyclopedia\", \"url\": \"https://simple.wikipedia.org/wiki/UEFA_Euro_2024\", \"content\": \"The 2024 UEFA European Football Championship, also known as UEFA Euro 2024 or simply Euro 2024, was the 17th edition of the UEFA European Championship. Germany was hosting the tournament. ... The UEFA Executive Committee voted for the host in a secret ballot, with only a simple majority (more than half of the valid votes) required to determine\", \"score\": 0.81418616, \"raw_content\": null}, {\"title\": \"Championnat d'Europe de football 2024 — Wikipédia\", \"url\": \"https://fr.wikipedia.org/wiki/Championnat_d'Europe_de_football_2024\", \"content\": \"Le Championnat d'Europe de l'UEFA de football 2024 est la 17 e édition du Championnat d'Europe de football, communément abrégé en Euro 2024, compétition organisée par l'UEFA et rassemblant les meilleures équipes nationales masculines européennes. L'Allemagne est désignée pays organisateur de la compétition le 27 septembre 2018. C'est la troisième fois que des matches du Championnat\", \"score\": 0.8055255, \"raw_content\": null}, {\"title\": \"UEFA Euro 2024 bids - Wikipedia\", \"url\": \"https://en.wikipedia.org/wiki/UEFA_Euro_2024_bids\", \"content\": \"The bidding process of UEFA Euro 2024 ended on 27 September 2018 in Nyon, Switzerland, when Germany was announced to be the host. [1] Two bids came before the deadline, 3 March 2017, which were Germany and Turkey as single bids. ... Press agencies revealed on 24 October 2013, that the European football governing body UEFA would have decided on\", \"score\": 0.7882741, \"raw_content\": null}, {\"title\": \"2024 UEFA European Under-19 Championship - Wikipedia\", \"url\": \"https://en.wikipedia.org/wiki/2024_UEFA_European_Under-19_Championship\", \"content\": \"The 2024 UEFA European Under-19 Championship (also known as UEFA Under-19 Euro 2024) was the 21st edition of the UEFA European Under-19 Championship (71st edition if the Under-18 and Junior eras are included), the annual international youth football championship organised by UEFA for the men's under-19 national teams of Europe. Northern Ireland hosted the tournament from 15 to 28 July 2024.\", \"score\": 0.7783298, \"raw_content\": null}], \"response_time\": 1.67}{\"query\": \"Euro 2024 host nation\", \"follow_up_questions\": null, \"answer\": null, \"images\": [], \"results\": [{\"title\": \"UEFA Euro 2024 - Wikipedia\", \"url\": \"https://en.wikipedia.org/wiki/UEFA_Euro_2024\", \"content\": \"Tournament details Host country Germany Dates 14 June – 14 July Teams 24 Venue(s) 10 (in 10 host cities) Final positions Champions Spain (4th title) Runners-up England Tournament statistics Matches played 51 Goals scored 117 (2.29 per match) Attendance 2,681,288 (52,574 per match) Top scorer(s) Harry Kane Georges Mikautadze Jamal Musiala Cody Gakpo Ivan Schranz Dani Olmo (3 goals each) Best player(s) Rodri Best young player Lamine Yamal ← 2020 2028 → The 2024 UEFA European Football Championship, commonly referred to as UEFA Euro 2024 (stylised as UEFA EURO 2024) or simply Euro 2024, was the 17th UEFA European Championship, the quadrennial international football championship organised by UEFA for the European men's national teams of their member associations. Germany hosted the tournament, which took place from 14 June to 14 July 2024. The tournament involved 24 teams, with Georgia making their European Championship debut. [4] Host nation Germany were eliminated by Spain in the quarter-finals; Spain went on to win the tournament for a record fourth time after defeating England 2–1 in the final.\", \"score\": 0.9104262, \"raw_content\": null}, {\"title\": \"UEFA Euro 2024 - Simple English Wikipedia, the free encyclopedia\", \"url\": \"https://simple.wikipedia.org/wiki/UEFA_Euro_2024\", \"content\": \"The 2024 UEFA European Football Championship, also known as UEFA Euro 2024 or simply Euro 2024, was the 17th edition of the UEFA European Championship. Germany was hosting the tournament. ... The UEFA Executive Committee voted for the host in a secret ballot, with only a simple major",
+        "title": "Tavily search integration - Docs by LangChain",
+        "truncated": false,
+        "supplement": false,
+        "content_hash": "c334b262b3b7cba3f28b456002724923d5af6e608837293c74d38a290f76e1c7",
+        "content_kind": "full_extract",
+        "original_url": "https://docs.langchain.com/oss/python/integrations/tools/tavily_search",
+        "retrieved_at": "2026-10-14T12:16:43.892138Z",
+        "source_chars": 18924,
+        "context_truncated": false,
+        "acquisition_status": "available"
+      },
+      {
+        "id": "s5",
+        "url": "https://docs.langchain.com/oss/python/integrations/tools/tavily_search",
+        "text": "ity (more than half of the valid votes) required to determine\", \"score\": 0.81418616, \"raw_content\": null}, {\"title\": \"Championnat d'Europe de football 2024 — Wikipédia\", \"url\": \"https://fr.wikipedia.org/wiki/Championnat_d'Europe_de_football_2024\", \"content\": \"Le Championnat d'Europe de l'UEFA de football 2024 est la 17 e édition du Championnat d'Europe de football, communément abrégé en Euro 2024, compétition organisée par l'UEFA et rassemblant les meilleures équipes nationales masculines européennes. L'Allemagne est désignée pays organisateur de la compétition le 27 septembre 2018. C'est la troisième fois que des matches du Championnat\", \"score\": 0.8055255, \"raw_content\": null}, {\"title\": \"UEFA Euro 2024 bids - Wikipedia\", \"url\": \"https://en.wikipedia.org/wiki/UEFA_Euro_2024_bids\", \"content\": \"The bidding process of UEFA Euro 2024 ended on 27 September 2018 in Nyon, Switzerland, when Germany was announced to be the host. [1] Two bids came before the deadline, 3 March 2017, which were Germany and Turkey as single bids. ... Press agencies revealed on 24 October 2013, that the European football governing body UEFA would have decided on\", \"score\": 0.7882741, \"raw_content\": null}, {\"title\": \"2024 UEFA European Under-19 Championship - Wikipedia\", \"url\": \"https://en.wikipedia.org/wiki/2024_UEFA_European_Under-19_Championship\", \"content\": \"The 2024 UEFA European Under-19 Championship (also known as UEFA Under-19 Euro 2024) was the 21st edition of the UEFA European Under-19 Championship (71st edition if the Under-18 and Junior eras are included), the annual international youth football championship organised by UEFA for the men's under-19 national teams of Europe. Northern Ireland hosted the tournament from 15 to 28 July 2024.\", \"score\": 0.7783298, \"raw_content\": null}], \"response_time\": 1.67} ================================== Ai Message ================================== ================================== Ai Message ================================== The nation that hosted Euro 2024 was Germany. You can find more information on the [Wikipedia page for UEFA Euro 2024](https://en.wikipedia.org/wiki/UEFA_Euro_2024).The nation that hosted Euro 2024 was Germany. You can find more information on the [Wikipedia page for UEFA Euro 2024](https://en.wikipedia.org/wiki/UEFA_Euro_2024). \n```\n\n---\n\n## [​](#api-reference) API reference\n\nFor detailed documentation of all Tavily Search API features and configurations head to the API reference: [docs.tavily.com/documentation/api-reference/endpoint/search](https://docs.tavily.com/documentation/api-reference/endpoint/search) \n\n---\n\n[Connect these docs](/use-these-docs) to your agent of choice via MCP for real-time answers.\n\n[Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/python/integrations/tools/tavily_search.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).\n\nWas this page helpful?",
+        "title": "Tavily search integration - Docs by LangChain",
+        "truncated": false,
+        "supplement": false,
+        "content_hash": "c334b262b3b7cba3f28b456002724923d5af6e608837293c74d38a290f76e1c7",
+        "content_kind": "full_extract",
+        "original_url": "https://docs.langchain.com/oss/python/integrations/tools/tavily_search",
+        "retrieved_at": "2026-10-14T12:16:43.892138Z",
+        "source_chars": 18924,
+        "context_truncated": false,
+        "acquisition_status": "available"
+      }
+    ],
+    "source_type": "web",
+    "learning_title": "Tavily search integration 学习范围：构造参数与动态搜索策略",
+    "extraction_status": "success",
+    "extraction_failures": [],
+    "learning_instruction": "学习官方 Search 工具的构造参数和动态搜索策略",
+    "created_at": "2026-10-14T12:16:54+00:00",
+    "search_available": true
+  },
+  "wall_attempt_seconds": [
+    11.606,
+    7.196
+  ],
+  "elapsed_seconds": 18.802,
+  "api_timings": [
+    {
+      "method": "POST",
+      "path": "/auth/wechat",
+      "status": 200,
+      "seconds": 0.032
+    },
+    {
+      "method": "POST",
+      "path": "/quiz/preparations",
+      "status": 200,
+      "seconds": 0.286
+    },
+    {
+      "method": "POST",
+      "path": "/materials/web",
+      "status": 200,
+      "seconds": 11.238
+    },
+    {
+      "method": "GET",
+      "path": "/material-jobs/46ad2a67-9aa3-4783-99c4-524e02d3f251",
+      "status": 200,
+      "seconds": 0.027
+    },
+    {
+      "method": "GET",
+      "path": "/materials/b5c1e81f-414a-45f6-a3a6-8bdbda949f72",
+      "status": 200,
+      "seconds": 0.019
+    },
+    {
+      "method": "POST",
+      "path": "/auth/wechat",
+      "status": 200,
+      "seconds": 0.133
+    },
+    {
+      "method": "POST",
+      "path": "/quiz/preparations",
+      "status": 200,
+      "seconds": 0.165
+    },
+    {
+      "method": "POST",
+      "path": "/materials/web",
+      "status": 200,
+      "seconds": 0.05
+    },
+    {
+      "method": "GET",
+      "path": "/material-jobs/46ad2a67-9aa3-4783-99c4-524e02d3f251",
+      "status": 200,
+      "seconds": 0.038
+    },
+    {
+      "method": "GET",
+      "path": "/materials/b5c1e81f-414a-45f6-a3a6-8bdbda949f72",
+      "status": 200,
+      "seconds": 0.026
+    },
+    {
+      "method": "POST",
+      "path": "/quiz/generate",
+      "status": 200,
+      "seconds": 6.751
+    },
+    {
+      "method": "GET",
+      "path": "/operations/generate-url-search",
+      "status": 200,
+      "seconds": 0.023
+    }
+  ],
+  "structured_model_usage": [
+    {
+      "operation": "be085e76-b0b2-4481-b45c-aed1e8c0940c",
+      "attempt": 1,
+      "tokens": {
+        "input_tokens": 6543,
+        "output_tokens": 496,
+        "total_tokens": 7039
+      }
+    },
+    {
+      "operation": "be085e76-b0b2-4481-b45c-aed1e8c0940c",
+      "attempt": 2,
+      "tokens": {
+        "input_tokens": 6543,
+        "output_tokens": 532,
+        "total_tokens": 7075
+      }
+    },
+    {
+      "operation": "be085e76-b0b2-4481-b45c-aed1e8c0940c",
+      "attempt": 3,
+      "tokens": {
+        "input_tokens": 6543,
+        "output_tokens": 420,
+        "total_tokens": 6963
+      }
+    },
+    {
+      "operation": "a98cf49b-7844-4629-b94d-7e7329d60359",
+      "attempt": 1,
+      "tokens": {
+        "input_tokens": 8411,
+        "output_tokens": 710,
+        "total_tokens": 9121
+      }
+    },
+    {
+      "operation": "a98cf49b-7844-4629-b94d-7e7329d60359",
+      "attempt": 1,
+      "tokens": {
+        "input_tokens": 7892,
+        "output_tokens": 380,
+        "total_tokens": 8272
+      }
+    }
+  ],
+  "operations": [
+    {
+      "key": "generate-url-search",
+      "kind": "quiz",
+      "status": "succeeded",
+      "stage": "succeeded",
+      "model_calls": 2,
+      "tool_calls": 0,
+      "page_attempts": 0,
+      "charged": 1,
+      "retrieval": null,
+      "error_code": null
+    },
+    {
+      "key": "material-46ad2a67-9aa3-4783-99c4-524e02d3f251",
+      "kind": "material",
+      "status": "succeeded",
+      "stage": "succeeded",
+      "model_calls": 3,
+      "tool_calls": 1,
+      "page_attempts": 1,
+      "charged": 1,
+      "retrieval": null,
+      "error_code": null
+    }
+  ],
+  "retrieval_preparations": [],
+  "confirmed_selection": {
+    "material_id": "b5c1e81f-414a-45f6-a3a6-8bdbda949f72",
+    "point_ids": [
+      "s1",
+      "s2",
+      "s3",
+      "s4",
+      "s5"
+    ],
+    "supplement": false,
+    "question_count": 3,
+    "difficulty": "easy",
+    "execution": "background"
+  },
+  "operation": {
+    "status": "succeeded",
+    "result": {
+      "id": "3efd96aa-d5a4-4187-9347-c410fc9e48e6",
+      "quiz": {
+        "id": "be878ccb-d52f-421e-9127-94450256bd7a",
+        "title": "Tavily 搜索集成：构造参数与动态搜索策略",
+        "reward": {
+          "xp": 10,
+          "coins": 2
+        },
+        "source": {
+          "url": "https://docs.langchain.com/oss/python/integrations/tools/tavily_search",
+          "type": "web",
+          "title": "Tavily search integration - Docs by LangChain",
+          "segments": [],
+          "material_id": "b5c1e81f-414a-45f6-a3a6-8bdbda949f72"
+        },
+        "summary": "基于 LangChain 官方文档，考查 TavilySearch 的安装与凭证配置、实例化构造参数、调用时可动态设置的参数与不可修改的限制，以及在 agent 中动态设置参数的方式。",
+        "grounding": {
+          "status": "source_backed",
+          "provider": "tavily",
+          "reason_code": null,
+          "retrieved_at": "2026-10-14T12:16:43.892138Z",
+          "check_version": "evidence-review-v1"
+        },
+        "questions": [
+          {
+            "id": "q1",
+            "stem": "根据文档，Tavily 搜索集成所在的 Python 包是哪一个？",
+            "type": "single",
+            "origin": null,
+            "answers": [],
+            "options": [
+              {
+                "id": "A",
+                "text": "langchain-tavily"
+              },
+              {
+                "id": "B",
+                "text": "langchain-community"
+              },
+              {
+                "id": "C",
+                "text": "tavily-python-sdk"
+              },
+              {
+                "id": "D",
+                "text": "langgraph-tavily"
+              }
+            ],
+            "grounding": {
+              "status": "source_backed"
+            },
+            "source_ids": [],
+            "explanation": "",
+            "knowledge_point": "安装 langchain-tavily 与配置 TAVILY_API_KEY"
+          },
+          {
+            "id": "q2",
+            "stem": "根据文档，下列哪些参数可以在调用（invocation）时动态设置？",
+            "type": "multi",
+            "origin": null,
+            "answers": [],
+            "options": [
+              {
+                "id": "A",
+                "text": "include_images"
+              },
+              {
+                "id": "B",
+                "text": "search_depth"
+              },
+              {
+                "id": "C",
+                "text": "include_answer"
+              },
+              {
+                "id": "D",
+                "text": "include_domains"
+              }
+            ],
+            "grounding": {
+              "status": "source_backed"
+            },
+            "source_ids": [],
+            "explanation": "",
+            "knowledge_point": "调用时可动态设置的参数与不可修改的参数限制"
+          },
+          {
+            "id": "q3",
+            "stem": "根据文档，如果在实例化时设置了某个参数，之后调用工具时又传入不同的值，工具会使用调用时传入的值。",
+            "type": "judge",
+            "origin": null,
+            "answers": [],
+            "options": [
+              {
+                "id": "A",
+                "text": "正确"
+              },
+              {
+                "id": "B",
+                "text": "错误"
+              }
+            ],
+            "grounding": {
+              "status": "source_backed"
+            },
+            "source_ids": [],
+            "explanation": "",
+            "knowledge_point": "调用时可动态设置的参数与不可修改的参数限制"
+          }
+        ],
+        "created_at": "2026-10-14T12:26:14.005616+00:00",
+        "difficulty": "easy",
+        "source_text": "学习官方 Search 工具的构造参数和动态搜索策略",
+        "learning_scope": {
+          "focus": "所选材料知识点",
+          "topic": "Tavily search integration 学习范围：构造参数与动态搜索策略",
+          "domain": "用户提供的材料",
+          "points": [
+            "Tavily 搜索集成概览与工具特性",
+            "安装 langchain-tavily 与配置 TAVILY_API_KEY",
+            "实例化 TavilySearch 及构造参数列表",
+            "构造参数示例代码（max_results、topic 等）",
+            "直接使用 query 参数调用工具",
+            "调用时可动态设置的参数与不可修改的参数限制",
+            "使用模型生成的 ToolCall 调用并返回 ToolMessage",
+            "在 agent 中绑定工具实现动态参数设置",
+            "agent 动态设置 include_domains 的完整示例与结果",
+            "API 参考与文档延伸入口"
+          ],
+          "focus_id": null,
+          "input_text": "学习官方 Search 工具的构造参数和动态搜索策略",
+          "candidate_id": null,
+          "scope_version": null,
+          "preparation_id": null,
+          "scope_point_ids": []
+        }
+      },
+      "mode": "new",
+      "answers": [],
+      "cursor": 0,
+      "pending_ms": 0,
+      "started_at": "2026-10-14T12:26:14+00:00",
+      "completed_at": null,
+      "report": null,
+      "review_keys": []
+    },
+    "error_code": null,
+    "stage": "succeeded",
+    "retry_after_seconds": 0,
+    "deadline": "2026-10-14T12:31:07+00:00"
+  },
+  "quiz": {
+    "id": "be878ccb-d52f-421e-9127-94450256bd7a",
+    "title": "Tavily 搜索集成：构造参数与动态搜索策略",
+    "reward": {
+      "xp": 10,
+      "coins": 2
+    },
+    "source": {
+      "url": "https://docs.langchain.com/oss/python/integrations/tools/tavily_search",
+      "type": "web",
+      "title": "Tavily search integration - Docs by LangChain",
+      "segments": [
+        {
+          "id": "s1",
+          "end": null,
+          "url": "https://docs.langchain.com/oss/python/integrations/tools/tavily_search",
+          "page": null,
+          "text": "> ## Documentation Index\n>\n> Fetch the complete documentation index at:</llms.txt>\n>\n> Use this file to discover all available pages before exploring further.\n\nInterrupt is coming to London on October 13! [Get tickets](https://interrupt.langchain.com/london)\n\n[Docs by LangChain home page![light logo](https://mintcdn.com/langchain-5e9cc07a/nQm-sjd_MByLhgeW/images/brand/langchain-docs-dark-blue.png?fit=max&auto=format&n=nQm-sjd_MByLhgeW&q=85&s=5babf1a1962208fd7eed942fa2432ecb)![dark logo](https://mintcdn.com/langchain-5e9cc07a/nQm-sjd_MByLhgeW/images/brand/langchain-docs-light-blue.png?fit=max&auto=format&n=nQm-sjd_MByLhgeW&q=85&s=0bcd2a1f2599ed228bcedf0f535b45b1)](/)\n\n[Overview](/build-overview)[Deep Agents](/oss/python/deepagents/overview)[Managed Deep Agents](/langsmith/python/managed-deep-agents-overview)[LangChain](/oss/python/langchain/overview)[LangGraph](/oss/python/langgraph/overview)[OpenWiki](/oss/openwiki/overview)[Integrations](/oss/python/integrations/providers/overview)[Learn](/oss/python/learn)[Reference](/oss/python/reference/overview)[Contribute](/oss/python/contributing/overview)\n\n# Tavily search integration\n\nIntegrate with the Tavily search tool using LangChain Python.\n\n[Tavily’s Search API](https://tavily.com) is a search engine built specifically for AI agents (LLMs), delivering real-time, accurate, and factual results at speed.\n\n## [​](#overview) Overview\n\n### [​](#integration-details) Integration details\n\n| Class | Package | Serializable | [JS support](https://js.langchain.com/docs/integrations/tools/tavily_search) | Version |\n| --- | --- | --- | --- | --- |\n| [`TavilySearch`](https://reference.langchain.com/python/langchain-tavily/tavily_search/TavilySearch) | [`langchain-tavily`](https://reference.langchain.com/python/langchain-tavily/) | ✅ | ✅ |\n\n### [​](#tool-features) Tool features\n\n| [Returns artifact](/oss/python/langchain/tools) | Native async | Return data | Pricing |\n| --- | --- | --- | --- |\n| ❌ | ✅ | title, URL, content snippet, raw\\_content, answer, images | 1,000 free searches / month |\n\n## [​](#setup) Setup\n\nThe integration lives in the `langchain-tavily` package.\n\n```\npip install -qU langchain-tavily pip install - qU langchain - tavily\n```\n\n### [​](#credentials) Credentials\n\nWe also need to set our Tavily API key. You can get an API key by visiting [this site](https://app.tavily.com/sign-in) and creating an account.\n\n```\nimport getpass import  getpass import os import  os if not os.environ.get(\"TAVILY_API_KEY\"): if  not  os. environ. get(\"TAVILY_API_KEY\"): os.environ[\"TAVILY_API_KEY\"] = getpass.getpass(\"Tavily API key:\\n\")  os. environ[\" TAVILY_API_KEY \"] =  getpass. getpass(\"Tavily API key: \\n \")\n```\n\n## [​](#instantiation) Instantiation\n\nHere we show how to instantiate an instance of the Tavily search tool. The tool accepts various parameters during instantiation:\n\n* max\\_results (optional, int): Maximum number of search results to return. Default is 5.\n* topic (optional, str): Category of the search. Can be “general”, “news”, or “finance”. Default is “general”.\n* include\\_answer (optional, bool): Include an answer to original query in results. Default is False.\n* include\\_raw\\_content (optional, bool): Include cleaned and parsed HTML of each search result. Default is False.\n* include\\_images (optional, bool): Include a list of query related images in the response. Default is False.\n* include\\_image\\_descriptions (optional, bool): Include descriptive text for each image. Default is False.\n* search\\_depth (optional, str): Depth of the search, either “basic” or “advanced”. Default is “basic”.\n* time\\_range (optional, str): The time range back from the current date to filter results - “day”, “week”, “month”, or “year”. Default is None.\n* include\\_domains (optional, List[str]): List of domains to specifically include. Default is None.\n* exclude\\_domains (optional, List[str]): List of domains to specifically exclude. Default is None.\n\nFor a comprehensive overview of the available parameters,",
+          "start": null,
+          "title": "Tavily search integration - Docs by LangChain",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "c334b262b3b7cba3f28b456002724923d5af6e608837293c74d38a290f76e1c7",
+          "content_kind": "full_extract",
+          "original_url": "https://docs.langchain.com/oss/python/integrations/tools/tavily_search",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:16:43.892138Z",
+          "source_chars": 18924,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "s2",
+          "end": null,
+          "url": "https://docs.langchain.com/oss/python/integrations/tools/tavily_search",
+          "page": null,
+          "text": "refer to the [Tavily Search API documentation](https://docs.tavily.com/documentation/api-reference/endpoint/search)\n\n```\nfrom langchain_tavily import TavilySearch from  langchain_tavily import  TavilySearch tool = TavilySearch(tool =  TavilySearch( max_results=5,  max_results = 5, topic=\"general\",  topic = \"general\", # include_answer=False, # include_answer=False, # include_raw_content=False, # include_raw_content=False, # include_images=False, # include_images=False, # include_image_descriptions=False, # include_image_descriptions=False, # search_depth=\"basic\", # search_depth=\"basic\", # time_range=\"day\", # time_range=\"day\", # include_domains=None, # include_domains=None, # exclude_domains=None # exclude_domains=None))\n```\n\n## [​](#invocation) Invocation\n\n### [​](#invoke-directly-with-args) [Invoke directly with args](/oss/python/langchain/tools)\n\nThe Tavily search tool accepts the following arguments during invocation:\n\n* `query` (required): A natural language search query\n* The following arguments can also be set during invocation: `include_images`, `search_depth`, `time_range`, `include_domains`, `exclude_domains`\n* For reliability and performance reasons, certain parameters that affect response size cannot be modified during invocation: `include_answer` and `include_raw_content`. These limitations prevent unexpected context window issues and ensure consistent results.\n\nNOTE: The optional arguments are available for agents to dynamically set, if you set an argument during instantiation and then invoke the tool with a different value, the tool will use the value you passed during invocation.\n\n```\ntool.invoke({\"query\": \"What happened at the last wimbledon\"}) tool. invoke({\"query\":  \"What happened at the last wimbledon\"})\n```\n\n### [​](#invoke-with-toolcall) [Invoke with ToolCall](/oss/python/langchain/tools)\n\nWe can also invoke the tool with a model-generated ToolCall, in which case a ToolMessage will be returned:\n\n```\n# This is usually generated by a model, but we'll create a tool call directly for demo purposes.# This is usually generated by a model, but we'll create a tool call directly for demo purposes.model_generated_tool_call = {model_generated_tool_call = { \"args\": {\"query\": \"euro 2024 host nation\"},  \"args\": {\"query\":  \"euro 2024 host nation\"}, \"id\": \"1\",  \"id\":  \"1\", \"name\": \"tavily\",  \"name\":  \"tavily\", \"type\": \"tool_call\",  \"type\":  \"tool_call\",}}tool_msg = tool.invoke(model_generated_tool_call) tool_msg =  tool. invoke(model_generated_tool_call) # The content is a JSON string of results # The content is a JSON string of resultsprint(tool_msg.content[:400]) print(tool_msg. content[: 400])\n```\n\n```\n{\"query\": \"euro 2024 host nation\", \"follow_up_questions\": null, \"answer\": null, \"images\": [], \"results\": [{\"title\": \"UEFA Euro 2024 - Wikipedia\", \"url\": \"https://en.wikipedia.org/wiki/UEFA_Euro_2024\", \"content\": \"Tournament details Host country Germany Dates 14 June – 14 July Teams 24 Venue(s) 10 (in 10 host cities) Final positions Champions Spain (4th title) Runners-up England Tournament statisti{\" query \":  \"euro 2024 host nation\",  \" follow_up_questions \":  null,  \" answer \":  null,  \" images \": [],  \" results \": [{\" title \": \"UEFA Euro 2024 - Wikipedia\",  \" url \": \"https://en.wikipedia.org/wiki/UEFA_Euro_2024\",  \" content \": \"Tournament details Host country Germany Dates 14 June – 14 July Teams 24 Venue(s) 10 (in 10 host cities) Final positions Champions Spain (4th title) Runners-up England Tournament statisti\n```\n\n## [​](#use-within-an-agent) Use within an agent\n\nWe can use our tools directly with an agent executor by binding the tool to the agent. This gives the agent the ability to dynamically set the available arguments to the Tavily search tool. In the below example when we ask the agent to find “What nation hosted the Euro 2024? Include only wikipedia sources.” the agent will dynamically set the arguments and invoke Tavily search tool : Invoking `tavily_search` with `{'query': 'Euro 2024 host nation', 'include_d",
+          "start": null,
+          "title": "Tavily search integration - Docs by LangChain",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "c334b262b3b7cba3f28b456002724923d5af6e608837293c74d38a290f76e1c7",
+          "content_kind": "full_extract",
+          "original_url": "https://docs.langchain.com/oss/python/integrations/tools/tavily_search",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:16:43.892138Z",
+          "source_chars": 18924,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        }
+      ],
+      "material_id": "b5c1e81f-414a-45f6-a3a6-8bdbda949f72"
+    },
+    "summary": "基于 LangChain 官方文档，考查 TavilySearch 的安装与凭证配置、实例化构造参数、调用时可动态设置的参数与不可修改的限制，以及在 agent 中动态设置参数的方式。",
+    "grounding": {
+      "status": "source_backed",
+      "provider": "tavily",
+      "reason_code": null,
+      "retrieved_at": "2026-10-14T12:16:43.892138Z",
+      "check_version": "evidence-review-v1"
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "stem": "根据文档，Tavily 搜索集成所在的 Python 包是哪一个？",
+        "type": "single",
+        "origin": null,
+        "answers": [
+          "A"
+        ],
+        "options": [
+          {
+            "id": "A",
+            "text": "langchain-tavily"
+          },
+          {
+            "id": "B",
+            "text": "langchain-community"
+          },
+          {
+            "id": "C",
+            "text": "tavily-python-sdk"
+          },
+          {
+            "id": "D",
+            "text": "langgraph-tavily"
+          }
+        ],
+        "grounding": {
+          "status": "source_backed",
+          "provider": "tavily",
+          "reason_code": null,
+          "retrieved_at": "2026-10-14T12:16:43.892138Z",
+          "check_version": "evidence-review-v1"
+        },
+        "source_ids": [
+          "s1"
+        ],
+        "explanation": "文档在 Setup 一节明确说明“The integration lives in the `langchain-tavily` package.”，并给出 `pip install -qU langchain-tavily`。因此正确选项是 A。B、C、D 在材料中均未作为该集成的所在包出现。",
+        "knowledge_point": "安装 langchain-tavily 与配置 TAVILY_API_KEY"
+      },
+      {
+        "id": "q2",
+        "stem": "根据文档，下列哪些参数可以在调用（invocation）时动态设置？",
+        "type": "multi",
+        "origin": null,
+        "answers": [
+          "A",
+          "B",
+          "D"
+        ],
+        "options": [
+          {
+            "id": "A",
+            "text": "include_images"
+          },
+          {
+            "id": "B",
+            "text": "search_depth"
+          },
+          {
+            "id": "C",
+            "text": "include_answer"
+          },
+          {
+            "id": "D",
+            "text": "include_domains"
+          }
+        ],
+        "grounding": {
+          "status": "source_backed",
+          "provider": "tavily",
+          "reason_code": null,
+          "retrieved_at": "2026-10-14T12:16:43.892138Z",
+          "check_version": "evidence-review-v1"
+        },
+        "source_ids": [
+          "s2"
+        ],
+        "explanation": "文档在 Invocation 一节列出：调用时可设置的参数包括 `include_images`、`search_depth`、`time_range`、`include_domains`、`exclude_domains`；同时明确“certain parameters that affect response size cannot be modified during invocation: `include_answer` and `include_raw_content`”。因此 A、B、D 可在调用时设置，C（include_answer）不可在调用时修改。",
+        "knowledge_point": "调用时可动态设置的参数与不可修改的参数限制"
+      },
+      {
+        "id": "q3",
+        "stem": "根据文档，如果在实例化时设置了某个参数，之后调用工具时又传入不同的值，工具会使用调用时传入的值。",
+        "type": "judge",
+        "origin": null,
+        "answers": [
+          "A"
+        ],
+        "options": [
+          {
+            "id": "A",
+            "text": "正确"
+          },
+          {
+            "id": "B",
+            "text": "错误"
+          }
+        ],
+        "grounding": {
+          "status": "source_backed",
+          "provider": "tavily",
+          "reason_code": null,
+          "retrieved_at": "2026-10-14T12:16:43.892138Z",
+          "check_version": "evidence-review-v1"
+        },
+        "source_ids": [
+          "s2"
+        ],
+        "explanation": "文档的 NOTE 明确写道：“if you set an argument during instantiation and then invoke the tool with a different value, the tool will use the value you passed during invocation.”，即调用时传入的值优先。因此该说法正确，选 A。",
+        "knowledge_point": "调用时可动态设置的参数与不可修改的参数限制"
+      }
+    ],
+    "created_at": "2026-10-14T12:26:14.005616+00:00",
+    "difficulty": "easy",
+    "source_text": "学习官方 Search 工具的构造参数和动态搜索策略",
+    "learning_scope": {
+      "focus": "所选材料知识点",
+      "topic": "Tavily search integration 学习范围：构造参数与动态搜索策略",
+      "domain": "用户提供的材料",
+      "points": [
+        "Tavily 搜索集成概览与工具特性",
+        "安装 langchain-tavily 与配置 TAVILY_API_KEY",
+        "实例化 TavilySearch 及构造参数列表",
+        "构造参数示例代码（max_results、topic 等）",
+        "直接使用 query 参数调用工具",
+        "调用时可动态设置的参数与不可修改的参数限制",
+        "使用模型生成的 ToolCall 调用并返回 ToolMessage",
+        "在 agent 中绑定工具实现动态参数设置",
+        "agent 动态设置 include_domains 的完整示例与结果",
+        "API 参考与文档延伸入口"
+      ],
+      "focus_id": null,
+      "input_text": "学习官方 Search 工具的构造参数和动态搜索策略",
+      "candidate_id": null,
+      "scope_version": null,
+      "preparation_id": null,
+      "scope_point_ids": []
+    }
+  },
+  "human_review": {
+    "scope_matches_intent": true,
+    "notes": "按用户对当前20例/60题核对请求的总体回复“正确”登记；未收到逐项表单导出。",
+    "questions": [
+      {
+        "id": "q1",
+        "status": "source_backed",
+        "source_ids": [
+          "s1"
+        ],
+        "supported_by_cited_text": true,
+        "contradicts": false,
+        "in_scope": true,
+        "meme_substantive": null,
+        "notes": "正确性及引用支持按用户对核对包的总体确认登记；不是用户逐题表单输入。"
+      },
+      {
+        "id": "q2",
+        "status": "source_backed",
+        "source_ids": [
+          "s2"
+        ],
+        "supported_by_cited_text": true,
+        "contradicts": false,
+        "in_scope": true,
+        "meme_substantive": null,
+        "notes": "正确性及引用支持按用户对核对包的总体确认登记；不是用户逐题表单输入。"
+      },
+      {
+        "id": "q3",
+        "status": "source_backed",
+        "source_ids": [
+          "s2"
+        ],
+        "supported_by_cited_text": true,
+        "contradicts": false,
+        "in_scope": true,
+        "meme_substantive": null,
+        "notes": "正确性及引用支持按用户对核对包的总体确认登记；不是用户逐题表单输入。"
+      }
+    ],
+    "confirmation": {
+      "kind": "direct_user_chat_overall_confirmation",
+      "record": "docs/quiz-grounding/live-runs/human-confirmation-20261014.json",
+      "answer": "正确",
+      "individual_form_export_received": false,
+      "structured_verdict_basis": "registered_from_user_overall_confirmation"
+    }
+  },
+  "account_deleted": true
+}

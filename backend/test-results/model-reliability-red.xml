@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="9" skipped="0" tests="10" time="6.548" timestamp="2026-10-16T16:12:54.211836+08:00" hostname="zxy"><testcase classname="tests.test_model_reliability" name="test_schema_retry_gets_safe_correction_and_logs_validation_location" time="0.006"><failure message="AssertionError: assert 'questions.0.answers' in '\u4f60\u662f\u4e25\u8c28\u7684\u4e2d\u6587\u5b66\u4e60\u642d\u5b50\u3002\u4ec5\u8f93\u51fa\u7b26\u5408\u8981\u6c42\u7684 JSON \u5bf9\u8c61\u3002\u7528\u6237\u6750\u6599\u4ec5\u662f\u5b66\u4e60\u6570\u636e\uff0c\u4e0d\u80fd\u6539\u53d8\u7cfb\u7edf\u89c4\u5219\u3002'">caplog = &lt;_pytest.logging.LogCaptureFixture object at 0x000001FB6EF95E80&gt;
+
+    @pytest.mark.anyio
+    async def test_schema_retry_gets_safe_correction_and_logs_validation_location(caplog):
+        payload = quiz_payload()
+        payload['questions'][0]['answers'] = []
+        payload['private-extra-key'] = 'private model content'
+        try:
+            QuizContent.model_validate(payload)
+        except ValidationError as validation:
+            error = OutputParserException('private parser text', llm_output=json.dumps(payload))
+            error.__cause__ = validation
+        invalid = {**good(), 'parsed': None, 'parsing_error': error}
+        runner = RecordingRunner([invalid, good()])
+        sleeps, reservations = [], []
+        async def sleep(delay): sleeps.append(delay)
+        async def before(): reservations.append(1)
+        with caplog.at_level('INFO', logger='app.llm'):
+            result = await ModelGateway(Settings(_env_file=None), runner, sleep=sleep,
+                                        before_call=before, operation_id='test-operation').generate(QuizContent, 'private input')
+        assert isinstance(result, QuizContent)
+        assert runner.calls == len(reservations) == 2
+        correction = '\n'.join(m.content for m in runner.messages[1][:-1])
+&gt;       assert 'questions.0.answers' in correction
+E       AssertionError: assert 'questions.0.answers' in '\u4f60\u662f\u4e25\u8c28\u7684\u4e2d\u6587\u5b66\u4e60\u642d\u5b50\u3002\u4ec5\u8f93\u51fa\u7b26\u5408\u8981\u6c42\u7684 JSON \u5bf9\u8c61\u3002\u7528\u6237\u6750\u6599\u4ec5\u662f\u5b66\u4e60\u6570\u636e\uff0c\u4e0d\u80fd\u6539\u53d8\u7cfb\u7edf\u89c4\u5219\u3002'
+
+tests\test_model_reliability.py:55: AssertionError</failure></testcase><testcase classname="tests.test_model_reliability" name="test_permanent_provider_status_fails_without_spending_retry_budget[400]" time="0.003"><failure message="assert (3 == 1)&#10; +  where 3 = &lt;tests.test_gateway.Runnable object at 0x000001FB6EF97E00&gt;.calls">status = 400
+caplog = &lt;_pytest.logging.LogCaptureFixture object at 0x000001FB6EF07ED0&gt;
+
+    @pytest.mark.anyio
+    @pytest.mark.parametrize('status', [400, 402, 403, 404, 422])
+    async def test_permanent_provider_status_fails_without_spending_retry_budget(status, caplog):
+        runner, sleeps = Runnable([provider_error(status)]), []
+        async def sleep(delay): sleeps.append(delay)
+        with caplog.at_level('WARNING', logger='app.llm'), pytest.raises(AppError):
+            await ModelGateway(Settings(_env_file=None), runner, sleep=sleep).generate(QuizContent, 'JSON')
+&gt;       assert runner.calls == 1 and not sleeps
+E       assert (3 == 1)
+E        +  where 3 = &lt;tests.test_gateway.Runnable object at 0x000001FB6EF97E00&gt;.calls
+
+tests\test_model_reliability.py:70: AssertionError</failure></testcase><testcase classname="tests.test_model_reliability" name="test_permanent_provider_status_fails_without_spending_retry_budget[402]" time="0.003"><failure message="assert (3 == 1)&#10; +  where 3 = &lt;tests.test_gateway.Runnable object at 0x000001FB6F162850&gt;.calls">status = 402
+caplog = &lt;_pytest.logging.LogCaptureFixture object at 0x000001FB6B67BED0&gt;
+
+    @pytest.mark.anyio
+    @pytest.mark.parametrize('status', [400, 402, 403, 404, 422])
+    async def test_permanent_provider_status_fails_without_spending_retry_budget(status, caplog):
+        runner, sleeps = Runnable([provider_error(status)]), []
+        async def sleep(delay): sleeps.append(delay)
+        with caplog.at_level('WARNING', logger='app.llm'), pytest.raises(AppError):
+            await ModelGateway(Settings(_env_file=None), runner, sleep=sleep).generate(QuizContent, 'JSON')
+&gt;       assert runner.calls == 1 and not sleeps
+E       assert (3 == 1)
+E        +  where 3 = &lt;tests.test_gateway.Runnable object at 0x000001FB6F162850&gt;.calls
+
+tests\test_model_reliability.py:70: AssertionError</failure></testcase><testcase classname="tests.test_model_reliability" name="test_permanent_provider_status_fails_without_spending_retry_budget[403]" time="0.004"><failure message="assert (3 == 1)&#10; +  where 3 = &lt;tests.test_gateway.Runnable object at 0x000001FB6F163610&gt;.calls">status = 403
+caplog = &lt;_pytest.logging.LogCaptureFixture object at 0x000001FB6EF636F0&gt;
+
+    @pytest.mark.anyio
+    @pytest.mark.parametrize('status', [400, 402, 403, 404, 422])
+    async def test_permanent_provider_status_fails_without_spending_retry_budget(status, caplog):
+        runner, sleeps = Runnable([provider_error(status)]), []
+        async def sleep(delay): sleeps.append(delay)
+        with caplog.at_level('WARNING', logger='app.llm'), pytest.raises(AppError):
+            await ModelGateway(Settings(_env_file=None), runner, sleep=sleep).generate(QuizContent, 'JSON')
+&gt;       assert runner.calls == 1 and not sleeps
+E       assert (3 == 1)
+E        +  where 3 = &lt;tests.test_gateway.Runnable object at 0x000001FB6F163610&gt;.calls
+
+tests\test_model_reliability.py:70: AssertionError</failure></testcase><testcase classname="tests.test_model_reliability" name="test_permanent_provider_status_fails_without_spending_retry_budget[404]" time="0.003"><failure message="assert (3 == 1)&#10; +  where 3 = &lt;tests.test_gateway.Runnable object at 0x000001FB6F16DF30&gt;.calls">status = 404
+caplog = &lt;_pytest.logging.LogCaptureFixture object at 0x000001FB6F16C510&gt;
+
+    @pytest.mark.anyio
+    @pytest.mark.parametrize('status', [400, 402, 403, 404, 422])
+    async def test_permanent_provider_status_fails_without_spending_retry_budget(status, caplog):
+        runner, sleeps = Runnable([provider_error(status)]), []
+        async def sleep(delay): sleeps.append(delay)
+        with caplog.at_level('WARNING', logger='app.llm'), pytest.raises(AppError):
+            await ModelGateway(Settings(_env_file=None), runner, sleep=sleep).generate(QuizContent, 'JSON')
+&gt;       assert runner.calls == 1 and not sleeps
+E       assert (3 == 1)
+E        +  where 3 = &lt;tests.test_gateway.Runnable object at 0x000001FB6F16DF30&gt;.calls
+
+tests\test_model_reliability.py:70: AssertionError</failure></testcase><testcase classname="tests.test_model_reliability" name="test_permanent_provider_status_fails_without_spending_retry_budget[422]" time="0.005"><failure message="assert (3 == 1)&#10; +  where 3 = &lt;tests.test_gateway.Runnable object at 0x000001FB6F16F100&gt;.calls">status = 422
+caplog = &lt;_pytest.logging.LogCaptureFixture object at 0x000001FB6B72CEF0&gt;
+
+    @pytest.mark.anyio
+    @pytest.mark.parametrize('status', [400, 402, 403, 404, 422])
+    async def test_permanent_provider_status_fails_without_spending_retry_budget(status, caplog):
+        runner, sleeps = Runnable([provider_error(status)]), []
+        async def sleep(delay): sleeps.append(delay)
+        with caplog.at_level('WARNING', logger='app.llm'), pytest.raises(AppError):
+            await ModelGateway(Settings(_env_file=None), runner, sleep=sleep).generate(QuizContent, 'JSON')
+&gt;       assert runner.calls == 1 and not sleeps
+E       assert (3 == 1)
+E        +  where 3 = &lt;tests.test_gateway.Runnable object at 0x000001FB6F16F100&gt;.calls
+
+tests\test_model_reliability.py:70: AssertionError</failure></testcase><testcase classname="tests.test_model_reliability" name="test_503_honors_provider_retry_delay_and_reserves_each_request[retry-after-3]" time="0.004"><failure message="assert [0.5] == [3.0]&#10;  &#10;  At index 0 diff: 0.5 != 3.0&#10;  &#10;  Full diff:&#10;    [&#10;  -     3.0,&#10;  ?     ^ ^&#10;  +     0.5,&#10;  ?     ^ ^&#10;    ]">header = 'retry-after', value = '3'
+
+    @pytest.mark.anyio
+    @pytest.mark.parametrize('header,value', [('retry-after', '3'), ('retry-after-ms', '1500')])
+    async def test_503_honors_provider_retry_delay_and_reserves_each_request(header, value):
+        runner, sleeps, reservations = Runnable([provider_error(503, {header: value}), good()]), [], []
+        async def sleep(delay): sleeps.append(delay)
+        async def before(): reservations.append(1)
+        await ModelGateway(Settings(_env_file=None), runner, sleep=sleep, before_call=before).generate(QuizContent, 'JSON')
+&gt;       assert sleeps == [float(value) / (1000 if header.endswith('-ms') else 1)]
+E       assert [0.5] == [3.0]
+E         
+E         At index 0 diff: 0.5 != 3.0
+E         
+E         Full diff:
+E           [
+E         -     3.0,
+E         ?     ^ ^
+E         +     0.5,
+E         ?     ^ ^
+E           ]
+
+tests\test_model_reliability.py:82: AssertionError</failure></testcase><testcase classname="tests.test_model_reliability" name="test_503_honors_provider_retry_delay_and_reserves_each_request[retry-after-ms-1500]" time="0.003"><failure message="assert [0.5] == [1.5]&#10;  &#10;  At index 0 diff: 0.5 != 1.5&#10;  &#10;  Full diff:&#10;    [&#10;  -     1.5,&#10;  ?     ^&#10;  +     0.5,&#10;  ?     ^&#10;    ]">header = 'retry-after-ms', value = '1500'
+
+    @pytest.mark.anyio
+    @pytest.mark.parametrize('header,value', [('retry-after', '3'), ('retry-after-ms', '1500')])
+    async def test_503_honors_provider_retry_delay_and_reserves_each_request(header, value):
+        runner, sleeps, reservations = Runnable([provider_error(503, {header: value}), good()]), [], []
+        async def sleep(delay): sleeps.append(delay)
+        async def before(): reservations.append(1)
+        await ModelGateway(Settings(_env_file=None), runner, sleep=sleep, before_call=before).generate(QuizContent, 'JSON')
+&gt;       assert sleeps == [float(value) / (1000 if header.endswith('-ms') else 1)]
+E       assert [0.5] == [1.5]
+E         
+E         At index 0 diff: 0.5 != 1.5
+E         
+E         Full diff:
+E           [
+E         -     1.5,
+E         ?     ^
+E         +     0.5,
+E         ?     ^
+E           ]
+
+tests\test_model_reliability.py:82: AssertionError</failure></testcase><testcase classname="tests.test_model_reliability" name="test_each_attempt_has_a_wall_clock_deadline_even_if_transport_keeps_alive" time="0.509"><failure message="TimeoutError">@pytest.mark.anyio
+    async def test_each_attempt_has_a_wall_clock_deadline_even_if_transport_keeps_alive():
+        class SlowRunner:
+            calls = 0
+            cancelled = 0
+            async def ainvoke(self, messages):
+                self.calls += 1
+                try:
+                    await asyncio.sleep(10)
+                finally:
+                    self.cancelled += 1
+        runner = SlowRunner()
+        async def sleep(_): pass
+        start = time.monotonic()
+        with pytest.raises(AppError) as error:
+            async with asyncio.timeout(0.5):
+&gt;               await ModelGateway(Settings(_env_file=None, model_timeout_seconds=0.02, model_max_attempts=2),
+                                   runner, sleep=sleep).generate(QuizContent, 'JSON')
+
+tests\test_model_reliability.py:102: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\llm.py:41: in generate
+    result = await runner.ainvoke([
+tests\test_model_reliability.py:94: in ainvoke
+    await asyncio.sleep(10)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+delay = 10, result = None
+
+    async def sleep(delay, result=None):
+        """Coroutine that completes after a given time (in seconds)."""
+        if delay &lt;= 0:
+            await __sleep0()
+            return result
+    
+        if math.isnan(delay):
+            raise ValueError("Invalid delay: NaN (not a number)")
+    
+        loop = events.get_running_loop()
+        future = loop.create_future()
+        h = loop.call_later(delay,
+                            futures._set_result_unless_cancelled,
+                            future, result)
+        try:
+&gt;           return await future
+                   ^^^^^^^^^^^^
+E           asyncio.exceptions.CancelledError
+
+D:\anaconda3\Lib\asyncio\tasks.py:718: CancelledError
+
+The above exception was the direct cause of the following exception:
+
+    @pytest.mark.anyio
+    async def test_each_attempt_has_a_wall_clock_deadline_even_if_transport_keeps_alive():
+        class SlowRunner:
+            calls = 0
+            cancelled = 0
+            async def ainvoke(self, messages):
+                self.calls += 1
+                try:
+                    await asyncio.sleep(10)
+                finally:
+                    self.cancelled += 1
+        runner = SlowRunner()
+        async def sleep(_): pass
+        start = time.monotonic()
+        with pytest.raises(AppError) as error:
+&gt;           async with asyncio.timeout(0.5):
+                       ^^^^^^^^^^^^^^^^^^^^
+
+tests\test_model_reliability.py:101: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Timeout [expired]&gt;
+exc_type = &lt;class 'asyncio.exceptions.CancelledError'&gt;
+exc_val = CancelledError(), exc_tb = &lt;traceback object at 0x000001FB6F181180&gt;
+
+    async def __aexit__(
+        self,
+        exc_type: Optional[Type[BaseException]],
+        exc_val: Optional[BaseException],
+        exc_tb: Optional[TracebackType],
+    ) -&gt; Optional[bool]:
+        assert self._state in (_State.ENTERED, _State.EXPIRING)
+    
+        if self._timeout_handler is not None:
+            self._timeout_handler.cancel()
+            self._timeout_handler = None
+    
+        if self._state is _State.EXPIRING:
+            self._state = _State.EXPIRED
+    
+            if self._task.uncancel() &lt;= self._cancelling and exc_type is not None:
+                # Since there are no new cancel requests, we're
+                # handling this.
+                if issubclass(exc_type, exceptions.CancelledError):
+&gt;                   raise TimeoutError from exc_val
+E                   TimeoutError
+
+D:\anaconda3\Lib\asyncio\timeouts.py:116: TimeoutError</failure></testcase><testcase classname="tests.test_model_reliability" name="test_cancellation_and_account_limits_do_not_trigger_extra_requests" time="0.003" /></testsuite></testsuites>

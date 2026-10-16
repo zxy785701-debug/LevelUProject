@@ -1,0 +1,35 @@
+
+> levelup-comic-mini@1.0.0 test:e2e
+> playwright test --max-failures=1
+
+
+Running 7 tests using 1 worker
+
+(node:39900) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 e2e\core.spec.ts:84:5 › 01–03：游客、独立存储、首页、设置和扩展入口 (820ms)
+Testing stopped early after 1 maximum allowed failures.
+
+
+  1) e2e\core.spec.ts:84:5 › 01–03：游客、独立存储、首页、设置和扩展入口 ──────────────────────────────────────────────
+
+    Error: expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 341.046875
+    Received:    343.046875
+
+       95 |   const inputBox = await page.locator(".field").boundingBox(),
+       96 |     textBox = await page.locator("textarea").boundingBox();
+    >  97 |   expect(textBox!.y + textBox!.height).toBeLessThanOrEqual(
+          |                                        ^
+       98 |     inputBox!.y + inputBox!.height,
+       99 |   );
+      100 |   await page.getByRole("button", { name: "RAG 入门", exact: true }).click();
+        at D:\nbproject\LevelUpProject\frontend-comic\e2e\core.spec.ts:97:40
+
+    Error Context: ..\docs\comic-implementation\e2e-results\core-01–03：游客、独立存储、首页、设置和扩展入口\error-context.md
+
+  1 failed
+    e2e\core.spec.ts:84:5 › 01–03：游客、独立存储、首页、设置和扩展入口 ───────────────────────────────────────────────
+  6 did not run
+  1 error was not a part of any test, see above for details

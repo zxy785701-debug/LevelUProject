@@ -6,6 +6,7 @@ from .errors import AppError
 from .models import QuizContent, GenerateRequest, ReportContent, ReportRequest
 from .llm import ModelGateway
 from .scoring import score
+from .quiz_grounding.reporting import verification, check_report_claims
 
 async def generate_quiz(body: GenerateRequest, settings, gateway=None):
     mix = {"single":1,"multi":1,"judge":1} if body.question_count == 3 else {"single":3,"multi":1,"judge":1}
@@ -23,12 +24,19 @@ async def generate_quiz(body: GenerateRequest, settings, gateway=None):
 
 async def generate_report(body: ReportRequest, settings, gateway=None):
     stats = score(body)
+    overview = verification(body.quiz.model_dump(mode='json'))
     prompt = f'''根据真实作答生成中文学习报告，仅分析本轮，不夸大为长期能力。禁止修改程序统计。
 summary 恰好三条，mastered_points 只写答对的知识点，weak_points 只写答错的知识点，全对/全错时对应列表可以为空。
 suggestions 给出可执行的复习建议，share_quote 是一句简短的学习金句。
+知识核实状态由程序提供，答对不代表事实已被联网核实；不得把未核实/未知知识改写成已核实事实，不另作核实承诺。
 只返回 JSON，Schema：{json.dumps(ReportContent.model_json_schema(),ensure_ascii=False)}
 程序统计：{json.dumps(stats,ensure_ascii=False)}
 题库：{body.quiz.model_dump_json()}
 作答：{json.dumps([a.model_dump() for a in body.answers],ensure_ascii=False)}'''
-    report = await (gateway or ModelGateway(settings)).generate(ReportContent, prompt)
-    return {**report.model_dump(),"quiz_id":body.quiz.id,"stats":stats}
+    prompt += '\n程序来源状态：' + json.dumps(overview, ensure_ascii=False)
+    def check(result): check_report_claims(result, overview)
+    report = await (gateway or ModelGateway(settings)).generate(ReportContent, prompt, check)
+    check(report)
+    return {**report.model_dump(),"quiz_id":body.quiz.id,"stats":stats,
+            'verification': overview, 'source': body.quiz.source.model_dump(mode='json') if body.quiz.source else None,
+            'learning_scope': body.quiz.learning_scope.model_dump(mode='json') if body.quiz.learning_scope else None}

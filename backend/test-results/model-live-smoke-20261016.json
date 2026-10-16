@@ -1,0 +1,48 @@
+{
+  "model": "deepseek-flash",
+  "database": "levelup_test",
+  "topic": "HTTP status codes and stateless requests",
+  "login": "test stub",
+  "stages": [],
+  "prepare": {
+    "status": "ready",
+    "error": null,
+    "seconds": 45.87
+  },
+  "selection": {
+    "operator": "automated smoke test",
+    "candidate": "HTTP 无状态性",
+    "human_acceptance": false
+  },
+  "generation": {
+    "status": "succeeded",
+    "error": null,
+    "seconds": 9.04,
+    "question_count": 3,
+    "grounding": {
+      "status": "source_backed",
+      "provider": "tavily",
+      "reason_code": null,
+      "retrieved_at": "2026-10-16T08:24:23.984173Z",
+      "check_version": "evidence-review-v2"
+    }
+  },
+  "operations": [
+    {
+      "kind": "quiz",
+      "status": "succeeded",
+      "model_calls": 2,
+      "tool_calls": 0,
+      "charged": 1
+    },
+    {
+      "kind": "prepare",
+      "status": "succeeded",
+      "model_calls": 4,
+      "tool_calls": 4,
+      "charged": 0
+    }
+  ],
+  "passed": true,
+  "account_deleted": true
+}

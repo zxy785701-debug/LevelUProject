@@ -16,12 +16,12 @@ export function Provider({ children }: { children: React.ReactNode }) {
   function commit(next: Data) {
     if (!alive.current) return
     ref.current = next; setData(next)
-    try { Taro.setStorageSync(key, next) } catch { setError('云端记录已保存，本机缓存暂时无法写入。') }
+    try { Taro.setStorageSync(key, next) } catch { setError('本机缓存暂时无法写入，请完成提交后再离开。') }
   }
   async function refresh(wrongsOnly = false) {
     try {
       const remote = await getLearning()
-      if (alive.current) { commit(wrongsOnly ? { ...ref.current, wrongs: remote.wrongs } : { ...remote, activeId: ref.current.activeId && remote.sessions.some(s => s.id === ref.current.activeId) ? ref.current.activeId : remote.activeId, draft: ref.current.draft }); setError('') }
+      if (alive.current) { commit(wrongsOnly ? { ...ref.current, wrongs: remote.wrongs } : { ...remote, activeId: ref.current.activeId && remote.sessions.some(s => s.id === ref.current.activeId) ? ref.current.activeId : remote.activeId, draft: ref.current.draft, answerDrafts: Object.fromEntries(remote.sessions.filter(s => !s.completed_at && ref.current.answerDrafts?.[s.id]).map(s => [s.id, ref.current.answerDrafts![s.id]])) }); setError('') }
     } catch (e) { if (alive.current) setError((e as Error).message); throw e }
     finally { if (alive.current) setLoading(false) }
   }
@@ -36,7 +36,9 @@ export function Provider({ children }: { children: React.ReactNode }) {
   }
   function upsert(session: Session) {
     const exists = ref.current.sessions.some(s => s.id === session.id)
-    commit({ ...ref.current, activeId: session.id, sessions: exists ? ref.current.sessions.map(s => s.id === session.id ? session : s) : [...ref.current.sessions, session] })
+    const answerDrafts = { ...ref.current.answerDrafts }
+    if (session.completed_at) delete answerDrafts[session.id]
+    commit({ ...ref.current, answerDrafts, activeId: session.id, sessions: exists ? ref.current.sessions.map(s => s.id === session.id ? session : s) : [...ref.current.sessions, session] })
   }
   return <Context.Provider value={{ data, dispatch, upsert, refresh, loading, error }}>{children}</Context.Provider>
 }

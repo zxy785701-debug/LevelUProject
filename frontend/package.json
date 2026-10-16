@@ -3,14 +3,17 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "dev:weapp": "taro build --type weapp --watch",
     "dev:h5": "taro build --type h5 --watch",
     "build:h5": "taro build --type h5",
     "build:weapp": "taro build --type weapp",
     "check:wxss": "node scripts/verify-wxss.cjs",
     "check:startup": "node scripts/verify-startup.cjs",
+    "check:assets": "node scripts/verify-assets.cjs",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "test:e2e": "playwright test --config=playwright.accounts.config.ts"
+    "test:e2e": "playwright test --config=playwright.accounts.config.ts",
+    "test:e2e:grounding": "playwright test --config=playwright.grounding.config.ts"
   },
   "dependencies": {
     "@tarojs/components": "4.3.0",

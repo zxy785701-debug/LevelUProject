@@ -1,0 +1,1050 @@
+{
+  "case": {
+    "id": "url-extract",
+    "text": "https://docs.langchain.com/oss/python/integrations/tools/tavily_extract 学习全文提取与定向片段的区别",
+    "expected": "指定网页中的 Tavily Extract 用法",
+    "tags": [
+      "url",
+      "english",
+      "complex"
+    ]
+  },
+  "error_code": null,
+  "status": "awaiting_human_evidence_review",
+  "material_job": {
+    "id": "f3671bfe-3e63-47c8-88d5-449eb0a05eb8",
+    "status": "succeeded",
+    "stage": "ready",
+    "material_id": "eb012d7f-88ca-4dec-bdfe-12680606168f",
+    "preparation_id": null,
+    "error_code": null,
+    "message": null
+  },
+  "material": {
+    "id": "eb012d7f-88ca-4dec-bdfe-12680606168f",
+    "url": "https://docs.langchain.com/oss/python/integrations/tools/tavily_extract",
+    "title": "Tavily extract integration - Docs by LangChain",
+    "points": [
+      {
+        "name": "Tavily extract 集成概览与集成信息",
+        "segment_ids": [
+          "s1"
+        ]
+      },
+      {
+        "name": "工具特性：返回原始内容与图片、异步支持、免费额度",
+        "segment_ids": [
+          "s1"
+        ]
+      },
+      {
+        "name": "安装与凭据设置",
+        "segment_ids": [
+          "s1"
+        ]
+      },
+      {
+        "name": "实例化参数：extract_depth 与 include_images",
+        "segment_ids": [
+          "s1"
+        ]
+      },
+      {
+        "name": "直接传参调用并返回全文提取结果",
+        "segment_ids": [
+          "s1"
+        ]
+      },
+      {
+        "name": "使用 ToolCall 调用并返回 JSON 字符串结果",
+        "segment_ids": [
+          "s1"
+        ]
+      },
+      {
+        "name": "在 agent 中使用 TavilyExtract 工具",
+        "segment_ids": [
+          "s2"
+        ]
+      },
+      {
+        "name": "agent 流式事件与工具调用参数",
+        "segment_ids": [
+          "s2"
+        ]
+      },
+      {
+        "name": "工具返回的全文内容（raw_content）示例",
+        "segment_ids": [
+          "s2"
+        ]
+      },
+      {
+        "name": "agent 对提取内容生成的摘要片段",
+        "segment_ids": [
+          "s2",
+          "s3"
+        ]
+      },
+      {
+        "name": "理论物理页面提取内容的截断与摘要对比",
+        "segment_ids": [
+          "s2",
+          "s3"
+        ]
+      },
+      {
+        "name": "API 参考与页面资源",
+        "segment_ids": [
+          "s3"
+        ]
+      }
+    ],
+    "summary": "材料为 LangChain Python 中 Tavily extract 工具的集成文档，涵盖集成信息、工具特性、安装与凭据设置、实例化、直接调用与 ToolCall 调用、在 agent 中使用，以及调用返回的全文提取结果与 agent 生成的摘要片段。按用户学习意图，重点保留全文提取（raw_content 全文）与定向片段（agent 摘要、截断内容）之间的区别相关范围。",
+    "segments": [
+      {
+        "id": "s1",
+        "url": "https://docs.langchain.com/oss/python/integrations/tools/tavily_extract",
+        "text": "## Documentation Index\n\nFetch the complete documentation index at: </llms.txt>\n\nUse this file to discover all available pages before exploring further.\n\nFall AMA Series: Live sessions on building, evaluating, deploying, and continously improving agents with LangSmith. [Register now →](https://events.langchain.com/fall-product-series/)\n\n![light logo](https://mintcdn.com/langchain-5e9cc07a/nQm-sjd_MByLhgeW/images/brand/langchain-docs-dark-blue.png?fit=max&auto=format&n=nQm-sjd_MByLhgeW&q=85&s=5babf1a1962208fd7eed942fa2432ecb)\n![dark logo](https://mintcdn.com/langchain-5e9cc07a/nQm-sjd_MByLhgeW/images/brand/langchain-docs-light-blue.png?fit=max&auto=format&n=nQm-sjd_MByLhgeW&q=85&s=0bcd2a1f2599ed228bcedf0f535b45b1)\n\nPython\n\n### Popular Providers\n\n### Integrations by component\n\n## On this page\n\n# Tavily extract integration\n\nIntegrate with the Tavily extract tool using LangChain Python.\n\n## [​](#overview) Overview\n\n### [​](#integration-details) Integration details\n\n| Class | Package | Serializable | [JS support](https://js.langchain.com/docs/integrations/tools/tavily_extract) | Version |\n| --- | --- | --- | --- | --- |\n| [`TavilyExtract`](https://reference.langchain.com/python/langchain-tavily/tavily_extract/TavilyExtract) | [`langchain-tavily`](https://reference.langchain.com/python/langchain-tavily/) | ✅ | ✅ | PyPI - Version |\n\n`TavilyExtract`\n`langchain-tavily`\n![PyPI - Version](https://img.shields.io/pypi/v/langchain-tavily?style=flat-square&label=%20)\n\n### [​](#tool-features) Tool features\n\n| [Returns artifact](/oss/python/langchain/tools) | Native async | Return data | Pricing |\n| --- | --- | --- | --- |\n| ❌ | ✅ | raw content and images | 1,000 free credits / month |\n\n## [​](#setup) Setup\n\n`langchain-tavily`\n`pip install -qU langchain-tavily`\n\n### [​](#credentials) Credentials\n\n`import getpass\nimport os\n\nif not os.environ.get(\"TAVILY_API_KEY\"):\n os.environ[\"TAVILY_API_KEY\"] = getpass.getpass(\"Tavily API key:\\n\")`\n\n## [​](#instantiation) Instantiation\n\n`extract_depth`\n`include_images`\n`from langchain_tavily import TavilyExtract\n\ntool = TavilyExtract(\n extract_depth=\"basic\",\n include_images=False,\n)`\n\n## [​](#invocation) Invocation\n\n### [​](#invoke-directly-with-args) [Invoke directly with args](/oss/python/langchain/tools)\n\n`urls`\n`extract_depth`\n`include_images`\n`tool.invoke({\"urls\": [\"https://en.wikipedia.org/wiki/Lionel_Messi\"]})`\n`{'results': [{'url': 'https://en.wikipedia.org/wiki/Lionel_Messi',\n 'raw_content': 'Lionel Messi - Wikipedia\\nJump to content\\nMain menu\\nMain menu\\nmove to sidebar hide\\nNavigation\\n\\nMain page\\nContents\\nCurrent events\\nRandom article\\nAbout Wikipedia\\nContact us\\n\\nContribute\\n\\nHelp\\nLearn to edit\\nCommunity portal\\nRecent changes\\nUpload file\\nSpecial pages\\n\\n \\nSearch\\nSearch\\nAppearance\\n\\nDonate\\nCreate account\\nLog in\\n\\nPersonal tools\\n\\nDonate\\nCreate account\\nLog in\\n\\nPages for logged out editors learn more\\n\\nContributions\\nTalk\\n\\nContents\\nm... (truncated) ',\n 'images': []}],\n 'failed_results': [],\n 'response_time': 0.02}`\n\n### [​](#invoke-with-toolcall) [Invoke with ToolCall](/oss/python/langchain/tools)\n\n`# This is usually generated by a model, but we'll create a tool call directly for demo purposes.\nmodel_generated_tool_call = {\n \"args\": {\"urls\": [\"https://en.wikipedia.org/wiki/Lionel_Messi\"]},\n \"id\": \"1\",\n \"name\": \"tavily\",\n \"type\": \"tool_call\",\n}\ntool_msg = tool.invoke(model_generated_tool_call)\n\n# The content is a JSON string of results\nprint(tool_msg.content[:400])`\n`{\"results\": [{\"url\": \"https://en.wikipedia.org/wiki/Lionel_Messi\", \"raw_content\": \"Lionel Messi - Wikipedia\\nJump to content\\nMain menu\\nMain menu\\nmove to sidebar hide\\nNavigation\\n\\nMain page\\nContents\\nCurrent events\\nRandom article\\nAbout Wikipedia\\nContact us\\n\\nContribute\\n\\nHelp\\nLearn to edit\\nCommunity portal\\nRecent changes\\nUpload file\\nSpecial pages\\n\\n \\nSearch\\nSearch\\nAppearance\\n\\`\n\n## [​](#use-within-an-agent) Use within an agent\n\n`if not os.environ.get(\"OPENAI_API_KEY\"):\n os.environ[\"OPENAI_A",
+        "title": "Tavily extract integration - Docs by LangChain",
+        "truncated": false,
+        "supplement": false,
+        "content_hash": "21574637cd854c2f3c6103a0652f37fec1a7b9750006cfffea870ace7247da8c",
+        "content_kind": "full_extract",
+        "original_url": "https://docs.langchain.com/oss/python/integrations/tools/tavily_extract",
+        "retrieved_at": "2026-10-14T12:44:31.490002Z",
+        "source_chars": 9402,
+        "context_truncated": false,
+        "acquisition_status": "available"
+      },
+      {
+        "id": "s2",
+        "url": "https://docs.langchain.com/oss/python/integrations/tools/tavily_extract",
+        "text": "PI_KEY\"] = getpass.getpass(\"OPENAI_API_KEY:\\n\")`\n`from langchain.chat_models import init_chat_model\n\nmodel = init_chat_model(model=\"gpt-5.5\", model_provider=\"openai\", temperature=0)`\n`from langchain_tavily import TavilyExtract\nfrom langchain.agents import create_agent\n\n\ntavily_extract_tool = TavilyExtract()\n\nagent = create_agent(model, [tavily_extract_tool])\n\nuser_input = \"['https://en.wikipedia.org/wiki/Albert_Einstein','https://en.wikipedia.org/wiki/Theoretical_physics']\"\n\nstream = agent.stream_events({\"messages\": user_input}, version=\"v3\")\nfor snapshot in stream.values:\n snapshot[\"messages\"][-1].pretty_print()`\n`================================ Human Message =================================\n\n['https://en.wikipedia.org/wiki/Albert_Einstein','https://en.wikipedia.org/wiki/Theoretical_physics']\n================================== Ai Message ==================================\nTool Calls:\n tavily_extract (call_BAK906Cpy8fDZttwqYTMdkKp)\n Call ID: call_BAK906Cpy8fDZttwqYTMdkKp\n Args:\n urls: ['https://en.wikipedia.org/wiki/Albert_Einstein']\n extract_depth: advanced\n include_images: False\n tavily_extract (call_4NFRB92QpiI5jnCTGr76dgMX)\n Call ID: call_4NFRB92QpiI5jnCTGr76dgMX\n Args:\n urls: ['https://en.wikipedia.org/wiki/Theoretical_physics']\n extract_depth: advanced\n include_images: False\n================================= Tool Message =================================\nName: tavily_extract\n\n{\"results\": [{\"url\": \"https://en.wikipedia.org/wiki/Theoretical_physics\", \"raw_content\": \"Published Time: 2003-09-21T15:11:11Z\\nTheoretical physics - Wikipedia\\nJump to content\\nMain menu\\nMain menu\\nmove to sidebar hide\\nNavigation\\n\\nMain page\\nContents\\nCurrent events\\nRandom article\\nAbout Wikipedia\\nContact us\\n\\nContribute\\n\\nHelp\\nLearn to edit\\nCommunity portal\\nRecent changes\\nUpload file\\nSpecial pages\\n\\n \\nSearch\\nSearch\\nAppearance\\n\\nDonate\\nCreate account\\nLog in\\n\\nPersonal tools\\n\\nDonate\\nCreate account\\nLog in\\n\\nPages for logged out editors learn more\\n\\nContributions\\nTalk\\n\\nContents\\nmove to sidebar hide\\n\\n(Top)\\n\\n1 Overview\\n\\n\\n2 History\\n\\n\\n3 Mainstream theories... (truncated) ...\", \"images\": []}], \"failed_results\": [], \"response_time\": 0.01}\n================================== Ai Message ==================================\n\nHere is a summary of the content from the Wikipedia pages on Albert Einstein and Theoretical Physics:\n\n### Albert Einstein\nAlbert Einstein was a German-born theoretical physicist renowned for developing the theory of relativity, which revolutionized our understanding of space, time, and energy. His mass-energy equivalence formula, E=mc², is one of the most famous equations in physics. Einstein received the 1921 Nobel Prize in Physics for his explanation of the photoelectric effect, which was pivotal in establishing quantum theory.\n\nEinstein's early life was marked by a deep interest in mathematics and physics, leading him to study at the Swiss Federal Polytechnic in Zurich. He worked at the Swiss Patent Office while developing his theories. His \"miracle year\" in 1905 saw the publication of four groundbreaking papers, including those on special relativity and the photoelectric effect.\n\nThroughout his career, Einstein made significant contributions to statistical mechanics, quantum theory, and cosmology. He was a vocal advocate for civil rights and pacifism, and he played a role in alerting the U.S. to the potential of nuclear weapons during World War II. Einstein spent his later years at the Institute for Advanced Study in Princeton, New Jersey, where he continued to work on a unified field theory until his death in 1955.\n\n### Theoretical Physics\nTheoretical physics is a branch of physics that uses mathematical models and abstractions to explain and predict natural phenomena. It contrasts with experimental physics, which uses empirical methods to test these theories. Theoretical physics has been instrumental in developing major scientific theories, such as relativity and quantum mechanics.\n\nThe field",
+        "title": "Tavily extract integration - Docs by LangChain",
+        "truncated": false,
+        "supplement": false,
+        "content_hash": "21574637cd854c2f3c6103a0652f37fec1a7b9750006cfffea870ace7247da8c",
+        "content_kind": "full_extract",
+        "original_url": "https://docs.langchain.com/oss/python/integrations/tools/tavily_extract",
+        "retrieved_at": "2026-10-14T12:44:31.490002Z",
+        "source_chars": 9402,
+        "context_truncated": false,
+        "acquisition_status": "available"
+      },
+      {
+        "id": "s3",
+        "url": "https://docs.langchain.com/oss/python/integrations/tools/tavily_extract",
+        "text": "involves creating models to describe physical events and is judged by how well these models predict empirical observations. Theoretical physics has a rich history, dating back to ancient philosophers and evolving significantly during the Scientific Revolution with figures like Galileo and Newton.\n\nModern theoretical physics seeks to unify existing theories and explore new concepts, often using advanced mathematics. It includes mainstream theories like the Big Bang, chaos theory, and quantum mechanics, as well as proposed and fringe theories that are still under investigation. Thought experiments, such as Schrödinger's cat, play a crucial role in theoretical physics by exploring scenarios that are not easily tested in reality.\n\nBoth pages highlight the interplay between theory and experimentation in advancing our understanding of the universe, with Einstein's work serving as a prime example of theoretical physics' impact.`\n\n## [​](#api-reference) API reference\n\nWas this page helpful?\n\n![light logo](https://mintcdn.com/langchain-5e9cc07a/nQm-sjd_MByLhgeW/images/brand/langchain-docs-dark-blue.png?fit=max&auto=format&n=nQm-sjd_MByLhgeW&q=85&s=5babf1a1962208fd7eed942fa2432ecb)\n![dark logo](https://mintcdn.com/langchain-5e9cc07a/nQm-sjd_MByLhgeW/images/brand/langchain-docs-light-blue.png?fit=max&auto=format&n=nQm-sjd_MByLhgeW&q=85&s=0bcd2a1f2599ed228bcedf0f535b45b1)\n\nResources\n\nCompany",
+        "title": "Tavily extract integration - Docs by LangChain",
+        "truncated": false,
+        "supplement": false,
+        "content_hash": "21574637cd854c2f3c6103a0652f37fec1a7b9750006cfffea870ace7247da8c",
+        "content_kind": "full_extract",
+        "original_url": "https://docs.langchain.com/oss/python/integrations/tools/tavily_extract",
+        "retrieved_at": "2026-10-14T12:44:31.490002Z",
+        "source_chars": 9402,
+        "context_truncated": false,
+        "acquisition_status": "available"
+      }
+    ],
+    "source_type": "web",
+    "learning_title": "Tavily extract 集成与全文提取/定向片段学习范围",
+    "extraction_status": "success",
+    "extraction_failures": [],
+    "learning_instruction": "学习全文提取与定向片段的区别",
+    "created_at": "2026-10-14T12:44:34+00:00",
+    "search_available": true
+  },
+  "wall_attempt_seconds": [
+    3.873,
+    85.114
+  ],
+  "elapsed_seconds": 88.987,
+  "api_timings": [
+    {
+      "method": "POST",
+      "path": "/auth/wechat",
+      "status": 200,
+      "seconds": 0.049
+    },
+    {
+      "method": "POST",
+      "path": "/quiz/preparations",
+      "status": 200,
+      "seconds": 0.018
+    },
+    {
+      "method": "POST",
+      "path": "/materials/web",
+      "status": 200,
+      "seconds": 3.793
+    },
+    {
+      "method": "GET",
+      "path": "/material-jobs/f3671bfe-3e63-47c8-88d5-449eb0a05eb8",
+      "status": 200,
+      "seconds": 0.007
+    },
+    {
+      "method": "GET",
+      "path": "/materials/eb012d7f-88ca-4dec-bdfe-12680606168f",
+      "status": 200,
+      "seconds": 0.005
+    },
+    {
+      "method": "POST",
+      "path": "/auth/wechat",
+      "status": 200,
+      "seconds": 0.057
+    },
+    {
+      "method": "POST",
+      "path": "/quiz/preparations",
+      "status": 200,
+      "seconds": 0.022
+    },
+    {
+      "method": "POST",
+      "path": "/materials/web",
+      "status": 200,
+      "seconds": 0.014
+    },
+    {
+      "method": "GET",
+      "path": "/material-jobs/f3671bfe-3e63-47c8-88d5-449eb0a05eb8",
+      "status": 200,
+      "seconds": 0.014
+    },
+    {
+      "method": "GET",
+      "path": "/materials/eb012d7f-88ca-4dec-bdfe-12680606168f",
+      "status": 200,
+      "seconds": 0.009
+    },
+    {
+      "method": "POST",
+      "path": "/quiz/generate",
+      "status": 200,
+      "seconds": 84.981
+    },
+    {
+      "method": "GET",
+      "path": "/operations/generate-url-extract",
+      "status": 200,
+      "seconds": 0.012
+    }
+  ],
+  "structured_model_usage": [
+    {
+      "operation": "5bcc29bb-abb8-4c0e-964f-ec5ea25befed",
+      "attempt": 1,
+      "tokens": {
+        "input_tokens": 3772,
+        "output_tokens": 367,
+        "total_tokens": 4139
+      }
+    },
+    {
+      "operation": "199ae757-5d42-4794-85a7-ac924b328e4d",
+      "attempt": 1,
+      "tokens": {
+        "input_tokens": 34424,
+        "output_tokens": 753,
+        "total_tokens": 35177
+      }
+    },
+    {
+      "operation": "199ae757-5d42-4794-85a7-ac924b328e4d",
+      "attempt": 1,
+      "tokens": {
+        "input_tokens": 33978,
+        "output_tokens": 648,
+        "total_tokens": 34626
+      }
+    }
+  ],
+  "operations": [
+    {
+      "key": "generate-url-extract",
+      "kind": "quiz",
+      "status": "succeeded",
+      "stage": "succeeded",
+      "model_calls": 5,
+      "tool_calls": 4,
+      "page_attempts": 5,
+      "charged": 1,
+      "retrieval": {
+        "tools": [
+          {
+            "tool": "tavily_search",
+            "status": "success",
+            "call_id": "call_00_mggVlpo9F22vKAbIx1i93605",
+            "credits": 2.0,
+            "elapsed_ms": 13583,
+            "parameters": {
+              "query": "Tavily extract API extract_depth basic advanced full content vs chunks",
+              "topic": "general",
+              "country": null,
+              "end_date": null,
+              "start_date": null,
+              "time_range": null,
+              "max_results": 6,
+              "content_mode": "full",
+              "search_depth": "advanced",
+              "exclude_domains": [],
+              "include_domains": [
+                "docs.tavily.com",
+                "tavily.com",
+                "blog.tavily.com"
+              ]
+            },
+            "source_ids": [
+              "web-c0f2499dd61d7ce8fb7f3a4b03fb5c04",
+              "web-2455fc86c56c3b08905599482fcf3a44",
+              "web-880c0b3f87da9886ab3fe3a768ad16db",
+              "web-1926dadb442f8247e059125acd51e991",
+              "web-b09a9aa90ff4e7091753e1056a0d4b36",
+              "web-d1a0c65a99b68c63c3a2c552979ce969",
+              "web-4e69afdd6e98a8d400f6dc7ed5a39394",
+              "web-a824a7d4c6640efacd18462c7d09eb66",
+              "web-b2fad1f7d1afc8e4f1caca02944f9b13",
+              "web-a169ba91175ee1a12f358c2b165a3f06",
+              "web-9795ceaba81008977bf40c369604e726",
+              "web-58bf807ec8a37d51cc879f8759b557c5",
+              "web-7f9f1ae6aacec26d4a1143e164ee3c5c",
+              "web-7fa424bc3661fa2f9b4fa999fd8a5ff8",
+              "web-8585ccd3746462eff5827d0ba4b7892e",
+              "web-88b7fac0818c176beb856232da403316",
+              "web-454a67c06ea07a35d8f3baee10ee4440",
+              "web-c41ab54112ec67a89bd8199615726a52",
+              "web-d3e03fc46044d1d93afb37e99ff73c37",
+              "web-2a0ee8a2d158068eb9c4079c98d03a54",
+              "web-327dc172fb87ff8ffcc9b700c0ef1e13",
+              "web-3fb8421d7075ce9857f77818407c7114",
+              "web-fcc41fcc72a0e772cbb3459ff3af8e69",
+              "web-7b4a395a2258cc5bd091a67bc6e3adfb",
+              "web-f1db0a1932213b3352741e90c178dce9",
+              "web-3bce3f8df0c44c62d555d5ac6265c726",
+              "web-e9cfe4286dd6a335693c19dc7d94c26f",
+              "web-99b403c762c5a9d9a4c2cd51d5cb4b27",
+              "web-52fe95e383388f33216e329e5a61713d",
+              "web-a8c61937568961a2af03daefb2a6cf24",
+              "web-35da42e253d558c5845893f6ee193116",
+              "web-785cc06edfb08a70122ab7dbf9af2750",
+              "web-f914bbbc874a9aeabaf90fef5619874f",
+              "web-d7db17be937f79cf7f7711006af9c206",
+              "web-2bff30cee32a4217960963725a447007",
+              "web-7072ff0f8b5122fd1fe4ab5702cd4b94",
+              "web-a40dd895a7fe62b19f1c186afa7d9f3b",
+              "web-4ee1511b536c44ceca02d7fff2599021",
+              "web-a8b3700d92ab0e96b7431a079fe8d78c",
+              "web-f7bb197901d02acc1235269b27345324",
+              "web-80ebd2295908e0374d23fa74f286f047",
+              "web-65596a426ed67a39ce4d0e7d272b2d9c",
+              "web-c48bec5c8cc25659ae5f11baaae56a37",
+              "web-576cb4c004c13904fe448845a5864b6d",
+              "web-896d51b44dc37d5f6f2f1aa37cba687a",
+              "web-285ca781cefccdb6a20983c7dfcdb69b",
+              "web-9b709bf97245c8d010949dc5ce78f306",
+              "web-1413b51a330879d16f29d5c921ae3924",
+              "web-26e09abe48440d94128cc25c8fc6af6d",
+              "web-5c31dc311b5832100708deb62a186622",
+              "web-4db66a495b747ba35c48b4a6c3dec0dd",
+              "web-1f0ce5ff2fc9f424bc03c7eb4f14e73b",
+              "web-7b83ba15cad435031ee16f67bdc3612f",
+              "web-7febe76a2a30c6421d1a1a221b83edf1",
+              "web-ac23c0a7ed01397b6568edccba46f599",
+              "web-e56bdd78f8b672210736ce83a5fb1919",
+              "web-70755e2ebab45a423dfd4a355bba1cbe",
+              "web-0b821726e35da241c6a6da639d965663",
+              "web-800b269082f3c52fcdb3b68270d8cf1c",
+              "web-3314fb8b7fc9f96a2b4824455e178951",
+              "web-54e66b62ffe1f8faaddf8ced960f9a9c",
+              "web-c66f71087c416d047342b296cf8884de",
+              "web-5c368cb367e8a2a061d6c9674845709d",
+              "web-023a7ad4a0f574758caf40df0269e946",
+              "web-4cf5c9f011915bbf230e9c20f4e5ee73",
+              "web-921876641c2973ac91ef1f87714a6e19",
+              "web-ecf71f00f6a2a648b85dedb1312ed5ee",
+              "web-c361e35285e64ade0ae066a5a2ff8ee2",
+              "web-c9590cf041c16b8f2bfe3eac7c8f16be",
+              "web-65c65196dc1c4b75913ae8e5461e04e2",
+              "web-287e2f8bca990e4035d6f35d13302f82",
+              "web-7a30c2e424e745eb9801e60cacdbe0f9",
+              "web-f76d00017645b59a9904c0fd1e1b7dcb",
+              "web-667c15b702f84514ca464fbfb8eb8395",
+              "web-0272fa7f39ac0d42be5eb91c4bc5101d",
+              "web-355f876cf44b25a5f22745240fe22679",
+              "web-d1ff0ccbc2dab5d9ab0d1d064196a09b"
+            ],
+            "reason_code": null
+          },
+          {
+            "tool": "tavily_search",
+            "status": "success",
+            "call_id": "call_01_hOQJyvyvXcRaZMC5Drse9054",
+            "credits": 2.0,
+            "elapsed_ms": 5623,
+            "parameters": {
+              "query": "Tavily extract include_images raw_content format markdown text",
+              "topic": "general",
+              "country": null,
+              "end_date": null,
+              "start_date": null,
+              "time_range": null,
+              "max_results": 6,
+              "content_mode": "full",
+              "search_depth": "advanced",
+              "exclude_domains": [],
+              "include_domains": [
+                "docs.tavily.com",
+                "tavily.com"
+              ]
+            },
+            "source_ids": [
+              "web-8f149033a2cda8c58fc1a2f70bd35be0",
+              "web-29f2482474d2a7f9eca428d8d9be60cf",
+              "web-2b004a5793d8c59b1cbef7a3d4c50fd2",
+              "web-85e3b958c20855917ff4b6dbe2691067",
+              "web-2dbda1c16b0b03f8f4c94d309ac1362e",
+              "web-5597804d26e98c5086e8bc4ca5d594eb",
+              "web-660f2e4ace2000c2e87746c9c54ea5c4",
+              "web-b8a150fcb0231f58eeb2744c7e5d2af8",
+              "web-d6ead5a39caa5e6c4b2563647d5670f9",
+              "web-fdac91c6548bf789fba752841c7b55ad",
+              "web-be6a7c16d0e516941a9a058f409a2ab9",
+              "web-925b9a0782149eed2943c9093f3be5e4",
+              "web-ecab2e51c33632d06f327a685f90ea10",
+              "web-c0f2499dd61d7ce8fb7f3a4b03fb5c04",
+              "web-2455fc86c56c3b08905599482fcf3a44",
+              "web-94cd3e860b66c93454a9b9b3cef3492c",
+              "web-1ced4a6e02da60071c9ee53a35a7e08a",
+              "web-b4e636d7891bf4ec7c6e9d4b774c2e00",
+              "web-e9cfe4286dd6a335693c19dc7d94c26f",
+              "web-99b403c762c5a9d9a4c2cd51d5cb4b27",
+              "web-52fe95e383388f33216e329e5a61713d",
+              "web-a8c61937568961a2af03daefb2a6cf24",
+              "web-35da42e253d558c5845893f6ee193116",
+              "web-785cc06edfb08a70122ab7dbf9af2750",
+              "web-f914bbbc874a9aeabaf90fef5619874f",
+              "web-d7db17be937f79cf7f7711006af9c206",
+              "web-2bff30cee32a4217960963725a447007",
+              "web-7072ff0f8b5122fd1fe4ab5702cd4b94",
+              "web-a40dd895a7fe62b19f1c186afa7d9f3b",
+              "web-4ee1511b536c44ceca02d7fff2599021",
+              "web-a8b3700d92ab0e96b7431a079fe8d78c",
+              "web-f7bb197901d02acc1235269b27345324",
+              "web-80ebd2295908e0374d23fa74f286f047",
+              "web-65596a426ed67a39ce4d0e7d272b2d9c",
+              "web-c48bec5c8cc25659ae5f11baaae56a37",
+              "web-576cb4c004c13904fe448845a5864b6d",
+              "web-896d51b44dc37d5f6f2f1aa37cba687a",
+              "web-285ca781cefccdb6a20983c7dfcdb69b",
+              "web-9b709bf97245c8d010949dc5ce78f306",
+              "web-1413b51a330879d16f29d5c921ae3924",
+              "web-26e09abe48440d94128cc25c8fc6af6d",
+              "web-5c31dc311b5832100708deb62a186622",
+              "web-4db66a495b747ba35c48b4a6c3dec0dd",
+              "web-1f0ce5ff2fc9f424bc03c7eb4f14e73b",
+              "web-7b83ba15cad435031ee16f67bdc3612f",
+              "web-7febe76a2a30c6421d1a1a221b83edf1",
+              "web-ac23c0a7ed01397b6568edccba46f599",
+              "web-e56bdd78f8b672210736ce83a5fb1919",
+              "web-70755e2ebab45a423dfd4a355bba1cbe",
+              "web-0b821726e35da241c6a6da639d965663",
+              "web-800b269082f3c52fcdb3b68270d8cf1c",
+              "web-3314fb8b7fc9f96a2b4824455e178951",
+              "web-54e66b62ffe1f8faaddf8ced960f9a9c",
+              "web-c66f71087c416d047342b296cf8884de",
+              "web-5c368cb367e8a2a061d6c9674845709d",
+              "web-023a7ad4a0f574758caf40df0269e946",
+              "web-4cf5c9f011915bbf230e9c20f4e5ee73",
+              "web-921876641c2973ac91ef1f87714a6e19",
+              "web-ecf71f00f6a2a648b85dedb1312ed5ee",
+              "web-c361e35285e64ade0ae066a5a2ff8ee2",
+              "web-c9590cf041c16b8f2bfe3eac7c8f16be",
+              "web-3494b86454be4369c1c55b5f7e954ac2",
+              "web-1944c198bad691657f211f2ebe0d2103",
+              "web-a8625256cc5546c085c5337e263c447b",
+              "web-aa83c3ecea10a3e5f9f3a0dfe67d53b9",
+              "web-723178b918fced98e8d127de7f7c4b2a",
+              "web-e0a13a2bb9327bd3e06f3920187708c8",
+              "web-ff9d7c7e4716c4d528359a2e34c93ec9",
+              "web-653b04d585acc27a969c16eee3e3cf50",
+              "web-7198ec10be081189aa4023697914b445",
+              "web-f25f667e8b74a6b386940fb03868f48e",
+              "web-073d1fa5f166f2bb813c87544afcc76a",
+              "web-880c0b3f87da9886ab3fe3a768ad16db",
+              "web-1926dadb442f8247e059125acd51e991",
+              "web-b09a9aa90ff4e7091753e1056a0d4b36",
+              "web-d1a0c65a99b68c63c3a2c552979ce969"
+            ],
+            "reason_code": null
+          },
+          {
+            "tool": "tavily_extract",
+            "status": "success",
+            "call_id": "call_00_ymmVNnk6auU5Foq7l6gK6365",
+            "credits": 2.0,
+            "elapsed_ms": 1068,
+            "parameters": {
+              "urls": [
+                "https://docs.tavily.com/documentation/api-reference/endpoint/extract",
+                "https://docs.tavily.com/examples/quick-tutorials/extract-api",
+                "https://docs.tavily.com/documentation/best-practices/best-practices-extract"
+              ],
+              "query": null,
+              "content_mode": "full",
+              "extract_depth": "advanced",
+              "chunks_per_source": null
+            },
+            "source_ids": [
+              "web-880c0b3f87da9886ab3fe3a768ad16db",
+              "web-1926dadb442f8247e059125acd51e991",
+              "web-b09a9aa90ff4e7091753e1056a0d4b36",
+              "web-d1a0c65a99b68c63c3a2c552979ce969",
+              "web-c0f2499dd61d7ce8fb7f3a4b03fb5c04",
+              "web-2455fc86c56c3b08905599482fcf3a44",
+              "web-65c65196dc1c4b75913ae8e5461e04e2",
+              "web-287e2f8bca990e4035d6f35d13302f82",
+              "web-7a30c2e424e745eb9801e60cacdbe0f9"
+            ],
+            "reason_code": null
+          },
+          {
+            "tool": "tavily_extract",
+            "status": "success",
+            "call_id": "call_00_sMoedPqYAawH0yl2tLn09334",
+            "credits": 0.0,
+            "elapsed_ms": 1054,
+            "parameters": {
+              "urls": [
+                "https://docs.tavily.com/documentation/api-reference/endpoint/extract",
+                "https://docs.tavily.com/documentation/best-practices/best-practices-extract"
+              ],
+              "query": "query chunks_per_source focused chunks vs full content extraction raw_content difference",
+              "content_mode": "focused",
+              "extract_depth": "advanced",
+              "chunks_per_source": 5
+            },
+            "source_ids": [
+              "web-611b406f4642adbbb02904e5ed96c748",
+              "web-76c17bfa8c8df8b4199db88196018187"
+            ],
+            "reason_code": null
+          }
+        ],
+        "model_usage": {
+          "input_tokens": 84546,
+          "total_tokens": 85193,
+          "output_tokens": 647
+        },
+        "reason_code": "RETRIEVAL_BUDGET_EXHAUSTED"
+      },
+      "error_code": null
+    },
+    {
+      "key": "material-f3671bfe-3e63-47c8-88d5-449eb0a05eb8",
+      "kind": "material",
+      "status": "succeeded",
+      "stage": "succeeded",
+      "model_calls": 1,
+      "tool_calls": 1,
+      "page_attempts": 1,
+      "charged": 1,
+      "retrieval": null,
+      "error_code": null
+    }
+  ],
+  "retrieval_preparations": [],
+  "confirmed_selection": {
+    "material_id": "eb012d7f-88ca-4dec-bdfe-12680606168f",
+    "point_ids": [
+      "s1",
+      "s2"
+    ],
+    "supplement": true,
+    "question_count": 3,
+    "difficulty": "easy",
+    "execution": "background"
+  },
+  "operation": {
+    "status": "succeeded",
+    "result": {
+      "id": "9a42f0cf-3499-4233-a647-08d6881efaeb",
+      "quiz": {
+        "id": "d40bda3f-567f-493c-9db6-a225aa5e3771",
+        "title": "Tavily Extract 全文提取与定向片段",
+        "reward": {
+          "xp": 10,
+          "coins": 2
+        },
+        "source": {
+          "url": "https://docs.langchain.com/oss/python/integrations/tools/tavily_extract",
+          "type": "web",
+          "title": "Tavily extract integration - Docs by LangChain",
+          "segments": [],
+          "material_id": "eb012d7f-88ca-4dec-bdfe-12680606168f"
+        },
+        "summary": "基于 Tavily Extract 文档片段，考查全文提取与定向片段（chunks）的区别、extract_depth 参数以及 raw_content 的返回形式。",
+        "grounding": {
+          "status": "source_backed",
+          "provider": "tavily",
+          "reason_code": null,
+          "retrieved_at": "2026-10-14T12:45:35.609785Z",
+          "check_version": "evidence-review-v2"
+        },
+        "questions": [
+          {
+            "id": "q1",
+            "stem": "根据 Tavily Extract 的最佳实践资料，使用 chunks_per_source 参数时，返回的片段有什么特点？",
+            "type": "single",
+            "origin": null,
+            "answers": [],
+            "options": [
+              {
+                "id": "A",
+                "text": "返回整页完整内容，不做任何截取"
+              },
+              {
+                "id": "B",
+                "text": "只返回与查询相关的短片段，每个片段最多 500 个字符"
+              },
+              {
+                "id": "C",
+                "text": "返回网页中的所有图片链接"
+              },
+              {
+                "id": "D",
+                "text": "返回网页的 HTML 源代码"
+              }
+            ],
+            "grounding": {
+              "status": "source_backed"
+            },
+            "source_ids": [],
+            "explanation": "",
+            "knowledge_point": "定向片段（chunks）与全文提取的区别"
+          },
+          {
+            "id": "q2",
+            "stem": "关于 Tavily Extract 的 extract_depth 参数，下列哪些说法符合资料描述？",
+            "type": "multi",
+            "origin": null,
+            "answers": [],
+            "options": [
+              {
+                "id": "A",
+                "text": "extract_depth 控制提取的全面程度"
+              },
+              {
+                "id": "B",
+                "text": "basic 提取每 5 次成功 URL 提取消耗 1 个 API Credit"
+              },
+              {
+                "id": "C",
+                "text": "advanced 提取每 5 次成功 URL 提取消耗 2 个 API Credit"
+              },
+              {
+                "id": "D",
+                "text": "extract_depth 只能取值为 markdown 或 text"
+              }
+            ],
+            "grounding": {
+              "status": "source_backed"
+            },
+            "source_ids": [],
+            "explanation": "",
+            "knowledge_point": "extract_depth 参数与计费"
+          },
+          {
+            "id": "q3",
+            "stem": "根据资料，Tavily Extract 返回的结果中，raw_content 字段存放的是提取到的原始内容。",
+            "type": "judge",
+            "origin": null,
+            "answers": [],
+            "options": [
+              {
+                "id": "A",
+                "text": "正确"
+              },
+              {
+                "id": "B",
+                "text": "错误"
+              }
+            ],
+            "grounding": {
+              "status": "source_backed"
+            },
+            "source_ids": [],
+            "explanation": "",
+            "knowledge_point": "raw_content 返回字段"
+          }
+        ],
+        "created_at": "2026-10-14T12:46:27.409816+00:00",
+        "difficulty": "easy",
+        "source_text": "学习全文提取与定向片段的区别",
+        "learning_scope": {
+          "focus": "学习全文提取与定向片段的区别",
+          "topic": "Tavily extract 集成与全文提取/定向片段学习范围",
+          "domain": "用户提供的材料",
+          "points": [
+            "Tavily extract 集成概览与集成信息",
+            "工具特性：返回原始内容与图片、异步支持、免费额度",
+            "安装与凭据设置",
+            "实例化参数：extract_depth 与 include_images",
+            "直接传参调用并返回全文提取结果",
+            "使用 ToolCall 调用并返回 JSON 字符串结果",
+            "在 agent 中使用 TavilyExtract 工具",
+            "agent 流式事件与工具调用参数",
+            "工具返回的全文内容（raw_content）示例",
+            "agent 对提取内容生成的摘要片段",
+            "理论物理页面提取内容的截断与摘要对比"
+          ],
+          "focus_id": null,
+          "input_text": "学习全文提取与定向片段的区别",
+          "candidate_id": null,
+          "scope_version": null,
+          "preparation_id": null,
+          "scope_point_ids": []
+        }
+      },
+      "mode": "new",
+      "answers": [],
+      "cursor": 0,
+      "pending_ms": 0,
+      "started_at": "2026-10-14T12:46:27+00:00",
+      "completed_at": null,
+      "report": null,
+      "review_keys": []
+    },
+    "error_code": null,
+    "stage": "succeeded",
+    "retry_after_seconds": 0,
+    "deadline": "2026-10-14T12:50:02+00:00"
+  },
+  "quiz": {
+    "id": "d40bda3f-567f-493c-9db6-a225aa5e3771",
+    "title": "Tavily Extract 全文提取与定向片段",
+    "reward": {
+      "xp": 10,
+      "coins": 2
+    },
+    "source": {
+      "url": "https://docs.langchain.com/oss/python/integrations/tools/tavily_extract",
+      "type": "web",
+      "title": "Tavily extract integration - Docs by LangChain",
+      "segments": [
+        {
+          "id": "web-9795ceaba81008977bf40c369604e726",
+          "end": null,
+          "url": "https://docs.tavily.com/sdk/python/reference",
+          "page": null,
+          "text": "5 successful URL extractions. | `\"basic\"` |\n| `format` | `str` | The format of the extracted web page content. `\"markdown\"` returns content in markdown format. `\"text\"` returns plain text and may increase latency. | `\"markdown\"` |\n| `timeout` | `float` | A timeout to be used in requests to the Tavily API. Maximum time in seconds to wait for the URL extraction before timing out. Must be between 1.0 and 60.0 seconds. If not specified, default timeouts are applied based on extract\\_depth: 10 seconds for basic extraction and 30 seconds for advanced extraction. | `None` |\n| `include_favicon` | `bool` | Whether to include the favicon URL for each result. | `False` |\n| `include_usage` | `bool` | Whether to include credit usage information in the response.`NOTE:`The value may be 0 if the total successful URL extractions has not yet reached 5 calls. See our [Credits & Pricing documentation](https://docs.tavily.com/documentation/api-credits) for details. | `False` |\n| `query` | `str` | User intent for reranking extracted content chunks. When provided, chunks are reranked based on relevance to this query. | `None` |\n| `chunks_per_source` | `int` | Chunks are short content snippets (maximum 500 characters each) pulled directly from the source. Use `chunks_per_source` to define the maximum number of relevant chunks returned per source and to control the `raw_content` length. Chunks will appear in the `raw_content` field as:  `[...]  [...]` . Available only when `query` is provided. Must be between 1 and 5. | `3` |\n\n### [​](#response-format-2) Response format\n\nThe response object you receive will be in the following format:\n\n| Key | Type | Description |\n| --- | --- | --- |\n| `results` | `list[SuccessfulResult]` | A list of extracted content. |\n| `failed_results` | `list[FailedResult]` | A list of URLs that could not be processed. |\n| `response_time` | `float` | The search result response time. |\n| `request_id` | `str` | A unique request identifier you can share with customer support to help resolve issues with specific requests. |\n\n#### [​](#successful-results) Successful Results\n\nEach successful result in the `results` list will be in the following `SuccessfulResult` format:\n\n| Key | Type | Description |\n| --- | --- | --- |\n| `url` | `str` | The URL of the webpage. |\n| `raw_content` | `str` | The raw content extracted. When `query` is provided, contains the top-ranked chunks joined by `[...]` separator. |\n| `images` (optional) | `list[str]` | This is only available if `include_images` is set to `True`. A list of extracted image URLs. |\n| `favicon` (optional) | `str` | The favicon URL for the search result. |\n\n#### [​](#failed-results) Failed Results\n\nEach failed result in the `results` list will be in the following `FailedResult` format:\n\n| Key | Type | Description |\n| --- | --- | --- |\n| `url` | `str` | The URL that failed. |\n| `error` | `str` | An error message describing why it could not be processed. |\n\n### [​](#example-2) Example\n\nRequest\n\n```\nfrom tavily import TavilyClient from  tavily import  TavilyClient # Step 1. Instantiating your TavilyClient# Step 1. Instantiating your TavilyClienttavily_client = TavilyClient(api_key=\"tvly-YOUR_API_KEY\") tavily_client = TavilyClient(api_key =\"tvly-YOUR_API_KEY\") # Step 2. Defining the list of URLs to extract content from# Step 2. Defining the list of URLs to extract content fromurls = [urls = [ \"https://en.wikipedia.org/wiki/Artificial_intelligence\", \"https://en.wikipedia.org/wiki/Artificial_intelligence\", \"https://en.wikipedia.org/wiki/Machine_learning\", \"https://en.wikipedia.org/wiki/Machine_learning\", \"https://en.wikipedia.org/wiki/Data_science\", \"https://en.wikipedia.org/wiki/Data_science\",]] # Step 3. Executing the extract request# Step 3. Executing the extract requestresponse = tavily_client.extract(urls=urls, include_images=True) response = tavily_client.extract(urls =urls, include_images = True) # Step 4. Printing the extracted raw content# Step 4. Printing the extracted raw contentpr",
+          "start": null,
+          "title": "SDK Reference - Tavily Docs",
+          "truncated": false,
+          "supplement": true,
+          "original_id": null,
+          "content_hash": "6cfdeb0bd67d37cab4f2f1040998a8a371e63fa28726435eb079a30f846bffc7",
+          "content_kind": "full_extract",
+          "original_url": "https://docs.tavily.com/sdk/python/reference",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:45:17.820927Z",
+          "source_chars": 77786,
+          "original_quiz_id": null,
+          "context_truncated": true,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-35da42e253d558c5845893f6ee193116",
+          "end": null,
+          "url": "https://docs.tavily.com/sdk/javascript/reference",
+          "page": null,
+          "text": "l URL extractions, while `\"advanced\"` extraction costs 2 API Credits per 5 successful URL extractions. | `\"basic\"` |\n| `format` | `str` | The format of the extracted web page content. `\"markdown\"` returns content in markdown format. `\"text\"` returns plain text and may increase latency. | `\"markdown\"` |\n| `timeout` | `number` | A timeout to be used in requests to the Tavily API. Maximum time in seconds to wait for the URL extraction before timing out. Must be between 1.0 and 60.0 seconds. If not specified, default timeouts are applied based on extract\\_depth: 10 seconds for basic extraction and 30 seconds for advanced extraction. | `None` |\n| `includeFavicon` | `boolean` | Whether to include the favicon URL for each result. | `false` |\n| `includeUsage` | `boolean` | Whether to include credit usage information in the response.`NOTE:`The value may be 0 if the total successful URL extractions has not yet reached 5 calls. See our [Credits & Pricing documentation](https://docs.tavily.com/documentation/api-credits) for details. | `false` |\n| `query` | `string` | User intent for reranking extracted content chunks. When provided, chunks are reranked based on relevance to this query. | — |\n| `chunksPerSource` | `number` | Chunks are short content snippets (maximum 500 characters each) pulled directly from the source. Use `chunksPerSource` to define the maximum number of relevant chunks returned per source and to control the `rawContent` length. Chunks will appear in the `rawContent` field as:  `[...]  [...]` . Available only when `query` is provided. Must be between 1 and 5. | `3` |\n\n### [​](#response-format-2) Response format\n\nThe response object you receive will be in the following format:\n\n| Key | Type | Description |\n| --- | --- | --- |\n| `results` | `SuccessfulResult[]` | A list of extracted content. |\n| `failed_results` | `FailedResult[]` | A list of URLs that could not be processed. |\n| `response_time` | `number` | The search result response time. |\n| `requestId` | `string` | A unique request identifier you can share with customer support to help resolve issues with specific requests. |\n\n#### [​](#successful-results) Successful Results\n\nEach successful result in the `results` list will be in the following `SuccessfulResult` format:\n\n| Key | Type | Description |\n| --- | --- | --- |\n| `url` | `string` | The URL of the webpage. |\n| `raw_content` | `string` | The raw content extracted. When `query` is provided, contains the top-ranked chunks joined by `[...]` separator. |\n| `images` (optional) | `string[]` | This is only available if `includeImages` is set to `true`. A list of extracted image URLs. |\n| `favicon` (optional) | `string` | The favicon URL for the result. |\n\n#### [​](#failed-results) Failed Results\n\nEach failed result in the `results` list will be in the following `FailedResult` format:\n\n| Key | Type | Description |\n| --- | --- | --- |\n| `url` | `string` | The URL that failed. |\n| `error` | `string` | An error message describing why it could not be processed. |\n\n### [​](#example-2) Example\n\nRequest\n\n```\nfrom tavily import TavilyClient from  tavily import  TavilyClient # Step 1. Instantiating your TavilyClient# Step 1. Instantiating your TavilyClienttavily_client = TavilyClient(api_key=\"tvly-YOUR_API_KEY\") tavily_client = TavilyClient(api_key =\"tvly-YOUR_API_KEY\") # Step 2. Defining the list of URLs to extract content from# Step 2. Defining the list of URLs to extract content fromurls = [urls = [ \"https://en.wikipedia.org/wiki/Artificial_intelligence\", \"https://en.wikipedia.org/wiki/Artificial_intelligence\", \"https://en.wikipedia.org/wiki/Machine_learning\", \"https://en.wikipedia.org/wiki/Machine_learning\", \"https://en.wikipedia.org/wiki/Data_science\", \"https://en.wikipedia.org/wiki/Data_science\",]] # Step 3. Executing the extract request# Step 3. Executing the extract requestresponse = tavily_client.extract(urls=urls, include_images=True) response = tavily_client.extract(urls =urls, include_images = True) # Step 4. Printin",
+          "start": null,
+          "title": "SDK Reference - Tavily Docs",
+          "truncated": false,
+          "supplement": true,
+          "original_id": null,
+          "content_hash": "aa11fbf21cfb9862ac509c9e42334f0fb58e8fd101f03f2ad615e89d3a87dfaa",
+          "content_kind": "full_extract",
+          "original_url": "https://docs.tavily.com/sdk/javascript/reference",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:45:17.820927Z",
+          "source_chars": 168161,
+          "original_quiz_id": null,
+          "context_truncated": true,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-7072ff0f8b5122fd1fe4ab5702cd4b94",
+          "end": null,
+          "url": "https://docs.tavily.com/sdk/javascript/reference",
+          "page": null,
+          "text": "| `url` | `str` | The URL of the webpage. |\\n| `raw_content` | `str` | The raw content extracted. |\\n| `images` (optional) | `list[str]` | This is only available if `include_images` is set to `True`. A list of extracted image URLs. |\\n\\n#### [​](#failed-results) Failed Results\\n\\nEach failed result in the `results` list will be in the following `FailedResult` format:\\n\\n| Key | Type | Description |\\n| --- | --- | --- |\\n| `url` | `str` | The URL that failed. |\\n| `error` | `str` | An error message describing why it could not be processed. |\\n\\n### [​](#example-2) Example\\n\\nRequest\\n\\nCopy\\n\\n```\\nfrom tavily import TavilyClient\\n\\n# Step 1. Instantiating your TavilyClient\\ntavily_client = TavilyClient(api_key=\\\"tvly-YOUR_API_KEY\\\")\\n\\n# Step 2. Defining the list of URLs to extract content from\\nurls = [\\n \\\"https://en.wikipedia.org/wiki/Artificial_intelligence\\\",\\n \\\"https://en.wikipedia.org/wiki/Machine_learning\\\",\\n \\\"https://en.wikipedia.org/wiki/Data_science\\\",\\n]\\n\\n# Step 3. Executing the extract request\\nresponse = tavily_client.extract(urls=urls, include_images=True)\\n\\n# Step 4. Printing the extracted raw content\\nprint(response)\\n\\n```\\n\\nResponse\\n\\nCopy\\n\\n```\\n{\\n \\\"results\\\": [\\n {\\n \\\"url\\\": \\\"https://en.wikipedia.org/wiki/Artificial_intelligence\\\",\\n \\\"raw_content\\\": \\\"URL 1 raw content\\\",\\n \\\"images\\\": [\\n \\\"Image 1 URL\\\",\\n \\\"Image 2 URL\\\"\\n ]\\n },\\n {\\n \\\"url\\\": \\\"https://en.wikipedia.org/wiki/Machine_learning\\\",\\n \\\"raw_content\\\": \\\"URL 2 raw content\\\",\\n \\\"images\\\": [\\n \\\"Image 3 URL\\\",\\n \\\"Image 4 URL\\\"\\n ]\\n },\\n {\\n \\\"url\\\": \\\"https://en.wikipedia.org/wiki/Data_science\\\",\\n \\\"raw_content\\\": \\\"URL 3 raw content\\\",\\n \\\"images\\\": [\\n \\\"Image 5 URL\\\",\\n \\\"Image 6 URL\\\"\\n ]\\n }\\n ],\\n \\\"failed_results\\\": [],\\n \\\"response_time\\\": 1.23\\n}\\n\\n```\\n\\n## [​](#tavily-crawl) Tavily Crawl\\n\\nYou can access Tavily Crawl in Python through the `crawl` function.\\n\\n### [​](#parameters-3) Parameters\\n\\n| Parameter | Type | Description | Default |\\n| --- | --- | --- | --- |\\n| `url` **(required)** | `str` | The root URL to begin the crawl. | — |\\n| `max_depth` | `int` | Max depth of the crawl. Defines how far from the base URL the crawler can explore. | `1` |\\n| `max_breadth` | `int` | Max number of links to follow **per level** of the tree (i.e., per page). | `20` |\\n| `limit` | `int` | Total number of links the crawler will process before stopping. | `50` |\\n| `query` | `str` | Natural language instructions for the crawler. | — |\\n| `select_paths` | `list[str]` | **Regex patterns** to select only URLs with specific path patterns (e.g., `\\\"/docs/.*\\\"`, `\\\"/api/v1.*\\\"`). | `None` |\\n| `select_domains` | `list[str]` | **Regex patterns** to select crawling to specific domains or subdomains (e.g., `\\\"^docs\\\\.example\\\\.com$\\\"`). | `None` |\\n| `allow_external` | `bool` | Whether to allow following links that go to external domains. | `False` |\\n| `include_images` | `bool` | Whether to extract image URLs from the crawled pages. | `False` |\\n| `extract_depth` | `str` | Advanced extraction retrieves more data, including tables and embedded content, with higher success but may increase latency. Options: `\\\"basic\\\"` or `\\\"advanced\\\"`. | `\\\"basic\\\"` |\\n\\n### [​](#response-format-3) Response format\\n\\nThe response object you receive will be in the following format:\\n\\n| Key | Type | Description |\\n| --- | --- | --- |\\n| `base_url` | `str` | The URL you started the crawl from. |\\n| `results` | `list[Result]` | A list of crawled pages. |\\n| `response_time` | `float` | The crawl response time. |\\n\\n#### [​](#results-2) Results\\n\\nEach successful result in the `results` list will be in the following `Result` format:\\n\\n| Key | Type | Description |\\n| --- | --- | --- |\\n| `url` | `str` | The URL of the webpage. |\\n| `raw_content` | `str` | The raw content extracted. |\\n| `images` | `list[str]` | Image URLs extracted from the page. |\\n\\n### [​](#example-3) Example\\n\\nRequest\\n\\nCopy\\n\\n```\\nfrom tavily import TavilyClient\\n\\n# Step 1. Ins",
+          "start": null,
+          "title": "SDK Reference - Tavily Docs",
+          "truncated": false,
+          "supplement": true,
+          "original_id": null,
+          "content_hash": "aa11fbf21cfb9862ac509c9e42334f0fb58e8fd101f03f2ad615e89d3a87dfaa",
+          "content_kind": "full_extract",
+          "original_url": "https://docs.tavily.com/sdk/javascript/reference",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:45:17.820927Z",
+          "source_chars": 168161,
+          "original_quiz_id": null,
+          "context_truncated": true,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-287e2f8bca990e4035d6f35d13302f82",
+          "end": null,
+          "url": "https://docs.tavily.com/documentation/best-practices/best-practices-extract",
+          "page": null,
+          "text": "h URLs to extract from, while Search with `include_raw_content` extracts from all search results.\n\n## [​](#extract-depth) Extract Depth\n\nThe `extract_depth` parameter controls extraction comprehensiveness:\n\n| Depth | Use case |\n| --- | --- |\n| `basic` (default) | Simple text extraction, faster processing |\n| `advanced` | Complex pages, tables, structured data, media |\n\n### [​](#using-extract_depth=advanced) Using `extract_depth=advanced`\n\nBest for content requiring detailed extraction:\n\n```\nawait tavily_client.extract(await tavily_client.extract( url=\"https://example.com/complex-page\",  url =\"https://example.com/complex-page\", extract_depth=\"advanced\"  extract_depth = \"advanced\"))\n```\n\n**When to use advanced:**\n\n* Dynamic content or JavaScript-rendered pages\n* Tables and structured information\n* Embedded media and rich content\n* Higher extraction success rates needed\n\n`extract_depth=advanced` provides better accuracy but increases latency and cost. Use `basic` for simple content.\n\n## [​](#advanced-filtering-strategies) Advanced Filtering Strategies\n\nBeyond query-based filtering, consider these approaches for curating URLs before extraction:\n\n| Strategy | When to use |\n| --- | --- |\n| Re-ranking | Use dedicated re-ranking models for precision |\n| LLM-based | Let an LLM assess relevance before extraction |\n| Clustering | Group similar documents, extract from clusters |\n| Domain-based | Filter by trusted domains before extracting |\n| Score-based | Filter search results by relevance score |\n\n### [​](#example-score-based-filtering) Example: Score-based filtering\n\n```\nimport asyncio import  asyncio from tavily import AsyncTavilyClient from  tavily import  AsyncTavilyClient tavily_client = AsyncTavilyClient(api_key=\"tvly-YOUR_API_KEY\") tavily_client = AsyncTavilyClient(api_key =\"tvly-YOUR_API_KEY\") async def filtered_extraction(): async  def  filtered_extraction():  # Search first  # Search first response = await tavily_client.search( response =  await tavily_client.search( query=\"AI healthcare applications\",  query = \"AI healthcare applications\", search_depth=\"advanced\",  search_depth = \"advanced\", max_results=20  max_results = 20 ) )  # Filter by relevance score (>0.5) # Filter by relevance score (>0.5) relevant_urls = [ relevant_urls = [ result['url'] for result in response.get('results', []) result['url'] for  result in response.get('results', []) if result.get('score', 0) > 0.5  if result.get('score', 0) > 0.5 ] ]  # Extract from filtered URLs with targeted query  # Extract from filtered URLs with targeted query extracted_data = await tavily_client.extract( extracted_data =  await tavily_client.extract( urls=relevant_urls,  urls =relevant_urls, query=\"machine learning diagnostic tools\",  query = \"machine learning diagnostic tools\", chunks_per_source=3,  chunks_per_source = 3, extract_depth=\"advanced\"  extract_depth = \"advanced\" ) )  return extracted_data  return  extracted_data asyncio.run(filtered_extraction())asyncio.run(filtered_extraction())\n```\n\n## [​](#integration-with-search) Integration with Search\n\n### [​](#optimal-workflow) Optimal workflow\n\n* **Search** to discover relevant URLs\n* **Filter** by relevance score, domain, or content snippet\n* **Re-rank** if needed using specialized models\n* **Extract** from top-ranked sources with query and chunks\\_per\\_source\n* **Validate** extracted content quality\n* **Process** for your RAG or AI application\n\n### [​](#example-end-to-end-pipeline) Example end-to-end pipeline\n\n```\nasync def content_pipeline(topic): async  def  content_pipeline(topic): # 1. Search with sub-queries # 1. Search with sub-queries queries = generate_subqueries(topic)  queries = generate_subqueries(topic) responses = await asyncio.gather( responses =  await asyncio.gather( *[tavily_client.search(**q) for q in queries] *[tavily_client.search(**q) for  q in queries] ) )  # 2. Filter and aggregate # 2. Filter and aggregate urls = []  urls = [] for response in responses:  for  response in responses: urls.extend([",
+          "start": null,
+          "title": "Best Practices for Extract - Tavily Docs",
+          "truncated": false,
+          "supplement": true,
+          "original_id": null,
+          "content_hash": "5bfa43a147740fcaa255d2d8f7a8ec1c5b1c0cfb9db851a1aafa7eb4ac8c368b",
+          "content_kind": "full_extract",
+          "original_url": "https://docs.tavily.com/documentation/best-practices/best-practices-extract",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:45:17.820927Z",
+          "source_chars": 10490,
+          "original_quiz_id": null,
+          "context_truncated": true,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-76c17bfa8c8df8b4199db88196018187",
+          "end": null,
+          "url": "https://docs.tavily.com/documentation/best-practices/best-practices-extract",
+          "page": null,
+          "text": "Key benefits:\n\n Returns only relevant content snippets (max 500 characters each) instead of full page content\n Prevents context window from exploding\n Chunks appear in `raw_content` as:  `[...]  [...]`\n Must be between 1 and 5 chunks per source\n\n> `chunks_per_source` is only available when `query` is provided.\n\nExample with multiple URLs:\n\n```\nawait tavily_client.extract(await tavily_client.extract( urls=[ urls =[ \" \" \" \" \" \" ], ], query=\"AI diagnostic tools accuracy\",  query = \"AI diagnostic tools accuracy\", chunks_per_source=2  chunks_per_source = 2))\n```\n\nThis returns the 2 most relevant chunks from each URL, giving you focused, relevant content without overwhelming your context window.\n\n## ​ Extraction Approaches\n\n### ​ Search with include\\_raw\\_content [...] ```\nawait tavily_client.extract(await tavily_client.extract( urls=[\" \"  urls =[\" \" query=\"machine learning applications\",  query = \"machine learning applications\", chunks_per_source=3  chunks_per_source = 3))\n```\n\nWhen to use:\n\n You already have specific URLs to extract from\n You want to filter or curate URLs before extraction\n You need targeted extraction with query and chunks\\_per\\_source\n\nKey difference: The main distinction is control, with Extract you choose exactly which URLs to extract from, while Search with `include_raw_content` extracts from all search results.\n\n## ​ Extract Depth\n\nThe `extract_depth` parameter controls extraction comprehensiveness: [...] When to use query:\n\n To extract only relevant portions of long documents\n When you need focused content instead of full page extraction\n For targeted information retrieval from specific URLs\n\n> When `query` is provided, chunks are reranked based on relevance to the query.\n\n### ​ Chunks Per Source\n\nControl the amount of content returned per URL to prevent context window explosion:\n\n```\nawait tavily_client.extract(await tavily_client.extract( urls=[\"  urls =[\" query=\"machine learning applications in healthcare\",  query = \"machine learning applications in healthcare\", chunks_per_source=3  chunks_per_source = 3))\n```\n\nKey benefits: [...] ## ​ Summary\n\n1. Use query and chunks\\_per\\_source for targeted, focused extraction\n2. Choose Extract API when you need control over which URLs to extract from\n3. Filter URLs before extraction using scores, re-ranking, or domain trust\n4. Choose appropriate extract\\_depth based on content complexity\n5. Process URLs concurrently with async operations for better performance\n6. Implement error handling to manage failed extractions gracefully\n7. Validate extracted content before downstream processing\n8. Optimize costs by extracting only necessary content with chunks\\_per\\_source\n9. Use `session_id` and `human_id` to link related calls across multi-step agent workflows [...] > Start with query and chunks\\_per\\_source for targeted extraction. Filter URLs strategically, extract with appropriate depth, and handle errors gracefully for production-ready pipelines.\n\nResponses are generated using AI and may contain mistakes.",
+          "start": null,
+          "title": "Best Practices for Extract - Tavily Docs",
+          "truncated": false,
+          "supplement": true,
+          "original_id": null,
+          "content_hash": "7ee8055ad12d71a9653a25b9c728508c4408af60f41c0c627557d05f3d6958c8",
+          "content_kind": "focused_extract",
+          "original_url": "https://docs.tavily.com/documentation/best-practices/best-practices-extract",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:45:35.609785Z",
+          "source_chars": 3015,
+          "original_quiz_id": null,
+          "context_truncated": true,
+          "acquisition_status": "available"
+        }
+      ],
+      "material_id": "eb012d7f-88ca-4dec-bdfe-12680606168f"
+    },
+    "summary": "基于 Tavily Extract 文档片段，考查全文提取与定向片段（chunks）的区别、extract_depth 参数以及 raw_content 的返回形式。",
+    "grounding": {
+      "status": "source_backed",
+      "provider": "tavily",
+      "reason_code": null,
+      "retrieved_at": "2026-10-14T12:45:35.609785Z",
+      "check_version": "evidence-review-v2"
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "stem": "根据 Tavily Extract 的最佳实践资料，使用 chunks_per_source 参数时，返回的片段有什么特点？",
+        "type": "single",
+        "origin": null,
+        "answers": [
+          "B"
+        ],
+        "options": [
+          {
+            "id": "A",
+            "text": "返回整页完整内容，不做任何截取"
+          },
+          {
+            "id": "B",
+            "text": "只返回与查询相关的短片段，每个片段最多 500 个字符"
+          },
+          {
+            "id": "C",
+            "text": "返回网页中的所有图片链接"
+          },
+          {
+            "id": "D",
+            "text": "返回网页的 HTML 源代码"
+          }
+        ],
+        "grounding": {
+          "status": "source_backed",
+          "provider": "tavily",
+          "reason_code": null,
+          "retrieved_at": "2026-10-14T12:45:35.609785Z",
+          "check_version": "evidence-review-v2"
+        },
+        "source_ids": [
+          "web-76c17bfa8c8df8b4199db88196018187"
+        ],
+        "explanation": "资料指出，使用 chunks 时只返回相关的内容片段（每个片段最多 500 字符），而不是整页内容，从而防止上下文窗口爆炸；这些片段会出现在 raw_content 中。因此正确答案是 B。",
+        "knowledge_point": "定向片段（chunks）与全文提取的区别"
+      },
+      {
+        "id": "q2",
+        "stem": "关于 Tavily Extract 的 extract_depth 参数，下列哪些说法符合资料描述？",
+        "type": "multi",
+        "origin": null,
+        "answers": [
+          "A",
+          "B",
+          "C"
+        ],
+        "options": [
+          {
+            "id": "A",
+            "text": "extract_depth 控制提取的全面程度"
+          },
+          {
+            "id": "B",
+            "text": "basic 提取每 5 次成功 URL 提取消耗 1 个 API Credit"
+          },
+          {
+            "id": "C",
+            "text": "advanced 提取每 5 次成功 URL 提取消耗 2 个 API Credit"
+          },
+          {
+            "id": "D",
+            "text": "extract_depth 只能取值为 markdown 或 text"
+          }
+        ],
+        "grounding": {
+          "status": "source_backed",
+          "provider": "tavily",
+          "reason_code": null,
+          "retrieved_at": "2026-10-14T12:45:17.820927Z",
+          "check_version": "evidence-review-v2"
+        },
+        "source_ids": [
+          "web-287e2f8bca990e4035d6f35d13302f82",
+          "web-35da42e253d558c5845893f6ee193116",
+          "web-9795ceaba81008977bf40c369604e726"
+        ],
+        "explanation": "资料说明 extract_depth 参数控制提取的全面程度；basic 提取每 5 次成功 URL 提取消耗 1 个 API Credit，advanced 提取每 5 次成功 URL 提取消耗 2 个 API Credit。选项 D 错误，因为 markdown 或 text 是 format 参数的取值，不是 extract_depth 的取值。",
+        "knowledge_point": "extract_depth 参数与计费"
+      },
+      {
+        "id": "q3",
+        "stem": "根据资料，Tavily Extract 返回的结果中，raw_content 字段存放的是提取到的原始内容。",
+        "type": "judge",
+        "origin": null,
+        "answers": [
+          "A"
+        ],
+        "options": [
+          {
+            "id": "A",
+            "text": "正确"
+          },
+          {
+            "id": "B",
+            "text": "错误"
+          }
+        ],
+        "grounding": {
+          "status": "source_backed",
+          "provider": "tavily",
+          "reason_code": null,
+          "retrieved_at": "2026-10-14T12:45:17.820927Z",
+          "check_version": "evidence-review-v2"
+        },
+        "source_ids": [
+          "web-7072ff0f8b5122fd1fe4ab5702cd4b94"
+        ],
+        "explanation": "资料在结果字段说明中列出 raw_content 为字符串类型，描述为“The raw content extracted”，即提取到的原始内容。因此该说法正确。",
+        "knowledge_point": "raw_content 返回字段"
+      }
+    ],
+    "created_at": "2026-10-14T12:46:27.409816+00:00",
+    "difficulty": "easy",
+    "source_text": "学习全文提取与定向片段的区别",
+    "learning_scope": {
+      "focus": "学习全文提取与定向片段的区别",
+      "topic": "Tavily extract 集成与全文提取/定向片段学习范围",
+      "domain": "用户提供的材料",
+      "points": [
+        "Tavily extract 集成概览与集成信息",
+        "工具特性：返回原始内容与图片、异步支持、免费额度",
+        "安装与凭据设置",
+        "实例化参数：extract_depth 与 include_images",
+        "直接传参调用并返回全文提取结果",
+        "使用 ToolCall 调用并返回 JSON 字符串结果",
+        "在 agent 中使用 TavilyExtract 工具",
+        "agent 流式事件与工具调用参数",
+        "工具返回的全文内容（raw_content）示例",
+        "agent 对提取内容生成的摘要片段",
+        "理论物理页面提取内容的截断与摘要对比"
+      ],
+      "focus_id": null,
+      "input_text": "学习全文提取与定向片段的区别",
+      "candidate_id": null,
+      "scope_version": null,
+      "preparation_id": null,
+      "scope_point_ids": []
+    }
+  },
+  "human_review": {
+    "scope_matches_intent": true,
+    "notes": "按用户对当前20例/60题核对请求的总体回复“正确”登记；未收到逐项表单导出。",
+    "questions": [
+      {
+        "id": "q1",
+        "status": "source_backed",
+        "source_ids": [
+          "web-76c17bfa8c8df8b4199db88196018187"
+        ],
+        "supported_by_cited_text": true,
+        "contradicts": false,
+        "in_scope": true,
+        "meme_substantive": null,
+        "notes": "正确性及引用支持按用户对核对包的总体确认登记；不是用户逐题表单输入。"
+      },
+      {
+        "id": "q2",
+        "status": "source_backed",
+        "source_ids": [
+          "web-287e2f8bca990e4035d6f35d13302f82",
+          "web-35da42e253d558c5845893f6ee193116",
+          "web-9795ceaba81008977bf40c369604e726"
+        ],
+        "supported_by_cited_text": true,
+        "contradicts": false,
+        "in_scope": true,
+        "meme_substantive": null,
+        "notes": "正确性及引用支持按用户对核对包的总体确认登记；不是用户逐题表单输入。"
+      },
+      {
+        "id": "q3",
+        "status": "source_backed",
+        "source_ids": [
+          "web-7072ff0f8b5122fd1fe4ab5702cd4b94"
+        ],
+        "supported_by_cited_text": true,
+        "contradicts": false,
+        "in_scope": true,
+        "meme_substantive": null,
+        "notes": "正确性及引用支持按用户对核对包的总体确认登记；不是用户逐题表单输入。"
+      }
+    ],
+    "confirmation": {
+      "kind": "direct_user_chat_overall_confirmation",
+      "record": "docs/quiz-grounding/live-runs/human-confirmation-20261014.json",
+      "answer": "正确",
+      "individual_form_export_received": false,
+      "structured_verdict_basis": "registered_from_user_overall_confirmation"
+    }
+  },
+  "account_deleted": true
+}

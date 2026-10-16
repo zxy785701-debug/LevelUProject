@@ -1,0 +1,39 @@
+{
+  "web": [
+    {
+      "url": "https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Overview",
+      "status": "passed",
+      "title": "HTTP 概述 - HTTP | MDN",
+      "characters": 9998,
+      "segments": 3
+    },
+    {
+      "url": "https://example.com",
+      "status": "passed",
+      "title": "Example Domain",
+      "characters": 958,
+      "segments": 1
+    }
+  ],
+  "video": [
+    {
+      "url": "https://www.youtube.com/watch?v=UF8uR6Z6KLc",
+      "status": "failed",
+      "code": "SOURCE_UNAVAILABLE",
+      "message": "视频字幕暂时无法访问，请重试或粘贴笔记"
+    },
+    {
+      "url": "https://www.bilibili.com/video/BV13x41117TL",
+      "status": "failed",
+      "code": "NO_READABLE_CONTENT",
+      "message": "没有可访问的中英文字幕，请粘贴视频笔记"
+    }
+  ],
+  "model": {
+    "status": "passed",
+    "questions": 3,
+    "cited_questions": 3,
+    "period_status": "succeeded",
+    "total": 3
+  }
+}

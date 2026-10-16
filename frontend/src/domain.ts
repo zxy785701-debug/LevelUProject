@@ -1,4 +1,5 @@
 export type Kind = 'single' | 'multi' | 'judge'
+import type { Grounding, LearningScope, QuizSource, Verification } from './grounding-domain'
 export interface Question {
   id: string
   type: Kind
@@ -7,6 +8,9 @@ export interface Question {
   answers: string[]
   explanation: string
   knowledge_point: string
+  source_ids?: string[]
+  grounding?: Grounding | null
+  origin?: { quiz_id: string; question_id: string; title: string; learning_scope?: LearningScope | null } | null
 }
 export interface Quiz {
   id: string
@@ -17,6 +21,9 @@ export interface Quiz {
   difficulty: 'easy' | 'medium'
   reward?: { xp: number; coins: number }
   questions: Question[]
+  source?: QuizSource | null
+  learning_scope?: LearningScope | null
+  grounding?: Grounding | null
 }
 export interface Answer {
   question_id: string
@@ -41,6 +48,9 @@ export interface Report {
   suggestions: string[]
   share_quote: string
   stats: Stats
+  verification?: Verification
+  source?: QuizSource | null
+  learning_scope?: LearningScope | null
 }
 export interface Session {
   id: string
@@ -65,6 +75,7 @@ export interface Data {
   wrongs: Record<string, WrongState>
   welcome: boolean
   draft: { text: string; count: 3 | 5; difficulty: 'easy' | 'medium' }
+  answerDrafts?: Record<string, Record<string, string[]>>
 }
 export const emptyData = (): Data => ({
   version: 1,
@@ -132,8 +143,10 @@ export function wrongList(data: Data) {
 }
 export type Wrong = ReturnType<typeof wrongList>[number]
 export type Action =
+  | { type: 'DELETE_SESSION'; id: string }
   | { type: 'START'; session: Session }
   | { type: 'ANSWER'; selected: string[] }
+  | { type: 'SELECT_ANSWER'; selected: string[] }
   | { type: 'NEXT' }
   | { type: 'TICK'; ms: number }
   | { type: 'REPORT'; id: string; report: Report }
@@ -144,6 +157,13 @@ export type Action =
   | { type: 'CLEAR_CACHE' }
   | { type: 'ACTIVE'; id?: string }
 export function reducer(data: Data, action: Action): Data {
+  if (action.type === 'DELETE_SESSION') {
+    const answerDrafts = { ...data.answerDrafts }
+    delete answerDrafts[action.id]
+    return { ...data, sessions: data.sessions.filter(s => s.id !== action.id),
+      activeId: data.activeId === action.id ? undefined : data.activeId, answerDrafts,
+      wrongs: Object.fromEntries(Object.entries(data.wrongs).filter(([key]) => !key.startsWith(action.id + ':'))) }
+  }
   if (action.type === 'WELCOME') return { ...data, welcome: true }
   if (action.type === 'DRAFT') return { ...data, draft: action.draft }
   if (action.type === 'START')
@@ -168,7 +188,7 @@ export function reducer(data: Data, action: Action): Data {
     })
     return { ...data, wrongs }
   }
-  if (action.type === 'CLEAR_CACHE') return { ...data, draft: { ...data.draft, text: '' } }
+  if (action.type === 'CLEAR_CACHE') return { ...data, draft: { ...data.draft, text: '' }, answerDrafts: {} }
   if (action.type === 'REPORT')
     return {
       ...data,
@@ -179,6 +199,13 @@ export function reducer(data: Data, action: Action): Data {
   const s = data.sessions.find((x) => x.id === data.activeId)
   if (!s || s.completed_at) return data
   const q = s.quiz.questions[s.cursor]
+  if (action.type === 'SELECT_ANSWER') {
+    if (s.answers.some(a => a.question_id === q.id) ||
+      new Set(action.selected).size !== action.selected.length ||
+      action.selected.some(value => !q.options.some(option => option.id === value)) ||
+      (q.type !== 'multi' && action.selected.length > 1)) return data
+    return { ...data, answerDrafts: { ...data.answerDrafts, [s.id]: { ...data.answerDrafts?.[s.id], [q.id]: action.selected } } }
+  }
   let updated = s,
     wrongs = data.wrongs
   if (action.type === 'TICK' && !s.answers.some((a) => a.question_id === q.id))

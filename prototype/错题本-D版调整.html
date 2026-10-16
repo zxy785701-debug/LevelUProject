@@ -190,6 +190,95 @@
       .workspace { display: block; padding: 0; }
       .phone { box-shadow: none; break-inside: avoid; }
     }
+
+    /* 背景测试：仅限本文件的手机内部，不影响其他原型。
+       背景浓度 --background-strength：0 完全透明，1 为方案默认浓度。
+       A 色值 #F1F6FF；B 底色 #FBFCFE / 点阵 #C9D9E8；
+       D 方格 #D6E2EF。字号与黄线参数保持原值。 */
+    /* background-trial-style */
+    .phone { position: relative; isolation: isolate; --background-strength: 1; }
+    .phone > :is(.status-bar, .app-header, .app-main, .app-footer, .home-indicator) {
+      position: relative; z-index: 1;
+    }
+    .phone::before {
+      content: ""; position: absolute; pointer-events: none; z-index: 0;
+      opacity: var(--background-strength); display: none;
+    }
+    .phone[data-background="blue"]::before {
+      display: block; inset: 0 0 auto; height: 250px;
+      background: #f1f6ff; border-bottom-right-radius: 80px;
+    }
+    .phone[data-background="dots"]::before {
+      display: block; inset: 104px 0 auto; height: 146px;
+      opacity: calc(var(--background-strength) * .65);
+      background-color: #fbfcfe;
+      background-image: radial-gradient(circle, #c9d9e8 .8px, transparent .9px);
+      background-size: 18px 18px; background-position: 9px 9px;
+      mask-image: linear-gradient(#000 0%, #000 78%, transparent 100%);
+    }
+    .phone[data-background="grid"]::before {
+      display: block; width: 174px; height: 154px; top: 95px; right: 0;
+      opacity: calc(var(--background-strength) * .65);
+      background-image: linear-gradient(#d6e2ef 1px, transparent 1px),
+        linear-gradient(90deg, #d6e2ef 1px, transparent 1px);
+      background-size: 18px 18px;
+      mask-image: radial-gradient(ellipse at top right, #000 30%, transparent 76%);
+    }
+    .background-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; padding: 4px 0 0; }
+    .background-choice {
+      display: flex; align-items: center; gap: 8px; text-align: left; padding: 10px 8px;
+      border: 1px solid #e2e7f0; border-radius: 9px; background: #fff;
+      min-height: 54px; color: var(--ink);
+    }
+    .background-choice[data-background-choice="none"] { grid-column: 1 / -1; }
+    .background-choice[aria-pressed="true"] { border-color: #9ebcf9; background: #f6f9ff; }
+    .background-choice b { display: block; font-size: 12px; line-height: 1.5; font-weight: 700; }
+    .background-choice small { display: block; color: var(--muted); font-size: 10px; line-height: 1.6; }
+    .background-swatch { display: block; width: 23px; height: 28px; flex: none; border: 1px solid #e1e7f0; border-radius: 5px; }
+    .background-swatch[data-swatch="none"] { background: #fff; }
+    .background-swatch[data-swatch="blue"] { background: #f1f6ff; }
+    .background-swatch[data-swatch="dots"] { background: radial-gradient(#9db5cf .7px, transparent .9px) 2px 2px / 6px 6px #fbfcfe; }
+    .background-swatch[data-swatch="grid"] { background: linear-gradient(#d6e2ef 1px, transparent 1px), linear-gradient(90deg, #d6e2ef 1px, transparent 1px); background-size: 6px 6px; }
+    .background-description { font-size: 11px; line-height: 1.8; color: var(--muted); margin: 12px 0 8px; min-height: 40px; }
+    .background-strength-label { display: flex; justify-content: space-between; font-size: 12px; align-items: center; }
+    .background-strength-label output { color: var(--blue); font-weight: 700; }
+    .background-strength { width: 100%; accent-color: var(--blue); margin: 10px 0 12px; }
+    .preview-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+    .background-comparison {
+      width: min(1320px, calc(100vw - 24px)); max-height: calc(100dvh - 32px);
+      padding: 0; border: 1px solid #dfe5ee; border-radius: 18px;
+      background: #f2f5fa; color: var(--ink); overflow: auto;
+    }
+    .background-comparison::backdrop { background: #202a3d70; }
+    .comparison-header {
+      position: sticky; top: 0; z-index: 3; display: flex; justify-content: space-between;
+      align-items: center; gap: 16px; padding: 18px 24px;
+      background: #f2f5fa; border-bottom: 1px solid #e0e7f0;
+    }
+    .comparison-header h2 { margin: 0; font-size: 19px; line-height: 1.5; }
+    .comparison-header p { margin: 4px 0 0; color: var(--muted); font-size: 12px; line-height: 1.7; }
+    .comparison-grid { padding: 24px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; align-items: start; }
+    .comparison-row { display: contents; }
+    .comparison-card { min-width: 0; }
+    .comparison-card h3 { font-size: 16px; margin: 0 auto 5px; max-width: 390px; }
+    .comparison-card > p { color: var(--muted); font-size: 12px; margin: 0 auto 13px; max-width: 390px; }
+    .compare-use {
+      display: block; width: 390px; max-width: 100%; min-height: 40px; margin: 14px auto 0;
+      background: #fff; color: var(--blue); border: 1px solid #c9d9fa; border-radius: 9px;
+      padding: 9px 15px; font-size: 13px; font-weight: 700;
+    }
+    @media (max-width: 1100px) {
+      .comparison-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 600px) {
+      .workspace-header { flex-wrap: wrap; }
+      .preview-actions { margin-left: auto; }
+      .comparison-grid { grid-template-columns: minmax(0, 1fr); gap: 26px; }
+      .comparison-header { padding: 16px; align-items: start; }
+      .comparison-header h2 { font-size: 17px; }
+      .comparison-header .preview-toggle { padding: 8px 10px; }
+      .comparison-grid { padding: 18px; }
+    }
   </style>
 </head>
 <body>
@@ -198,12 +287,15 @@
       <div class="workspace-brand">LevelUProject</div>
       <p class="workspace-subtitle">错题本 D 版 · 调整合适后，保存 HTML 发回即可</p>
     </div>
-    <button class="preview-toggle" id="preview-toggle" type="button" aria-pressed="false">只看页面</button>
+    <div class="preview-actions">
+      <button class="preview-toggle" id="compare-backgrounds" type="button">并排比较背景</button>
+      <button class="preview-toggle" id="preview-toggle" type="button" aria-pressed="false">只看页面</button>
+    </div>
   </header>
 
   <main class="workspace">
     <section class="preview-column" aria-label="错题本页面预览">
-      <article class="phone" aria-label="错题本 D 版">
+      <article class="phone" data-background="none" data-background-strength="1" aria-label="错题本 D 版">
         <div class="status-bar" aria-hidden="true">
           <span>9:41</span>
           <span class="status-icons">
@@ -267,7 +359,7 @@
 
     <aside class="settings-column" aria-label="样式调整工具">
       <section class="adjust-panel">
-        <header class="panel-header"><h2>调整字体与黄色线条</h2><p>拖动滑块或输入数值，左侧即时预览。<br>调好后保存文件，最终参数会写进 HTML。</p></header>
+        <header class="panel-header"><h2>调整背景、字体与黄色线条</h2><p>拖动滑块或输入数值，左侧即时预览。<br>调好后保存文件，最终参数会写进 HTML。</p></header>
         <div class="control-scroll" id="adjustment-controls"></div>
         <div class="panel-actions">
           <button class="save-button" id="save-html" type="button">保存调整后的 HTML</button>
@@ -279,6 +371,13 @@
     </aside>
   </main>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <dialog class="background-comparison" id="background-comparison" aria-labelledby="comparison-title">
+    <header class="comparison-header">
+      <div><h2 id="comparison-title">三套背景，并排比较</h2><p>布局、字号、吉祥物与按钮保持一致；只比较背景。可点下方按钮选用。</p></div>
+      <button class="preview-toggle" id="close-background-comparison" type="button">关闭</button>
+    </header>
+    <div class="comparison-grid"></div>
+  </dialog>
 
   <script>
     (() => {
@@ -400,6 +499,103 @@
         controls.append(details);
       });
 
+
+      // 背景只通过当前 .phone 的属性切换。导出时随页面保存，不修改共享代码。
+      const phone = document.querySelector('.phone');
+      const backgroundSchemes = [
+        { id: 'none', name: '原版 · 纯白', hint: '保留当前效果', description: '原来的纯白页面。方便对照背景增加前后的变化。' },
+        { id: 'blue', name: 'A · 淡蓝页眉', hint: '推荐 · 清楚分区', description: '只在标题区加一层淡蓝纸页，与蓝色按钮呼应；列表保持纯白。' },
+        { id: 'dots', name: 'B · 疏点笔记纸', hint: '轻薄 · 纸张纹理', description: '标题区铺稀疏小圆点，向正文淡出；保留轻微的笔记纸气质。' },
+        { id: 'grid', name: 'D · 页角方格', hint: '克制 · 局部细节', description: '仅在吉祥物身后的页角加淡方格，正文区域维持纯白。' }
+      ];
+      const initialBackground = {
+        scheme: backgroundSchemes.some(s => s.id === phone.dataset.background) ? phone.dataset.background : 'none',
+        strength: Number(phone.dataset.backgroundStrength ?? 1)
+      };
+      const backgroundSignature = JSON.stringify(initialBackground);
+      const backgroundStorageKey = 'leveluproject-review-D-background-trials-v1';
+      const backgroundState = { ...initialBackground };
+      try {
+        const cached = JSON.parse(localStorage.getItem(backgroundStorageKey) || 'null');
+        if (cached?.signature === backgroundSignature && backgroundSchemes.some(s => s.id === cached.scheme)) {
+          backgroundState.scheme = cached.scheme;
+          if (Number.isFinite(cached.strength)) backgroundState.strength = Math.max(0, Math.min(1, cached.strength));
+        }
+      } catch (_) {}
+      const backgroundPanel = document.createElement('details');
+      backgroundPanel.className = 'control-group background-trials';
+      backgroundPanel.open = true;
+      backgroundPanel.innerHTML = `<summary>页面背景 · 三套试验方案</summary><div class="background-options" role="group" aria-label="背景方案">${backgroundSchemes.map(s => `<button type="button" class="background-choice" data-background-choice="${s.id}" aria-pressed="false"><i class="background-swatch" data-swatch="${s.id}" aria-hidden="true"></i><span><b>${s.name}</b><small>${s.hint}</small></span></button>`).join('')}</div><p class="background-description" id="background-description" aria-live="polite"></p><label class="background-strength-label" for="background-strength">背景浓度<output id="background-strength-output" for="background-strength"></output></label><input id="background-strength" class="background-strength" type="range" min="0" max="100" step="5" aria-label="背景浓度">`;
+      controls.prepend(backgroundPanel);
+      const backgroundStrength = backgroundPanel.querySelector('#background-strength');
+      function applyBackground(fromUser = false) {
+        phone.dataset.background = backgroundState.scheme;
+        phone.dataset.backgroundStrength = String(backgroundState.strength);
+        phone.style.setProperty('--background-strength', String(backgroundState.strength));
+        backgroundPanel.querySelectorAll('[data-background-choice]').forEach(button => {
+          button.setAttribute('aria-pressed', String(button.dataset.backgroundChoice === backgroundState.scheme));
+        });
+        backgroundPanel.querySelector('#background-description').textContent = backgroundSchemes.find(s => s.id === backgroundState.scheme).description;
+        backgroundStrength.value = backgroundState.strength * 100;
+        backgroundStrength.disabled = backgroundState.scheme === 'none';
+        backgroundPanel.querySelector('#background-strength-output').textContent = Math.round(backgroundState.strength * 100) + '%';
+        if (fromUser) {
+          status.textContent = '背景预览已更新，仅作用于此页。保存 HTML 可保留方案和浓度。';
+          try { localStorage.setItem(backgroundStorageKey, JSON.stringify({ signature: backgroundSignature, ...backgroundState })); } catch (_) {}
+        }
+      }
+      backgroundPanel.querySelectorAll('[data-background-choice]').forEach(button => button.addEventListener('click', () => {
+        backgroundState.scheme = button.dataset.backgroundChoice;
+        applyBackground(true);
+      }));
+      backgroundStrength.addEventListener('input', () => {
+        backgroundState.strength = Number(backgroundStrength.value) / 100;
+        applyBackground(true);
+      });
+      document.getElementById('reset-settings').addEventListener('click', () => {
+        Object.assign(backgroundState, initialBackground);
+        applyBackground(true);
+        status.textContent = '已恢复此文件的初始字号、黄线和背景参数。';
+      });
+      const comparison = document.getElementById('background-comparison');
+      const comparisonGrid = comparison.querySelector('.comparison-grid');
+      document.getElementById('compare-backgrounds').addEventListener('click', () => {
+        comparisonGrid.replaceChildren();
+        const options = backgroundSchemes.filter(s => s.id !== 'none');
+        for (let i = 0; i < options.length; i += 2) {
+          const row = document.createElement('div');
+          row.className = 'comparison-row';
+          row.dataset.pair = i === 0 ? 'AB' : 'CD';
+          options.slice(i, i + 2).forEach(scheme => {
+            const card = document.createElement('section');
+            card.className = 'comparison-card';
+            const title = document.createElement('h3');
+            title.textContent = scheme.name;
+            const hint = document.createElement('p');
+            hint.textContent = scheme.hint;
+            const preview = phone.cloneNode(true);
+            preview.dataset.background = scheme.id;
+            preview.inert = true;
+            const use = document.createElement('button');
+            use.className = 'compare-use';
+            use.type = 'button';
+            use.textContent = '选用 ' + scheme.name;
+            use.addEventListener('click', () => {
+              backgroundState.scheme = scheme.id;
+              applyBackground(true);
+              comparison.close();
+            });
+            card.append(title, hint, preview, use);
+            row.append(card);
+          });
+          comparisonGrid.append(row);
+        }
+        comparison.showModal();
+      });
+      document.getElementById('close-background-comparison').addEventListener('click', () => comparison.close());
+      comparison.addEventListener('close', () => comparisonGrid.replaceChildren());
+      applyBackground();
+
       const previewToggle = document.getElementById('preview-toggle');
       previewToggle.addEventListener('click', () => {
         const only = document.body.classList.toggle('preview-only');
@@ -426,6 +622,8 @@
         if (!copy.getAttribute('style')?.trim()) copy.removeAttribute('style');
         copy.querySelector('body').classList.remove('preview-only');
         copy.querySelector('#adjustment-controls').replaceChildren();
+        copy.querySelector('#background-comparison').removeAttribute('open');
+        copy.querySelector('.comparison-grid').replaceChildren();
         copy.querySelector('#save-status').textContent = '当前初始值已包含保存时的全部调整。';
         copy.querySelector('#toast').textContent = '';
         copy.querySelector('#preview-toggle').textContent = '只看页面';

@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-14",
+  "target": "frontend/dist",
+  "build": "passed",
+  "module_and_initial_lifecycle": "passed",
+  "wxss_compiler": "D:/development/微信web开发者工具/code/package.nw/node_modules/wcc-exec/wcsc.exe",
+  "wxss": {
+    "passed": true,
+    "files": ["app.wxss", "pages/index/index.wxss"],
+    "exit_code": 0,
+    "diagnostics": ""
+  },
+  "developer_tool_ui": "not_executed",
+  "real_device": "not_executed"
+}

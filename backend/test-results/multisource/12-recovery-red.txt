@@ -1,0 +1,40 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+_________ test_period_process_interruption_becomes_retriable_failure __________
+
+system = <fastapi.applications.FastAPI object at 0x000001B0A4803750>
+
+    @pytest.mark.anyio
+    async def test_period_process_interruption_becomes_retriable_failure(system):
+        from app.materials.repository import Features
+        from app.accounts.database import Operation
+        async with httpx.AsyncClient(transport=httpx.ASGITransport(app=system), base_url='http://test') as c:
+            account = await login(c); uid = account['user']['id']; session = await generate(c)
+            for q in quiz_payload()['questions']: await answer(c, session, q['id'], q['answers'])
+            snapshot = system.state.analytics.snapshot(uid,'7',None,None,['overview'])
+            report = system.state.features.prepare_report(uid,snapshot)
+            oid, _ = system.state.accounts.reserve(uid,'interrupted','period',{'report_id':report['id']},report['id'])
+            system.state.accounts.model_call(uid,oid)
+            with system.state.accounts.database.session() as s:
+                quota = s.scalar(select(Quota).where(Quota.identity == s.get(__import__('app.accounts.database', fromlist=['User']).User,uid).identity))
+                quota.busy_until = 0
+            # A reconstructed service must read persistent state and detect the lost worker.
+            result = Features(system.state.accounts).report(uid,report['id'])
+>           assert result['status'] == 'failed' and result['error_code'] == 'OPERATION_EXPIRED'
+E           AssertionError: assert ('running' == 'failed'
+E             
+E             - failed
+E             + running)
+
+tests\test_feature_edges.py:106: AssertionError
+---------------------------- Captured stderr call -----------------------------
+[levelup] app.accounts.repository ai_call operation=4bd2be43-bff2-43b1-9f64-b0927b1e6539 kind=quiz minute_calls=1
+[levelup] app.accounts.repository ai_finished operation=4bd2be43-bff2-43b1-9f64-b0927b1e6539 status=succeeded
+[levelup] app.accounts.repository ai_call operation=a984b0e8-5192-4e50-89e0-4ec4b429bb68 kind=period minute_calls=2
+------------------------------ Captured log call ------------------------------
+INFO     app.accounts.repository:repository.py:372 ai_call operation=4bd2be43-bff2-43b1-9f64-b0927b1e6539 kind=quiz minute_calls=1
+INFO     app.accounts.repository:repository.py:191 ai_finished operation=4bd2be43-bff2-43b1-9f64-b0927b1e6539 status=succeeded
+INFO     app.accounts.repository:repository.py:372 ai_call operation=a984b0e8-5192-4e50-89e0-4ec4b429bb68 kind=period minute_calls=2
+=========================== short test summary info ===========================
+FAILED tests/test_feature_edges.py::test_period_process_interruption_becomes_retriable_failure
+1 failed in 3.20s

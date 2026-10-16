@@ -1,0 +1,5 @@
+[
+  {"id":"failure-page-only","text":"https://httpbin.org/status/403","expected":"记录实际提取失败；仅网址不可读时要求补充正文或明确主题，不能猜正文","tags":["failure_probe","url"],"failure_probe":true},
+  {"id":"failure-page-instruction","text":"https://httpbin.org/status/403 学习 Python TaskGroup 的异常与取消语义","expected":"若实际网页不可读，仅按明确的独立主题提供未核实范围，确认后才可降级出题","tags":["failure_probe","url"],"failure_probe":true},
+  {"id":"failure-sparse","text":"学习名为 XQ9-2026-未公开 的虚构框架，缺少公开资料时请指出不足，不要杜撰语法","expected":"保留实际检索与资料不足结果，不虚构受来源支持的知识","tags":["failure_probe","sparse_evidence"],"failure_probe":true}
+]

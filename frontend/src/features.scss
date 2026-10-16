@@ -1,0 +1,43 @@
+// Cross-platform equivalents of the supplied prototype's input and map elements.
+.upload-zone .icon{width:32px;height:32px}
+.file-card .icon{width:28px;height:28px;flex:none}
+.file-details .strong{overflow-wrap:anywhere}
+.date-fields{display:flex;align-items:center;gap:10px}
+.date-fields>view{flex:1;min-width:0}
+.date-fields .input{margin-top:5px;font-size:13px;min-width:0}
+.document-scope{display:flex;flex-direction:column;gap:10px}
+.document-scope-option{display:flex;align-items:center;gap:8px;min-height:48px;padding:10px 12px;border:1px solid #dce3ee;border-radius:10px;background:#fff;font-size:14px}
+.document-scope-option.active{border-color:#336ae8;background:#edf3ff}
+.document-scope-option.unavailable{color:#909bae;background:#f7f8fa}
+.document-scope-option radio,.document-scope-option taro-radio-core{flex:none;transform:scale(.8);transform-origin:left center;margin-right:-5px}
+@if not $levelup-weapp {.document-scope .weui-check:checked + .weui-icon-checked:before{color:#336ae8}}
+.document-page-range{margin-top:12px}
+.document-page-range .page-range{display:block;width:100%;height:46px;min-height:46px;padding:10px 12px;border:1px solid #dce3ee;border-radius:10px;background:#fff;font-size:14px;line-height:24px;box-sizing:border-box}
+.document-page-range .page-range:focus-within{border-color:#336ae8}
+.document-page-range .page-range.error{border-color:#ce554d}
+.page-range-hint{margin-top:8px;font-size:12px;line-height:1.7;color:#69758a}
+.check-label{align-items:center}
+.check-label radio,.check-label taro-radio-core,.check-label checkbox,.check-label taro-checkbox-core{flex:none}
+.check-label radio,.check-label taro-radio-core{transform:scale(.8);transform-origin:left center;margin-right:-5px}
+.source-excerpt{margin-top:18px;padding-bottom:18px;border-bottom:1px solid #e1e6ef}
+.source-excerpt .body-copy{white-space:pre-wrap;overflow-wrap:anywhere}
+.source-excerpt .row{flex-wrap:wrap;gap:8px}
+.map-lines{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.map-node{max-width:40%;overflow-wrap:anywhere;text-align:center}
+.map-node.root{max-width:28%}
+.map-node.state-mastered{background:#eaf6ed;border-color:#a8d5bb}
+.map-node.state-weak{background:#fcecea;border-color:#e5b4ad}
+.map-node.state-explore{background:#edf3ff;border-color:#b9c9e5}
+.field-error{line-height:1.8;overflow-wrap:anywhere}
+// Learning scope uses the existing cards and type scale.
+.scope-option { display: flex; gap: 12px; align-items: flex-start; padding: 16px; margin: 10px 0; border: 1px solid #dce3ef; border-radius: 16px; min-height: 52px; box-sizing: border-box; cursor: pointer; }
+.scope-option.active { border-color: #336ae8; background: #f0f5ff; }
+.scope-card-content { display: flex; align-items: flex-start; gap: 10px; width: 100%; }
+.scope-card-copy { flex: 1; min-width: 0; }
+.scope-recommended { display: inline-block; margin-top: 6px; color: #2456bd; font-size: 12px; }
+.scope-description { margin-top: 6px; line-height: 1.6; }
+.scope-option > view, .scope-option > div { min-width: 0; overflow-wrap: anywhere; }
+.topic-flow .body-copy { white-space: pre-wrap; overflow-wrap: anywhere; }
+.scope-option:focus-within { outline: 2px solid #336ae8; outline-offset: 2px; }
+.source-url, .source-excerpt .body-copy { overflow-wrap: anywhere; word-break: break-word; }
+.grounding-notice .tag { white-space: normal; }

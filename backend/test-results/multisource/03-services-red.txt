@@ -1,0 +1,33 @@
+F
+================================== FAILURES ===================================
+__________ test_document_job_provenance_material_quiz_and_ownership ___________
+
+system = <fastapi.applications.FastAPI object at 0x0000023BDADDD1D0>
+
+    @pytest.mark.anyio
+    async def test_document_job_provenance_material_quiz_and_ownership(system):
+        gateway = system.state.gateway = FeatureGateway()
+        async with httpx.AsyncClient(transport=httpx.ASGITransport(app=system), base_url='http://test') as c:
+            assert (await c.post('/api/v1/materials/document', files={'file': ('a.txt', b'HTTP')})).status_code == 401
+            await login(c)
+>           material = await upload(c)
+                       ^^^^^^^^^^^^^^^
+
+tests\test_multisource_accounts.py:41: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+c = <httpx.AsyncClient object at 0x0000023BDADEC6E0>, key = 'upload'
+text = 'HTTP ÿ�����������Cookie ���Ա���״̬��'
+
+    async def upload(c, key='upload', text='HTTP ÿ�����������Cookie ���Ա���״̬��'):
+        response = await c.post('/api/v1/materials/document', headers={'Idempotency-Key': key}, files={'file': ('�ʼ�.txt', text.encode(), 'text/plain')})
+>       assert response.status_code == 200, response.text
+E       AssertionError: {"code":"NOT_FOUND","message":"�ӿڲ�����","data":null}
+E       assert 404 == 200
+E        +  where 404 = <Response [404 Not Found]>.status_code
+
+tests\test_multisource_accounts.py:28: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_multisource_accounts.py::test_document_job_provenance_material_quiz_and_ownership
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed in 6.96s

@@ -1,0 +1,34 @@
+........................................................................ [ 48%]
+........................................................................ [ 96%]
+.....                                                                    [100%]
+=============================== tests coverage ================================
+_______________ coverage: platform win32, python 3.13.9-final-0 _______________
+
+Name                          Stmts   Miss Branch BrPart  Cover   Missing
+-------------------------------------------------------------------------
+app\__init__.py                   0      0      0      0   100%
+app\accounts\__init__.py          0      0      0      0   100%
+app\accounts\api.py             136      1     14      3    97%   93->exit, 134->exit, 144
+app\accounts\database.py        146      1      4      1    99%   162
+app\accounts\repository.py      392      7    150     38    92%   63, 78, 83, 96, 160, 198->exit, 200->exit, 212->exit, 238->exit, 240->exit, 244, 251->263, 260->263, 304->exit, 314->exit, 315->exit, 316->exit, 319, 322->exit, 323->exit, 324->exit, 327->exit, 328->exit, 329->exit, 330->exit, 331->exit, 335->exit, 336->exit, 354->exit, 357->exit, 364->exit, 365->exit, 366->exit, 377->exit, 381->392, 389->392, 405->exit, 425->exit
+app\accounts\wechat.py           19      1      4      1    91%   12
+app\analytics.py                125      1     42      5    96%   27, 42->41, 48->47, 89->87, 142->exit
+app\config.py                    42      1      6      1    96%   41
+app\content.py                    7      0      2      0   100%
+app\errors.py                     4      0      0      0   100%
+app\llm.py                       49      1      8      1    96%   35
+app\main.py                      92     19     12      0    80%   30-47, 71-72
+app\materials\__init__.py         0      0      0      0   100%
+app\materials\api.py            142      2     44     11    93%   21->exit, 32->exit, 44->exit, 49->exit, 53->exit, 58, 76, 96->exit, 126->exit, 129->135, 156->exit, 179->exit
+app\materials\parsers.py        107      1     30      4    96%   73->76, 86, 91->98, 112->118, 122->119
+app\materials\repository.py      91      0     30      5    96%   27->exit, 30->exit, 76->exit, 79->exit, 81->exit
+app\materials\services.py        73      0     10      3    96%   64->exit, 100->103, 103->107
+app\materials\sources.py        109     23     30      7    76%   33-36, 40, 55-61, 63, 77-84, 95->exit, 96->exit, 97->exit, 108->107, 110->109, 122-123
+app\migrate.py                   10     10      2      0     0%   2-12
+app\models.py                   115      0     38      4    97%   21->exit, 36->exit, 37->exit, 38->exit
+app\rewards.py                    4      0      0      0   100%
+app\scoring.py                   19      0      2      0   100%
+app\services.py                  21      0      2      0   100%
+-------------------------------------------------------------------------
+TOTAL                          1703     68    430     84    92%
+149 passed in 47.74s

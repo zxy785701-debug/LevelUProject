@@ -37,6 +37,23 @@ const session = (mode: Session['mode'] = 'new'): Session => ({
   mode,
 })
 describe('本机学习状态', () => {
+  it('所有题型先存草稿，可修改且不提前判分，序列化后仍保留', () => {
+    let data = reducer(emptyData(), { type: 'START', session: session() })
+    data = reducer(data, { type: 'SELECT_ANSWER', selected: ['B'] })
+    data = reducer(data, { type: 'SELECT_ANSWER', selected: ['A'] })
+    expect(data.answerDrafts?.s1.q1).toEqual(['A'])
+    data = { ...data, sessions: [{ ...data.sessions[0], cursor: 1 }] }
+    data = reducer(data, { type: 'SELECT_ANSWER', selected: ['A', 'B'] })
+    data = reducer(data, { type: 'SELECT_ANSWER', selected: [] })
+    expect(data.answerDrafts?.s1.q2).toEqual([])
+    data = { ...data, sessions: [{ ...data.sessions[0], cursor: 2 }] }
+    data = reducer(data, { type: 'SELECT_ANSWER', selected: ['B'] })
+    expect(JSON.parse(JSON.stringify(data)).answerDrafts.s1).toEqual({ q1: ['A'], q2: [], q3: ['B'] })
+    expect(data.sessions[0].answers).toEqual([])
+    expect(stats(data.sessions[0]).xp).toBe(0)
+    expect(wrongList(data)).toEqual([])
+    expect(reducer(data, { type: 'CLEAR_CACHE' }).answerDrafts).toEqual({})
+  })
   it('进阶奖励使用关卡快照，旧关卡与重闯不追溯奖励', () => {
     const s = session()
     s.quiz.difficulty = 'medium'

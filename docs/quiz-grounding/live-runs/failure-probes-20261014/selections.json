@@ -1,0 +1,20 @@
+{
+  "failure-page-instruction": {
+    "preparation_id": "79e888ce-06d3-42cf-ab2f-5c8332d2c6e3",
+    "scope_version": 1,
+    "candidate_id": "python-taskgroup-exception-cancellation",
+    "focus_id": "taskgroup-exception-semantics",
+    "scope_point_ids": ["child-exception-propagation", "exception-group-aggregation", "exception-context-exit"],
+    "confirmed": true,
+    "selection_actor": "Codex evaluation operator; independent explicit topic after unreadable page"
+  },
+  "failure-sparse": {
+    "preparation_id": "aea78c32-5dc1-4092-9f5f-fff3a2eda71e",
+    "scope_version": 1,
+    "candidate_id": "cand-xq9-2026-unpublished-framework",
+    "focus_id": "focus-xq9-availability",
+    "scope_point_ids": ["pt-xq9-no-source", "pt-xq9-need-doc", "pt-xq9-no-guess"],
+    "confirmed": true,
+    "selection_actor": "Codex evaluation operator; preserve stated no-invention boundary"
+  }
+}

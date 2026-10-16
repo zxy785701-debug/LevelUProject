@@ -17,11 +17,18 @@ import {
   inHistoryRange,
   rewardRate,
 } from '../../domain'
-import { generateQuiz, generateReport, cancelRequest, operationKey, submitAnswer, saveProgress, replayQuiz, reviewWrongs, api, getLearning, User, ApiError } from '../../api'
+import { generateReport, operationKey, submitAnswer, saveProgress, replayQuiz, reviewWrongs, api, getLearning, User, ApiError } from '../../api'
 import { useAuth, wechatCode, PRIVACY, TERMS } from '../../auth'
 import { clearCredentials } from '../../credentials'
 import { Trend } from '../../Trend'
 import { WeeklyReview } from '../../WeeklyReview'
+import { useMaterialFlow, SourceReader } from '../../MaterialFlow'
+import { useTopicFlow } from '../../TopicFlow'
+import { getPendingStudy } from '../../grounding-api'
+import { splitTopicInput, groundingLabel, Grounding } from '../../grounding-domain'
+import { GroundingNotice } from '../../GroundingNotice'
+import { usePersonalAnalysis } from '../../PersonalAnalysis'
+import type { SourceSegment } from '../../features-domain'
 import { Mine, SettingsView } from '../../account'
 import { makePoster, savePoster, saveExport } from '../../platform'
 import {
@@ -56,6 +63,12 @@ type Screen =
   | 'history'
   | 'detail'
   | 'analytics'
+  | 'materials'
+  | 'topic'
+  | 'source'
+  | 'map'
+  | 'periodSetup'
+  | 'periodReport'
   | 'wrongs'
   | 'wrong'
   | 'queue'
@@ -79,6 +92,12 @@ const labels: Record<Screen, string> = {
   history: '历史记录',
   detail: '学习详情',
   analytics: '学习数据',
+  materials: '导入学习材料',
+  topic: '确认学习范围',
+  source: '材料详情',
+  map: '知识地图',
+  periodSetup: '周期报告',
+  periodReport: '周期复盘报告',
   wrongs: '错题本',
   wrong: '错题详情',
   queue: '旧识重温',
@@ -102,6 +121,10 @@ const baseIds: Partial<Record<Screen, string>> = {
   history: 'R02',
   detail: 'R03',
   analytics: 'R05',
+  map: 'R04',
+  periodSetup: 'R06',
+  periodReport: 'R07',
+  source: 'K05',
   wrongs: 'R08',
   wrong: 'R09',
   queue: 'R10',
@@ -137,8 +160,7 @@ function LearningPage() {
   const [recordId, setRecordId] = useState(data.activeId || ''),
     [wrongKey, setWrongKey] = useState(''),
     [qid, setQid] = useState('')
-  const [selected, setSelected] = useState<string[]>([]),
-    [expanded, setExpanded] = useState(false),
+  const [expanded, setExpanded] = useState(false),
     [config, setConfig] = useState(false),
     [paused, setPaused] = useState(false)
   const [search, setSearch] = useState(''),
@@ -150,11 +172,12 @@ function LearningPage() {
     [error, setError] = useState({ message: '', kind: 'quiz' as 'quiz' | 'report' })
   const [poster, setPoster] = useState(''),
     [saving, setSaving] = useState(false)
-  const quizOperation = useRef<{ signature: string; key: string }>()
+  const [sourceView, setSourceView] = useState<{ title: string; segments: SourceSegment[]; grounding?: Grounding | null }>()
   const scrollPositions = useRef<Record<string, number>>({})
-  const selectionDrafts = useRef<Record<string, string[]>>({})
   const answerTimes = useRef<Record<string, number>>({})
   const [questionBusy, setQuestionBusy] = useState(false)
+  const [reportPending, setReportPending] = useState(false)
+  const [reportError, setReportError] = useState('')
   const reportOperations = useRef<Record<string, string>>({})
   const stack = useRef<Screen[]>([]),
     token = useRef(0),
@@ -167,6 +190,8 @@ function LearningPage() {
   const wrong = wrongs.find((w) => w.key === wrongKey),
     current = active?.quiz.questions[active.cursor],
     answered = active?.answers.find((a) => a.question_id === current?.id)
+  const selected = active && current ? data.answerDrafts?.[active.id]?.[current.id] || [] : []
+  const selectedCount = active?.quiz.questions.filter(q => active.answers.some(a => a.question_id === q.id) || data.answerDrafts?.[active.id]?.[q.id]?.length).length || 0
   const sStats = record ? stats(record) : undefined,
     pending = wrongs.filter((w) => !w.status.mastered)
   const scrollKey = screen === 'quiz' ? `quiz-${active?.id}-${active?.cursor}`
@@ -180,16 +205,21 @@ function LearningPage() {
     setExpanded(false)
   }
   const root = (next: Screen) => {
-    if (screenRef.current === 'reportLoading') {
+    if (screenRef.current === 'reportLoading' || screenRef.current === 'report') {
       token.current++
       busy.current = false
+      setReportPending(false)
     }
     stack.current = []
     setScreen(next)
     setPaused(false)
   }
   const back = () => {
+    if (['report', 'reportLoading', 'result', 'reviewResult'].includes(screen)) { root('home'); return }
+    if (screen === 'materials') { materialFlow.back(); return }
+    if (screen === 'topic') { void topicFlow.back(); return }
     if (screen === 'quiz') {
+      if (busy.current) return
       setPaused(true)
       return
     }
@@ -217,7 +247,6 @@ function LearningPage() {
   function openSession(s: Session) {
       upsert(s)
       setRecordId(s.id)
-      setSelected([])
       setExpanded(false)
       setScreen(s.mode === 'review' ? 'quiz' : 'ready')
       stack.current = []
@@ -231,56 +260,44 @@ function LearningPage() {
   }
   async function start() {
     if (!data.draft.text.trim() || busy.current || cloudLoading) return
-    busy.current = true
-    const ticket = ++token.current
-    setScreen('generating')
     try {
-      const signature = JSON.stringify(data.draft)
-      if (quizOperation.current?.signature !== signature) quizOperation.current = { signature, key: operationKey() }
-      const session = await generateQuiz(data.draft.text, data.draft.count, data.draft.difficulty, quizOperation.current!.key)
-      quizOperation.current = undefined
-      if (token.current === ticket) openSession(session)
-      void api<User>('/api/v1/me').then(auth.update).catch(() => {})
+      const page = splitTopicInput(data.draft.text)
+      if (page) { materialFlow.open('web', page); go('materials'); return }
+      go('topic')
+      await topicFlow.prepare(data.draft.text)
     } catch (e) {
-      if (!(e instanceof ApiError) || !['NETWORK_ERROR', 'AI_BUSY'].includes(e.code)) quizOperation.current = undefined
-      if (token.current === ticket) {
-        setError({ message: (e as Error).message, kind: 'quiz' })
-        setScreen('error')
-      }
-    } finally {
-      if (token.current === ticket) busy.current = false
+      setDialog({ title: '请补充学习目标', message: (e as Error).message })
     }
   }
   function cancel() {
     token.current++
-    cancelRequest()
     busy.current = false
     root('home')
   }
-  async function submit(values: string[]) {
-    if (!active || !current || answered || busy.current) return
+  async function submitCurrent(values: string[]) {
+    if (!active || !current || answered || busy.current || !values.length) return
     busy.current = true
     setQuestionBusy(true)
-    setSelected(values)
+    answerTimes.current[`${active.id}:${current.id}`] = active.pending_ms
+    let completed: Session | undefined
     try {
       const result = await submitAnswer(active.id, current.id, values, active.pending_ms)
       upsert(result.session)
       auth.update(result.user)
-      setSelected(values)
-      setExpanded(false)
+      setRecordId(active.id)
+      setPaused(false)
+      if (result.session.completed_at) completed = result.session
       void refresh(true).catch(() => {})
-    } catch (e) { setDialog({ title: '答案尚未确认', message: (e as Error).message + ' 请保留当前选择并重新提交。' }) }
+    } catch (e) { setDialog({ title: '本题答案尚未确认', message: (e as Error).message, confirm: () => void submitCurrent(values) }) }
     finally { busy.current = false; setQuestionBusy(false) }
+    if (completed) { stack.current = []; void reportFor(completed) }
   }
   function choose(value: string) {
-    if (answered || busy.current) return
-    if (current?.type === 'multi')
-      setSelected((old) => {
-        const next = old.includes(value) ? old.filter((x) => x !== value) : [...old, value]
-        selectionDrafts.current[`${active!.id}:${current.id}`] = next
-        return next
-      })
-    else submit([value])
+    if (!current || answered || busy.current) return
+    const next = current.type === 'multi'
+      ? selected.includes(value) ? selected.filter(x => x !== value) : [...selected, value]
+      : [value]
+    dispatch({ type: 'SELECT_ANSWER', selected: next })
   }
   async function jumpQuestion(index: number) {
     if (!active || !current || busy.current || index === active.cursor || index < 0 || index >= active.quiz.questions.length) return
@@ -291,47 +308,38 @@ function LearningPage() {
       const session = await saveProgress(active.id, index)
       const key = `${active.id}:${session.quiz.questions[index].id}`
       upsert({ ...session, pending_ms: answerTimes.current[key] || 0 })
-      setSelected(selectionDrafts.current[key] || [])
       setExpanded(false)
     } catch (e) { setDialog({ title: '进度尚未确认', message: (e as Error).message }) }
     finally { busy.current = false; setQuestionBusy(false) }
   }
-  function finishQuiz() {
-    if (!active || busy.current || active.answers.length !== active.quiz.questions.length) return
-    setRecordId(active.id)
-    setScreen(active.mode === 'review' ? 'reviewResult' : 'result')
-  }
   async function reportFor(s: Session) {
     setRecordId(s.id)
-    if (s.report) {
-      go('report')
-      return
-    }
+    setReportError('')
+    setScreen('report')
+    if (s.report || s.mode === 'review') return
     if (busy.current) return
     busy.current = true
+    setReportPending(true)
     const ticket = ++token.current
-    go('reportLoading')
     try {
       const key = reportOperations.current[s.id] || (reportOperations.current[s.id] = operationKey())
       const report = await generateReport(s, key)
       delete reportOperations.current[s.id]
-      if (dispatch({ type: 'REPORT', id: s.id, report }) && token.current === ticket)
-        setScreen('report')
+      dispatch({ type: 'REPORT', id: s.id, report })
     } catch (e) {
       if (!(e instanceof ApiError) || !['NETWORK_ERROR', 'AI_BUSY'].includes(e.code)) delete reportOperations.current[s.id]
       if (token.current === ticket) {
-        setError({ message: (e as Error).message, kind: 'report' })
-        setScreen('error')
+        setReportError((e as Error).message)
       }
     } finally {
-      if (token.current === ticket) busy.current = false
+      if (token.current === ticket) { busy.current = false; setReportPending(false) }
     }
   }
   function resume(s: Session) {
     dispatch({ type: 'ACTIVE', id: s.id })
     setRecordId(s.id)
-    setSelected([])
-    setScreen(s.completed_at ? (s.mode === 'review' ? 'reviewResult' : 'result') : 'quiz')
+    if (s.completed_at) void reportFor(s)
+    else setScreen('quiz')
   }
   async function review(items: Wrong[]) {
     if (!items.length || busy.current) return
@@ -368,6 +376,22 @@ function LearningPage() {
       setDialog({ title: '导出暂时未完成', message: (e as Error).message })
     }
   }
+  function confirmDelete(s: Session) {
+    setDialog({ title: '删除这条学习记录？', message: '将删除本轮答题、报告和关联错题，无法恢复。已获得的经验和金币保留。', confirm: () => void deleteRecord(s) })
+  }
+  async function deleteRecord(s: Session) {
+    if (busy.current) return
+    busy.current = true
+    try {
+      auth.update(await api<User>(`/api/v1/attempts/${s.id}`, 'DELETE'))
+      dispatch({ type: 'DELETE_SESSION', id: s.id })
+      delete reportOperations.current[s.id]
+      if (recordId === s.id) setRecordId('')
+      root('history')
+      void Taro.showToast({ title: '记录已删除', icon: 'success' })
+    } catch (e) { setDialog({ title: '删除未完成', message: (e as Error).message }) }
+    finally { busy.current = false }
+  }
   useEffect(() => {
     const p = Taro.getCurrentInstance().router?.params
     try {
@@ -401,7 +425,17 @@ function LearningPage() {
     path: `/pages/index/index?topic=${encodeURIComponent((record?.quiz.title || data.draft.text).slice(0, 60))}`,
   }))
 
-  const id =
+  const materialFlow = useMaterialFlow({ uid: auth.user.id, active: screen === 'materials', draft: data.draft, onSession: s => { openSession(s); void api<User>('/api/v1/me').then(auth.update).catch(() => {}) }, onExit: () => setScreen(stack.current.pop() || 'home'), onScope: id => { setScreen('topic'); void topicFlow.adopt(id) } })
+  const topicFlow = useTopicFlow({ uid: auth.user.id, active: screen === 'topic', draft: data.draft, onSession: s => { openSession(s); void api<User>('/api/v1/me').then(auth.update).catch(() => {}) }, onExit: () => root('home'), onMaterial: hint => { materialFlow.open('web', { url: hint.url, instruction: hint.learning_instruction }); setScreen('materials') } })
+  const analysis = usePersonalAnalysis({ screen, navigate: go, onReview: () => go('queue'), onPoint: (point, topic) => {
+    if (point.status === 'explore') { dispatch({ type: 'DRAFT', draft: { ...data.draft, text: `${topic}：${point.name}` } }); root('home'); return }
+    const w = wrongs.find(w => point.wrong_keys.includes(w.key))
+    if (w) { openWrong(w); return }
+    const s = data.sessions.find(s => point.attempt_ids.includes(s.id))
+    if (s) { openRecord(s); return }
+    void api<Session>('/api/v1/attempts/'+point.attempt_ids[0]).then(s => { upsert(s); openRecord(s) }).catch(e => setDialog({ title: '记录暂时无法读取', message: e.message }))
+  } })
+  const id = screen === 'materials' ? materialFlow.id : screen === 'topic' ? topicFlow.id :
     screen === 'quiz'
       ? paused
         ? 'L14'
@@ -417,7 +451,7 @@ function LearningPage() {
         : screen === 'error' && error.kind === 'report'
           ? 'E07'
           : baseIds[screen]
-  const refined = !['home', 'review', 'history', 'analytics', 'mine', 'settings', 'data'].includes(
+  const refined = !['home', 'review', 'history', 'map', 'analytics', 'mine', 'settings', 'data'].includes(
     screen,
   )
   let body: React.ReactNode = null,
@@ -468,7 +502,9 @@ function LearningPage() {
             {expanded ? '收起完整讲解' : '展开完整讲解'}
           </View>
         )}
-        <View className="source-note">根据输入材料与模型知识生成 · 建议结合原始资料核实</View>
+        <GroundingNotice value={q.grounding} scope={q.origin?.learning_scope || record?.quiz.learning_scope} />
+        {q.origin && <View className="small muted mt">原学习主题：{q.origin.title}</View>}
+        {record?.quiz.source && q.source_ids?.length ? <View className="source-link" onClick={() => { const source = record.quiz.source!; setSourceView({ title: source.title, segments: source.segments.filter(s => q.source_ids?.includes(s.id)), grounding: q.grounding }); go('source') }}><Icon name="eye" />{record.quiz.source.title} · 查看原文与引用</View> : <View className="source-note">本题没有可展示的支持片段，请结合可靠资料核对。</View>}
       </View>
     )
   }
@@ -477,7 +513,7 @@ function LearningPage() {
       <Row
         key={s.id}
         title={s.quiz.title}
-        sub={`${when(s.completed_at || s.started_at)} / ${s.quiz.questions.length} 题 / 正确率 ${stats(s).accuracy}%`}
+        sub={`${when(s.completed_at || s.started_at)} / ${s.quiz.questions.length} 题 / 正确率 ${stats(s).accuracy}% / ${groundingLabel(s.quiz.grounding)}`}
         end={<Tag color="blue">{s.mode === 'replay' ? '重闯' : '已通关'}</Tag>}
         onClick={() => openRecord(s)}
       />
@@ -545,17 +581,19 @@ function LearningPage() {
             <>好奇什么，{`\n`}就学什么。</>
           )}
         </Hero>
+        {getPendingStudy(auth.user.id) && <View className="panel blue mt"><View className="strong">有一项学习任务可以继续</View><View className="small muted mt">查询会恢复原操作，已提交的出题不会重复生成。</View><Btn secondary onClick={() => { go('topic'); void topicFlow.restore() }}>{getPendingStudy(auth.user.id)?.kind === 'generation' ? '恢复出题进度' : '恢复范围准备'}</Btn></View>}
         <View className="notebook">
           <Textarea
             value={draft.text}
-            maxlength={5000}
-            placeholder="比如：HTTP 为什么是无状态的？"
+            maxlength={6000}
+            ariaLabel="学习主题或网页链接与说明"
+            placeholder="输入学习主题，或粘贴网页链接和学习说明"
             onInput={(e) => dispatch({ type: 'DRAFT', draft: { ...draft, text: e.detail.value } })}
             autoHeight={false}
           />
           <View className="input-foot">
-            <Text>{draft.text ? '主题、笔记，都可以放进来' : '也可以粘贴一段学习笔记'}</Text>
-            <Text>{draft.text.length} / 5000</Text>
+            <Text>{draft.text ? '主题、笔记、公开网页都可以' : '先获取资料，再由你确认学习范围'}</Text>
+            <Text>{draft.text.length} / 6000</Text>
           </View>
         </View>
         <View className="material-grid">
@@ -564,7 +602,7 @@ function LearningPage() {
             ['link', '网页'],
             ['video', '视频'],
           ].map(([icon, name]) => (
-            <View key={name} className="material" onClick={() => future(`${name}解析`)}>
+            <View key={name} className="material" onClick={() => { materialFlow.open(name === '文档' ? 'document' : name === '网页' ? 'web' : 'video'); go('materials') }}>
               <Icon name={icon} />
               {name}
             </View>
@@ -685,6 +723,7 @@ function LearningPage() {
             [active.quiz.difficulty === 'easy' ? '入门' : '进阶', '难度'],
           ]}
         />
+        <GroundingNotice value={active.quiz.grounding} scope={active.quiz.learning_scope} />
         <View className="panel">
           <View className="row mb">
             <Tag color="blue">本轮路线</Tag>
@@ -721,7 +760,7 @@ function LearningPage() {
           <View className="quiz-steps" role="navigation" aria-label="切换题目">
             {active.quiz.questions.map((q, index) => (
               <View key={q.id} role="button" aria-label={`第 ${index + 1} 题`} aria-current={index === active.cursor ? 'step' : undefined}
-                className={`quiz-step ${index === active.cursor ? 'current' : ''} ${active.answers.some(answer => answer.question_id === q.id) ? 'answered' : ''}`}
+                className={`quiz-step ${index === active.cursor ? 'current' : ''} ${active.answers.some(answer => answer.question_id === q.id) || data.answerDrafts?.[active.id]?.[q.id]?.length ? 'answered' : ''}`}
                 onClick={() => void jumpQuestion(index)}>
                 <Text className="quiz-step-number">{index + 1}</Text>
               </View>
@@ -790,20 +829,19 @@ function LearningPage() {
         ) : (
           <View className="question-hint">
             <Icon name={current.type === 'multi' ? 'help' : 'bolt'} />
-            {current.type === 'multi' ? '选择所有符合条件的选项' : '选择后立即查看答案与讲解'}
+            {questionBusy ? '正在确认答案…' : current.type === 'multi' ? '选择所有符合条件的选项，再确认本题' : '选好后点击“确认本题”，确认前可以修改'}
           </View>
         )}
       </>
     )
     footer = <>
-      {!a && current.type === 'multi' && <View className="quiz-submit"><Btn disabled={!selected.length || questionBusy} onClick={() => submit(selected)}>提交答案</Btn></View>}
       <View className="quiz-navigation">
         <Btn secondary disabled={active.cursor === 0 || questionBusy} onClick={() => void jumpQuestion(active.cursor - 1)}>上一题</Btn>
-        <Btn disabled={active.cursor === active.quiz.questions.length - 1 || questionBusy} onClick={() => void jumpQuestion(active.cursor + 1)}>下一题</Btn>
+        {!answered
+          ? <Btn disabled={questionBusy || !selected.length} onClick={() => void submitCurrent(selected)}>{questionBusy ? '正在确认…' : '确认本题'}</Btn>
+          : <Btn disabled={questionBusy || !answered} onClick={() => void jumpQuestion(active.cursor + 1 < active.quiz.questions.length ? active.cursor + 1 : active.quiz.questions.findIndex(q => !active.answers.some(a => a.question_id === q.id)))}>下一题</Btn>}
       </View>
-      {active.answers.length === active.quiz.questions.length
-        ? <View className="quiz-finish"><Btn disabled={questionBusy} onClick={finishQuiz}>完成这一关</Btn></View>
-        : <View className="small muted center quiz-completion">已答 {active.answers.length} / {active.quiz.questions.length} 题，全部作答后可完成本关</View>}
+      <View className="small muted center quiz-completion">已答 {active.answers.length} / {active.quiz.questions.length} 题，答完自动查看报告</View>
     </>
   }
   if ((screen === 'result' || screen === 'reviewResult') && record && sStats) {
@@ -946,7 +984,7 @@ function LearningPage() {
       </Btn>
     )
   }
-  if (screen === 'report' && record?.report && sStats) {
+  if (screen === 'report' && record?.completed_at && sStats) {
     const report = record.report
     body = (
       <>
@@ -976,20 +1014,24 @@ function LearningPage() {
                   : '再遇见一次，会更清楚'}
             </View>
             <View className="body-copy">
-              {report.weak_points.length
+              {report?.weak_points.length
                 ? report.weak_points.join('、') + '值得再巩固一下。'
                 : '试着用自己的话，解释一次。'}
             </View>
           </View>
         </View>
-        <Section>三句话，带走这关</Section>
+        <Stat items={[[`${sStats.correct_count} / ${sStats.total}`, '答对题数'], [duration(sStats.duration_ms), '用时'], [sStats.xp, '获得 XP']]} />
+        <GroundingNotice value={report?.verification || record.quiz.grounding} scope={report?.learning_scope || record.quiz.learning_scope} />
+        {reportPending && <View className="notice" ariaRole="status">成绩和答案已就绪，正在补充学习总结…</View>}
+        {reportError && <View className="panel mt"><View className="field-error">学习总结暂未完成：{reportError}</View><Btn secondary onClick={() => void reportFor(record)}>重试学习总结</Btn></View>}
+        {report && <><Section>三句话，带走这关</Section>
         <View className="takeaway">
           {report.summary.map((line, i) => (
             <View className="takeaway-line" key={i}>
               {line}
             </View>
           ))}
-        </View>
+        </View></>}
         <Section>知识点掌握 · 本轮估计</Section>
         {sStats.knowledge_points.map((p) => (
           <Mastery
@@ -1000,14 +1042,19 @@ function LearningPage() {
           />
         ))}
         <View className="small muted">仅根据本轮少量题目估计，不代表长期能力。</View>
-        <Section>下一步，可以这样学</Section>
+        {report && <><Section>下一步，可以这样学</Section>
         <View className="report-list">
           {report.suggestions.map((x, i) => (
             <View key={i}>
               {i + 1}. {x}
             </View>
           ))}
-        </View>
+        </View></>}
+        <Section>本轮答案与解析</Section>
+        {record.answers.map(answer => {
+          const question = record.quiz.questions.find(q => q.id === answer.question_id)!
+          return <View className="panel mt" key={question.id}><View className="strong">{question.stem}</View><View className="small muted mt">你的答案：{optionText(question, answer.selected)}</View>{feedback(question, answer.selected)}</View>
+        })}
         <Row
           title="再巩固一下薄弱知识"
           sub={`${sStats.total - sStats.correct_count} 道本轮错题`}
@@ -1026,11 +1073,11 @@ function LearningPage() {
     footer = (
       <>
         <Btn onClick={() => go('share')}>
-          <Icon name="share" />
+          <Icon name="share-white" />
           分享这次收获
         </Btn>
-        <View className="text-btn" onClick={() => root('review')}>
-          前往个人学习中心
+        <View className="text-btn" onClick={() => root('home')}>
+          返回首页
         </View>
       </>
     )
@@ -1077,7 +1124,7 @@ function LearningPage() {
     footer = (
       <>
         <Btn onClick={save} disabled={saving}>
-          <Icon name="download" />
+          <Icon name="download-white" />
           {saving ? '正在生成海报…' : '保存海报图片'}
         </Btn>
         <Btn
@@ -1139,7 +1186,7 @@ function LearningPage() {
             <View
               key={name}
               className="material"
-              onClick={() => (i === 1 ? future(name) : go(i === 0 ? 'wrongs' : 'analytics'))}
+              onClick={() => go(i === 1 ? 'map' : i === 0 ? 'wrongs' : 'analytics')}
             >
               <Icon name={icon} />
               {name}
@@ -1185,9 +1232,9 @@ function LearningPage() {
           onChange={setHistoryRange}
         />
         {list.length
-          ? rows(list)
+          ? list.map(s => <View key={s.id} className="history-entry">{rows([s])}<Btn secondary onClick={() => confirmDelete(s)}>删除学习记录</Btn></View>)
           : empty('这里，还没有学习记录', '完成一关后，就会留下自己的收获。', () => root('home'))}
-        <View className="small muted mt">已显示 {list.length} 条本机记录。</View>
+        <View className="small muted mt">已显示 {list.length} 条学习记录。</View>
       </>
     )
   }
@@ -1196,6 +1243,7 @@ function LearningPage() {
       <>
         <Tag color="green">已通关</Tag>
         <Title>{record.quiz.title}</Title>
+        <GroundingNotice value={record.quiz.grounding} scope={record.quiz.learning_scope} />
         <View className="small muted">
           {when(record.started_at)} / 文本输入{record.mode === 'replay' ? ' / 重闯' : ''}
         </View>
@@ -1224,7 +1272,7 @@ function LearningPage() {
                 icon={{ single: 'choice-single', multi: 'choice-multi', judge: 'judge' }[q.type]}
                 iconLabel={typeName(q.type)}
                 title={q.stem}
-                sub={`你的答案 ${a.selected.join('、')} / 正确答案 ${q.answers.join('、')}`}
+                sub={`你的答案 ${a.selected.join('、')} / 正确答案 ${q.answers.join('、')} / ${groundingLabel(q.grounding)}`}
                 end={<Tag color={ok ? 'green' : 'red'}>{ok ? '正确' : '错误'}</Tag>}
                 onClick={() => {
                   setQid(q.id)
@@ -1265,106 +1313,10 @@ function LearningPage() {
         </>
       )
   }
-  if (screen === 'analytics') {
-    const list = profile.completed.filter((s) =>
-        inRange(s.completed_at!, [7, 30, 0][analyticsRange]),
-      ),
-      sum = list.reduce(
-        (v, s) => {
-          const t = stats(s)
-          return {
-            correct: v.correct + t.correct_count,
-            total: v.total + t.total,
-            time: v.time + t.duration_ms,
-          }
-        },
-        { correct: 0, total: 0, time: 0 },
-      )
-    const daily = Array.from({ length: analyticsRange === 1 ? 30 : 7 }, (_, i) => {
-      const day = new Date()
-      day.setDate(day.getDate() - (analyticsRange === 1 ? 29 : 6) + i)
-      const dayList = list.filter(
-          (s) => new Date(s.completed_at!).toDateString() === day.toDateString(),
-        ),
-        count = dayList.reduce((n, s) => n + s.quiz.questions.length, 0),
-        correct = dayList.reduce((n, s) => n + stats(s).correct_count, 0)
-      return {
-        label: `${day.getMonth() + 1}/${day.getDate()}`,
-        count,
-        accuracy: count ? (correct / count) * 100 : null,
-      }
-    })
-    const trend =
-      analyticsRange === 2
-        ? list.slice(-15).map((s) => ({
-            label: when(s.completed_at!).split(' ')[0],
-            accuracy: stats(s).accuracy,
-            count: s.quiz.questions.length,
-          }))
-        : daily
-    body = (
-      <>
-        <Title>看见自己的进步</Title>
-        <Segments
-          items={['近 7 天', '近 30 天', '全部']}
-          value={analyticsRange}
-          onChange={setAnalyticsRange}
-        />
-        <View className="row">
-          <Tag>本机新学记录</Tag>
-          <Text className="text-btn" onClick={() => future('周期报告')}>
-            生成报告 <Icon name="chevron" />
-          </Text>
-        </View>
-        <Stat
-          items={[
-            [`${sum.total ? Math.round((sum.correct / sum.total) * 100) : 0}%`, '平均正确率'],
-            [sum.total, '完成题数'],
-            [`${Math.round(sum.time / 60000)} 分钟`, '学习用时'],
-          ]}
-        />
-        <Section>正确率趋势</Section>
-        {!sum.total ? (
-          <View className="hint-note">完成第一关后，这里会显示真实趋势。</View>
-        ) : (
-          <Trend points={trend} />
-        )}
-        <Section>题型表现</Section>
-        {(['single', 'multi', 'judge'] as const).map((type) => {
-          const qs = list.flatMap((s) =>
-              s.quiz.questions
-                .filter((q) => q.type === type)
-                .map((q) => ({ q, a: s.answers.find((a) => a.question_id === q.id)! })),
-            ),
-            correct = qs.filter((x) => isCorrect(x.q, x.a.selected)).length
-          return (
-            <Mastery
-              key={type}
-              label={`${typeName(type)} / ${qs.length} 题`}
-              value={qs.length ? Math.round((correct / qs.length) * 100) : 0}
-              color={type === 'multi' ? 'yellow' : 'green'}
-            />
-          )
-        })}
-        <Section>最近一周学习量 · 题</Section>
-        <View className="bar-grid">
-          {daily.slice(-7).map((d) => (
-            <View className="bar-col" key={d.label}>
-              <View className="small muted">{d.count}</View>
-              <View
-                className="bar"
-                style={{
-                  height: Math.max(1, (d.count / Math.max(1, ...daily.map((x) => x.count))) * 85),
-                }}
-              />
-              <View className="bar-label">{d.label}</View>
-            </View>
-          ))}
-        </View>
-        <Buddy who="paper">多选题可以慢一点，把每个选项都过一遍。</Buddy>
-      </>
-    )
-  }
+  if (screen === 'materials') { body = materialFlow.body; footer = materialFlow.footer }
+  if (screen === 'topic') { body = topicFlow.body; footer = topicFlow.footer }
+  if (screen === 'source' && sourceView) body = <SourceReader title={sourceView.title} segments={sourceView.segments} grounding={sourceView.grounding} />
+  if (['map', 'analytics', 'periodSetup', 'periodReport'].includes(screen)) { body = analysis.body; footer = analysis.footer }
   if (screen === 'wrongs') {
     const topics = ['全部主题', ...new Set(wrongs.map((w) => w.session.quiz.title))],
       topic = topics[topicFilter] || topics[0]
@@ -1393,7 +1345,7 @@ function LearningPage() {
               <Row
                 key={w.key}
                 title={w.question.stem}
-                sub={`${w.session.quiz.title} · ${typeName(w.question.type)} · ${when(w.session.started_at)}`}
+                sub={`${w.session.quiz.title} · ${typeName(w.question.type)} · ${when(w.session.started_at)} · ${groundingLabel(w.question.grounding)}`}
                 end={!w.status.mastered ? <Tag color="red">今天复习</Tag> : undefined}
                 onClick={() => openWrong(w)}
                 textLed
@@ -1636,7 +1588,7 @@ function LearningPage() {
             </View>
           )}
           <Text className="mini-label">
-            {screen === 'quiz' && active?.mode === 'review' ? '旧识重温' : labels[screen]}
+            {screen === 'quiz' && active?.mode === 'review' ? '旧识重温' : screen === 'materials' ? materialFlow.label : screen === 'topic' ? topicFlow.label : labels[screen]}
           </Text>
         </View>
         {process.env.TARO_ENV === 'h5' && (
@@ -1681,8 +1633,8 @@ function LearningPage() {
               先<Text className="handline">歇一下</Text>？
             </View>
             <View className="sheet-copy">
-              本轮已完成 {active.answers.length} / {active.quiz.questions.length}{' '}
-              题。保存后，下次可以接着学；未完成的关卡不会计为通关。
+              本轮已选 {selectedCount} / {active.quiz.questions.length}{' '}
+              题。已确认的答案保存在云端，未确认的多选暂存在本机，下次可以接着学。
             </View>
             <Btn onClick={() => setPaused(false)}>继续答题</Btn>
             <Btn secondary onClick={() => root('home')}>

@@ -22,7 +22,7 @@ class WeChatStub:
 def system():
     from app.accounts.database import Database, Base
     from app.accounts.repository import Accounts
-    settings = Settings(database_testing=True, wechat_app_id='test-app', identity_hash_secret='test-secret-only-' * 3, ai_minute_limit=1000, login_minute_limit=10000)
+    settings = Settings(database_testing=True, wechat_app_id='test-app', identity_hash_secret='test-secret-only-' * 3, ai_minute_limit=1000, login_minute_limit=10000, tavily_api_key='')
     assert settings.mysql_user, '请在 backend/.env 配置 MYSQL_*，测试必须使用真实 MySQL'
     database = Database(settings)
     database.migrate()
@@ -77,10 +77,25 @@ async def test_avatar_validates_bytes_and_persists(system):
         assert Image.open(io.BytesIO(downloaded.content)).size == (256, 256)
 
 
-async def generate(c, key='first'):
-    r = await c.post('/api/v1/quiz/generate', headers={'Idempotency-Key': key}, json={'text': 'HTTP', 'question_count': 3, 'difficulty': 'easy'})
+async def confirmed_body(c, key='first', count=3, text='HTTP'):
+    preparation = await c.post('/api/v1/quiz/preparations', headers={'Idempotency-Key': 'scope-' + key}, json={'text': text})
+    assert preparation.status_code == 200, preparation.text
+    prepared = (await c.get('/api/v1/quiz/preparations/' + preparation.json()['data']['id'])).json()['data']
+    assert prepared['status'] == 'ready', prepared
+    candidate = prepared['content']['candidates'][0]
+    focus = candidate['focuses'][0]
+    return {'preparation_id': prepared['id'], 'scope_version': prepared['version'], 'candidate_id': candidate['id'],
+            'focus_id': focus['id'], 'scope_point_ids': [p['id'] for p in focus['points']], 'question_count': count, 'difficulty': 'easy'}
+
+
+async def generate(c, key='first', count=3, difficulty='easy', text='HTTP'):
+    body = {**await confirmed_body(c, key, count, text), 'difficulty': difficulty}
+    r = await c.post('/api/v1/quiz/generate', headers={'Idempotency-Key': key}, json=body)
     assert r.status_code == 200, r.text
-    return r.json()['data']
+    assert r.json()['data']['kind'] == 'generation_operation'
+    operation = (await c.get('/api/v1/operations/' + key)).json()['data']
+    assert operation['status'] == 'succeeded', operation
+    return operation['result']
 
 
 async def answer(c, session, qid, selected):
@@ -121,7 +136,7 @@ async def test_idempotency_ownership_and_report_cache(system):
         await login(c)
         first = await generate(c)
         assert (await generate(c))['id'] == first['id']
-        assert len(system.state.gateway.calls) == 1
+        assert len(system.state.gateway.calls) == 3
         mismatch = await c.post('/api/v1/quiz/generate', headers={'Idempotency-Key': 'first'}, json={'text': 'other', 'question_count': 3})
         assert mismatch.status_code == 409
         assert (await c.post('/api/v1/report/generate', json={'attempt_id': first['id']})).status_code == 409
@@ -162,7 +177,8 @@ async def test_wrong_review_clear_export_delete_and_quota_survives(system):
         assert (await c.post('/api/v1/me/delete', json={'code': 'alice', 'confirmation': '注销账号'})).status_code == 200
         assert (await c.get('/api/v1/me')).status_code == 401
         await login(c)
-        r = await c.post('/api/v1/quiz/generate', headers={'Idempotency-Key': 'after-delete'}, json={'text': 'HTTP', 'question_count': 3})
+        body = await confirmed_body(c, 'after-delete')
+        r = await c.post('/api/v1/quiz/generate', headers={'Idempotency-Key': 'after-delete'}, json=body)
         assert r.status_code == 429
 
 
@@ -177,13 +193,14 @@ async def test_quota_and_report_failure_do_not_erase_records(system):
         first = await generate(c)
         for q in quiz_payload()['questions']:
             await answer(c, first, q['id'], q['answers'])
+        next_body = await confirmed_body(c, 'second')
         system.state.gateway = Failure()
         for _ in range(3):
             assert (await c.post('/api/v1/report/generate', json={'attempt_id': first['id']})).status_code == 504
         assert (await c.post('/api/v1/report/generate', json={'attempt_id': first['id']})).status_code == 429
         assert (await c.get('/api/v1/me')).json()['data']['stats']['xp'] == 30
         system.state.settings.quiz_daily_limit = 1
-        r = await c.post('/api/v1/quiz/generate', headers={'Idempotency-Key': 'second'}, json={'text': 'HTTP', 'question_count': 3})
+        r = await c.post('/api/v1/quiz/generate', headers={'Idempotency-Key': 'second'}, json=next_body)
         assert r.status_code == 429
 
 
@@ -252,16 +269,17 @@ async def test_single_concurrent_ai_request(system):
             started.set()
             await release.wait()
             return await original.generate(*args)
-    system.state.gateway = Slow()
     async with httpx.AsyncClient(transport=httpx.ASGITransport(app=system), base_url='http://test') as c:
         await login(c)
+        body = await confirmed_body(c, 'one')
+        system.state.gateway = Slow()
         first = asyncio.create_task(generate(c, 'one'))
         await started.wait()
-        second = await c.post('/api/v1/quiz/generate', headers={'Idempotency-Key': 'two'}, json={'text': 'HTTP', 'question_count': 3})
+        second = await c.post('/api/v1/quiz/generate', headers={'Idempotency-Key': 'two'}, json=body)
         assert second.status_code == 409 and second.json()['code'] == 'AI_BUSY'
         release.set()
         await first
-        assert len(original.calls) == 1
+        assert len(original.calls) == 3
 
 
 @pytest.mark.anyio
@@ -324,13 +342,14 @@ async def test_quiz_and_operation_success_commit_together(system):
     from app.accounts.database import Operation
     async with httpx.AsyncClient(transport=httpx.ASGITransport(app=system, raise_app_exceptions=False), base_url='http://test') as c:
         await login(c)
+        body = await confirmed_body(c, 'atomic')
         def fail(session, *_):
             if any(isinstance(v, Operation) and v.status == 'succeeded' for v in session.dirty):
                 raise RuntimeError('simulate completion write failure')
         event.listen(Session, 'before_flush', fail)
         try:
-            response = await c.post('/api/v1/quiz/generate', headers={'Idempotency-Key': 'atomic'}, json={'text': 'HTTP', 'question_count': 3})
-            assert response.status_code == 500
+            response = await c.post('/api/v1/quiz/generate', headers={'Idempotency-Key': 'atomic'}, json=body)
+            assert response.status_code == 200  # The asynchronous operation records failure.
         finally:
             event.remove(Session, 'before_flush', fail)
         assert (await c.get('/api/v1/learning')).json()['data']['sessions'] == []
@@ -364,12 +383,14 @@ async def test_expired_generation_does_not_store_late_result(system):
             result = await original.generate(*args)
             now[0] += 100000
             return result
-    system.state.gateway = Late()
     async with httpx.AsyncClient(transport=httpx.ASGITransport(app=system), base_url='http://test') as c:
         await login(c)
-        response = await c.post('/api/v1/quiz/generate', headers={'Idempotency-Key': 'late'}, json={'text': 'HTTP', 'question_count': 3})
-        assert response.status_code == 409
-        assert response.json()['code'] == 'OPERATION_EXPIRED'
+        body = await confirmed_body(c, 'late')
+        system.state.gateway = Late()
+        response = await c.post('/api/v1/quiz/generate', headers={'Idempotency-Key': 'late'}, json=body)
+        assert response.status_code == 200
+        operation = (await c.get('/api/v1/operations/late')).json()['data']
+        assert operation['status'] == 'failed' and operation['error_code'] == 'OPERATION_EXPIRED'
         assert (await c.get('/api/v1/learning')).json()['data']['sessions'] == []
 
 
@@ -429,8 +450,7 @@ async def test_profile_weighted_accuracy_and_shanghai_streak(system):
         first = await generate(c, 'stats-one')
         for q in quiz_payload()['questions']: await answer(c, first, q['id'], q['answers'])
         system.state.gateway = FakeGateway(quiz_payload(5))
-        r = await c.post('/api/v1/quiz/generate', json={'text': 'HTTP', 'question_count': 5})
-        second = r.json()['data']
+        second = await generate(c, 'stats-five', count=5)
         for i, q in enumerate(quiz_payload(5)['questions']): await answer(c, second, q['id'], q['answers'] if i < 2 else ['B'])
         with accounts.database.session() as s:
             s.get(Attempt, first['id']).completed_at = datetime(2026, 10, 11, 16, 30)
@@ -466,8 +486,7 @@ async def test_navigation_any_order_rewards_and_report_snapshot(system, difficul
     from app.accounts.database import Reward
     async with httpx.AsyncClient(transport=httpx.ASGITransport(app=system), base_url='http://test') as c:
         user = await login(c)
-        response = await c.post('/api/v1/quiz/generate', json={'text': 'HTTP', 'question_count': 3, 'difficulty': difficulty})
-        session = response.json()['data']
+        session = await generate(c, difficulty=difficulty)
         assert session['quiz']['reward'] == {'xp': xp, 'coins': coins}
         progress = f"/api/v1/attempts/{session['id']}/progress"
         for invalid in [-1, 3, 100, True]:

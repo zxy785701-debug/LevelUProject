@@ -1,0 +1,44 @@
+
+Running 1 test using 1 worker
+
+(node:7312) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 e2e-accounts\materials.spec.ts:18:5 › 文档上传、真实材料确认、来源阅读、出题和答题闭环 (15.1s)
+
+
+  1) e2e-accounts\materials.spec.ts:18:5 › 文档上传、真实材料确认、来源阅读、出题和答题闭环 ────────────────────────────────
+
+    Test timeout of 15000ms exceeded.
+
+    Error: page.waitForEvent: Test timeout of 15000ms exceeded.
+    =========================== logs ===========================
+    waiting for event "filechooser"
+    ============================================================
+
+      19 |   await login(page, request)
+      20 |   await page.getByText('文档', { exact: true }).click()
+    > 21 |   const chooser = page.waitForEvent('filechooser')
+         |                        ^
+      22 |   await page.getByText('点击选择一份文档', { exact: true }).click()
+      23 |   await (await chooser).setFiles({ name: 'notes.txt', mimeType: 'text/plain', buffer: Buffer.from('HTTP 每次请求独立。Cookie 用来保存状态。Session 保存会话信息。') })
+      24 |   await page.getByText('解析这份文档', { exact: true }).click()
+        at D:\nbproject\LevelUpProject\frontend\e2e-accounts\materials.spec.ts:21:24
+
+    Error: locator.click: Test timeout of 15000ms exceeded.
+    Call log:
+      - waiting for getByText('点击选择一份文档', { exact: true })
+
+
+      20 |   await page.getByText('文档', { exact: true }).click()
+      21 |   const chooser = page.waitForEvent('filechooser')
+    > 22 |   await page.getByText('点击选择一份文档', { exact: true }).click()
+         |                                                     ^
+      23 |   await (await chooser).setFiles({ name: 'notes.txt', mimeType: 'text/plain', buffer: Buffer.from('HTTP 每次请求独立。Cookie 用来保存状态。Session 保存会话信息。') })
+      24 |   await page.getByText('解析这份文档', { exact: true }).click()
+      25 |   await expect(page.getByText('这一关，学这些', { exact: true })).toBeVisible()
+        at D:\nbproject\LevelUpProject\frontend\e2e-accounts\materials.spec.ts:22:53
+
+    Error Context: ..\docs\user-system\e2e-results\materials-文档上传、真实材料确认、来源阅读、出题和答题闭环\error-context.md
+
+  1 failed
+    e2e-accounts\materials.spec.ts:18:5 › 文档上传、真实材料确认、来源阅读、出题和答题闭环 ─────────────────────────────────

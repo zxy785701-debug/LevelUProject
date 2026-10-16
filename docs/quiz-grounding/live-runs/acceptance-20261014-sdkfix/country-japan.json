@@ -1,0 +1,2467 @@
+{
+  "case": {
+    "id": "country-japan",
+    "text": "学习日本新干线的基础知识与列车分类，优先日本来源",
+    "expected": "日本新干线基础分类，不静默换成其他国家铁路",
+    "tags": [
+      "country",
+      "simple"
+    ]
+  },
+  "error_code": null,
+  "status": "awaiting_human_evidence_review",
+  "preparation": {
+    "id": "4b47f5ab-e4ee-4dde-b0bb-dae5b65ddee0",
+    "version": 1,
+    "input_text": "学习日本新干线的基础知识与列车分类,优先日本来源",
+    "status": "ready",
+    "stage": "ready",
+    "content": {
+      "candidates": [
+        {
+          "id": "scope-shinkansen-basics-v1",
+          "topic": "日本新干线基础知识",
+          "domain": "日本高速铁路（新干线）通识",
+          "description": "围绕新干线的基本定义、历史沿革、线路规格与运营特征建立学习范围。资料来自日文维基、JR西日本官方车辆页、日本经济新闻及科学技术馆等日本来源。仅整理范围，待用户确认后再另行出题。",
+          "focuses": [
+            {
+              "id": "focus-shinkansen-definition-v1",
+              "name": "新干线的定义与基本规格",
+              "description": "新干线作为高速铁路的基本属性与线路技术规格。",
+              "points": [
+                {
+                  "id": "point-shinkansen-opening-v1",
+                  "name": "1964年10月1日东海道新干线开业，为世界首条高速铁路",
+                  "evidence_ids": [
+                    "web-bd97c438531e049a164b51859b398e79",
+                    "web-fbb716ba6af4b030495b02d75b91e5ca",
+                    "web-ed925988080fb2cc8c9ca8f3d01c7514",
+                    "web-db6d515e5161900d91fc9b16aef02190"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-shinkansen-gauge-v1",
+                  "name": "轨距1435mm标准轨与交流25000V架空电车线方式",
+                  "evidence_ids": [
+                    "web-bd97c438531e049a164b51859b398e79",
+                    "web-fbb716ba6af4b030495b02d75b91e5ca"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-shinkansen-speed-v1",
+                  "name": "最高速度320km/h（东北新干线部分区间）",
+                  "evidence_ids": [
+                    "web-bd97c438531e049a164b51859b398e79",
+                    "web-adcc85029dc2c638a6b446d9d6dfaf5a"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-shinkansen-route-count-v1",
+                  "name": "全规格8条线路、迷你新干线2条线路的线路构成",
+                  "evidence_ids": [
+                    "web-bd97c438531e049a164b51859b398e79"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-shinkansen-tokaido-spec-v1",
+                  "name": "东海道新干线东京—新大阪515.4km、17站、JR东海运营",
+                  "evidence_ids": [
+                    "web-fbb716ba6af4b030495b02d75b91e5ca"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-shinkansen-history-origin-v1",
+                  "name": "源于战前“弹丸列车计划”，1959年动工、1964年开业",
+                  "evidence_ids": [
+                    "web-fbb716ba6af4b030495b02d75b91e5ca",
+                    "web-d9ba484054be54641476fd8d7b486f90"
+                  ],
+                  "evidence_status": "available"
+                }
+              ]
+            },
+            {
+              "id": "focus-shinkansen-history-v1",
+              "name": "新干线历史与车辆演进",
+              "description": "从开业到历代车辆的速度与时间缩短历程。",
+              "points": [
+                {
+                  "id": "point-series0-v1",
+                  "name": "0系：开业时最高210km/h、东京—新大阪约4小时",
+                  "evidence_ids": [
+                    "web-ed925988080fb2cc8c9ca8f3d01c7514",
+                    "web-d9ba484054be54641476fd8d7b486f90"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-series100-v1",
+                  "name": "100系：约20年后首次换代，世界首列200km/h以上双层车辆",
+                  "evidence_ids": [
+                    "web-d9ba484054be54641476fd8d7b486f90"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-series300-v1",
+                  "name": "300系：1992年起270km/h营业运行，东京—新大阪缩短至2小时30分",
+                  "evidence_ids": [
+                    "web-d9ba484054be54641476fd8d7b486f90",
+                    "web-d29c558aab9e17857c7034ffc24586a2"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-n700s-v1",
+                  "name": "N700S：2020年7月1日投运、最高300km/h、16辆编成定员1323名",
+                  "evidence_ids": [
+                    "web-f8e2249a0110fb27d97c2332231f4a69"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-n700a-n700s-equipment-v1",
+                  "name": "N700A/N700S的插座配置差异（N700S全席有插座）",
+                  "evidence_ids": [
+                    "web-a0f28d832c44f8bc22e702879bcd199a"
+                  ],
+                  "evidence_status": "available"
+                }
+              ]
+            },
+            {
+              "id": "focus-shinkansen-operation-v1",
+              "name": "新干线的运营与安全特征",
+              "description": "运营准点、安全记录与线路建设方式等特征。",
+              "points": [
+                {
+                  "id": "point-punctuality-v1",
+                  "name": "班次密集、准点率极高，平均误点以秒计",
+                  "evidence_ids": [
+                    "web-adcc85029dc2c638a6b446d9d6dfaf5a"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-safety-record-v1",
+                  "name": "开业以来无乘客死亡事故，为世界最安全铁路系统之一",
+                  "evidence_ids": [
+                    "web-adcc85029dc2c638a6b446d9d6dfaf5a",
+                    "web-ad754665e9a8ae0838513d09a289a069"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-full-spec-conditions-v1",
+                  "name": "全规格新干线：主要区间200km/h以上、无道口、高架立体交叉",
+                  "evidence_ids": [
+                    "web-ad754665e9a8ae0838513d09a289a069"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-tokaido-volume-v1",
+                  "name": "东海道新干线连接东京、名古屋、大阪，日运量最大约45.8万人",
+                  "evidence_ids": [
+                    "web-d1585ed12a17ff910f7a0bb8f5ed76fe"
+                  ],
+                  "evidence_status": "available"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "scope-shinkansen-train-classes-v1",
+          "topic": "日本新干线列车分类与爱称",
+          "domain": "日本新干线列车种别与命名",
+          "description": "围绕新干线列车种别（のぞみ、みずほ、さくら、ひかり、こだま等）的定位、停站、座位与命名由来建立学习范围。资料来自日本旅行信息网站、日文维基与JR西日本官方页面。仅整理范围，待用户确认后再另行出题。",
+          "focuses": [
+            {
+              "id": "focus-tokaido-sanyo-classes-v1",
+              "name": "东海道·山阳新干线列车种别",
+              "description": "のぞみ、みずほ、ひかり、さくら、こだま等种别的定位与差异。",
+              "points": [
+                {
+                  "id": "point-nozomi-v1",
+                  "name": "のぞみ：1992年诞生、东海道·山阳最速达列车、使用N700A/N700S",
+                  "evidence_ids": [
+                    "web-d29c558aab9e17857c7034ffc24586a2",
+                    "web-a0f28d832c44f8bc22e702879bcd199a"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-nozomi-frequency-v1",
+                  "name": "のぞみ通常每小时3〜4班，多客期最多每小时6班",
+                  "evidence_ids": [
+                    "web-a0f28d832c44f8bc22e702879bcd199a"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-mizuho-v1",
+                  "name": "みずほ：山阳·九州新干线最速达型，新大阪—博多约2小时28分",
+                  "evidence_ids": [
+                    "web-81d1338eca756989f30e90aefe36d10e",
+                    "web-a0f28d832c44f8bc22e702879bcd199a"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-mizuho-stops-v1",
+                  "name": "みずほ全列车停靠站：新大阪、新神户、冈山、广岛、小仓、博多",
+                  "evidence_ids": [
+                    "web-81d1338eca756989f30e90aefe36d10e"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-sakura-v1",
+                  "name": "さくら：普通车指定席为2列×2列，较みずほ更划算",
+                  "evidence_ids": [
+                    "web-81d1338eca756989f30e90aefe36d10e"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-hikari-kodama-v1",
+                  "name": "ひかり、こだま：东海道新干线三种列车中的另外两种",
+                  "evidence_ids": [
+                    "web-d1585ed12a17ff910f7a0bb8f5ed76fe",
+                    "web-7f5d1c0941501e6741448ce1ea07b1e6"
+                  ],
+                  "evidence_status": "available"
+                }
+              ]
+            },
+            {
+              "id": "focus-seat-onboard-v1",
+              "name": "座位类别与车内服务",
+              "description": "普通车自由席/指定席、绿色车厢及车内贩卖等差异。",
+              "points": [
+                {
+                  "id": "point-seat-types-v1",
+                  "name": "座位分为普通车自由席、普通车指定席、绿色车指定席",
+                  "evidence_ids": [
+                    "web-81d1338eca756989f30e90aefe36d10e",
+                    "web-a0f28d832c44f8bc22e702879bcd199a"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-car-assignment-v1",
+                  "name": "みずほ8辆编成：自由席3辆、指定席4.5辆、绿色车0.5辆",
+                  "evidence_ids": [
+                    "web-81d1338eca756989f30e90aefe36d10e"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-peak-seat-change-v1",
+                  "name": "高峰期普通车自由席取消，1〜3号车也变为指定席",
+                  "evidence_ids": [
+                    "web-81d1338eca756989f30e90aefe36d10e"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-onboard-sales-v1",
+                  "name": "车内贩卖：のぞみ有、みずほ无、绿色车限定等情况",
+                  "evidence_ids": [
+                    "web-81d1338eca756989f30e90aefe36d10e",
+                    "web-a0f28d832c44f8bc22e702879bcd199a"
+                  ],
+                  "evidence_status": "available"
+                }
+              ]
+            },
+            {
+              "id": "focus-naming-origin-v1",
+              "name": "列车爱称的命名由来",
+              "description": "各列车爱称的语源与命名分类。",
+              "points": [
+                {
+                  "id": "point-naming-categories-v1",
+                  "name": "爱称分类：光类、声音类、山类等命名体系",
+                  "evidence_ids": [
+                    "web-4412a3704b4a876c198a6607eb5a13b5"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-tsubame-kamome-v1",
+                  "name": "つばめ（燕号）、かもめ（海鸥号）的命名由来与运行区间",
+                  "evidence_ids": [
+                    "web-4412a3704b4a876c198a6607eb5a13b5"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-tanigawa-asama-v1",
+                  "name": "たにがわ（谷川号）、あさま（浅间号）源自山岳地名",
+                  "evidence_ids": [
+                    "web-4412a3704b4a876c198a6607eb5a13b5",
+                    "web-d1585ed12a17ff910f7a0bb8f5ed76fe"
+                  ],
+                  "evidence_status": "available"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "scope-shinkansen-lines-vehicles-v1",
+          "topic": "日本新干线线路与车辆分类",
+          "domain": "日本新干线路线与车辆型式",
+          "description": "围绕全国新干线线路（东海道、山阳、东北、秋田、上越、北陆、九州等）与车辆型式（N700系、E5系、E6系、E7/W7系等）建立学习范围。资料来自日本旅行信息网站、JR西日本官方车辆页与日文维基。仅整理范围，待用户确认后再另行出题。",
+          "focuses": [
+            {
+              "id": "focus-line-list-v1",
+              "name": "全国新干线线路一览",
+              "description": "各线路的运行区间与代表列车。",
+              "points": [
+                {
+                  "id": "point-hokkaido-tohoku-v1",
+                  "name": "北海道新干线（新青森—新函馆北斗）与东北新干线（东京—新青森）",
+                  "evidence_ids": [
+                    "web-a0f28d832c44f8bc22e702879bcd199a"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-joetsu-hokuriku-v1",
+                  "name": "上越新干线（たにがわ运行区间）与北陆新干线（敦贺—东京）",
+                  "evidence_ids": [
+                    "web-d1585ed12a17ff910f7a0bb8f5ed76fe",
+                    "web-2fef28215dea8608a8f5a6daf5e4c66b"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-kyushu-nishikyushu-v1",
+                  "name": "九州新干线（博多—鹿儿岛中央）与西九州新干线（博多—长崎）",
+                  "evidence_ids": [
+                    "web-4412a3704b4a876c198a6607eb5a13b5"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-tokaido-sanyo-kyushu-v1",
+                  "name": "东海道·山阳·九州新干线的运行区间与列车",
+                  "evidence_ids": [
+                    "web-2fef28215dea8608a8f5a6daf5e4c66b"
+                  ],
+                  "evidence_status": "available"
+                }
+              ]
+            },
+            {
+              "id": "focus-vehicle-types-v1",
+              "name": "车辆型式与编组",
+              "description": "主要车辆型式、编组与特征。",
+              "points": [
+                {
+                  "id": "point-n700-series-v1",
+                  "name": "N700系：16辆编成（东京—博多）与8辆编成（新大阪—鹿儿岛中央/博多）",
+                  "evidence_ids": [
+                    "web-2fef28215dea8608a8f5a6daf5e4c66b"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-500-700-v1",
+                  "name": "700系、500系：新大阪—博多区间运行",
+                  "evidence_ids": [
+                    "web-2fef28215dea8608a8f5a6daf5e4c66b"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-e5-v1",
+                  "name": "E5系：东北新干线代表车型、10辆编成、最高320km/h、首设Gran Class",
+                  "evidence_ids": [
+                    "web-adcc85029dc2c638a6b446d9d6dfaf5a"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-e6-v1",
+                  "name": "E6系：秋田新干线迷你新干线、7辆编成、茜色涂装、与E5系连结运行",
+                  "evidence_ids": [
+                    "web-adcc85029dc2c638a6b446d9d6dfaf5a"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-e7-w7-v1",
+                  "name": "E7系·W7系：北陆新干线（敦贺—东京）使用",
+                  "evidence_ids": [
+                    "web-2fef28215dea8608a8f5a6daf5e4c66b"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-vehicle-letter-v1",
+                  "name": "车辆编号字母：JR东日本E、JR北海道H、JR西日本W",
+                  "evidence_ids": [
+                    "web-f8e2249a0110fb27d97c2332231f4a69"
+                  ],
+                  "evidence_status": "available"
+                }
+              ]
+            },
+            {
+              "id": "focus-mini-shinkansen-v1",
+              "name": "迷你新干线与全规格新干线",
+              "description": "迷你新干线的机制、适用线路与全规格化的讨论。",
+              "points": [
+                {
+                  "id": "point-mini-definition-v1",
+                  "name": "迷你新干线：改造在来线轨距使新干线车辆直通运行",
+                  "evidence_ids": [
+                    "web-2ce461802e7f9cd61bfb8ad5f49d81c8",
+                    "web-433c8e9c91f844022be39991c32af25f",
+                    "web-ad754665e9a8ae0838513d09a289a069"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-mini-lines-v1",
+                  "name": "山形新干线（福岛起）与秋田新干线（盛冈起）两条迷你新干线",
+                  "evidence_ids": [
+                    "web-2ce461802e7f9cd61bfb8ad5f49d81c8",
+                    "web-433c8e9c91f844022be39991c32af25f"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-mini-body-width-v1",
+                  "name": "迷你新干线车体宽度与在来线相同，普通席为2+2列配置",
+                  "evidence_ids": [
+                    "web-c9e4bb19e77defb4dd35001c9dd5b1ad",
+                    "web-433c8e9c91f844022be39991c32af25f"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-mini-speed-limit-v1",
+                  "name": "山形新干线在来线区间（福岛—新庄）限速130km/h",
+                  "evidence_ids": [
+                    "web-ad754665e9a8ae0838513d09a289a069"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-staged-full-spec-v1",
+                  "name": "国土交通省讨论的迷你新干线阶段性全规格化方案（160km/h→260km/h）",
+                  "evidence_ids": [
+                    "web-2cd6a99603fab6aded07f1949bae4e9e"
+                  ],
+                  "evidence_status": "available"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "grounding": {
+      "status": "source_backed",
+      "reason_code": null,
+      "retrieved_at": "2026-10-14T12:19:37.723669Z",
+      "provider": "tavily",
+      "check_version": "evidence-review-v1"
+    },
+    "evidence": [
+      {
+        "id": "web-81d1338eca756989f30e90aefe36d10e",
+        "text": "### 座席の種類と号車\n\n普通車自由席（1～3号車）、普通車指定席（4～7、11～16号車）、グリーン車指定席（8～10号車）  \n ※ピーク時期には、普通車自由席はなく、1～3号車も普通車指定席となる。\n\n### 車内販売\n\nグリーン車のみ。普通車の車内販売はなし。\n\n広告\n\n## 「みずほ」号とは？\n\n山陽・九州新幹線の速達タイプの列車が「みずほ」号です。東海道新幹線（東京方面）には直通せず、九州新幹線（鹿児島中央方面）に直通します。新大阪～博多間の所要時間は2時間28分程度で、「のぞみ」号とほぼ同じです。\n\n全列車が停まる駅は、新大阪、新神戸、岡山、広島、小倉、博多です。そのほか、姫路、福山、新山口の各駅に停まる列車もあります。\n\n運行本数は、朝夕に毎時1本程度です。日中時間帯はあまり運転されていません。\n\n8両編成で、自由席が3両、指定席が4.5両半、グリーン車が0.5両です。\n\n### 座席の種類と号車\n\n普通車自由席（1～3号車）、普通車指定席（4～8号車）、グリーン車指定席（6号車）\n\n### 車内販売\n\n車内販売はなし。\n\n広告\n\n## 「さくら」号とは？ [...] 理由を説明すると、まず、普通車指定席を選ぶ場合、「みずほ」「さくら」は2列×2列シートなのでゆったりしています。ただ「みずほ」は加算料金がかかるので、「さくら」のほうがお得です。\n\n「のぞみ」は普通車指定席が3列×2列シートで加算料金もかかるので、お得さはありません。\n\n自由席を利用するなら、「のぞみ」「みずほ」の加算料金がかかりません。座席も基本的には、どの列車も3×2列シートなので同じです。そのため、運行本数が多くて速い「のぞみ」がいいでしょう。自由席の両数は、「のぞみ」「みずほ」「さくら」とも同じ3両です。\n\n新大阪から乗車する場合、「のぞみ」は始発ではないので席が確保しにくいイメージもありますが、新大阪で降りる人が多いので、空席がないわけではありません。乗車前に外から車内を確認してから乗るといいでしょう。新神戸や岡山で降りる人も多いので、仮に立っても、少しすれば座れる可能性が高いです。\n\n所要時間は、「のぞみ」「みずほ」「さくら」の3者では、新大阪～博多間でも10分くらいの違いしかありません。\n\n## 「こだま」停車駅は乗り継ぎで [...] 以下では、山陽新幹線「のぞみ」「みずほ」「さくら」「ひかり」「こだま」について、停車駅以外の相違点と共通点をご紹介していきます。\n\n山陽・九州新幹線路線図\n\n画像：JRおでかけネット\n\n広告\n\n  \n\n## 「のぞみ」号とは？\n\n東海道・山陽新幹線を直通する速達タイプの列車が「のぞみ」号です。新大阪～博多間の所要時間は2時間28分程度です。\n\n運転区間は、大きく分けて、東京～広島間（広島発着）と東京～博多間（博多発着）があります。全列車が停まる駅は、新大阪、新神戸、岡山、広島、小倉、博多です。そのほか、姫路、福山、徳山、新山口の各駅に停まる列車もあります。\n\n運行本数は、定期列車が毎時3本程度で、うち2本が博多発着、1本が広島発着です。そのほか不定期列車（毎日運転しない列車）が6～7本程度あります。ただし、最大本数で運行するのは、限られた日や時間帯だけです。運行本数は毎日異なります。\n\n16両編成で、自由席が3両、指定席が10両、グリーン車が3両です。ただし、年末年始、ゴールデンウィーク、お盆の、いわゆる「ピーク時期」には、指定席13両、グリーン車3両となり、自由席はありません。",
+        "title": "山陽新幹線「のぞみ」「みずほ」「さくら」の違い。料金、時間はどれだけ変わる？ | 旅行総合研究所タビリス",
+        "url": "https://tabiris.com/archives/nozomi-mizuho",
+        "original_url": "https://tabiris.com/archives/nozomi-mizuho",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:19:26.118171Z",
+        "published_at": null,
+        "content_hash": "54b1c8af237bb5a993ec648f9d89c7af83272ae484daa917b1c70b40e2de9324",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 1481,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-a0f28d832c44f8bc22e702879bcd199a",
+        "text": "### のぞみ\n\n東海道新幹線から直通する最速列車で、ほとんどの列車が広島駅または博多駅発着です。通常は1時間に3〜4本運行されていますが、大型連休など多客期には1時間あたり最大6本が運行されます。\n\n山陽新幹線 のぞみ／N700系\n\n【使用車両】  \n N700A／N700S  \n   \n 【のぞみの停車駅】  \n 新大阪駅・新神戸駅・西明石駅（一部列車）・姫路駅（一部列車）・岡山駅・福山駅（一部列車）・広島駅・徳山駅（一部列車）・新山口駅（一部列車）・小倉駅・博多駅  \n   \n 【座席の種類】  \n 普通車（自由席、指定席）／グリーン車（指定席）  \n   \n 【コンセントの有無】  \n N700A：グリーン車全席／普通車窓側席・最前列・最後列、N700S：全席  \n   \n 【車内販売】  \n あり\n\n### みずほ\n\n新大阪駅〜鹿児島中央駅間で運行されている「のぞみ」タイプの最速列車。運行本数が少なく、始発駅基準で午前中と夕方以降に8本しか運行されていません。\n\n山陽新幹線 みずほ／N700系7000番代（S編成） [...] | 路線名 | 運転区間 | 列車 | 車両 |\n ---  --- |\n| 北海道新幹線 | 新青森駅～  新函館北斗駅 | はやぶさ  はやて | E5系  H5系 |\n| 東北新幹線 | 東京駅～  新青森駅 | はやぶさ  やまびこ  なすの  はやて | E5系  H5系  E6系  E2系  E8系 |\n| 秋田新幹線 | 盛岡駅～  秋田駅 | こまち | E6系 |\n| 山形新幹線 | 福島駅～  新庄駅 | つばさ | E8系 |\n| 上越新幹線 | 大宮駅～  新潟駅 | とき  たにがわ | E7系 |\n| 東海道新幹線 | 東京駅～  新大阪駅 | のぞみ  ひかり  こだま | N700A  N700S |\n| 北陸新幹線 | 高崎駅～  敦賀駅 | かがやき  はくたか  あさま  つるぎ | E7系  W7系 |\n| 山陽新幹線 | 新大阪駅～  博多駅 | のぞみ  みずほ  ひかり  さくら  こだま  つばめ | N700A  N700S  700系7000番代  N700系7000・8000番代  500系 | [...] 同じ路線の中にも何種類か名前の違う列車が走っていますよね。  \n 例えば、東京駅から新大阪駅に向かうとき乗車するのは東海道新幹線ですが、東海道新幹線には「のぞみ」「ひかり」「こだま」の3つの列車が走っています。  \n   \n では、「のぞみ」「ひかり」「こだま」はなにが違うのでしょうか？  \n   \n それは「走る区間」「停車駅」「速さ」の違いです。  \n   \n それでは、路線ごとに走っている列車と列車ごとの違いをご紹介します。\n\n## 北海道新幹線\n\n北海道新幹線\n\n北海道新幹線の列車は「はやぶさ」「はやて」の2種類。  \n 東北新幹線と一体的に運行されており、東北新幹線内での最高速度によって、ふたつの愛称があります。  \n   \n 区間：新青森駅〜新函館北斗駅  \n 列車の種類：はやぶさ、はやて\n\n### はやぶさ",
+        "title": "新幹線って何種類ある？全国を走る全10路線一覧と列車の違いを紹介 | トレたび - 鉄道・旅行情報サイト",
+        "url": "https://www.toretabi.jp/railway_info/entry-7625.html",
+        "original_url": "https://www.toretabi.jp/railway_info/entry-7625.html",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:19:26.118171Z",
+        "published_at": null,
+        "content_hash": "40849258007972db2183eec736124bc787e05434bac3a507a2d8cb23d303b1a7",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 1329,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-f8e2249a0110fb27d97c2332231f4a69",
+        "text": "## 東海道・山陽新幹線の車両の種類\n\n東海道新幹線「のぞみ」「ひかり」「こだま」の違いを徹底比較！\n\n東海道新幹線の「のぞみ」「ひかり」「こだま」の違いを比較して、どれを選べば良いのかを分かりやすくご紹介いたします。\n\nblog.kipuru.com 山陽新幹線「のぞみ」「みずほ」「ひかり」「さくら」「こだま」の違いを徹底比較！\n\n山陽新幹線を走る「のぞみ」「みずほ」「ひかり」「さくら」「こだま」の違いを比較していきます。種別ごとにどの車両が使われるか、「のぞみ」「みずほ」はどちらに乗るのがいいかなど、山陽新幹線を利用する上で気になる情報が盛りだくさん！\n\nblog.kipuru.com\n\n### N700S\n\n 運用開始　2020年7月1日\n 最高速度　300km/h\n 車体　アルミニウム合金\n 定員　1,323名（16両編成）\n 運用路線　東海道新幹線\n\nN700系の新たな改良型です。 [...] JR東日本が開発した車両には「E」、JR北海道が開発した車両には「H」、JR西日本が開発した車両には「W」とつくのが特徴です。\n\nまた、3けた目が偶数になる列車も運用されていました。\n\n東北方面の新幹線「はやぶさ」「はやて」「やまびこ」「なすの」「こまち」「つばさ」の違いを徹底比較！\n\n車両の種類が多い東北方面の新幹線。「はやぶさ」「はやて」「やまびこ」「なすの」「こまち」「つばさ」でよく使われる車両ごとに比較し、どの種別を利用すればいいかなどを解説しています。\n\nblog.kipuru.com 上越新幹線「とき」「たにがわ」の違いを徹底比較！\n\n上越新幹線を走る「とき」「MAXとき」「たにがわ」「MAXたにがわ」の違い、運行されている車両の特徴を徹底的に比較していきます。2階建て新幹線に乗りたいけどどんな設備か分からない方は要チェック！\n\nblog.kipuru.com 北陸新幹線「かがやき」「はくたか」「あさま」「つるぎ」の違いを徹底比較！\n\n北陸新幹線を走る「かがやき」「はくたか」「あさま」「つるぎ」の違いを比較していきます。それぞれの新幹線の生い立ちなど、豆知識も充実！ [...] 東海道新幹線では1999年に運行を終了し、現在は全車廃車となっています。\n\n## 九州新幹線の車両の種類\n\n山陽新幹線の区間も運行する九州新幹線の車両は、どちらもトップクラスに美しいインテリアデザインになっているのが特徴です。\n\nまた、九州新幹線は急勾配区間が多い路線で、これに対応できる車体が開発されました。\n\n九州新幹線「みずほ」「さくら」「つばめ」の違いを徹底比較！\n\n九州新幹線の「みずほ」「さくら」「つばめ」の情報をなんでも比較していきます。新しい車両「800系」の設備や、どの列車が800系で来るかなどの調べ方もご紹介しています！\n\nblog.kipuru.com\n\n### N700系\n\n 運用開始　2011年3月12日\n 最高速度　260km/h\n 車体　アルミニウム合金\n 座席数　546名（8両編成）\n 運用路線　山陽・九州新幹線「みずほ」「さくら」、九州新幹線「つばめ」\n\n山陽・九州新幹線のN700系は、東海道・山陽新幹線のN700系と異なる点がいくつかあります。\n\n客室内が全体的に木の温かみを感じる内装になっており、普通車指定席が2・2列の座席配置になっています。",
+        "title": "新幹線にはどれぐらいの種類の車両がある？歴代の新幹線を画像付きで紹介！ | 新幹線ナビ｜新幹線予約サイトきっぷる",
+        "url": "https://blog.kipuru.com/mamechishiki/history",
+        "original_url": "https://blog.kipuru.com/mamechishiki/history",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:19:26.118171Z",
+        "published_at": null,
+        "content_hash": "a710a18c85ee279b76ca0a83314d67ed45c3fc996eb6141b9276bd78a1c98493",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 1407,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-d29c558aab9e17857c7034ffc24586a2",
+        "text": "]\n\n1992年（平成4年）3月14日に、JR東海により、当時運賃の値下げなどにより利用を伸ばしていた航空機に対抗するため、東海道新幹線において、それまでの「ひかり \"ひかり (列車)\")」よりさらに速い種別の列車として新たに誕生した。東京 - 新大阪間を従来の最速列車よりも19分早い2時間30分で結び、運行車両には東海道区間の当時最高速となる270km/hでの運転に対応した第三世代車両である300系を充当し、特急料金体系もそれまでの「ひかり」「こだま \"こだま (列車)\")」とは別体系のものを用意する（詳細は後述）など、それまでの新幹線列車とは別格と位置づけられていた。翌1993年にはJR西日本との共同運行により山陽新幹線区間でも運行を開始し、以後東海道・山陽新幹線における最速達列車として位置付けられている。 [...] 「のぞみ」「みずほ」で指定席を利用しない（=自由席のみ利用する）場合\n:   「ひかり」「こだま」「さくら」「つばめ」の利用設備に基づく。\n\n「のぞみ」「みずほ」で指定席を利用する場合\n:   全乗車区間に対する「ひかり」「こだま」「さくら」「つばめ」の特急料金と、「のぞみ」「みずほ」の指定席利用区間に対する「ひかり」「こだま」「さくら」「つばめ」の特急料金の差額とを合計したものとなる。\n:   なお、「ひかり」「こだま」「さくら」を挟んで「のぞみ」を利用する場合、この原則に従って計算した場合と「ひかり」「こだま」「さくら」の区間を通じて「のぞみ」を利用したと見なして計算した場合との、いずれか安い方の金額となる。\n\n東海道・山陽新幹線区間で「のぞみ」と「みずほ」を乗り継ぐ場合は、全区間に対する「のぞみ」の特急料金表に基づき算出する。\n\n### 主な割引乗車券類\n\n[編集&action=edit&section=17 \"節を編集: 主な割引乗車券類\")] [...] なお、2011年（平成23年）3月12日から運行を開始した山陽新幹線・九州新幹線直通列車の「みずほ \"みずほ (列車)\")」についても、山陽新幹線区間については「のぞみ」と同じ料金表を用いる。\n\n当列車は航空機との対抗策として運行を開始したため、フルムーン夫婦グリーンパス（発売終了）やジャパンレールパスなどJR全線乗り放題の乗車券では「のぞみ」は一切利用できず、「ジパング倶楽部」 や「レール&レンタカーきっぷ」などのような運賃や特急料金が割り引かれる制度では、「のぞみ」の特急料金は割引の対象外となっている。\n\n### 「のぞみ」「みずほ」とそれ以外の列車を乗り継ぐ場合\n\n[編集&action=edit&section=16 \"節を編集: 「のぞみ」「みずほ」とそれ以外の列車を乗り継ぐ場合\")]\n\n東海道・山陽新幹線区間で「のぞみ」「みずほ \"みずほ (列車)\")」と「ひかり」「こだま」「さくら」「つばめ」を乗り継いで利用する場合の特急料金は、新幹線の改札を出ない場合に限り、以下の要領により算出する。",
+        "title": "のぞみ (列車) - Wikipedia",
+        "url": "https://ja.wikipedia.org/wiki/%E3%81%AE%E3%81%9E%E3%81%BF_(%E5%88%97%E8%BB%8A)",
+        "original_url": "https://ja.wikipedia.org/wiki/%E3%81%AE%E3%81%9E%E3%81%BF_(%E5%88%97%E8%BB%8A)",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:19:26.118171Z",
+        "published_at": null,
+        "content_hash": "8d1bfd6eb0b25cb1cb117f4836a79aaa7c71c8ede1c053cb8f75272ade2761ee",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 1262,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-7f5d1c0941501e6741448ce1ea07b1e6",
+        "text": "秋におすすめの旅行2026\n\nびゅうトラベルではお得なセールやキャンペーン情報、旬のおすすめプラン・観光スポットなどの情報をメールマガジンで配信しています。\n\n登録は簡単！30秒登録！\n\n【無料】メールマガジン登録\n\n#### エリアで探す\n\n 首都圏エリア\n 東北エリア\n 北関東エリア\n 甲信越エリア\n 北陸エリア\n 北海道エリア\n 伊豆・箱根・湯河原エリア\n 東海エリア\n 関西エリア\n 東京\n 神奈川\n\n#### テーマで探す\n\n 旅のお役立ち情報\n モデルコース\n 日帰り\n 女子旅\n ひとり旅\n 家族旅行\n 温泉\n 春の旅行\n 夏の旅行\n 秋の旅行\n 冬の旅行\n ゴールデンウィーク\n 年末年始\n スキー・スノボ\n 絶景\n 花火\n 祭り\n グルメ\n 観光列車\n ビジネス\n\n#### びゅうたび\n\n 東京駅で買える新幹線弁当5選！「はやぶさ」も「かがやき」も再現。\n\n  東京駅で買える新幹線弁当5選！「はやぶさ」も「かがやき」も再現。\n 食べ物写真のスマホ撮影テク！旅先で料理を美味しそうに撮る方法\n\n  食べ物写真のスマホ撮影テク！旅先で料理を美味しそうに撮る方法 [...] 首都圏旅行\n 出張・ビジネス\n ひとり旅\n 温泉旅行\n\nのぞみ・ひかり・こだまの違いは？停車駅やコンセント情報も解説   のぞみ・ひかり・こだまの違いは？停車駅やコンセント情報も解説\n\nのぞみ・ひかり・こだまの違いは？停車駅やコンセント情報も解説画像素材：PIXTA\n\n# のぞみ・ひかり・こだまの違いは？停車駅やコンセント情報も解説\n\n2025.09.04 更新\n\n Xでシェアする\n Facebookでシェアする\n lineでシェアする\n\n新幹線「のぞみ」「こだま」「ひかり」   新幹線「のぞみ」「こだま」「ひかり」\n\n新幹線「のぞみ」「こだま」「ひかり」画像素材：PIXTA\n\n停車駅の数  \n 停車する駅の数が少ない順に「のぞみ」「ひかり」「こだま」です。  \n （具体的な停車駅については、のちに記載します。）   \n  \n 目的地までの所要時間  \n 停車駅の数の少なさに比例して、「のぞみ」が最も短い時間で走行します。最も時間がかかるのは「こだま」です。  \n  \n 車両編成  \n 自由席と指定席の割合も「のぞみ」「こだま」「ひかり」でそれぞれ異なります。 [...] 東京駅⇔名古屋駅;)\n\n ✽ ダイナミックレールパックのご旅行代金は、随時変動いたします。同一のお申込み内容でも予約操作の時期により価格が変わる場合があります。\n\n## まとめ\n\n東海道新幹線を走行する「のぞみ」「こだま」「ひかり」は、停車駅の数や所要時間、車両編成などがそれぞれ異なります。\n\n使用される車両は共通しており、設備に大きな違いはありません。確実にコンセントを使用したい場合などは、事前に位置を確認しておくとよいでしょう。\n\n長距離を効率的に移動したいときには「のぞみ」、途中立ち寄る駅も楽しみながらのんびり旅行したいときには「こだま」など、目的別に乗り分けてみてください。\n\nびゅうトラベルでは、新幹線をはじめとする各種列車と宿泊先をまとめて予約できます。列車も宿泊先も自由に選択できるので、列車での旅行を検討する際はぜひご利用ください。\n\n 新幹線で行く、関西方面の旅行はこちら\n\n検索する\n\n## その他の記事\n\n 【関西】心を癒すひとり旅！気分転換できるスポット14選をエリア別に紹介。日帰りもOK！",
+        "title": "のぞみ・ひかり・こだまの違いは？停車駅やコンセント情報も解説 | びゅうトラベル（JR東日本）",
+        "url": "https://www.jre-travel.com/article/00320",
+        "original_url": "https://www.jre-travel.com/article/00320",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:19:26.118171Z",
+        "published_at": null,
+        "content_hash": "0e3ce836927ca69a540fa8f144aa67fd69e191a6f5f7df90aa49b308784b0548",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 1452,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-d1585ed12a17ff910f7a0bb8f5ed76fe",
+        "text": "### たにがわ\n\n各駅停車タイプの列車で、朝夕を中心に東京駅〜高崎駅～越後湯沢駅間で運行されています。グランクラスはアテンダントが乗車せず、料金が若干割安になります。  \n   \n 【使用車両】  \n E7系  \n   \n 【たにがわの停車駅】  \n 東京駅・上野駅・大宮駅・熊谷駅・本庄早稲田駅・高崎駅・上毛高原駅・越後湯沢駅  \n   \n 【座席の種類】  \n 普通車（自由席、指定席＊自由席のみの列車あり）／グリーン車（指定席のみ）／グランクラス（指定席のみ）  \n   \n 【コンセントの有無】  \n E7系：全席  \n   \n 【車内販売】  \n なし\n\n上越新幹線の詳細はこちら\n\n## 東海道新幹線\n\n東海道新幹線\n\n東京、名古屋、大阪という日本の三大都市を直結し、1日に最大45万8000人もの人を輸送する大動脈。東海道新幹線の列車は「のぞみ」「ひかり」「こだま」の3種類。どの列車もN700AまたはN700Sが使用され、座席配置は全列車同じですが、愛称ごとに使命と特徴は異なります。  \n   \n 区間：東京駅～新大阪駅  \n 列車の種類：のぞみ、ひかり、こだま [...] 【使用車両】  \n E7系、W7系  \n   \n 【つるぎの停車駅】  \n 富山駅・新高岡駅・金沢駅・小松駅（一部列車）・加賀温泉駅（一部列車）・芦原温泉駅（一部列車）・福井駅・越前たけふ駅（一部列車）・敦賀駅　※金沢駅～敦賀駅間の列車もあり  \n   \n 【座席の種類】  \n 普通車（自由席・指定席）、グリーン車（指定席のみ）  \n   \n 【コンセントの有無】  \n 全席  \n   \n 【車内販売】  \n なし\n\n北陸新幹線の詳細はこちら\n\n## 山陽新幹線\n\n山陽新幹線\n\n区間：新大阪駅〜博多駅  \n 列車の種類：のぞみ、みずほ、ひかり、さくら、こだま、つばめ  \n   \n 大阪から神戸、岡山、広島、山口と中国地方の中核都市を結び、博多に至る山陽新幹線は、1日に平均19万8000人を輸送する高速鉄道です。  \n   \n 東海道新幹線や九州新幹線と相互直通運転を行ない、バラエティ豊かな列車が行き交っています。\n\n### のぞみ [...] ### ひかり\n\n静岡駅など中規模都市の駅にも停車する列車です。多くの都市をきめ細かく結ぶ列車となりました。  \n   \n 1時間に2本運行され、1本は山陽新幹線の岡山駅まで直通、もう1本は新大阪駅止まり。停車駅は、1時間に1本停車する駅や2時間に1本停車する駅などが混在し、停車パターンはパズルのように複雑です。\n\n東海道新幹線 ひかり／N700A\n\n【使用車両】  \n N700A／N700S  \n   \n 【ひかりの停車駅】  \n 東京駅・品川駅・新横浜駅・小田原駅（日中2時間1本）・熱海駅（1日3本）・三島駅（日中2時間1本）・静岡駅（日中1時間1本）・浜松駅（日中1時間1本）・豊橋駅（日中2時間1本）・名古屋駅・岐阜羽島駅（日中1時間1本）・米原駅（日中1時間1本）・京都駅・新大阪駅  \n   \n 【座席の種類】  \n 普通車（自由席、指定席）／グリーン車（指定席のみ）  \n   \n 【コンセントの有無】  \n N700A：グリーン車全席及び普通車窓側席／N700S：全席  \n   \n 【車内販売】  \n あり（詳細はこちら）\n\n### こだま",
+        "title": "新幹線って何種類ある？全国を走る全10路線一覧と列車の違いを紹介 | トレたび - 鉄道・旅行情報サイト",
+        "url": "https://www.toretabi.jp/railway_info/entry-7625.html",
+        "original_url": "https://www.toretabi.jp/railway_info/entry-7625.html",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:19:29.686469Z",
+        "published_at": null,
+        "content_hash": "3de0fe482bf0765e4292c03ef53559dc34884128a48ffb40dd04e83abe25bbef",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 1408,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-bd97c438531e049a164b51859b398e79",
+        "text": "| 基本情報 |\n| 国 | 日本の旗 日本 |\n| 種類 | 高速鉄道 |\n| 開業 | 1964年10月1日 |\n| 所有者 | 国鉄時代の開業路線、ミニ新幹線  JR各社  整備新幹線  鉄道建設・運輸施設整備支援機構 |\n| 運営者 | JR各社（詳細は路線節を参照） |\n| 詳細情報 |\n| 総延長距離 | フル規格: 2,956 km ミニ新幹線 :276 km 在来線扱い: 10 km |\n| 路線数 | フル規格: 8路線 ミニ新幹線: 2路線 在来線扱い: 2路線 |\n| 駅数 | 120（ミニ新幹線、在来線扱いを含む） |\n| 軌間 | 1,435 mm |\n| 電化方式 | 交流25,000 V \"ボルト (単位)\") 架空電車線方式（東北、上越、北海道は50 Hz \"ヘルツ (単位)\")。東海道、山陽、九州は60 Hz。北陸は50 Hzと60 Hzの区間が混在） 交流20,000 V 50 Hz 架空電車線方式（山形、秋田） |\n| 最高速度 | 320 km/h（東北新幹線の一部区間。詳細は定義節を参照） |\n| 通行方向 | 左側通行 |\n| 路線図 | [...] 日本国内の駅内の案内板等の英語表記では、路線を指す場合は「しんかんせん」のローマ字表記である Shinkansen を使用し、列車名（便名）を表す場合は、各駅に停車する列車も含め、かつて「ひかり \"ひかり (列車)\")」の種別として用いられていた「超特急」の直訳である Superexpress を愛称名の後ろに付けて「NOZOMI Superexpress」などと表現している。これは特急（特別急行列車、Limited express）と急行列車（Express）を異なる種別として認識し、さらに新幹線を（通常の）特急とも区別しようとする日本独特の表現とも考えられる。 [...] 1 概要\n  + 1.1 建設\n  + 1.2 運営\n  + 1.3 法的な位置づけ\n  + 1.4 最高速度\n  + 1.5 呼称\n 2 主要技術\n  + 2.1 路線・軌道設備\n  + 2.2 信号システム\n  + 2.3 電源方式\n  + 2.4 車両技術\n  + 2.5 列車防護装置\n 3 在来線との直通\n 4 路線\n  + 4.1 営業中の路線\n    - 4.1.1 標準軌新線（フル規格）\n    - 4.1.2 新幹線直行特急（ミニ新幹線）\n    - 4.1.3 新幹線規格在来線\n    - 4.1.4 新幹線鉄道規格新線\n  + 4.2 計画路線\n    - 4.2.1 整備計画路線\n    - 4.2.2 基本計画路線\n  + 4.3 未成線\n 5 列車名\n  + 5.1 現行の列車名\n  + 5.2 かつて使用されていた列車名\n 6 歴史\n  + 6.1 経緯・背景\n    - 6.1.1 戦前における高速鉄道\n    - 6.1.2 弾丸列車計画\n    - 6.1.3 動力分散化への流れ\n  + 6.2 1950年代の高性能電車の出現",
+        "title": "新幹線 - Wikipedia",
+        "url": "https://ja.wikipedia.org/wiki/%E6%96%B0%E5%B9%B9%E7%B7%9A",
+        "original_url": "https://ja.wikipedia.org/wiki/%E6%96%B0%E5%B9%B9%E7%B7%9A",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:19:29.686469Z",
+        "published_at": null,
+        "content_hash": "2f7e6df482013c74014135ad50c320c3381df6199cd78266653f195b713f2e54",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 1284,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-4412a3704b4a876c198a6607eb5a13b5",
+        "text": "行駛於東京、金澤之間，從上野至金澤間為各站停車。列車名是來自於立山的開山傳說中登場的白鷹，既有速度感，又能感覺到首都圈和北陸之間的連結性。\n\n#### 九州新幹線「燕號」（TSUBAME）\n\n日本九州新幹線「燕號」（TSUBAME）示意圖\n\n九州新幹線「燕號」（TSUBAME）  \n圖片來源：wikipedia\n\n行駛於博多、鹿兒島中央之間的各停列車。傳承自1930年代戰前乃至戰後日本國鐵中具代表性的特急列車名稱。\n\n#### 西九州新幹線「海鷗號」（KAMOME）\n\n日本西九州新幹線「海鷗號」（KAMOME）示意圖\n\n西九州新幹線「海鷗號」（KAMOME）  \n圖片來源：九州旅客鉄道株式会社\n\n行駛於博多、長崎之間。傳承自1961年代開始就行駛於博多和長崎之間特急列車的名稱。\n\n### 山類：行經地區間具代表性的山岳\n\n#### 上越新幹線「谷川號」（TANIGAWA）\n\n行駛於東京、高崎、越後湯澤之間。谷川是指山谷和溪流，代表了上越新幹線中的大清水隧道正上方、延綿在群馬與新潟間的谷川岳。\n\n#### 北陸新幹線「淺間號」（ASAMA） [...] | 類別 | 名稱 |\n --- |\n| 光類 | 東海道新幹線「光號」（HIKARI） 北陸新幹線「光輝號」（KAGAYAKI） |\n| 聲音類 | 東海道新幹線「回聲號」（KODAMA） 東北新幹線「山彥號」（YAMABIKO） |\n| 鳥類 | 東北．北海道新幹線「隼號」（HAYABUSA） 山形新幹線「翼號」（TSUBASA） 上越新幹線「朱鷺」（TOKI） 北陸新幹線「白鷹號」（HAKUTAKA） 九州新幹線「燕號」（TSUBAME） 西九州新幹線「海鷗號」（KAMOME） |\n| 山類 | 上越新幹線「谷川號」（TANIGAWA） 北陸新幹線「淺間號」（ASAMA） 北陸新幹線「劍號」（TSURUGI） |\n| 植物類 | 九州．山陽新幹線「櫻號」（SAKURA） 九州新幹線「瑞穗號」（MIZUHO） |\n| 風類 | 東北．北海道新幹線「疾風號」（HAYATE） |\n| 地名類 | 東北新幹線「那須野號」（NASUNO） |\n| 食物類 | 秋田新幹線「小町號」（KOMACHI） |\n| 其它 | 東海道新幹線「希望號」（NOZOMI） | [...] ### 光類：講求新幹線追求的速度感\n\n日本東海道新幹線「回聲號」（KODAMA）、「希望號」（NOZOMI）、「光號」（HIKARI）示意圖\n\n東海道新幹線「回聲號」（KODAMA）、「希望號」（NOZOMI）、「光號」（HIKARI）  \n圖片來源：JRおでかけネット\n\n日本北陸新幹線「光輝號」（KAGAYAKI）、「白鷹號」（HAKUTAKA）、「劍號」（TSURUGI）、北陸新幹線「淺間號」（ASAMA）示意圖\n\n北陸新幹線「光輝號」（KAGAYAKI）、「白鷹號」（HAKUTAKA）、「劍號」（TSURUGI）、北陸新幹線「淺間號」（ASAMA）  \n圖片來源：JRおでかけネット\n\n#### 東海道新幹線「光號」（HIKARI）\n\n行駛於東京、大阪、新博多之間。表達比音速還快只有光速。雖然現在光號的速度已經被希望號取代，但是在1964年東海道新幹線通車時它曾經是最快的列車。\n\n#### 北陸新幹線「光輝號」（KAGAYAKI）\n\n行駛於東京、金澤之間。閃耀的光芒能感受到速度感以及迎向光明與成長的未來。\n\n### 聲音類：僅次於音速的一日來回商務圈",
+        "title": "日本新幹線為什麼有名字？「隼號」、「希望號」、「朱鷺號」全線車輛命名由來 | 樂吃購！日本 全國版",
+        "url": "https://www.letsgojp.com/archives/531615",
+        "original_url": "https://www.letsgojp.com/archives/531615",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:19:29.686469Z",
+        "published_at": null,
+        "content_hash": "4461b4c9d06b28c148af8f678d28e5d4c6796530cbe558c185bee1f7eb43a143",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 1459,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-2fef28215dea8608a8f5a6daf5e4c66b",
+        "text": "# www.jr-odekake.net JRおでかけネット\n\n 新規ウインドウで開きます。 ログイン\n\n1. HOME\n2. 駅・時刻・列車を調べる\n3. 列車\n4. 車両案内\n5. 全列車一覧\n\n## 全列車一覧\n\n 新幹線\n 特急列車\n 普通列車（快速含む）\n 寝台列車\n\n### 新幹線\n\n#### 東海道・山陽・九州新幹線\n\n \n\n  N700系（16両編成）\n\n  運行区間\n  :   東京～博多\n \n\n  N700系（8両編成、グリーン車あり）\n\n  運行区間\n  :   新大阪～鹿児島中央\n \n\n  N700系（8両編成、グリーン車なし）\n\n  運行区間\n  :   新大阪～博多\n\n \n\n  700系\n\n  運行区間\n  :   新大阪～博多\n \n\n  500系\n\n  運行区間\n  :   新大阪～博多\n\n#### 北陸新幹線\n\n \n\n  E7系・W7系\n\n  運行区間\n  :   敦賀～東京\n\n### 特急列車\n\n特急列車の停車駅・路線図はこちら\n\n \n\n  こうのとり\n\n  運行区間\n  :   新大阪～福知山・豊岡・城崎温泉\n \n\n  きのさき [...] はるか\n\n  運行区間\n  :   野洲・草津・京都～関西空港\n \n\n  らくラクびわこ\n\n  運行区間\n  :   米原・草津～大阪\n \n\n  まいづる\n\n  運行区間\n  :   京都～東舞鶴\n \n\n  やくも\n\n  運行区間\n  :   岡山～出雲市\n \n\n  南紀\n\n  運行区間\n  :   名古屋～新宮・紀伊勝浦\n \n\n  ひだ\n\n  運行区間\n  :   大阪・名古屋～高山・飛騨古川・富山\n \n\n  らくラクはりま\n\n  運行区間\n  :   京都・新大阪～網干\n \n\n  らくラクやまと\n\n  運行区間\n  :   奈良～新大阪\n \n\n  まほろば\n\n  運行区間\n  :   大阪～奈良\n\n### 寝台列車\n\n \n\n  サンライズ瀬戸・出雲\n\n  運行区間\n  :   サンライズ瀬戸：東京～高松  \n      サンライズ出雲：東京～出雲市\n\n### 普通列車（快速含む）\n\n \n\n  マリンライナー\n\n  運行区間\n  :   岡山～高松\n \n\n  103系 [...] きのさき\n\n  運行区間\n  :   京都～福知山・豊岡・城崎温泉\n \n\n  くろしお\n\n  運行区間\n  :   京都・新大阪～和歌山・海南・白浜・新宮\n \n\n  サンダーバード\n\n  運行区間\n  :   大阪～敦賀\n \n\n  しおかぜ\n\n  運行区間\n  :   岡山～伊予西条・松山\n \n\n  しらさぎ\n\n  運行区間\n  :   名古屋・米原～敦賀\n \n\n  スーパーいなば\n\n  運行区間\n  :   岡山～鳥取\n \n\n  スーパーおき\n\n  運行区間\n  :   鳥取・米子～新山口\n \n\n  スーパーはくと\n\n  運行区間\n  :   京都・大阪～鳥取・倉吉\n \n\n  スーパーまつかぜ\n\n  運行区間\n  :   鳥取～米子・益田\n \n\n  南風\n\n  運行区間\n  :   岡山～高知\n \n\n  能登かがり火\n\n  運行区間\n  :   金沢～七尾・和倉温泉\n \n\n  はしだて\n\n  運行区間\n  :   京都・福知山～宮津・天橋立・豊岡\n \n\n  はまかぜ\n\n  運行区間\n  :   大阪～豊岡・城崎温泉・香住・鳥取\n \n\n  はるか",
+        "title": "全列車一覧 | 車両案内 | 列車：JRおでかけネット",
+        "url": "https://www.jr-odekake.net/railroad/train/category",
+        "original_url": "https://www.jr-odekake.net/railroad/train/category",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:19:29.686469Z",
+        "published_at": null,
+        "content_hash": "51316566ac1b072ac6296cb039a657d7ba99b3d1d15967ae755ad126a9d8e7bc",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 1424,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-adcc85029dc2c638a6b446d9d6dfaf5a",
+        "text": "## 2. 東北新幹線\n\n 營運區間： 東京 ↔ 新青森\n 代表車型： E5系\n  + 車廂編組： 10 輛編組\n  + 特色： 日本目前營運速度最快的新幹線之一（最高時速可達 320 公里）。擁有標誌性的長達 15 公尺的超長「鴨嘴獸」綠色流線型車頭（為了減輕進入隧道時的音爆）。車身同樣是綠白相間，但中間的線條是鮮豔的「杜鵑粉紅」。\n  + 內裝亮點： 這是全日本第一款導入奢華「Gran Class 特等車廂」的列車，配備宛如飛機頭等艙的真皮電動平躺座椅，並提供專屬輕食與無限暢飲的酒水服務。最高時速可達 320 公里。\n\n## 3. 秋田新幹線\n\n 營運區間： 東京 ↔ 秋田\n 代表車型： E6系\n  + 車廂編組： 7 輛編組\n  + 特色： 為了行駛於原本的窄軌（在來線），這是一款車身較窄的「迷你新幹線」。以鮮豔的「茜色（大紅色）」塗裝聞名（暱稱「小町號」），象徵秋田的生剝鬼節與竿燈祭。在東京到盛岡路段，E6 系會與 E5 系「（連結）」一起以 320 公里時速狂飆，是鐵道迷必拍的奇景。\n  + 內裝亮點： 內部設計充滿秋田傳統工藝氣息，座椅圖案取材自稻穗的黃色。 [...] 極致安全： 營運超過半世紀，創下極為優異的安全紀錄，是世界上最安全的鐵路系統之一。\n 絕對準時： 班次密集且準點率極高，平均誤點時間以「秒」計算。\n 設計美學： 為了突破空氣阻力，新幹線的車頭設計（如鴨嘴獸般的流線型）不僅充滿科技感，內裝也極具人性化與舒適度。\n\n# 🗺️ 全國新幹線路線與經典車型大解密\n\n日本新幹線網絡遍布全國，不同地區的路線都有其專屬的特色車型。以下為您盤點 10 大路線及其代表性列車：\n\n## 1. 北海道新幹線\n\n 營運區間： 新青森 ↔ 新函館北斗\n 代表車型： H5系\n  + 車廂編組： 10 輛編組\n  + 特色： 車身以常盤綠搭配飛雲白，中間有一條代表北海道薰衣草的「彩香紫」線條，車頭側面有北海道輪廓的專屬標誌。穿越青函海底隧道，是連接本州與北海道的關鍵命脈。\n  + 內裝亮點： 充滿北海道風情！普通車廂地板印有雪花圖案，車窗遮陽簾則有繩文時代的圖騰。最高級的「Gran Class 特等車廂」走道甚至鋪設了象徵湖泊的藍色地毯。\n\n## 2. 東北新幹線 [...] ## 6. 北陸新幹線\n\n 營運區間： 東京 ↔ 敦賀 (2024 年春季剛延伸至敦賀)\n 代表車型： W7系\n  + 車廂編組： 12 輛編組\n  + 特色： 與 E7 系外觀幾乎相同（W 代表 JR 西日本營運），途經輕井澤、長野、金澤等熱門觀光地，沿途可欣賞壯麗的北阿爾卑斯山脈。\n\n## 7. 東海道新幹線\n\n 營運區間： 東京 ↔ 新大阪\n 代表車型： N700系\n  + 車廂編組： 16 輛編組\n  + 特色： 標誌性的「氣動雙翼」車頭設計，看起來像一隻白色的展翅大鳥，有效降低空氣阻力。日本最古老、最繁忙的「黃金路線」，連接東京、名古屋與新大阪。\n  + 🗻 富士山座位攻略：若從東京出發往大阪，劃位時請務必選擇「右側靠窗座位 (E席)」；若從大阪回東京則選左側 (E席)，天氣晴朗時即可飽覽壯麗的富士山！\n  + 內裝亮點： 這是目前日本數量最多的新幹線主力。配備「車體傾斜系統」，讓列車在過彎時不用大幅減速，提升了行車效率。靠窗座位設有插座。\n\n## 8. 山陽新幹線",
+        "title": "日本新幹線圖鑑！10大路線車型全解析 | JR Pass制霸全國 - K1and 暫停鍵",
+        "url": "https://k1andpause.com/shinkansen",
+        "original_url": "https://k1andpause.com/shinkansen",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:19:29.686469Z",
+        "published_at": null,
+        "content_hash": "f29962881447c55b39355db24384e03d0c9b4524271009dab0c79f0d0d2b3e2e",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 1398,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-2cd6a99603fab6aded07f1949bae4e9e",
+        "text": "手順としては、まず、「オプション1」として、在来線を改軌し、既存新幹線と直通します。いわゆるミニ新幹線の整備です。新在をつなぐアプローチ線を整備し、停車駅のホームを改良のうえ、直通用の車両を購入することで実現できます。\n\nつづいて「オプション2」として、部分的に最高速度を160km/hに引き上げます。都市部では連続立体交差化をおこなって踏切を除去し、山間部では曲線改良をおこない、険しい山間部では短絡線を整備します。軌道や架線の強化をおこない、駅では高速分岐器を導入します。\n\n最後は「オプション3」で、部分的に最高速度を260km/hに引き上げます。険しい山間部では大がかりな短絡線を整備します。最高速度260km/hの区間を段階的に拡大していけば、「フル規格新幹線」となります。\n\n段階的フル規格化のオプション\n\n画像：『幹線鉄道ネットワーク等のあり方に関する調査』2021年度より\n\n広告\n\n## 山形・秋田新幹線で適用\n\n新幹線を一気に整備すると財政負担が重いので、まずはミニ新幹線化をおこない、山間部など表定速度が遅い区間に短絡線を建設して、全体の表定速度を上げようという考え方です。 [...] 国土交通省が、在来線をミニ新幹線にし、さらにフル規格化するという「段階的整備案」を検討しています。最新の『幹線鉄道ネットワーク等のあり方に関する調査』で示されました。内容を読み解いていきましょう。\n\n広告\n\n## 幹線鉄道網の未来像\n\n『幹線鉄道ネットワーク等のあり方に関する調査』（以下、『幹線ネットワーク調査』）は、新幹線をはじめとした幹線鉄道網の未来像について検討する調査です。\n\n2016年に閣議決定された「未来への投資を実現する経済対策」の付帯要望事項で「整備新幹線について、基本計画路線も含め、地方創生に役立つ幹線鉄道ネットワークの構築に向けて取り組むべき」と提言されたことを受け、2017年度より調査が始まっています。\n\n調査の最大の目的は「効果的・効率的な新幹線の整備手法」の検討です。新幹線の基本計画路線が、フル規格では過剰スペックなので、コストを削減した形での整備手法を探ろうというものです。これまでに、単線による新幹線整備や、線形改良などによる在来線の高速化などについて研究されてきました。\n\n広告\n\n## 「準新幹線」も検討 [...] 広告\n\n## 「準新幹線」も検討\n\n過年度の調査では、在来線の高速化やミニ新幹線（最高速度160km/h）より速く、フル規格新幹線（最高速度260km/h以上）より事業費が安い、200km/h程度の「準新幹線」とでもいうべき整備方式を検討しています。\n\n具体的には、市街地内は既存の在来線を活用しつつ、急曲線が多い区間に短絡線を設けたり、郊外部に高架新線を整備したりする方法です。改軌によりミニ新幹線とする場合と、狭軌で高速運転可能なスーパー特急を運行する2つのパターンを想定しています。\n\n端的にいえば、既存の在来線を活用しながら一部区間で短絡線や高架新線を整備することで、段階的な表定速度向上を実現し、事業費をおさえつつ将来のフル規格新幹線整備につなげるということです。\n\n広告\n\n## 3つの「オプション」\n\nここまでが過年度の調査です。このほど発表された2021年度調査では、段階的な新幹線の整備手法をより深く研究しています。",
+        "title": "ミニ新幹線「段階的フル規格化」を検討。『幹線鉄道ネットワーク調査』を読み解く | 旅行総合研究所タビリス",
+        "url": "https://tabiris.com/archives/kansenchosa2021",
+        "original_url": "https://tabiris.com/archives/kansenchosa2021",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:19:34.950307Z",
+        "published_at": null,
+        "content_hash": "94cc53f3a1370b25e7f6be8083852bb781533ce2bded94425f0c72ece76c6284",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 1403,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-2ce461802e7f9cd61bfb8ad5f49d81c8",
+        "text": "山形新幹線 - 東北新幹線福島駅\n 秋田新幹線 - 東北新幹線盛岡駅\n\n### 利点・欠点\n\n[編集]\n\n#### 利点\n\n[編集]\n\n規格の優位性\n:    フル規格新幹線の建設では基本計画、整備計画、工事実施計画ときちんと手順を踏んでいく必要があり、すでに決められた他の区間を出し抜いて先に建設することができない。しかしミニ新幹線ではフル規格新幹線の計画にとらわれず早期に建設が可能である。\n     建設費用が安い。\n     並行在来線の経営分離問題が生じない。（在来線#並行在来線、整備新幹線#並行在来線問題を参照）\n     フル規格新幹線同様、東京駅での終着駅名が案内されるため終着駅の知名度向上効果が大きい。\n     標準軌の同じ線路を普通列車と新幹線直通列車が共有できるため（線路を別々ではなく1線にできるため）線路の維持費や保線コストが軽くなる。 [...] [編集]\n\n1988（昭和63）年度予算編成作業中に大蔵省主計官が整備新幹線建設を非難し膠着した。打開策として1988年（昭和63年）8月の運輸省によってフル規格新幹線、ミニ新幹線、スーパー特急の組み合わせで提示され、同年8月31日に政府・与党申し合わせにより整備内容が決定された。うちミニ新幹線整備区間は下記のとおりである。なお、どの線区でもフル規格実現への願望が強かった。\n\n東北新幹線\n:   盛岡 - 沼宮内、八戸 - 青森\n\n北陸新幹線\n:   軽井沢 - 長野\n\n#### 西九州新幹線佐賀県区間対応\n\n[編集]\n\n九州新幹線西九州ルート#西九州ルート \"九州新幹線 (整備新幹線)\") 新鳥栖駅 - 長崎駅間は一部在来線の長崎本線を挟む関係でスーパー特急方式で建設され、後に武雄温泉駅 - 長崎駅間がフル規格に変更。さらにフリーゲージトレイン導入の計画、試験まで行われたが頓挫し、武雄温泉駅で乗り換えるリレー方式で武雄温泉駅 - 長崎駅間が西九州新幹線として暫定開業した。\n\n## 開業効果\n\n[編集]\n\n### 山形新幹線\n\n[編集] [...] ### 法令\n\n[編集]\n\n 全国新幹線鉄道整備法には暫定整備として下記のように定義している。\n\n> 附則　第6条2　新幹線鉄道直通線　既設の鉄道の路線と同一の路線にその鉄道線路が敷設される鉄道であつて、その鉄道線路が新幹線鉄道の用に供されている鉄道線路に接続し、かつ、新幹線鉄道の列車が国土交通省令で定める速度で走行できる構造を有するもの\n\n## 課題とその解決\n\n[編集]\n\n\") - 新庄駅間）と秋田新幹線（田沢湖線・奥羽本線盛岡駅 - 秋田駅間）の2路線がある。前述のように「新幹線」と称しているものの、法的には在来線である。路線愛称の「新幹線」は山形新幹線の開業準備に入ってからである。",
+        "title": "ミニ新幹線 - Wikipedia",
+        "url": "https://ja.wikipedia.org/wiki/%E3%83%9F%E3%83%8B%E6%96%B0%E5%B9%B9%E7%B7%9A",
+        "original_url": "https://ja.wikipedia.org/wiki/%E3%83%9F%E3%83%8B%E6%96%B0%E5%B9%B9%E7%B7%9A",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:19:34.950307Z",
+        "published_at": null,
+        "content_hash": "dc19e6daa7eb14a2f3b999191c14c0c0b6dfec7c25ada6cfb449f948e64128ce",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 1171,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-ad754665e9a8ae0838513d09a289a069",
+        "text": "現在、日本では、人口が急速に減少する中で、東京圏への過度な集中を是正し、産業や人材を地方に分散することなどにより、地方が活力を取り戻していくことが重要な課題となっています。\n\nそうした中で、フル規格新幹線は、全国との交流を促進し、地方の自立的発展を支えるなど、地方創生の実現のためになくてはならない社会基盤となるものです。\n\n津波により、前側2両が折れ曲がり住宅地内に流された仙石線の車両  \n (写真提供:東松島市)\n\n \n\n### 【フル規格新幹線】とは\n\n東北新幹線（はやぶさ）\n\n●その主たる区間を200km/h以上で走り、踏切を設けない高架・立体交差や直線的なルートによる新幹線であり、スピードアップや高い安全性・安定輸送が期待されます。\n\n●山形新幹線は、在来線区間の線路幅を改良して、新幹線車両を在来線に直通運転しているもので、「ミニ新幹線」などと呼ばれています。福島～新庄間の在来線区間では130km/hまでしか出せず、また、雨・風・雪等による運休・遅延も多く発生するなど、速達性や定時性・安定輸送の面で課題があります。 [...] 安全・安定輸送\n:   フル規格新幹線は、踏切がない、高架・立体交差、直線的ルートなどの特性から、多くの乗客を安全かつ安定的に運べる交通機関となっています。国土交通省によれば、フル規格新幹線は、その開業(昭和39年)以来、乗客の死亡事故は0とされています。また、雪害対策設備の整備により、雪による輸送障害にも強く、定時性に優れています。\n\n## 奥羽新幹線・羽越新幹線の実現に向けて\n\n### 1期待される昭和48年組の整備\n\n奥羽新幹線・羽越新幹線の基本計画策定の1年前の昭和47年に政府の基本計画に位置づけられた路線(北海道新幹線、北陸新幹線、九州新幹線など)は、ほぼ完成に目処がついてきました。\n\nそうした中で、奥羽新幹線・羽越新幹線と同じく昭和48年に政府の基本計画に位置づけられた路線(四国新幹線、山陰新幹線、東九州新幹線など)においても、次の整備を目指した取組みが開始されています。\n\n #### 昭和47年に基本計画に位置づけられた新幹線の路線\n\n   \n\n  ※未着工の区間も一部あります\n #### 昭和48年に基本計画に位置づけられた新幹線の路線 [...] ## 奥羽新幹線・羽越新幹線 〜本県を通るフル規格新幹線計画〜\n\n### 1奥羽新幹線・羽越新幹線とは\n\n本県には、政府が定めたフル規格の新幹線構想があります。奥羽新幹線（福島市～秋田市間）、羽越新幹線（富山市～青森市間）は、その形成が国土の総合的な発展に資するものとして、昭和48年に全国新幹線鉄道整備法に基づき、政府の基本計画に位置づけられているフル規格の新幹線構想です。\n\n### 2フル規格新幹線によって見込まれる効果\n\n所要時間の短縮\n:   奥羽新幹線、羽越新幹線の整備により、東京をはじめ、沿線地域との時間距離が短縮され、滞在時間も拡大します。\n\n交流人口の拡大\n:   地域間の時間距離の短縮等により、海外からの旅行客も含めた観光や、ビジネス等による交流人口の拡大が期待できます。\n\n地域産業の活性化\n:   地域間における新たな企業連携、沿線地域のイメージや認知度の向上を契機としたブランド力向上、新たな都市圏、商圏の創出など、交流人口の拡大による地域の様々な分野での活性化が期待されます。",
+        "title": "奥羽・羽越新幹線｜山形県奥羽・羽越新幹線整備実現同盟 » 奥羽・羽越新幹線について",
+        "url": "https://www.ou-uetsu-shinkansen.jp/project.html",
+        "original_url": "https://www.ou-uetsu-shinkansen.jp/project.html",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:19:34.950307Z",
+        "published_at": null,
+        "content_hash": "f9035f0160249739ad680de44916ba5b85a230c9c4c6233be58a0baf291942b7",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 1419,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-c9e4bb19e77defb4dd35001c9dd5b1ad",
+        "text": "May 11, 2025 — 「ミニ」なのはその車体。通常の新幹線車両（「フル規格」車両）は、在来線よりも幅が広く、普通席は3+2列配置 ...Read more",
+        "title": "在来線と直通可能な「ミニ新幹線」 特別なのは「車体の幅」だけ ...",
+        "url": "https://www.tetsudo.com/column/344",
+        "original_url": "https://www.tetsudo.com/column/344",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:19:34.950307Z",
+        "published_at": null,
+        "content_hash": "c492604f30c7687bffa547fb1e8cd48c655fb420e814a55119cba428e360222f",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 81,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-433c8e9c91f844022be39991c32af25f",
+        "text": "あ、「ミニ新幹線」なんて言葉、鉄オタしか知らないと思うので解説しておきますね。  \n日本の在来線と新幹線は2本のレールの間隔や車両の規格（大きさとか）など、いろいろと違いがあります。  \nなので、新幹線が登場した当初は「在来線は在来線、新幹線は新幹線」と言いましょうか、直通運転は不可能で、新幹線と在来線をまたいで乗る場合は乗換えが必要でした。  \nそこに風穴を開けたのが山形新幹線。  \n「在来線をレールの間隔だけ新幹線仕様にすれば、新幹線と在来線の直通運転ができるんじゃね？」といったかんじで、車体のサイズは在来線、車輪の間隔は新幹線な車両を作って、新幹線と在来線の直通運転を実現しました。これがミニ新幹線です。  \n両方新幹線の速度で走れれば一番だったかもしれませんが、それをするためには様々な法律上の決まりがありまして、新しく新幹線の線路を建設しない限り、高速走行は事実上実現できません。  \nそんなわけで、「山形新幹線」とは通称であり、正式名称は「奥羽本線」という在来線の特急列車です。 [...] メインコンテンツへスキップ\n\nリーブル\n\n皆さんこんにちは！リーブルです。  \n私、フル規格新幹線は全線乗り通し済みなんですが、ミニ新幹線はほとんど乗っていません。 [...] 新幹線建設と比べたら半端なものではあるのですが、在来線特急が乗換え無しで新幹線に乗り入れて東京まで行けるというのは非常に画期的でした。  \n秋田新幹線も山形新幹線の事例にならい、田沢湖線と奥羽本線を改造してできたミニ新幹線です。  \n日本全国にミニ新幹線は山形新幹線と秋田新幹線の2路線しかありません。このたった2路線を無視したまま、私はフル規格新幹線全部乗ってしまったわけですね…",
+        "title": "ミニ新幹線を乗り通せ！鉄オタ実績解除の山形・秋田旅｜リーブル",
+        "url": "https://note.com/liblu_7/n/n9fec58331c34",
+        "original_url": "https://note.com/liblu_7/n/n9fec58331c34",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:19:34.950307Z",
+        "published_at": null,
+        "content_hash": "042d0d32d42b656f9ef4dee15c0f62c05b5700a41a10a0ad36ceb157cfc18291",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 735,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-ed925988080fb2cc8c9ca8f3d01c7514",
+        "text": "詳しくはこちら\n\n日本国有鉄道（国鉄）は1964年、東京五輪開催に合わせて世界初の高速鉄道として東海道新幹線を開業した。在来線より大きな規格を採用した車両「新幹線0系電車」は営業運転の最高速度が時速210キロメートルで東京―新大阪間を4時間で結んだ。翌年には3時間10分に縮めた。\n\n0系の先頭部は航空機に似た流線形が特徴。愛嬌（あいきょう）ある顔つきで、「団子鼻」と呼ばれるなど、高度経済成長の象徴として長年親しまれ...\n\nアプリで開く\n\nこの記事は会員限定です。登録すると続きをお読みいただけます。\n\n残り257文字\n\nすべての記事が読み放題  \n有料会員が初回1カ月無料\n\n有料会員に登録する無料会員に登録するログインする\n\n全文表示で読む\n\n有料登録すると続きをお読みいただけます。無料登録でも記事消費（一定数限定）をすることで閲覧できます。\n\nすべての記事が読み放題  \n有料会員が初回1カ月無料\n\n有料会員に登録する無料会員に登録するログインする\n\n有料会員限定\n\n日経電子版の記事を学習したAIが\n\nニュースの疑問を\n\nその場で解消！\n\nAsk Nikkeiを使用している画面例 [...] 日本経済新聞トップ\n\nNikkei Asia\n\nNIKKEI Prime\n\n NIKKEI Digital Governance\n NIKKEI Financial\n NIKKEI FT the World\n NIKKEI GX\n Minutes by NIKKEI\n NIKKEI Mobility\n NIKKEI Tech Foresight\n 日経ヴェリタス\n\nNIKKEI Primeについて\n\n/\n\nこの記事は会員限定記事です\n\n# 東海道新幹線開業（1964年）\n\n0系、世界初の高速鉄道\n\n古今東西 あの出来事\n\n[会員限定記事]\n\n紙面掲載記事\n\n日本経済新聞朝刊・夕刊に掲載された記事です。有料会員の方は過去30日分の紙面を閲覧いただけます。\n\n有料会員に登録するログイン\n\n日経の記事利用サービスについて\n\n企業での記事共有や会議資料への転載・複製、注文印刷などをご希望の方は、リンク先をご覧ください。\n\n詳しくはこちら [...] Ask! NIKKEI\n\n詳しく見る\n\n日経の記事利用サービスについて\n\n企業での記事共有や会議資料への転載・複製、注文印刷などをご希望の方は、リンク先をご覧ください。\n\n詳しくはこちら\n\n## 古今東西 あの出来事\n\n 日本初の気象衛星打ち上げ（1977年）（）\n 農事試験場の設立（1893年）（）\n\nこちらもおすすめ（自動検索）\n\n ## リニア中央新幹線とは　超電導で浮上走行、最高時速500キロ\n ## 台湾新幹線、「破談の危機」越えた日本の車両　日立･東芝が出荷式\n\n  会員限定\n ## 日印首脳、インド高速鉄道計画の推進合意　27年一部開業へ日本協力\n\n  会員限定\n ## 東海道新幹線、1100kmのケーブル撤去へ　列車の通信支えて40年\n\n  会員限定\n\n関連企業・業界\n\n企業：\n\n #ＪＲ東海\n\n業界：\n\n #陸運\n\n関連キーワード\n\n #古今東西 あの出来事\n #新幹線\n #東海道新幹線\n #新幹線0系電車\n #電車\n #0系\n #JR東海\n\n## 最新★大学別年収ランキング2026\n\n日経転職版\n\n## 街乗りに最適　上品でコンパクトな車",
+        "title": "東海道新幹線開業（1964年）　0系、世界初の高速鉄道 - 日本経済新聞",
+        "url": "https://www.nikkei.com/article/DGKKZO59385120R20C20A5TJN000",
+        "original_url": "https://www.nikkei.com/article/DGKKZO59385120R20C20A5TJN000",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:19:37.723669Z",
+        "published_at": null,
+        "content_hash": "ddaa6d4aa7a3a9420d76696b89df06b197c0349c4f1f4db14b8edd4f49ab37b3",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 1417,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-db6d515e5161900d91fc9b16aef02190",
+        "text": "1964年10月1日、61年前に東京と大阪を結ぶ東海道新幹線が開業し、世界初の高速鉄道となりました。最高速度は130 mph（209 km/h）です。",
+        "title": "世界初の高速鉄道となりました。最高速度は130 mph（209 km ...",
+        "url": "https://www.reddit.com/r/trains/comments/1nv5tlu/61_years_ago_on_october_1st_1964_the_tokaido?tl=ja",
+        "original_url": "https://www.reddit.com/r/trains/comments/1nv5tlu/61_years_ago_on_october_1st_1964_the_tokaido?tl=ja",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:19:37.723669Z",
+        "published_at": null,
+        "content_hash": "0a1baa0505c8e12a8d1622a2861688cb98b5e76af354dbff184570542e0fa781",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 75,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-fbb716ba6af4b030495b02d75b91e5ca",
+        "text": "## 概要\n\n[編集]\n\n本州中央部太平洋側には、第二次世界大戦前、既に東海道本線（東京駅 - 神戸駅 \"神戸駅 (兵庫県)\")間）が開通していたが、戦後の高度経済成長下で線路容量が逼迫しており、抜本的な輸送力増強を迫られていた。これに対して日本国有鉄道（国鉄）は、十河信二総裁と島秀雄技師長の下、高速運転が可能な標準軌新線を建設することを決定。1959年（昭和34年）4月20日、新丹那トンネル熱海口で起工式を行って着工し、東京オリンピック開会直前の1964年（昭和39年）10月1日に開業した。計画段階では「東海道新線」と呼ばれていたが、開業時には「東海道新幹線」と命名された。「新幹線」という呼称は戦前に東京駅 - 下関駅間で計画された「弾丸列車」の内部呼称に由来するといわれている。なお、開業後に一等車（現在のグリーン車）のシートポケットに配置されていた訪日外国人旅行者向けの英語版リーフレットのタイトルは「Japan's　Bullet Train - 125 mph」とあり、「Shinkansen」という言葉が国際的に定着する前は弾丸列車を意味する英語を使用していた。 [...] | ■ |\n| 富士山をバックに走るN700系（三島駅 - 新富士駅間） 富士山をバックに走るN700系 （三島駅 - 新富士駅 \"新富士駅 (静岡県)\")間） |\n| 基本情報 |\n| 国 | 日本の旗 日本 |\n| 所在地 | 東京都、神奈川県、静岡県、愛知県、岐阜県、滋賀県、京都府、大阪府 |\n| 種類 | 高速鉄道（新幹線） |\n| 起点 | 東京駅 |\n| 終点 | 新大阪駅 |\n| 駅数 | 17駅 |\n| 開業 | 1964年（昭和39年）10月1日 |\n| 所有者 | 東海旅客鉄道（JR東海） |\n| 運営者 | 東海旅客鉄道（JR東海） |\n| 使用車両 | <#車両>の節を参照 |\n| 路線諸元 |\n| 路線距離 | 515.4 km |\n| 営業キロ | 552.6 km |\n| 軌間 | 1,435 mm（標準軌） |\n| 線路数 | 複線 |\n| 電化方式 | 交流25,000 V \"ボルト (単位)\")・60 Hz 架空電車線方式 |\n| 最大勾配#勾配 \"線形 (路線)\") | 20 ‰  | [...] 首都圏 \"首都圏 (日本)\")、愛知県名古屋市を核とする中京圏、京阪神の三大都市圏間で旅客を高速、高頻度で大量輸送している。1日あたりの列車本数は372本（臨時列車含む）、1日あたりの輸送人員は43.2万人（年間1億5,800万人）、年間収入は約1兆2,479億円にも及ぶなど、高速鉄道でありながら通勤路線にも匹敵する世界有数の大量輸送サービスを提供している鉄道路線である（数字はいずれも2023年度）。JR東海の運輸収入の92%を稼ぎだすドル箱路線であり、45%という同社の高い営業利益率を生み出す日本屈指の高収益路線でもある（2019年度）。三大都市圏を結ぶ都市間連絡鉄道としての性格から、利用客の約7割は出張・ビジネス利用である。",
+        "title": "東海道新幹線 - Wikipedia",
+        "url": "https://ja.wikipedia.org/wiki/%E6%9D%B1%E6%B5%B7%E9%81%93%E6%96%B0%E5%B9%B9%E7%B7%9A",
+        "original_url": "https://ja.wikipedia.org/wiki/%E6%9D%B1%E6%B5%B7%E9%81%93%E6%96%B0%E5%B9%B9%E7%B7%9A",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:19:37.723669Z",
+        "published_at": null,
+        "content_hash": "4b2f11d1fef01d87099c69ef0f3ff3aac434c7344a263b73ab94c48fc88ba916",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 1290,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-f1b4cc2f527950072009e0ea896571f1",
+        "text": "東海道新幹線開業(1964年) 0系、世界初の高速鉄道 - 日本経済新聞 - uk-63region.ru. 46) 納期目安: 2025.08.28 … 在庫: 29 税込 1775円",
+        "title": "東海道新幹線開業（1964年） 0系、世界初の高速鉄道",
+        "url": "https://www.uk-63region.ru?r=ehfk0s3bgc31zpk_gkind14524030",
+        "original_url": "https://www.uk-63region.ru?r=ehfk0s3bgc31zpk_gkind14524030",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:19:37.723669Z",
+        "published_at": null,
+        "content_hash": "8ba6f058b00f9033148153bebe735eb5c435f8c81ce3f9f8977e665c823376ba",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 93,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-d9ba484054be54641476fd8d7b486f90",
+        "text": "50年前の1964（昭和39）年といえば、東京オリンピックが開催された年ですね。東海道新幹線の開業が10月1日でオリンピックの開会式が10月10日と聞くと、まるで最初からオリンピックのために計画されたように感じますが、本当にそうなのかな ?\n\n  \n\n実は、東海道新幹線のルーツは戦前の「弾丸列車計画」なんだそうです ! これは、東京から大阪、下関を経て、海底トンネルで中国大陸までつなげようという壮大なもの。実際に、用地の買収やトンネル工事まで始まっていたそうです。\n\nこの計画は戦争の激化で中止になりましたが、戦後復興で東海道線の輸送量が増大したため、昭和30年代になって新たに新幹線計画が進められたというわけです。\n\n東海道新幹線の工事は1959（昭和34）年に始まりましたが、弾丸列車計画で確保されていた用地や工事が中断されていたトンネルも利用するなどした結果、5年3カ月という短い工期で東京・新大阪間の515.4kmが全線開通。こうして、人々が「夢の超特急」と呼んだ世界的な高速鉄道の運行が始まったのでした。\n\n  \n\n#### 所要時間6時間30分を2時間25分まで短縮 ! [...] 東海道新幹線の最初の車両である0系は、200km/hという当時経験のない高速走行を目指していたため、開発には多くの課題がありました。高速走行しても異常振動を起こさないような台車が必須で、かつ低重心であり、ブレーキ性能も高くなければなりません。また、高速でトンネルに入ると圧力の変化で耳に圧迫感を覚えるため（耳つん）、高い機密性が求められます。試作車両で何度も高速運転試験と改良を重ね、「夢の超特急」が現実のものになりました。\n\n開業から約20年後の最初のモデルチェンジで生まれたのが100系です。これは0系に比べて乗心地の向上や車両の軽量化など多くの改良が図られました。200km/h以上の高速列車で世界初の二階建て車両は、大きな話題になったものです。また、消費電力は0系の79％に抑えられています。\n\n次の300系は、最高速度270km/hを目標に開発。アルミ合金製の車体をはじめ、徹底した軽量化が図られた結果、0系に比べて約30％、100系に対しても約25％の軽量化を達成。さらに、空力特性の向上や大幅な省エネ化も実現しました。 [...] 新幹線を高速で安全に運行するためには、車両や線路、電気系統などの設備、運行を担うコンピュータシステムや設備・機器の保守などに幅広い技術が使われており、長年にわたって改良や新規開発が続けられてきました。新幹線の最高速度や東京・新大阪間の所要時間の変遷には、それがよく表れています。\n\n東海道新幹線が開通するまで、東京・大阪間は在来線特急で約6時間30分かかっていました。それが、東海道新幹線の開業時には東京・新大阪間が約4時間に短縮。最高速度は、当時の世界最高速である210km/hでした。翌年には、当初の計画どおり最短3時間10分に短縮。その後、最高速度が220km/hに引き上げられ、1985（昭和60）年には新型の100系車両が導入されました。\n\nさらなる所要時間短縮を求める声に応えてスピードアップを図るため、1988（昭和63）年にプロジェクトチームが設けられ、検討を重ねた結果、新たに300系の車両を開発。大幅に速度が向上して、1992（平成4）年から最高速度270km/hの営業運転が始まり、東京・新大阪間が2時間30分と大幅に短縮されました。",
+        "title": "第5回「新幹線」編｜まめ知識｜科学技術館50周年記念",
+        "url": "https://www2.jsf.or.jp/industry50/mamechishiki/mamechishiki05-1.html",
+        "original_url": "https://www2.jsf.or.jp/industry50/mamechishiki/mamechishiki05-1.html",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:19:37.723669Z",
+        "published_at": null,
+        "content_hash": "928bcc2b9c81c35e5068427353bf1c37ffe168bdd08254747b5c67f3c1b1e231",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 1451,
+        "original_id": null,
+        "original_quiz_id": null
+      }
+    ],
+    "error_code": null,
+    "retry_after_seconds": 0,
+    "created_at": "2026-10-14T12:19:22Z",
+    "expires_at": "2026-10-15T12:19:22Z"
+  },
+  "wall_attempt_seconds": [
+    99.355,
+    7.295
+  ],
+  "elapsed_seconds": 106.65,
+  "api_timings": [
+    {
+      "method": "POST",
+      "path": "/auth/wechat",
+      "status": 200,
+      "seconds": 0.013
+    },
+    {
+      "method": "POST",
+      "path": "/quiz/preparations",
+      "status": 200,
+      "seconds": 99.319
+    },
+    {
+      "method": "GET",
+      "path": "/quiz/preparations/4b47f5ab-e4ee-4dde-b0bb-dae5b65ddee0",
+      "status": 200,
+      "seconds": 0.019
+    },
+    {
+      "method": "POST",
+      "path": "/auth/wechat",
+      "status": 200,
+      "seconds": 0.033
+    },
+    {
+      "method": "POST",
+      "path": "/quiz/preparations",
+      "status": 200,
+      "seconds": 0.038
+    },
+    {
+      "method": "GET",
+      "path": "/quiz/preparations/4b47f5ab-e4ee-4dde-b0bb-dae5b65ddee0",
+      "status": 200,
+      "seconds": 0.028
+    },
+    {
+      "method": "POST",
+      "path": "/quiz/generate",
+      "status": 200,
+      "seconds": 7.159
+    },
+    {
+      "method": "GET",
+      "path": "/operations/generate-country-japan",
+      "status": 200,
+      "seconds": 0.023
+    }
+  ],
+  "structured_model_usage": [
+    {
+      "operation": "4b47f5ab-e4ee-4dde-b0bb-dae5b65ddee0",
+      "attempt": 1,
+      "tokens": {
+        "input_tokens": 15060,
+        "output_tokens": 4189,
+        "total_tokens": 19249
+      }
+    },
+    {
+      "operation": "4b47f5ab-e4ee-4dde-b0bb-dae5b65ddee0",
+      "attempt": 2,
+      "tokens": {
+        "input_tokens": 15060,
+        "output_tokens": 3955,
+        "total_tokens": 19015
+      }
+    },
+    {
+      "operation": "d0945461-8302-458b-9ddb-d3e63d723a78",
+      "attempt": 1,
+      "tokens": {
+        "input_tokens": 6125,
+        "output_tokens": 797,
+        "total_tokens": 6922
+      }
+    },
+    {
+      "operation": "d0945461-8302-458b-9ddb-d3e63d723a78",
+      "attempt": 1,
+      "tokens": {
+        "input_tokens": 5710,
+        "output_tokens": 451,
+        "total_tokens": 6161
+      }
+    }
+  ],
+  "operations": [
+    {
+      "key": "generate-country-japan",
+      "kind": "quiz",
+      "status": "succeeded",
+      "stage": "succeeded",
+      "model_calls": 2,
+      "tool_calls": 0,
+      "page_attempts": 0,
+      "charged": 1,
+      "retrieval": null,
+      "error_code": null
+    },
+    {
+      "key": "prepare:a99e10b16a2d0d1d0b46af22741ccda5357ba52f512061a744e8e2015379b79d",
+      "kind": "prepare",
+      "status": "succeeded",
+      "stage": "ready",
+      "model_calls": 5,
+      "tool_calls": 4,
+      "page_attempts": 0,
+      "charged": 0,
+      "retrieval": null,
+      "error_code": null
+    }
+  ],
+  "retrieval_preparations": [
+    {
+      "scope": {
+        "candidates": [
+          {
+            "id": "scope-shinkansen-basics-v1",
+            "topic": "日本新干线基础知识",
+            "domain": "日本高速铁路（新干线）通识",
+            "focuses": [
+              {
+                "id": "focus-shinkansen-definition-v1",
+                "name": "新干线的定义与基本规格",
+                "points": [
+                  {
+                    "id": "point-shinkansen-opening-v1",
+                    "name": "1964年10月1日东海道新干线开业，为世界首条高速铁路",
+                    "evidence_ids": [
+                      "web-bd97c438531e049a164b51859b398e79",
+                      "web-fbb716ba6af4b030495b02d75b91e5ca",
+                      "web-ed925988080fb2cc8c9ca8f3d01c7514",
+                      "web-db6d515e5161900d91fc9b16aef02190"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-shinkansen-gauge-v1",
+                    "name": "轨距1435mm标准轨与交流25000V架空电车线方式",
+                    "evidence_ids": [
+                      "web-bd97c438531e049a164b51859b398e79",
+                      "web-fbb716ba6af4b030495b02d75b91e5ca"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-shinkansen-speed-v1",
+                    "name": "最高速度320km/h（东北新干线部分区间）",
+                    "evidence_ids": [
+                      "web-bd97c438531e049a164b51859b398e79",
+                      "web-adcc85029dc2c638a6b446d9d6dfaf5a"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-shinkansen-route-count-v1",
+                    "name": "全规格8条线路、迷你新干线2条线路的线路构成",
+                    "evidence_ids": [
+                      "web-bd97c438531e049a164b51859b398e79"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-shinkansen-tokaido-spec-v1",
+                    "name": "东海道新干线东京—新大阪515.4km、17站、JR东海运营",
+                    "evidence_ids": [
+                      "web-fbb716ba6af4b030495b02d75b91e5ca"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-shinkansen-history-origin-v1",
+                    "name": "源于战前“弹丸列车计划”，1959年动工、1964年开业",
+                    "evidence_ids": [
+                      "web-fbb716ba6af4b030495b02d75b91e5ca",
+                      "web-d9ba484054be54641476fd8d7b486f90"
+                    ],
+                    "evidence_status": "available"
+                  }
+                ],
+                "description": "新干线作为高速铁路的基本属性与线路技术规格。"
+              },
+              {
+                "id": "focus-shinkansen-history-v1",
+                "name": "新干线历史与车辆演进",
+                "points": [
+                  {
+                    "id": "point-series0-v1",
+                    "name": "0系：开业时最高210km/h、东京—新大阪约4小时",
+                    "evidence_ids": [
+                      "web-ed925988080fb2cc8c9ca8f3d01c7514",
+                      "web-d9ba484054be54641476fd8d7b486f90"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-series100-v1",
+                    "name": "100系：约20年后首次换代，世界首列200km/h以上双层车辆",
+                    "evidence_ids": [
+                      "web-d9ba484054be54641476fd8d7b486f90"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-series300-v1",
+                    "name": "300系：1992年起270km/h营业运行，东京—新大阪缩短至2小时30分",
+                    "evidence_ids": [
+                      "web-d9ba484054be54641476fd8d7b486f90",
+                      "web-d29c558aab9e17857c7034ffc24586a2"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-n700s-v1",
+                    "name": "N700S：2020年7月1日投运、最高300km/h、16辆编成定员1323名",
+                    "evidence_ids": [
+                      "web-f8e2249a0110fb27d97c2332231f4a69"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-n700a-n700s-equipment-v1",
+                    "name": "N700A/N700S的插座配置差异（N700S全席有插座）",
+                    "evidence_ids": [
+                      "web-a0f28d832c44f8bc22e702879bcd199a"
+                    ],
+                    "evidence_status": "available"
+                  }
+                ],
+                "description": "从开业到历代车辆的速度与时间缩短历程。"
+              },
+              {
+                "id": "focus-shinkansen-operation-v1",
+                "name": "新干线的运营与安全特征",
+                "points": [
+                  {
+                    "id": "point-punctuality-v1",
+                    "name": "班次密集、准点率极高，平均误点以秒计",
+                    "evidence_ids": [
+                      "web-adcc85029dc2c638a6b446d9d6dfaf5a"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-safety-record-v1",
+                    "name": "开业以来无乘客死亡事故，为世界最安全铁路系统之一",
+                    "evidence_ids": [
+                      "web-adcc85029dc2c638a6b446d9d6dfaf5a",
+                      "web-ad754665e9a8ae0838513d09a289a069"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-full-spec-conditions-v1",
+                    "name": "全规格新干线：主要区间200km/h以上、无道口、高架立体交叉",
+                    "evidence_ids": [
+                      "web-ad754665e9a8ae0838513d09a289a069"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-tokaido-volume-v1",
+                    "name": "东海道新干线连接东京、名古屋、大阪，日运量最大约45.8万人",
+                    "evidence_ids": [
+                      "web-d1585ed12a17ff910f7a0bb8f5ed76fe"
+                    ],
+                    "evidence_status": "available"
+                  }
+                ],
+                "description": "运营准点、安全记录与线路建设方式等特征。"
+              }
+            ],
+            "description": "围绕新干线的基本定义、历史沿革、线路规格与运营特征建立学习范围。资料来自日文维基、JR西日本官方车辆页、日本经济新闻及科学技术馆等日本来源。仅整理范围，待用户确认后再另行出题。"
+          },
+          {
+            "id": "scope-shinkansen-train-classes-v1",
+            "topic": "日本新干线列车分类与爱称",
+            "domain": "日本新干线列车种别与命名",
+            "focuses": [
+              {
+                "id": "focus-tokaido-sanyo-classes-v1",
+                "name": "东海道·山阳新干线列车种别",
+                "points": [
+                  {
+                    "id": "point-nozomi-v1",
+                    "name": "のぞみ：1992年诞生、东海道·山阳最速达列车、使用N700A/N700S",
+                    "evidence_ids": [
+                      "web-d29c558aab9e17857c7034ffc24586a2",
+                      "web-a0f28d832c44f8bc22e702879bcd199a"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-nozomi-frequency-v1",
+                    "name": "のぞみ通常每小时3〜4班，多客期最多每小时6班",
+                    "evidence_ids": [
+                      "web-a0f28d832c44f8bc22e702879bcd199a"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-mizuho-v1",
+                    "name": "みずほ：山阳·九州新干线最速达型，新大阪—博多约2小时28分",
+                    "evidence_ids": [
+                      "web-81d1338eca756989f30e90aefe36d10e",
+                      "web-a0f28d832c44f8bc22e702879bcd199a"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-mizuho-stops-v1",
+                    "name": "みずほ全列车停靠站：新大阪、新神户、冈山、广岛、小仓、博多",
+                    "evidence_ids": [
+                      "web-81d1338eca756989f30e90aefe36d10e"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-sakura-v1",
+                    "name": "さくら：普通车指定席为2列×2列，较みずほ更划算",
+                    "evidence_ids": [
+                      "web-81d1338eca756989f30e90aefe36d10e"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-hikari-kodama-v1",
+                    "name": "ひかり、こだま：东海道新干线三种列车中的另外两种",
+                    "evidence_ids": [
+                      "web-d1585ed12a17ff910f7a0bb8f5ed76fe",
+                      "web-7f5d1c0941501e6741448ce1ea07b1e6"
+                    ],
+                    "evidence_status": "available"
+                  }
+                ],
+                "description": "のぞみ、みずほ、ひかり、さくら、こだま等种别的定位与差异。"
+              },
+              {
+                "id": "focus-seat-onboard-v1",
+                "name": "座位类别与车内服务",
+                "points": [
+                  {
+                    "id": "point-seat-types-v1",
+                    "name": "座位分为普通车自由席、普通车指定席、绿色车指定席",
+                    "evidence_ids": [
+                      "web-81d1338eca756989f30e90aefe36d10e",
+                      "web-a0f28d832c44f8bc22e702879bcd199a"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-car-assignment-v1",
+                    "name": "みずほ8辆编成：自由席3辆、指定席4.5辆、绿色车0.5辆",
+                    "evidence_ids": [
+                      "web-81d1338eca756989f30e90aefe36d10e"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-peak-seat-change-v1",
+                    "name": "高峰期普通车自由席取消，1〜3号车也变为指定席",
+                    "evidence_ids": [
+                      "web-81d1338eca756989f30e90aefe36d10e"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-onboard-sales-v1",
+                    "name": "车内贩卖：のぞみ有、みずほ无、绿色车限定等情况",
+                    "evidence_ids": [
+                      "web-81d1338eca756989f30e90aefe36d10e",
+                      "web-a0f28d832c44f8bc22e702879bcd199a"
+                    ],
+                    "evidence_status": "available"
+                  }
+                ],
+                "description": "普通车自由席/指定席、绿色车厢及车内贩卖等差异。"
+              },
+              {
+                "id": "focus-naming-origin-v1",
+                "name": "列车爱称的命名由来",
+                "points": [
+                  {
+                    "id": "point-naming-categories-v1",
+                    "name": "爱称分类：光类、声音类、山类等命名体系",
+                    "evidence_ids": [
+                      "web-4412a3704b4a876c198a6607eb5a13b5"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-tsubame-kamome-v1",
+                    "name": "つばめ（燕号）、かもめ（海鸥号）的命名由来与运行区间",
+                    "evidence_ids": [
+                      "web-4412a3704b4a876c198a6607eb5a13b5"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-tanigawa-asama-v1",
+                    "name": "たにがわ（谷川号）、あさま（浅间号）源自山岳地名",
+                    "evidence_ids": [
+                      "web-4412a3704b4a876c198a6607eb5a13b5",
+                      "web-d1585ed12a17ff910f7a0bb8f5ed76fe"
+                    ],
+                    "evidence_status": "available"
+                  }
+                ],
+                "description": "各列车爱称的语源与命名分类。"
+              }
+            ],
+            "description": "围绕新干线列车种别（のぞみ、みずほ、さくら、ひかり、こだま等）的定位、停站、座位与命名由来建立学习范围。资料来自日本旅行信息网站、日文维基与JR西日本官方页面。仅整理范围，待用户确认后再另行出题。"
+          },
+          {
+            "id": "scope-shinkansen-lines-vehicles-v1",
+            "topic": "日本新干线线路与车辆分类",
+            "domain": "日本新干线路线与车辆型式",
+            "focuses": [
+              {
+                "id": "focus-line-list-v1",
+                "name": "全国新干线线路一览",
+                "points": [
+                  {
+                    "id": "point-hokkaido-tohoku-v1",
+                    "name": "北海道新干线（新青森—新函馆北斗）与东北新干线（东京—新青森）",
+                    "evidence_ids": [
+                      "web-a0f28d832c44f8bc22e702879bcd199a"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-joetsu-hokuriku-v1",
+                    "name": "上越新干线（たにがわ运行区间）与北陆新干线（敦贺—东京）",
+                    "evidence_ids": [
+                      "web-d1585ed12a17ff910f7a0bb8f5ed76fe",
+                      "web-2fef28215dea8608a8f5a6daf5e4c66b"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-kyushu-nishikyushu-v1",
+                    "name": "九州新干线（博多—鹿儿岛中央）与西九州新干线（博多—长崎）",
+                    "evidence_ids": [
+                      "web-4412a3704b4a876c198a6607eb5a13b5"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-tokaido-sanyo-kyushu-v1",
+                    "name": "东海道·山阳·九州新干线的运行区间与列车",
+                    "evidence_ids": [
+                      "web-2fef28215dea8608a8f5a6daf5e4c66b"
+                    ],
+                    "evidence_status": "available"
+                  }
+                ],
+                "description": "各线路的运行区间与代表列车。"
+              },
+              {
+                "id": "focus-vehicle-types-v1",
+                "name": "车辆型式与编组",
+                "points": [
+                  {
+                    "id": "point-n700-series-v1",
+                    "name": "N700系：16辆编成（东京—博多）与8辆编成（新大阪—鹿儿岛中央/博多）",
+                    "evidence_ids": [
+                      "web-2fef28215dea8608a8f5a6daf5e4c66b"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-500-700-v1",
+                    "name": "700系、500系：新大阪—博多区间运行",
+                    "evidence_ids": [
+                      "web-2fef28215dea8608a8f5a6daf5e4c66b"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-e5-v1",
+                    "name": "E5系：东北新干线代表车型、10辆编成、最高320km/h、首设Gran Class",
+                    "evidence_ids": [
+                      "web-adcc85029dc2c638a6b446d9d6dfaf5a"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-e6-v1",
+                    "name": "E6系：秋田新干线迷你新干线、7辆编成、茜色涂装、与E5系连结运行",
+                    "evidence_ids": [
+                      "web-adcc85029dc2c638a6b446d9d6dfaf5a"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-e7-w7-v1",
+                    "name": "E7系·W7系：北陆新干线（敦贺—东京）使用",
+                    "evidence_ids": [
+                      "web-2fef28215dea8608a8f5a6daf5e4c66b"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-vehicle-letter-v1",
+                    "name": "车辆编号字母：JR东日本E、JR北海道H、JR西日本W",
+                    "evidence_ids": [
+                      "web-f8e2249a0110fb27d97c2332231f4a69"
+                    ],
+                    "evidence_status": "available"
+                  }
+                ],
+                "description": "主要车辆型式、编组与特征。"
+              },
+              {
+                "id": "focus-mini-shinkansen-v1",
+                "name": "迷你新干线与全规格新干线",
+                "points": [
+                  {
+                    "id": "point-mini-definition-v1",
+                    "name": "迷你新干线：改造在来线轨距使新干线车辆直通运行",
+                    "evidence_ids": [
+                      "web-2ce461802e7f9cd61bfb8ad5f49d81c8",
+                      "web-433c8e9c91f844022be39991c32af25f",
+                      "web-ad754665e9a8ae0838513d09a289a069"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-mini-lines-v1",
+                    "name": "山形新干线（福岛起）与秋田新干线（盛冈起）两条迷你新干线",
+                    "evidence_ids": [
+                      "web-2ce461802e7f9cd61bfb8ad5f49d81c8",
+                      "web-433c8e9c91f844022be39991c32af25f"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-mini-body-width-v1",
+                    "name": "迷你新干线车体宽度与在来线相同，普通席为2+2列配置",
+                    "evidence_ids": [
+                      "web-c9e4bb19e77defb4dd35001c9dd5b1ad",
+                      "web-433c8e9c91f844022be39991c32af25f"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-mini-speed-limit-v1",
+                    "name": "山形新干线在来线区间（福岛—新庄）限速130km/h",
+                    "evidence_ids": [
+                      "web-ad754665e9a8ae0838513d09a289a069"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-staged-full-spec-v1",
+                    "name": "国土交通省讨论的迷你新干线阶段性全规格化方案（160km/h→260km/h）",
+                    "evidence_ids": [
+                      "web-2cd6a99603fab6aded07f1949bae4e9e"
+                    ],
+                    "evidence_status": "available"
+                  }
+                ],
+                "description": "迷你新干线的机制、适用线路与全规格化的讨论。"
+              }
+            ],
+            "description": "围绕全国新干线线路（东海道、山阳、东北、秋田、上越、北陆、九州等）与车辆型式（N700系、E5系、E6系、E7/W7系等）建立学习范围。资料来自日本旅行信息网站、JR西日本官方车辆页与日文维基。仅整理范围，待用户确认后再另行出题。"
+          }
+        ]
+      },
+      "trace": [
+        {
+          "tool": "tavily_search",
+          "status": "success",
+          "call_id": "call_01_GUOHpKlIjR5SzF97vgne7015",
+          "credits": 1.0,
+          "elapsed_ms": 2331,
+          "parameters": {
+            "query": "新幹線 のぞみ みずほ はやぶさ かがやき 種別 違い",
+            "topic": "general",
+            "country": null,
+            "end_date": null,
+            "start_date": null,
+            "time_range": null,
+            "max_results": 5,
+            "content_mode": "summary",
+            "search_depth": "basic",
+            "exclude_domains": [],
+            "include_domains": []
+          },
+          "source_ids": [
+            "web-81d1338eca756989f30e90aefe36d10e",
+            "web-a0f28d832c44f8bc22e702879bcd199a",
+            "web-f8e2249a0110fb27d97c2332231f4a69",
+            "web-d29c558aab9e17857c7034ffc24586a2",
+            "web-7f5d1c0941501e6741448ce1ea07b1e6"
+          ],
+          "reason_code": null
+        },
+        {
+          "tool": "tavily_search",
+          "status": "success",
+          "call_id": "call_00_Eto66xC2MSZmqglu7Mof6007",
+          "credits": 1.0,
+          "elapsed_ms": 2163,
+          "parameters": {
+            "query": "新幹線 基礎知識 列車分類 種類",
+            "topic": "general",
+            "country": null,
+            "end_date": null,
+            "start_date": null,
+            "time_range": null,
+            "max_results": 5,
+            "content_mode": "summary",
+            "search_depth": "basic",
+            "exclude_domains": [],
+            "include_domains": []
+          },
+          "source_ids": [
+            "web-d1585ed12a17ff910f7a0bb8f5ed76fe",
+            "web-bd97c438531e049a164b51859b398e79",
+            "web-4412a3704b4a876c198a6607eb5a13b5",
+            "web-2fef28215dea8608a8f5a6daf5e4c66b",
+            "web-adcc85029dc2c638a6b446d9d6dfaf5a"
+          ],
+          "reason_code": null
+        },
+        {
+          "tool": "tavily_search",
+          "status": "success",
+          "call_id": "call_00_mEdUk0oA9S1HFg2A5NFE9387",
+          "credits": 1.0,
+          "elapsed_ms": 2399,
+          "parameters": {
+            "query": "新幹線 フル規格 ミニ新幹線 整備新幹線 定義 違い",
+            "topic": "general",
+            "country": null,
+            "end_date": null,
+            "start_date": null,
+            "time_range": null,
+            "max_results": 5,
+            "content_mode": "summary",
+            "search_depth": "basic",
+            "exclude_domains": [],
+            "include_domains": []
+          },
+          "source_ids": [
+            "web-2cd6a99603fab6aded07f1949bae4e9e",
+            "web-2ce461802e7f9cd61bfb8ad5f49d81c8",
+            "web-ad754665e9a8ae0838513d09a289a069",
+            "web-c9e4bb19e77defb4dd35001c9dd5b1ad",
+            "web-433c8e9c91f844022be39991c32af25f"
+          ],
+          "reason_code": null
+        },
+        {
+          "tool": "tavily_search",
+          "status": "success",
+          "call_id": "call_01_EYct3WGK854QLcfUmgeC3523",
+          "credits": 1.0,
+          "elapsed_ms": 2435,
+          "parameters": {
+            "query": "東海道新幹線 開業 1964年 歴史 世界初 高速鉄道",
+            "topic": "general",
+            "country": null,
+            "end_date": null,
+            "start_date": null,
+            "time_range": null,
+            "max_results": 5,
+            "content_mode": "summary",
+            "search_depth": "basic",
+            "exclude_domains": [],
+            "include_domains": []
+          },
+          "source_ids": [
+            "web-ed925988080fb2cc8c9ca8f3d01c7514",
+            "web-db6d515e5161900d91fc9b16aef02190",
+            "web-fbb716ba6af4b030495b02d75b91e5ca",
+            "web-f1b4cc2f527950072009e0ea896571f1",
+            "web-d9ba484054be54641476fd8d7b486f90"
+          ],
+          "reason_code": null
+        }
+      ],
+      "usage": {
+        "input_tokens": 23761,
+        "total_tokens": 24509,
+        "output_tokens": 748
+      },
+      "evidence": [
+        {
+          "id": "web-81d1338eca756989f30e90aefe36d10e",
+          "end": null,
+          "url": "https://tabiris.com/archives/nozomi-mizuho",
+          "page": null,
+          "text": "### 座席の種類と号車\n\n普通車自由席（1～3号車）、普通車指定席（4～7、11～16号車）、グリーン車指定席（8～10号車）  \n ※ピーク時期には、普通車自由席はなく、1～3号車も普通車指定席となる。\n\n### 車内販売\n\nグリーン車のみ。普通車の車内販売はなし。\n\n広告\n\n## 「みずほ」号とは？\n\n山陽・九州新幹線の速達タイプの列車が「みずほ」号です。東海道新幹線（東京方面）には直通せず、九州新幹線（鹿児島中央方面）に直通します。新大阪～博多間の所要時間は2時間28分程度で、「のぞみ」号とほぼ同じです。\n\n全列車が停まる駅は、新大阪、新神戸、岡山、広島、小倉、博多です。そのほか、姫路、福山、新山口の各駅に停まる列車もあります。\n\n運行本数は、朝夕に毎時1本程度です。日中時間帯はあまり運転されていません。\n\n8両編成で、自由席が3両、指定席が4.5両半、グリーン車が0.5両です。\n\n### 座席の種類と号車\n\n普通車自由席（1～3号車）、普通車指定席（4～8号車）、グリーン車指定席（6号車）\n\n### 車内販売\n\n車内販売はなし。\n\n広告\n\n## 「さくら」号とは？ [...] 理由を説明すると、まず、普通車指定席を選ぶ場合、「みずほ」「さくら」は2列×2列シートなのでゆったりしています。ただ「みずほ」は加算料金がかかるので、「さくら」のほうがお得です。\n\n「のぞみ」は普通車指定席が3列×2列シートで加算料金もかかるので、お得さはありません。\n\n自由席を利用するなら、「のぞみ」「みずほ」の加算料金がかかりません。座席も基本的には、どの列車も3×2列シートなので同じです。そのため、運行本数が多くて速い「のぞみ」がいいでしょう。自由席の両数は、「のぞみ」「みずほ」「さくら」とも同じ3両です。\n\n新大阪から乗車する場合、「のぞみ」は始発ではないので席が確保しにくいイメージもありますが、新大阪で降りる人が多いので、空席がないわけではありません。乗車前に外から車内を確認してから乗るといいでしょう。新神戸や岡山で降りる人も多いので、仮に立っても、少しすれば座れる可能性が高いです。\n\n所要時間は、「のぞみ」「みずほ」「さくら」の3者では、新大阪～博多間でも10分くらいの違いしかありません。\n\n## 「こだま」停車駅は乗り継ぎで [...] 以下では、山陽新幹線「のぞみ」「みずほ」「さくら」「ひかり」「こだま」について、停車駅以外の相違点と共通点をご紹介していきます。\n\n山陽・九州新幹線路線図\n\n画像：JRおでかけネット\n\n広告\n\n  \n\n## 「のぞみ」号とは？\n\n東海道・山陽新幹線を直通する速達タイプの列車が「のぞみ」号です。新大阪～博多間の所要時間は2時間28分程度です。\n\n運転区間は、大きく分けて、東京～広島間（広島発着）と東京～博多間（博多発着）があります。全列車が停まる駅は、新大阪、新神戸、岡山、広島、小倉、博多です。そのほか、姫路、福山、徳山、新山口の各駅に停まる列車もあります。\n\n運行本数は、定期列車が毎時3本程度で、うち2本が博多発着、1本が広島発着です。そのほか不定期列車（毎日運転しない列車）が6～7本程度あります。ただし、最大本数で運行するのは、限られた日や時間帯だけです。運行本数は毎日異なります。\n\n16両編成で、自由席が3両、指定席が10両、グリーン車が3両です。ただし、年末年始、ゴールデンウィーク、お盆の、いわゆる「ピーク時期」には、指定席13両、グリーン車3両となり、自由席はありません。",
+          "start": null,
+          "title": "山陽新幹線「のぞみ」「みずほ」「さくら」の違い。料金、時間はどれだけ変わる？ | 旅行総合研究所タビリス",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "54b1c8af237bb5a993ec648f9d89c7af83272ae484daa917b1c70b40e2de9324",
+          "content_kind": "snippet",
+          "original_url": "https://tabiris.com/archives/nozomi-mizuho",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:19:26.118171Z",
+          "source_chars": 1481,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-a0f28d832c44f8bc22e702879bcd199a",
+          "end": null,
+          "url": "https://www.toretabi.jp/railway_info/entry-7625.html",
+          "page": null,
+          "text": "### のぞみ\n\n東海道新幹線から直通する最速列車で、ほとんどの列車が広島駅または博多駅発着です。通常は1時間に3〜4本運行されていますが、大型連休など多客期には1時間あたり最大6本が運行されます。\n\n山陽新幹線 のぞみ／N700系\n\n【使用車両】  \n N700A／N700S  \n   \n 【のぞみの停車駅】  \n 新大阪駅・新神戸駅・西明石駅（一部列車）・姫路駅（一部列車）・岡山駅・福山駅（一部列車）・広島駅・徳山駅（一部列車）・新山口駅（一部列車）・小倉駅・博多駅  \n   \n 【座席の種類】  \n 普通車（自由席、指定席）／グリーン車（指定席）  \n   \n 【コンセントの有無】  \n N700A：グリーン車全席／普通車窓側席・最前列・最後列、N700S：全席  \n   \n 【車内販売】  \n あり\n\n### みずほ\n\n新大阪駅〜鹿児島中央駅間で運行されている「のぞみ」タイプの最速列車。運行本数が少なく、始発駅基準で午前中と夕方以降に8本しか運行されていません。\n\n山陽新幹線 みずほ／N700系7000番代（S編成） [...] | 路線名 | 運転区間 | 列車 | 車両 |\n ---  --- |\n| 北海道新幹線 | 新青森駅～  新函館北斗駅 | はやぶさ  はやて | E5系  H5系 |\n| 東北新幹線 | 東京駅～  新青森駅 | はやぶさ  やまびこ  なすの  はやて | E5系  H5系  E6系  E2系  E8系 |\n| 秋田新幹線 | 盛岡駅～  秋田駅 | こまち | E6系 |\n| 山形新幹線 | 福島駅～  新庄駅 | つばさ | E8系 |\n| 上越新幹線 | 大宮駅～  新潟駅 | とき  たにがわ | E7系 |\n| 東海道新幹線 | 東京駅～  新大阪駅 | のぞみ  ひかり  こだま | N700A  N700S |\n| 北陸新幹線 | 高崎駅～  敦賀駅 | かがやき  はくたか  あさま  つるぎ | E7系  W7系 |\n| 山陽新幹線 | 新大阪駅～  博多駅 | のぞみ  みずほ  ひかり  さくら  こだま  つばめ | N700A  N700S  700系7000番代  N700系7000・8000番代  500系 | [...] 同じ路線の中にも何種類か名前の違う列車が走っていますよね。  \n 例えば、東京駅から新大阪駅に向かうとき乗車するのは東海道新幹線ですが、東海道新幹線には「のぞみ」「ひかり」「こだま」の3つの列車が走っています。  \n   \n では、「のぞみ」「ひかり」「こだま」はなにが違うのでしょうか？  \n   \n それは「走る区間」「停車駅」「速さ」の違いです。  \n   \n それでは、路線ごとに走っている列車と列車ごとの違いをご紹介します。\n\n## 北海道新幹線\n\n北海道新幹線\n\n北海道新幹線の列車は「はやぶさ」「はやて」の2種類。  \n 東北新幹線と一体的に運行されており、東北新幹線内での最高速度によって、ふたつの愛称があります。  \n   \n 区間：新青森駅〜新函館北斗駅  \n 列車の種類：はやぶさ、はやて\n\n### はやぶさ",
+          "start": null,
+          "title": "新幹線って何種類ある？全国を走る全10路線一覧と列車の違いを紹介 | トレたび - 鉄道・旅行情報サイト",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "40849258007972db2183eec736124bc787e05434bac3a507a2d8cb23d303b1a7",
+          "content_kind": "snippet",
+          "original_url": "https://www.toretabi.jp/railway_info/entry-7625.html",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:19:26.118171Z",
+          "source_chars": 1329,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-f8e2249a0110fb27d97c2332231f4a69",
+          "end": null,
+          "url": "https://blog.kipuru.com/mamechishiki/history",
+          "page": null,
+          "text": "## 東海道・山陽新幹線の車両の種類\n\n東海道新幹線「のぞみ」「ひかり」「こだま」の違いを徹底比較！\n\n東海道新幹線の「のぞみ」「ひかり」「こだま」の違いを比較して、どれを選べば良いのかを分かりやすくご紹介いたします。\n\nblog.kipuru.com 山陽新幹線「のぞみ」「みずほ」「ひかり」「さくら」「こだま」の違いを徹底比較！\n\n山陽新幹線を走る「のぞみ」「みずほ」「ひかり」「さくら」「こだま」の違いを比較していきます。種別ごとにどの車両が使われるか、「のぞみ」「みずほ」はどちらに乗るのがいいかなど、山陽新幹線を利用する上で気になる情報が盛りだくさん！\n\nblog.kipuru.com\n\n### N700S\n\n 運用開始　2020年7月1日\n 最高速度　300km/h\n 車体　アルミニウム合金\n 定員　1,323名（16両編成）\n 運用路線　東海道新幹線\n\nN700系の新たな改良型です。 [...] JR東日本が開発した車両には「E」、JR北海道が開発した車両には「H」、JR西日本が開発した車両には「W」とつくのが特徴です。\n\nまた、3けた目が偶数になる列車も運用されていました。\n\n東北方面の新幹線「はやぶさ」「はやて」「やまびこ」「なすの」「こまち」「つばさ」の違いを徹底比較！\n\n車両の種類が多い東北方面の新幹線。「はやぶさ」「はやて」「やまびこ」「なすの」「こまち」「つばさ」でよく使われる車両ごとに比較し、どの種別を利用すればいいかなどを解説しています。\n\nblog.kipuru.com 上越新幹線「とき」「たにがわ」の違いを徹底比較！\n\n上越新幹線を走る「とき」「MAXとき」「たにがわ」「MAXたにがわ」の違い、運行されている車両の特徴を徹底的に比較していきます。2階建て新幹線に乗りたいけどどんな設備か分からない方は要チェック！\n\nblog.kipuru.com 北陸新幹線「かがやき」「はくたか」「あさま」「つるぎ」の違いを徹底比較！\n\n北陸新幹線を走る「かがやき」「はくたか」「あさま」「つるぎ」の違いを比較していきます。それぞれの新幹線の生い立ちなど、豆知識も充実！ [...] 東海道新幹線では1999年に運行を終了し、現在は全車廃車となっています。\n\n## 九州新幹線の車両の種類\n\n山陽新幹線の区間も運行する九州新幹線の車両は、どちらもトップクラスに美しいインテリアデザインになっているのが特徴です。\n\nまた、九州新幹線は急勾配区間が多い路線で、これに対応できる車体が開発されました。\n\n九州新幹線「みずほ」「さくら」「つばめ」の違いを徹底比較！\n\n九州新幹線の「みずほ」「さくら」「つばめ」の情報をなんでも比較していきます。新しい車両「800系」の設備や、どの列車が800系で来るかなどの調べ方もご紹介しています！\n\nblog.kipuru.com\n\n### N700系\n\n 運用開始　2011年3月12日\n 最高速度　260km/h\n 車体　アルミニウム合金\n 座席数　546名（8両編成）\n 運用路線　山陽・九州新幹線「みずほ」「さくら」、九州新幹線「つばめ」\n\n山陽・九州新幹線のN700系は、東海道・山陽新幹線のN700系と異なる点がいくつかあります。\n\n客室内が全体的に木の温かみを感じる内装になっており、普通車指定席が2・2列の座席配置になっています。",
+          "start": null,
+          "title": "新幹線にはどれぐらいの種類の車両がある？歴代の新幹線を画像付きで紹介！ | 新幹線ナビ｜新幹線予約サイトきっぷる",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "a710a18c85ee279b76ca0a83314d67ed45c3fc996eb6141b9276bd78a1c98493",
+          "content_kind": "snippet",
+          "original_url": "https://blog.kipuru.com/mamechishiki/history",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:19:26.118171Z",
+          "source_chars": 1407,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-d29c558aab9e17857c7034ffc24586a2",
+          "end": null,
+          "url": "https://ja.wikipedia.org/wiki/%E3%81%AE%E3%81%9E%E3%81%BF_(%E5%88%97%E8%BB%8A)",
+          "page": null,
+          "text": "]\n\n1992年（平成4年）3月14日に、JR東海により、当時運賃の値下げなどにより利用を伸ばしていた航空機に対抗するため、東海道新幹線において、それまでの「ひかり \"ひかり (列車)\")」よりさらに速い種別の列車として新たに誕生した。東京 - 新大阪間を従来の最速列車よりも19分早い2時間30分で結び、運行車両には東海道区間の当時最高速となる270km/hでの運転に対応した第三世代車両である300系を充当し、特急料金体系もそれまでの「ひかり」「こだま \"こだま (列車)\")」とは別体系のものを用意する（詳細は後述）など、それまでの新幹線列車とは別格と位置づけられていた。翌1993年にはJR西日本との共同運行により山陽新幹線区間でも運行を開始し、以後東海道・山陽新幹線における最速達列車として位置付けられている。 [...] 「のぞみ」「みずほ」で指定席を利用しない（=自由席のみ利用する）場合\n:   「ひかり」「こだま」「さくら」「つばめ」の利用設備に基づく。\n\n「のぞみ」「みずほ」で指定席を利用する場合\n:   全乗車区間に対する「ひかり」「こだま」「さくら」「つばめ」の特急料金と、「のぞみ」「みずほ」の指定席利用区間に対する「ひかり」「こだま」「さくら」「つばめ」の特急料金の差額とを合計したものとなる。\n:   なお、「ひかり」「こだま」「さくら」を挟んで「のぞみ」を利用する場合、この原則に従って計算した場合と「ひかり」「こだま」「さくら」の区間を通じて「のぞみ」を利用したと見なして計算した場合との、いずれか安い方の金額となる。\n\n東海道・山陽新幹線区間で「のぞみ」と「みずほ」を乗り継ぐ場合は、全区間に対する「のぞみ」の特急料金表に基づき算出する。\n\n### 主な割引乗車券類\n\n[編集&action=edit&section=17 \"節を編集: 主な割引乗車券類\")] [...] なお、2011年（平成23年）3月12日から運行を開始した山陽新幹線・九州新幹線直通列車の「みずほ \"みずほ (列車)\")」についても、山陽新幹線区間については「のぞみ」と同じ料金表を用いる。\n\n当列車は航空機との対抗策として運行を開始したため、フルムーン夫婦グリーンパス（発売終了）やジャパンレールパスなどJR全線乗り放題の乗車券では「のぞみ」は一切利用できず、「ジパング倶楽部」 や「レール&レンタカーきっぷ」などのような運賃や特急料金が割り引かれる制度では、「のぞみ」の特急料金は割引の対象外となっている。\n\n### 「のぞみ」「みずほ」とそれ以外の列車を乗り継ぐ場合\n\n[編集&action=edit&section=16 \"節を編集: 「のぞみ」「みずほ」とそれ以外の列車を乗り継ぐ場合\")]\n\n東海道・山陽新幹線区間で「のぞみ」「みずほ \"みずほ (列車)\")」と「ひかり」「こだま」「さくら」「つばめ」を乗り継いで利用する場合の特急料金は、新幹線の改札を出ない場合に限り、以下の要領により算出する。",
+          "start": null,
+          "title": "のぞみ (列車) - Wikipedia",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "8d1bfd6eb0b25cb1cb117f4836a79aaa7c71c8ede1c053cb8f75272ade2761ee",
+          "content_kind": "snippet",
+          "original_url": "https://ja.wikipedia.org/wiki/%E3%81%AE%E3%81%9E%E3%81%BF_(%E5%88%97%E8%BB%8A)",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:19:26.118171Z",
+          "source_chars": 1262,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-7f5d1c0941501e6741448ce1ea07b1e6",
+          "end": null,
+          "url": "https://www.jre-travel.com/article/00320",
+          "page": null,
+          "text": "秋におすすめの旅行2026\n\nびゅうトラベルではお得なセールやキャンペーン情報、旬のおすすめプラン・観光スポットなどの情報をメールマガジンで配信しています。\n\n登録は簡単！30秒登録！\n\n【無料】メールマガジン登録\n\n#### エリアで探す\n\n 首都圏エリア\n 東北エリア\n 北関東エリア\n 甲信越エリア\n 北陸エリア\n 北海道エリア\n 伊豆・箱根・湯河原エリア\n 東海エリア\n 関西エリア\n 東京\n 神奈川\n\n#### テーマで探す\n\n 旅のお役立ち情報\n モデルコース\n 日帰り\n 女子旅\n ひとり旅\n 家族旅行\n 温泉\n 春の旅行\n 夏の旅行\n 秋の旅行\n 冬の旅行\n ゴールデンウィーク\n 年末年始\n スキー・スノボ\n 絶景\n 花火\n 祭り\n グルメ\n 観光列車\n ビジネス\n\n#### びゅうたび\n\n 東京駅で買える新幹線弁当5選！「はやぶさ」も「かがやき」も再現。\n\n  東京駅で買える新幹線弁当5選！「はやぶさ」も「かがやき」も再現。\n 食べ物写真のスマホ撮影テク！旅先で料理を美味しそうに撮る方法\n\n  食べ物写真のスマホ撮影テク！旅先で料理を美味しそうに撮る方法 [...] 首都圏旅行\n 出張・ビジネス\n ひとり旅\n 温泉旅行\n\nのぞみ・ひかり・こだまの違いは？停車駅やコンセント情報も解説   のぞみ・ひかり・こだまの違いは？停車駅やコンセント情報も解説\n\nのぞみ・ひかり・こだまの違いは？停車駅やコンセント情報も解説画像素材：PIXTA\n\n# のぞみ・ひかり・こだまの違いは？停車駅やコンセント情報も解説\n\n2025.09.04 更新\n\n Xでシェアする\n Facebookでシェアする\n lineでシェアする\n\n新幹線「のぞみ」「こだま」「ひかり」   新幹線「のぞみ」「こだま」「ひかり」\n\n新幹線「のぞみ」「こだま」「ひかり」画像素材：PIXTA\n\n停車駅の数  \n 停車する駅の数が少ない順に「のぞみ」「ひかり」「こだま」です。  \n （具体的な停車駅については、のちに記載します。）   \n  \n 目的地までの所要時間  \n 停車駅の数の少なさに比例して、「のぞみ」が最も短い時間で走行します。最も時間がかかるのは「こだま」です。  \n  \n 車両編成  \n 自由席と指定席の割合も「のぞみ」「こだま」「ひかり」でそれぞれ異なります。 [...] 東京駅⇔名古屋駅;)\n\n ✽ ダイナミックレールパックのご旅行代金は、随時変動いたします。同一のお申込み内容でも予約操作の時期により価格が変わる場合があります。\n\n## まとめ\n\n東海道新幹線を走行する「のぞみ」「こだま」「ひかり」は、停車駅の数や所要時間、車両編成などがそれぞれ異なります。\n\n使用される車両は共通しており、設備に大きな違いはありません。確実にコンセントを使用したい場合などは、事前に位置を確認しておくとよいでしょう。\n\n長距離を効率的に移動したいときには「のぞみ」、途中立ち寄る駅も楽しみながらのんびり旅行したいときには「こだま」など、目的別に乗り分けてみてください。\n\nびゅうトラベルでは、新幹線をはじめとする各種列車と宿泊先をまとめて予約できます。列車も宿泊先も自由に選択できるので、列車での旅行を検討する際はぜひご利用ください。\n\n 新幹線で行く、関西方面の旅行はこちら\n\n検索する\n\n## その他の記事\n\n 【関西】心を癒すひとり旅！気分転換できるスポット14選をエリア別に紹介。日帰りもOK！",
+          "start": null,
+          "title": "のぞみ・ひかり・こだまの違いは？停車駅やコンセント情報も解説 | びゅうトラベル（JR東日本）",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "0e3ce836927ca69a540fa8f144aa67fd69e191a6f5f7df90aa49b308784b0548",
+          "content_kind": "snippet",
+          "original_url": "https://www.jre-travel.com/article/00320",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:19:26.118171Z",
+          "source_chars": 1452,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-d1585ed12a17ff910f7a0bb8f5ed76fe",
+          "end": null,
+          "url": "https://www.toretabi.jp/railway_info/entry-7625.html",
+          "page": null,
+          "text": "### たにがわ\n\n各駅停車タイプの列車で、朝夕を中心に東京駅〜高崎駅～越後湯沢駅間で運行されています。グランクラスはアテンダントが乗車せず、料金が若干割安になります。  \n   \n 【使用車両】  \n E7系  \n   \n 【たにがわの停車駅】  \n 東京駅・上野駅・大宮駅・熊谷駅・本庄早稲田駅・高崎駅・上毛高原駅・越後湯沢駅  \n   \n 【座席の種類】  \n 普通車（自由席、指定席＊自由席のみの列車あり）／グリーン車（指定席のみ）／グランクラス（指定席のみ）  \n   \n 【コンセントの有無】  \n E7系：全席  \n   \n 【車内販売】  \n なし\n\n上越新幹線の詳細はこちら\n\n## 東海道新幹線\n\n東海道新幹線\n\n東京、名古屋、大阪という日本の三大都市を直結し、1日に最大45万8000人もの人を輸送する大動脈。東海道新幹線の列車は「のぞみ」「ひかり」「こだま」の3種類。どの列車もN700AまたはN700Sが使用され、座席配置は全列車同じですが、愛称ごとに使命と特徴は異なります。  \n   \n 区間：東京駅～新大阪駅  \n 列車の種類：のぞみ、ひかり、こだま [...] 【使用車両】  \n E7系、W7系  \n   \n 【つるぎの停車駅】  \n 富山駅・新高岡駅・金沢駅・小松駅（一部列車）・加賀温泉駅（一部列車）・芦原温泉駅（一部列車）・福井駅・越前たけふ駅（一部列車）・敦賀駅　※金沢駅～敦賀駅間の列車もあり  \n   \n 【座席の種類】  \n 普通車（自由席・指定席）、グリーン車（指定席のみ）  \n   \n 【コンセントの有無】  \n 全席  \n   \n 【車内販売】  \n なし\n\n北陸新幹線の詳細はこちら\n\n## 山陽新幹線\n\n山陽新幹線\n\n区間：新大阪駅〜博多駅  \n 列車の種類：のぞみ、みずほ、ひかり、さくら、こだま、つばめ  \n   \n 大阪から神戸、岡山、広島、山口と中国地方の中核都市を結び、博多に至る山陽新幹線は、1日に平均19万8000人を輸送する高速鉄道です。  \n   \n 東海道新幹線や九州新幹線と相互直通運転を行ない、バラエティ豊かな列車が行き交っています。\n\n### のぞみ [...] ### ひかり\n\n静岡駅など中規模都市の駅にも停車する列車です。多くの都市をきめ細かく結ぶ列車となりました。  \n   \n 1時間に2本運行され、1本は山陽新幹線の岡山駅まで直通、もう1本は新大阪駅止まり。停車駅は、1時間に1本停車する駅や2時間に1本停車する駅などが混在し、停車パターンはパズルのように複雑です。\n\n東海道新幹線 ひかり／N700A\n\n【使用車両】  \n N700A／N700S  \n   \n 【ひかりの停車駅】  \n 東京駅・品川駅・新横浜駅・小田原駅（日中2時間1本）・熱海駅（1日3本）・三島駅（日中2時間1本）・静岡駅（日中1時間1本）・浜松駅（日中1時間1本）・豊橋駅（日中2時間1本）・名古屋駅・岐阜羽島駅（日中1時間1本）・米原駅（日中1時間1本）・京都駅・新大阪駅  \n   \n 【座席の種類】  \n 普通車（自由席、指定席）／グリーン車（指定席のみ）  \n   \n 【コンセントの有無】  \n N700A：グリーン車全席及び普通車窓側席／N700S：全席  \n   \n 【車内販売】  \n あり（詳細はこちら）\n\n### こだま",
+          "start": null,
+          "title": "新幹線って何種類ある？全国を走る全10路線一覧と列車の違いを紹介 | トレたび - 鉄道・旅行情報サイト",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "3de0fe482bf0765e4292c03ef53559dc34884128a48ffb40dd04e83abe25bbef",
+          "content_kind": "snippet",
+          "original_url": "https://www.toretabi.jp/railway_info/entry-7625.html",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:19:29.686469Z",
+          "source_chars": 1408,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-bd97c438531e049a164b51859b398e79",
+          "end": null,
+          "url": "https://ja.wikipedia.org/wiki/%E6%96%B0%E5%B9%B9%E7%B7%9A",
+          "page": null,
+          "text": "| 基本情報 |\n| 国 | 日本の旗 日本 |\n| 種類 | 高速鉄道 |\n| 開業 | 1964年10月1日 |\n| 所有者 | 国鉄時代の開業路線、ミニ新幹線  JR各社  整備新幹線  鉄道建設・運輸施設整備支援機構 |\n| 運営者 | JR各社（詳細は路線節を参照） |\n| 詳細情報 |\n| 総延長距離 | フル規格: 2,956 km ミニ新幹線 :276 km 在来線扱い: 10 km |\n| 路線数 | フル規格: 8路線 ミニ新幹線: 2路線 在来線扱い: 2路線 |\n| 駅数 | 120（ミニ新幹線、在来線扱いを含む） |\n| 軌間 | 1,435 mm |\n| 電化方式 | 交流25,000 V \"ボルト (単位)\") 架空電車線方式（東北、上越、北海道は50 Hz \"ヘルツ (単位)\")。東海道、山陽、九州は60 Hz。北陸は50 Hzと60 Hzの区間が混在） 交流20,000 V 50 Hz 架空電車線方式（山形、秋田） |\n| 最高速度 | 320 km/h（東北新幹線の一部区間。詳細は定義節を参照） |\n| 通行方向 | 左側通行 |\n| 路線図 | [...] 日本国内の駅内の案内板等の英語表記では、路線を指す場合は「しんかんせん」のローマ字表記である Shinkansen を使用し、列車名（便名）を表す場合は、各駅に停車する列車も含め、かつて「ひかり \"ひかり (列車)\")」の種別として用いられていた「超特急」の直訳である Superexpress を愛称名の後ろに付けて「NOZOMI Superexpress」などと表現している。これは特急（特別急行列車、Limited express）と急行列車（Express）を異なる種別として認識し、さらに新幹線を（通常の）特急とも区別しようとする日本独特の表現とも考えられる。 [...] 1 概要\n  + 1.1 建設\n  + 1.2 運営\n  + 1.3 法的な位置づけ\n  + 1.4 最高速度\n  + 1.5 呼称\n 2 主要技術\n  + 2.1 路線・軌道設備\n  + 2.2 信号システム\n  + 2.3 電源方式\n  + 2.4 車両技術\n  + 2.5 列車防護装置\n 3 在来線との直通\n 4 路線\n  + 4.1 営業中の路線\n    - 4.1.1 標準軌新線（フル規格）\n    - 4.1.2 新幹線直行特急（ミニ新幹線）\n    - 4.1.3 新幹線規格在来線\n    - 4.1.4 新幹線鉄道規格新線\n  + 4.2 計画路線\n    - 4.2.1 整備計画路線\n    - 4.2.2 基本計画路線\n  + 4.3 未成線\n 5 列車名\n  + 5.1 現行の列車名\n  + 5.2 かつて使用されていた列車名\n 6 歴史\n  + 6.1 経緯・背景\n    - 6.1.1 戦前における高速鉄道\n    - 6.1.2 弾丸列車計画\n    - 6.1.3 動力分散化への流れ\n  + 6.2 1950年代の高性能電車の出現",
+          "start": null,
+          "title": "新幹線 - Wikipedia",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "2f7e6df482013c74014135ad50c320c3381df6199cd78266653f195b713f2e54",
+          "content_kind": "snippet",
+          "original_url": "https://ja.wikipedia.org/wiki/%E6%96%B0%E5%B9%B9%E7%B7%9A",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:19:29.686469Z",
+          "source_chars": 1284,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-4412a3704b4a876c198a6607eb5a13b5",
+          "end": null,
+          "url": "https://www.letsgojp.com/archives/531615",
+          "page": null,
+          "text": "行駛於東京、金澤之間，從上野至金澤間為各站停車。列車名是來自於立山的開山傳說中登場的白鷹，既有速度感，又能感覺到首都圈和北陸之間的連結性。\n\n#### 九州新幹線「燕號」（TSUBAME）\n\n日本九州新幹線「燕號」（TSUBAME）示意圖\n\n九州新幹線「燕號」（TSUBAME）  \n圖片來源：wikipedia\n\n行駛於博多、鹿兒島中央之間的各停列車。傳承自1930年代戰前乃至戰後日本國鐵中具代表性的特急列車名稱。\n\n#### 西九州新幹線「海鷗號」（KAMOME）\n\n日本西九州新幹線「海鷗號」（KAMOME）示意圖\n\n西九州新幹線「海鷗號」（KAMOME）  \n圖片來源：九州旅客鉄道株式会社\n\n行駛於博多、長崎之間。傳承自1961年代開始就行駛於博多和長崎之間特急列車的名稱。\n\n### 山類：行經地區間具代表性的山岳\n\n#### 上越新幹線「谷川號」（TANIGAWA）\n\n行駛於東京、高崎、越後湯澤之間。谷川是指山谷和溪流，代表了上越新幹線中的大清水隧道正上方、延綿在群馬與新潟間的谷川岳。\n\n#### 北陸新幹線「淺間號」（ASAMA） [...] | 類別 | 名稱 |\n --- |\n| 光類 | 東海道新幹線「光號」（HIKARI） 北陸新幹線「光輝號」（KAGAYAKI） |\n| 聲音類 | 東海道新幹線「回聲號」（KODAMA） 東北新幹線「山彥號」（YAMABIKO） |\n| 鳥類 | 東北．北海道新幹線「隼號」（HAYABUSA） 山形新幹線「翼號」（TSUBASA） 上越新幹線「朱鷺」（TOKI） 北陸新幹線「白鷹號」（HAKUTAKA） 九州新幹線「燕號」（TSUBAME） 西九州新幹線「海鷗號」（KAMOME） |\n| 山類 | 上越新幹線「谷川號」（TANIGAWA） 北陸新幹線「淺間號」（ASAMA） 北陸新幹線「劍號」（TSURUGI） |\n| 植物類 | 九州．山陽新幹線「櫻號」（SAKURA） 九州新幹線「瑞穗號」（MIZUHO） |\n| 風類 | 東北．北海道新幹線「疾風號」（HAYATE） |\n| 地名類 | 東北新幹線「那須野號」（NASUNO） |\n| 食物類 | 秋田新幹線「小町號」（KOMACHI） |\n| 其它 | 東海道新幹線「希望號」（NOZOMI） | [...] ### 光類：講求新幹線追求的速度感\n\n日本東海道新幹線「回聲號」（KODAMA）、「希望號」（NOZOMI）、「光號」（HIKARI）示意圖\n\n東海道新幹線「回聲號」（KODAMA）、「希望號」（NOZOMI）、「光號」（HIKARI）  \n圖片來源：JRおでかけネット\n\n日本北陸新幹線「光輝號」（KAGAYAKI）、「白鷹號」（HAKUTAKA）、「劍號」（TSURUGI）、北陸新幹線「淺間號」（ASAMA）示意圖\n\n北陸新幹線「光輝號」（KAGAYAKI）、「白鷹號」（HAKUTAKA）、「劍號」（TSURUGI）、北陸新幹線「淺間號」（ASAMA）  \n圖片來源：JRおでかけネット\n\n#### 東海道新幹線「光號」（HIKARI）\n\n行駛於東京、大阪、新博多之間。表達比音速還快只有光速。雖然現在光號的速度已經被希望號取代，但是在1964年東海道新幹線通車時它曾經是最快的列車。\n\n#### 北陸新幹線「光輝號」（KAGAYAKI）\n\n行駛於東京、金澤之間。閃耀的光芒能感受到速度感以及迎向光明與成長的未來。\n\n### 聲音類：僅次於音速的一日來回商務圈",
+          "start": null,
+          "title": "日本新幹線為什麼有名字？「隼號」、「希望號」、「朱鷺號」全線車輛命名由來 | 樂吃購！日本 全國版",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "4461b4c9d06b28c148af8f678d28e5d4c6796530cbe558c185bee1f7eb43a143",
+          "content_kind": "snippet",
+          "original_url": "https://www.letsgojp.com/archives/531615",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:19:29.686469Z",
+          "source_chars": 1459,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-2fef28215dea8608a8f5a6daf5e4c66b",
+          "end": null,
+          "url": "https://www.jr-odekake.net/railroad/train/category",
+          "page": null,
+          "text": "# www.jr-odekake.net JRおでかけネット\n\n 新規ウインドウで開きます。 ログイン\n\n1. HOME\n2. 駅・時刻・列車を調べる\n3. 列車\n4. 車両案内\n5. 全列車一覧\n\n## 全列車一覧\n\n 新幹線\n 特急列車\n 普通列車（快速含む）\n 寝台列車\n\n### 新幹線\n\n#### 東海道・山陽・九州新幹線\n\n \n\n  N700系（16両編成）\n\n  運行区間\n  :   東京～博多\n \n\n  N700系（8両編成、グリーン車あり）\n\n  運行区間\n  :   新大阪～鹿児島中央\n \n\n  N700系（8両編成、グリーン車なし）\n\n  運行区間\n  :   新大阪～博多\n\n \n\n  700系\n\n  運行区間\n  :   新大阪～博多\n \n\n  500系\n\n  運行区間\n  :   新大阪～博多\n\n#### 北陸新幹線\n\n \n\n  E7系・W7系\n\n  運行区間\n  :   敦賀～東京\n\n### 特急列車\n\n特急列車の停車駅・路線図はこちら\n\n \n\n  こうのとり\n\n  運行区間\n  :   新大阪～福知山・豊岡・城崎温泉\n \n\n  きのさき [...] はるか\n\n  運行区間\n  :   野洲・草津・京都～関西空港\n \n\n  らくラクびわこ\n\n  運行区間\n  :   米原・草津～大阪\n \n\n  まいづる\n\n  運行区間\n  :   京都～東舞鶴\n \n\n  やくも\n\n  運行区間\n  :   岡山～出雲市\n \n\n  南紀\n\n  運行区間\n  :   名古屋～新宮・紀伊勝浦\n \n\n  ひだ\n\n  運行区間\n  :   大阪・名古屋～高山・飛騨古川・富山\n \n\n  らくラクはりま\n\n  運行区間\n  :   京都・新大阪～網干\n \n\n  らくラクやまと\n\n  運行区間\n  :   奈良～新大阪\n \n\n  まほろば\n\n  運行区間\n  :   大阪～奈良\n\n### 寝台列車\n\n \n\n  サンライズ瀬戸・出雲\n\n  運行区間\n  :   サンライズ瀬戸：東京～高松  \n      サンライズ出雲：東京～出雲市\n\n### 普通列車（快速含む）\n\n \n\n  マリンライナー\n\n  運行区間\n  :   岡山～高松\n \n\n  103系 [...] きのさき\n\n  運行区間\n  :   京都～福知山・豊岡・城崎温泉\n \n\n  くろしお\n\n  運行区間\n  :   京都・新大阪～和歌山・海南・白浜・新宮\n \n\n  サンダーバード\n\n  運行区間\n  :   大阪～敦賀\n \n\n  しおかぜ\n\n  運行区間\n  :   岡山～伊予西条・松山\n \n\n  しらさぎ\n\n  運行区間\n  :   名古屋・米原～敦賀\n \n\n  スーパーいなば\n\n  運行区間\n  :   岡山～鳥取\n \n\n  スーパーおき\n\n  運行区間\n  :   鳥取・米子～新山口\n \n\n  スーパーはくと\n\n  運行区間\n  :   京都・大阪～鳥取・倉吉\n \n\n  スーパーまつかぜ\n\n  運行区間\n  :   鳥取～米子・益田\n \n\n  南風\n\n  運行区間\n  :   岡山～高知\n \n\n  能登かがり火\n\n  運行区間\n  :   金沢～七尾・和倉温泉\n \n\n  はしだて\n\n  運行区間\n  :   京都・福知山～宮津・天橋立・豊岡\n \n\n  はまかぜ\n\n  運行区間\n  :   大阪～豊岡・城崎温泉・香住・鳥取\n \n\n  はるか",
+          "start": null,
+          "title": "全列車一覧 | 車両案内 | 列車：JRおでかけネット",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "51316566ac1b072ac6296cb039a657d7ba99b3d1d15967ae755ad126a9d8e7bc",
+          "content_kind": "snippet",
+          "original_url": "https://www.jr-odekake.net/railroad/train/category",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:19:29.686469Z",
+          "source_chars": 1424,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-adcc85029dc2c638a6b446d9d6dfaf5a",
+          "end": null,
+          "url": "https://k1andpause.com/shinkansen",
+          "page": null,
+          "text": "## 2. 東北新幹線\n\n 營運區間： 東京 ↔ 新青森\n 代表車型： E5系\n  + 車廂編組： 10 輛編組\n  + 特色： 日本目前營運速度最快的新幹線之一（最高時速可達 320 公里）。擁有標誌性的長達 15 公尺的超長「鴨嘴獸」綠色流線型車頭（為了減輕進入隧道時的音爆）。車身同樣是綠白相間，但中間的線條是鮮豔的「杜鵑粉紅」。\n  + 內裝亮點： 這是全日本第一款導入奢華「Gran Class 特等車廂」的列車，配備宛如飛機頭等艙的真皮電動平躺座椅，並提供專屬輕食與無限暢飲的酒水服務。最高時速可達 320 公里。\n\n## 3. 秋田新幹線\n\n 營運區間： 東京 ↔ 秋田\n 代表車型： E6系\n  + 車廂編組： 7 輛編組\n  + 特色： 為了行駛於原本的窄軌（在來線），這是一款車身較窄的「迷你新幹線」。以鮮豔的「茜色（大紅色）」塗裝聞名（暱稱「小町號」），象徵秋田的生剝鬼節與竿燈祭。在東京到盛岡路段，E6 系會與 E5 系「（連結）」一起以 320 公里時速狂飆，是鐵道迷必拍的奇景。\n  + 內裝亮點： 內部設計充滿秋田傳統工藝氣息，座椅圖案取材自稻穗的黃色。 [...] 極致安全： 營運超過半世紀，創下極為優異的安全紀錄，是世界上最安全的鐵路系統之一。\n 絕對準時： 班次密集且準點率極高，平均誤點時間以「秒」計算。\n 設計美學： 為了突破空氣阻力，新幹線的車頭設計（如鴨嘴獸般的流線型）不僅充滿科技感，內裝也極具人性化與舒適度。\n\n# 🗺️ 全國新幹線路線與經典車型大解密\n\n日本新幹線網絡遍布全國，不同地區的路線都有其專屬的特色車型。以下為您盤點 10 大路線及其代表性列車：\n\n## 1. 北海道新幹線\n\n 營運區間： 新青森 ↔ 新函館北斗\n 代表車型： H5系\n  + 車廂編組： 10 輛編組\n  + 特色： 車身以常盤綠搭配飛雲白，中間有一條代表北海道薰衣草的「彩香紫」線條，車頭側面有北海道輪廓的專屬標誌。穿越青函海底隧道，是連接本州與北海道的關鍵命脈。\n  + 內裝亮點： 充滿北海道風情！普通車廂地板印有雪花圖案，車窗遮陽簾則有繩文時代的圖騰。最高級的「Gran Class 特等車廂」走道甚至鋪設了象徵湖泊的藍色地毯。\n\n## 2. 東北新幹線 [...] ## 6. 北陸新幹線\n\n 營運區間： 東京 ↔ 敦賀 (2024 年春季剛延伸至敦賀)\n 代表車型： W7系\n  + 車廂編組： 12 輛編組\n  + 特色： 與 E7 系外觀幾乎相同（W 代表 JR 西日本營運），途經輕井澤、長野、金澤等熱門觀光地，沿途可欣賞壯麗的北阿爾卑斯山脈。\n\n## 7. 東海道新幹線\n\n 營運區間： 東京 ↔ 新大阪\n 代表車型： N700系\n  + 車廂編組： 16 輛編組\n  + 特色： 標誌性的「氣動雙翼」車頭設計，看起來像一隻白色的展翅大鳥，有效降低空氣阻力。日本最古老、最繁忙的「黃金路線」，連接東京、名古屋與新大阪。\n  + 🗻 富士山座位攻略：若從東京出發往大阪，劃位時請務必選擇「右側靠窗座位 (E席)」；若從大阪回東京則選左側 (E席)，天氣晴朗時即可飽覽壯麗的富士山！\n  + 內裝亮點： 這是目前日本數量最多的新幹線主力。配備「車體傾斜系統」，讓列車在過彎時不用大幅減速，提升了行車效率。靠窗座位設有插座。\n\n## 8. 山陽新幹線",
+          "start": null,
+          "title": "日本新幹線圖鑑！10大路線車型全解析 | JR Pass制霸全國 - K1and 暫停鍵",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "f29962881447c55b39355db24384e03d0c9b4524271009dab0c79f0d0d2b3e2e",
+          "content_kind": "snippet",
+          "original_url": "https://k1andpause.com/shinkansen",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:19:29.686469Z",
+          "source_chars": 1398,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-2cd6a99603fab6aded07f1949bae4e9e",
+          "end": null,
+          "url": "https://tabiris.com/archives/kansenchosa2021",
+          "page": null,
+          "text": "手順としては、まず、「オプション1」として、在来線を改軌し、既存新幹線と直通します。いわゆるミニ新幹線の整備です。新在をつなぐアプローチ線を整備し、停車駅のホームを改良のうえ、直通用の車両を購入することで実現できます。\n\nつづいて「オプション2」として、部分的に最高速度を160km/hに引き上げます。都市部では連続立体交差化をおこなって踏切を除去し、山間部では曲線改良をおこない、険しい山間部では短絡線を整備します。軌道や架線の強化をおこない、駅では高速分岐器を導入します。\n\n最後は「オプション3」で、部分的に最高速度を260km/hに引き上げます。険しい山間部では大がかりな短絡線を整備します。最高速度260km/hの区間を段階的に拡大していけば、「フル規格新幹線」となります。\n\n段階的フル規格化のオプション\n\n画像：『幹線鉄道ネットワーク等のあり方に関する調査』2021年度より\n\n広告\n\n## 山形・秋田新幹線で適用\n\n新幹線を一気に整備すると財政負担が重いので、まずはミニ新幹線化をおこない、山間部など表定速度が遅い区間に短絡線を建設して、全体の表定速度を上げようという考え方です。 [...] 国土交通省が、在来線をミニ新幹線にし、さらにフル規格化するという「段階的整備案」を検討しています。最新の『幹線鉄道ネットワーク等のあり方に関する調査』で示されました。内容を読み解いていきましょう。\n\n広告\n\n## 幹線鉄道網の未来像\n\n『幹線鉄道ネットワーク等のあり方に関する調査』（以下、『幹線ネットワーク調査』）は、新幹線をはじめとした幹線鉄道網の未来像について検討する調査です。\n\n2016年に閣議決定された「未来への投資を実現する経済対策」の付帯要望事項で「整備新幹線について、基本計画路線も含め、地方創生に役立つ幹線鉄道ネットワークの構築に向けて取り組むべき」と提言されたことを受け、2017年度より調査が始まっています。\n\n調査の最大の目的は「効果的・効率的な新幹線の整備手法」の検討です。新幹線の基本計画路線が、フル規格では過剰スペックなので、コストを削減した形での整備手法を探ろうというものです。これまでに、単線による新幹線整備や、線形改良などによる在来線の高速化などについて研究されてきました。\n\n広告\n\n## 「準新幹線」も検討 [...] 広告\n\n## 「準新幹線」も検討\n\n過年度の調査では、在来線の高速化やミニ新幹線（最高速度160km/h）より速く、フル規格新幹線（最高速度260km/h以上）より事業費が安い、200km/h程度の「準新幹線」とでもいうべき整備方式を検討しています。\n\n具体的には、市街地内は既存の在来線を活用しつつ、急曲線が多い区間に短絡線を設けたり、郊外部に高架新線を整備したりする方法です。改軌によりミニ新幹線とする場合と、狭軌で高速運転可能なスーパー特急を運行する2つのパターンを想定しています。\n\n端的にいえば、既存の在来線を活用しながら一部区間で短絡線や高架新線を整備することで、段階的な表定速度向上を実現し、事業費をおさえつつ将来のフル規格新幹線整備につなげるということです。\n\n広告\n\n## 3つの「オプション」\n\nここまでが過年度の調査です。このほど発表された2021年度調査では、段階的な新幹線の整備手法をより深く研究しています。",
+          "start": null,
+          "title": "ミニ新幹線「段階的フル規格化」を検討。『幹線鉄道ネットワーク調査』を読み解く | 旅行総合研究所タビリス",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "94cc53f3a1370b25e7f6be8083852bb781533ce2bded94425f0c72ece76c6284",
+          "content_kind": "snippet",
+          "original_url": "https://tabiris.com/archives/kansenchosa2021",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:19:34.950307Z",
+          "source_chars": 1403,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-2ce461802e7f9cd61bfb8ad5f49d81c8",
+          "end": null,
+          "url": "https://ja.wikipedia.org/wiki/%E3%83%9F%E3%83%8B%E6%96%B0%E5%B9%B9%E7%B7%9A",
+          "page": null,
+          "text": "山形新幹線 - 東北新幹線福島駅\n 秋田新幹線 - 東北新幹線盛岡駅\n\n### 利点・欠点\n\n[編集]\n\n#### 利点\n\n[編集]\n\n規格の優位性\n:    フル規格新幹線の建設では基本計画、整備計画、工事実施計画ときちんと手順を踏んでいく必要があり、すでに決められた他の区間を出し抜いて先に建設することができない。しかしミニ新幹線ではフル規格新幹線の計画にとらわれず早期に建設が可能である。\n     建設費用が安い。\n     並行在来線の経営分離問題が生じない。（在来線#並行在来線、整備新幹線#並行在来線問題を参照）\n     フル規格新幹線同様、東京駅での終着駅名が案内されるため終着駅の知名度向上効果が大きい。\n     標準軌の同じ線路を普通列車と新幹線直通列車が共有できるため（線路を別々ではなく1線にできるため）線路の維持費や保線コストが軽くなる。 [...] [編集]\n\n1988（昭和63）年度予算編成作業中に大蔵省主計官が整備新幹線建設を非難し膠着した。打開策として1988年（昭和63年）8月の運輸省によってフル規格新幹線、ミニ新幹線、スーパー特急の組み合わせで提示され、同年8月31日に政府・与党申し合わせにより整備内容が決定された。うちミニ新幹線整備区間は下記のとおりである。なお、どの線区でもフル規格実現への願望が強かった。\n\n東北新幹線\n:   盛岡 - 沼宮内、八戸 - 青森\n\n北陸新幹線\n:   軽井沢 - 長野\n\n#### 西九州新幹線佐賀県区間対応\n\n[編集]\n\n九州新幹線西九州ルート#西九州ルート \"九州新幹線 (整備新幹線)\") 新鳥栖駅 - 長崎駅間は一部在来線の長崎本線を挟む関係でスーパー特急方式で建設され、後に武雄温泉駅 - 長崎駅間がフル規格に変更。さらにフリーゲージトレイン導入の計画、試験まで行われたが頓挫し、武雄温泉駅で乗り換えるリレー方式で武雄温泉駅 - 長崎駅間が西九州新幹線として暫定開業した。\n\n## 開業効果\n\n[編集]\n\n### 山形新幹線\n\n[編集] [...] ### 法令\n\n[編集]\n\n 全国新幹線鉄道整備法には暫定整備として下記のように定義している。\n\n> 附則　第6条2　新幹線鉄道直通線　既設の鉄道の路線と同一の路線にその鉄道線路が敷設される鉄道であつて、その鉄道線路が新幹線鉄道の用に供されている鉄道線路に接続し、かつ、新幹線鉄道の列車が国土交通省令で定める速度で走行できる構造を有するもの\n\n## 課題とその解決\n\n[編集]\n\n\") - 新庄駅間）と秋田新幹線（田沢湖線・奥羽本線盛岡駅 - 秋田駅間）の2路線がある。前述のように「新幹線」と称しているものの、法的には在来線である。路線愛称の「新幹線」は山形新幹線の開業準備に入ってからである。",
+          "start": null,
+          "title": "ミニ新幹線 - Wikipedia",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "dc19e6daa7eb14a2f3b999191c14c0c0b6dfec7c25ada6cfb449f948e64128ce",
+          "content_kind": "snippet",
+          "original_url": "https://ja.wikipedia.org/wiki/%E3%83%9F%E3%83%8B%E6%96%B0%E5%B9%B9%E7%B7%9A",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:19:34.950307Z",
+          "source_chars": 1171,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-ad754665e9a8ae0838513d09a289a069",
+          "end": null,
+          "url": "https://www.ou-uetsu-shinkansen.jp/project.html",
+          "page": null,
+          "text": "現在、日本では、人口が急速に減少する中で、東京圏への過度な集中を是正し、産業や人材を地方に分散することなどにより、地方が活力を取り戻していくことが重要な課題となっています。\n\nそうした中で、フル規格新幹線は、全国との交流を促進し、地方の自立的発展を支えるなど、地方創生の実現のためになくてはならない社会基盤となるものです。\n\n津波により、前側2両が折れ曲がり住宅地内に流された仙石線の車両  \n (写真提供:東松島市)\n\n \n\n### 【フル規格新幹線】とは\n\n東北新幹線（はやぶさ）\n\n●その主たる区間を200km/h以上で走り、踏切を設けない高架・立体交差や直線的なルートによる新幹線であり、スピードアップや高い安全性・安定輸送が期待されます。\n\n●山形新幹線は、在来線区間の線路幅を改良して、新幹線車両を在来線に直通運転しているもので、「ミニ新幹線」などと呼ばれています。福島～新庄間の在来線区間では130km/hまでしか出せず、また、雨・風・雪等による運休・遅延も多く発生するなど、速達性や定時性・安定輸送の面で課題があります。 [...] 安全・安定輸送\n:   フル規格新幹線は、踏切がない、高架・立体交差、直線的ルートなどの特性から、多くの乗客を安全かつ安定的に運べる交通機関となっています。国土交通省によれば、フル規格新幹線は、その開業(昭和39年)以来、乗客の死亡事故は0とされています。また、雪害対策設備の整備により、雪による輸送障害にも強く、定時性に優れています。\n\n## 奥羽新幹線・羽越新幹線の実現に向けて\n\n### 1期待される昭和48年組の整備\n\n奥羽新幹線・羽越新幹線の基本計画策定の1年前の昭和47年に政府の基本計画に位置づけられた路線(北海道新幹線、北陸新幹線、九州新幹線など)は、ほぼ完成に目処がついてきました。\n\nそうした中で、奥羽新幹線・羽越新幹線と同じく昭和48年に政府の基本計画に位置づけられた路線(四国新幹線、山陰新幹線、東九州新幹線など)においても、次の整備を目指した取組みが開始されています。\n\n #### 昭和47年に基本計画に位置づけられた新幹線の路線\n\n   \n\n  ※未着工の区間も一部あります\n #### 昭和48年に基本計画に位置づけられた新幹線の路線 [...] ## 奥羽新幹線・羽越新幹線 〜本県を通るフル規格新幹線計画〜\n\n### 1奥羽新幹線・羽越新幹線とは\n\n本県には、政府が定めたフル規格の新幹線構想があります。奥羽新幹線（福島市～秋田市間）、羽越新幹線（富山市～青森市間）は、その形成が国土の総合的な発展に資するものとして、昭和48年に全国新幹線鉄道整備法に基づき、政府の基本計画に位置づけられているフル規格の新幹線構想です。\n\n### 2フル規格新幹線によって見込まれる効果\n\n所要時間の短縮\n:   奥羽新幹線、羽越新幹線の整備により、東京をはじめ、沿線地域との時間距離が短縮され、滞在時間も拡大します。\n\n交流人口の拡大\n:   地域間の時間距離の短縮等により、海外からの旅行客も含めた観光や、ビジネス等による交流人口の拡大が期待できます。\n\n地域産業の活性化\n:   地域間における新たな企業連携、沿線地域のイメージや認知度の向上を契機としたブランド力向上、新たな都市圏、商圏の創出など、交流人口の拡大による地域の様々な分野での活性化が期待されます。",
+          "start": null,
+          "title": "奥羽・羽越新幹線｜山形県奥羽・羽越新幹線整備実現同盟 » 奥羽・羽越新幹線について",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "f9035f0160249739ad680de44916ba5b85a230c9c4c6233be58a0baf291942b7",
+          "content_kind": "snippet",
+          "original_url": "https://www.ou-uetsu-shinkansen.jp/project.html",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:19:34.950307Z",
+          "source_chars": 1419,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-c9e4bb19e77defb4dd35001c9dd5b1ad",
+          "end": null,
+          "url": "https://www.tetsudo.com/column/344",
+          "page": null,
+          "text": "May 11, 2025 — 「ミニ」なのはその車体。通常の新幹線車両（「フル規格」車両）は、在来線よりも幅が広く、普通席は3+2列配置 ...Read more",
+          "start": null,
+          "title": "在来線と直通可能な「ミニ新幹線」 特別なのは「車体の幅」だけ ...",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "c492604f30c7687bffa547fb1e8cd48c655fb420e814a55119cba428e360222f",
+          "content_kind": "snippet",
+          "original_url": "https://www.tetsudo.com/column/344",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:19:34.950307Z",
+          "source_chars": 81,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-433c8e9c91f844022be39991c32af25f",
+          "end": null,
+          "url": "https://note.com/liblu_7/n/n9fec58331c34",
+          "page": null,
+          "text": "あ、「ミニ新幹線」なんて言葉、鉄オタしか知らないと思うので解説しておきますね。  \n日本の在来線と新幹線は2本のレールの間隔や車両の規格（大きさとか）など、いろいろと違いがあります。  \nなので、新幹線が登場した当初は「在来線は在来線、新幹線は新幹線」と言いましょうか、直通運転は不可能で、新幹線と在来線をまたいで乗る場合は乗換えが必要でした。  \nそこに風穴を開けたのが山形新幹線。  \n「在来線をレールの間隔だけ新幹線仕様にすれば、新幹線と在来線の直通運転ができるんじゃね？」といったかんじで、車体のサイズは在来線、車輪の間隔は新幹線な車両を作って、新幹線と在来線の直通運転を実現しました。これがミニ新幹線です。  \n両方新幹線の速度で走れれば一番だったかもしれませんが、それをするためには様々な法律上の決まりがありまして、新しく新幹線の線路を建設しない限り、高速走行は事実上実現できません。  \nそんなわけで、「山形新幹線」とは通称であり、正式名称は「奥羽本線」という在来線の特急列車です。 [...] メインコンテンツへスキップ\n\nリーブル\n\n皆さんこんにちは！リーブルです。  \n私、フル規格新幹線は全線乗り通し済みなんですが、ミニ新幹線はほとんど乗っていません。 [...] 新幹線建設と比べたら半端なものではあるのですが、在来線特急が乗換え無しで新幹線に乗り入れて東京まで行けるというのは非常に画期的でした。  \n秋田新幹線も山形新幹線の事例にならい、田沢湖線と奥羽本線を改造してできたミニ新幹線です。  \n日本全国にミニ新幹線は山形新幹線と秋田新幹線の2路線しかありません。このたった2路線を無視したまま、私はフル規格新幹線全部乗ってしまったわけですね…",
+          "start": null,
+          "title": "ミニ新幹線を乗り通せ！鉄オタ実績解除の山形・秋田旅｜リーブル",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "042d0d32d42b656f9ef4dee15c0f62c05b5700a41a10a0ad36ceb157cfc18291",
+          "content_kind": "snippet",
+          "original_url": "https://note.com/liblu_7/n/n9fec58331c34",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:19:34.950307Z",
+          "source_chars": 735,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-ed925988080fb2cc8c9ca8f3d01c7514",
+          "end": null,
+          "url": "https://www.nikkei.com/article/DGKKZO59385120R20C20A5TJN000",
+          "page": null,
+          "text": "詳しくはこちら\n\n日本国有鉄道（国鉄）は1964年、東京五輪開催に合わせて世界初の高速鉄道として東海道新幹線を開業した。在来線より大きな規格を採用した車両「新幹線0系電車」は営業運転の最高速度が時速210キロメートルで東京―新大阪間を4時間で結んだ。翌年には3時間10分に縮めた。\n\n0系の先頭部は航空機に似た流線形が特徴。愛嬌（あいきょう）ある顔つきで、「団子鼻」と呼ばれるなど、高度経済成長の象徴として長年親しまれ...\n\nアプリで開く\n\nこの記事は会員限定です。登録すると続きをお読みいただけます。\n\n残り257文字\n\nすべての記事が読み放題  \n有料会員が初回1カ月無料\n\n有料会員に登録する無料会員に登録するログインする\n\n全文表示で読む\n\n有料登録すると続きをお読みいただけます。無料登録でも記事消費（一定数限定）をすることで閲覧できます。\n\nすべての記事が読み放題  \n有料会員が初回1カ月無料\n\n有料会員に登録する無料会員に登録するログインする\n\n有料会員限定\n\n日経電子版の記事を学習したAIが\n\nニュースの疑問を\n\nその場で解消！\n\nAsk Nikkeiを使用している画面例 [...] 日本経済新聞トップ\n\nNikkei Asia\n\nNIKKEI Prime\n\n NIKKEI Digital Governance\n NIKKEI Financial\n NIKKEI FT the World\n NIKKEI GX\n Minutes by NIKKEI\n NIKKEI Mobility\n NIKKEI Tech Foresight\n 日経ヴェリタス\n\nNIKKEI Primeについて\n\n/\n\nこの記事は会員限定記事です\n\n# 東海道新幹線開業（1964年）\n\n0系、世界初の高速鉄道\n\n古今東西 あの出来事\n\n[会員限定記事]\n\n紙面掲載記事\n\n日本経済新聞朝刊・夕刊に掲載された記事です。有料会員の方は過去30日分の紙面を閲覧いただけます。\n\n有料会員に登録するログイン\n\n日経の記事利用サービスについて\n\n企業での記事共有や会議資料への転載・複製、注文印刷などをご希望の方は、リンク先をご覧ください。\n\n詳しくはこちら [...] Ask! NIKKEI\n\n詳しく見る\n\n日経の記事利用サービスについて\n\n企業での記事共有や会議資料への転載・複製、注文印刷などをご希望の方は、リンク先をご覧ください。\n\n詳しくはこちら\n\n## 古今東西 あの出来事\n\n 日本初の気象衛星打ち上げ（1977年）（）\n 農事試験場の設立（1893年）（）\n\nこちらもおすすめ（自動検索）\n\n ## リニア中央新幹線とは　超電導で浮上走行、最高時速500キロ\n ## 台湾新幹線、「破談の危機」越えた日本の車両　日立･東芝が出荷式\n\n  会員限定\n ## 日印首脳、インド高速鉄道計画の推進合意　27年一部開業へ日本協力\n\n  会員限定\n ## 東海道新幹線、1100kmのケーブル撤去へ　列車の通信支えて40年\n\n  会員限定\n\n関連企業・業界\n\n企業：\n\n #ＪＲ東海\n\n業界：\n\n #陸運\n\n関連キーワード\n\n #古今東西 あの出来事\n #新幹線\n #東海道新幹線\n #新幹線0系電車\n #電車\n #0系\n #JR東海\n\n## 最新★大学別年収ランキング2026\n\n日経転職版\n\n## 街乗りに最適　上品でコンパクトな車",
+          "start": null,
+          "title": "東海道新幹線開業（1964年）　0系、世界初の高速鉄道 - 日本経済新聞",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "ddaa6d4aa7a3a9420d76696b89df06b197c0349c4f1f4db14b8edd4f49ab37b3",
+          "content_kind": "snippet",
+          "original_url": "https://www.nikkei.com/article/DGKKZO59385120R20C20A5TJN000",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:19:37.723669Z",
+          "source_chars": 1417,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-db6d515e5161900d91fc9b16aef02190",
+          "end": null,
+          "url": "https://www.reddit.com/r/trains/comments/1nv5tlu/61_years_ago_on_october_1st_1964_the_tokaido?tl=ja",
+          "page": null,
+          "text": "1964年10月1日、61年前に東京と大阪を結ぶ東海道新幹線が開業し、世界初の高速鉄道となりました。最高速度は130 mph（209 km/h）です。",
+          "start": null,
+          "title": "世界初の高速鉄道となりました。最高速度は130 mph（209 km ...",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "0a1baa0505c8e12a8d1622a2861688cb98b5e76af354dbff184570542e0fa781",
+          "content_kind": "snippet",
+          "original_url": "https://www.reddit.com/r/trains/comments/1nv5tlu/61_years_ago_on_october_1st_1964_the_tokaido?tl=ja",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:19:37.723669Z",
+          "source_chars": 75,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-fbb716ba6af4b030495b02d75b91e5ca",
+          "end": null,
+          "url": "https://ja.wikipedia.org/wiki/%E6%9D%B1%E6%B5%B7%E9%81%93%E6%96%B0%E5%B9%B9%E7%B7%9A",
+          "page": null,
+          "text": "## 概要\n\n[編集]\n\n本州中央部太平洋側には、第二次世界大戦前、既に東海道本線（東京駅 - 神戸駅 \"神戸駅 (兵庫県)\")間）が開通していたが、戦後の高度経済成長下で線路容量が逼迫しており、抜本的な輸送力増強を迫られていた。これに対して日本国有鉄道（国鉄）は、十河信二総裁と島秀雄技師長の下、高速運転が可能な標準軌新線を建設することを決定。1959年（昭和34年）4月20日、新丹那トンネル熱海口で起工式を行って着工し、東京オリンピック開会直前の1964年（昭和39年）10月1日に開業した。計画段階では「東海道新線」と呼ばれていたが、開業時には「東海道新幹線」と命名された。「新幹線」という呼称は戦前に東京駅 - 下関駅間で計画された「弾丸列車」の内部呼称に由来するといわれている。なお、開業後に一等車（現在のグリーン車）のシートポケットに配置されていた訪日外国人旅行者向けの英語版リーフレットのタイトルは「Japan's　Bullet Train - 125 mph」とあり、「Shinkansen」という言葉が国際的に定着する前は弾丸列車を意味する英語を使用していた。 [...] | ■ |\n| 富士山をバックに走るN700系（三島駅 - 新富士駅間） 富士山をバックに走るN700系 （三島駅 - 新富士駅 \"新富士駅 (静岡県)\")間） |\n| 基本情報 |\n| 国 | 日本の旗 日本 |\n| 所在地 | 東京都、神奈川県、静岡県、愛知県、岐阜県、滋賀県、京都府、大阪府 |\n| 種類 | 高速鉄道（新幹線） |\n| 起点 | 東京駅 |\n| 終点 | 新大阪駅 |\n| 駅数 | 17駅 |\n| 開業 | 1964年（昭和39年）10月1日 |\n| 所有者 | 東海旅客鉄道（JR東海） |\n| 運営者 | 東海旅客鉄道（JR東海） |\n| 使用車両 | <#車両>の節を参照 |\n| 路線諸元 |\n| 路線距離 | 515.4 km |\n| 営業キロ | 552.6 km |\n| 軌間 | 1,435 mm（標準軌） |\n| 線路数 | 複線 |\n| 電化方式 | 交流25,000 V \"ボルト (単位)\")・60 Hz 架空電車線方式 |\n| 最大勾配#勾配 \"線形 (路線)\") | 20 ‰  | [...] 首都圏 \"首都圏 (日本)\")、愛知県名古屋市を核とする中京圏、京阪神の三大都市圏間で旅客を高速、高頻度で大量輸送している。1日あたりの列車本数は372本（臨時列車含む）、1日あたりの輸送人員は43.2万人（年間1億5,800万人）、年間収入は約1兆2,479億円にも及ぶなど、高速鉄道でありながら通勤路線にも匹敵する世界有数の大量輸送サービスを提供している鉄道路線である（数字はいずれも2023年度）。JR東海の運輸収入の92%を稼ぎだすドル箱路線であり、45%という同社の高い営業利益率を生み出す日本屈指の高収益路線でもある（2019年度）。三大都市圏を結ぶ都市間連絡鉄道としての性格から、利用客の約7割は出張・ビジネス利用である。",
+          "start": null,
+          "title": "東海道新幹線 - Wikipedia",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "4b2f11d1fef01d87099c69ef0f3ff3aac434c7344a263b73ab94c48fc88ba916",
+          "content_kind": "snippet",
+          "original_url": "https://ja.wikipedia.org/wiki/%E6%9D%B1%E6%B5%B7%E9%81%93%E6%96%B0%E5%B9%B9%E7%B7%9A",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:19:37.723669Z",
+          "source_chars": 1290,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-f1b4cc2f527950072009e0ea896571f1",
+          "end": null,
+          "url": "https://www.uk-63region.ru?r=ehfk0s3bgc31zpk_gkind14524030",
+          "page": null,
+          "text": "東海道新幹線開業(1964年) 0系、世界初の高速鉄道 - 日本経済新聞 - uk-63region.ru. 46) 納期目安: 2025.08.28 … 在庫: 29 税込 1775円",
+          "start": null,
+          "title": "東海道新幹線開業（1964年） 0系、世界初の高速鉄道",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "8ba6f058b00f9033148153bebe735eb5c435f8c81ce3f9f8977e665c823376ba",
+          "content_kind": "snippet",
+          "original_url": "https://www.uk-63region.ru?r=ehfk0s3bgc31zpk_gkind14524030",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:19:37.723669Z",
+          "source_chars": 93,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-d9ba484054be54641476fd8d7b486f90",
+          "end": null,
+          "url": "https://www2.jsf.or.jp/industry50/mamechishiki/mamechishiki05-1.html",
+          "page": null,
+          "text": "50年前の1964（昭和39）年といえば、東京オリンピックが開催された年ですね。東海道新幹線の開業が10月1日でオリンピックの開会式が10月10日と聞くと、まるで最初からオリンピックのために計画されたように感じますが、本当にそうなのかな ?\n\n  \n\n実は、東海道新幹線のルーツは戦前の「弾丸列車計画」なんだそうです ! これは、東京から大阪、下関を経て、海底トンネルで中国大陸までつなげようという壮大なもの。実際に、用地の買収やトンネル工事まで始まっていたそうです。\n\nこの計画は戦争の激化で中止になりましたが、戦後復興で東海道線の輸送量が増大したため、昭和30年代になって新たに新幹線計画が進められたというわけです。\n\n東海道新幹線の工事は1959（昭和34）年に始まりましたが、弾丸列車計画で確保されていた用地や工事が中断されていたトンネルも利用するなどした結果、5年3カ月という短い工期で東京・新大阪間の515.4kmが全線開通。こうして、人々が「夢の超特急」と呼んだ世界的な高速鉄道の運行が始まったのでした。\n\n  \n\n#### 所要時間6時間30分を2時間25分まで短縮 ! [...] 東海道新幹線の最初の車両である0系は、200km/hという当時経験のない高速走行を目指していたため、開発には多くの課題がありました。高速走行しても異常振動を起こさないような台車が必須で、かつ低重心であり、ブレーキ性能も高くなければなりません。また、高速でトンネルに入ると圧力の変化で耳に圧迫感を覚えるため（耳つん）、高い機密性が求められます。試作車両で何度も高速運転試験と改良を重ね、「夢の超特急」が現実のものになりました。\n\n開業から約20年後の最初のモデルチェンジで生まれたのが100系です。これは0系に比べて乗心地の向上や車両の軽量化など多くの改良が図られました。200km/h以上の高速列車で世界初の二階建て車両は、大きな話題になったものです。また、消費電力は0系の79％に抑えられています。\n\n次の300系は、最高速度270km/hを目標に開発。アルミ合金製の車体をはじめ、徹底した軽量化が図られた結果、0系に比べて約30％、100系に対しても約25％の軽量化を達成。さらに、空力特性の向上や大幅な省エネ化も実現しました。 [...] 新幹線を高速で安全に運行するためには、車両や線路、電気系統などの設備、運行を担うコンピュータシステムや設備・機器の保守などに幅広い技術が使われており、長年にわたって改良や新規開発が続けられてきました。新幹線の最高速度や東京・新大阪間の所要時間の変遷には、それがよく表れています。\n\n東海道新幹線が開通するまで、東京・大阪間は在来線特急で約6時間30分かかっていました。それが、東海道新幹線の開業時には東京・新大阪間が約4時間に短縮。最高速度は、当時の世界最高速である210km/hでした。翌年には、当初の計画どおり最短3時間10分に短縮。その後、最高速度が220km/hに引き上げられ、1985（昭和60）年には新型の100系車両が導入されました。\n\nさらなる所要時間短縮を求める声に応えてスピードアップを図るため、1988（昭和63）年にプロジェクトチームが設けられ、検討を重ねた結果、新たに300系の車両を開発。大幅に速度が向上して、1992（平成4）年から最高速度270km/hの営業運転が始まり、東京・新大阪間が2時間30分と大幅に短縮されました。",
+          "start": null,
+          "title": "第5回「新幹線」編｜まめ知識｜科学技術館50周年記念",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "928bcc2b9c81c35e5068427353bf1c37ffe168bdd08254747b5c67f3c1b1e231",
+          "content_kind": "snippet",
+          "original_url": "https://www2.jsf.or.jp/industry50/mamechishiki/mamechishiki05-1.html",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:19:37.723669Z",
+          "source_chars": 1451,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        }
+      ],
+      "grounding": {
+        "status": "source_backed",
+        "provider": "tavily",
+        "reason_code": null,
+        "retrieved_at": "2026-10-14T12:19:37.723669Z",
+        "check_version": "evidence-review-v1"
+      },
+      "scope_prompt_version": "scope-v1"
+    }
+  ],
+  "confirmed_selection": {
+    "preparation_id": "4b47f5ab-e4ee-4dde-b0bb-dae5b65ddee0",
+    "scope_version": 1,
+    "candidate_id": "scope-shinkansen-train-classes-v1",
+    "focus_id": "focus-tokaido-sanyo-classes-v1",
+    "scope_point_ids": [
+      "point-nozomi-v1",
+      "point-nozomi-frequency-v1",
+      "point-mizuho-v1"
+    ],
+    "question_count": 3,
+    "difficulty": "easy"
+  },
+  "operation": {
+    "status": "succeeded",
+    "result": {
+      "id": "29c3cc0e-cf13-4027-9c22-20a3cca121b2",
+      "quiz": {
+        "id": "4775a01d-8b70-4cf6-8731-5c7ba2b859a2",
+        "title": "东海道·山阳新干线列车种别基础",
+        "reward": {
+          "xp": 10,
+          "coins": 2
+        },
+        "source": {
+          "type": "topic",
+          "title": "日本新干线列车分类与爱称",
+          "segments": []
+        },
+        "summary": "围绕「のぞみ」的诞生、运行频次与「みずほ」的速达定位，练习东海道·山阳新干线列车种别的基础知识。",
+        "grounding": {
+          "status": "source_backed",
+          "provider": "tavily",
+          "reason_code": null,
+          "retrieved_at": "2026-10-14T12:19:26.118171Z",
+          "check_version": "evidence-review-v1"
+        },
+        "questions": [
+          {
+            "id": "q-nozomi-birth-v1",
+            "stem": "「のぞみ」作为比「ひかり」更快的列车种别，是在哪一年于东海道新干线诞生的？",
+            "type": "single",
+            "origin": null,
+            "answers": [],
+            "options": [
+              {
+                "id": "A",
+                "text": "1992年（平成4年）"
+              },
+              {
+                "id": "B",
+                "text": "1987年（昭和62年）"
+              },
+              {
+                "id": "C",
+                "text": "2011年（平成23年）"
+              },
+              {
+                "id": "D",
+                "text": "1964年（昭和39年）"
+              }
+            ],
+            "grounding": {
+              "status": "source_backed"
+            },
+            "source_ids": [],
+            "explanation": "",
+            "knowledge_point": "のぞみ的诞生年份"
+          },
+          {
+            "id": "q-nozomi-frequency-v1",
+            "stem": "关于「のぞみ」在山阳新干线的运行频次，下列符合资料描述的有哪些？",
+            "type": "multi",
+            "origin": null,
+            "answers": [],
+            "options": [
+              {
+                "id": "A",
+                "text": "通常每小时运行3〜4班"
+              },
+              {
+                "id": "B",
+                "text": "大型连休等多客期最多每小时运行6班"
+              },
+              {
+                "id": "C",
+                "text": "全天每小时固定运行10班以上"
+              },
+              {
+                "id": "D",
+                "text": "只在清晨和深夜运行，白天完全不停"
+              }
+            ],
+            "grounding": {
+              "status": "source_backed"
+            },
+            "source_ids": [],
+            "explanation": "",
+            "knowledge_point": "のぞみ的运行频次"
+          },
+          {
+            "id": "q-mizuho-speed-v1",
+            "stem": "「みずほ」是山阳·九州新干线的速达型列车，新大阪—博多间所需时间约为2小时28分，与「のぞみ」大致相同。",
+            "type": "judge",
+            "origin": null,
+            "answers": [],
+            "options": [
+              {
+                "id": "A",
+                "text": "正确"
+              },
+              {
+                "id": "B",
+                "text": "错误"
+              }
+            ],
+            "grounding": {
+              "status": "source_backed"
+            },
+            "source_ids": [],
+            "explanation": "",
+            "knowledge_point": "みずほ的速达定位与所需时间"
+          }
+        ],
+        "created_at": "2026-10-14T12:26:29.253112+00:00",
+        "difficulty": "easy",
+        "source_text": "学习日本新干线的基础知识与列车分类,优先日本来源",
+        "learning_scope": {
+          "focus": "东海道·山阳新干线列车种别",
+          "topic": "日本新干线列车分类与爱称",
+          "domain": "日本新干线列车种别与命名",
+          "points": [
+            "のぞみ：1992年诞生、东海道·山阳最速达列车、使用N700A/N700S",
+            "のぞみ通常每小时3〜4班，多客期最多每小时6班",
+            "みずほ：山阳·九州新干线最速达型，新大阪—博多约2小时28分"
+          ],
+          "focus_id": "focus-tokaido-sanyo-classes-v1",
+          "input_text": "学习日本新干线的基础知识与列车分类,优先日本来源",
+          "candidate_id": "scope-shinkansen-train-classes-v1",
+          "scope_version": 1,
+          "preparation_id": "4b47f5ab-e4ee-4dde-b0bb-dae5b65ddee0",
+          "scope_point_ids": [
+            "point-nozomi-v1",
+            "point-nozomi-frequency-v1",
+            "point-mizuho-v1"
+          ]
+        }
+      },
+      "mode": "new",
+      "answers": [],
+      "cursor": 0,
+      "pending_ms": 0,
+      "started_at": "2026-10-14T12:26:29+00:00",
+      "completed_at": null,
+      "report": null,
+      "review_keys": []
+    },
+    "error_code": null,
+    "stage": "succeeded",
+    "retry_after_seconds": 0,
+    "deadline": "2026-10-14T12:31:22+00:00"
+  },
+  "quiz": {
+    "id": "4775a01d-8b70-4cf6-8731-5c7ba2b859a2",
+    "title": "东海道·山阳新干线列车种别基础",
+    "reward": {
+      "xp": 10,
+      "coins": 2
+    },
+    "source": {
+      "type": "topic",
+      "title": "日本新干线列车分类与爱称",
+      "segments": [
+        {
+          "id": "web-81d1338eca756989f30e90aefe36d10e",
+          "end": null,
+          "url": "https://tabiris.com/archives/nozomi-mizuho",
+          "page": null,
+          "text": "### 座席の種類と号車\n\n普通車自由席（1～3号車）、普通車指定席（4～7、11～16号車）、グリーン車指定席（8～10号車）  \n ※ピーク時期には、普通車自由席はなく、1～3号車も普通車指定席となる。\n\n### 車内販売\n\nグリーン車のみ。普通車の車内販売はなし。\n\n広告\n\n## 「みずほ」号とは？\n\n山陽・九州新幹線の速達タイプの列車が「みずほ」号です。東海道新幹線（東京方面）には直通せず、九州新幹線（鹿児島中央方面）に直通します。新大阪～博多間の所要時間は2時間28分程度で、「のぞみ」号とほぼ同じです。\n\n全列車が停まる駅は、新大阪、新神戸、岡山、広島、小倉、博多です。そのほか、姫路、福山、新山口の各駅に停まる列車もあります。\n\n運行本数は、朝夕に毎時1本程度です。日中時間帯はあまり運転されていません。\n\n8両編成で、自由席が3両、指定席が4.5両半、グリーン車が0.5両です。\n\n### 座席の種類と号車\n\n普通車自由席（1～3号車）、普通車指定席（4～8号車）、グリーン車指定席（6号車）\n\n### 車内販売\n\n車内販売はなし。\n\n広告\n\n## 「さくら」号とは？ [...] 理由を説明すると、まず、普通車指定席を選ぶ場合、「みずほ」「さくら」は2列×2列シートなのでゆったりしています。ただ「みずほ」は加算料金がかかるので、「さくら」のほうがお得です。\n\n「のぞみ」は普通車指定席が3列×2列シートで加算料金もかかるので、お得さはありません。\n\n自由席を利用するなら、「のぞみ」「みずほ」の加算料金がかかりません。座席も基本的には、どの列車も3×2列シートなので同じです。そのため、運行本数が多くて速い「のぞみ」がいいでしょう。自由席の両数は、「のぞみ」「みずほ」「さくら」とも同じ3両です。\n\n新大阪から乗車する場合、「のぞみ」は始発ではないので席が確保しにくいイメージもありますが、新大阪で降りる人が多いので、空席がないわけではありません。乗車前に外から車内を確認してから乗るといいでしょう。新神戸や岡山で降りる人も多いので、仮に立っても、少しすれば座れる可能性が高いです。\n\n所要時間は、「のぞみ」「みずほ」「さくら」の3者では、新大阪～博多間でも10分くらいの違いしかありません。\n\n## 「こだま」停車駅は乗り継ぎで [...] 以下では、山陽新幹線「のぞみ」「みずほ」「さくら」「ひかり」「こだま」について、停車駅以外の相違点と共通点をご紹介していきます。\n\n山陽・九州新幹線路線図\n\n画像：JRおでかけネット\n\n広告\n\n  \n\n## 「のぞみ」号とは？\n\n東海道・山陽新幹線を直通する速達タイプの列車が「のぞみ」号です。新大阪～博多間の所要時間は2時間28分程度です。\n\n運転区間は、大きく分けて、東京～広島間（広島発着）と東京～博多間（博多発着）があります。全列車が停まる駅は、新大阪、新神戸、岡山、広島、小倉、博多です。そのほか、姫路、福山、徳山、新山口の各駅に停まる列車もあります。\n\n運行本数は、定期列車が毎時3本程度で、うち2本が博多発着、1本が広島発着です。そのほか不定期列車（毎日運転しない列車）が6～7本程度あります。ただし、最大本数で運行するのは、限られた日や時間帯だけです。運行本数は毎日異なります。\n\n16両編成で、自由席が3両、指定席が10両、グリーン車が3両です。ただし、年末年始、ゴールデンウィーク、お盆の、いわゆる「ピーク時期」には、指定席13両、グリーン車3両となり、自由席はありません。",
+          "start": null,
+          "title": "山陽新幹線「のぞみ」「みずほ」「さくら」の違い。料金、時間はどれだけ変わる？ | 旅行総合研究所タビリス",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "54b1c8af237bb5a993ec648f9d89c7af83272ae484daa917b1c70b40e2de9324",
+          "content_kind": "snippet",
+          "original_url": "https://tabiris.com/archives/nozomi-mizuho",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:19:26.118171Z",
+          "source_chars": 1481,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-a0f28d832c44f8bc22e702879bcd199a",
+          "end": null,
+          "url": "https://www.toretabi.jp/railway_info/entry-7625.html",
+          "page": null,
+          "text": "### のぞみ\n\n東海道新幹線から直通する最速列車で、ほとんどの列車が広島駅または博多駅発着です。通常は1時間に3〜4本運行されていますが、大型連休など多客期には1時間あたり最大6本が運行されます。\n\n山陽新幹線 のぞみ／N700系\n\n【使用車両】  \n N700A／N700S  \n   \n 【のぞみの停車駅】  \n 新大阪駅・新神戸駅・西明石駅（一部列車）・姫路駅（一部列車）・岡山駅・福山駅（一部列車）・広島駅・徳山駅（一部列車）・新山口駅（一部列車）・小倉駅・博多駅  \n   \n 【座席の種類】  \n 普通車（自由席、指定席）／グリーン車（指定席）  \n   \n 【コンセントの有無】  \n N700A：グリーン車全席／普通車窓側席・最前列・最後列、N700S：全席  \n   \n 【車内販売】  \n あり\n\n### みずほ\n\n新大阪駅〜鹿児島中央駅間で運行されている「のぞみ」タイプの最速列車。運行本数が少なく、始発駅基準で午前中と夕方以降に8本しか運行されていません。\n\n山陽新幹線 みずほ／N700系7000番代（S編成） [...] | 路線名 | 運転区間 | 列車 | 車両 |\n ---  --- |\n| 北海道新幹線 | 新青森駅～  新函館北斗駅 | はやぶさ  はやて | E5系  H5系 |\n| 東北新幹線 | 東京駅～  新青森駅 | はやぶさ  やまびこ  なすの  はやて | E5系  H5系  E6系  E2系  E8系 |\n| 秋田新幹線 | 盛岡駅～  秋田駅 | こまち | E6系 |\n| 山形新幹線 | 福島駅～  新庄駅 | つばさ | E8系 |\n| 上越新幹線 | 大宮駅～  新潟駅 | とき  たにがわ | E7系 |\n| 東海道新幹線 | 東京駅～  新大阪駅 | のぞみ  ひかり  こだま | N700A  N700S |\n| 北陸新幹線 | 高崎駅～  敦賀駅 | かがやき  はくたか  あさま  つるぎ | E7系  W7系 |\n| 山陽新幹線 | 新大阪駅～  博多駅 | のぞみ  みずほ  ひかり  さくら  こだま  つばめ | N700A  N700S  700系7000番代  N700系7000・8000番代  500系 | [...] 同じ路線の中にも何種類か名前の違う列車が走っていますよね。  \n 例えば、東京駅から新大阪駅に向かうとき乗車するのは東海道新幹線ですが、東海道新幹線には「のぞみ」「ひかり」「こだま」の3つの列車が走っています。  \n   \n では、「のぞみ」「ひかり」「こだま」はなにが違うのでしょうか？  \n   \n それは「走る区間」「停車駅」「速さ」の違いです。  \n   \n それでは、路線ごとに走っている列車と列車ごとの違いをご紹介します。\n\n## 北海道新幹線\n\n北海道新幹線\n\n北海道新幹線の列車は「はやぶさ」「はやて」の2種類。  \n 東北新幹線と一体的に運行されており、東北新幹線内での最高速度によって、ふたつの愛称があります。  \n   \n 区間：新青森駅〜新函館北斗駅  \n 列車の種類：はやぶさ、はやて\n\n### はやぶさ",
+          "start": null,
+          "title": "新幹線って何種類ある？全国を走る全10路線一覧と列車の違いを紹介 | トレたび - 鉄道・旅行情報サイト",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "40849258007972db2183eec736124bc787e05434bac3a507a2d8cb23d303b1a7",
+          "content_kind": "snippet",
+          "original_url": "https://www.toretabi.jp/railway_info/entry-7625.html",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:19:26.118171Z",
+          "source_chars": 1329,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-d29c558aab9e17857c7034ffc24586a2",
+          "end": null,
+          "url": "https://ja.wikipedia.org/wiki/%E3%81%AE%E3%81%9E%E3%81%BF_(%E5%88%97%E8%BB%8A)",
+          "page": null,
+          "text": "]\n\n1992年（平成4年）3月14日に、JR東海により、当時運賃の値下げなどにより利用を伸ばしていた航空機に対抗するため、東海道新幹線において、それまでの「ひかり \"ひかり (列車)\")」よりさらに速い種別の列車として新たに誕生した。東京 - 新大阪間を従来の最速列車よりも19分早い2時間30分で結び、運行車両には東海道区間の当時最高速となる270km/hでの運転に対応した第三世代車両である300系を充当し、特急料金体系もそれまでの「ひかり」「こだま \"こだま (列車)\")」とは別体系のものを用意する（詳細は後述）など、それまでの新幹線列車とは別格と位置づけられていた。翌1993年にはJR西日本との共同運行により山陽新幹線区間でも運行を開始し、以後東海道・山陽新幹線における最速達列車として位置付けられている。 [...] 「のぞみ」「みずほ」で指定席を利用しない（=自由席のみ利用する）場合\n:   「ひかり」「こだま」「さくら」「つばめ」の利用設備に基づく。\n\n「のぞみ」「みずほ」で指定席を利用する場合\n:   全乗車区間に対する「ひかり」「こだま」「さくら」「つばめ」の特急料金と、「のぞみ」「みずほ」の指定席利用区間に対する「ひかり」「こだま」「さくら」「つばめ」の特急料金の差額とを合計したものとなる。\n:   なお、「ひかり」「こだま」「さくら」を挟んで「のぞみ」を利用する場合、この原則に従って計算した場合と「ひかり」「こだま」「さくら」の区間を通じて「のぞみ」を利用したと見なして計算した場合との、いずれか安い方の金額となる。\n\n東海道・山陽新幹線区間で「のぞみ」と「みずほ」を乗り継ぐ場合は、全区間に対する「のぞみ」の特急料金表に基づき算出する。\n\n### 主な割引乗車券類\n\n[編集&action=edit&section=17 \"節を編集: 主な割引乗車券類\")] [...] なお、2011年（平成23年）3月12日から運行を開始した山陽新幹線・九州新幹線直通列車の「みずほ \"みずほ (列車)\")」についても、山陽新幹線区間については「のぞみ」と同じ料金表を用いる。\n\n当列車は航空機との対抗策として運行を開始したため、フルムーン夫婦グリーンパス（発売終了）やジャパンレールパスなどJR全線乗り放題の乗車券では「のぞみ」は一切利用できず、「ジパング倶楽部」 や「レール&レンタカーきっぷ」などのような運賃や特急料金が割り引かれる制度では、「のぞみ」の特急料金は割引の対象外となっている。\n\n### 「のぞみ」「みずほ」とそれ以外の列車を乗り継ぐ場合\n\n[編集&action=edit&section=16 \"節を編集: 「のぞみ」「みずほ」とそれ以外の列車を乗り継ぐ場合\")]\n\n東海道・山陽新幹線区間で「のぞみ」「みずほ \"みずほ (列車)\")」と「ひかり」「こだま」「さくら」「つばめ」を乗り継いで利用する場合の特急料金は、新幹線の改札を出ない場合に限り、以下の要領により算出する。",
+          "start": null,
+          "title": "のぞみ (列車) - Wikipedia",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "8d1bfd6eb0b25cb1cb117f4836a79aaa7c71c8ede1c053cb8f75272ade2761ee",
+          "content_kind": "snippet",
+          "original_url": "https://ja.wikipedia.org/wiki/%E3%81%AE%E3%81%9E%E3%81%BF_(%E5%88%97%E8%BB%8A)",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:19:26.118171Z",
+          "source_chars": 1262,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        }
+      ]
+    },
+    "summary": "围绕「のぞみ」的诞生、运行频次与「みずほ」的速达定位，练习东海道·山阳新干线列车种别的基础知识。",
+    "grounding": {
+      "status": "source_backed",
+      "provider": "tavily",
+      "reason_code": null,
+      "retrieved_at": "2026-10-14T12:19:26.118171Z",
+      "check_version": "evidence-review-v1"
+    },
+    "questions": [
+      {
+        "id": "q-nozomi-birth-v1",
+        "stem": "「のぞみ」作为比「ひかり」更快的列车种别，是在哪一年于东海道新干线诞生的？",
+        "type": "single",
+        "origin": null,
+        "answers": [
+          "A"
+        ],
+        "options": [
+          {
+            "id": "A",
+            "text": "1992年（平成4年）"
+          },
+          {
+            "id": "B",
+            "text": "1987年（昭和62年）"
+          },
+          {
+            "id": "C",
+            "text": "2011年（平成23年）"
+          },
+          {
+            "id": "D",
+            "text": "1964年（昭和39年）"
+          }
+        ],
+        "grounding": {
+          "status": "source_backed",
+          "provider": "tavily",
+          "reason_code": null,
+          "retrieved_at": "2026-10-14T12:19:26.118171Z",
+          "check_version": "evidence-review-v1"
+        },
+        "source_ids": [
+          "web-d29c558aab9e17857c7034ffc24586a2"
+        ],
+        "explanation": "资料记载，1992年（平成4年）3月14日，JR东海为对抗当时因运价下调而增长的航空需求，在东海道新干线新设了比「ひかり」更快的种别「のぞみ」。1987年是国铁民营化之年，1964年是东海道新干线开业之年，2011年是「みずほ」开始运行的年份，均与「のぞみ」诞生年不符。",
+        "knowledge_point": "のぞみ的诞生年份"
+      },
+      {
+        "id": "q-nozomi-frequency-v1",
+        "stem": "关于「のぞみ」在山阳新干线的运行频次，下列符合资料描述的有哪些？",
+        "type": "multi",
+        "origin": null,
+        "answers": [
+          "A",
+          "B"
+        ],
+        "options": [
+          {
+            "id": "A",
+            "text": "通常每小时运行3〜4班"
+          },
+          {
+            "id": "B",
+            "text": "大型连休等多客期最多每小时运行6班"
+          },
+          {
+            "id": "C",
+            "text": "全天每小时固定运行10班以上"
+          },
+          {
+            "id": "D",
+            "text": "只在清晨和深夜运行，白天完全不停"
+          }
+        ],
+        "grounding": {
+          "status": "source_backed",
+          "provider": "tavily",
+          "reason_code": null,
+          "retrieved_at": "2026-10-14T12:19:26.118171Z",
+          "check_version": "evidence-review-v1"
+        },
+        "source_ids": [
+          "web-a0f28d832c44f8bc22e702879bcd199a"
+        ],
+        "explanation": "资料指出，「のぞみ」在山阳新干线通常每小时运行3〜4班，大型连休等多客期最多每小时运行6班。C的「每小时固定10班以上」与资料不符；D的「只在清晨和深夜运行」也不符合资料中白天也有运行、且多客期增班的描述。",
+        "knowledge_point": "のぞみ的运行频次"
+      },
+      {
+        "id": "q-mizuho-speed-v1",
+        "stem": "「みずほ」是山阳·九州新干线的速达型列车，新大阪—博多间所需时间约为2小时28分，与「のぞみ」大致相同。",
+        "type": "judge",
+        "origin": null,
+        "answers": [
+          "A"
+        ],
+        "options": [
+          {
+            "id": "A",
+            "text": "正确"
+          },
+          {
+            "id": "B",
+            "text": "错误"
+          }
+        ],
+        "grounding": {
+          "status": "source_backed",
+          "provider": "tavily",
+          "reason_code": null,
+          "retrieved_at": "2026-10-14T12:19:26.118171Z",
+          "check_version": "evidence-review-v1"
+        },
+        "source_ids": [
+          "web-81d1338eca756989f30e90aefe36d10e"
+        ],
+        "explanation": "资料记载，「みずほ」是山阳·九州新干线的速达型列车，新大阪—博多间所需时间约为2小时28分，与「のぞみ」大致相同。因此该说法正确。",
+        "knowledge_point": "みずほ的速达定位与所需时间"
+      }
+    ],
+    "created_at": "2026-10-14T12:26:29.253112+00:00",
+    "difficulty": "easy",
+    "source_text": "学习日本新干线的基础知识与列车分类,优先日本来源",
+    "learning_scope": {
+      "focus": "东海道·山阳新干线列车种别",
+      "topic": "日本新干线列车分类与爱称",
+      "domain": "日本新干线列车种别与命名",
+      "points": [
+        "のぞみ：1992年诞生、东海道·山阳最速达列车、使用N700A/N700S",
+        "のぞみ通常每小时3〜4班，多客期最多每小时6班",
+        "みずほ：山阳·九州新干线最速达型，新大阪—博多约2小时28分"
+      ],
+      "focus_id": "focus-tokaido-sanyo-classes-v1",
+      "input_text": "学习日本新干线的基础知识与列车分类,优先日本来源",
+      "candidate_id": "scope-shinkansen-train-classes-v1",
+      "scope_version": 1,
+      "preparation_id": "4b47f5ab-e4ee-4dde-b0bb-dae5b65ddee0",
+      "scope_point_ids": [
+        "point-nozomi-v1",
+        "point-nozomi-frequency-v1",
+        "point-mizuho-v1"
+      ]
+    }
+  },
+  "human_review": {
+    "scope_matches_intent": true,
+    "notes": "按用户对当前20例/60题核对请求的总体回复“正确”登记；未收到逐项表单导出。",
+    "questions": [
+      {
+        "id": "q-nozomi-birth-v1",
+        "status": "source_backed",
+        "source_ids": [
+          "web-d29c558aab9e17857c7034ffc24586a2"
+        ],
+        "supported_by_cited_text": true,
+        "contradicts": false,
+        "in_scope": true,
+        "meme_substantive": null,
+        "notes": "正确性及引用支持按用户对核对包的总体确认登记；不是用户逐题表单输入。"
+      },
+      {
+        "id": "q-nozomi-frequency-v1",
+        "status": "source_backed",
+        "source_ids": [
+          "web-a0f28d832c44f8bc22e702879bcd199a"
+        ],
+        "supported_by_cited_text": true,
+        "contradicts": false,
+        "in_scope": true,
+        "meme_substantive": null,
+        "notes": "正确性及引用支持按用户对核对包的总体确认登记；不是用户逐题表单输入。"
+      },
+      {
+        "id": "q-mizuho-speed-v1",
+        "status": "source_backed",
+        "source_ids": [
+          "web-81d1338eca756989f30e90aefe36d10e"
+        ],
+        "supported_by_cited_text": true,
+        "contradicts": false,
+        "in_scope": true,
+        "meme_substantive": null,
+        "notes": "正确性及引用支持按用户对核对包的总体确认登记；不是用户逐题表单输入。"
+      }
+    ],
+    "confirmation": {
+      "kind": "direct_user_chat_overall_confirmation",
+      "record": "docs/quiz-grounding/live-runs/human-confirmation-20261014.json",
+      "answer": "正确",
+      "individual_form_export_received": false,
+      "structured_verdict_basis": "registered_from_user_overall_confirmation"
+    }
+  },
+  "account_deleted": true
+}

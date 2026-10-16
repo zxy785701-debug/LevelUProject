@@ -1,0 +1,41 @@
+...F                                                                     [100%]
+================================== FAILURES ===================================
+__ test_period_excludes_reviews_after_interval_end_and_reference_validation ___
+
+system = <fastapi.applications.FastAPI object at 0x000001FC9AB90B90>
+
+    @pytest.mark.anyio
+    async def test_period_excludes_reviews_after_interval_end_and_reference_validation(system):
+        from app.materials.services import period_narrative, PeriodNarrative
+        async with httpx.AsyncClient(transport=httpx.ASGITransport(app=system), base_url='http://test') as c:
+            await login(c); session = await generate(c)
+            for q in quiz_payload()['questions']: await answer(c, session, q['id'], ['B'])
+            from app.accounts.database import Attempt, WrongRow
+            with system.state.accounts.database.session() as s:
+                s.get(Attempt, session['id']).completed_at = datetime(2026,1,2)
+                row = s.scalar(select(WrongRow)); row.reviews = [{'at': '2026-02-01T00:00:00+00:00','correct': True}]
+            result = system.state.analytics.snapshot((await c.get('/api/v1/me')).json()['data']['id'], 'custom','2026-01-02','2026-01-02',['advice'])
+>           assert result['knowledge']['topics'][0]['points'][0]['correct'] == 0
+E           assert 1 == 0
+
+tests\test_feature_edges.py:84: AssertionError
+---------------------------- Captured stderr call -----------------------------
+[levelup] app.accounts.repository ai_call operation=95f2a248-bcb7-4703-8557-51b8f1e57857 kind=quiz minute_calls=1
+[levelup] app.accounts.repository ai_finished operation=95f2a248-bcb7-4703-8557-51b8f1e57857 status=succeeded
+------------------------------ Captured log call ------------------------------
+INFO     app.accounts.repository:repository.py:372 ai_call operation=95f2a248-bcb7-4703-8557-51b8f1e57857 kind=quiz minute_calls=1
+INFO     app.accounts.repository:repository.py:191 ai_finished operation=95f2a248-bcb7-4703-8557-51b8f1e57857 status=succeeded
+============================== warnings summary ===============================
+tests/test_feature_edges.py::test_expired_job_recovery_cleanup_and_referenced_retention
+  D:\nbproject\LevelUpProject\backend\tests\test_feature_edges.py:37: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    with system.state.accounts.database.session() as s: s.get(MaterialJob, job['id']).created_at = datetime.utcnow()-timedelta(days=1)
+
+tests/test_feature_edges.py::test_expired_job_recovery_cleanup_and_referenced_retention
+tests/test_feature_edges.py::test_expired_job_recovery_cleanup_and_referenced_retention
+  D:\nbproject\LevelUpProject\backend\tests\test_feature_edges.py:43: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    for mid in (material['id'], orphan['id']): s.get(Material, mid).created_at = datetime.utcnow()-timedelta(days=2)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_feature_edges.py::test_period_excludes_reviews_after_interval_end_and_reference_validation
+1 failed, 3 passed, 3 warnings in 9.14s

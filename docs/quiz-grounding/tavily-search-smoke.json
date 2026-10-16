@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-14",
+  "tool": "tavily_search",
+  "success": true,
+  "result_count": 1,
+  "usage": {"credits": 1},
+  "sdk_key_matches_config": true,
+  "environment_variable_present": false,
+  "config_matches_dotenv": true,
+  "key_has_outer_whitespace": false,
+  "key_has_expected_prefix": true
+}

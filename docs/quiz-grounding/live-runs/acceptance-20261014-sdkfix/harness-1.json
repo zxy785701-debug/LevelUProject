@@ -1,0 +1,2210 @@
+{
+  "case": {
+    "id": "harness-1",
+    "text": "Harness Engineering",
+    "expected": "AI 编码智能体工程，先消除与线束工程的歧义",
+    "tags": [
+      "harness",
+      "global",
+      "complex"
+    ]
+  },
+  "error_code": null,
+  "status": "awaiting_human_evidence_review",
+  "preparation": {
+    "id": "333aa96e-3ecc-4856-acb6-d1e6d470c6b8",
+    "version": 1,
+    "input_text": "Harness Engineering",
+    "status": "ready",
+    "stage": "ready",
+    "content": {
+      "candidates": [
+        {
+          "id": "scope-harness-eng-core",
+          "topic": "Harness Engineering",
+          "domain": "AI 工程 / 智能体基础设施",
+          "description": "围绕「Agent = Model + Harness」这一核心命题，整理 Harness Engineering 作为 AI 工程第三阶段（继 Prompt Engineering、Context Engineering 之后）的定义、定位与工程实践。资料显示该术语由 Mitchell Hashimoto 于 2026 年 2 月提出，指设计模型之外的非模型层基础设施，使智能体可靠、可自主运行。本候选保留用户完整意图，聚焦概念本体与工程方法论，待用户确认。",
+          "focuses": [
+            {
+              "id": "focus-he-definition",
+              "name": "概念定义与演进脉络",
+              "description": "Harness Engineering 是什么、为何出现，以及它在 AI 工程成熟度中的位置。",
+              "points": [
+                {
+                  "id": "pt-he-def-core",
+                  "name": "Harness Engineering 的定义：设计模型之外的非模型层环境",
+                  "evidence_ids": [
+                    "web-2dc98e70b0ff248849471959dd2ce683",
+                    "web-c6f8b81ed6805b6c1242a9f0424095d0",
+                    "web-11bbe51a72f3502827fbcc206b85f5ab"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "pt-he-agent-eq-model-harness",
+                  "name": "核心公式：Agent = Model + Harness",
+                  "evidence_ids": [
+                    "web-b539e62c4f0a42e1d68aa1e1a42d32fd",
+                    "web-5a5f4d0f09b9694177e8e62fef9030e1",
+                    "web-c8f1d9742429e0c6a827f12137a42d70"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "pt-he-three-phases",
+                  "name": "三阶段演进：Prompt Engineering → Context Engineering → Harness Engineering",
+                  "evidence_ids": [
+                    "web-b539e62c4f0a42e1d68aa1e1a42d32fd",
+                    "web-2dc98e70b0ff248849471959dd2ce683",
+                    "web-11bbe51a72f3502827fbcc206b85f5ab"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "pt-he-origin-hashimoto",
+                  "name": "术语起源：Mitchell Hashimoto 于 2026 年 2 月提出",
+                  "evidence_ids": [
+                    "web-fbbaebd120cafc12e218fa8af815b32b",
+                    "web-11bbe51a72f3502827fbcc206b85f5ab"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "pt-he-2026-focus",
+                  "name": "2026 年成为工程投入的主要焦点",
+                  "evidence_ids": [
+                    "web-b539e62c4f0a42e1d68aa1e1a42d32fd",
+                    "web-400302decd9e4fe14c2b2506ea50cc78"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "pt-he-vs-prompt-context",
+                  "name": "与 Prompt Engineering、Context Engineering 的边界区分",
+                  "evidence_ids": [
+                    "web-11bbe51a72f3502827fbcc206b85f5ab",
+                    "web-c6f8b81ed6805b6c1242a9f0424095d0"
+                  ],
+                  "evidence_status": "available"
+                }
+              ]
+            },
+            {
+              "id": "focus-he-components",
+              "name": "Agent Harness 的组成与运行机制",
+              "description": "Harness 作为包裹 LLM 的软件基础设施，其具体能力构成与运行循环。",
+              "points": [
+                {
+                  "id": "pt-he-comp-tools",
+                  "name": "工具接入与工具调度（tool use / tool dispatch）",
+                  "evidence_ids": [
+                    "web-5a5f4d0f09b9694177e8e62fef9030e1",
+                    "web-c4978da51341b64de13091539a4119bb",
+                    "web-c8f1d9742429e0c6a827f12137a42d70"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "pt-he-comp-memory",
+                  "name": "记忆与状态持久化（memory / state persistence）",
+                  "evidence_ids": [
+                    "web-5a5f4d0f09b9694177e8e62fef9030e1",
+                    "web-c8f1d9742429e0c6a827f12137a42d70",
+                    "web-3e4253227233d09bf9e443b82d597bd8"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "pt-he-comp-exec-env",
+                  "name": "执行环境与运行时（execution environment / runtime）",
+                  "evidence_ids": [
+                    "web-5a5f4d0f09b9694177e8e62fef9030e1",
+                    "web-c4978da51341b64de13091539a4119bb"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "pt-he-comp-feedback-loop",
+                  "name": "反馈循环与自我校验（feedback loops / verification）",
+                  "evidence_ids": [
+                    "web-5a5f4d0f09b9694177e8e62fef9030e1",
+                    "web-11bbe51a72f3502827fbcc206b85f5ab",
+                    "web-d50f2f00a297f486be5d0c31fa783df6"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "pt-he-comp-loop-program",
+                  "name": "Harness 作为运行循环程序：提示 LLM、读取响应、处理工具调用",
+                  "evidence_ids": [
+                    "web-b1787828707f02f77f2fa6c1223eb37f"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "pt-he-comp-context-lifecycle",
+                  "name": "上下文生命周期管理：从意图捕获到规范、编译、执行、验证、持久化",
+                  "evidence_ids": [
+                    "web-3e4253227233d09bf9e443b82d597bd8"
+                  ],
+                  "evidence_status": "available"
+                }
+              ]
+            },
+            {
+              "id": "focus-he-practice",
+              "name": "工程实践：约束、可靠性与可观测性",
+              "description": "如何通过工程手段让智能体在生产环境中可靠运行，包括控制层设计与失败治理。",
+              "points": [
+                {
+                  "id": "pt-he-prac-constraints",
+                  "name": "约束式 Harness：预防性控制与纠正性控制的分层",
+                  "evidence_ids": [
+                    "web-d50f2f00a297f486be5d0c31fa783df6"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "pt-he-prac-order",
+                  "name": "落地顺序：先约束 Harness，再反馈循环",
+                  "evidence_ids": [
+                    "web-d50f2f00a297f486be5d0c31fa783df6"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "pt-he-prac-observability",
+                  "name": "可观测性：记录工具调用、执行轨迹、延迟、错误、token 用量",
+                  "evidence_ids": [
+                    "web-c4978da51341b64de13091539a4119bb",
+                    "web-295c3ddfb6e3e9a7d45f588ac990925f"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "pt-he-prac-guardrails",
+                  "name": "护栏、重试与验证：最小干预但防止灾难性失败",
+                  "evidence_ids": [
+                    "web-987b24cbdcb2c52c12815f6487f3950e"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "pt-he-prac-progressive-disclosure",
+                  "name": "渐进式披露（progressive disclosure）与可丢弃 Harness（disposable harnesses）",
+                  "evidence_ids": [
+                    "web-295c3ddfb6e3e9a7d45f588ac990925f"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "pt-he-prac-human-approval",
+                  "name": "人工审批、文件系统访问与子智能体编排",
+                  "evidence_ids": [
+                    "web-987b24cbdcb2c52c12815f6487f3950e"
+                  ],
+                  "evidence_status": "available"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "scope-harness-eng-coding-agents",
+          "topic": "Harness Engineering",
+          "domain": "AI 编码智能体 / 软件开发工具链",
+          "description": "同一术语在「AI 编码智能体」领域的具体落地：围绕 Cursor、Claude Code、Anthropic Managed Agents 等托管智能体，讨论如何通过 Harness 让编码智能体在真实软件工程中稳定产出可靠代码。与核心概念候选方向实质不同，聚焦工具链与交付可靠性。",
+          "focuses": [
+            {
+              "id": "focus-coding-managed-agents",
+              "name": "托管编码智能体与工具生态",
+              "description": "以具体产品为例说明从 Prompt Engineering 向生产级上下文与执行基础设施的转变。",
+              "points": [
+                {
+                  "id": "pt-coding-cursor-claude",
+                  "name": "Cursor 3、Claude Code、Anthropic Managed Agents 等托管智能体",
+                  "evidence_ids": [
+                    "web-295c3ddfb6e3e9a7d45f588ac990925f"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "pt-coding-shift",
+                  "name": "从 Prompt Engineering 转向生产级上下文与执行基础设施",
+                  "evidence_ids": [
+                    "web-295c3ddfb6e3e9a7d45f588ac990925f"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "pt-coding-markdown-harness",
+                  "name": "Markdown / 提示词 Harness：如 Anthropic 的 CLAUDE.md skills 内嵌编排指令",
+                  "evidence_ids": [
+                    "web-987b24cbdcb2c52c12815f6487f3950e"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "pt-coding-llm-loop-controller",
+                  "name": "LLM 自身作为循环控制器：读取 Harness 规则并遵循",
+                  "evidence_ids": [
+                    "web-987b24cbdcb2c52c12815f6487f3950e"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "pt-coding-atomic-tools",
+                  "name": "从简单开始：构建健壮的原子工具，让模型自己做计划",
+                  "evidence_ids": [
+                    "web-987b24cbdcb2c52c12815f6487f3950e"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "pt-coding-agent-legibility",
+                  "name": "Agent Legibility：让代码库与运行环境对智能体可读、可安全导航",
+                  "evidence_ids": [
+                    "web-827f6abe54b6c01f12b8755db1ff3702"
+                  ],
+                  "evidence_status": "available"
+                }
+              ]
+            },
+            {
+              "id": "focus-coding-reliability",
+              "name": "编码智能体的可靠性与生产落地",
+              "description": "让编码智能体在规模化场景下稳定交付的工程关注点。",
+              "points": [
+                {
+                  "id": "pt-coding-reliable-scale",
+                  "name": "通过环境、约束与反馈循环让编码智能体规模化可靠",
+                  "evidence_ids": [
+                    "web-d50f2f00a297f486be5d0c31fa783df6",
+                    "web-c8ef9df3d5e2de8f9a681d0fa5021ac1"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "pt-coding-production-gap",
+                  "name": "生产落地缺口：大量企业智能体项目未能进入生产",
+                  "evidence_ids": [
+                    "web-827f6abe54b6c01f12b8755db1ff3702"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "pt-coding-role-shift",
+                  "name": "工程师角色转变：从写代码到设计治理智能体写代码的系统",
+                  "evidence_ids": [
+                    "web-d50f2f00a297f486be5d0c31fa783df6"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "pt-coding-same-model-diff-rate",
+                  "name": "同一 LLM 在不同 Harness 设计下任务完成率差异显著",
+                  "evidence_ids": [
+                    "web-c6f8b81ed6805b6c1242a9f0424095d0"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "pt-coding-control-unpredictable",
+                  "name": "控制不可预测的智能体与编码助手，使其达到生产级一致可靠",
+                  "evidence_ids": [
+                    "web-400302decd9e4fe14c2b2506ea50cc78"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "pt-coding-roi",
+                  "name": "Harness 工程作为 ROI 主要驱动：KV-cache 局部性与语义路由",
+                  "evidence_ids": [
+                    "web-827f6abe54b6c01f12b8755db1ff3702"
+                  ],
+                  "evidence_status": "available"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "scope-harness-eng-ecosystem",
+          "topic": "Harness Engineering",
+          "domain": "行业生态、观点与争议",
+          "description": "围绕该术语在 2026 年软件工程界的传播与讨论：播客、社区帖、厂商指南等不同来源对 Harness Engineering 的定位与评价。与前述候选方向实质不同，聚焦生态与话语层面，保留资料中的热门讨论与语境。",
+          "focuses": [
+            {
+              "id": "focus-eco-discourse",
+              "name": "行业话语与传播",
+              "description": "该术语如何在播客、社区与厂商内容中被提出、讨论与推广。",
+              "points": [
+                {
+                  "id": "pt-eco-thoughtworks",
+                  "name": "Thoughtworks 播客：2026 年软件工程最重要的术语之一",
+                  "evidence_ids": [
+                    "web-400302decd9e4fe14c2b2506ea50cc78"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "pt-eco-ai-daily-brief",
+                  "name": "The AI Daily Brief 频道对 Harness Engineering 101 的解读",
+                  "evidence_ids": [
+                    "web-295c3ddfb6e3e9a7d45f588ac990925f"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "pt-eco-reddit-claude",
+                  "name": "r/ClaudeCode 社区讨论：Harness Engineering 是下一个大事件",
+                  "evidence_ids": [
+                    "web-c8ef9df3d5e2de8f9a681d0fa5021ac1"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "pt-eco-reddit-ai-agents",
+                  "name": "r/AI_Agents 社区对 Harness 运行循环的具体解释",
+                  "evidence_ids": [
+                    "web-b1787828707f02f77f2fa6c1223eb37f"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "pt-eco-vendor-guides",
+                  "name": "厂商指南视角：Databricks、Snowflake、Faros、Augment、Milvus 等",
+                  "evidence_ids": [
+                    "web-2dc98e70b0ff248849471959dd2ce683",
+                    "web-c6f8b81ed6805b6c1242a9f0424095d0",
+                    "web-b539e62c4f0a42e1d68aa1e1a42d32fd",
+                    "web-d50f2f00a297f486be5d0c31fa783df6",
+                    "web-11bbe51a72f3502827fbcc206b85f5ab"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "pt-eco-control-plane",
+                  "name": "「AI 控制平面」叙事：Harness 作为把概率推理转为确定性行动的架构层",
+                  "evidence_ids": [
+                    "web-827f6abe54b6c01f12b8755db1ff3702"
+                  ],
+                  "evidence_status": "available"
+                }
+              ]
+            },
+            {
+              "id": "focus-eco-terminology",
+              "name": "术语与命名辨析",
+              "description": "Harness 与相邻概念的命名关系及常见混淆点。",
+              "points": [
+                {
+                  "id": "pt-eco-scaffolding",
+                  "name": "Agent Harness 又称 Agent Scaffolding（智能体脚手架）",
+                  "evidence_ids": [
+                    "web-5a5f4d0f09b9694177e8e62fef9030e1"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "pt-eco-uk-asi",
+                  "name": "英国 AI Security Institute 2023 年即提出 model + scaffolding 的智能体表述",
+                  "evidence_ids": [
+                    "web-5a5f4d0f09b9694177e8e62fef9030e1"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "pt-eco-stateless-model",
+                  "name": "基础模型是无状态概率函数，Harness 使其成为智能体",
+                  "evidence_ids": [
+                    "web-5a5f4d0f09b9694177e8e62fef9030e1"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "pt-eco-vs-orchestration",
+                  "name": "Harness Engineering 与上下文工程、提示、智能体编排的对比",
+                  "evidence_ids": [
+                    "web-c6f8b81ed6805b6c1242a9f0424095d0"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "pt-eco-os-metaphor",
+                  "name": "比喻：Harness 是模型推理引擎之外的操作系统",
+                  "evidence_ids": [
+                    "web-827f6abe54b6c01f12b8755db1ff3702"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "pt-eco-brain-metaphor",
+                  "name": "比喻：模型是「大脑」，Harness 是围绕它的一切",
+                  "evidence_ids": [
+                    "web-c8f1d9742429e0c6a827f12137a42d70",
+                    "web-c4978da51341b64de13091539a4119bb"
+                  ],
+                  "evidence_status": "available"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "grounding": {
+      "status": "source_backed",
+      "reason_code": null,
+      "retrieved_at": "2026-10-14T12:15:07.888943Z",
+      "provider": "tavily",
+      "check_version": "evidence-review-v1"
+    },
+    "evidence": [
+      {
+        "id": "web-295c3ddfb6e3e9a7d45f588ac990925f",
+        "text": "# Harness Engineering 101\n## Channel: The AI Daily Brief: Artificial Intelligence News (verified)\n586K subscribers\n\n### Description\n23,455 views\nPosted: 2026-04-15\nHarness engineering means systems, tooling, and interfaces surrounding AI models to provide context, memory, safe execution, and orchestration. Managed agents such as Cursor 3, Claude Code, and Anthropic Managed Agents illustrate a shift from prompt engineering toward production-ready context and execution infrastructure. Progressive disclosure, observability, verification, and disposable harnesses indicate engineering and organizational design as the key determinants of real-world AI performance and business impact. [...] [8:43] configured your coding agent a bit. Have you used skills, MCP servers, sub aents, memory, agents, MD files? A coding agent\n[8:51] equals AI models plus a harness. These are all technically separate concepts, but they are all part of the coding agents configuration surface. Basically,\n[8:59] what does the model use to interact with its environment? Harness engineering, they write, describes the practice of leveraging these configuration points to\n[9:06] customize and improve your coding agents output quality and reliability. They continue by arguing that harness engineering is the subset of context [...] [10:26] point out that this is something that the big labs are talking about quite a bit now, too. Back in February, OpenAI dropped a post called harness\n[10:34] engineering, leveraging codecs in an agent first world. The place that they start from in this post is the goal of building and shipping an internal beta\n[10:42] of a software product with zero lines of manually written code. That has been the context through which they have had to figure out what needed to be part of the harness that they were designing. One of\n[10:51] the big experiments that they found was effectively that in this new approach to engineering, they had to uncover new ways of giving the agent progressively",
+        "title": "Harness Engineering 101",
+        "url": "https://www.youtube.com/watch?v=OTjZBjq5FPg&vl=en-US",
+        "original_url": "https://www.youtube.com/watch?v=OTjZBjq5FPg&vl=en-US",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:15:03.235663Z",
+        "published_at": null,
+        "content_hash": "ee94adb87d58d5276866eb72103e49fc797f268698b16e26892d6bb8aeb034c4",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 2002,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-2dc98e70b0ff248849471959dd2ce683",
+        "text": "Harness engineering is the newest stage in a broader shift in how developers work with AI systems. As models have become more capable, the focus has gradually moved outward. It has shifted from writing better prompts, to controlling what information the model sees, to designing the entire system around the model.",
+        "title": "What is an AI Agent Harness?",
+        "url": "https://www.databricks.com/blog/ai-harness",
+        "original_url": "https://www.databricks.com/blog/ai-harness",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:15:03.235663Z",
+        "published_at": null,
+        "content_hash": "e4245878ea6b1545bfc8b730b71e2312e82b75c3c4c2ee2bee2fe14751ce5ee5",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 314,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-b539e62c4f0a42e1d68aa1e1a42d32fd",
+        "text": "Chapters\n\nHeading 2\n\nHeading 3\n\nHeading 4\n\nCopy link to blog post entry\n\nCopied!\n\nCopied!\n\nAI\n\nCoding\n\nContext\n\nData Engineering\n\nLeaders\n\nManagers\n\nMetrics\n\nPublished May 22, 2026 · Updated July 15, 2026\n\nTL;DR: Agent = Model + Harness\n\nThe model contains the raw intelligence, and the harness makes that intelligence useful and actionable. Harness engineering is how we build the environment around AI models to turn them into reliable, autonomous agents. It’s the third phase of AI engineering maturity, following prompt engineering and context engineering, and the main focus of engineering investment in 2026.\n\n{{cta}} [...] ### What is harness engineering for AI coding agents?\n\n‍Harness engineering is the practice of building the surrounding software infrastructure—the harness—that allows a raw AI model to function as a reliable, autonomous agent. It involves designing tool orchestration, verification loops, memory, and safety guardrails so the AI can execute multi-step software tasks and self-correct errors in production.\n\n### What is the difference between an AI model and an AI agent?\n\n‍The industry formula is: Agent = Model + Harness. The AI model provides the raw reasoning and intelligence. The agent is the complete system where that model is wrapped in a harness, giving it the ability to read files, run terminal commands, verify tests, and execute autonomous workflows. [...] When deciding what to change, look at the whole system—the AI model, the harness, and how humans are working with both.\n\n## The harness engineering work to prioritize this quarter\n\nHarness engineering is the practice that converts raw model capability into production-grade engineering work. The orchestration, verification, memory, guardrails, and observability built around an AI agent determine whether its output reaches production safely and at scale—and the teams investing in these layers are the ones consistently moving agent-assisted code into real systems.",
+        "title": "Harness Engineering: A Guide to AI Coding Agents | Faros",
+        "url": "https://www.faros.ai/blog/harness-engineering",
+        "original_url": "https://www.faros.ai/blog/harness-engineering",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:15:03.235663Z",
+        "published_at": null,
+        "content_hash": "4b2941e79b0265a8eda826061ec9c588297cbe8fae8892940375d025f27c07c3",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 1968,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-fbbaebd120cafc12e218fa8af815b32b",
+        "text": "Harness engineering, coined by Mitchell Hashimoto in February 2026, is the practice of designing the full environment an AI agent operates",
+        "title": "What is harness engineering? - Werner Heijstek",
+        "url": "https://www.linkedin.com/pulse/what-harness-engineering-werner-heijstek-fmqve",
+        "original_url": "https://www.linkedin.com/pulse/what-harness-engineering-werner-heijstek-fmqve",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:15:03.235663Z",
+        "published_at": null,
+        "content_hash": "4782192a495eeef6b6bd16dbde1896e5eb3db9d59b309411a85e1e137ccdf2ed",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 138,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-c8ef9df3d5e2de8f9a681d0fa5021ac1",
+        "text": "Harness engineering is the discipline of making AI coding agents reliable by engineering the system around the model - the workflows,",
+        "title": "Harness engineering is the next big thing, so I started a ...",
+        "url": "https://www.reddit.com/r/ClaudeCode/comments/1s3b46t/harness_engineering_is_the_next_big_thing_so_i",
+        "original_url": "https://www.reddit.com/r/ClaudeCode/comments/1s3b46t/harness_engineering_is_the_next_big_thing_so_i",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:15:03.235663Z",
+        "published_at": null,
+        "content_hash": "cdb55907cd5577fb999979a3ff1939607e242cf2f0852bb7bb51ca412461b916",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 133,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-400302decd9e4fe14c2b2506ea50cc78",
+        "text": "# What is harness engineering? — Thoughtworks Technology Podcast\n## Channel: Thoughtworks\n51K subscribers\nN/A likes\n\n### Description\n1,992 views\nPosted: 2026-05-14\n'Harness engineering' is one of the most significant terms to emerge in software engineering in 2026. Broadly referring to the work done to control unpredictable AI agents and coding assistants, its use signals growing attention on what needs to be done to make agents reliable and consistent enough for production software in the real world.",
+        "title": "What is harness engineering? — Thoughtworks Technology Podcast",
+        "url": "https://www.youtube.com/watch?v=KQJLPsbnKiQ",
+        "original_url": "https://www.youtube.com/watch?v=KQJLPsbnKiQ",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:15:03.235663Z",
+        "published_at": null,
+        "content_hash": "d325acfc3f42a66a04911d4654e7d86e08e93f6d6b5e0df86b054bd5876aff78",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 506,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-11bbe51a72f3502827fbcc206b85f5ab",
+        "text": "It resonated because it names a problem every engineer building AI agents has already hit. Prompt engineering) gets you better single-turn outputs. Context engineering manages what the model sees. But neither addresses what happens when an agent runs autonomously for hours, making hundreds of decisions without supervision. That’s the gap Harness Engineering fills — and it almost always depends on hybrid search (hybrid full-text and semantic search) to work.\n\n## What Is Harness Engineering?\n\nHarness Engineering is the discipline of designing the execution environment around an autonomous AI agent. It defines which tools the agent can call, where it gets information, how it validates its own decisions, and when it should stop. [...] Engineering \n\nApril 09, 2026 Min Yin\n\nMitchell Hashimoto built HashiCorp and co-created Terraform. In February 2026, he published a blog post describing a habit he’d developed while working with AI agents: every time an agent made a mistake, he engineered a permanent fix into the agent’s environment. He called it “engineering the harness.” Within weeks, OpenAI and Anthropic published engineering articles expanding on the idea. The term _Harness Engineering_ had arrived. [...] Context Engineering manages how much information the model can see at once — which documents to retrieve, how to compress history, what fits in the context window and what gets dropped.\n\nHarness Engineering builds the world the agent operates in. Tools, knowledge sources, validation logic, architectural constraints — everything that determines whether an agent can run reliably across hundreds of decisions without human supervision.",
+        "title": "Harness Engineering: The Execution Layer AI Agents Actually Need",
+        "url": "https://milvus.io/blog/harness-engineering-ai-agents.md",
+        "original_url": "https://milvus.io/blog/harness-engineering-ai-agents.md",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:15:03.235663Z",
+        "published_at": null,
+        "content_hash": "86a78ef9328a712cf7cb0343e83725d38153900ead409db804d579006f49ff14",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 1657,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-d50f2f00a297f486be5d0c31fa783df6",
+        "text": "Try CosmosGet Started\n\nBack to Guides\n\n# Harness Engineering for AI Coding Agents: Constraints That Ship Reliable Code\n\nApr 16, 2026Last updated: Jun 29, 2026•\n\nMolisha Shah\n\nMolisha Shah\n\nHarness Engineering for AI Coding Agents: Constraints That Ship Reliable Code\n\nHarness engineering is the discipline of designing environments, constraints, and feedback loops that make AI coding agents reliable at scale, shifting engineers from writing code to designing the systems that govern how agents write code.\n\n## TL;DR [...] Harness engineering operates through reinforcing layers: preventive controls that stop unwanted outputs before they occur, and corrective controls that detect violations and trigger a response. Teams starting from zero should implement them in order: constraint harnesses first because they reduce failure volume before anything else is in place, feedback loops second because they enable self-correction without human intervention, quality gates third because they enforce what the first two layers could not prevent.\n\nOne tradeoff applies to all three: over-constraining is a real failure mode. Complexity limits set too low flag legitimate refactoring; lint rules that reject valid patterns slow agents without improving output quality. Start narrow, measure, then expand. [...] ## What Is Harness Engineering: Origin and Definition\n\nThe term \"harness engineering\" is commonly attributed to Mitchell Hashimoto, co-founder of HashiCorp and creator of Terraform, in a blog post published in early February 2026. The original post URL has not been independently recovered, so this attribution is based on secondary reports: the core principle being that whenever an agent makes a mistake, engineers should build a solution ensuring the agent never makes that specific mistake again.",
+        "title": "Harness Engineering for AI Coding Agents: Constraints That Ship Reliable Code | Augment Code",
+        "url": "https://www.augmentcode.com/guides/harness-engineering-ai-coding-agents",
+        "original_url": "https://www.augmentcode.com/guides/harness-engineering-ai-coding-agents",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:15:03.235663Z",
+        "published_at": null,
+        "content_hash": "7861d8ee0c3d7d5021c6cceb5bf9da3b5422371e01b9cc0386ce45b0a25a9d15",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 1806,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-5a5f4d0f09b9694177e8e62fef9030e1",
+        "text": "\") agentic harness working under the hood with the Tauri (software framework) \"Tauri (software framework)\") DOM Inspector\n\nAn agent harness, also known as agent scaffolding, is the software infrastructure surrounding a large language model (LLM) that enables it to operate as an AI agent. It manages tool use, memory, state persistence, execution environments and feedback loops, as opposed to the model's internal reasoning. The UK's AI Security Institute described an AI agent as being formed by the model plus the scaffolding back in 2023. The relationship can be expressed as agent = model + harness. [...] Because a \"base model\" LLM is a stateless probabilistic function that maps input token sequences to output token sequences, the harness is what makes an agent out of a model, i.e. a thing that interfaces with external tools, inputs and outputs non-token data (such as images), and interacts with a task-environment coherently over many rounds. Rather than repeatedly re-reading an ever-growing transcript inside the context window, a harness can offload record-keeping into a structured software environment that manages the agent's state. A minimal harness is unnecessary for a single prompt-and-response exchange, but becomes important as tasks grow multi-step, tool-oriented, or long-running. [...] 1. ↑ Yehudai A, Eden L, Li A, Uziel G, Zhao Y, Bar-Haim R, Cohan A, Shmueli-Scheuer M (July 2026). A Survey on Evaluation of LLM-based Agents. ACL Anthology. Retrieved 22 Aug 2026.\n2. 1 2 3 Nuñez, Michael (8 June 2026). \"Researchers trained an open source AI search agent, Harness-1, that outperforms GPT-5.4 on recalling relevant information\". VentureBeat. Retrieved 13 July 2026.\n3. ↑ AI Security Institute staffers (October 2023). \"Capabilities and risks from frontier AI: A discussion paper on the need for further research into AI risk\" (PDF). GOV.UK. Retrieved 22 Aug 2026. The resultant system, built out of the AI model and the scaffold, is an AI agent. AutoGPT is the most well-publicised example of such an AI agent as of late 2023",
+        "title": "Agent harness - Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Agent_harness",
+        "original_url": "https://en.wikipedia.org/wiki/Agent_harness",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:15:07.888943Z",
+        "published_at": null,
+        "content_hash": "8e7a924131241090fb8cdc3a703b4d53c9e45604a3df14dbe2ab5e818b8b6900",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 2054,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-c6f8b81ed6805b6c1242a9f0424095d0",
+        "text": "That layer is the agent harness — the configured environment that gives a model the tools, skills, orchestration, system prompts and supporting data systems it needs to perform a specific job. Two teams deploying the same LLM can see very different task-completion rates based entirely on how that environment is designed. The work of harness engineering is what determines which team ships a reliable agent.\n\n## What is harness engineering?\n\nHarness engineering, a subset of AI engineering, is the discipline of designing the non-model layer around an AI model so it can use tools, follow task-specific instructions, operate within a runtime and achieve a defined outcome more reliably. This layer is called the agent harness. [...] In This Guide\n\n What is harness engineering?\n The components of an agent harness\n Harness engineering vs. context engineering, prompting and agent orchestration\n Harness engineering on Snowflake\n\n## Frequently Asked Questions\n\nYour common questions about harness engineering, answered by Snowflake experts.\n\nWhat is an agent harness?\n\nAn agent harness is the non-model runtime that wraps an LLM and turns it into a usable agent. It manages tool dispatch, memory, context management, state persistence, the control loop and guardrails, giving a stateless model the runtime structure needed for multistep work.\n\nDo I need a harness to use an LLM? [...] Leo Rodriguez, Principal Product Marketing Manager, AI/ML at Snowflake, describes the harness as the layer that turns a general model into something more task-specific: “A harness provides the LLM with skills, tools, orchestration, a runtime, system prompts and supporting data systems. It’s effectively the customization and improvement of the base model to achieve a specific desired outcome.”",
+        "title": "Harness Engineering for Reliable AI Agents | Snowflake",
+        "url": "https://www.snowflake.com/en/artificial-intelligence/ai-engineering/harness-engineering",
+        "original_url": "https://www.snowflake.com/en/artificial-intelligence/ai-engineering/harness-engineering",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:15:07.888943Z",
+        "published_at": null,
+        "content_hash": "1f24277b53b26674349ceed1b19648e951f98d177a6b486a8a08db07718cd5ee",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 1780,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-c8f1d9742429e0c6a827f12137a42d70",
+        "text": "An AI agent harness is the software infrastructure that wraps around a large language model (LLM) and enables it to act on tasks, not just respond to prompts. The model reasons through a problem and decides what to do next. The harness connects it to the tools, systems, memory and execution environments needed to carry out those actions.\n\nAgent = Model + Harness\n\nThink of the model as the “brain” that generates reasoning and decisions. The harness is everything around it that helps the agent operate safely and reliably, including: [...] ## Why AI agents need both a model and a harness\n\nAI agents rely on two complementary layers: a model that reasons and a harness that acts.\n\nThe model, whether GPT-5.5, Claude, Llama or another LLM, reads context and decides what to do next. The harness turns those decisions into actions by connecting the model to tools, memory and external systems.\n\nModern agent systems are increasingly built around this separation between reasoning and execution. Together, the two layers allow agents to complete tasks reliably across real-world workflows.\n\n### What is the reason, act, observe loop?\n\nAt the core of many AI agents is a repeating cycle. Understanding this loop makes the role of the harness easier to see. [...] | Discipline | What it focuses on | Main artifact | Typical applications |\n ---  --- |\n| Prompt engineering | Wording the input to get a better response | A well-crafted prompt | Early LLM applications |\n| Context engineering | Curating what information the model sees and when | Retrieval pipelines, memory design | RAG-era applications |\n| Harness engineering | Designing the full system around the model — tools, sandboxes, loops, guardrails | The harness itself | Agentic systems and autonomous workflows |\n\nPrompt and context engineering both live inside harness engineering. The harness is the system around the model; prompts and context are pieces of that system.\n\nREPORT\n### The agentic AI playbook for the enterprise\n\nRead now\n\nImage 3: ai",
+        "title": "What is an AI Agent Harness?",
+        "url": "https://www.databricks.com/blog/ai-harness",
+        "original_url": "https://www.databricks.com/blog/ai-harness",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:15:07.888943Z",
+        "published_at": null,
+        "content_hash": "e9a5395e49a474296a53e2a200cbfbe63a26ab567c4a09a11f58312cb09aa1cb",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 2011,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-3e4253227233d09bf9e443b82d597bd8",
+        "text": "In simple terms, an agent harness is the software infrastructure that wraps around a large language model (LLM) or AI agent, handling everything \\_except\\_ the model itself. One AI architect defines an agent harness as “the complete architectural system surrounding an LLM that manages the lifecycle of context: from intent capture through specification, compilation, execution, verification, and persistence”, \\_everything except the LLM itself\\_.[\\_everything except the LLM itself\\_.]( In practical terms, the harness is what connects an AI model to the outside world, enabling it to use tools, remember information between steps, and interact with complex environments. [...] Harnesses became necessary as AI moved from one-shot interactions to persistent, tool-using, multi-step autonomy. They address the “glue” issues (memory beyond the context window, interfacing with external systems, structuring multi-step work) that pure LLMs alone weren’t designed to handle.\n\n## ## How does an agent harness work?\n\nAn agent harness typically works by intercepting and augmenting the communication between the user, the AI model, and any external tools or environments. The process usually runs in these stages: [...] - \\\\Modular gaming agent harness:\\\\ In academic research, the paper \\_“General Modular Harness for LLM Agents in Multi-Turn Gaming Environments”\\_ (ICML 2025) demonstrated a harness that allowed a single LLM to play diverse games by plugging in modules. Their \\\\harness included perception, memory, and reasoning modules\\\\ attached to a GPT-4-class model, enabling it to see the game state, remember past moves, and deliberate. The harness interfaced with the Gymnasium game API, feeding observations to the model and actions back to the game loop. Across all tested games, the model with a harness \\_consistently outperformed the same model alone\\_, with no change to the model itself.",
+        "title": "What is an AI harness? | Parallel",
+        "url": "https://parallel.ai/articles/what-is-an-agent-harness",
+        "original_url": "https://parallel.ai/articles/what-is-an-agent-harness",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:15:07.888943Z",
+        "published_at": null,
+        "content_hash": "74eea283231a1f5b6148eddedf068337c7c8dff7f67b7ced6767e5039279aa6b",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 1901,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-c4978da51341b64de13091539a4119bb",
+        "text": "An AI Agent Harness is the software infrastructure that surrounds a Large Language Model (LLM) and enables it to interact with the outside world. It connects the model to tools, memory, execution environments, and safety controls, allowing the model's decisions to be translated into meaningful actions.\n\nSimply put:\n\n```\nAI Agent = Model + Harness \n```\n\nThink of the model as the brain that reasons and decides what should happen next. The harness is everything around it that enables those decisions to be executed safely and reliably.\n\n## What Does an AI Agent Harness Provide?\n\nA typical AI agent harness consists of four key capabilities.\n\n## Tools\n\nThe harness connects the model to external systems, including: [...] The harness records:\n\n Tool calls\n Execution traces\n Latency\n Errors\n Token usage\n Workflow history\n\nThis helps developers debug, evaluate, and improve agent systems.\n\n# Why Harness Design Matters\n\nAs LLMs become more capable, the harness becomes an increasingly important factor in agent performance.\n\nA strong harness improves:\n\n Context management\n Tool orchestration\n Memory handling\n Verification\n Safety\n Reliability\n\nIn many real-world scenarios, a well-designed harness around a smaller model can outperform a more capable model with poor execution infrastructure.\n\nThe future of AI performance will depend not only on better models but also on better systems built around those models.\n\n# Harness Engineering: The Next Evolution\n\nAI development has evolved through several stages: [...] Skip to content\n\nDEV Community \n\nLog in    Create account\n\n## DEV Community\n\nNaimul Karim\n\nNaimul Karim\n\nPosted on\n\n# What is an AI Agent Harness?\n\n#llm #infrastructure #agents #ai\n\nLarge Language Models (LLMs) are incredibly good at understanding language, reasoning through problems, and generating responses. However, on their own, they cannot execute code, call APIs, access files, remember previous work, or complete multi-step workflows.\n\nTo move beyond answering prompts and actually perform tasks, an LLM needs an AI Agent Harness.",
+        "title": "What is an AI Agent Harness? - DEV Community",
+        "url": "https://dev.to/naimulkarim/what-is-an-ai-agent-harness-370m",
+        "original_url": "https://dev.to/naimulkarim/what-is-an-ai-agent-harness-370m",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:15:07.888943Z",
+        "published_at": null,
+        "content_hash": "a2c8c7adfeccbfd49c85b1992892a9057490e4daa83e21bc0c006d9a12e783d7",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 2059,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-987b24cbdcb2c52c12815f6487f3950e",
+        "text": "The harness determines whether an agent succeeds or fails.\n\nGreat harnesses manage human approvals, filesystem access, tool orchestration, sub-agents, prompts, and lifecycle — intervening minimally but preventing catastrophic failures.\n\nStart simple.\n\nBuild robust atomic tools. Let the model make the plan.\n\nAdd guardrails, retries, and verification.\n\nThat’s harness engineering.\n\n## Lastly\n\nMarkdown/prompt harness (like Anthropic’s CLAUDE.md skills) embeds the orchestration instructions directly in the system prompt or structured markdown files.\n\nThe LLM itself becomes the loop controller — it reads the harness rules and follows them.\n\nBest when the LLM is capable enough to self-direct and you want rapid iteration without code changes. [...] # Cobus Greyling on LLMs, NLU, NLP, chatbots & voicebots\n\n# The Rise of AI Harness Engineering\n\n### AI Agents needed SDKs, then Frameworks, then Scaffolding. Now they need a Harness.\n\nCobus Greyling\n\nThanks for reading Cobus Greyling on LLMs, NLU, NLP, chatbots & voicebots! Subscribe for free to receive new posts and support my work.\n\nI’ve written about the three architectural approaches to building AI Agents: SDKs, Frameworks and Scaffolding.\n\nEach one sits at a different point on the flexibility-versus-structurespectrum.\n\n> A fourth pattern has emerged in 2026 that sits above all three. It’s called a Harness.\n\nBoth OpenAI and Anthropic are now using the term formally.\n\nMartin Fowler has written about it. An arXiv paper formalises it.",
+        "title": "The Rise of AI Harness Engineering",
+        "url": "https://cobusgreyling.substack.com/p/the-rise-of-ai-harness-engineering",
+        "original_url": "https://cobusgreyling.substack.com/p/the-rise-of-ai-harness-engineering",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:15:07.888943Z",
+        "published_at": null,
+        "content_hash": "94e71f1eed9b4b626432e1923361e7bf37943b2a376bf4076e05ed3b34879c25",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 1496,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-b1787828707f02f77f2fa6c1223eb37f",
+        "text": "An agent harness is a program that runs a loop. It starts by prompting the LLM and then reads its response. If the LLM response is a tool call,",
+        "title": "Concrete explanation of what a harness is : r/AI_Agents",
+        "url": "https://www.reddit.com/r/AI_Agents/comments/1ulwu3y/concrete_explanation_of_what_a_harness_is",
+        "original_url": "https://www.reddit.com/r/AI_Agents/comments/1ulwu3y/concrete_explanation_of_what_a_harness_is",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:15:07.888943Z",
+        "published_at": null,
+        "content_hash": "eaef687f8b860165c04b9defffa97e47dd48e724070283d64161a733da11c384",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 143,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-827f6abe54b6c01f12b8755db1ff3702",
+        "text": "Press enter or click to view image in full size\n\nImage 16\n\n## Glossary of Terms\n\nAgent Harness: The non-model runtime software infrastructure that wraps a large language model’s (LLM) core reasoning loop to continuously coordinate tool dispatch, context management, safety enforcement, and session persistence. It functions as the operating system around the model’s reasoning engine, turning raw capabilities into dependable, repeatable actions.\n\nAgent Legibility: The practice of designing systems, code repositories, and operating environments so that they are inherently understandable, readable, and securely navigable for autonomous agents as well as humans. [...] Optimizing the model without stabilizing the harness yields diminishing returns. As noted in the current landscape analysis:\n\n“The harness is the singular architectural layer responsible for translating probabilistic reasoning into dependable, deterministic action.”\n\nThe harness is the local operational envelope that manages everything occurring during the runtime cycle, wrapping the LLM with the infrastructure it needs to survive a production environment.\n\n## Takeaway 2: The Tenfold Economic Differential\n\nPress enter or click to view image in full size\n\nImage 7\n\nHarness engineering is the primary driver of ROI. By implementing KV-cache Locality and Semantic Routing within the harness, organizations are seeing a massive shift in unit economics. [...] Image 5\n\n### Introduction: The 88% Production Gap\n\nThe industry is currently facing a sobering reality: while Large Language Models (LLMs) have reached extraordinary capabilities, enterprise adoption is hitting a wall. Market data indicates that up to 88% of enterprise AI agent projects fail to reach production. The reason for this “production gap” is becoming clear to infrastructure strategists: we have spent years developing powerful “brains” (the models) but have neglected the “nervous system” and “exoskeleton” required for those brains to interact with the real world.\n\nTo bridge this gap, technical leaders are shifting their focus to the Agent Harness. The relationship is best expressed by a simple architectural equation:\n\n### {Agent} = {Model} + {Harness}",
+        "title": "Agent Harness Engineering — The Rise of the AI Control Plane",
+        "url": "https://medium.com/@adnanmasood/agent-harness-engineering-the-rise-of-the-ai-control-plane-938ead884b1d",
+        "original_url": "https://medium.com/@adnanmasood/agent-harness-engineering-the-rise-of-the-ai-control-plane-938ead884b1d",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:15:07.888943Z",
+        "published_at": null,
+        "content_hash": "7299a72d5275b14df5aa69a36ec6fcb3f6fee84098fabf374ba4e0b011454f93",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 2202,
+        "original_id": null,
+        "original_quiz_id": null
+      }
+    ],
+    "error_code": null,
+    "retry_after_seconds": 0,
+    "created_at": "2026-10-14T12:14:58Z",
+    "expires_at": "2026-10-15T12:14:58Z"
+  },
+  "wall_attempt_seconds": [
+    28.367,
+    8.452
+  ],
+  "elapsed_seconds": 36.819,
+  "api_timings": [
+    {
+      "method": "POST",
+      "path": "/auth/wechat",
+      "status": 200,
+      "seconds": 0.132
+    },
+    {
+      "method": "POST",
+      "path": "/quiz/preparations",
+      "status": 200,
+      "seconds": 28.2
+    },
+    {
+      "method": "GET",
+      "path": "/quiz/preparations/333aa96e-3ecc-4856-acb6-d1e6d470c6b8",
+      "status": 200,
+      "seconds": 0.029
+    },
+    {
+      "method": "POST",
+      "path": "/auth/wechat",
+      "status": 200,
+      "seconds": 0.143
+    },
+    {
+      "method": "POST",
+      "path": "/quiz/preparations",
+      "status": 200,
+      "seconds": 0.061
+    },
+    {
+      "method": "GET",
+      "path": "/quiz/preparations/333aa96e-3ecc-4856-acb6-d1e6d470c6b8",
+      "status": 200,
+      "seconds": 0.026
+    },
+    {
+      "method": "POST",
+      "path": "/quiz/generate",
+      "status": 200,
+      "seconds": 8.199
+    },
+    {
+      "method": "GET",
+      "path": "/operations/generate-harness-1",
+      "status": 200,
+      "seconds": 0.013
+    }
+  ],
+  "structured_model_usage": [
+    {
+      "operation": "333aa96e-3ecc-4856-acb6-d1e6d470c6b8",
+      "attempt": 1,
+      "tokens": {
+        "input_tokens": 7367,
+        "output_tokens": 3695,
+        "total_tokens": 11062
+      }
+    },
+    {
+      "operation": "005165f1-2432-47d8-a3fe-9ad3938edbaa",
+      "attempt": 1,
+      "tokens": {
+        "input_tokens": 5376,
+        "output_tokens": 846,
+        "total_tokens": 6222
+      }
+    },
+    {
+      "operation": "005165f1-2432-47d8-a3fe-9ad3938edbaa",
+      "attempt": 1,
+      "tokens": {
+        "input_tokens": 5010,
+        "output_tokens": 623,
+        "total_tokens": 5633
+      }
+    }
+  ],
+  "operations": [
+    {
+      "key": "generate-harness-1",
+      "kind": "quiz",
+      "status": "succeeded",
+      "stage": "succeeded",
+      "model_calls": 2,
+      "tool_calls": 0,
+      "page_attempts": 0,
+      "charged": 1,
+      "retrieval": null,
+      "error_code": null
+    },
+    {
+      "key": "prepare:d7cc19301c625f234cdb097d9a3d37988104a80561da6e89dfbfe928993508b9",
+      "kind": "prepare",
+      "status": "succeeded",
+      "stage": "ready",
+      "model_calls": 3,
+      "tool_calls": 2,
+      "page_attempts": 0,
+      "charged": 0,
+      "retrieval": null,
+      "error_code": null
+    }
+  ],
+  "retrieval_preparations": [
+    {
+      "scope": {
+        "candidates": [
+          {
+            "id": "scope-harness-eng-core",
+            "topic": "Harness Engineering",
+            "domain": "AI 工程 / 智能体基础设施",
+            "focuses": [
+              {
+                "id": "focus-he-definition",
+                "name": "概念定义与演进脉络",
+                "points": [
+                  {
+                    "id": "pt-he-def-core",
+                    "name": "Harness Engineering 的定义：设计模型之外的非模型层环境",
+                    "evidence_ids": [
+                      "web-2dc98e70b0ff248849471959dd2ce683",
+                      "web-c6f8b81ed6805b6c1242a9f0424095d0",
+                      "web-11bbe51a72f3502827fbcc206b85f5ab"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "pt-he-agent-eq-model-harness",
+                    "name": "核心公式：Agent = Model + Harness",
+                    "evidence_ids": [
+                      "web-b539e62c4f0a42e1d68aa1e1a42d32fd",
+                      "web-5a5f4d0f09b9694177e8e62fef9030e1",
+                      "web-c8f1d9742429e0c6a827f12137a42d70"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "pt-he-three-phases",
+                    "name": "三阶段演进：Prompt Engineering → Context Engineering → Harness Engineering",
+                    "evidence_ids": [
+                      "web-b539e62c4f0a42e1d68aa1e1a42d32fd",
+                      "web-2dc98e70b0ff248849471959dd2ce683",
+                      "web-11bbe51a72f3502827fbcc206b85f5ab"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "pt-he-origin-hashimoto",
+                    "name": "术语起源：Mitchell Hashimoto 于 2026 年 2 月提出",
+                    "evidence_ids": [
+                      "web-fbbaebd120cafc12e218fa8af815b32b",
+                      "web-11bbe51a72f3502827fbcc206b85f5ab"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "pt-he-2026-focus",
+                    "name": "2026 年成为工程投入的主要焦点",
+                    "evidence_ids": [
+                      "web-b539e62c4f0a42e1d68aa1e1a42d32fd",
+                      "web-400302decd9e4fe14c2b2506ea50cc78"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "pt-he-vs-prompt-context",
+                    "name": "与 Prompt Engineering、Context Engineering 的边界区分",
+                    "evidence_ids": [
+                      "web-11bbe51a72f3502827fbcc206b85f5ab",
+                      "web-c6f8b81ed6805b6c1242a9f0424095d0"
+                    ],
+                    "evidence_status": "available"
+                  }
+                ],
+                "description": "Harness Engineering 是什么、为何出现，以及它在 AI 工程成熟度中的位置。"
+              },
+              {
+                "id": "focus-he-components",
+                "name": "Agent Harness 的组成与运行机制",
+                "points": [
+                  {
+                    "id": "pt-he-comp-tools",
+                    "name": "工具接入与工具调度（tool use / tool dispatch）",
+                    "evidence_ids": [
+                      "web-5a5f4d0f09b9694177e8e62fef9030e1",
+                      "web-c4978da51341b64de13091539a4119bb",
+                      "web-c8f1d9742429e0c6a827f12137a42d70"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "pt-he-comp-memory",
+                    "name": "记忆与状态持久化（memory / state persistence）",
+                    "evidence_ids": [
+                      "web-5a5f4d0f09b9694177e8e62fef9030e1",
+                      "web-c8f1d9742429e0c6a827f12137a42d70",
+                      "web-3e4253227233d09bf9e443b82d597bd8"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "pt-he-comp-exec-env",
+                    "name": "执行环境与运行时（execution environment / runtime）",
+                    "evidence_ids": [
+                      "web-5a5f4d0f09b9694177e8e62fef9030e1",
+                      "web-c4978da51341b64de13091539a4119bb"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "pt-he-comp-feedback-loop",
+                    "name": "反馈循环与自我校验（feedback loops / verification）",
+                    "evidence_ids": [
+                      "web-5a5f4d0f09b9694177e8e62fef9030e1",
+                      "web-11bbe51a72f3502827fbcc206b85f5ab",
+                      "web-d50f2f00a297f486be5d0c31fa783df6"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "pt-he-comp-loop-program",
+                    "name": "Harness 作为运行循环程序：提示 LLM、读取响应、处理工具调用",
+                    "evidence_ids": [
+                      "web-b1787828707f02f77f2fa6c1223eb37f"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "pt-he-comp-context-lifecycle",
+                    "name": "上下文生命周期管理：从意图捕获到规范、编译、执行、验证、持久化",
+                    "evidence_ids": [
+                      "web-3e4253227233d09bf9e443b82d597bd8"
+                    ],
+                    "evidence_status": "available"
+                  }
+                ],
+                "description": "Harness 作为包裹 LLM 的软件基础设施，其具体能力构成与运行循环。"
+              },
+              {
+                "id": "focus-he-practice",
+                "name": "工程实践：约束、可靠性与可观测性",
+                "points": [
+                  {
+                    "id": "pt-he-prac-constraints",
+                    "name": "约束式 Harness：预防性控制与纠正性控制的分层",
+                    "evidence_ids": [
+                      "web-d50f2f00a297f486be5d0c31fa783df6"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "pt-he-prac-order",
+                    "name": "落地顺序：先约束 Harness，再反馈循环",
+                    "evidence_ids": [
+                      "web-d50f2f00a297f486be5d0c31fa783df6"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "pt-he-prac-observability",
+                    "name": "可观测性：记录工具调用、执行轨迹、延迟、错误、token 用量",
+                    "evidence_ids": [
+                      "web-c4978da51341b64de13091539a4119bb",
+                      "web-295c3ddfb6e3e9a7d45f588ac990925f"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "pt-he-prac-guardrails",
+                    "name": "护栏、重试与验证：最小干预但防止灾难性失败",
+                    "evidence_ids": [
+                      "web-987b24cbdcb2c52c12815f6487f3950e"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "pt-he-prac-progressive-disclosure",
+                    "name": "渐进式披露（progressive disclosure）与可丢弃 Harness（disposable harnesses）",
+                    "evidence_ids": [
+                      "web-295c3ddfb6e3e9a7d45f588ac990925f"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "pt-he-prac-human-approval",
+                    "name": "人工审批、文件系统访问与子智能体编排",
+                    "evidence_ids": [
+                      "web-987b24cbdcb2c52c12815f6487f3950e"
+                    ],
+                    "evidence_status": "available"
+                  }
+                ],
+                "description": "如何通过工程手段让智能体在生产环境中可靠运行，包括控制层设计与失败治理。"
+              }
+            ],
+            "description": "围绕「Agent = Model + Harness」这一核心命题，整理 Harness Engineering 作为 AI 工程第三阶段（继 Prompt Engineering、Context Engineering 之后）的定义、定位与工程实践。资料显示该术语由 Mitchell Hashimoto 于 2026 年 2 月提出，指设计模型之外的非模型层基础设施，使智能体可靠、可自主运行。本候选保留用户完整意图，聚焦概念本体与工程方法论，待用户确认。"
+          },
+          {
+            "id": "scope-harness-eng-coding-agents",
+            "topic": "Harness Engineering",
+            "domain": "AI 编码智能体 / 软件开发工具链",
+            "focuses": [
+              {
+                "id": "focus-coding-managed-agents",
+                "name": "托管编码智能体与工具生态",
+                "points": [
+                  {
+                    "id": "pt-coding-cursor-claude",
+                    "name": "Cursor 3、Claude Code、Anthropic Managed Agents 等托管智能体",
+                    "evidence_ids": [
+                      "web-295c3ddfb6e3e9a7d45f588ac990925f"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "pt-coding-shift",
+                    "name": "从 Prompt Engineering 转向生产级上下文与执行基础设施",
+                    "evidence_ids": [
+                      "web-295c3ddfb6e3e9a7d45f588ac990925f"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "pt-coding-markdown-harness",
+                    "name": "Markdown / 提示词 Harness：如 Anthropic 的 CLAUDE.md skills 内嵌编排指令",
+                    "evidence_ids": [
+                      "web-987b24cbdcb2c52c12815f6487f3950e"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "pt-coding-llm-loop-controller",
+                    "name": "LLM 自身作为循环控制器：读取 Harness 规则并遵循",
+                    "evidence_ids": [
+                      "web-987b24cbdcb2c52c12815f6487f3950e"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "pt-coding-atomic-tools",
+                    "name": "从简单开始：构建健壮的原子工具，让模型自己做计划",
+                    "evidence_ids": [
+                      "web-987b24cbdcb2c52c12815f6487f3950e"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "pt-coding-agent-legibility",
+                    "name": "Agent Legibility：让代码库与运行环境对智能体可读、可安全导航",
+                    "evidence_ids": [
+                      "web-827f6abe54b6c01f12b8755db1ff3702"
+                    ],
+                    "evidence_status": "available"
+                  }
+                ],
+                "description": "以具体产品为例说明从 Prompt Engineering 向生产级上下文与执行基础设施的转变。"
+              },
+              {
+                "id": "focus-coding-reliability",
+                "name": "编码智能体的可靠性与生产落地",
+                "points": [
+                  {
+                    "id": "pt-coding-reliable-scale",
+                    "name": "通过环境、约束与反馈循环让编码智能体规模化可靠",
+                    "evidence_ids": [
+                      "web-d50f2f00a297f486be5d0c31fa783df6",
+                      "web-c8ef9df3d5e2de8f9a681d0fa5021ac1"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "pt-coding-production-gap",
+                    "name": "生产落地缺口：大量企业智能体项目未能进入生产",
+                    "evidence_ids": [
+                      "web-827f6abe54b6c01f12b8755db1ff3702"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "pt-coding-role-shift",
+                    "name": "工程师角色转变：从写代码到设计治理智能体写代码的系统",
+                    "evidence_ids": [
+                      "web-d50f2f00a297f486be5d0c31fa783df6"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "pt-coding-same-model-diff-rate",
+                    "name": "同一 LLM 在不同 Harness 设计下任务完成率差异显著",
+                    "evidence_ids": [
+                      "web-c6f8b81ed6805b6c1242a9f0424095d0"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "pt-coding-control-unpredictable",
+                    "name": "控制不可预测的智能体与编码助手，使其达到生产级一致可靠",
+                    "evidence_ids": [
+                      "web-400302decd9e4fe14c2b2506ea50cc78"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "pt-coding-roi",
+                    "name": "Harness 工程作为 ROI 主要驱动：KV-cache 局部性与语义路由",
+                    "evidence_ids": [
+                      "web-827f6abe54b6c01f12b8755db1ff3702"
+                    ],
+                    "evidence_status": "available"
+                  }
+                ],
+                "description": "让编码智能体在规模化场景下稳定交付的工程关注点。"
+              }
+            ],
+            "description": "同一术语在「AI 编码智能体」领域的具体落地：围绕 Cursor、Claude Code、Anthropic Managed Agents 等托管智能体，讨论如何通过 Harness 让编码智能体在真实软件工程中稳定产出可靠代码。与核心概念候选方向实质不同，聚焦工具链与交付可靠性。"
+          },
+          {
+            "id": "scope-harness-eng-ecosystem",
+            "topic": "Harness Engineering",
+            "domain": "行业生态、观点与争议",
+            "focuses": [
+              {
+                "id": "focus-eco-discourse",
+                "name": "行业话语与传播",
+                "points": [
+                  {
+                    "id": "pt-eco-thoughtworks",
+                    "name": "Thoughtworks 播客：2026 年软件工程最重要的术语之一",
+                    "evidence_ids": [
+                      "web-400302decd9e4fe14c2b2506ea50cc78"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "pt-eco-ai-daily-brief",
+                    "name": "The AI Daily Brief 频道对 Harness Engineering 101 的解读",
+                    "evidence_ids": [
+                      "web-295c3ddfb6e3e9a7d45f588ac990925f"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "pt-eco-reddit-claude",
+                    "name": "r/ClaudeCode 社区讨论：Harness Engineering 是下一个大事件",
+                    "evidence_ids": [
+                      "web-c8ef9df3d5e2de8f9a681d0fa5021ac1"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "pt-eco-reddit-ai-agents",
+                    "name": "r/AI_Agents 社区对 Harness 运行循环的具体解释",
+                    "evidence_ids": [
+                      "web-b1787828707f02f77f2fa6c1223eb37f"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "pt-eco-vendor-guides",
+                    "name": "厂商指南视角：Databricks、Snowflake、Faros、Augment、Milvus 等",
+                    "evidence_ids": [
+                      "web-2dc98e70b0ff248849471959dd2ce683",
+                      "web-c6f8b81ed6805b6c1242a9f0424095d0",
+                      "web-b539e62c4f0a42e1d68aa1e1a42d32fd",
+                      "web-d50f2f00a297f486be5d0c31fa783df6",
+                      "web-11bbe51a72f3502827fbcc206b85f5ab"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "pt-eco-control-plane",
+                    "name": "「AI 控制平面」叙事：Harness 作为把概率推理转为确定性行动的架构层",
+                    "evidence_ids": [
+                      "web-827f6abe54b6c01f12b8755db1ff3702"
+                    ],
+                    "evidence_status": "available"
+                  }
+                ],
+                "description": "该术语如何在播客、社区与厂商内容中被提出、讨论与推广。"
+              },
+              {
+                "id": "focus-eco-terminology",
+                "name": "术语与命名辨析",
+                "points": [
+                  {
+                    "id": "pt-eco-scaffolding",
+                    "name": "Agent Harness 又称 Agent Scaffolding（智能体脚手架）",
+                    "evidence_ids": [
+                      "web-5a5f4d0f09b9694177e8e62fef9030e1"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "pt-eco-uk-asi",
+                    "name": "英国 AI Security Institute 2023 年即提出 model + scaffolding 的智能体表述",
+                    "evidence_ids": [
+                      "web-5a5f4d0f09b9694177e8e62fef9030e1"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "pt-eco-stateless-model",
+                    "name": "基础模型是无状态概率函数，Harness 使其成为智能体",
+                    "evidence_ids": [
+                      "web-5a5f4d0f09b9694177e8e62fef9030e1"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "pt-eco-vs-orchestration",
+                    "name": "Harness Engineering 与上下文工程、提示、智能体编排的对比",
+                    "evidence_ids": [
+                      "web-c6f8b81ed6805b6c1242a9f0424095d0"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "pt-eco-os-metaphor",
+                    "name": "比喻：Harness 是模型推理引擎之外的操作系统",
+                    "evidence_ids": [
+                      "web-827f6abe54b6c01f12b8755db1ff3702"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "pt-eco-brain-metaphor",
+                    "name": "比喻：模型是「大脑」，Harness 是围绕它的一切",
+                    "evidence_ids": [
+                      "web-c8f1d9742429e0c6a827f12137a42d70",
+                      "web-c4978da51341b64de13091539a4119bb"
+                    ],
+                    "evidence_status": "available"
+                  }
+                ],
+                "description": "Harness 与相邻概念的命名关系及常见混淆点。"
+              }
+            ],
+            "description": "围绕该术语在 2026 年软件工程界的传播与讨论：播客、社区帖、厂商指南等不同来源对 Harness Engineering 的定位与评价。与前述候选方向实质不同，聚焦生态与话语层面，保留资料中的热门讨论与语境。"
+          }
+        ]
+      },
+      "trace": [
+        {
+          "tool": "tavily_search",
+          "status": "success",
+          "call_id": "call_00_jHjEx5vpQhHJHxolSlTy4131",
+          "credits": 2.0,
+          "elapsed_ms": 3288,
+          "parameters": {
+            "query": "Harness Engineering",
+            "topic": "general",
+            "country": null,
+            "end_date": null,
+            "start_date": null,
+            "time_range": null,
+            "max_results": 8,
+            "content_mode": "summary",
+            "search_depth": "advanced",
+            "exclude_domains": [],
+            "include_domains": []
+          },
+          "source_ids": [
+            "web-295c3ddfb6e3e9a7d45f588ac990925f",
+            "web-2dc98e70b0ff248849471959dd2ce683",
+            "web-b539e62c4f0a42e1d68aa1e1a42d32fd",
+            "web-fbbaebd120cafc12e218fa8af815b32b",
+            "web-c8ef9df3d5e2de8f9a681d0fa5021ac1",
+            "web-400302decd9e4fe14c2b2506ea50cc78",
+            "web-11bbe51a72f3502827fbcc206b85f5ab",
+            "web-d50f2f00a297f486be5d0c31fa783df6"
+          ],
+          "reason_code": null
+        },
+        {
+          "tool": "tavily_search",
+          "status": "success",
+          "call_id": "call_01_hFOSZvoomhlZPBY6ouNU3022",
+          "credits": 2.0,
+          "elapsed_ms": 4230,
+          "parameters": {
+            "query": "\"harness engineering\" AI agent harness LLM",
+            "topic": "general",
+            "country": null,
+            "end_date": null,
+            "start_date": null,
+            "time_range": null,
+            "max_results": 8,
+            "content_mode": "summary",
+            "search_depth": "advanced",
+            "exclude_domains": [],
+            "include_domains": []
+          },
+          "source_ids": [
+            "web-5a5f4d0f09b9694177e8e62fef9030e1",
+            "web-c6f8b81ed6805b6c1242a9f0424095d0",
+            "web-c8f1d9742429e0c6a827f12137a42d70",
+            "web-3e4253227233d09bf9e443b82d597bd8",
+            "web-c4978da51341b64de13091539a4119bb",
+            "web-987b24cbdcb2c52c12815f6487f3950e",
+            "web-b1787828707f02f77f2fa6c1223eb37f",
+            "web-827f6abe54b6c01f12b8755db1ff3702"
+          ],
+          "reason_code": null
+        }
+      ],
+      "usage": {
+        "input_tokens": 9028,
+        "total_tokens": 9513,
+        "output_tokens": 485
+      },
+      "evidence": [
+        {
+          "id": "web-295c3ddfb6e3e9a7d45f588ac990925f",
+          "end": null,
+          "url": "https://www.youtube.com/watch?v=OTjZBjq5FPg&vl=en-US",
+          "page": null,
+          "text": "# Harness Engineering 101\n## Channel: The AI Daily Brief: Artificial Intelligence News (verified)\n586K subscribers\n\n### Description\n23,455 views\nPosted: 2026-04-15\nHarness engineering means systems, tooling, and interfaces surrounding AI models to provide context, memory, safe execution, and orchestration. Managed agents such as Cursor 3, Claude Code, and Anthropic Managed Agents illustrate a shift from prompt engineering toward production-ready context and execution infrastructure. Progressive disclosure, observability, verification, and disposable harnesses indicate engineering and organizational design as the key determinants of real-world AI performance and business impact. [...] [8:43] configured your coding agent a bit. Have you used skills, MCP servers, sub aents, memory, agents, MD files? A coding agent\n[8:51] equals AI models plus a harness. These are all technically separate concepts, but they are all part of the coding agents configuration surface. Basically,\n[8:59] what does the model use to interact with its environment? Harness engineering, they write, describes the practice of leveraging these configuration points to\n[9:06] customize and improve your coding agents output quality and reliability. They continue by arguing that harness engineering is the subset of context [...] [10:26] point out that this is something that the big labs are talking about quite a bit now, too. Back in February, OpenAI dropped a post called harness\n[10:34] engineering, leveraging codecs in an agent first world. The place that they start from in this post is the goal of building and shipping an internal beta\n[10:42] of a software product with zero lines of manually written code. That has been the context through which they have had to figure out what needed to be part of the harness that they were designing. One of\n[10:51] the big experiments that they found was effectively that in this new approach to engineering, they had to uncover new ways of giving the agent progressively",
+          "start": null,
+          "title": "Harness Engineering 101",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "ee94adb87d58d5276866eb72103e49fc797f268698b16e26892d6bb8aeb034c4",
+          "content_kind": "snippet",
+          "original_url": "https://www.youtube.com/watch?v=OTjZBjq5FPg&vl=en-US",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:15:03.235663Z",
+          "source_chars": 2002,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-2dc98e70b0ff248849471959dd2ce683",
+          "end": null,
+          "url": "https://www.databricks.com/blog/ai-harness",
+          "page": null,
+          "text": "Harness engineering is the newest stage in a broader shift in how developers work with AI systems. As models have become more capable, the focus has gradually moved outward. It has shifted from writing better prompts, to controlling what information the model sees, to designing the entire system around the model.",
+          "start": null,
+          "title": "What is an AI Agent Harness?",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "e4245878ea6b1545bfc8b730b71e2312e82b75c3c4c2ee2bee2fe14751ce5ee5",
+          "content_kind": "snippet",
+          "original_url": "https://www.databricks.com/blog/ai-harness",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:15:03.235663Z",
+          "source_chars": 314,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-b539e62c4f0a42e1d68aa1e1a42d32fd",
+          "end": null,
+          "url": "https://www.faros.ai/blog/harness-engineering",
+          "page": null,
+          "text": "Chapters\n\nHeading 2\n\nHeading 3\n\nHeading 4\n\nCopy link to blog post entry\n\nCopied!\n\nCopied!\n\nAI\n\nCoding\n\nContext\n\nData Engineering\n\nLeaders\n\nManagers\n\nMetrics\n\nPublished May 22, 2026 · Updated July 15, 2026\n\nTL;DR: Agent = Model + Harness\n\nThe model contains the raw intelligence, and the harness makes that intelligence useful and actionable. Harness engineering is how we build the environment around AI models to turn them into reliable, autonomous agents. It’s the third phase of AI engineering maturity, following prompt engineering and context engineering, and the main focus of engineering investment in 2026.\n\n{{cta}} [...] ### What is harness engineering for AI coding agents?\n\n‍Harness engineering is the practice of building the surrounding software infrastructure—the harness—that allows a raw AI model to function as a reliable, autonomous agent. It involves designing tool orchestration, verification loops, memory, and safety guardrails so the AI can execute multi-step software tasks and self-correct errors in production.\n\n### What is the difference between an AI model and an AI agent?\n\n‍The industry formula is: Agent = Model + Harness. The AI model provides the raw reasoning and intelligence. The agent is the complete system where that model is wrapped in a harness, giving it the ability to read files, run terminal commands, verify tests, and execute autonomous workflows. [...] When deciding what to change, look at the whole system—the AI model, the harness, and how humans are working with both.\n\n## The harness engineering work to prioritize this quarter\n\nHarness engineering is the practice that converts raw model capability into production-grade engineering work. The orchestration, verification, memory, guardrails, and observability built around an AI agent determine whether its output reaches production safely and at scale—and the teams investing in these layers are the ones consistently moving agent-assisted code into real systems.",
+          "start": null,
+          "title": "Harness Engineering: A Guide to AI Coding Agents | Faros",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "4b2941e79b0265a8eda826061ec9c588297cbe8fae8892940375d025f27c07c3",
+          "content_kind": "snippet",
+          "original_url": "https://www.faros.ai/blog/harness-engineering",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:15:03.235663Z",
+          "source_chars": 1968,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-fbbaebd120cafc12e218fa8af815b32b",
+          "end": null,
+          "url": "https://www.linkedin.com/pulse/what-harness-engineering-werner-heijstek-fmqve",
+          "page": null,
+          "text": "Harness engineering, coined by Mitchell Hashimoto in February 2026, is the practice of designing the full environment an AI agent operates",
+          "start": null,
+          "title": "What is harness engineering? - Werner Heijstek",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "4782192a495eeef6b6bd16dbde1896e5eb3db9d59b309411a85e1e137ccdf2ed",
+          "content_kind": "snippet",
+          "original_url": "https://www.linkedin.com/pulse/what-harness-engineering-werner-heijstek-fmqve",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:15:03.235663Z",
+          "source_chars": 138,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-c8ef9df3d5e2de8f9a681d0fa5021ac1",
+          "end": null,
+          "url": "https://www.reddit.com/r/ClaudeCode/comments/1s3b46t/harness_engineering_is_the_next_big_thing_so_i",
+          "page": null,
+          "text": "Harness engineering is the discipline of making AI coding agents reliable by engineering the system around the model - the workflows,",
+          "start": null,
+          "title": "Harness engineering is the next big thing, so I started a ...",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "cdb55907cd5577fb999979a3ff1939607e242cf2f0852bb7bb51ca412461b916",
+          "content_kind": "snippet",
+          "original_url": "https://www.reddit.com/r/ClaudeCode/comments/1s3b46t/harness_engineering_is_the_next_big_thing_so_i",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:15:03.235663Z",
+          "source_chars": 133,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-400302decd9e4fe14c2b2506ea50cc78",
+          "end": null,
+          "url": "https://www.youtube.com/watch?v=KQJLPsbnKiQ",
+          "page": null,
+          "text": "# What is harness engineering? — Thoughtworks Technology Podcast\n## Channel: Thoughtworks\n51K subscribers\nN/A likes\n\n### Description\n1,992 views\nPosted: 2026-05-14\n'Harness engineering' is one of the most significant terms to emerge in software engineering in 2026. Broadly referring to the work done to control unpredictable AI agents and coding assistants, its use signals growing attention on what needs to be done to make agents reliable and consistent enough for production software in the real world.",
+          "start": null,
+          "title": "What is harness engineering? — Thoughtworks Technology Podcast",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "d325acfc3f42a66a04911d4654e7d86e08e93f6d6b5e0df86b054bd5876aff78",
+          "content_kind": "snippet",
+          "original_url": "https://www.youtube.com/watch?v=KQJLPsbnKiQ",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:15:03.235663Z",
+          "source_chars": 506,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-11bbe51a72f3502827fbcc206b85f5ab",
+          "end": null,
+          "url": "https://milvus.io/blog/harness-engineering-ai-agents.md",
+          "page": null,
+          "text": "It resonated because it names a problem every engineer building AI agents has already hit. Prompt engineering) gets you better single-turn outputs. Context engineering manages what the model sees. But neither addresses what happens when an agent runs autonomously for hours, making hundreds of decisions without supervision. That’s the gap Harness Engineering fills — and it almost always depends on hybrid search (hybrid full-text and semantic search) to work.\n\n## What Is Harness Engineering?\n\nHarness Engineering is the discipline of designing the execution environment around an autonomous AI agent. It defines which tools the agent can call, where it gets information, how it validates its own decisions, and when it should stop. [...] Engineering \n\nApril 09, 2026 Min Yin\n\nMitchell Hashimoto built HashiCorp and co-created Terraform. In February 2026, he published a blog post describing a habit he’d developed while working with AI agents: every time an agent made a mistake, he engineered a permanent fix into the agent’s environment. He called it “engineering the harness.” Within weeks, OpenAI and Anthropic published engineering articles expanding on the idea. The term _Harness Engineering_ had arrived. [...] Context Engineering manages how much information the model can see at once — which documents to retrieve, how to compress history, what fits in the context window and what gets dropped.\n\nHarness Engineering builds the world the agent operates in. Tools, knowledge sources, validation logic, architectural constraints — everything that determines whether an agent can run reliably across hundreds of decisions without human supervision.",
+          "start": null,
+          "title": "Harness Engineering: The Execution Layer AI Agents Actually Need",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "86a78ef9328a712cf7cb0343e83725d38153900ead409db804d579006f49ff14",
+          "content_kind": "snippet",
+          "original_url": "https://milvus.io/blog/harness-engineering-ai-agents.md",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:15:03.235663Z",
+          "source_chars": 1657,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-d50f2f00a297f486be5d0c31fa783df6",
+          "end": null,
+          "url": "https://www.augmentcode.com/guides/harness-engineering-ai-coding-agents",
+          "page": null,
+          "text": "Try CosmosGet Started\n\nBack to Guides\n\n# Harness Engineering for AI Coding Agents: Constraints That Ship Reliable Code\n\nApr 16, 2026Last updated: Jun 29, 2026•\n\nMolisha Shah\n\nMolisha Shah\n\nHarness Engineering for AI Coding Agents: Constraints That Ship Reliable Code\n\nHarness engineering is the discipline of designing environments, constraints, and feedback loops that make AI coding agents reliable at scale, shifting engineers from writing code to designing the systems that govern how agents write code.\n\n## TL;DR [...] Harness engineering operates through reinforcing layers: preventive controls that stop unwanted outputs before they occur, and corrective controls that detect violations and trigger a response. Teams starting from zero should implement them in order: constraint harnesses first because they reduce failure volume before anything else is in place, feedback loops second because they enable self-correction without human intervention, quality gates third because they enforce what the first two layers could not prevent.\n\nOne tradeoff applies to all three: over-constraining is a real failure mode. Complexity limits set too low flag legitimate refactoring; lint rules that reject valid patterns slow agents without improving output quality. Start narrow, measure, then expand. [...] ## What Is Harness Engineering: Origin and Definition\n\nThe term \"harness engineering\" is commonly attributed to Mitchell Hashimoto, co-founder of HashiCorp and creator of Terraform, in a blog post published in early February 2026. The original post URL has not been independently recovered, so this attribution is based on secondary reports: the core principle being that whenever an agent makes a mistake, engineers should build a solution ensuring the agent never makes that specific mistake again.",
+          "start": null,
+          "title": "Harness Engineering for AI Coding Agents: Constraints That Ship Reliable Code | Augment Code",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "7861d8ee0c3d7d5021c6cceb5bf9da3b5422371e01b9cc0386ce45b0a25a9d15",
+          "content_kind": "snippet",
+          "original_url": "https://www.augmentcode.com/guides/harness-engineering-ai-coding-agents",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:15:03.235663Z",
+          "source_chars": 1806,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-5a5f4d0f09b9694177e8e62fef9030e1",
+          "end": null,
+          "url": "https://en.wikipedia.org/wiki/Agent_harness",
+          "page": null,
+          "text": "\") agentic harness working under the hood with the Tauri (software framework) \"Tauri (software framework)\") DOM Inspector\n\nAn agent harness, also known as agent scaffolding, is the software infrastructure surrounding a large language model (LLM) that enables it to operate as an AI agent. It manages tool use, memory, state persistence, execution environments and feedback loops, as opposed to the model's internal reasoning. The UK's AI Security Institute described an AI agent as being formed by the model plus the scaffolding back in 2023. The relationship can be expressed as agent = model + harness. [...] Because a \"base model\" LLM is a stateless probabilistic function that maps input token sequences to output token sequences, the harness is what makes an agent out of a model, i.e. a thing that interfaces with external tools, inputs and outputs non-token data (such as images), and interacts with a task-environment coherently over many rounds. Rather than repeatedly re-reading an ever-growing transcript inside the context window, a harness can offload record-keeping into a structured software environment that manages the agent's state. A minimal harness is unnecessary for a single prompt-and-response exchange, but becomes important as tasks grow multi-step, tool-oriented, or long-running. [...] 1. ↑ Yehudai A, Eden L, Li A, Uziel G, Zhao Y, Bar-Haim R, Cohan A, Shmueli-Scheuer M (July 2026). A Survey on Evaluation of LLM-based Agents. ACL Anthology. Retrieved 22 Aug 2026.\n2. 1 2 3 Nuñez, Michael (8 June 2026). \"Researchers trained an open source AI search agent, Harness-1, that outperforms GPT-5.4 on recalling relevant information\". VentureBeat. Retrieved 13 July 2026.\n3. ↑ AI Security Institute staffers (October 2023). \"Capabilities and risks from frontier AI: A discussion paper on the need for further research into AI risk\" (PDF). GOV.UK. Retrieved 22 Aug 2026. The resultant system, built out of the AI model and the scaffold, is an AI agent. AutoGPT is the most well-publicised example of such an AI agent as of late 2023",
+          "start": null,
+          "title": "Agent harness - Wikipedia",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "8e7a924131241090fb8cdc3a703b4d53c9e45604a3df14dbe2ab5e818b8b6900",
+          "content_kind": "snippet",
+          "original_url": "https://en.wikipedia.org/wiki/Agent_harness",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:15:07.888943Z",
+          "source_chars": 2054,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-c6f8b81ed6805b6c1242a9f0424095d0",
+          "end": null,
+          "url": "https://www.snowflake.com/en/artificial-intelligence/ai-engineering/harness-engineering",
+          "page": null,
+          "text": "That layer is the agent harness — the configured environment that gives a model the tools, skills, orchestration, system prompts and supporting data systems it needs to perform a specific job. Two teams deploying the same LLM can see very different task-completion rates based entirely on how that environment is designed. The work of harness engineering is what determines which team ships a reliable agent.\n\n## What is harness engineering?\n\nHarness engineering, a subset of AI engineering, is the discipline of designing the non-model layer around an AI model so it can use tools, follow task-specific instructions, operate within a runtime and achieve a defined outcome more reliably. This layer is called the agent harness. [...] In This Guide\n\n What is harness engineering?\n The components of an agent harness\n Harness engineering vs. context engineering, prompting and agent orchestration\n Harness engineering on Snowflake\n\n## Frequently Asked Questions\n\nYour common questions about harness engineering, answered by Snowflake experts.\n\nWhat is an agent harness?\n\nAn agent harness is the non-model runtime that wraps an LLM and turns it into a usable agent. It manages tool dispatch, memory, context management, state persistence, the control loop and guardrails, giving a stateless model the runtime structure needed for multistep work.\n\nDo I need a harness to use an LLM? [...] Leo Rodriguez, Principal Product Marketing Manager, AI/ML at Snowflake, describes the harness as the layer that turns a general model into something more task-specific: “A harness provides the LLM with skills, tools, orchestration, a runtime, system prompts and supporting data systems. It’s effectively the customization and improvement of the base model to achieve a specific desired outcome.”",
+          "start": null,
+          "title": "Harness Engineering for Reliable AI Agents | Snowflake",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "1f24277b53b26674349ceed1b19648e951f98d177a6b486a8a08db07718cd5ee",
+          "content_kind": "snippet",
+          "original_url": "https://www.snowflake.com/en/artificial-intelligence/ai-engineering/harness-engineering",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:15:07.888943Z",
+          "source_chars": 1780,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-c8f1d9742429e0c6a827f12137a42d70",
+          "end": null,
+          "url": "https://www.databricks.com/blog/ai-harness",
+          "page": null,
+          "text": "An AI agent harness is the software infrastructure that wraps around a large language model (LLM) and enables it to act on tasks, not just respond to prompts. The model reasons through a problem and decides what to do next. The harness connects it to the tools, systems, memory and execution environments needed to carry out those actions.\n\nAgent = Model + Harness\n\nThink of the model as the “brain” that generates reasoning and decisions. The harness is everything around it that helps the agent operate safely and reliably, including: [...] ## Why AI agents need both a model and a harness\n\nAI agents rely on two complementary layers: a model that reasons and a harness that acts.\n\nThe model, whether GPT-5.5, Claude, Llama or another LLM, reads context and decides what to do next. The harness turns those decisions into actions by connecting the model to tools, memory and external systems.\n\nModern agent systems are increasingly built around this separation between reasoning and execution. Together, the two layers allow agents to complete tasks reliably across real-world workflows.\n\n### What is the reason, act, observe loop?\n\nAt the core of many AI agents is a repeating cycle. Understanding this loop makes the role of the harness easier to see. [...] | Discipline | What it focuses on | Main artifact | Typical applications |\n ---  --- |\n| Prompt engineering | Wording the input to get a better response | A well-crafted prompt | Early LLM applications |\n| Context engineering | Curating what information the model sees and when | Retrieval pipelines, memory design | RAG-era applications |\n| Harness engineering | Designing the full system around the model — tools, sandboxes, loops, guardrails | The harness itself | Agentic systems and autonomous workflows |\n\nPrompt and context engineering both live inside harness engineering. The harness is the system around the model; prompts and context are pieces of that system.\n\nREPORT\n### The agentic AI playbook for the enterprise\n\nRead now\n\nImage 3: ai",
+          "start": null,
+          "title": "What is an AI Agent Harness?",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "e9a5395e49a474296a53e2a200cbfbe63a26ab567c4a09a11f58312cb09aa1cb",
+          "content_kind": "snippet",
+          "original_url": "https://www.databricks.com/blog/ai-harness",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:15:07.888943Z",
+          "source_chars": 2011,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-3e4253227233d09bf9e443b82d597bd8",
+          "end": null,
+          "url": "https://parallel.ai/articles/what-is-an-agent-harness",
+          "page": null,
+          "text": "In simple terms, an agent harness is the software infrastructure that wraps around a large language model (LLM) or AI agent, handling everything \\_except\\_ the model itself. One AI architect defines an agent harness as “the complete architectural system surrounding an LLM that manages the lifecycle of context: from intent capture through specification, compilation, execution, verification, and persistence”, \\_everything except the LLM itself\\_.[\\_everything except the LLM itself\\_.]( In practical terms, the harness is what connects an AI model to the outside world, enabling it to use tools, remember information between steps, and interact with complex environments. [...] Harnesses became necessary as AI moved from one-shot interactions to persistent, tool-using, multi-step autonomy. They address the “glue” issues (memory beyond the context window, interfacing with external systems, structuring multi-step work) that pure LLMs alone weren’t designed to handle.\n\n## ## How does an agent harness work?\n\nAn agent harness typically works by intercepting and augmenting the communication between the user, the AI model, and any external tools or environments. The process usually runs in these stages: [...] - \\\\Modular gaming agent harness:\\\\ In academic research, the paper \\_“General Modular Harness for LLM Agents in Multi-Turn Gaming Environments”\\_ (ICML 2025) demonstrated a harness that allowed a single LLM to play diverse games by plugging in modules. Their \\\\harness included perception, memory, and reasoning modules\\\\ attached to a GPT-4-class model, enabling it to see the game state, remember past moves, and deliberate. The harness interfaced with the Gymnasium game API, feeding observations to the model and actions back to the game loop. Across all tested games, the model with a harness \\_consistently outperformed the same model alone\\_, with no change to the model itself.",
+          "start": null,
+          "title": "What is an AI harness? | Parallel",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "74eea283231a1f5b6148eddedf068337c7c8dff7f67b7ced6767e5039279aa6b",
+          "content_kind": "snippet",
+          "original_url": "https://parallel.ai/articles/what-is-an-agent-harness",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:15:07.888943Z",
+          "source_chars": 1901,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-c4978da51341b64de13091539a4119bb",
+          "end": null,
+          "url": "https://dev.to/naimulkarim/what-is-an-ai-agent-harness-370m",
+          "page": null,
+          "text": "An AI Agent Harness is the software infrastructure that surrounds a Large Language Model (LLM) and enables it to interact with the outside world. It connects the model to tools, memory, execution environments, and safety controls, allowing the model's decisions to be translated into meaningful actions.\n\nSimply put:\n\n```\nAI Agent = Model + Harness \n```\n\nThink of the model as the brain that reasons and decides what should happen next. The harness is everything around it that enables those decisions to be executed safely and reliably.\n\n## What Does an AI Agent Harness Provide?\n\nA typical AI agent harness consists of four key capabilities.\n\n## Tools\n\nThe harness connects the model to external systems, including: [...] The harness records:\n\n Tool calls\n Execution traces\n Latency\n Errors\n Token usage\n Workflow history\n\nThis helps developers debug, evaluate, and improve agent systems.\n\n# Why Harness Design Matters\n\nAs LLMs become more capable, the harness becomes an increasingly important factor in agent performance.\n\nA strong harness improves:\n\n Context management\n Tool orchestration\n Memory handling\n Verification\n Safety\n Reliability\n\nIn many real-world scenarios, a well-designed harness around a smaller model can outperform a more capable model with poor execution infrastructure.\n\nThe future of AI performance will depend not only on better models but also on better systems built around those models.\n\n# Harness Engineering: The Next Evolution\n\nAI development has evolved through several stages: [...] Skip to content\n\nDEV Community \n\nLog in    Create account\n\n## DEV Community\n\nNaimul Karim\n\nNaimul Karim\n\nPosted on\n\n# What is an AI Agent Harness?\n\n#llm #infrastructure #agents #ai\n\nLarge Language Models (LLMs) are incredibly good at understanding language, reasoning through problems, and generating responses. However, on their own, they cannot execute code, call APIs, access files, remember previous work, or complete multi-step workflows.\n\nTo move beyond answering prompts and actually perform tasks, an LLM needs an AI Agent Harness.",
+          "start": null,
+          "title": "What is an AI Agent Harness? - DEV Community",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "a2c8c7adfeccbfd49c85b1992892a9057490e4daa83e21bc0c006d9a12e783d7",
+          "content_kind": "snippet",
+          "original_url": "https://dev.to/naimulkarim/what-is-an-ai-agent-harness-370m",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:15:07.888943Z",
+          "source_chars": 2059,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-987b24cbdcb2c52c12815f6487f3950e",
+          "end": null,
+          "url": "https://cobusgreyling.substack.com/p/the-rise-of-ai-harness-engineering",
+          "page": null,
+          "text": "The harness determines whether an agent succeeds or fails.\n\nGreat harnesses manage human approvals, filesystem access, tool orchestration, sub-agents, prompts, and lifecycle — intervening minimally but preventing catastrophic failures.\n\nStart simple.\n\nBuild robust atomic tools. Let the model make the plan.\n\nAdd guardrails, retries, and verification.\n\nThat’s harness engineering.\n\n## Lastly\n\nMarkdown/prompt harness (like Anthropic’s CLAUDE.md skills) embeds the orchestration instructions directly in the system prompt or structured markdown files.\n\nThe LLM itself becomes the loop controller — it reads the harness rules and follows them.\n\nBest when the LLM is capable enough to self-direct and you want rapid iteration without code changes. [...] # Cobus Greyling on LLMs, NLU, NLP, chatbots & voicebots\n\n# The Rise of AI Harness Engineering\n\n### AI Agents needed SDKs, then Frameworks, then Scaffolding. Now they need a Harness.\n\nCobus Greyling\n\nThanks for reading Cobus Greyling on LLMs, NLU, NLP, chatbots & voicebots! Subscribe for free to receive new posts and support my work.\n\nI’ve written about the three architectural approaches to building AI Agents: SDKs, Frameworks and Scaffolding.\n\nEach one sits at a different point on the flexibility-versus-structurespectrum.\n\n> A fourth pattern has emerged in 2026 that sits above all three. It’s called a Harness.\n\nBoth OpenAI and Anthropic are now using the term formally.\n\nMartin Fowler has written about it. An arXiv paper formalises it.",
+          "start": null,
+          "title": "The Rise of AI Harness Engineering",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "94e71f1eed9b4b626432e1923361e7bf37943b2a376bf4076e05ed3b34879c25",
+          "content_kind": "snippet",
+          "original_url": "https://cobusgreyling.substack.com/p/the-rise-of-ai-harness-engineering",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:15:07.888943Z",
+          "source_chars": 1496,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-b1787828707f02f77f2fa6c1223eb37f",
+          "end": null,
+          "url": "https://www.reddit.com/r/AI_Agents/comments/1ulwu3y/concrete_explanation_of_what_a_harness_is",
+          "page": null,
+          "text": "An agent harness is a program that runs a loop. It starts by prompting the LLM and then reads its response. If the LLM response is a tool call,",
+          "start": null,
+          "title": "Concrete explanation of what a harness is : r/AI_Agents",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "eaef687f8b860165c04b9defffa97e47dd48e724070283d64161a733da11c384",
+          "content_kind": "snippet",
+          "original_url": "https://www.reddit.com/r/AI_Agents/comments/1ulwu3y/concrete_explanation_of_what_a_harness_is",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:15:07.888943Z",
+          "source_chars": 143,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-827f6abe54b6c01f12b8755db1ff3702",
+          "end": null,
+          "url": "https://medium.com/@adnanmasood/agent-harness-engineering-the-rise-of-the-ai-control-plane-938ead884b1d",
+          "page": null,
+          "text": "Press enter or click to view image in full size\n\nImage 16\n\n## Glossary of Terms\n\nAgent Harness: The non-model runtime software infrastructure that wraps a large language model’s (LLM) core reasoning loop to continuously coordinate tool dispatch, context management, safety enforcement, and session persistence. It functions as the operating system around the model’s reasoning engine, turning raw capabilities into dependable, repeatable actions.\n\nAgent Legibility: The practice of designing systems, code repositories, and operating environments so that they are inherently understandable, readable, and securely navigable for autonomous agents as well as humans. [...] Optimizing the model without stabilizing the harness yields diminishing returns. As noted in the current landscape analysis:\n\n“The harness is the singular architectural layer responsible for translating probabilistic reasoning into dependable, deterministic action.”\n\nThe harness is the local operational envelope that manages everything occurring during the runtime cycle, wrapping the LLM with the infrastructure it needs to survive a production environment.\n\n## Takeaway 2: The Tenfold Economic Differential\n\nPress enter or click to view image in full size\n\nImage 7\n\nHarness engineering is the primary driver of ROI. By implementing KV-cache Locality and Semantic Routing within the harness, organizations are seeing a massive shift in unit economics. [...] Image 5\n\n### Introduction: The 88% Production Gap\n\nThe industry is currently facing a sobering reality: while Large Language Models (LLMs) have reached extraordinary capabilities, enterprise adoption is hitting a wall. Market data indicates that up to 88% of enterprise AI agent projects fail to reach production. The reason for this “production gap” is becoming clear to infrastructure strategists: we have spent years developing powerful “brains” (the models) but have neglected the “nervous system” and “exoskeleton” required for those brains to interact with the real world.\n\nTo bridge this gap, technical leaders are shifting their focus to the Agent Harness. The relationship is best expressed by a simple architectural equation:\n\n### {Agent} = {Model} + {Harness}",
+          "start": null,
+          "title": "Agent Harness Engineering — The Rise of the AI Control Plane",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "7299a72d5275b14df5aa69a36ec6fcb3f6fee84098fabf374ba4e0b011454f93",
+          "content_kind": "snippet",
+          "original_url": "https://medium.com/@adnanmasood/agent-harness-engineering-the-rise-of-the-ai-control-plane-938ead884b1d",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:15:07.888943Z",
+          "source_chars": 2202,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        }
+      ],
+      "grounding": {
+        "status": "source_backed",
+        "provider": "tavily",
+        "reason_code": null,
+        "retrieved_at": "2026-10-14T12:15:07.888943Z",
+        "check_version": "evidence-review-v1"
+      },
+      "scope_prompt_version": "scope-v1"
+    }
+  ],
+  "confirmed_selection": {
+    "preparation_id": "333aa96e-3ecc-4856-acb6-d1e6d470c6b8",
+    "scope_version": 1,
+    "candidate_id": "scope-harness-eng-core",
+    "focus_id": "focus-he-components",
+    "scope_point_ids": [
+      "pt-he-comp-tools",
+      "pt-he-comp-exec-env",
+      "pt-he-comp-feedback-loop"
+    ],
+    "question_count": 3,
+    "difficulty": "easy"
+  },
+  "operation": {
+    "status": "succeeded",
+    "result": {
+      "id": "23214db3-f714-478b-b63d-8d371e1777a8",
+      "quiz": {
+        "id": "d7ea766c-577c-4d8f-b4a7-18b3b59f9c53",
+        "title": "Agent Harness 的组成与运行机制",
+        "reward": {
+          "xp": 10,
+          "coins": 2
+        },
+        "source": {
+          "type": "topic",
+          "title": "Harness Engineering",
+          "segments": []
+        },
+        "summary": "围绕 Agent Harness 的工具接入与调度、执行环境与运行时、反馈循环与自我校验三个知识点，考查其基本组成与运行机制。",
+        "grounding": {
+          "status": "source_backed",
+          "provider": "tavily",
+          "reason_code": null,
+          "retrieved_at": "2026-10-14T12:15:07.888943Z",
+          "check_version": "evidence-review-v1"
+        },
+        "questions": [
+          {
+            "id": "he-easy-single-1",
+            "stem": "根据资料，Agent Harness（智能体脚手架）在智能体系统中主要承担什么角色？",
+            "type": "single",
+            "origin": null,
+            "answers": [],
+            "options": [
+              {
+                "id": "A",
+                "text": "负责模型内部的推理与决策过程"
+              },
+              {
+                "id": "B",
+                "text": "作为围绕大语言模型的软件基础设施，把模型决策转化为对外部工具和环境的实际操作"
+              },
+              {
+                "id": "C",
+                "text": "替代大语言模型，直接生成最终答案"
+              },
+              {
+                "id": "D",
+                "text": "仅用于压缩上下文窗口中的历史记录"
+              }
+            ],
+            "grounding": {
+              "status": "source_backed"
+            },
+            "source_ids": [],
+            "explanation": "",
+            "knowledge_point": "Agent Harness 的组成与运行机制"
+          },
+          {
+            "id": "he-easy-multi-1",
+            "stem": "根据资料，下列哪些属于 Agent Harness 所管理或提供的能力？（多选）",
+            "type": "multi",
+            "origin": null,
+            "answers": [],
+            "options": [
+              {
+                "id": "A",
+                "text": "工具接入与工具调度，使模型能调用外部系统"
+              },
+              {
+                "id": "B",
+                "text": "执行环境与运行时，承载智能体的实际操作"
+              },
+              {
+                "id": "C",
+                "text": "反馈循环与自我校验，支持智能体自我纠正"
+              },
+              {
+                "id": "D",
+                "text": "直接修改大语言模型的预训练权重"
+              }
+            ],
+            "grounding": {
+              "status": "source_backed"
+            },
+            "source_ids": [],
+            "explanation": "",
+            "knowledge_point": "工具接入与调度、执行环境与运行时、反馈循环与自我校验"
+          },
+          {
+            "id": "he-easy-judge-1",
+            "stem": "判断：根据资料，Harness Engineering 关注的是围绕自主智能体设计执行环境，包括智能体可调用哪些工具、如何校验自己的决策以及何时停止。",
+            "type": "judge",
+            "origin": null,
+            "answers": [],
+            "options": [
+              {
+                "id": "A",
+                "text": "正确"
+              },
+              {
+                "id": "B",
+                "text": "错误"
+              }
+            ],
+            "grounding": {
+              "status": "source_backed"
+            },
+            "source_ids": [],
+            "explanation": "",
+            "knowledge_point": "Harness Engineering 与执行环境设计"
+          }
+        ],
+        "created_at": "2026-10-14T12:19:10.469636+00:00",
+        "difficulty": "easy",
+        "source_text": "Harness Engineering",
+        "learning_scope": {
+          "focus": "Agent Harness 的组成与运行机制",
+          "topic": "Harness Engineering",
+          "domain": "AI 工程 / 智能体基础设施",
+          "points": [
+            "工具接入与工具调度（tool use / tool dispatch）",
+            "执行环境与运行时（execution environment / runtime）",
+            "反馈循环与自我校验（feedback loops / verification）"
+          ],
+          "focus_id": "focus-he-components",
+          "input_text": "Harness Engineering",
+          "candidate_id": "scope-harness-eng-core",
+          "scope_version": 1,
+          "preparation_id": "333aa96e-3ecc-4856-acb6-d1e6d470c6b8",
+          "scope_point_ids": [
+            "pt-he-comp-tools",
+            "pt-he-comp-exec-env",
+            "pt-he-comp-feedback-loop"
+          ]
+        }
+      },
+      "mode": "new",
+      "answers": [],
+      "cursor": 0,
+      "pending_ms": 0,
+      "started_at": "2026-10-14T12:19:10+00:00",
+      "completed_at": null,
+      "report": null,
+      "review_keys": []
+    },
+    "error_code": null,
+    "stage": "succeeded",
+    "retry_after_seconds": 0,
+    "deadline": "2026-10-14T12:24:02+00:00"
+  },
+  "quiz": {
+    "id": "d7ea766c-577c-4d8f-b4a7-18b3b59f9c53",
+    "title": "Agent Harness 的组成与运行机制",
+    "reward": {
+      "xp": 10,
+      "coins": 2
+    },
+    "source": {
+      "type": "topic",
+      "title": "Harness Engineering",
+      "segments": [
+        {
+          "id": "web-11bbe51a72f3502827fbcc206b85f5ab",
+          "end": null,
+          "url": "https://milvus.io/blog/harness-engineering-ai-agents.md",
+          "page": null,
+          "text": "It resonated because it names a problem every engineer building AI agents has already hit. Prompt engineering) gets you better single-turn outputs. Context engineering manages what the model sees. But neither addresses what happens when an agent runs autonomously for hours, making hundreds of decisions without supervision. That’s the gap Harness Engineering fills — and it almost always depends on hybrid search (hybrid full-text and semantic search) to work.\n\n## What Is Harness Engineering?\n\nHarness Engineering is the discipline of designing the execution environment around an autonomous AI agent. It defines which tools the agent can call, where it gets information, how it validates its own decisions, and when it should stop. [...] Engineering \n\nApril 09, 2026 Min Yin\n\nMitchell Hashimoto built HashiCorp and co-created Terraform. In February 2026, he published a blog post describing a habit he’d developed while working with AI agents: every time an agent made a mistake, he engineered a permanent fix into the agent’s environment. He called it “engineering the harness.” Within weeks, OpenAI and Anthropic published engineering articles expanding on the idea. The term _Harness Engineering_ had arrived. [...] Context Engineering manages how much information the model can see at once — which documents to retrieve, how to compress history, what fits in the context window and what gets dropped.\n\nHarness Engineering builds the world the agent operates in. Tools, knowledge sources, validation logic, architectural constraints — everything that determines whether an agent can run reliably across hundreds of decisions without human supervision.",
+          "start": null,
+          "title": "Harness Engineering: The Execution Layer AI Agents Actually Need",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "86a78ef9328a712cf7cb0343e83725d38153900ead409db804d579006f49ff14",
+          "content_kind": "snippet",
+          "original_url": "https://milvus.io/blog/harness-engineering-ai-agents.md",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:15:03.235663Z",
+          "source_chars": 1657,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-5a5f4d0f09b9694177e8e62fef9030e1",
+          "end": null,
+          "url": "https://en.wikipedia.org/wiki/Agent_harness",
+          "page": null,
+          "text": "\") agentic harness working under the hood with the Tauri (software framework) \"Tauri (software framework)\") DOM Inspector\n\nAn agent harness, also known as agent scaffolding, is the software infrastructure surrounding a large language model (LLM) that enables it to operate as an AI agent. It manages tool use, memory, state persistence, execution environments and feedback loops, as opposed to the model's internal reasoning. The UK's AI Security Institute described an AI agent as being formed by the model plus the scaffolding back in 2023. The relationship can be expressed as agent = model + harness. [...] Because a \"base model\" LLM is a stateless probabilistic function that maps input token sequences to output token sequences, the harness is what makes an agent out of a model, i.e. a thing that interfaces with external tools, inputs and outputs non-token data (such as images), and interacts with a task-environment coherently over many rounds. Rather than repeatedly re-reading an ever-growing transcript inside the context window, a harness can offload record-keeping into a structured software environment that manages the agent's state. A minimal harness is unnecessary for a single prompt-and-response exchange, but becomes important as tasks grow multi-step, tool-oriented, or long-running. [...] 1. ↑ Yehudai A, Eden L, Li A, Uziel G, Zhao Y, Bar-Haim R, Cohan A, Shmueli-Scheuer M (July 2026). A Survey on Evaluation of LLM-based Agents. ACL Anthology. Retrieved 22 Aug 2026.\n2. 1 2 3 Nuñez, Michael (8 June 2026). \"Researchers trained an open source AI search agent, Harness-1, that outperforms GPT-5.4 on recalling relevant information\". VentureBeat. Retrieved 13 July 2026.\n3. ↑ AI Security Institute staffers (October 2023). \"Capabilities and risks from frontier AI: A discussion paper on the need for further research into AI risk\" (PDF). GOV.UK. Retrieved 22 Aug 2026. The resultant system, built out of the AI model and the scaffold, is an AI agent. AutoGPT is the most well-publicised example of such an AI agent as of late 2023",
+          "start": null,
+          "title": "Agent harness - Wikipedia",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "8e7a924131241090fb8cdc3a703b4d53c9e45604a3df14dbe2ab5e818b8b6900",
+          "content_kind": "snippet",
+          "original_url": "https://en.wikipedia.org/wiki/Agent_harness",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:15:07.888943Z",
+          "source_chars": 2054,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-c4978da51341b64de13091539a4119bb",
+          "end": null,
+          "url": "https://dev.to/naimulkarim/what-is-an-ai-agent-harness-370m",
+          "page": null,
+          "text": "An AI Agent Harness is the software infrastructure that surrounds a Large Language Model (LLM) and enables it to interact with the outside world. It connects the model to tools, memory, execution environments, and safety controls, allowing the model's decisions to be translated into meaningful actions.\n\nSimply put:\n\n```\nAI Agent = Model + Harness \n```\n\nThink of the model as the brain that reasons and decides what should happen next. The harness is everything around it that enables those decisions to be executed safely and reliably.\n\n## What Does an AI Agent Harness Provide?\n\nA typical AI agent harness consists of four key capabilities.\n\n## Tools\n\nThe harness connects the model to external systems, including: [...] The harness records:\n\n Tool calls\n Execution traces\n Latency\n Errors\n Token usage\n Workflow history\n\nThis helps developers debug, evaluate, and improve agent systems.\n\n# Why Harness Design Matters\n\nAs LLMs become more capable, the harness becomes an increasingly important factor in agent performance.\n\nA strong harness improves:\n\n Context management\n Tool orchestration\n Memory handling\n Verification\n Safety\n Reliability\n\nIn many real-world scenarios, a well-designed harness around a smaller model can outperform a more capable model with poor execution infrastructure.\n\nThe future of AI performance will depend not only on better models but also on better systems built around those models.\n\n# Harness Engineering: The Next Evolution\n\nAI development has evolved through several stages: [...] Skip to content\n\nDEV Community \n\nLog in    Create account\n\n## DEV Community\n\nNaimul Karim\n\nNaimul Karim\n\nPosted on\n\n# What is an AI Agent Harness?\n\n#llm #infrastructure #agents #ai\n\nLarge Language Models (LLMs) are incredibly good at understanding language, reasoning through problems, and generating responses. However, on their own, they cannot execute code, call APIs, access files, remember previous work, or complete multi-step workflows.\n\nTo move beyond answering prompts and actually perform tasks, an LLM needs an AI Agent Harness.",
+          "start": null,
+          "title": "What is an AI Agent Harness? - DEV Community",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "a2c8c7adfeccbfd49c85b1992892a9057490e4daa83e21bc0c006d9a12e783d7",
+          "content_kind": "snippet",
+          "original_url": "https://dev.to/naimulkarim/what-is-an-ai-agent-harness-370m",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:15:07.888943Z",
+          "source_chars": 2059,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        }
+      ]
+    },
+    "summary": "围绕 Agent Harness 的工具接入与调度、执行环境与运行时、反馈循环与自我校验三个知识点，考查其基本组成与运行机制。",
+    "grounding": {
+      "status": "source_backed",
+      "provider": "tavily",
+      "reason_code": null,
+      "retrieved_at": "2026-10-14T12:15:07.888943Z",
+      "check_version": "evidence-review-v1"
+    },
+    "questions": [
+      {
+        "id": "he-easy-single-1",
+        "stem": "根据资料，Agent Harness（智能体脚手架）在智能体系统中主要承担什么角色？",
+        "type": "single",
+        "origin": null,
+        "answers": [
+          "B"
+        ],
+        "options": [
+          {
+            "id": "A",
+            "text": "负责模型内部的推理与决策过程"
+          },
+          {
+            "id": "B",
+            "text": "作为围绕大语言模型的软件基础设施，把模型决策转化为对外部工具和环境的实际操作"
+          },
+          {
+            "id": "C",
+            "text": "替代大语言模型，直接生成最终答案"
+          },
+          {
+            "id": "D",
+            "text": "仅用于压缩上下文窗口中的历史记录"
+          }
+        ],
+        "grounding": {
+          "status": "source_backed",
+          "provider": "tavily",
+          "reason_code": null,
+          "retrieved_at": "2026-10-14T12:15:07.888943Z",
+          "check_version": "evidence-review-v1"
+        },
+        "source_ids": [
+          "web-5a5f4d0f09b9694177e8e62fef9030e1",
+          "web-c4978da51341b64de13091539a4119bb"
+        ],
+        "explanation": "资料指出，agent harness 是围绕大语言模型的软件基础设施，管理工具使用、记忆、状态持久化、执行环境和反馈循环，与模型内部推理相对；关系可表达为 agent = model + harness。因此 A 把 harness 与模型内部推理混淆，C 夸大了 harness 的作用，D 只描述了其中一小部分功能，均不正确。",
+        "knowledge_point": "Agent Harness 的组成与运行机制"
+      },
+      {
+        "id": "he-easy-multi-1",
+        "stem": "根据资料，下列哪些属于 Agent Harness 所管理或提供的能力？（多选）",
+        "type": "multi",
+        "origin": null,
+        "answers": [
+          "A",
+          "B",
+          "C"
+        ],
+        "options": [
+          {
+            "id": "A",
+            "text": "工具接入与工具调度，使模型能调用外部系统"
+          },
+          {
+            "id": "B",
+            "text": "执行环境与运行时，承载智能体的实际操作"
+          },
+          {
+            "id": "C",
+            "text": "反馈循环与自我校验，支持智能体自我纠正"
+          },
+          {
+            "id": "D",
+            "text": "直接修改大语言模型的预训练权重"
+          }
+        ],
+        "grounding": {
+          "status": "source_backed",
+          "provider": "tavily",
+          "reason_code": null,
+          "retrieved_at": "2026-10-14T12:15:07.888943Z",
+          "check_version": "evidence-review-v1"
+        },
+        "source_ids": [
+          "web-5a5f4d0f09b9694177e8e62fef9030e1",
+          "web-c4978da51341b64de13091539a4119bb",
+          "web-11bbe51a72f3502827fbcc206b85f5ab"
+        ],
+        "explanation": "资料表明 harness 管理工具使用、记忆、状态持久化、执行环境和反馈循环，并把模型连接到工具、记忆、执行环境与安全控制；另一资料也把工具、执行环境、验证与反馈循环列为 harness 的组成部分。D 属于模型训练层面，资料未将其列为 harness 的能力。",
+        "knowledge_point": "工具接入与调度、执行环境与运行时、反馈循环与自我校验"
+      },
+      {
+        "id": "he-easy-judge-1",
+        "stem": "判断：根据资料，Harness Engineering 关注的是围绕自主智能体设计执行环境，包括智能体可调用哪些工具、如何校验自己的决策以及何时停止。",
+        "type": "judge",
+        "origin": null,
+        "answers": [
+          "A"
+        ],
+        "options": [
+          {
+            "id": "A",
+            "text": "正确"
+          },
+          {
+            "id": "B",
+            "text": "错误"
+          }
+        ],
+        "grounding": {
+          "status": "source_backed",
+          "provider": "tavily",
+          "reason_code": null,
+          "retrieved_at": "2026-10-14T12:15:03.235663Z",
+          "check_version": "evidence-review-v1"
+        },
+        "source_ids": [
+          "web-11bbe51a72f3502827fbcc206b85f5ab"
+        ],
+        "explanation": "资料明确写道：Harness Engineering 是设计自主 AI 智能体执行环境的学科，它定义智能体可以调用哪些工具、从哪里获取信息、如何校验自己的决策以及何时停止。因此该说法正确。",
+        "knowledge_point": "Harness Engineering 与执行环境设计"
+      }
+    ],
+    "created_at": "2026-10-14T12:19:10.469636+00:00",
+    "difficulty": "easy",
+    "source_text": "Harness Engineering",
+    "learning_scope": {
+      "focus": "Agent Harness 的组成与运行机制",
+      "topic": "Harness Engineering",
+      "domain": "AI 工程 / 智能体基础设施",
+      "points": [
+        "工具接入与工具调度（tool use / tool dispatch）",
+        "执行环境与运行时（execution environment / runtime）",
+        "反馈循环与自我校验（feedback loops / verification）"
+      ],
+      "focus_id": "focus-he-components",
+      "input_text": "Harness Engineering",
+      "candidate_id": "scope-harness-eng-core",
+      "scope_version": 1,
+      "preparation_id": "333aa96e-3ecc-4856-acb6-d1e6d470c6b8",
+      "scope_point_ids": [
+        "pt-he-comp-tools",
+        "pt-he-comp-exec-env",
+        "pt-he-comp-feedback-loop"
+      ]
+    }
+  },
+  "human_review": {
+    "scope_matches_intent": true,
+    "notes": "按用户对当前20例/60题核对请求的总体回复“正确”登记；未收到逐项表单导出。",
+    "questions": [
+      {
+        "id": "he-easy-single-1",
+        "status": "source_backed",
+        "source_ids": [
+          "web-5a5f4d0f09b9694177e8e62fef9030e1",
+          "web-c4978da51341b64de13091539a4119bb"
+        ],
+        "supported_by_cited_text": true,
+        "contradicts": false,
+        "in_scope": true,
+        "meme_substantive": null,
+        "notes": "正确性及引用支持按用户对核对包的总体确认登记；不是用户逐题表单输入。"
+      },
+      {
+        "id": "he-easy-multi-1",
+        "status": "source_backed",
+        "source_ids": [
+          "web-5a5f4d0f09b9694177e8e62fef9030e1",
+          "web-c4978da51341b64de13091539a4119bb",
+          "web-11bbe51a72f3502827fbcc206b85f5ab"
+        ],
+        "supported_by_cited_text": true,
+        "contradicts": false,
+        "in_scope": true,
+        "meme_substantive": null,
+        "notes": "正确性及引用支持按用户对核对包的总体确认登记；不是用户逐题表单输入。"
+      },
+      {
+        "id": "he-easy-judge-1",
+        "status": "source_backed",
+        "source_ids": [
+          "web-11bbe51a72f3502827fbcc206b85f5ab"
+        ],
+        "supported_by_cited_text": true,
+        "contradicts": false,
+        "in_scope": true,
+        "meme_substantive": null,
+        "notes": "正确性及引用支持按用户对核对包的总体确认登记；不是用户逐题表单输入。"
+      }
+    ],
+    "confirmation": {
+      "kind": "direct_user_chat_overall_confirmation",
+      "record": "docs/quiz-grounding/live-runs/human-confirmation-20261014.json",
+      "answer": "正确",
+      "individual_form_export_received": false,
+      "structured_verdict_basis": "registered_from_user_overall_confirmation"
+    }
+  },
+  "account_deleted": true
+}

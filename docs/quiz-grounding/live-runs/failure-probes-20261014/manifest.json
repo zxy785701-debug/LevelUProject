@@ -1,0 +1,40 @@
+{
+  "run_id": "failure-probes-20261014",
+  "providers": [
+    "Tavily official LangChain Search/Extract",
+    "existing DeepSeek model"
+  ],
+  "configured": {
+    "tavily": true,
+    "deepseek": true
+  },
+  "database": "levelup_test",
+  "model": "deepseek-flash",
+  "minute_limit": 3,
+  "preparation_deadline_seconds": 240.0,
+  "generation_deadline_seconds": 300.0,
+  "cases": [
+    {
+      "id": "failure-page-instruction",
+      "text": "https://httpbin.org/status/403 学习 Python TaskGroup 的异常与取消语义",
+      "expected": "若实际网页不可读，仅按明确的独立主题提供未核实范围，确认后才可降级出题",
+      "tags": [
+        "failure_probe",
+        "url"
+      ],
+      "failure_probe": true
+    },
+    {
+      "id": "failure-sparse",
+      "text": "学习名为 XQ9-2026-未公开 的虚构框架，缺少公开资料时请指出不足，不要杜撰语法",
+      "expected": "保留实际检索与资料不足结果，不虚构受来源支持的知识",
+      "tags": [
+        "failure_probe",
+        "sparse_evidence"
+      ],
+      "failure_probe": true
+    }
+  ],
+  "executed": true,
+  "blocked_reason": null
+}

@@ -1,0 +1,432 @@
+{
+  "case": {
+    "id": "failure-page-instruction",
+    "text": "https://httpbin.org/status/403 学习 Python TaskGroup 的异常与取消语义",
+    "expected": "若实际网页不可读，仅按明确的独立主题提供未核实范围，确认后才可降级出题",
+    "tags": [
+      "failure_probe",
+      "url"
+    ],
+    "failure_probe": true
+  },
+  "error_code": "MODEL_INVALID_OUTPUT",
+  "status": "failed",
+  "material_job": {
+    "id": "5fe37528-9efb-4193-b75e-ce5c7ccd8476",
+    "status": "succeeded",
+    "stage": "scope_confirmation",
+    "material_id": null,
+    "preparation_id": "79e888ce-06d3-42cf-ab2f-5c8332d2c6e3",
+    "error_code": null,
+    "message": "网页未读到，已按你提供的主题准备范围；未联网核实"
+  },
+  "preparation": {
+    "id": "79e888ce-06d3-42cf-ab2f-5c8332d2c6e3",
+    "version": 1,
+    "input_text": "学习 Python TaskGroup 的异常与取消语义",
+    "status": "ready",
+    "stage": "ready",
+    "content": {
+      "candidates": [
+        {
+          "id": "python-taskgroup-exception-cancellation",
+          "topic": "Python TaskGroup 的异常与取消语义",
+          "domain": "Python 异步编程",
+          "description": "围绕 asyncio.TaskGroup 在异常传播与取消行为方面的语义进行学习与确认，不依赖任何未读取的网页内容。",
+          "focuses": [
+            {
+              "id": "taskgroup-exception-semantics",
+              "name": "异常语义",
+              "description": "TaskGroup 中任务抛出异常时的传播与聚合行为。",
+              "points": [
+                {
+                  "id": "child-exception-propagation",
+                  "name": "子任务异常向 TaskGroup 的传播",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                },
+                {
+                  "id": "exception-group-aggregation",
+                  "name": "多个异常聚合为 ExceptionGroup 的规则",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                },
+                {
+                  "id": "base-exception-handling",
+                  "name": "BaseException 与普通异常在 TaskGroup 中的差异处理",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                },
+                {
+                  "id": "exception-context-exit",
+                  "name": "异常在 async with 退出时的抛出时机",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                }
+              ]
+            },
+            {
+              "id": "taskgroup-cancellation-semantics",
+              "name": "取消语义",
+              "description": "TaskGroup 在取消场景下的行为与传播方式。",
+              "points": [
+                {
+                  "id": "sibling-task-cancellation",
+                  "name": "一个任务失败时对同组其他任务的取消",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                },
+                {
+                  "id": "external-cancellation",
+                  "name": "外部取消 TaskGroup 所在任务时的传播",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                },
+                {
+                  "id": "cancelled-error-handling",
+                  "name": "CancelledError 的捕获与重新抛出规则",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                },
+                {
+                  "id": "cancellation-vs-exception",
+                  "name": "取消与异常同时发生时的优先级与结果",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                }
+              ]
+            },
+            {
+              "id": "taskgroup-structure-lifecycle",
+              "name": "结构与生命周期",
+              "description": "TaskGroup 的创建、任务提交与退出等待机制，作为理解异常与取消语义的基础。",
+              "points": [
+                {
+                  "id": "taskgroup-creation",
+                  "name": "TaskGroup 的创建与 async with 结构",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                },
+                {
+                  "id": "task-submission",
+                  "name": "create_task 提交任务与任务归属",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                },
+                {
+                  "id": "exit-waiting",
+                  "name": "退出时等待所有子任务完成的语义",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "grounding": {
+      "status": "unverified",
+      "reason_code": "PAGE_UNREADABLE",
+      "retrieved_at": null,
+      "provider": null,
+      "check_version": "evidence-review-v1"
+    },
+    "evidence": [],
+    "error_code": null,
+    "retry_after_seconds": 0,
+    "created_at": "2026-10-14T12:37:38Z",
+    "expires_at": "2026-10-15T12:37:38Z"
+  },
+  "wall_attempt_seconds": [
+    6.121,
+    68.42
+  ],
+  "elapsed_seconds": 74.541,
+  "api_timings": [
+    {
+      "method": "POST",
+      "path": "/auth/wechat",
+      "status": 200,
+      "seconds": 0.014
+    },
+    {
+      "method": "POST",
+      "path": "/quiz/preparations",
+      "status": 200,
+      "seconds": 0.004
+    },
+    {
+      "method": "POST",
+      "path": "/materials/web",
+      "status": 200,
+      "seconds": 6.084
+    },
+    {
+      "method": "GET",
+      "path": "/material-jobs/5fe37528-9efb-4193-b75e-ce5c7ccd8476",
+      "status": 200,
+      "seconds": 0.007
+    },
+    {
+      "method": "GET",
+      "path": "/quiz/preparations/79e888ce-06d3-42cf-ab2f-5c8332d2c6e3",
+      "status": 200,
+      "seconds": 0.011
+    },
+    {
+      "method": "POST",
+      "path": "/auth/wechat",
+      "status": 200,
+      "seconds": 0.055
+    },
+    {
+      "method": "POST",
+      "path": "/quiz/preparations",
+      "status": 200,
+      "seconds": 0.027
+    },
+    {
+      "method": "POST",
+      "path": "/materials/web",
+      "status": 200,
+      "seconds": 0.017
+    },
+    {
+      "method": "GET",
+      "path": "/material-jobs/5fe37528-9efb-4193-b75e-ce5c7ccd8476",
+      "status": 200,
+      "seconds": 0.008
+    },
+    {
+      "method": "GET",
+      "path": "/quiz/preparations/79e888ce-06d3-42cf-ab2f-5c8332d2c6e3",
+      "status": 200,
+      "seconds": 0.011
+    },
+    {
+      "method": "POST",
+      "path": "/quiz/generate",
+      "status": 200,
+      "seconds": 68.291
+    },
+    {
+      "method": "GET",
+      "path": "/operations/generate-failure-page-instruction",
+      "status": 200,
+      "seconds": 0.009
+    }
+  ],
+  "structured_model_usage": [
+    {
+      "operation": "00c580b1-60f3-4580-8fb5-15d28fb11a1d",
+      "attempt": 1,
+      "tokens": {
+        "input_tokens": 957,
+        "output_tokens": 637,
+        "total_tokens": 1594
+      }
+    },
+    {
+      "operation": "921b0ea1-5041-4d3b-860c-8d19c0b049cc",
+      "attempt": 1,
+      "tokens": {
+        "input_tokens": 2193,
+        "output_tokens": 689,
+        "total_tokens": 2882
+      }
+    },
+    {
+      "operation": "921b0ea1-5041-4d3b-860c-8d19c0b049cc",
+      "attempt": 1,
+      "tokens": {
+        "input_tokens": 1670,
+        "output_tokens": 229,
+        "total_tokens": 1899
+      }
+    },
+    {
+      "operation": "921b0ea1-5041-4d3b-860c-8d19c0b049cc",
+      "attempt": 1,
+      "tokens": {
+        "input_tokens": 3159,
+        "output_tokens": 738,
+        "total_tokens": 3897
+      }
+    },
+    {
+      "operation": "921b0ea1-5041-4d3b-860c-8d19c0b049cc",
+      "attempt": 2,
+      "tokens": {
+        "input_tokens": 3159,
+        "output_tokens": 713,
+        "total_tokens": 3872
+      }
+    },
+    {
+      "operation": "921b0ea1-5041-4d3b-860c-8d19c0b049cc",
+      "attempt": 3,
+      "tokens": {
+        "input_tokens": 3159,
+        "output_tokens": 713,
+        "total_tokens": 3872
+      }
+    }
+  ],
+  "operations": [
+    {
+      "key": "generate-failure-page-instruction",
+      "kind": "quiz",
+      "status": "failed",
+      "stage": "failed",
+      "model_calls": 5,
+      "tool_calls": 0,
+      "page_attempts": 0,
+      "charged": 1,
+      "retrieval": null,
+      "error_code": "MODEL_INVALID_OUTPUT"
+    },
+    {
+      "key": "material-5fe37528-9efb-4193-b75e-ce5c7ccd8476",
+      "kind": "material",
+      "status": "succeeded",
+      "stage": "ready",
+      "model_calls": 1,
+      "tool_calls": 1,
+      "page_attempts": 1,
+      "charged": 1,
+      "retrieval": null,
+      "error_code": null
+    }
+  ],
+  "retrieval_preparations": [
+    {
+      "scope": {
+        "candidates": [
+          {
+            "id": "python-taskgroup-exception-cancellation",
+            "topic": "Python TaskGroup 的异常与取消语义",
+            "domain": "Python 异步编程",
+            "focuses": [
+              {
+                "id": "taskgroup-exception-semantics",
+                "name": "异常语义",
+                "points": [
+                  {
+                    "id": "child-exception-propagation",
+                    "name": "子任务异常向 TaskGroup 的传播",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  },
+                  {
+                    "id": "exception-group-aggregation",
+                    "name": "多个异常聚合为 ExceptionGroup 的规则",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  },
+                  {
+                    "id": "base-exception-handling",
+                    "name": "BaseException 与普通异常在 TaskGroup 中的差异处理",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  },
+                  {
+                    "id": "exception-context-exit",
+                    "name": "异常在 async with 退出时的抛出时机",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  }
+                ],
+                "description": "TaskGroup 中任务抛出异常时的传播与聚合行为。"
+              },
+              {
+                "id": "taskgroup-cancellation-semantics",
+                "name": "取消语义",
+                "points": [
+                  {
+                    "id": "sibling-task-cancellation",
+                    "name": "一个任务失败时对同组其他任务的取消",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  },
+                  {
+                    "id": "external-cancellation",
+                    "name": "外部取消 TaskGroup 所在任务时的传播",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  },
+                  {
+                    "id": "cancelled-error-handling",
+                    "name": "CancelledError 的捕获与重新抛出规则",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  },
+                  {
+                    "id": "cancellation-vs-exception",
+                    "name": "取消与异常同时发生时的优先级与结果",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  }
+                ],
+                "description": "TaskGroup 在取消场景下的行为与传播方式。"
+              },
+              {
+                "id": "taskgroup-structure-lifecycle",
+                "name": "结构与生命周期",
+                "points": [
+                  {
+                    "id": "taskgroup-creation",
+                    "name": "TaskGroup 的创建与 async with 结构",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  },
+                  {
+                    "id": "task-submission",
+                    "name": "create_task 提交任务与任务归属",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  },
+                  {
+                    "id": "exit-waiting",
+                    "name": "退出时等待所有子任务完成的语义",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  }
+                ],
+                "description": "TaskGroup 的创建、任务提交与退出等待机制，作为理解异常与取消语义的基础。"
+              }
+            ],
+            "description": "围绕 asyncio.TaskGroup 在异常传播与取消行为方面的语义进行学习与确认，不依赖任何未读取的网页内容。"
+          }
+        ]
+      },
+      "evidence": [],
+      "grounding": {
+        "status": "unverified",
+        "reason_code": "PAGE_UNREADABLE"
+      },
+      "origin_material_job_id": "5fe37528-9efb-4193-b75e-ce5c7ccd8476"
+    }
+  ],
+  "confirmed_selection": {
+    "preparation_id": "79e888ce-06d3-42cf-ab2f-5c8332d2c6e3",
+    "scope_version": 1,
+    "candidate_id": "python-taskgroup-exception-cancellation",
+    "focus_id": "taskgroup-exception-semantics",
+    "scope_point_ids": [
+      "child-exception-propagation",
+      "exception-group-aggregation",
+      "exception-context-exit"
+    ],
+    "question_count": 3,
+    "difficulty": "easy"
+  },
+  "operation": {
+    "status": "failed",
+    "result": null,
+    "error_code": "MODEL_INVALID_OUTPUT",
+    "stage": "failed",
+    "retry_after_seconds": 0,
+    "deadline": "2026-10-14T12:46:30+00:00"
+  }
+}

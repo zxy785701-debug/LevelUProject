@@ -1,0 +1,77 @@
+
+> levelup-comic-mini@1.0.0 test
+> vitest run
+
+
+ RUN  v3.2.7 D:/nbproject/LevelUpProject/frontend-comic
+
+ ✓ tests/poster.test.ts (2 tests) 3ms
+ ✓ tests/api.test.ts (7 tests) 8ms
+ ✓ tests/learning.test.ts (7 tests) 8ms
+ ✓ tests/platform.test.ts (7 tests) 10ms
+ ❯ tests/storage.test.ts (4 tests | 1 failed) 15ms
+   ✓ 独立本机存储 > 空数据、损坏数据与读取失败均恢复为空状态 2ms
+   ✓ 独立本机存储 > 恢复合法数据与输入草稿 0ms
+   × 独立本机存储 > 损坏的题目、答案或活动记录不会使恢复后的页面崩溃 10ms
+     → expected { version: 1, …(5) } to deeply equal { version: 1, sessions: [], …(3) }
+   ✓ 独立本机存储 > 保存失败不能提交内存状态，保存成功才返回新状态 1ms
+ ✓ tests/domain.test.ts (9 tests) 25ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/storage.test.ts > 独立本机存储 > 损坏的题目、答案或活动记录不会使恢复后的页面崩溃
+AssertionError: expected { version: 1, …(5) } to deeply equal { version: 1, sessions: [], …(3) }
+
+- Expected
++ Received
+
+  {
++   "activeId": "s",
+    "draft": {
+      "count": 5,
+      "difficulty": "easy",
+      "text": "",
+    },
+-   "sessions": [],
++   "sessions": [
++     {
++       "answers": [],
++       "cursor": 0,
++       "id": "s",
++       "mode": "new",
++       "pending_ms": 0,
++       "quiz": {
++         "created_at": "2026-10-12T05:12:16.223Z",
++         "difficulty": "easy",
++         "id": "q",
++         "questions": [
++           {},
++         ],
++         "source_text": "主题",
++         "summary": "概述",
++         "title": "主题",
++       },
++       "started_at": "2026-10-12T05:12:16.225Z",
++     },
++   ],
+    "version": 1,
+    "welcome": false,
+    "wrongs": {},
+  }
+
+ ❯ tests/storage.test.ts:20:81
+     18|       {...s,answers:[{question_id:'1',selected:['Z'],elapsed_ms:10}]},
+     19|       {...s,report:{summary:null}},
+     20|     ]) expect(readData(()=>({...emptyData(),sessions:[corrupt],activeI…
+       |                                                                                 ^
+     21|   })
+     22|   it('保存失败不能提交内存状态，保存成功才返回新状态',()=>{
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 5 passed (6)
+      Tests  1 failed | 35 passed (36)
+   Start at  13:12:15
+   Duration  755ms (transform 254ms, setup 0ms, collect 643ms, tests 68ms, environment 1ms, prepare 1.30s)
+

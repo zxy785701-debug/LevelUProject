@@ -12,7 +12,7 @@ from uuid import uuid4
 from PIL import Image, ImageOps, UnidentifiedImageError
 from sqlalchemy import select, delete, func
 from sqlalchemy.dialects.mysql import insert
-from .database import User, LoginSession, QuizRow, Attempt, Reward, WrongRow, Quota, Operation, utcnow
+from .database import User, LoginSession, QuizRow, Attempt, Reward, WrongRow, Quota, Operation, PeriodReport, utcnow
 from ..errors import AppError
 from ..rewards import question_reward, new_quiz_reward
 
@@ -47,9 +47,16 @@ def attempt_stats(a):
 def serialize(a):
     quiz = deepcopy(a.quiz)
     answered = {v['question_id'] for v in a.answers}
+    visible_sources = set()
     for q in quiz['questions']:
         if q['id'] not in answered:
             q['answers'], q['explanation'] = [], ''
+            if 'source_ids' in q: q['source_ids'] = []
+            if q.get('grounding'): q['grounding'] = {'status': q['grounding']['status']}
+        else:
+            visible_sources.update(q.get('source_ids', []))
+    if quiz.get('source'):
+        quiz['source']['segments'] = [v for v in quiz['source'].get('segments', []) if v['id'] in visible_sources]
     return {'id': a.id, 'quiz': quiz, 'mode': a.mode, 'answers': a.answers, 'cursor': a.cursor, 'pending_ms': 0, 'started_at': stamp(a.started_at), 'completed_at': stamp(a.completed_at), 'report': a.report, 'review_keys': a.review_keys}
 
 
@@ -68,7 +75,7 @@ class Accounts:
         s.execute(insert(Quota).values(identity=identity, day=day, quiz_count=0, calls=[], busy_until=0).on_duplicate_key_update(identity=identity))
         q = s.scalar(select(Quota).where(Quota.identity == identity).with_for_update())
         if q.day != day:
-            q.day, q.quiz_count = day, 0
+            q.day, q.quiz_count, q.material_count, q.period_count, q.topic_prepare_count = day, 0, 0, 0, 0
         q.calls = [v for v in q.calls if v > self.clock() - 60]
         return q
 
@@ -187,6 +194,7 @@ class Accounts:
             result = serialize(a)
             if op:
                 op.status, op.result = 'succeeded', result
+                op.stage, op.retry_after_seconds = 'succeeded', 0
                 q.busy_id, q.busy_until = None, 0
         if op: logger.info('ai_finished operation=%s status=succeeded', operation_id)
         return result
@@ -207,15 +215,33 @@ class Accounts:
         with self.database.session() as s:
             self._user(s, uid, True)
             questions = []
+            source_segments = {}
             for key in keys:
                 w = s.get(WrongRow, (uid, key))
                 if not w: raise AppError('NOT_FOUND', '错题不存在', 404)
                 a = self._attempt(s, uid, w.attempt_id)
                 question = deepcopy(next(q for q in a.quiz['questions'] if q['id'] == w.question_id))
+                question['origin'] = {'quiz_id': a.quiz['id'], 'question_id': question['id'],
+                                      'title': a.quiz['title'], 'learning_scope': a.quiz.get('learning_scope')}
+                remapped = []
+                originals = {v['id']: v for v in (a.quiz.get('source') or {}).get('segments', [])}
+                for sid in question.get('source_ids', []):
+                    if sid not in originals: continue
+                    namespace = 'review-source-' + digest(a.quiz['id'] + '\0' + sid)[:32]
+                    source_segments[namespace] = {**deepcopy(originals[sid]), 'id': namespace,
+                                                  'original_id': sid, 'original_quiz_id': a.quiz['id']}
+                    remapped.append(namespace)
+                question['source_ids'] = remapped
                 # Question IDs may repeat across quizzes; review keeps unique IDs.
                 question['id'] = f'review-{len(questions)}'
                 questions.append(question)
             quiz = {'id': str(uuid4()), 'created_at': stamp(utcnow()), 'source_text': '云端错题重温', 'title': '旧识重温', 'summary': '把模糊的知识擦清楚', 'difficulty': 'easy', 'questions': questions}
+            statuses = [(q.get('grounding') or {}).get('status') for q in questions]
+            if any(statuses):
+                state = 'unverified' if any(v in (None, 'unverified') for v in statuses) else 'source_backed' if 'source_backed' in statuses else 'material_only'
+                quiz['grounding'] = {'status': state, 'reason_code': 'MIXED_OR_LEGACY_PROVENANCE' if state == 'unverified' else None}
+            if source_segments:
+                quiz['source'] = {'type': 'review', 'title': '各原题库来源', 'segments': list(source_segments.values())}
             a = Attempt(id=str(uuid4()), user_id=uid, quiz=quiz, mode='review', review_keys=keys)
             s.add(a)
             s.flush()
@@ -274,6 +300,23 @@ class Accounts:
             a.cursor = cursor
             return serialize(a)
 
+    def delete_attempt(self, uid, aid):
+        with self.database.session() as s:
+            u = self._user(s, uid, True)
+            a = self._attempt(s, uid, aid)
+            operations = list(s.scalars(select(Operation).where(Operation.user_id == uid)))
+            related = [op for op in operations if op.attempt_id == aid or
+                       (isinstance(op.result, dict) and op.result.get('id') == aid)]
+            quota = self._quota(s, u.identity)
+            if any(op.status == 'running' and quota.busy_id == op.id and quota.busy_until > self.clock() for op in related):
+                raise AppError('AI_BUSY', '学习报告仍在生成，请完成后再删除', 409)
+            # Clear cached operation results so retries cannot restore a deleted attempt.
+            for op in related:
+                op.result, op.status, op.error_code = None, 'failed', 'RECORD_DELETED'
+            s.delete(a)  # Associated wrongs cascade; earned rewards remain in their ledger.
+            s.flush()
+            return self._profile(s, u)
+
     def learning(self, uid):
         with self.database.session() as s:
             self._user(s, uid)
@@ -322,6 +365,12 @@ class Accounts:
                 if a.report: return '', a.report
                 if not a.completed_at or a.mode == 'review': raise AppError('ATTEMPT_INCOMPLETE', '请先完成本轮学习', 409)
                 if a.report_attempts >= self.settings.report_attempt_limit: raise AppError('REPORT_RETRY_LIMIT', '本份报告已达到生成次数上限', 429)
+            if kind == 'period':
+                period = s.get(PeriodReport, aid)
+                if not period or period.user_id != uid: raise AppError('NOT_FOUND', '报告不存在', 404)
+                if period.content: return '', period.content
+                if period.attempts >= self.settings.report_attempt_limit: raise AppError('REPORT_RETRY_LIMIT', '本份报告已达到生成次数上限', 429)
+                if q.period_count >= self.settings.period_daily_limit: raise AppError('PERIOD_DAILY_LIMIT', '今天的周期报告额度已用完', 429)
             if q.busy_id and q.busy_until > self.clock(): raise AppError('AI_BUSY', '请等待当前生成完成', 409)
             if q.busy_id:
                 expired = s.get(Operation, q.busy_id)
@@ -329,14 +378,18 @@ class Accounts:
             if kind == 'quiz' and q.quiz_count >= self.settings.quiz_daily_limit: raise AppError('DAILY_QUOTA_EXCEEDED', '今天的出题额度已用完，明天再来吧', 429)
             if len(q.calls) >= self.settings.ai_minute_limit: raise AppError('AI_RATE_LIMIT', 'AI 请求较频繁，请稍后重试', 429)
             oid = str(uuid4())
-            s.add(Operation(id=oid, user_id=uid, key=key, digest=hashed, kind=kind, attempt_id=aid))
+            duration = self.settings.topic_prepare_timeout_seconds if kind == 'material' else self.settings.model_timeout_seconds * self.settings.model_max_attempts + 15
+            deadline = datetime.fromtimestamp(self.clock() + duration, timezone.utc).replace(tzinfo=None)
+            s.add(Operation(id=oid, user_id=uid, key=key, digest=hashed, kind=kind, attempt_id=aid,
+                            deadline_at=deadline, stage='reading' if kind == 'material' else None))
             # Covers all bounded model attempts and their backoff, not only one call.
-            q.busy_id, q.busy_until = oid, self.clock() + self.settings.model_timeout_seconds * self.settings.model_max_attempts + 30
+            q.busy_id, q.busy_until = oid, self.clock() + duration + 15
             return oid, None
 
     def _active_operation(self, s, uid, oid, q):
         op = s.get(Operation, oid)
-        if not op or op.user_id != uid or op.status != 'running' or q.busy_id != oid or q.busy_until <= self.clock():
+        now = datetime.fromtimestamp(self.clock(), timezone.utc).replace(tzinfo=None)
+        if not op or op.user_id != uid or op.status != 'running' or q.busy_id != oid or q.busy_until <= self.clock() or (op.deadline_at and op.deadline_at <= now):
             raise AppError('OPERATION_EXPIRED', '生成已过期，请重新发起', 409)
         return op
 
@@ -345,16 +398,27 @@ class Accounts:
             u = self._user(s, uid, True)
             q = self._quota(s, u.identity)
             op = self._active_operation(s, uid, oid, q)
+            if op.kind == 'material' and op.model_calls >= self.settings.prepare_model_call_limit:
+                raise AppError('MODEL_BUDGET_EXHAUSTED', '材料准备已达到模型调用上限', 409)
             if len(q.calls) >= self.settings.ai_minute_limit: raise AppError('AI_RATE_LIMIT', 'AI 请求较频繁，请稍后重试', 429)
             if not op.charged:
                 if op.kind == 'quiz':
                     if q.quiz_count >= self.settings.quiz_daily_limit: raise AppError('DAILY_QUOTA_EXCEEDED', '今天的出题额度已用完', 429)
                     q.quiz_count += 1
-                else:
+                elif op.kind == 'report':
                     a = self._attempt(s, uid, op.attempt_id)
                     a.report_attempts += 1
+                elif op.kind == 'period':
+                    period = s.get(PeriodReport, op.attempt_id)
+                    if not period or period.user_id != uid: raise AppError('NOT_FOUND', '报告不存在', 404)
+                    if period.attempts >= self.settings.report_attempt_limit: raise AppError('REPORT_RETRY_LIMIT', '本份报告已达到生成次数上限', 429)
+                    if q.period_count >= self.settings.period_daily_limit: raise AppError('PERIOD_DAILY_LIMIT', '今天的周期报告额度已用完', 429)
+                    period.attempts += 1
+                    period.status = 'running'
+                    q.period_count += 1
                 op.charged = 1
             q.calls = [*q.calls, self.clock()]
+            op.model_calls += 1
         logger.info('ai_call operation=%s kind=%s minute_calls=%s', oid, op.kind, len(q.calls))
 
     def finish(self, uid, oid, result=None, error=None):
@@ -368,8 +432,14 @@ class Accounts:
                 if not error:
                     self._active_operation(s, uid, oid, q)
                 op.status, op.result, op.error_code = ('failed', None, error) if error else ('succeeded', result, None)
+                op.stage, op.retry_after_seconds = op.status, 0
                 if not error and op.kind == 'report':
                     self._attempt(s, uid, op.attempt_id).report = result
+                if op.kind == 'period':
+                    period = s.get(PeriodReport, op.attempt_id)
+                    if period and period.user_id == uid:
+                        period.status, period.error_code = ('failed', error) if error else ('succeeded', None)
+                        if not error: period.content = result
             if q.busy_id == oid: q.busy_id, q.busy_until = None, 0
         logger.info('ai_finished operation=%s status=%s error_code=%s', oid, 'failed' if error else 'succeeded', error)
 
@@ -381,10 +451,21 @@ class Accounts:
 
     def operation(self, uid, key):
         with self.database.session() as s:
-            self._user(s, uid)
+            user = self._user(s, uid, True)
+            quota = self._quota(s, user.identity)
             op = s.scalar(select(Operation).where(Operation.user_id == uid, Operation.key == key))
             if not op: raise AppError('NOT_FOUND', '操作不存在', 404)
-            return {'status': op.status, 'result': op.result, 'error_code': op.error_code}
+            now = datetime.fromtimestamp(self.clock(), timezone.utc).replace(tzinfo=None)
+            if op.status == 'running' and (quota.busy_id != op.id or quota.busy_until <= self.clock() or (op.deadline_at and op.deadline_at <= now)):
+                op.status, op.stage, op.error_code = 'failed', 'failed', 'OPERATION_EXPIRED'
+                op.retry_after_seconds = 0
+                if quota.busy_id == op.id: quota.busy_id, quota.busy_until = None, 0
+            result = op.result
+            if op.kind == 'quiz' and op.status == 'succeeded' and result:
+                attempt = s.get(Attempt, result.get('id'))
+                result = serialize(attempt) if attempt and attempt.user_id == uid else None
+            return {'status': op.status, 'result': result, 'error_code': op.error_code,
+                    'stage': op.stage, 'retry_after_seconds': op.retry_after_seconds, 'deadline': stamp(op.deadline_at)}
 
     def export(self, uid):
         data = self.learning(uid)

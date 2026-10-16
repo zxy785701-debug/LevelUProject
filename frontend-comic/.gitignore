@@ -1,6 +1,0 @@
-node_modules/
-.swc/
-.taro/
-dist/
-dist-h5/
-project.private.config.json

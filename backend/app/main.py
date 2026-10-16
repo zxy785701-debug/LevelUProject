@@ -32,6 +32,8 @@ def create_app(settings: Settings | None = None, gateway=None, accounts=None, we
                 if settings.mysql_user:
                     try:
                         await run_in_threadpool(app.state.accounts.cleanup)
+                        await run_in_threadpool(app.state.features.cleanup)
+                        await run_in_threadpool(app.state.grounding.cleanup)
                     except (SQLAlchemyError, AppError):
                         pass
                 await asyncio.sleep(60)
@@ -51,6 +53,14 @@ def create_app(settings: Settings | None = None, gateway=None, accounts=None, we
     from .accounts.wechat import WeChatClient
     app.state.accounts = accounts or Accounts(settings, Database(settings))
     app.state.wechat = wechat or WeChatClient(settings)
+    from .materials.repository import Features
+    from .materials.sources import Sources
+    from .analytics import Analytics
+    app.state.features = Features(app.state.accounts)
+    app.state.sources = Sources(settings)
+    app.state.analytics = Analytics(app.state.accounts)
+    from .quiz_grounding.repository import GroundingRepository
+    app.state.grounding = GroundingRepository(app.state.accounts)
     @app.middleware('http')
     async def authentication(request, call_next):
         if request.method != 'OPTIONS' and request.url.path.startswith('/api/v1/') and request.url.path not in ('/api/v1/health', '/api/v1/auth/wechat'):
@@ -89,6 +99,10 @@ def create_app(settings: Settings | None = None, gateway=None, accounts=None, we
 
     from .accounts.api import router
     app.include_router(router)
+    from .materials.api import router as feature_router
+    app.include_router(feature_router)
+    from .quiz_grounding.api import router as grounding_router
+    app.include_router(grounding_router)
 
     return app
 

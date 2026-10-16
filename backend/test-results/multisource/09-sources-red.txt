@@ -1,0 +1,37 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+______________ test_jina_limit_timeout_and_search_configuration _______________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001A89332F950>
+
+    @pytest.mark.anyio
+    async def test_jina_limit_timeout_and_search_configuration(monkeypatch):
+        adapter = Sources(Settings())
+        with pytest.raises(AppError, match='��������'): await adapter.search('HTTP')
+        factory = httpx.AsyncClient
+        def client(**kwargs):
+            assert kwargs.get('trust_env') is True
+            return factory(transport=httpx.MockTransport(lambda r: httpx.Response(429)), **kwargs)
+        monkeypatch.setattr(httpx, 'AsyncClient', client)
+>       with pytest.raises(AppError) as error: await adapter.jina('https://r.jina.ai/', {'html':'text'})
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_sources.py:55: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\materials\sources.py:51: in jina
+    async with httpx.AsyncClient(timeout=self.settings.source_timeout_seconds, trust_env=False) as client:
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+kwargs = {'timeout': 30.0, 'trust_env': False}
+
+    def client(**kwargs):
+>       assert kwargs.get('trust_env') is True
+E       AssertionError: assert False is True
+E        +  where False = <built-in method get of dict object at 0x000001A893421200>('trust_env')
+E        +    where <built-in method get of dict object at 0x000001A893421200> = {'timeout': 30.0, 'trust_env': False}.get
+
+tests\test_sources.py:52: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_sources.py::test_jina_limit_timeout_and_search_configuration
+1 failed in 0.33s

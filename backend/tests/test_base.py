@@ -54,7 +54,9 @@ async def test_missing_key_and_unknown_route(system):
     system.state.settings.deepseek_api_key = SecretStr('')
     async with httpx.AsyncClient(transport=httpx.ASGITransport(app=system),base_url="http://test") as c:
         await login(c)
-        r = await c.post("/api/v1/quiz/generate",json={"text":"HTTP 基础"})
-        assert r.status_code == 503 and r.json()["code"] == "MODEL_NOT_CONFIGURED"
+        r = await c.post('/api/v1/quiz/preparations', headers={'Idempotency-Key': 'missing-model'}, json={'text': 'HTTP 基础'})
+        assert r.status_code == 200
+        result = (await c.get('/api/v1/quiz/preparations/' + r.json()['data']['id'])).json()['data']
+        assert result['status'] == 'failed' and result['error_code'] == 'MODEL_NOT_CONFIGURED'
         r = await c.get("/no-such-route")
         assert r.status_code == 404 and r.json()["code"] == "NOT_FOUND"

@@ -1,0 +1,1830 @@
+{
+  "case": {
+    "id": "simple-http",
+    "text": "HTTP 状态码 200、404 和 500 分别表示什么？",
+    "expected": "HTTP 状态码基础语义",
+    "tags": [
+      "simple",
+      "global"
+    ]
+  },
+  "error_code": null,
+  "status": "awaiting_human_evidence_review",
+  "preparation": {
+    "id": "275ddcaa-f4a1-47fd-8327-20efa9b8199b",
+    "version": 1,
+    "input_text": "HTTP 状态码 200、404 和 500 分别表示什么?",
+    "status": "ready",
+    "stage": "ready",
+    "content": {
+      "candidates": [
+        {
+          "id": "scope-http-status-200-404-500",
+          "topic": "HTTP 状态码 200、404 和 500 的含义",
+          "domain": "Web 开发 / HTTP 协议",
+          "description": "围绕用户明确询问的三个状态码（200、404、500）建立学习范围，覆盖其语义、所属类别、典型触发场景与常见排查方向。资料中已取得 200、404、500 的官方与科普说明片段，可作为依据；最终题目需另行审核。",
+          "focuses": [
+            {
+              "id": "focus-200-ok",
+              "name": "200 OK：成功响应",
+              "description": "理解 200 表示请求已成功完成，以及它在响应类别中的位置和常见使用语境。",
+              "points": [
+                {
+                  "id": "point-200-definition",
+                  "name": "200 表示请求成功完成",
+                  "evidence_ids": [
+                    "web-fd515fe367c2e5d0564d1e1d8d612bec"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-200-cacheable",
+                  "name": "200 响应默认可被缓存",
+                  "evidence_ids": [
+                    "web-fd515fe367c2e5d0564d1e1d8d612bec"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-200-class-2xx",
+                  "name": "2xx 类别：成功（Success）",
+                  "evidence_ids": [
+                    "web-0f038dc6c6a0a80628d62f92a03e36ee"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-200-post-example",
+                  "name": "POST 订阅示例中返回 200 的场景",
+                  "evidence_ids": [
+                    "web-fd515fe367c2e5d0564d1e1d8d612bec"
+                  ],
+                  "evidence_status": "available"
+                }
+              ]
+            },
+            {
+              "id": "focus-404-not-found",
+              "name": "404 Not Found：资源未找到",
+              "description": "理解 404 表示服务器找不到请求的资源，以及它作为客户端错误类别的定位与常见语境。",
+              "points": [
+                {
+                  "id": "point-404-definition",
+                  "name": "404 表示服务器无法找到请求的资源",
+                  "evidence_ids": [
+                    "web-638c9711069b8b3b6bb74cb7d8fc125a",
+                    "web-8279da65d8c1242500b3cf012971af31"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-404-broken-links",
+                  "name": "指向 404 的链接常被称为失效链接/死链",
+                  "evidence_ids": [
+                    "web-638c9711069b8b3b6bb74cb7d8fc125a"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-404-class-4xx",
+                  "name": "4xx 类别：客户端错误（Client error）",
+                  "evidence_ids": [
+                    "web-6577b8df79a8c8a4af27e439ea635a9d"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-404-custom-page",
+                  "name": "自定义 404 页面的设计注意事项",
+                  "evidence_ids": [
+                    "web-638c9711069b8b3b6bb74cb7d8fc125a"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-404-seo",
+                  "name": "404 对 SEO 的影响：不被索引，若曾被索引则被移除",
+                  "evidence_ids": [
+                    "web-5ec1a2e8c3089a98e050b3df688b2384"
+                  ],
+                  "evidence_status": "available"
+                }
+              ]
+            },
+            {
+              "id": "focus-500-internal-server-error",
+              "name": "500 Internal Server Error：服务器内部错误",
+              "description": "理解 500 作为服务器端通用兜底错误码的含义、常见成因与排查方向。",
+              "points": [
+                {
+                  "id": "point-500-definition",
+                  "name": "500 表示服务器遇到意外情况无法完成请求",
+                  "evidence_ids": [
+                    "web-d5f4e226679ef078cfa45fe51d290941",
+                    "web-3b41482d9242d9a4689dabd88c29a7dc"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-500-catch-all",
+                  "name": "500 是服务器端错误的通用兜底码，本身不说明具体原因",
+                  "evidence_ids": [
+                    "web-d5f4e226679ef078cfa45fe51d290941",
+                    "web-3b41482d9242d9a4689dabd88c29a7dc"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-500-causes",
+                  "name": "常见成因：文件权限、脚本超时、.htaccess 损坏、数据库连接问题等",
+                  "evidence_ids": [
+                    "web-3b41482d9242d9a4689dabd88c29a7dc",
+                    "web-d5f4e226679ef078cfa45fe51d290941"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-500-class-5xx",
+                  "name": "5xx 类别：服务器错误（Server error）",
+                  "evidence_ids": [
+                    "web-6577b8df79a8c8a4af27e439ea635a9d"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-500-vs-others",
+                  "name": "500 与 502、503、504 的区别",
+                  "evidence_ids": [
+                    "web-3b41482d9242d9a4689dabd88c29a7dc"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-500-log",
+                  "name": "排查线索在服务器错误日志中",
+                  "evidence_ids": [
+                    "web-d5f4e226679ef078cfa45fe51d290941"
+                  ],
+                  "evidence_status": "available"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "grounding": {
+      "status": "source_backed",
+      "reason_code": null,
+      "retrieved_at": "2026-10-14T12:19:44.364585Z",
+      "provider": "tavily",
+      "check_version": "evidence-review-v1"
+    },
+    "evidence": [
+      {
+        "id": "web-8279da65d8c1242500b3cf012971af31",
+        "text": "404 – Not Found The requested resource could not be found on the server. Example: Navigating to a non-existent URL. 500 – Internal Server Error",
+        "title": "🔍⭐HTTP Status Codes (200, 201, 400, 401, 403, 404, 500)",
+        "url": "https://dev.to/rencberakman/http-status-codes-200-201-400-401-403-404-500-9p8",
+        "original_url": "https://dev.to/rencberakman/http-status-codes-200-201-400-401-403-404-500-9p8",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:19:35.115861Z",
+        "published_at": null,
+        "content_hash": "c4774f4c170377401faa29e1861c4e7b8b94b52a58cd7bb96076b1b7d806f4d9",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 143,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-840414c2031e8b505d6251d041f99003",
+        "text": "[![logo](/images/kinex-logo.webp)](/)\n\n[![](data:image/svg+xml;charset=utf-8,%3Csvg%20height='20'%20width='20'%20xmlns='http://www.w3.org/2000/svg'%20version='1.1'%3E%3C/svg%3E)\n\n![Call]()](tel:+1 416-907-4030)\n\n[![](data:image/svg+xml;charset=utf-8,%3Csvg%20height='20'%20width='28'%20xmlns='http://www.w3.org/2000/svg'%20version='1.1'%3E%3C/svg%3E)\n\n![Call]()](/get-in-touch/)\n\n![menu]()\n\n![menu]()\n\n* [Our Work](/our-work/)\n* Website Design\n  + [Website Design](/web-design-canada/)\n  + [Website Development](/web-development-toronto/)\n  + [WordPress Development](/wordpress-development/)\n  + [Joomla Development](/joomla/)\n  + [Drupal Development](/drupal/)\n  + [Laravel Development](/laravel-development/)\n* Ecommerce\n  + [Ecommerce Development](/ecommerce/)\n  + [Magento Development](/magento-development-services/)\n  + [Shopify](/shopify-development/)\n  + [Shopify Plus](/shopify-plus/)\n  + [Headless Commerce](/headless-commerce/)\n* Adobe Commerce\n  + [Adobe Commerce](/adobe-commerce-development-agency/)\n  + [Magento 2 Development](/magento-2-development/)\n  + [Magento 2 Migration](/magento-2-migration/)\n  + [Magento 2 Support](/magento-2-support/)\n  + [Hyva Theme Development](/hyva-theme-development/)\n  + [Hyva Enterprise](/hyva-enterprise/)\n* Digital Marketing\n  + [Digital Marketing](/digital-marketing/)\n  + [Search Engine Optimization](/seo-toronto/)\n  + [Local SEO Services](/local-seo-services/)\n  + [Ecommerce SEO](/ecommerce-seo-services/)\n  + [Pay Per Click](/pay-per-click/)\n  + [Social Media Advertising](/social-media-advertising/)\n* AI SEO\n  + [AI SEO Services](/ai-seo-services/)\n  + [GEO Services](/generative-engine-optimization-services/)\n  + [AEO Services](/answer-engine-optimization/)\n  + [SEO for ChatGPT](/seo-for-chatgpt/)\n  + [SEO for Gemini](/seo-for-gemini/)\n  + [SEO for Perplexity](/seo-for-perplexity/)\n\n[Get Free Consultation![arrow](/images/consultation-icon.webp)](/get-in-touch/)\n\n[![logo-w](/images/kinex-logo.webp)](/)\n\n![](data:image/svg+xml;charset=utf-8,%3Csvg%20height='35'%20width='36'%20xmlns='http://www.w3.org/2000/svg'%20version='1.1'%3E%3C/svg%3E)\n\n![close]()\n\n* [Our Work](/our-work/)\n* Website Design \n  + [Website Design](/web-design-canada/)\n  + [Website Development](/web-development-toronto/)\n  + [WordPress Development](/wordpress-development/)\n  + [Joomla Development](/joomla/)\n  + [Drupal Development](/drupal/)\n  + [Laravel Development](/laravel-development/)\n* Ecommerce \n  + [Ecommerce Development](/ecommerce/)\n  + [Magento Development](/magento-development-services/)\n  + [Shopify](/shopify-development/)\n  + [Shopify Plus](/shopify-plus/)\n  + [Headless Commerce](/headless-commerce/)\n* Adobe Commerce \n  + [Adobe Commerce](/adobe-commerce-development-agency/)\n  + [Magento 2 Development](/magento-2-development/)\n  + [Magento 2 Migration](/magento-2-migration/)\n  + [Magento 2 Support](/magento-2-support/)\n  + [Hyva Theme Development](/hyva-theme-development/)\n  + [Hyva Enterprise](/hyva-enterprise/)\n* Digital Marketing \n  + [Digital Marketing](/digital-marketing/)\n  + [Search Engine Optimization](/seo-toronto/)\n  + [Local SEO Services](/local-seo-services/)\n  + [Ecommerce SEO](/ecommerce-seo-services/)\n  + [Pay Per Click](/pay-per-click/)\n  + [Social Media Advertising](/social-media-advertising/)\n* AI SEO\n  + [AI SEO Services](/ai-seo-services/)\n  + [GEO Services](/generative-engine-optimization-services/)\n  + [AEO Services](/answer-engine-optimization/)\n  + [SEO for ChatGPT](/seo-for-chatgpt/)\n  + [SEO for Gemini](/seo-for-gemini/)\n  + [SEO for Perplexity](/seo-for-perplexity/)\n* [Home](/)\n* [About](/about/)\n* [Our Work](/our-work/)\n* [Blog](/blog/)\n* [Contact](/get-in-touch/)\n\nMississauga (Head Office)\n\n25 Watline Avenue, Suite 302,   \nMississauga, Ontario L4Z 2Z1\n\nToronto Office\n\n250 University Ave. Suite 200  \nToronto, ON M5H 3E5\n\nQuick Contact (Head Office)\n\n[1-888-679-7773](tel:+18886797773), [416-907-4030](tel:+1 416-907-4030 )   \n[info@kinexmedia.com](mailto:info@kinexmedia.com)\n\nJuly 08, 2023",
+        "title": "HTTP Status Codes: Complete List, Meanings & SEO Impact",
+        "url": "https://www.kinexmedia.com/blog/http-status-codes",
+        "original_url": "https://www.kinexmedia.com/blog/http-status-codes",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "full_extract",
+        "retrieved_at": "2026-10-14T12:19:35.115861Z",
+        "published_at": null,
+        "content_hash": "9a1727c55099a5be6a95b7d3341fe2f63b9c97cd024e1f17c5c110bf821abce9",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 27435,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-fdef56bb58f38bb0d4981325bfb1c478",
+        "text": "|Last Updated On October 09, 2026 | By Kinex Media\n\n# HTTP Status Codes: The Complete List and What Each Means for SEO\n\nSay you open Google Search Console and find dozens of pages marked “Not found (404)”, a handful marked “Server error (5xx)”, and a few more labelled “Page with redirect”. Which of these are hurting your rankings? In short, 404s and 301s on pages you meant to remove or move are normal. Server errors (5xx) and soft 404s on pages that should be live are the ones to fix first.\n\nEach of those labels comes from the three-digit status code the page sends back. This guide explains what those codes mean, which ones Google cares about, and what to do about them. If you only need to look up one code, jump to the quick reference or the full list.\n\n**Key Takeaways**\n\n* An HTTP status code is a three-digit number a server sends back with every response, including every response to Googlebot.\n* Codes fall into five classes: 1xx informational, 2xx success, 3xx redirection, 4xx client error, and 5xx server error.\n* The official list is kept by IANA, and most codes are defined in RFC 9110. A code that isn’t in that registry isn’t a standard HTTP status code.\n* For SEO, the codes that matter most are 200, the permanent and temporary redirects (301/308 and 302/307), 404, 410, 429, and the 5xx range, because they decide whether Google indexes a page, follows a redirect, or slows down crawling.\n* Some numbers people search for, such as 250, 255, and 329, aren’t HTTP codes at all. Several are email (SMTP) or FTP reply codes, and others aren’t standard codes in any of these protocols.\n\n## **What are HTTP Status Codes?**\n\nHTTP status codes are three-digit numbers a web server returns to tell the browser, app, or search engine crawler what happened to its request. The first digit gives the class of response (success, redirect, or error), and the full code gives the detail. They are defined in [RFC 9110](https://www.rfc-editor.org/rfc/rfc9110) and listed in the [IANA HTTP Status Code Registry](https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml).\n\nYou rarely see them when a page loads normally, because the code is almost always 200. You notice them when something goes wrong: a “404 Not Found” page, a “503 Service Unavailable” message, or a list of errors in Google Search Console.\n\n## **The 5 Classes of HTTP Status Codes**\n\n| Class | Meaning | Common Examples | What It Means for SEO |\n| --- | --- | --- | --- |\n| **1xx** Informational | The server received the request, and the process is continuing | 100, 103 | No direct effect. Browsers and servers handle these behind the scenes. |\n| **2xx** Success | The request worked | 200, 201, 204 | A 200 lets Google consider the page for indexing (it doesn’t guarantee it). |\n| **3xx** Redirection | The content is somewhere else | 301, 302, 304, 307, 308 | Google follows the redirect. Permanent redirects send a strong signal to index the new URL. |\n| **4xx** Client error | The request can’t be fulfilled as sent | 400, 403, 404, 410, 429 | Google doesn’t index these URLs and drops them if they were indexed. 429 is the exception. |\n| **5xx** Server error | The server failed to handle a valid request | 500, 502, 503, 504 | Google slows down crawling. Errors that last can lead to pages being dropped. |\n\n## **Quick Reference: The Codes You’ll Actually See**\n\n| Code | Name | Plain-English Meaning | SEO Impact |\n| --- | --- | --- | --- |\n| 200 | OK | The page loaded normally. | Eligible for indexing. |\n| 201 | Created | The request created something new (common in APIs). | Not used for normal web pages. |\n| 204 | No Content | Success, but there’s nothing to show. | A page returning 204 has no content to index. |\n| 301 | Moved Permanently | The page has moved for good. | Strong signal to index the new URL. |\n| 302 | Found | The page is temporarily somewhere else. | Weak signal; Google may keep the old URL. |\n| 304 | Not Modified | Nothing changed since the last visit; use the cached",
+        "title": "HTTP Status Codes: Complete List, Meanings & SEO Impact",
+        "url": "https://www.kinexmedia.com/blog/http-status-codes",
+        "original_url": "https://www.kinexmedia.com/blog/http-status-codes",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "full_extract",
+        "retrieved_at": "2026-10-14T12:19:35.115861Z",
+        "published_at": null,
+        "content_hash": "9a1727c55099a5be6a95b7d3341fe2f63b9c97cd024e1f17c5c110bf821abce9",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 27435,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-5ec1a2e8c3089a98e050b3df688b2384",
+        "text": "copy. | Saves crawl resources. |\n| 307 | Temporary Redirect | Like 302, but the request method must not change. | Weak signal, same as 302. |\n| 308 | Permanent Redirect | Like 301, but the request method must not change. | Strong signal, same as 301. |\n| 400 | Bad Request | The server couldn’t understand the request. | Not indexed. |\n| 401 | Unauthorized | You need to log in. | Not indexed. |\n| 403 | Forbidden | You’re not allowed to see this. | Not indexed. Check you aren’t blocking Googlebot by mistake. |\n| 404 | Not Found | The page doesn’t exist. | Not indexed; removed if it was. |\n| 410 | Gone | The page was removed on purpose. | Treated the same as 404 by Google. |\n| 429 | Too Many Requests | The client sent too many requests. | Google treats it as a server overload and slows crawling. |\n| 500 | Internal Server Error | Something broke on the server. | Google slows crawling. |\n| 502 | Bad Gateway | A server in the chain got a bad response from another. | Same as 500. |\n| 503 | Service Unavailable | The server is down or overloaded, usually temporarily. | Same as 500. The right code for planned maintenance. |\n| 504 | Gateway Timeout | A server in the chain waited too long for another. | Same as 500. |\n\n## **How HTTP Status Codes Affect SEO**\n\nGoogle’s crawlers read the status code before anything else. According to [Google’s crawling documentation](https://developers.google.com/crawling/docs/troubleshooting/http-status-codes), here’s what each class does:\n\n**2xx: Eligible, Not Guaranteed.** A 200 response lets Google process the content for indexing, but Google notes that a 2xx code “doesn’t guarantee indexing.” Watch out for **soft 404s**: pages that return 200 but show an error message or an empty page. Google treats these as errors, so a missing page should return a real 404 or 410.\n\n**3xx: follow the signal.** Google follows up to 10 redirect hops. Permanent redirects (301, 308) are a strong signal that the new URL should be indexed. Temporary redirects (302, 307) are a weak signal, so Google may keep showing the old URL. For SEO:\n\n* Use 301 or 308 when a page has moved for good.\n* Avoid redirect chains (A to B to C). Point every old URL straight at its final destination.\n* Never create loops (A to B to A).\n\n**4xx: not indexed.** Google doesn’t index URLs that return a 4xx code and removes them if they were indexed. Google says all 4xx codes except 429 are handled the same way, so **404 and 410 have the same effect in Google**. Use 410 if you want to be explicit that a page was removed on purpose; use 404 otherwise. Don’t use 403 or 401 for pages you want indexed.\n\n**429 and 5xx: slow down.** Google treats 429 and 5xx responses as a sign the server is struggling and temporarily slows crawling. Pages that are already indexed stay in the index at first, but if the errors continue, they can be dropped. For planned maintenance, return a **503** for a short period instead of a 200 “under maintenance” page.\n\n**Best Practices**\n\n* Make sure every live page returns 200 and every removed page returns 404 or 410, not a redirect to the homepage.\n* Fix internal links that point to redirects or 404s; link straight to the final URL.\n* Check Search Console regularly for server errors (5xx) and sudden jumps in 404s.\n* After a site migration, map every old URL to its closest new URL with a 301.\n\n## **Is HTTP 250 a Real Status Code? Numbers That Aren’t HTTP Codes**\n\nNo. **There is no HTTP status code 250**, and the same goes for 255, 329, 222, 312, and many other numbers people search for. If you saw one of these numbers, it most likely came from a different protocol or from a specific tool.\n\nTwo other internet protocols use three-digit reply codes that look like HTTP codes:\n\n* **Email (SMTP)**, defined in [RFC 5321](https://www.rfc-editor.org/rfc/rfc5321). Mail servers use codes such as 220, 221, 250, 251, 252, 354, 421, 450, and 550.\n* **File transfer (FTP)**, defined in [RFC 959](https://www.rfc-editor.org/rfc/rfc959). FTP servers us",
+        "title": "HTTP Status Codes: Complete List, Meanings & SEO Impact",
+        "url": "https://www.kinexmedia.com/blog/http-status-codes",
+        "original_url": "https://www.kinexmedia.com/blog/http-status-codes",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "full_extract",
+        "retrieved_at": "2026-10-14T12:19:35.115861Z",
+        "published_at": null,
+        "content_hash": "9a1727c55099a5be6a95b7d3341fe2f63b9c97cd024e1f17c5c110bf821abce9",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 27435,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-f18be10ed5defba07c49a06ce26bfb9f",
+        "text": "e codes such as 110, 150, 212, 213, 220, 226, 230, 250, 331, and 530.\n\nHere are the numbers we’re asked about most:\n\n| Number | HTTP code? | What it probably is |\n| --- | --- | --- |\n| 250 | No | **SMTP:** “Requested mail action okay, completed” (the email was accepted). **FTP:** “Requested file action okay, completed.” |\n| 220 | No | **SMTP:** the mail server is ready. **FTP:** the server is ready for a new user. |\n| 221 | No | **SMTP / FTP:** the server is closing the connection. |\n| 251 | No | **SMTP:** “User not local; will forward.” |\n| 252 | No | **SMTP:** the server can’t verify the user but will accept the message and try to deliver it. |\n| 212 | No | **FTP:** directory status. |\n| 213 | No | **FTP:** file status. |\n| 211 | No | **SMTP / FTP:** system status or help reply. |\n| 110 | No | **FTP:** restart marker reply. |\n| 104 | **Yes**  (temporary) | Upload Resumption Supported. See the 1xx list below. |\n| 210, 219, 222, 254, 255 | No | Not standard codes in HTTP, SMTP, or FTP. Check the documentation of the app or device that showed it. |\n| 310, 312, 322, 329 | No | Not standard codes in HTTP, SMTP, or FTP. (310 is sometimes used informally to mean “too many redirects”, but browsers report that as an error, not a status code.) |\n| 105, 106, 111 | No | Not standard codes. Errors such as “name not resolved” or “connection reset” are browser or network errors, not HTTP status codes. |\n\n**Tip:** If a number appeared in an email bounce message or mail log, look it up as an SMTP code. If it appeared in an FTP client, look it up as an FTP code. If it appeared in an app, it’s usually that app’s own error number.\n\n## **How to Check a Page’s Status Code**\n\n1. **In your browser:** Open the page, press F12 (or right-click and choose Inspect), go to the **Network** tab, and reload. The first row shows the page’s status code.\n2. **In Google Search Console:** Use the **URL Inspection** tool to see how Google last fetched a page, and the **Pages** report to see which URLs aren’t indexed and why (Not found (404), Server error (5xx), Page with redirect, Soft 404, and so on).\n3. **With a crawler:** SEO crawlers such as Screaming Frog or Sitebulb check every URL on your site and list status codes, redirect chains, and broken links in one report.\n\nIf you’re comfortable with the command line, this shows only the response headers, including the status code:\n\ncurl -I https://www.example.com/\n\n## **Common Confusions: 200 vs 201, 301 vs 302, and More**\n\n| Pair | Difference | Which to use |\n| --- | --- | --- |\n| **200 vs 201** | 200 means the request succeeded. 201 means it succeeded **and created** something new. | Web pages return 200. APIs return 201 after creating a record. |\n| **301 vs 302** | 301 is permanent; 302 is temporary. | 301 for moved pages; 302 only for short-term moves, such as a temporary promotion page. |\n| **301 vs 308** | Both are permanent. 308 also requires the request method (for example, POST) to stay the same. | Either works for normal page moves; 308 matters for APIs and forms. |\n| **404 vs 410** | 404 means “not found”; 410 means “gone on purpose”. Google treats them the same. | Either is fine for SEO. |\n| **502 vs 503 vs 504** | 502: bad response from an upstream server. 503: the server is unavailable. 504: an upstream server timed out. | 503 is the right code for planned maintenance. |\n\nWant more detail on a specific code? See our guides to [302 redirects](https://www.kinexmedia.com/blog/302-status-code/), [400 Bad Request](https://www.kinexmedia.com/blog/400-status-code/), [404 Not Found](https://www.kinexmedia.com/blog/404-status-code/), [409 Conflict](https://www.kinexmedia.com/blog/409-status-code/), [422 Unprocessable Content](https://www.kinexmedia.com/blog/422-status-code/), and [503 Service Unavailable](https://www.kinexmedia.com/blog/503-service-unavailable/). If Google isn’t indexing your pages at all, start with [why Google might not be indexing your site](https://www.kinexmedia.com/blog/google-is-not-in",
+        "title": "HTTP Status Codes: Complete List, Meanings & SEO Impact",
+        "url": "https://www.kinexmedia.com/blog/http-status-codes",
+        "original_url": "https://www.kinexmedia.com/blog/http-status-codes",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "full_extract",
+        "retrieved_at": "2026-10-14T12:19:35.115861Z",
+        "published_at": null,
+        "content_hash": "9a1727c55099a5be6a95b7d3341fe2f63b9c97cd024e1f17c5c110bf821abce9",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 27435,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-6279d7d79f3de1d686cb9e378352592b",
+        "text": "dexing-your-site-want-to-know-why/).\n\n## **The Full List of Official HTTP Status Codes**\n\nHere is the complete list of official HTTP status codes, as listed in the [IANA registry](https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml) in October 2026. Names are the official ones; the explanations are ours.\n\n### **1xx Informational**\n\n| Code | Name | What it means |\n| --- | --- | --- |\n| 100 | Continue | The server got the first part of the request, and the client should send the rest. |\n| 101 | Switching Protocols | The server agrees to switch protocols, for example to WebSocket. |\n| 102 | Processing | The server is working on a long request but has no response yet. Originally defined for WebDAV ([RFC 2518](https://www.rfc-editor.org/rfc/rfc2518)) and rarely used today. |\n| 103 | Early Hints | The server sends some headers early so the browser can start loading resources, such as stylesheets, before the final response ([RFC 8297](https://www.rfc-editor.org/rfc/rfc8297)). |\n| 104 | Upload Resumption Supported | Tells the client that an interrupted upload can be resumed. This is a **temporary** registration (made in November 2024 and due to expire in November 2026) tied to an IETF draft, so treat it as experimental. |\n\n### **2xx Success**\n\n| Code | Name | What it means |\n| --- | --- | --- |\n| 200 | OK | The request succeeded. For a web page, the content is in the response. |\n| 201 | Created | The request succeeded and created a new resource. Typical after a POST to an API. |\n| 202 | Accepted | The request was accepted for processing, but the processing isn’t finished. |\n| 203 | Non-Authoritative Information | The request succeeded, but a proxy modified the response. |\n| 204 | No Content | The request succeeded, and there is no body to return. |\n| 205 | Reset Content | The request succeeded, and the client should reset the form or view that sent it. |\n| 206 | Partial Content | The server is returning only part of the resource, as asked (used for video streaming and resumable downloads). |\n| 207 | Multi-Status | A WebDAV response that contains several separate status codes ([RFC 4918](https://www.rfc-editor.org/rfc/rfc4918)). |\n| 208 | Already Reported | WebDAV: these members were already listed earlier in the same response ([RFC 5842](https://www.rfc-editor.org/rfc/rfc5842)). |\n| 226 | IM Used | The server applied changes (such as a delta encoding) to the resource before returning it ([RFC 3229](https://www.rfc-editor.org/rfc/rfc3229)). |\n\n### **3xx Redirection**\n\n| Code | Name | What it means |\n| --- | --- | --- |\n| 300 | Multiple Choices | There are several versions of the resource and the client can choose one. |\n| 301 | Moved Permanently | The resource has a new permanent URL. Use it for permanent page moves. |\n| 302 | Found | The resource is temporarily at a different URL. |\n| 303 | See Other | The client should fetch a different URL with GET, often after a form submission. |\n| 304 | Not Modified | The cached copy is still valid, so nothing is resent. |\n| 305 | Use Proxy | Deprecated. Don’t use it. |\n| 306 | (Unused) | Reserved. It was used in an old draft and is no longer in use. |\n| 307 | Temporary Redirect | Temporary move; the client must repeat the request with the same method. |\n| 308 | Permanent Redirect | Permanent move; the client must repeat the request with the same method. |\n\n### **4xx Client Errors**\n\n| Code | Name | What it means |\n| --- | --- | --- |\n| 400 | Bad Request | The request is malformed, so the server won’t process it. |\n| 401 | Unauthorized | Authentication is required and is missing or wrong. |\n| 402 | Payment Required | Reserved for future use. Some services use it for billing errors. |\n| 403 | Forbidden | The server understood the request but refuses to allow it. |\n| 404 | Not Found | The server can’t find the requested resource. |\n| 405 | Method Not Allowed | The method (for example, POST) isn’t allowed for this URL. |\n| 406 | Not Acceptable | The server can’t produce a resp",
+        "title": "HTTP Status Codes: Complete List, Meanings & SEO Impact",
+        "url": "https://www.kinexmedia.com/blog/http-status-codes",
+        "original_url": "https://www.kinexmedia.com/blog/http-status-codes",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "full_extract",
+        "retrieved_at": "2026-10-14T12:19:35.115861Z",
+        "published_at": null,
+        "content_hash": "9a1727c55099a5be6a95b7d3341fe2f63b9c97cd024e1f17c5c110bf821abce9",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 27435,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-2754269b801be9405b5dd62ac22de7ed",
+        "text": "onse in a format the client accepts. |\n| 407 | Proxy Authentication Required | The client must authenticate with a proxy first. |\n| 408 | Request Timeout | The server gave up waiting for the client to finish this request. |\n| 409 | Conflict | The request conflicts with the current state of the resource, such as an edit conflict. |\n| 410 | Gone | The resource was removed on purpose and won’t come back. |\n| 411 | Length Required | The request must say how long its body is. |\n| 412 | Precondition Failed | A condition in the request headers wasn’t met. |\n| 413 | Content Too Large | The request body is bigger than the server will accept (formerly “Payload Too Large”). |\n| 414 | URI Too Long | The URL is longer than the server will process. |\n| 415 | Unsupported Media Type | The server doesn’t support the format of the request body. |\n| 416 | Range Not Satisfiable | The client asked for a part of the file that doesn’t exist. |\n| 417 | Expectation Failed | The server can’t meet the requirement in the Expect header. |\n| 418 | (Unused) | Reserved. Known from the 1998 “I’m a teapot” April Fools’ joke and not a real error. |\n| 421 | Misdirected Request | The request went to a server that can’t produce a response for it. |\n| 422 | Unprocessable Content | The request is well formed but contains invalid data (formerly “Unprocessable Entity”). |\n| 423 | Locked | WebDAV: the resource is locked. |\n| 424 | Failed Dependency | WebDAV: the request failed because an earlier request failed. |\n| 425 | Too Early | The server won’t process a request that might be replayed (RFC 8470). |\n| 426 | Upgrade Required | The client must switch to a different protocol. |\n| 428 | Precondition Required | The server requires the request to be conditional, to prevent lost updates (RFC 6585). |\n| 429 | Too Many Requests | The client sent too many requests in a given time. |\n| 431 | Request Header Fields Too Large | The request headers are too large. |\n| 451 | Unavailable For Legal Reasons | The resource is blocked for legal reasons (RFC 7725). |\n\n### **5xx Server Errors**\n\n| Code | Name | What it means |\n| --- | --- | --- |\n| 500 | Internal Server Error | A generic error: something went wrong on the server. |\n| 501 | Not Implemented | The server doesn’t support the feature needed to complete the request. |\n| 502 | Bad Gateway | A gateway or proxy got an invalid response from the server behind it. |\n| 503 | Service Unavailable | The server is temporarily unable to handle the request, often because of maintenance or overload. |\n| 504 | Gateway Timeout | A gateway or proxy didn’t get a response in time from the server behind it. |\n| 505 | HTTP Version Not Supported | The server doesn’t support the HTTP version used. |\n| 506 | Variant Also Negotiates | A server configuration error in content negotiation. |\n| 507 | Insufficient Storage | WebDAV: the server can’t store what’s needed to complete the request. |\n| 508 | Loop Detected | WebDAV: the server found an infinite loop while processing the request. |\n| 510 | Not Extended | Obsoleted. It belonged to an HTTP extension experiment that is now historic. |\n| 511 | Network Authentication Required | You must log in to the network first, as on hotel or airport Wi-Fi. |\n\n## **Unofficial and Vendor-Specific Codes**\n\nSome servers, CDNs, and frameworks use their own codes. They are **not part of the HTTP standard**, but you may see them in server logs, CDN dashboards, or crawler reports.\n\n| Code | Used by | Meaning |\n| --- | --- | --- |\n| 419 | Laravel (PHP framework) | Page Expired, usually because the security (CSRF) token on a form expired. |\n| 440 | Microsoft IIS | Login Time-out: the session expired. |\n| 449 | Microsoft IIS | Retry With: the request should be retried after the client provides more information. |\n| 499 | nginx | Client Closed Request: the visitor (or a bot) closed the connection before the server answered. |\n| 520 | Cloudflare | The origin server returned an unknown or unexpected response. |\n| 521 | Cloudflar",
+        "title": "HTTP Status Codes: Complete List, Meanings & SEO Impact",
+        "url": "https://www.kinexmedia.com/blog/http-status-codes",
+        "original_url": "https://www.kinexmedia.com/blog/http-status-codes",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "full_extract",
+        "retrieved_at": "2026-10-14T12:19:35.115861Z",
+        "published_at": null,
+        "content_hash": "9a1727c55099a5be6a95b7d3341fe2f63b9c97cd024e1f17c5c110bf821abce9",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 27435,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-c5334649171ce9a905393f3c809c57f1",
+        "text": "e | The origin web server refused the connection (often it is down). |\n| 522 | Cloudflare | Cloudflare timed out connecting to the origin server. |\n| 523 | Cloudflare | The origin server is unreachable. |\n| 524 | Cloudflare | Cloudflare connected, but the origin took too long to respond. |\n| 525 | Cloudflare | The SSL handshake between Cloudflare and the origin failed. |\n| 526 | Cloudflare | The origin’s SSL certificate is invalid. |\n| 530 | Cloudflare | Returned together with a Cloudflare 1xxx error (for example, a DNS problem at the origin); the 1xxx error tells you the real cause. |\n\nIf you see one of these, the fix is on the server or CDN side, and the vendor’s documentation is the best place to start. For SEO, Google treats them by their class: a 5xx-range vendor code slows crawling like any other server error.\n\n## **FAQ**\n\n**What are the 5 classes of HTTP status codes?**\n\nHTTP status codes are grouped by their first digit: 1xx informational (the request is in progress), 2xx success (the request worked), 3xx redirection (the content is elsewhere), 4xx client error (the request can’t be fulfilled as sent), and 5xx server error (the server failed to handle a valid request).\n\n**Which HTTP status codes matter most for SEO?**\n\nThe most important are 200 (the page can be indexed), 301 and 308 (permanent redirects), 302 and 307 (temporary redirects), 404 and 410 (the page is removed from Google’s index), 429, and the 5xx server errors, which make Google slow down crawling and can lead to pages being dropped if they continue.\n\n**Is HTTP 250 a real status code?**\n\nNo. 250 isn’t an HTTP status code. It’s a common reply code in email (SMTP), where it means the mail action was completed, and in FTP, where it means a file action was completed. Numbers such as 255 and 329 aren’t standard codes in HTTP, SMTP, or FTP.\n\n**What is the difference between a 200 and a 201 status code?**\n\nBoth mean the request succeeded. A 200 OK is the normal response for a web page or a successful request. A 201 Created means the request also created a new resource, which is typical when an API saves a new record.\n\n**Should I use a 404 or a 410 for a deleted page?**\n\nEither works for SEO. Google treats all 4xx codes except 429 the same way and removes the URL from its index. A 410 tells other systems more clearly that the page was removed on purpose, while a 404 is the standard “not found” response.\n\n**Who decides which HTTP status codes are official?**\n\nThe Internet Engineering Task Force (IETF) defines HTTP status codes in its RFC standards, mainly RFC 9110, and the Internet Assigned Numbers Authority (IANA) keeps the official registry. A code that isn’t in the IANA registry isn’t a standard HTTP status code.\n\n**Seeing 404s, redirect chains, or 5xx errors in Search Console?** Our technical SEO team can find what’s stopping Google from crawling and indexing your site. [Get a free SEO audit](https://www.kinexmedia.com/free-seo-audit/)**.**\n\n## Subscribe Kinex Media Weekly Newsletter\n\n### Tools\n\n* ![](data:image/svg+xml;charset=utf-8,%3Csvg%20height='10'%20width='11'%20xmlns='http://www.w3.org/2000/svg'%20version='1.1'%3E%3C/svg%3E)\n\n  ![]()\n\n  [SEO Audit](/free-seo-audit/)\n* ![](data:image/svg+xml;charset=utf-8,%3Csvg%20height='10'%20width='11'%20xmlns='http://www.w3.org/2000/svg'%20version='1.1'%3E%3C/svg%3E)\n\n  ![]()\n\n  [Password Generator](/password-generator/)\n\n[Get Free Consultation](/get-in-touch/)",
+        "title": "HTTP Status Codes: Complete List, Meanings & SEO Impact",
+        "url": "https://www.kinexmedia.com/blog/http-status-codes",
+        "original_url": "https://www.kinexmedia.com/blog/http-status-codes",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "full_extract",
+        "retrieved_at": "2026-10-14T12:19:35.115861Z",
+        "published_at": null,
+        "content_hash": "9a1727c55099a5be6a95b7d3341fe2f63b9c97cd024e1f17c5c110bf821abce9",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 27435,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-6577b8df79a8c8a4af27e439ea635a9d",
+        "text": "Client error responses ( 400 – 499 ); Server error responses ( 500 – 599 ). The status codes listed below are defined by RFC 9110. Note:",
+        "title": "HTTP response status codes - MDN Web Docs - Mozilla",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status",
+        "original_url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:19:35.115861Z",
+        "published_at": null,
+        "content_hash": "c60c8736446c4f21c22410c267756914acf06563591300adaab2639624bc2a8a",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 136,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-d690d24fb47d6876fdd87d9daf7cd8c5",
+        "text": "Status Codes. The status code of a response is a three-digit integer code that describes the result of the request and the semantics of the response",
+        "title": "RFC 9110: HTTP Semantics | RFC ...",
+        "url": "https://www.rfc-editor.org/info/rfc9110",
+        "original_url": "https://www.rfc-editor.org/info/rfc9110",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:19:35.115861Z",
+        "published_at": null,
+        "content_hash": "ac6954b4d84500403e4d49bc4446855ac7f3230f0a43a76f058128114376ed35",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 148,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-0f038dc6c6a0a80628d62f92a03e36ee",
+        "text": "[![Homepage](/static/img/iana-logo-header.426b3ac01d35.svg)](/)\n\n* [Domains](/domains)\n* [Protocols](/protocols)\n* [Numbers](/numbers)\n* [About](/about)\n\n# Hypertext Transfer Protocol (HTTP) Status Code Registry\n\n### Last Updated\n\n* 2025-09-15\n\n### Available Formats\n\n* [XML](/assignments/http-status-codes/http-status-codes.xml)\n* [HTML](/assignments/http-status-codes)\n* [TXT](/assignments/http-status-codes/http-status-codes.txt)\n\n---\n\n## HTTP Status Codes\n\n### Registration Procedure(s)\n\n* IETF Review\n\n### Reference\n\n* [RFC 9110, Section 16.2.1](https://www.iana.org/go/rfc9110#section-16.2.1): HTTP Semantics\n\n### Note\n\n```\n1xx: Informational - Request received, continuing process 2xx: Success - The action was successfully received, understood, and accepted 3xx: Redirection - Further action must be taken in order to complete the request 4xx: Client Error - The request contains bad syntax or cannot be fulfilled 5xx: Server Error - The server failed to fulfill an apparently valid request\n```\n\n### Available Formats\n\n* [CSV](/assignments/http-status-codes/http-status-codes-1.csv)\n\n| Value | Description | Reference |\n| --- | --- | --- |\n| 100 | Continue | [RFC 9110, Section 15.2.1](https://www.iana.org/go/rfc9110#section-15.2.1) |\n| 101 | Switching Protocols | [RFC 9110, Section 15.2.2](https://www.iana.org/go/rfc9110#section-15.2.2) |\n| 102 | Processing | [RFC 2518](https://www.iana.org/go/rfc2518) |\n| 103 | Early Hints | [RFC 8297](https://www.iana.org/go/rfc8297) |\n| 104 | Upload Resumption Supported (TEMPORARY - registered 2024-11-13, extension registered 2025-09-15, expires 2026-11-13) | [draft-ietf-httpbis-resumable-upload-05](https://www.iana.org/go/draft-ietf-httpbis-resumable-upload-05) |\n| 105-199 | Unassigned |\n| 200 | OK | [RFC 9110, Section 15.3.1](https://www.iana.org/go/rfc9110#section-15.3.1) |\n| 201 | Created | [RFC 9110, Section 15.3.2](https://www.iana.org/go/rfc9110#section-15.3.2) |\n| 202 | Accepted | [RFC 9110, Section 15.3.3](https://www.iana.org/go/rfc9110#section-15.3.3) |\n| 203 | Non-Authoritative Information | [RFC 9110, Section 15.3.4](https://www.iana.org/go/rfc9110#section-15.3.4) |\n| 204 | No Content | [RFC 9110, Section 15.3.5](https://www.iana.org/go/rfc9110#section-15.3.5) |\n| 205 | Reset Content | [RFC 9110, Section 15.3.6](https://www.iana.org/go/rfc9110#section-15.3.6) |\n| 206 | Partial Content | [RFC 9110, Section 15.3.7](https://www.iana.org/go/rfc9110#section-15.3.7) |\n| 207 | Multi-Status | [RFC 4918](https://www.iana.org/go/rfc4918) |\n| 208 | Already Reported | [RFC 5842](https://www.iana.org/go/rfc5842) |\n| 209-225 | Unassigned |\n| 226 | IM Used | [RFC 3229](https://www.iana.org/go/rfc3229) |\n| 227-299 | Unassigned |\n| 300 | Multiple Choices | [RFC 9110, Section 15.4.1](https://www.iana.org/go/rfc9110#section-15.4.1) |\n| 301 | Moved Permanently | [RFC 9110, Section 15.4.2](https://www.iana.org/go/rfc9110#section-15.4.2) |\n| 302 | Found | [RFC 9110, Section 15.4.3](https://www.iana.org/go/rfc9110#section-15.4.3) |\n| 303 | See Other | [RFC 9110, Section 15.4.4](https://www.iana.org/go/rfc9110#section-15.4.4) |\n| 304 | Not Modified | [RFC 9110, Section 15.4.5](https://www.iana.org/go/rfc9110#section-15.4.5) |\n| 305 | Use Proxy | [RFC 9110, Section 15.4.6](https://www.iana.org/go/rfc9110#section-15.4.6) |\n| 306 | (Unused) | [RFC 9110, Section 15.4.7](https://www.iana.org/go/rfc9110#section-15.4.7) |\n| 307 | Temporary Redirect | [RFC 9110, Section 15.4.8](https://www.iana.org/go/rfc9110#section-15.4.8) |\n| 308 | Permanent Redirect | [RFC 9110, Section 15.4.9](https://www.iana.org/go/rfc9110#section-15.4.9) |\n| 309-399 | Unassigned |\n| 400 | Bad Request | [RFC 9110, Section 15.5.1](https://www.iana.org/go/rfc9110#section-15.5.1) |\n| 401 | Unauthorized | [RFC 9110, Section 15.5.2](https://www.iana.org/go/rfc9110#section-15.5.2) |\n| 402 | Payment Required | [RFC 9110, Section 15.5.3](https://www.iana.org/go/rfc9110#section-15.5.3) |\n| 403 | Forbidden | [RFC 9110, Section 15.5.4](https://www.iana.org",
+        "title": "Hypertext Transfer Protocol (HTTP) Status Code Registry",
+        "url": "https://www.iana.org/assignments/http-status-codes",
+        "original_url": "https://www.iana.org/assignments/http-status-codes",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "full_extract",
+        "retrieved_at": "2026-10-14T12:19:35.115861Z",
+        "published_at": null,
+        "content_hash": "a09ae8c2c87112167c94c072d00795872a1212c7ba3a39b6b0187762b776af6f",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 7776,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-764a0a07d1815db24f983512cb2d9ef5",
+        "text": "/go/rfc9110#section-15.5.4) |\n| 404 | Not Found | [RFC 9110, Section 15.5.5](https://www.iana.org/go/rfc9110#section-15.5.5) |\n| 405 | Method Not Allowed | [RFC 9110, Section 15.5.6](https://www.iana.org/go/rfc9110#section-15.5.6) |\n| 406 | Not Acceptable | [RFC 9110, Section 15.5.7](https://www.iana.org/go/rfc9110#section-15.5.7) |\n| 407 | Proxy Authentication Required | [RFC 9110, Section 15.5.8](https://www.iana.org/go/rfc9110#section-15.5.8) |\n| 408 | Request Timeout | [RFC 9110, Section 15.5.9](https://www.iana.org/go/rfc9110#section-15.5.9) |\n| 409 | Conflict | [RFC 9110, Section 15.5.10](https://www.iana.org/go/rfc9110#section-15.5.10) |\n| 410 | Gone | [RFC 9110, Section 15.5.11](https://www.iana.org/go/rfc9110#section-15.5.11) |\n| 411 | Length Required | [RFC 9110, Section 15.5.12](https://www.iana.org/go/rfc9110#section-15.5.12) |\n| 412 | Precondition Failed | [RFC 9110, Section 15.5.13](https://www.iana.org/go/rfc9110#section-15.5.13) |\n| 413 | Content Too Large | [RFC 9110, Section 15.5.14](https://www.iana.org/go/rfc9110#section-15.5.14) |\n| 414 | URI Too Long | [RFC 9110, Section 15.5.15](https://www.iana.org/go/rfc9110#section-15.5.15) |\n| 415 | Unsupported Media Type | [RFC 9110, Section 15.5.16](https://www.iana.org/go/rfc9110#section-15.5.16) |\n| 416 | Range Not Satisfiable | [RFC 9110, Section 15.5.17](https://www.iana.org/go/rfc9110#section-15.5.17) |\n| 417 | Expectation Failed | [RFC 9110, Section 15.5.18](https://www.iana.org/go/rfc9110#section-15.5.18) |\n| 418 | (Unused) | [RFC 9110, Section 15.5.19](https://www.iana.org/go/rfc9110#section-15.5.19) |\n| 419-420 | Unassigned |\n| 421 | Misdirected Request | [RFC 9110, Section 15.5.20](https://www.iana.org/go/rfc9110#section-15.5.20) |\n| 422 | Unprocessable Content | [RFC 9110, Section 15.5.21](https://www.iana.org/go/rfc9110#section-15.5.21) |\n| 423 | Locked | [RFC 4918](https://www.iana.org/go/rfc4918) |\n| 424 | Failed Dependency | [RFC 4918](https://www.iana.org/go/rfc4918) |\n| 425 | Too Early | [RFC 8470](https://www.iana.org/go/rfc8470) |\n| 426 | Upgrade Required | [RFC 9110, Section 15.5.22](https://www.iana.org/go/rfc9110#section-15.5.22) |\n| 427 | Unassigned |\n| 428 | Precondition Required | [RFC 6585](https://www.iana.org/go/rfc6585) |\n| 429 | Too Many Requests | [RFC 6585](https://www.iana.org/go/rfc6585) |\n| 430 | Unassigned |\n| 431 | Request Header Fields Too Large | [RFC 6585](https://www.iana.org/go/rfc6585) |\n| 432-450 | Unassigned |\n| 451 | Unavailable For Legal Reasons | [RFC 7725](https://www.iana.org/go/rfc7725) |\n| 452-499 | Unassigned |\n| 500 | Internal Server Error | [RFC 9110, Section 15.6.1](https://www.iana.org/go/rfc9110#section-15.6.1) |\n| 501 | Not Implemented | [RFC 9110, Section 15.6.2](https://www.iana.org/go/rfc9110#section-15.6.2) |\n| 502 | Bad Gateway | [RFC 9110, Section 15.6.3](https://www.iana.org/go/rfc9110#section-15.6.3) |\n| 503 | Service Unavailable | [RFC 9110, Section 15.6.4](https://www.iana.org/go/rfc9110#section-15.6.4) |\n| 504 | Gateway Timeout | [RFC 9110, Section 15.6.5](https://www.iana.org/go/rfc9110#section-15.6.5) |\n| 505 | HTTP Version Not Supported | [RFC 9110, Section 15.6.6](https://www.iana.org/go/rfc9110#section-15.6.6) |\n| 506 | Variant Also Negotiates | [RFC 2295](https://www.iana.org/go/rfc2295) |\n| 507 | Insufficient Storage | [RFC 4918](https://www.iana.org/go/rfc4918) |\n| 508 | Loop Detected | [RFC 5842](https://www.iana.org/go/rfc5842) |\n| 509 | Unassigned |\n| 510 | Not Extended (OBSOLETED) | [RFC 2774](https://www.iana.org/go/rfc2774); [Status change of HTTP experiments to Historic](https://datatracker.ietf.org/doc/status-change-http-experiments-to-historic) |\n| 511 | Network Authentication Required | [RFC 6585](https://www.iana.org/go/rfc6585) |\n| 512-599 | Unassigned |",
+        "title": "Hypertext Transfer Protocol (HTTP) Status Code Registry",
+        "url": "https://www.iana.org/assignments/http-status-codes",
+        "original_url": "https://www.iana.org/assignments/http-status-codes",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "full_extract",
+        "retrieved_at": "2026-10-14T12:19:35.115861Z",
+        "published_at": null,
+        "content_hash": "a09ae8c2c87112167c94c072d00795872a1212c7ba3a39b6b0187762b776af6f",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 7776,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-638c9711069b8b3b6bb74cb7d8fc125a",
+        "text": "Skip to search\n\nToggle sidebar \n\n1. Web\n2. HTTP\n3. Reference\n4. HTTP response status codes\n5. 404 Not Found\n\n \n\nRemember language   Learn more\n\n Deutsch\n English (US)\n Español\n Français\n 日本語\n 한국어\n Português (do Brasil)\n Русский\n 中文 (简体)\n 正體中文 (繁體)\n\n# 404 Not Found\n\nThe HTTP `404 Not Found` client error response status code indicates that the server cannot find the requested resource. Links that lead to a 404 page are often called broken or dead links and can be subject to link rot\"). [...] Note: Custom 404 page design is a good thing in moderation. Feel free to make your 404 page humorous and human, but don't confuse your visitors as to why they are seeing something unexpected.\n\nFor an example of a custom 404 page, see the KonMari 404 page\").\n\n## Specifications\n\n| Specification |\n\n| HTTP Semantics # status.404 |\n\n## See also\n\n HTTP response status codes\n `410`\n Wikipedia: HTTP 404\")\n\n## Help improve MDN\n\n Learn how to contribute [...] A 404 status code only indicates that the resource is missing without indicating if this is temporary or permanent. If a resource is permanently removed, servers should send the `410 Gone` status instead.",
+        "title": "404 Not Found - HTTP | MDN",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/404",
+        "original_url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/404",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:19:38.253330Z",
+        "published_at": null,
+        "content_hash": "f65a28fc9272e5c3286ff7c527d8fa0c8284e56233e33c3707a76d8caa66fac2",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 1153,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-fd515fe367c2e5d0564d1e1d8d612bec",
+        "text": "Skip to search\n\nToggle sidebar \n\n1. Web\n2. HTTP\n3. Reference\n4. HTTP response status codes\n5. 200 OK\n\n \n\nRemember language   Learn more\n\n Deutsch\n English (US)\n Español\n Français\n 日本語\n 한국어\n Português (do Brasil)\n Русский\n 中文 (简体)\n 正體中文 (繁體)\n\n# 200 OK\n\nThe HTTP `200 OK` successful response status code indicates that a request has succeeded. A `200 OK` response is cacheable by default. [...] Assuming a form exists to send data to an endpoint for managing subscriptions at ` A `POST` request to subscribe a user may look like the following:\n\nhttp\n\n```\nPOST /subscribe HTTP/1.1 Host: example.com Content-Type: application/x-www-form-urlencoded Content-Length: 50 name=Brian%20Smith&email=brian.smith%40example.com \n```\n\nIn this example, a response with a `200 OK` status could look like this:\n\nhttp [...] http\n\n```\nHTTP/1.1 200 OK Content-Type: application/json { \"message\": \"User subscription pending. A confirmation email has been sent.\", \"subscription\": { \"name\": \"Brian Smith\", \"email\": \"brian.smith@example.com\", \"id\": 123, \"feed\": \"default\" } } \n```\n\n## Specifications\n\n| Specification |\n\n| HTTP Semantics # status.200 |\n\n## See also\n\n HTTP request methods\n HTTP response status codes\n Glossary: Idempotent\n\n## Help improve MDN\n\n Learn how to contribute",
+        "title": "200 OK - HTTP | MDN",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/200",
+        "original_url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/200",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:19:38.253330Z",
+        "published_at": null,
+        "content_hash": "7c843f1a0797d85f8b88420909eb5070a756585a1b1b9a9a121362566204ded8",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 1259,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-762f21b78a7239e51df900493a8ec3cf",
+        "text": "| Specification |\n\n| HTTP Semantics # status.400 |\n\n## See also\n\n HTTP response status codes\n HTTP Status Code Definitions\")\n\n## Help improve MDN\n\n Learn how to contribute\n\nThis page was last modified on by MDN contributors.\n\nView this page on GitHub\") • Report a problem with this content [...] Skip to search\n\nToggle sidebar \n\n1. Web\n2. HTTP\n3. Reference\n4. HTTP response status codes\n5. 400 Bad Request\n\n \n\nRemember language   Learn more\n\n Deutsch\n English (US)\n Español\n Français\n 日本語\n 한국어\n Português (do Brasil)\n Русский\n 中文 (简体)\n 正體中文 (繁體)\n\n# 400 Bad Request [...] # 400 Bad Request\n\nThe HTTP `400 Bad Request` client error response status code indicates that the server would not process the request due to something the server considered to be a client error. The reason for a `400` response is typically due to malformed request syntax, invalid request message framing, or deceptive request routing.\n\nClients that receive a `400` response should expect that repeating the request without modification will fail with the same error.\n\n## Status\n\nhttp",
+        "title": "400 Bad Request - HTTP | MDN",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/400",
+        "original_url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/400",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:19:38.253330Z",
+        "published_at": null,
+        "content_hash": "aeb77d74ae7ef2f792595ce68dbf9faec83423266c613d02da1351893c8464d3",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 1057,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-9ff4dec313714b1322e9a170dcfc1267",
+        "text": "HTTP response status codes indicate whether a specific HTTP request has been successfully completed. Responses are grouped in five classes:",
+        "title": "HTTP response status codes - MDN Web Docs - Mozilla",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status",
+        "original_url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:19:38.253330Z",
+        "published_at": null,
+        "content_hash": "a62f12f80d31f91d67709bde5d6fa569af1840fdbdcf3c2862a717d11d0080f9",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 139,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-d5f4e226679ef078cfa45fe51d290941",
+        "text": "A 500 Internal Server Error is the web's generic, catch-all way of saying something broke on the server side. MDN and RFC 9110 describe it the same way: the server returns a 500 when it runs into an unexpected condition that stops it fulfilling the request, and it has no more specific 5xx code to reach for. The server knows it failed. It just can't, or won't, tell you how. [...] The 500 is the web's default shrug for a server-side failure. RFC 9110 frames it as the code a server returns when it hits something unexpected, can't finish the request, and has nothing more precise to send back.\n On its own the code tells you nothing about why. A PHP fatal error, a broken .htaccess rule, an exhausted memory limit, the wrong file permissions: each one can produce the exact same blank 500. The answer is in the server error log. [...] The short version: A 500 means the website's server ran into a problem and couldn't finish the request. Visiting? Reload and try again in a bit. Running the website? Open the server error log to find the real cause, then work through your `.htaccess`, PHP memory limit, plugins, and recent deploys.\n\nKey takeaways",
+        "title": "500 Internal Server Error: Causes & How to Fix It",
+        "url": "https://pulsetic.com/errors/500-internal-server-error",
+        "original_url": "https://pulsetic.com/errors/500-internal-server-error",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:19:44.364585Z",
+        "published_at": null,
+        "content_hash": "3b268475d2e6fec396c7342929a54428cd306c55f1195c52dc6a318cbf829293",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 1150,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-3b41482d9242d9a4689dabd88c29a7dc",
+        "text": "# 500 Internal Server Error\n\nUnexpected server-side failures preventing request completion produce the 500 Internal Server Error status code, a catch-all for conditions not covered by more specific server errors.\n\nTable of Contents\n\n Usage\n Example\n 500 vs 502, 503, and 504\n How to fix\n Code references\n See also\n\n## Usage [...] ## Usage\n\nThe 500 Internal Server Error status code signals a generic failure on the server side. Due to the broad nature of this error, the specific cause depends on the environment. The web server is experiencing problems and the server administrator needs to take action to resolve the issue.\n\nThe error is often attributed to a permissions problem on one or more files, a script timeout, or corruption in the `.htaccess` file. The only certainty is the HTTP request was not fulfilled. [...] Database connectivity. Wrong credentials, unreachable host, or connection pool exhaustion all surface as a 500. Test connectivity directly from the server (`mysql -u user -p -h host` or `psql -U user -h host`) to isolate the database from the application.\n Disk full. A server with no free disk space fails to write temporary files, sessions, or logs. Run `df -h` and clear old logs, cache files, or core dumps.",
+        "title": "500 Internal Server Error - HTTP status code explained",
+        "url": "https://http.dev/500",
+        "original_url": "https://http.dev/500",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:19:44.364585Z",
+        "published_at": null,
+        "content_hash": "759e3cfd0c8c2815a032324ce41f5f422988e6b313dbe9559732d2039ad97d17",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 1236,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-b56d698a05642fec9152e70ec9bf38a5",
+        "text": "This document describes the overall architecture of HTTP, establishes common terminology, and defines aspects of the protocol that are shared by all versions.",
+        "title": "RFC 9110: HTTP Semantics | RFC ...",
+        "url": "https://www.rfc-editor.org/info/rfc9110",
+        "original_url": "https://www.rfc-editor.org/info/rfc9110",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:19:44.364585Z",
+        "published_at": null,
+        "content_hash": "3e1c2a2df82868d5996965214598d278084e1095a6d64da32cfe5542931386bd",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 158,
+        "original_id": null,
+        "original_quiz_id": null
+      }
+    ],
+    "error_code": null,
+    "retry_after_seconds": 0,
+    "created_at": "2026-10-14T12:19:27Z",
+    "expires_at": "2026-10-15T12:19:27Z"
+  },
+  "wall_attempt_seconds": [
+    81.287,
+    7.664
+  ],
+  "elapsed_seconds": 88.951,
+  "api_timings": [
+    {
+      "method": "POST",
+      "path": "/auth/wechat",
+      "status": 200,
+      "seconds": 0.015
+    },
+    {
+      "method": "POST",
+      "path": "/quiz/preparations",
+      "status": 200,
+      "seconds": 81.26
+    },
+    {
+      "method": "GET",
+      "path": "/quiz/preparations/275ddcaa-f4a1-47fd-8327-20efa9b8199b",
+      "status": 200,
+      "seconds": 0.009
+    },
+    {
+      "method": "POST",
+      "path": "/auth/wechat",
+      "status": 200,
+      "seconds": 0.026
+    },
+    {
+      "method": "POST",
+      "path": "/quiz/preparations",
+      "status": 200,
+      "seconds": 0.03
+    },
+    {
+      "method": "GET",
+      "path": "/quiz/preparations/275ddcaa-f4a1-47fd-8327-20efa9b8199b",
+      "status": 200,
+      "seconds": 0.025
+    },
+    {
+      "method": "POST",
+      "path": "/quiz/generate",
+      "status": 200,
+      "seconds": 7.548
+    },
+    {
+      "method": "GET",
+      "path": "/operations/generate-simple-http",
+      "status": 200,
+      "seconds": 0.023
+    }
+  ],
+  "structured_model_usage": [
+    {
+      "operation": "275ddcaa-f4a1-47fd-8327-20efa9b8199b",
+      "attempt": 1,
+      "tokens": {
+        "input_tokens": 8672,
+        "output_tokens": 3199,
+        "total_tokens": 11871
+      }
+    },
+    {
+      "operation": "275ddcaa-f4a1-47fd-8327-20efa9b8199b",
+      "attempt": 2,
+      "tokens": {
+        "input_tokens": 8672,
+        "output_tokens": 1182,
+        "total_tokens": 9854
+      }
+    },
+    {
+      "operation": "8d8d4593-6848-4d23-871e-3ff79f9bb462",
+      "attempt": 1,
+      "tokens": {
+        "input_tokens": 3307,
+        "output_tokens": 779,
+        "total_tokens": 4086
+      }
+    },
+    {
+      "operation": "8d8d4593-6848-4d23-871e-3ff79f9bb462",
+      "attempt": 1,
+      "tokens": {
+        "input_tokens": 2874,
+        "output_tokens": 714,
+        "total_tokens": 3588
+      }
+    }
+  ],
+  "operations": [
+    {
+      "key": "generate-simple-http",
+      "kind": "quiz",
+      "status": "succeeded",
+      "stage": "succeeded",
+      "model_calls": 2,
+      "tool_calls": 0,
+      "page_attempts": 0,
+      "charged": 1,
+      "retrieval": null,
+      "error_code": null
+    },
+    {
+      "key": "prepare:b3589f07eca80df75b38933ebf9a1a8c0dc66c995969b78e5c701f059857926f",
+      "kind": "prepare",
+      "status": "succeeded",
+      "stage": "ready",
+      "model_calls": 5,
+      "tool_calls": 4,
+      "page_attempts": 1,
+      "charged": 0,
+      "retrieval": null,
+      "error_code": null
+    }
+  ],
+  "retrieval_preparations": [
+    {
+      "scope": {
+        "candidates": [
+          {
+            "id": "scope-http-status-200-404-500",
+            "topic": "HTTP 状态码 200、404 和 500 的含义",
+            "domain": "Web 开发 / HTTP 协议",
+            "focuses": [
+              {
+                "id": "focus-200-ok",
+                "name": "200 OK：成功响应",
+                "points": [
+                  {
+                    "id": "point-200-definition",
+                    "name": "200 表示请求成功完成",
+                    "evidence_ids": [
+                      "web-fd515fe367c2e5d0564d1e1d8d612bec"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-200-cacheable",
+                    "name": "200 响应默认可被缓存",
+                    "evidence_ids": [
+                      "web-fd515fe367c2e5d0564d1e1d8d612bec"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-200-class-2xx",
+                    "name": "2xx 类别：成功（Success）",
+                    "evidence_ids": [
+                      "web-0f038dc6c6a0a80628d62f92a03e36ee"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-200-post-example",
+                    "name": "POST 订阅示例中返回 200 的场景",
+                    "evidence_ids": [
+                      "web-fd515fe367c2e5d0564d1e1d8d612bec"
+                    ],
+                    "evidence_status": "available"
+                  }
+                ],
+                "description": "理解 200 表示请求已成功完成，以及它在响应类别中的位置和常见使用语境。"
+              },
+              {
+                "id": "focus-404-not-found",
+                "name": "404 Not Found：资源未找到",
+                "points": [
+                  {
+                    "id": "point-404-definition",
+                    "name": "404 表示服务器无法找到请求的资源",
+                    "evidence_ids": [
+                      "web-638c9711069b8b3b6bb74cb7d8fc125a",
+                      "web-8279da65d8c1242500b3cf012971af31"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-404-broken-links",
+                    "name": "指向 404 的链接常被称为失效链接/死链",
+                    "evidence_ids": [
+                      "web-638c9711069b8b3b6bb74cb7d8fc125a"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-404-class-4xx",
+                    "name": "4xx 类别：客户端错误（Client error）",
+                    "evidence_ids": [
+                      "web-6577b8df79a8c8a4af27e439ea635a9d"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-404-custom-page",
+                    "name": "自定义 404 页面的设计注意事项",
+                    "evidence_ids": [
+                      "web-638c9711069b8b3b6bb74cb7d8fc125a"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-404-seo",
+                    "name": "404 对 SEO 的影响：不被索引，若曾被索引则被移除",
+                    "evidence_ids": [
+                      "web-5ec1a2e8c3089a98e050b3df688b2384"
+                    ],
+                    "evidence_status": "available"
+                  }
+                ],
+                "description": "理解 404 表示服务器找不到请求的资源，以及它作为客户端错误类别的定位与常见语境。"
+              },
+              {
+                "id": "focus-500-internal-server-error",
+                "name": "500 Internal Server Error：服务器内部错误",
+                "points": [
+                  {
+                    "id": "point-500-definition",
+                    "name": "500 表示服务器遇到意外情况无法完成请求",
+                    "evidence_ids": [
+                      "web-d5f4e226679ef078cfa45fe51d290941",
+                      "web-3b41482d9242d9a4689dabd88c29a7dc"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-500-catch-all",
+                    "name": "500 是服务器端错误的通用兜底码，本身不说明具体原因",
+                    "evidence_ids": [
+                      "web-d5f4e226679ef078cfa45fe51d290941",
+                      "web-3b41482d9242d9a4689dabd88c29a7dc"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-500-causes",
+                    "name": "常见成因：文件权限、脚本超时、.htaccess 损坏、数据库连接问题等",
+                    "evidence_ids": [
+                      "web-3b41482d9242d9a4689dabd88c29a7dc",
+                      "web-d5f4e226679ef078cfa45fe51d290941"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-500-class-5xx",
+                    "name": "5xx 类别：服务器错误（Server error）",
+                    "evidence_ids": [
+                      "web-6577b8df79a8c8a4af27e439ea635a9d"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-500-vs-others",
+                    "name": "500 与 502、503、504 的区别",
+                    "evidence_ids": [
+                      "web-3b41482d9242d9a4689dabd88c29a7dc"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-500-log",
+                    "name": "排查线索在服务器错误日志中",
+                    "evidence_ids": [
+                      "web-d5f4e226679ef078cfa45fe51d290941"
+                    ],
+                    "evidence_status": "available"
+                  }
+                ],
+                "description": "理解 500 作为服务器端通用兜底错误码的含义、常见成因与排查方向。"
+              }
+            ],
+            "description": "围绕用户明确询问的三个状态码（200、404、500）建立学习范围，覆盖其语义、所属类别、典型触发场景与常见排查方向。资料中已取得 200、404、500 的官方与科普说明片段，可作为依据；最终题目需另行审核。"
+          }
+        ]
+      },
+      "trace": [
+        {
+          "tool": "tavily_search",
+          "status": "success",
+          "call_id": "call_00_3kyrKES6XnIXt0JPKBFR5013",
+          "credits": 2.0,
+          "elapsed_ms": 6679,
+          "parameters": {
+            "query": "HTTP status code 200 404 500 meaning RFC 9110",
+            "topic": "general",
+            "country": null,
+            "end_date": null,
+            "start_date": null,
+            "time_range": null,
+            "max_results": 5,
+            "content_mode": "full",
+            "search_depth": "advanced",
+            "exclude_domains": [],
+            "include_domains": []
+          },
+          "source_ids": [
+            "web-8279da65d8c1242500b3cf012971af31",
+            "web-840414c2031e8b505d6251d041f99003",
+            "web-fdef56bb58f38bb0d4981325bfb1c478",
+            "web-5ec1a2e8c3089a98e050b3df688b2384",
+            "web-f18be10ed5defba07c49a06ce26bfb9f",
+            "web-6279d7d79f3de1d686cb9e378352592b",
+            "web-2754269b801be9405b5dd62ac22de7ed",
+            "web-c5334649171ce9a905393f3c809c57f1",
+            "web-6577b8df79a8c8a4af27e439ea635a9d",
+            "web-d690d24fb47d6876fdd87d9daf7cd8c5",
+            "web-0f038dc6c6a0a80628d62f92a03e36ee",
+            "web-764a0a07d1815db24f983512cb2d9ef5"
+          ],
+          "reason_code": null
+        },
+        {
+          "tool": "tavily_search",
+          "status": "success",
+          "call_id": "call_01_D9IrhPlzAmNXRZNYrDLM7125",
+          "credits": 1.0,
+          "elapsed_ms": 2222,
+          "parameters": {
+            "query": "MDN HTTP response status codes 200 OK 404 Not Found 500 Internal Server Error",
+            "topic": "general",
+            "country": null,
+            "end_date": null,
+            "start_date": null,
+            "time_range": null,
+            "max_results": 4,
+            "content_mode": "summary",
+            "search_depth": "basic",
+            "exclude_domains": [],
+            "include_domains": []
+          },
+          "source_ids": [
+            "web-638c9711069b8b3b6bb74cb7d8fc125a",
+            "web-fd515fe367c2e5d0564d1e1d8d612bec",
+            "web-762f21b78a7239e51df900493a8ec3cf",
+            "web-9ff4dec313714b1322e9a170dcfc1267"
+          ],
+          "reason_code": null
+        },
+        {
+          "tool": "tavily_extract",
+          "status": "failed",
+          "call_id": "call_00_XX9Le08zuRzI0uYnKqkT7489",
+          "credits": null,
+          "elapsed_ms": 2799,
+          "parameters": {
+            "urls": [
+              "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/500"
+            ],
+            "query": null,
+            "content_mode": "full",
+            "extract_depth": "basic",
+            "chunks_per_source": null
+          },
+          "source_ids": [],
+          "reason_code": "TAVILY_EMPTY"
+        },
+        {
+          "tool": "tavily_search",
+          "status": "success",
+          "call_id": "call_01_UJT7MzS8gzWnk5kwW7RF5936",
+          "credits": 1.0,
+          "elapsed_ms": 1999,
+          "parameters": {
+            "query": "RFC 9110 section 15.6.1 500 Internal Server Error definition",
+            "topic": "general",
+            "country": null,
+            "end_date": null,
+            "start_date": null,
+            "time_range": null,
+            "max_results": 3,
+            "content_mode": "summary",
+            "search_depth": "basic",
+            "exclude_domains": [],
+            "include_domains": []
+          },
+          "source_ids": [
+            "web-d5f4e226679ef078cfa45fe51d290941",
+            "web-3b41482d9242d9a4689dabd88c29a7dc",
+            "web-b56d698a05642fec9152e70ec9bf38a5"
+          ],
+          "reason_code": null
+        }
+      ],
+      "usage": {
+        "input_tokens": 17781,
+        "total_tokens": 18944,
+        "output_tokens": 1163
+      },
+      "evidence": [
+        {
+          "id": "web-8279da65d8c1242500b3cf012971af31",
+          "end": null,
+          "url": "https://dev.to/rencberakman/http-status-codes-200-201-400-401-403-404-500-9p8",
+          "page": null,
+          "text": "404 – Not Found The requested resource could not be found on the server. Example: Navigating to a non-existent URL. 500 – Internal Server Error",
+          "start": null,
+          "title": "🔍⭐HTTP Status Codes (200, 201, 400, 401, 403, 404, 500)",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "c4774f4c170377401faa29e1861c4e7b8b94b52a58cd7bb96076b1b7d806f4d9",
+          "content_kind": "snippet",
+          "original_url": "https://dev.to/rencberakman/http-status-codes-200-201-400-401-403-404-500-9p8",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:19:35.115861Z",
+          "source_chars": 143,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-840414c2031e8b505d6251d041f99003",
+          "end": null,
+          "url": "https://www.kinexmedia.com/blog/http-status-codes",
+          "page": null,
+          "text": "[![logo](/images/kinex-logo.webp)](/)\n\n[![](data:image/svg+xml;charset=utf-8,%3Csvg%20height='20'%20width='20'%20xmlns='http://www.w3.org/2000/svg'%20version='1.1'%3E%3C/svg%3E)\n\n![Call]()](tel:+1 416-907-4030)\n\n[![](data:image/svg+xml;charset=utf-8,%3Csvg%20height='20'%20width='28'%20xmlns='http://www.w3.org/2000/svg'%20version='1.1'%3E%3C/svg%3E)\n\n![Call]()](/get-in-touch/)\n\n![menu]()\n\n![menu]()\n\n* [Our Work](/our-work/)\n* Website Design\n  + [Website Design](/web-design-canada/)\n  + [Website Development](/web-development-toronto/)\n  + [WordPress Development](/wordpress-development/)\n  + [Joomla Development](/joomla/)\n  + [Drupal Development](/drupal/)\n  + [Laravel Development](/laravel-development/)\n* Ecommerce\n  + [Ecommerce Development](/ecommerce/)\n  + [Magento Development](/magento-development-services/)\n  + [Shopify](/shopify-development/)\n  + [Shopify Plus](/shopify-plus/)\n  + [Headless Commerce](/headless-commerce/)\n* Adobe Commerce\n  + [Adobe Commerce](/adobe-commerce-development-agency/)\n  + [Magento 2 Development](/magento-2-development/)\n  + [Magento 2 Migration](/magento-2-migration/)\n  + [Magento 2 Support](/magento-2-support/)\n  + [Hyva Theme Development](/hyva-theme-development/)\n  + [Hyva Enterprise](/hyva-enterprise/)\n* Digital Marketing\n  + [Digital Marketing](/digital-marketing/)\n  + [Search Engine Optimization](/seo-toronto/)\n  + [Local SEO Services](/local-seo-services/)\n  + [Ecommerce SEO](/ecommerce-seo-services/)\n  + [Pay Per Click](/pay-per-click/)\n  + [Social Media Advertising](/social-media-advertising/)\n* AI SEO\n  + [AI SEO Services](/ai-seo-services/)\n  + [GEO Services](/generative-engine-optimization-services/)\n  + [AEO Services](/answer-engine-optimization/)\n  + [SEO for ChatGPT](/seo-for-chatgpt/)\n  + [SEO for Gemini](/seo-for-gemini/)\n  + [SEO for Perplexity](/seo-for-perplexity/)\n\n[Get Free Consultation![arrow](/images/consultation-icon.webp)](/get-in-touch/)\n\n[![logo-w](/images/kinex-logo.webp)](/)\n\n![](data:image/svg+xml;charset=utf-8,%3Csvg%20height='35'%20width='36'%20xmlns='http://www.w3.org/2000/svg'%20version='1.1'%3E%3C/svg%3E)\n\n![close]()\n\n* [Our Work](/our-work/)\n* Website Design \n  + [Website Design](/web-design-canada/)\n  + [Website Development](/web-development-toronto/)\n  + [WordPress Development](/wordpress-development/)\n  + [Joomla Development](/joomla/)\n  + [Drupal Development](/drupal/)\n  + [Laravel Development](/laravel-development/)\n* Ecommerce \n  + [Ecommerce Development](/ecommerce/)\n  + [Magento Development](/magento-development-services/)\n  + [Shopify](/shopify-development/)\n  + [Shopify Plus](/shopify-plus/)\n  + [Headless Commerce](/headless-commerce/)\n* Adobe Commerce \n  + [Adobe Commerce](/adobe-commerce-development-agency/)\n  + [Magento 2 Development](/magento-2-development/)\n  + [Magento 2 Migration](/magento-2-migration/)\n  + [Magento 2 Support](/magento-2-support/)\n  + [Hyva Theme Development](/hyva-theme-development/)\n  + [Hyva Enterprise](/hyva-enterprise/)\n* Digital Marketing \n  + [Digital Marketing](/digital-marketing/)\n  + [Search Engine Optimization](/seo-toronto/)\n  + [Local SEO Services](/local-seo-services/)\n  + [Ecommerce SEO](/ecommerce-seo-services/)\n  + [Pay Per Click](/pay-per-click/)\n  + [Social Media Advertising](/social-media-advertising/)\n* AI SEO\n  + [AI SEO Services](/ai-seo-services/)\n  + [GEO Services](/generative-engine-optimization-services/)\n  + [AEO Services](/answer-engine-optimization/)\n  + [SEO for ChatGPT](/seo-for-chatgpt/)\n  + [SEO for Gemini](/seo-for-gemini/)\n  + [SEO for Perplexity](/seo-for-perplexity/)\n* [Home](/)\n* [About](/about/)\n* [Our Work](/our-work/)\n* [Blog](/blog/)\n* [Contact](/get-in-touch/)\n\nMississauga (Head Office)\n\n25 Watline Avenue, Suite 302,   \nMississauga, Ontario L4Z 2Z1\n\nToronto Office\n\n250 University Ave. Suite 200  \nToronto, ON M5H 3E5\n\nQuick Contact (Head Office)\n\n[1-888-679-7773](tel:+18886797773), [416-907-4030](tel:+1 416-907-4030 )   \n[info@kinexmedia.com](mailto:info@kinexmedia.com)\n\nJuly 08, 2023",
+          "start": null,
+          "title": "HTTP Status Codes: Complete List, Meanings & SEO Impact",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "9a1727c55099a5be6a95b7d3341fe2f63b9c97cd024e1f17c5c110bf821abce9",
+          "content_kind": "full_extract",
+          "original_url": "https://www.kinexmedia.com/blog/http-status-codes",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:19:35.115861Z",
+          "source_chars": 27435,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-fdef56bb58f38bb0d4981325bfb1c478",
+          "end": null,
+          "url": "https://www.kinexmedia.com/blog/http-status-codes",
+          "page": null,
+          "text": "|Last Updated On October 09, 2026 | By Kinex Media\n\n# HTTP Status Codes: The Complete List and What Each Means for SEO\n\nSay you open Google Search Console and find dozens of pages marked “Not found (404)”, a handful marked “Server error (5xx)”, and a few more labelled “Page with redirect”. Which of these are hurting your rankings? In short, 404s and 301s on pages you meant to remove or move are normal. Server errors (5xx) and soft 404s on pages that should be live are the ones to fix first.\n\nEach of those labels comes from the three-digit status code the page sends back. This guide explains what those codes mean, which ones Google cares about, and what to do about them. If you only need to look up one code, jump to the quick reference or the full list.\n\n**Key Takeaways**\n\n* An HTTP status code is a three-digit number a server sends back with every response, including every response to Googlebot.\n* Codes fall into five classes: 1xx informational, 2xx success, 3xx redirection, 4xx client error, and 5xx server error.\n* The official list is kept by IANA, and most codes are defined in RFC 9110. A code that isn’t in that registry isn’t a standard HTTP status code.\n* For SEO, the codes that matter most are 200, the permanent and temporary redirects (301/308 and 302/307), 404, 410, 429, and the 5xx range, because they decide whether Google indexes a page, follows a redirect, or slows down crawling.\n* Some numbers people search for, such as 250, 255, and 329, aren’t HTTP codes at all. Several are email (SMTP) or FTP reply codes, and others aren’t standard codes in any of these protocols.\n\n## **What are HTTP Status Codes?**\n\nHTTP status codes are three-digit numbers a web server returns to tell the browser, app, or search engine crawler what happened to its request. The first digit gives the class of response (success, redirect, or error), and the full code gives the detail. They are defined in [RFC 9110](https://www.rfc-editor.org/rfc/rfc9110) and listed in the [IANA HTTP Status Code Registry](https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml).\n\nYou rarely see them when a page loads normally, because the code is almost always 200. You notice them when something goes wrong: a “404 Not Found” page, a “503 Service Unavailable” message, or a list of errors in Google Search Console.\n\n## **The 5 Classes of HTTP Status Codes**\n\n| Class | Meaning | Common Examples | What It Means for SEO |\n| --- | --- | --- | --- |\n| **1xx** Informational | The server received the request, and the process is continuing | 100, 103 | No direct effect. Browsers and servers handle these behind the scenes. |\n| **2xx** Success | The request worked | 200, 201, 204 | A 200 lets Google consider the page for indexing (it doesn’t guarantee it). |\n| **3xx** Redirection | The content is somewhere else | 301, 302, 304, 307, 308 | Google follows the redirect. Permanent redirects send a strong signal to index the new URL. |\n| **4xx** Client error | The request can’t be fulfilled as sent | 400, 403, 404, 410, 429 | Google doesn’t index these URLs and drops them if they were indexed. 429 is the exception. |\n| **5xx** Server error | The server failed to handle a valid request | 500, 502, 503, 504 | Google slows down crawling. Errors that last can lead to pages being dropped. |\n\n## **Quick Reference: The Codes You’ll Actually See**\n\n| Code | Name | Plain-English Meaning | SEO Impact |\n| --- | --- | --- | --- |\n| 200 | OK | The page loaded normally. | Eligible for indexing. |\n| 201 | Created | The request created something new (common in APIs). | Not used for normal web pages. |\n| 204 | No Content | Success, but there’s nothing to show. | A page returning 204 has no content to index. |\n| 301 | Moved Permanently | The page has moved for good. | Strong signal to index the new URL. |\n| 302 | Found | The page is temporarily somewhere else. | Weak signal; Google may keep the old URL. |\n| 304 | Not Modified | Nothing changed since the last visit; use the cached",
+          "start": null,
+          "title": "HTTP Status Codes: Complete List, Meanings & SEO Impact",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "9a1727c55099a5be6a95b7d3341fe2f63b9c97cd024e1f17c5c110bf821abce9",
+          "content_kind": "full_extract",
+          "original_url": "https://www.kinexmedia.com/blog/http-status-codes",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:19:35.115861Z",
+          "source_chars": 27435,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-5ec1a2e8c3089a98e050b3df688b2384",
+          "end": null,
+          "url": "https://www.kinexmedia.com/blog/http-status-codes",
+          "page": null,
+          "text": "copy. | Saves crawl resources. |\n| 307 | Temporary Redirect | Like 302, but the request method must not change. | Weak signal, same as 302. |\n| 308 | Permanent Redirect | Like 301, but the request method must not change. | Strong signal, same as 301. |\n| 400 | Bad Request | The server couldn’t understand the request. | Not indexed. |\n| 401 | Unauthorized | You need to log in. | Not indexed. |\n| 403 | Forbidden | You’re not allowed to see this. | Not indexed. Check you aren’t blocking Googlebot by mistake. |\n| 404 | Not Found | The page doesn’t exist. | Not indexed; removed if it was. |\n| 410 | Gone | The page was removed on purpose. | Treated the same as 404 by Google. |\n| 429 | Too Many Requests | The client sent too many requests. | Google treats it as a server overload and slows crawling. |\n| 500 | Internal Server Error | Something broke on the server. | Google slows crawling. |\n| 502 | Bad Gateway | A server in the chain got a bad response from another. | Same as 500. |\n| 503 | Service Unavailable | The server is down or overloaded, usually temporarily. | Same as 500. The right code for planned maintenance. |\n| 504 | Gateway Timeout | A server in the chain waited too long for another. | Same as 500. |\n\n## **How HTTP Status Codes Affect SEO**\n\nGoogle’s crawlers read the status code before anything else. According to [Google’s crawling documentation](https://developers.google.com/crawling/docs/troubleshooting/http-status-codes), here’s what each class does:\n\n**2xx: Eligible, Not Guaranteed.** A 200 response lets Google process the content for indexing, but Google notes that a 2xx code “doesn’t guarantee indexing.” Watch out for **soft 404s**: pages that return 200 but show an error message or an empty page. Google treats these as errors, so a missing page should return a real 404 or 410.\n\n**3xx: follow the signal.** Google follows up to 10 redirect hops. Permanent redirects (301, 308) are a strong signal that the new URL should be indexed. Temporary redirects (302, 307) are a weak signal, so Google may keep showing the old URL. For SEO:\n\n* Use 301 or 308 when a page has moved for good.\n* Avoid redirect chains (A to B to C). Point every old URL straight at its final destination.\n* Never create loops (A to B to A).\n\n**4xx: not indexed.** Google doesn’t index URLs that return a 4xx code and removes them if they were indexed. Google says all 4xx codes except 429 are handled the same way, so **404 and 410 have the same effect in Google**. Use 410 if you want to be explicit that a page was removed on purpose; use 404 otherwise. Don’t use 403 or 401 for pages you want indexed.\n\n**429 and 5xx: slow down.** Google treats 429 and 5xx responses as a sign the server is struggling and temporarily slows crawling. Pages that are already indexed stay in the index at first, but if the errors continue, they can be dropped. For planned maintenance, return a **503** for a short period instead of a 200 “under maintenance” page.\n\n**Best Practices**\n\n* Make sure every live page returns 200 and every removed page returns 404 or 410, not a redirect to the homepage.\n* Fix internal links that point to redirects or 404s; link straight to the final URL.\n* Check Search Console regularly for server errors (5xx) and sudden jumps in 404s.\n* After a site migration, map every old URL to its closest new URL with a 301.\n\n## **Is HTTP 250 a Real Status Code? Numbers That Aren’t HTTP Codes**\n\nNo. **There is no HTTP status code 250**, and the same goes for 255, 329, 222, 312, and many other numbers people search for. If you saw one of these numbers, it most likely came from a different protocol or from a specific tool.\n\nTwo other internet protocols use three-digit reply codes that look like HTTP codes:\n\n* **Email (SMTP)**, defined in [RFC 5321](https://www.rfc-editor.org/rfc/rfc5321). Mail servers use codes such as 220, 221, 250, 251, 252, 354, 421, 450, and 550.\n* **File transfer (FTP)**, defined in [RFC 959](https://www.rfc-editor.org/rfc/rfc959). FTP servers us",
+          "start": null,
+          "title": "HTTP Status Codes: Complete List, Meanings & SEO Impact",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "9a1727c55099a5be6a95b7d3341fe2f63b9c97cd024e1f17c5c110bf821abce9",
+          "content_kind": "full_extract",
+          "original_url": "https://www.kinexmedia.com/blog/http-status-codes",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:19:35.115861Z",
+          "source_chars": 27435,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-f18be10ed5defba07c49a06ce26bfb9f",
+          "end": null,
+          "url": "https://www.kinexmedia.com/blog/http-status-codes",
+          "page": null,
+          "text": "e codes such as 110, 150, 212, 213, 220, 226, 230, 250, 331, and 530.\n\nHere are the numbers we’re asked about most:\n\n| Number | HTTP code? | What it probably is |\n| --- | --- | --- |\n| 250 | No | **SMTP:** “Requested mail action okay, completed” (the email was accepted). **FTP:** “Requested file action okay, completed.” |\n| 220 | No | **SMTP:** the mail server is ready. **FTP:** the server is ready for a new user. |\n| 221 | No | **SMTP / FTP:** the server is closing the connection. |\n| 251 | No | **SMTP:** “User not local; will forward.” |\n| 252 | No | **SMTP:** the server can’t verify the user but will accept the message and try to deliver it. |\n| 212 | No | **FTP:** directory status. |\n| 213 | No | **FTP:** file status. |\n| 211 | No | **SMTP / FTP:** system status or help reply. |\n| 110 | No | **FTP:** restart marker reply. |\n| 104 | **Yes**  (temporary) | Upload Resumption Supported. See the 1xx list below. |\n| 210, 219, 222, 254, 255 | No | Not standard codes in HTTP, SMTP, or FTP. Check the documentation of the app or device that showed it. |\n| 310, 312, 322, 329 | No | Not standard codes in HTTP, SMTP, or FTP. (310 is sometimes used informally to mean “too many redirects”, but browsers report that as an error, not a status code.) |\n| 105, 106, 111 | No | Not standard codes. Errors such as “name not resolved” or “connection reset” are browser or network errors, not HTTP status codes. |\n\n**Tip:** If a number appeared in an email bounce message or mail log, look it up as an SMTP code. If it appeared in an FTP client, look it up as an FTP code. If it appeared in an app, it’s usually that app’s own error number.\n\n## **How to Check a Page’s Status Code**\n\n1. **In your browser:** Open the page, press F12 (or right-click and choose Inspect), go to the **Network** tab, and reload. The first row shows the page’s status code.\n2. **In Google Search Console:** Use the **URL Inspection** tool to see how Google last fetched a page, and the **Pages** report to see which URLs aren’t indexed and why (Not found (404), Server error (5xx), Page with redirect, Soft 404, and so on).\n3. **With a crawler:** SEO crawlers such as Screaming Frog or Sitebulb check every URL on your site and list status codes, redirect chains, and broken links in one report.\n\nIf you’re comfortable with the command line, this shows only the response headers, including the status code:\n\ncurl -I https://www.example.com/\n\n## **Common Confusions: 200 vs 201, 301 vs 302, and More**\n\n| Pair | Difference | Which to use |\n| --- | --- | --- |\n| **200 vs 201** | 200 means the request succeeded. 201 means it succeeded **and created** something new. | Web pages return 200. APIs return 201 after creating a record. |\n| **301 vs 302** | 301 is permanent; 302 is temporary. | 301 for moved pages; 302 only for short-term moves, such as a temporary promotion page. |\n| **301 vs 308** | Both are permanent. 308 also requires the request method (for example, POST) to stay the same. | Either works for normal page moves; 308 matters for APIs and forms. |\n| **404 vs 410** | 404 means “not found”; 410 means “gone on purpose”. Google treats them the same. | Either is fine for SEO. |\n| **502 vs 503 vs 504** | 502: bad response from an upstream server. 503: the server is unavailable. 504: an upstream server timed out. | 503 is the right code for planned maintenance. |\n\nWant more detail on a specific code? See our guides to [302 redirects](https://www.kinexmedia.com/blog/302-status-code/), [400 Bad Request](https://www.kinexmedia.com/blog/400-status-code/), [404 Not Found](https://www.kinexmedia.com/blog/404-status-code/), [409 Conflict](https://www.kinexmedia.com/blog/409-status-code/), [422 Unprocessable Content](https://www.kinexmedia.com/blog/422-status-code/), and [503 Service Unavailable](https://www.kinexmedia.com/blog/503-service-unavailable/). If Google isn’t indexing your pages at all, start with [why Google might not be indexing your site](https://www.kinexmedia.com/blog/google-is-not-in",
+          "start": null,
+          "title": "HTTP Status Codes: Complete List, Meanings & SEO Impact",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "9a1727c55099a5be6a95b7d3341fe2f63b9c97cd024e1f17c5c110bf821abce9",
+          "content_kind": "full_extract",
+          "original_url": "https://www.kinexmedia.com/blog/http-status-codes",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:19:35.115861Z",
+          "source_chars": 27435,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-6279d7d79f3de1d686cb9e378352592b",
+          "end": null,
+          "url": "https://www.kinexmedia.com/blog/http-status-codes",
+          "page": null,
+          "text": "dexing-your-site-want-to-know-why/).\n\n## **The Full List of Official HTTP Status Codes**\n\nHere is the complete list of official HTTP status codes, as listed in the [IANA registry](https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml) in October 2026. Names are the official ones; the explanations are ours.\n\n### **1xx Informational**\n\n| Code | Name | What it means |\n| --- | --- | --- |\n| 100 | Continue | The server got the first part of the request, and the client should send the rest. |\n| 101 | Switching Protocols | The server agrees to switch protocols, for example to WebSocket. |\n| 102 | Processing | The server is working on a long request but has no response yet. Originally defined for WebDAV ([RFC 2518](https://www.rfc-editor.org/rfc/rfc2518)) and rarely used today. |\n| 103 | Early Hints | The server sends some headers early so the browser can start loading resources, such as stylesheets, before the final response ([RFC 8297](https://www.rfc-editor.org/rfc/rfc8297)). |\n| 104 | Upload Resumption Supported | Tells the client that an interrupted upload can be resumed. This is a **temporary** registration (made in November 2024 and due to expire in November 2026) tied to an IETF draft, so treat it as experimental. |\n\n### **2xx Success**\n\n| Code | Name | What it means |\n| --- | --- | --- |\n| 200 | OK | The request succeeded. For a web page, the content is in the response. |\n| 201 | Created | The request succeeded and created a new resource. Typical after a POST to an API. |\n| 202 | Accepted | The request was accepted for processing, but the processing isn’t finished. |\n| 203 | Non-Authoritative Information | The request succeeded, but a proxy modified the response. |\n| 204 | No Content | The request succeeded, and there is no body to return. |\n| 205 | Reset Content | The request succeeded, and the client should reset the form or view that sent it. |\n| 206 | Partial Content | The server is returning only part of the resource, as asked (used for video streaming and resumable downloads). |\n| 207 | Multi-Status | A WebDAV response that contains several separate status codes ([RFC 4918](https://www.rfc-editor.org/rfc/rfc4918)). |\n| 208 | Already Reported | WebDAV: these members were already listed earlier in the same response ([RFC 5842](https://www.rfc-editor.org/rfc/rfc5842)). |\n| 226 | IM Used | The server applied changes (such as a delta encoding) to the resource before returning it ([RFC 3229](https://www.rfc-editor.org/rfc/rfc3229)). |\n\n### **3xx Redirection**\n\n| Code | Name | What it means |\n| --- | --- | --- |\n| 300 | Multiple Choices | There are several versions of the resource and the client can choose one. |\n| 301 | Moved Permanently | The resource has a new permanent URL. Use it for permanent page moves. |\n| 302 | Found | The resource is temporarily at a different URL. |\n| 303 | See Other | The client should fetch a different URL with GET, often after a form submission. |\n| 304 | Not Modified | The cached copy is still valid, so nothing is resent. |\n| 305 | Use Proxy | Deprecated. Don’t use it. |\n| 306 | (Unused) | Reserved. It was used in an old draft and is no longer in use. |\n| 307 | Temporary Redirect | Temporary move; the client must repeat the request with the same method. |\n| 308 | Permanent Redirect | Permanent move; the client must repeat the request with the same method. |\n\n### **4xx Client Errors**\n\n| Code | Name | What it means |\n| --- | --- | --- |\n| 400 | Bad Request | The request is malformed, so the server won’t process it. |\n| 401 | Unauthorized | Authentication is required and is missing or wrong. |\n| 402 | Payment Required | Reserved for future use. Some services use it for billing errors. |\n| 403 | Forbidden | The server understood the request but refuses to allow it. |\n| 404 | Not Found | The server can’t find the requested resource. |\n| 405 | Method Not Allowed | The method (for example, POST) isn’t allowed for this URL. |\n| 406 | Not Acceptable | The server can’t produce a resp",
+          "start": null,
+          "title": "HTTP Status Codes: Complete List, Meanings & SEO Impact",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "9a1727c55099a5be6a95b7d3341fe2f63b9c97cd024e1f17c5c110bf821abce9",
+          "content_kind": "full_extract",
+          "original_url": "https://www.kinexmedia.com/blog/http-status-codes",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:19:35.115861Z",
+          "source_chars": 27435,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-2754269b801be9405b5dd62ac22de7ed",
+          "end": null,
+          "url": "https://www.kinexmedia.com/blog/http-status-codes",
+          "page": null,
+          "text": "onse in a format the client accepts. |\n| 407 | Proxy Authentication Required | The client must authenticate with a proxy first. |\n| 408 | Request Timeout | The server gave up waiting for the client to finish this request. |\n| 409 | Conflict | The request conflicts with the current state of the resource, such as an edit conflict. |\n| 410 | Gone | The resource was removed on purpose and won’t come back. |\n| 411 | Length Required | The request must say how long its body is. |\n| 412 | Precondition Failed | A condition in the request headers wasn’t met. |\n| 413 | Content Too Large | The request body is bigger than the server will accept (formerly “Payload Too Large”). |\n| 414 | URI Too Long | The URL is longer than the server will process. |\n| 415 | Unsupported Media Type | The server doesn’t support the format of the request body. |\n| 416 | Range Not Satisfiable | The client asked for a part of the file that doesn’t exist. |\n| 417 | Expectation Failed | The server can’t meet the requirement in the Expect header. |\n| 418 | (Unused) | Reserved. Known from the 1998 “I’m a teapot” April Fools’ joke and not a real error. |\n| 421 | Misdirected Request | The request went to a server that can’t produce a response for it. |\n| 422 | Unprocessable Content | The request is well formed but contains invalid data (formerly “Unprocessable Entity”). |\n| 423 | Locked | WebDAV: the resource is locked. |\n| 424 | Failed Dependency | WebDAV: the request failed because an earlier request failed. |\n| 425 | Too Early | The server won’t process a request that might be replayed (RFC 8470). |\n| 426 | Upgrade Required | The client must switch to a different protocol. |\n| 428 | Precondition Required | The server requires the request to be conditional, to prevent lost updates (RFC 6585). |\n| 429 | Too Many Requests | The client sent too many requests in a given time. |\n| 431 | Request Header Fields Too Large | The request headers are too large. |\n| 451 | Unavailable For Legal Reasons | The resource is blocked for legal reasons (RFC 7725). |\n\n### **5xx Server Errors**\n\n| Code | Name | What it means |\n| --- | --- | --- |\n| 500 | Internal Server Error | A generic error: something went wrong on the server. |\n| 501 | Not Implemented | The server doesn’t support the feature needed to complete the request. |\n| 502 | Bad Gateway | A gateway or proxy got an invalid response from the server behind it. |\n| 503 | Service Unavailable | The server is temporarily unable to handle the request, often because of maintenance or overload. |\n| 504 | Gateway Timeout | A gateway or proxy didn’t get a response in time from the server behind it. |\n| 505 | HTTP Version Not Supported | The server doesn’t support the HTTP version used. |\n| 506 | Variant Also Negotiates | A server configuration error in content negotiation. |\n| 507 | Insufficient Storage | WebDAV: the server can’t store what’s needed to complete the request. |\n| 508 | Loop Detected | WebDAV: the server found an infinite loop while processing the request. |\n| 510 | Not Extended | Obsoleted. It belonged to an HTTP extension experiment that is now historic. |\n| 511 | Network Authentication Required | You must log in to the network first, as on hotel or airport Wi-Fi. |\n\n## **Unofficial and Vendor-Specific Codes**\n\nSome servers, CDNs, and frameworks use their own codes. They are **not part of the HTTP standard**, but you may see them in server logs, CDN dashboards, or crawler reports.\n\n| Code | Used by | Meaning |\n| --- | --- | --- |\n| 419 | Laravel (PHP framework) | Page Expired, usually because the security (CSRF) token on a form expired. |\n| 440 | Microsoft IIS | Login Time-out: the session expired. |\n| 449 | Microsoft IIS | Retry With: the request should be retried after the client provides more information. |\n| 499 | nginx | Client Closed Request: the visitor (or a bot) closed the connection before the server answered. |\n| 520 | Cloudflare | The origin server returned an unknown or unexpected response. |\n| 521 | Cloudflar",
+          "start": null,
+          "title": "HTTP Status Codes: Complete List, Meanings & SEO Impact",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "9a1727c55099a5be6a95b7d3341fe2f63b9c97cd024e1f17c5c110bf821abce9",
+          "content_kind": "full_extract",
+          "original_url": "https://www.kinexmedia.com/blog/http-status-codes",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:19:35.115861Z",
+          "source_chars": 27435,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-c5334649171ce9a905393f3c809c57f1",
+          "end": null,
+          "url": "https://www.kinexmedia.com/blog/http-status-codes",
+          "page": null,
+          "text": "e | The origin web server refused the connection (often it is down). |\n| 522 | Cloudflare | Cloudflare timed out connecting to the origin server. |\n| 523 | Cloudflare | The origin server is unreachable. |\n| 524 | Cloudflare | Cloudflare connected, but the origin took too long to respond. |\n| 525 | Cloudflare | The SSL handshake between Cloudflare and the origin failed. |\n| 526 | Cloudflare | The origin’s SSL certificate is invalid. |\n| 530 | Cloudflare | Returned together with a Cloudflare 1xxx error (for example, a DNS problem at the origin); the 1xxx error tells you the real cause. |\n\nIf you see one of these, the fix is on the server or CDN side, and the vendor’s documentation is the best place to start. For SEO, Google treats them by their class: a 5xx-range vendor code slows crawling like any other server error.\n\n## **FAQ**\n\n**What are the 5 classes of HTTP status codes?**\n\nHTTP status codes are grouped by their first digit: 1xx informational (the request is in progress), 2xx success (the request worked), 3xx redirection (the content is elsewhere), 4xx client error (the request can’t be fulfilled as sent), and 5xx server error (the server failed to handle a valid request).\n\n**Which HTTP status codes matter most for SEO?**\n\nThe most important are 200 (the page can be indexed), 301 and 308 (permanent redirects), 302 and 307 (temporary redirects), 404 and 410 (the page is removed from Google’s index), 429, and the 5xx server errors, which make Google slow down crawling and can lead to pages being dropped if they continue.\n\n**Is HTTP 250 a real status code?**\n\nNo. 250 isn’t an HTTP status code. It’s a common reply code in email (SMTP), where it means the mail action was completed, and in FTP, where it means a file action was completed. Numbers such as 255 and 329 aren’t standard codes in HTTP, SMTP, or FTP.\n\n**What is the difference between a 200 and a 201 status code?**\n\nBoth mean the request succeeded. A 200 OK is the normal response for a web page or a successful request. A 201 Created means the request also created a new resource, which is typical when an API saves a new record.\n\n**Should I use a 404 or a 410 for a deleted page?**\n\nEither works for SEO. Google treats all 4xx codes except 429 the same way and removes the URL from its index. A 410 tells other systems more clearly that the page was removed on purpose, while a 404 is the standard “not found” response.\n\n**Who decides which HTTP status codes are official?**\n\nThe Internet Engineering Task Force (IETF) defines HTTP status codes in its RFC standards, mainly RFC 9110, and the Internet Assigned Numbers Authority (IANA) keeps the official registry. A code that isn’t in the IANA registry isn’t a standard HTTP status code.\n\n**Seeing 404s, redirect chains, or 5xx errors in Search Console?** Our technical SEO team can find what’s stopping Google from crawling and indexing your site. [Get a free SEO audit](https://www.kinexmedia.com/free-seo-audit/)**.**\n\n## Subscribe Kinex Media Weekly Newsletter\n\n### Tools\n\n* ![](data:image/svg+xml;charset=utf-8,%3Csvg%20height='10'%20width='11'%20xmlns='http://www.w3.org/2000/svg'%20version='1.1'%3E%3C/svg%3E)\n\n  ![]()\n\n  [SEO Audit](/free-seo-audit/)\n* ![](data:image/svg+xml;charset=utf-8,%3Csvg%20height='10'%20width='11'%20xmlns='http://www.w3.org/2000/svg'%20version='1.1'%3E%3C/svg%3E)\n\n  ![]()\n\n  [Password Generator](/password-generator/)\n\n[Get Free Consultation](/get-in-touch/)",
+          "start": null,
+          "title": "HTTP Status Codes: Complete List, Meanings & SEO Impact",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "9a1727c55099a5be6a95b7d3341fe2f63b9c97cd024e1f17c5c110bf821abce9",
+          "content_kind": "full_extract",
+          "original_url": "https://www.kinexmedia.com/blog/http-status-codes",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:19:35.115861Z",
+          "source_chars": 27435,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-6577b8df79a8c8a4af27e439ea635a9d",
+          "end": null,
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status",
+          "page": null,
+          "text": "Client error responses ( 400 – 499 ); Server error responses ( 500 – 599 ). The status codes listed below are defined by RFC 9110. Note:",
+          "start": null,
+          "title": "HTTP response status codes - MDN Web Docs - Mozilla",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "c60c8736446c4f21c22410c267756914acf06563591300adaab2639624bc2a8a",
+          "content_kind": "snippet",
+          "original_url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:19:35.115861Z",
+          "source_chars": 136,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-d690d24fb47d6876fdd87d9daf7cd8c5",
+          "end": null,
+          "url": "https://www.rfc-editor.org/info/rfc9110",
+          "page": null,
+          "text": "Status Codes. The status code of a response is a three-digit integer code that describes the result of the request and the semantics of the response",
+          "start": null,
+          "title": "RFC 9110: HTTP Semantics | RFC ...",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "ac6954b4d84500403e4d49bc4446855ac7f3230f0a43a76f058128114376ed35",
+          "content_kind": "snippet",
+          "original_url": "https://www.rfc-editor.org/info/rfc9110",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:19:35.115861Z",
+          "source_chars": 148,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-0f038dc6c6a0a80628d62f92a03e36ee",
+          "end": null,
+          "url": "https://www.iana.org/assignments/http-status-codes",
+          "page": null,
+          "text": "[![Homepage](/static/img/iana-logo-header.426b3ac01d35.svg)](/)\n\n* [Domains](/domains)\n* [Protocols](/protocols)\n* [Numbers](/numbers)\n* [About](/about)\n\n# Hypertext Transfer Protocol (HTTP) Status Code Registry\n\n### Last Updated\n\n* 2025-09-15\n\n### Available Formats\n\n* [XML](/assignments/http-status-codes/http-status-codes.xml)\n* [HTML](/assignments/http-status-codes)\n* [TXT](/assignments/http-status-codes/http-status-codes.txt)\n\n---\n\n## HTTP Status Codes\n\n### Registration Procedure(s)\n\n* IETF Review\n\n### Reference\n\n* [RFC 9110, Section 16.2.1](https://www.iana.org/go/rfc9110#section-16.2.1): HTTP Semantics\n\n### Note\n\n```\n1xx: Informational - Request received, continuing process 2xx: Success - The action was successfully received, understood, and accepted 3xx: Redirection - Further action must be taken in order to complete the request 4xx: Client Error - The request contains bad syntax or cannot be fulfilled 5xx: Server Error - The server failed to fulfill an apparently valid request\n```\n\n### Available Formats\n\n* [CSV](/assignments/http-status-codes/http-status-codes-1.csv)\n\n| Value | Description | Reference |\n| --- | --- | --- |\n| 100 | Continue | [RFC 9110, Section 15.2.1](https://www.iana.org/go/rfc9110#section-15.2.1) |\n| 101 | Switching Protocols | [RFC 9110, Section 15.2.2](https://www.iana.org/go/rfc9110#section-15.2.2) |\n| 102 | Processing | [RFC 2518](https://www.iana.org/go/rfc2518) |\n| 103 | Early Hints | [RFC 8297](https://www.iana.org/go/rfc8297) |\n| 104 | Upload Resumption Supported (TEMPORARY - registered 2024-11-13, extension registered 2025-09-15, expires 2026-11-13) | [draft-ietf-httpbis-resumable-upload-05](https://www.iana.org/go/draft-ietf-httpbis-resumable-upload-05) |\n| 105-199 | Unassigned |\n| 200 | OK | [RFC 9110, Section 15.3.1](https://www.iana.org/go/rfc9110#section-15.3.1) |\n| 201 | Created | [RFC 9110, Section 15.3.2](https://www.iana.org/go/rfc9110#section-15.3.2) |\n| 202 | Accepted | [RFC 9110, Section 15.3.3](https://www.iana.org/go/rfc9110#section-15.3.3) |\n| 203 | Non-Authoritative Information | [RFC 9110, Section 15.3.4](https://www.iana.org/go/rfc9110#section-15.3.4) |\n| 204 | No Content | [RFC 9110, Section 15.3.5](https://www.iana.org/go/rfc9110#section-15.3.5) |\n| 205 | Reset Content | [RFC 9110, Section 15.3.6](https://www.iana.org/go/rfc9110#section-15.3.6) |\n| 206 | Partial Content | [RFC 9110, Section 15.3.7](https://www.iana.org/go/rfc9110#section-15.3.7) |\n| 207 | Multi-Status | [RFC 4918](https://www.iana.org/go/rfc4918) |\n| 208 | Already Reported | [RFC 5842](https://www.iana.org/go/rfc5842) |\n| 209-225 | Unassigned |\n| 226 | IM Used | [RFC 3229](https://www.iana.org/go/rfc3229) |\n| 227-299 | Unassigned |\n| 300 | Multiple Choices | [RFC 9110, Section 15.4.1](https://www.iana.org/go/rfc9110#section-15.4.1) |\n| 301 | Moved Permanently | [RFC 9110, Section 15.4.2](https://www.iana.org/go/rfc9110#section-15.4.2) |\n| 302 | Found | [RFC 9110, Section 15.4.3](https://www.iana.org/go/rfc9110#section-15.4.3) |\n| 303 | See Other | [RFC 9110, Section 15.4.4](https://www.iana.org/go/rfc9110#section-15.4.4) |\n| 304 | Not Modified | [RFC 9110, Section 15.4.5](https://www.iana.org/go/rfc9110#section-15.4.5) |\n| 305 | Use Proxy | [RFC 9110, Section 15.4.6](https://www.iana.org/go/rfc9110#section-15.4.6) |\n| 306 | (Unused) | [RFC 9110, Section 15.4.7](https://www.iana.org/go/rfc9110#section-15.4.7) |\n| 307 | Temporary Redirect | [RFC 9110, Section 15.4.8](https://www.iana.org/go/rfc9110#section-15.4.8) |\n| 308 | Permanent Redirect | [RFC 9110, Section 15.4.9](https://www.iana.org/go/rfc9110#section-15.4.9) |\n| 309-399 | Unassigned |\n| 400 | Bad Request | [RFC 9110, Section 15.5.1](https://www.iana.org/go/rfc9110#section-15.5.1) |\n| 401 | Unauthorized | [RFC 9110, Section 15.5.2](https://www.iana.org/go/rfc9110#section-15.5.2) |\n| 402 | Payment Required | [RFC 9110, Section 15.5.3](https://www.iana.org/go/rfc9110#section-15.5.3) |\n| 403 | Forbidden | [RFC 9110, Section 15.5.4](https://www.iana.org",
+          "start": null,
+          "title": "Hypertext Transfer Protocol (HTTP) Status Code Registry",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "a09ae8c2c87112167c94c072d00795872a1212c7ba3a39b6b0187762b776af6f",
+          "content_kind": "full_extract",
+          "original_url": "https://www.iana.org/assignments/http-status-codes",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:19:35.115861Z",
+          "source_chars": 7776,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-764a0a07d1815db24f983512cb2d9ef5",
+          "end": null,
+          "url": "https://www.iana.org/assignments/http-status-codes",
+          "page": null,
+          "text": "/go/rfc9110#section-15.5.4) |\n| 404 | Not Found | [RFC 9110, Section 15.5.5](https://www.iana.org/go/rfc9110#section-15.5.5) |\n| 405 | Method Not Allowed | [RFC 9110, Section 15.5.6](https://www.iana.org/go/rfc9110#section-15.5.6) |\n| 406 | Not Acceptable | [RFC 9110, Section 15.5.7](https://www.iana.org/go/rfc9110#section-15.5.7) |\n| 407 | Proxy Authentication Required | [RFC 9110, Section 15.5.8](https://www.iana.org/go/rfc9110#section-15.5.8) |\n| 408 | Request Timeout | [RFC 9110, Section 15.5.9](https://www.iana.org/go/rfc9110#section-15.5.9) |\n| 409 | Conflict | [RFC 9110, Section 15.5.10](https://www.iana.org/go/rfc9110#section-15.5.10) |\n| 410 | Gone | [RFC 9110, Section 15.5.11](https://www.iana.org/go/rfc9110#section-15.5.11) |\n| 411 | Length Required | [RFC 9110, Section 15.5.12](https://www.iana.org/go/rfc9110#section-15.5.12) |\n| 412 | Precondition Failed | [RFC 9110, Section 15.5.13](https://www.iana.org/go/rfc9110#section-15.5.13) |\n| 413 | Content Too Large | [RFC 9110, Section 15.5.14](https://www.iana.org/go/rfc9110#section-15.5.14) |\n| 414 | URI Too Long | [RFC 9110, Section 15.5.15](https://www.iana.org/go/rfc9110#section-15.5.15) |\n| 415 | Unsupported Media Type | [RFC 9110, Section 15.5.16](https://www.iana.org/go/rfc9110#section-15.5.16) |\n| 416 | Range Not Satisfiable | [RFC 9110, Section 15.5.17](https://www.iana.org/go/rfc9110#section-15.5.17) |\n| 417 | Expectation Failed | [RFC 9110, Section 15.5.18](https://www.iana.org/go/rfc9110#section-15.5.18) |\n| 418 | (Unused) | [RFC 9110, Section 15.5.19](https://www.iana.org/go/rfc9110#section-15.5.19) |\n| 419-420 | Unassigned |\n| 421 | Misdirected Request | [RFC 9110, Section 15.5.20](https://www.iana.org/go/rfc9110#section-15.5.20) |\n| 422 | Unprocessable Content | [RFC 9110, Section 15.5.21](https://www.iana.org/go/rfc9110#section-15.5.21) |\n| 423 | Locked | [RFC 4918](https://www.iana.org/go/rfc4918) |\n| 424 | Failed Dependency | [RFC 4918](https://www.iana.org/go/rfc4918) |\n| 425 | Too Early | [RFC 8470](https://www.iana.org/go/rfc8470) |\n| 426 | Upgrade Required | [RFC 9110, Section 15.5.22](https://www.iana.org/go/rfc9110#section-15.5.22) |\n| 427 | Unassigned |\n| 428 | Precondition Required | [RFC 6585](https://www.iana.org/go/rfc6585) |\n| 429 | Too Many Requests | [RFC 6585](https://www.iana.org/go/rfc6585) |\n| 430 | Unassigned |\n| 431 | Request Header Fields Too Large | [RFC 6585](https://www.iana.org/go/rfc6585) |\n| 432-450 | Unassigned |\n| 451 | Unavailable For Legal Reasons | [RFC 7725](https://www.iana.org/go/rfc7725) |\n| 452-499 | Unassigned |\n| 500 | Internal Server Error | [RFC 9110, Section 15.6.1](https://www.iana.org/go/rfc9110#section-15.6.1) |\n| 501 | Not Implemented | [RFC 9110, Section 15.6.2](https://www.iana.org/go/rfc9110#section-15.6.2) |\n| 502 | Bad Gateway | [RFC 9110, Section 15.6.3](https://www.iana.org/go/rfc9110#section-15.6.3) |\n| 503 | Service Unavailable | [RFC 9110, Section 15.6.4](https://www.iana.org/go/rfc9110#section-15.6.4) |\n| 504 | Gateway Timeout | [RFC 9110, Section 15.6.5](https://www.iana.org/go/rfc9110#section-15.6.5) |\n| 505 | HTTP Version Not Supported | [RFC 9110, Section 15.6.6](https://www.iana.org/go/rfc9110#section-15.6.6) |\n| 506 | Variant Also Negotiates | [RFC 2295](https://www.iana.org/go/rfc2295) |\n| 507 | Insufficient Storage | [RFC 4918](https://www.iana.org/go/rfc4918) |\n| 508 | Loop Detected | [RFC 5842](https://www.iana.org/go/rfc5842) |\n| 509 | Unassigned |\n| 510 | Not Extended (OBSOLETED) | [RFC 2774](https://www.iana.org/go/rfc2774); [Status change of HTTP experiments to Historic](https://datatracker.ietf.org/doc/status-change-http-experiments-to-historic) |\n| 511 | Network Authentication Required | [RFC 6585](https://www.iana.org/go/rfc6585) |\n| 512-599 | Unassigned |",
+          "start": null,
+          "title": "Hypertext Transfer Protocol (HTTP) Status Code Registry",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "a09ae8c2c87112167c94c072d00795872a1212c7ba3a39b6b0187762b776af6f",
+          "content_kind": "full_extract",
+          "original_url": "https://www.iana.org/assignments/http-status-codes",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:19:35.115861Z",
+          "source_chars": 7776,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-638c9711069b8b3b6bb74cb7d8fc125a",
+          "end": null,
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/404",
+          "page": null,
+          "text": "Skip to search\n\nToggle sidebar \n\n1. Web\n2. HTTP\n3. Reference\n4. HTTP response status codes\n5. 404 Not Found\n\n \n\nRemember language   Learn more\n\n Deutsch\n English (US)\n Español\n Français\n 日本語\n 한국어\n Português (do Brasil)\n Русский\n 中文 (简体)\n 正體中文 (繁體)\n\n# 404 Not Found\n\nThe HTTP `404 Not Found` client error response status code indicates that the server cannot find the requested resource. Links that lead to a 404 page are often called broken or dead links and can be subject to link rot\"). [...] Note: Custom 404 page design is a good thing in moderation. Feel free to make your 404 page humorous and human, but don't confuse your visitors as to why they are seeing something unexpected.\n\nFor an example of a custom 404 page, see the KonMari 404 page\").\n\n## Specifications\n\n| Specification |\n\n| HTTP Semantics # status.404 |\n\n## See also\n\n HTTP response status codes\n `410`\n Wikipedia: HTTP 404\")\n\n## Help improve MDN\n\n Learn how to contribute [...] A 404 status code only indicates that the resource is missing without indicating if this is temporary or permanent. If a resource is permanently removed, servers should send the `410 Gone` status instead.",
+          "start": null,
+          "title": "404 Not Found - HTTP | MDN",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "f65a28fc9272e5c3286ff7c527d8fa0c8284e56233e33c3707a76d8caa66fac2",
+          "content_kind": "snippet",
+          "original_url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/404",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:19:38.253330Z",
+          "source_chars": 1153,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-fd515fe367c2e5d0564d1e1d8d612bec",
+          "end": null,
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/200",
+          "page": null,
+          "text": "Skip to search\n\nToggle sidebar \n\n1. Web\n2. HTTP\n3. Reference\n4. HTTP response status codes\n5. 200 OK\n\n \n\nRemember language   Learn more\n\n Deutsch\n English (US)\n Español\n Français\n 日本語\n 한국어\n Português (do Brasil)\n Русский\n 中文 (简体)\n 正體中文 (繁體)\n\n# 200 OK\n\nThe HTTP `200 OK` successful response status code indicates that a request has succeeded. A `200 OK` response is cacheable by default. [...] Assuming a form exists to send data to an endpoint for managing subscriptions at ` A `POST` request to subscribe a user may look like the following:\n\nhttp\n\n```\nPOST /subscribe HTTP/1.1 Host: example.com Content-Type: application/x-www-form-urlencoded Content-Length: 50 name=Brian%20Smith&email=brian.smith%40example.com \n```\n\nIn this example, a response with a `200 OK` status could look like this:\n\nhttp [...] http\n\n```\nHTTP/1.1 200 OK Content-Type: application/json { \"message\": \"User subscription pending. A confirmation email has been sent.\", \"subscription\": { \"name\": \"Brian Smith\", \"email\": \"brian.smith@example.com\", \"id\": 123, \"feed\": \"default\" } } \n```\n\n## Specifications\n\n| Specification |\n\n| HTTP Semantics # status.200 |\n\n## See also\n\n HTTP request methods\n HTTP response status codes\n Glossary: Idempotent\n\n## Help improve MDN\n\n Learn how to contribute",
+          "start": null,
+          "title": "200 OK - HTTP | MDN",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "7c843f1a0797d85f8b88420909eb5070a756585a1b1b9a9a121362566204ded8",
+          "content_kind": "snippet",
+          "original_url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/200",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:19:38.253330Z",
+          "source_chars": 1259,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-762f21b78a7239e51df900493a8ec3cf",
+          "end": null,
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/400",
+          "page": null,
+          "text": "| Specification |\n\n| HTTP Semantics # status.400 |\n\n## See also\n\n HTTP response status codes\n HTTP Status Code Definitions\")\n\n## Help improve MDN\n\n Learn how to contribute\n\nThis page was last modified on by MDN contributors.\n\nView this page on GitHub\") • Report a problem with this content [...] Skip to search\n\nToggle sidebar \n\n1. Web\n2. HTTP\n3. Reference\n4. HTTP response status codes\n5. 400 Bad Request\n\n \n\nRemember language   Learn more\n\n Deutsch\n English (US)\n Español\n Français\n 日本語\n 한국어\n Português (do Brasil)\n Русский\n 中文 (简体)\n 正體中文 (繁體)\n\n# 400 Bad Request [...] # 400 Bad Request\n\nThe HTTP `400 Bad Request` client error response status code indicates that the server would not process the request due to something the server considered to be a client error. The reason for a `400` response is typically due to malformed request syntax, invalid request message framing, or deceptive request routing.\n\nClients that receive a `400` response should expect that repeating the request without modification will fail with the same error.\n\n## Status\n\nhttp",
+          "start": null,
+          "title": "400 Bad Request - HTTP | MDN",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "aeb77d74ae7ef2f792595ce68dbf9faec83423266c613d02da1351893c8464d3",
+          "content_kind": "snippet",
+          "original_url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/400",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:19:38.253330Z",
+          "source_chars": 1057,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-9ff4dec313714b1322e9a170dcfc1267",
+          "end": null,
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status",
+          "page": null,
+          "text": "HTTP response status codes indicate whether a specific HTTP request has been successfully completed. Responses are grouped in five classes:",
+          "start": null,
+          "title": "HTTP response status codes - MDN Web Docs - Mozilla",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "a62f12f80d31f91d67709bde5d6fa569af1840fdbdcf3c2862a717d11d0080f9",
+          "content_kind": "snippet",
+          "original_url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:19:38.253330Z",
+          "source_chars": 139,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-d5f4e226679ef078cfa45fe51d290941",
+          "end": null,
+          "url": "https://pulsetic.com/errors/500-internal-server-error",
+          "page": null,
+          "text": "A 500 Internal Server Error is the web's generic, catch-all way of saying something broke on the server side. MDN and RFC 9110 describe it the same way: the server returns a 500 when it runs into an unexpected condition that stops it fulfilling the request, and it has no more specific 5xx code to reach for. The server knows it failed. It just can't, or won't, tell you how. [...] The 500 is the web's default shrug for a server-side failure. RFC 9110 frames it as the code a server returns when it hits something unexpected, can't finish the request, and has nothing more precise to send back.\n On its own the code tells you nothing about why. A PHP fatal error, a broken .htaccess rule, an exhausted memory limit, the wrong file permissions: each one can produce the exact same blank 500. The answer is in the server error log. [...] The short version: A 500 means the website's server ran into a problem and couldn't finish the request. Visiting? Reload and try again in a bit. Running the website? Open the server error log to find the real cause, then work through your `.htaccess`, PHP memory limit, plugins, and recent deploys.\n\nKey takeaways",
+          "start": null,
+          "title": "500 Internal Server Error: Causes & How to Fix It",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "3b268475d2e6fec396c7342929a54428cd306c55f1195c52dc6a318cbf829293",
+          "content_kind": "snippet",
+          "original_url": "https://pulsetic.com/errors/500-internal-server-error",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:19:44.364585Z",
+          "source_chars": 1150,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-3b41482d9242d9a4689dabd88c29a7dc",
+          "end": null,
+          "url": "https://http.dev/500",
+          "page": null,
+          "text": "# 500 Internal Server Error\n\nUnexpected server-side failures preventing request completion produce the 500 Internal Server Error status code, a catch-all for conditions not covered by more specific server errors.\n\nTable of Contents\n\n Usage\n Example\n 500 vs 502, 503, and 504\n How to fix\n Code references\n See also\n\n## Usage [...] ## Usage\n\nThe 500 Internal Server Error status code signals a generic failure on the server side. Due to the broad nature of this error, the specific cause depends on the environment. The web server is experiencing problems and the server administrator needs to take action to resolve the issue.\n\nThe error is often attributed to a permissions problem on one or more files, a script timeout, or corruption in the `.htaccess` file. The only certainty is the HTTP request was not fulfilled. [...] Database connectivity. Wrong credentials, unreachable host, or connection pool exhaustion all surface as a 500. Test connectivity directly from the server (`mysql -u user -p -h host` or `psql -U user -h host`) to isolate the database from the application.\n Disk full. A server with no free disk space fails to write temporary files, sessions, or logs. Run `df -h` and clear old logs, cache files, or core dumps.",
+          "start": null,
+          "title": "500 Internal Server Error - HTTP status code explained",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "759e3cfd0c8c2815a032324ce41f5f422988e6b313dbe9559732d2039ad97d17",
+          "content_kind": "snippet",
+          "original_url": "https://http.dev/500",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:19:44.364585Z",
+          "source_chars": 1236,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-b56d698a05642fec9152e70ec9bf38a5",
+          "end": null,
+          "url": "https://www.rfc-editor.org/info/rfc9110",
+          "page": null,
+          "text": "This document describes the overall architecture of HTTP, establishes common terminology, and defines aspects of the protocol that are shared by all versions.",
+          "start": null,
+          "title": "RFC 9110: HTTP Semantics | RFC ...",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "3e1c2a2df82868d5996965214598d278084e1095a6d64da32cfe5542931386bd",
+          "content_kind": "snippet",
+          "original_url": "https://www.rfc-editor.org/info/rfc9110",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:19:44.364585Z",
+          "source_chars": 158,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        }
+      ],
+      "grounding": {
+        "status": "source_backed",
+        "provider": "tavily",
+        "reason_code": null,
+        "retrieved_at": "2026-10-14T12:19:44.364585Z",
+        "check_version": "evidence-review-v1"
+      },
+      "scope_prompt_version": "scope-v1"
+    }
+  ],
+  "confirmed_selection": {
+    "preparation_id": "275ddcaa-f4a1-47fd-8327-20efa9b8199b",
+    "scope_version": 1,
+    "candidate_id": "scope-http-status-200-404-500",
+    "focus_id": "focus-404-not-found",
+    "scope_point_ids": [
+      "point-404-definition",
+      "point-404-broken-links",
+      "point-404-class-4xx"
+    ],
+    "question_count": 3,
+    "difficulty": "easy"
+  },
+  "operation": {
+    "status": "succeeded",
+    "result": {
+      "id": "7173ed44-247f-411d-a56a-4c10f9124979",
+      "quiz": {
+        "id": "32a67d8b-db88-44b7-a18e-184d8937221f",
+        "title": "HTTP 状态码 404 含义小测",
+        "reward": {
+          "xp": 10,
+          "coins": 2
+        },
+        "source": {
+          "type": "topic",
+          "title": "HTTP 状态码 200、404 和 500 的含义",
+          "segments": []
+        },
+        "summary": "围绕 404 Not Found 的含义、失效链接说法与 4xx 类别归属，考查对客户端错误状态码的基础理解。",
+        "grounding": {
+          "status": "source_backed",
+          "provider": "tavily",
+          "reason_code": null,
+          "retrieved_at": "2026-10-14T12:19:38.253330Z",
+          "check_version": "evidence-review-v1"
+        },
+        "questions": [
+          {
+            "id": "q-404-single-1",
+            "stem": "HTTP 状态码 404 表示什么？",
+            "type": "single",
+            "origin": null,
+            "answers": [],
+            "options": [
+              {
+                "id": "A",
+                "text": "服务器成功处理了请求"
+              },
+              {
+                "id": "B",
+                "text": "服务器无法找到请求的资源"
+              },
+              {
+                "id": "C",
+                "text": "服务器内部发生错误"
+              },
+              {
+                "id": "D",
+                "text": "请求需要身份认证"
+              }
+            ],
+            "grounding": {
+              "status": "source_backed"
+            },
+            "source_ids": [],
+            "explanation": "",
+            "knowledge_point": "404 表示服务器无法找到请求的资源"
+          },
+          {
+            "id": "q-404-multi-1",
+            "stem": "关于 404 状态码，下列说法正确的有哪些？",
+            "type": "multi",
+            "origin": null,
+            "answers": [],
+            "options": [
+              {
+                "id": "A",
+                "text": "指向 404 页面的链接常被称为失效链接或死链"
+              },
+              {
+                "id": "B",
+                "text": "404 属于 4xx 客户端错误（Client error）类别"
+              },
+              {
+                "id": "C",
+                "text": "404 表示服务器端程序内部发生了错误"
+              },
+              {
+                "id": "D",
+                "text": "404 表示服务器无法找到请求的资源"
+              }
+            ],
+            "grounding": {
+              "status": "source_backed"
+            },
+            "source_ids": [],
+            "explanation": "",
+            "knowledge_point": "404 的失效链接说法与 4xx 类别归属"
+          },
+          {
+            "id": "q-404-judge-1",
+            "stem": "判断：404 状态码属于 4xx 客户端错误（Client error）类别。",
+            "type": "judge",
+            "origin": null,
+            "answers": [],
+            "options": [
+              {
+                "id": "A",
+                "text": "正确"
+              },
+              {
+                "id": "B",
+                "text": "错误"
+              }
+            ],
+            "grounding": {
+              "status": "source_backed"
+            },
+            "source_ids": [],
+            "explanation": "",
+            "knowledge_point": "4xx 类别：客户端错误（Client error）"
+          }
+        ],
+        "created_at": "2026-10-14T12:26:44.385533+00:00",
+        "difficulty": "easy",
+        "source_text": "HTTP 状态码 200、404 和 500 分别表示什么?",
+        "learning_scope": {
+          "focus": "404 Not Found：资源未找到",
+          "topic": "HTTP 状态码 200、404 和 500 的含义",
+          "domain": "Web 开发 / HTTP 协议",
+          "points": [
+            "404 表示服务器无法找到请求的资源",
+            "指向 404 的链接常被称为失效链接/死链",
+            "4xx 类别：客户端错误（Client error）"
+          ],
+          "focus_id": "focus-404-not-found",
+          "input_text": "HTTP 状态码 200、404 和 500 分别表示什么?",
+          "candidate_id": "scope-http-status-200-404-500",
+          "scope_version": 1,
+          "preparation_id": "275ddcaa-f4a1-47fd-8327-20efa9b8199b",
+          "scope_point_ids": [
+            "point-404-definition",
+            "point-404-broken-links",
+            "point-404-class-4xx"
+          ]
+        }
+      },
+      "mode": "new",
+      "answers": [],
+      "cursor": 0,
+      "pending_ms": 0,
+      "started_at": "2026-10-14T12:26:44+00:00",
+      "completed_at": null,
+      "report": null,
+      "review_keys": []
+    },
+    "error_code": null,
+    "stage": "succeeded",
+    "retry_after_seconds": 0,
+    "deadline": "2026-10-14T12:31:37+00:00"
+  },
+  "quiz": {
+    "id": "32a67d8b-db88-44b7-a18e-184d8937221f",
+    "title": "HTTP 状态码 404 含义小测",
+    "reward": {
+      "xp": 10,
+      "coins": 2
+    },
+    "source": {
+      "type": "topic",
+      "title": "HTTP 状态码 200、404 和 500 的含义",
+      "segments": [
+        {
+          "id": "web-8279da65d8c1242500b3cf012971af31",
+          "end": null,
+          "url": "https://dev.to/rencberakman/http-status-codes-200-201-400-401-403-404-500-9p8",
+          "page": null,
+          "text": "404 – Not Found The requested resource could not be found on the server. Example: Navigating to a non-existent URL. 500 – Internal Server Error",
+          "start": null,
+          "title": "🔍⭐HTTP Status Codes (200, 201, 400, 401, 403, 404, 500)",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "c4774f4c170377401faa29e1861c4e7b8b94b52a58cd7bb96076b1b7d806f4d9",
+          "content_kind": "snippet",
+          "original_url": "https://dev.to/rencberakman/http-status-codes-200-201-400-401-403-404-500-9p8",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:19:35.115861Z",
+          "source_chars": 143,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-6577b8df79a8c8a4af27e439ea635a9d",
+          "end": null,
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status",
+          "page": null,
+          "text": "Client error responses ( 400 – 499 ); Server error responses ( 500 – 599 ). The status codes listed below are defined by RFC 9110. Note:",
+          "start": null,
+          "title": "HTTP response status codes - MDN Web Docs - Mozilla",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "c60c8736446c4f21c22410c267756914acf06563591300adaab2639624bc2a8a",
+          "content_kind": "snippet",
+          "original_url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:19:35.115861Z",
+          "source_chars": 136,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-638c9711069b8b3b6bb74cb7d8fc125a",
+          "end": null,
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/404",
+          "page": null,
+          "text": "Skip to search\n\nToggle sidebar \n\n1. Web\n2. HTTP\n3. Reference\n4. HTTP response status codes\n5. 404 Not Found\n\n \n\nRemember language   Learn more\n\n Deutsch\n English (US)\n Español\n Français\n 日本語\n 한국어\n Português (do Brasil)\n Русский\n 中文 (简体)\n 正體中文 (繁體)\n\n# 404 Not Found\n\nThe HTTP `404 Not Found` client error response status code indicates that the server cannot find the requested resource. Links that lead to a 404 page are often called broken or dead links and can be subject to link rot\"). [...] Note: Custom 404 page design is a good thing in moderation. Feel free to make your 404 page humorous and human, but don't confuse your visitors as to why they are seeing something unexpected.\n\nFor an example of a custom 404 page, see the KonMari 404 page\").\n\n## Specifications\n\n| Specification |\n\n| HTTP Semantics # status.404 |\n\n## See also\n\n HTTP response status codes\n `410`\n Wikipedia: HTTP 404\")\n\n## Help improve MDN\n\n Learn how to contribute [...] A 404 status code only indicates that the resource is missing without indicating if this is temporary or permanent. If a resource is permanently removed, servers should send the `410 Gone` status instead.",
+          "start": null,
+          "title": "404 Not Found - HTTP | MDN",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "f65a28fc9272e5c3286ff7c527d8fa0c8284e56233e33c3707a76d8caa66fac2",
+          "content_kind": "snippet",
+          "original_url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/404",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:19:38.253330Z",
+          "source_chars": 1153,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        }
+      ]
+    },
+    "summary": "围绕 404 Not Found 的含义、失效链接说法与 4xx 类别归属，考查对客户端错误状态码的基础理解。",
+    "grounding": {
+      "status": "source_backed",
+      "provider": "tavily",
+      "reason_code": null,
+      "retrieved_at": "2026-10-14T12:19:38.253330Z",
+      "check_version": "evidence-review-v1"
+    },
+    "questions": [
+      {
+        "id": "q-404-single-1",
+        "stem": "HTTP 状态码 404 表示什么？",
+        "type": "single",
+        "origin": null,
+        "answers": [
+          "B"
+        ],
+        "options": [
+          {
+            "id": "A",
+            "text": "服务器成功处理了请求"
+          },
+          {
+            "id": "B",
+            "text": "服务器无法找到请求的资源"
+          },
+          {
+            "id": "C",
+            "text": "服务器内部发生错误"
+          },
+          {
+            "id": "D",
+            "text": "请求需要身份认证"
+          }
+        ],
+        "grounding": {
+          "status": "source_backed",
+          "provider": "tavily",
+          "reason_code": null,
+          "retrieved_at": "2026-10-14T12:19:38.253330Z",
+          "check_version": "evidence-review-v1"
+        },
+        "source_ids": [
+          "web-638c9711069b8b3b6bb74cb7d8fc125a",
+          "web-8279da65d8c1242500b3cf012971af31"
+        ],
+        "explanation": "404 Not Found 属于客户端错误响应状态码，表示服务器无法找到请求的资源。A 描述的是 200 一类的成功响应，C 对应 500 一类的服务器错误，D 对应 401 一类的认证要求，均不是 404 的含义。",
+        "knowledge_point": "404 表示服务器无法找到请求的资源"
+      },
+      {
+        "id": "q-404-multi-1",
+        "stem": "关于 404 状态码，下列说法正确的有哪些？",
+        "type": "multi",
+        "origin": null,
+        "answers": [
+          "A",
+          "B",
+          "D"
+        ],
+        "options": [
+          {
+            "id": "A",
+            "text": "指向 404 页面的链接常被称为失效链接或死链"
+          },
+          {
+            "id": "B",
+            "text": "404 属于 4xx 客户端错误（Client error）类别"
+          },
+          {
+            "id": "C",
+            "text": "404 表示服务器端程序内部发生了错误"
+          },
+          {
+            "id": "D",
+            "text": "404 表示服务器无法找到请求的资源"
+          }
+        ],
+        "grounding": {
+          "status": "source_backed",
+          "provider": "tavily",
+          "reason_code": null,
+          "retrieved_at": "2026-10-14T12:19:38.253330Z",
+          "check_version": "evidence-review-v1"
+        },
+        "source_ids": [
+          "web-638c9711069b8b3b6bb74cb7d8fc125a",
+          "web-6577b8df79a8c8a4af27e439ea635a9d"
+        ],
+        "explanation": "资料指出，指向 404 页面的链接常被称为失效链接（broken links）或死链（dead links）；404 属于 4xx 客户端错误类别；其含义是服务器无法找到请求的资源。C 把 404 与服务器内部错误混淆，服务器内部错误属于 500 一类的 5xx 状态码，故不选。",
+        "knowledge_point": "404 的失效链接说法与 4xx 类别归属"
+      },
+      {
+        "id": "q-404-judge-1",
+        "stem": "判断：404 状态码属于 4xx 客户端错误（Client error）类别。",
+        "type": "judge",
+        "origin": null,
+        "answers": [
+          "A"
+        ],
+        "options": [
+          {
+            "id": "A",
+            "text": "正确"
+          },
+          {
+            "id": "B",
+            "text": "错误"
+          }
+        ],
+        "grounding": {
+          "status": "source_backed",
+          "provider": "tavily",
+          "reason_code": null,
+          "retrieved_at": "2026-10-14T12:19:38.253330Z",
+          "check_version": "evidence-review-v1"
+        },
+        "source_ids": [
+          "web-6577b8df79a8c8a4af27e439ea635a9d",
+          "web-638c9711069b8b3b6bb74cb7d8fc125a"
+        ],
+        "explanation": "资料将客户端错误响应列为 400–499，404 Not Found 正属于这一 4xx 客户端错误类别，因此该说法正确。",
+        "knowledge_point": "4xx 类别：客户端错误（Client error）"
+      }
+    ],
+    "created_at": "2026-10-14T12:26:44.385533+00:00",
+    "difficulty": "easy",
+    "source_text": "HTTP 状态码 200、404 和 500 分别表示什么?",
+    "learning_scope": {
+      "focus": "404 Not Found：资源未找到",
+      "topic": "HTTP 状态码 200、404 和 500 的含义",
+      "domain": "Web 开发 / HTTP 协议",
+      "points": [
+        "404 表示服务器无法找到请求的资源",
+        "指向 404 的链接常被称为失效链接/死链",
+        "4xx 类别：客户端错误（Client error）"
+      ],
+      "focus_id": "focus-404-not-found",
+      "input_text": "HTTP 状态码 200、404 和 500 分别表示什么?",
+      "candidate_id": "scope-http-status-200-404-500",
+      "scope_version": 1,
+      "preparation_id": "275ddcaa-f4a1-47fd-8327-20efa9b8199b",
+      "scope_point_ids": [
+        "point-404-definition",
+        "point-404-broken-links",
+        "point-404-class-4xx"
+      ]
+    }
+  },
+  "human_review": {
+    "scope_matches_intent": true,
+    "notes": "按用户对当前20例/60题核对请求的总体回复“正确”登记；未收到逐项表单导出。",
+    "questions": [
+      {
+        "id": "q-404-single-1",
+        "status": "source_backed",
+        "source_ids": [
+          "web-638c9711069b8b3b6bb74cb7d8fc125a",
+          "web-8279da65d8c1242500b3cf012971af31"
+        ],
+        "supported_by_cited_text": true,
+        "contradicts": false,
+        "in_scope": true,
+        "meme_substantive": null,
+        "notes": "正确性及引用支持按用户对核对包的总体确认登记；不是用户逐题表单输入。"
+      },
+      {
+        "id": "q-404-multi-1",
+        "status": "source_backed",
+        "source_ids": [
+          "web-638c9711069b8b3b6bb74cb7d8fc125a",
+          "web-6577b8df79a8c8a4af27e439ea635a9d"
+        ],
+        "supported_by_cited_text": true,
+        "contradicts": false,
+        "in_scope": true,
+        "meme_substantive": null,
+        "notes": "正确性及引用支持按用户对核对包的总体确认登记；不是用户逐题表单输入。"
+      },
+      {
+        "id": "q-404-judge-1",
+        "status": "source_backed",
+        "source_ids": [
+          "web-6577b8df79a8c8a4af27e439ea635a9d",
+          "web-638c9711069b8b3b6bb74cb7d8fc125a"
+        ],
+        "supported_by_cited_text": true,
+        "contradicts": false,
+        "in_scope": true,
+        "meme_substantive": null,
+        "notes": "正确性及引用支持按用户对核对包的总体确认登记；不是用户逐题表单输入。"
+      }
+    ],
+    "confirmation": {
+      "kind": "direct_user_chat_overall_confirmation",
+      "record": "docs/quiz-grounding/live-runs/human-confirmation-20261014.json",
+      "answer": "正确",
+      "individual_form_export_received": false,
+      "structured_verdict_basis": "registered_from_user_overall_confirmation"
+    }
+  },
+  "account_deleted": true
+}

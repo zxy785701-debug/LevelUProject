@@ -1,0 +1,50 @@
+
+> levelup-comic-mini@1.0.0 test
+> vitest run --reporter=verbose
+
+
+ RUN  v3.2.7 D:/nbproject/LevelUpProject/frontend-comic
+
+ ✓ tests/poster.test.ts > 漫画海报排版 > 长标题与金句按实测宽度换行，超出行数省略 2ms
+ ✓ tests/poster.test.ts > 漫画海报排版 > 海报使用真实题量与报告金句，不包含正确率和排名 0ms
+ ✓ tests/api.test.ts > 真实 API 协议与失败恢复 > 发送后端支持的出题字段与超时 3ms
+ ✓ tests/api.test.ts > 真实 API 协议与失败恢复 > 保留后端错误码与可读提示 1ms
+ ✓ tests/api.test.ts > 真实 API 协议与失败恢复 > 网络或非 JSON 错误不使页面崩溃：null 0ms
+ ✓ tests/api.test.ts > 真实 API 协议与失败恢复 > 网络或非 JSON 错误不使页面崩溃：{} 0ms
+ ✓ tests/api.test.ts > 真实 API 协议与失败恢复 > 网络或非 JSON 错误不使页面崩溃：html 0ms
+ ✓ tests/api.test.ts > 真实 API 协议与失败恢复 > 取消请求调用任务 abort，网络断开给出重试提示 1ms
+ ✓ tests/api.test.ts > 真实 API 协议与失败恢复 > 报告传递原题库、逐题答案和模式，不传客户端得分 0ms
+ ✓ tests/wechat-project.test.ts > 微信工程导入配置 > 从独立工程根目录导入时，指向 Taro 编译目录 1ms
+ ✓ tests/domain.test.ts > 本机学习状态 > 历史按日历周和月筛选 4ms
+ ✓ tests/domain.test.ts > 本机学习状态 > 每题提交一次，锁定答案，不重复奖励，序列化后可恢复 1ms
+ ✓ tests/domain.test.ts > 本机学习状态 > 非法选项、重复选项与未作答下一题不改变状态 0ms
+ ✓ tests/domain.test.ts > 本机学习状态 > 多选按集合判分，漏选、多选判错 0ms
+ ✓ tests/domain.test.ts > 本机学习状态 > replay 不发奖励，不计入分析 13ms
+ ✓ tests/domain.test.ts > 本机学习状态 > review 不发奖励，不计入分析 0ms
+ ✓ tests/domain.test.ts > 本机学习状态 > 完成后统计新学，100 XP 升级 1ms
+ ✓ tests/domain.test.ts > 本机学习状态 > 错题复习更新掌握状态，原答案保留 1ms
+ ✓ tests/domain.test.ts > 本机学习状态 > 清空队列不删除历史，清空草稿不改题库 0ms
+ ✓ tests/learning.test.ts > 漫画版交互规则 > 与原版使用独立存储 1ms
+ ✓ tests/learning.test.ts > 漫画版交互规则 > 拒绝空白与超长内容，接受后端支持的 6000 字 0ms
+ ✓ tests/learning.test.ts > 漫画版交互规则 > 多选可反选，锁定后不能改动，未知选项不能提交 1ms
+ ✓ tests/learning.test.ts > 漫画版交互规则 > 答错时同时突出正确项，未选择项淡化，答前不泄露答案 0ms
+ ✓ tests/learning.test.ts > 漫画版交互规则 > 计算连续与最高连击，答错会中断 0ms
+ ✓ tests/learning.test.ts > 漫画版交互规则 > 取消后旧响应失效，新请求不受影响 0ms
+ ✓ tests/learning.test.ts > 漫画版交互规则 > 周战绩只统计本周已完成的新学，正确率按题数计算 3ms
+ ✓ tests/storage.test.ts > 独立本机存储 > 空数据、损坏数据与读取失败均恢复为空状态 2ms
+ ✓ tests/storage.test.ts > 独立本机存储 > 恢复合法数据与输入草稿 0ms
+ ✓ tests/storage.test.ts > 独立本机存储 > 损坏的题目、答案或活动记录不会使恢复后的页面崩溃 4ms
+ ✓ tests/storage.test.ts > 独立本机存储 > 保存失败不能提交内存状态，保存成功才返回新状态 2ms
+ ✓ tests/platform.test.ts > 微信平台适配 > 按实际状态栏与胶囊尺寸保留导航安全空间 3ms
+ ✓ tests/platform.test.ts > 微信平台适配 > 旧环境无法获取胶囊时有可用安全区 0ms
+ ✓ tests/platform.test.ts > 微信平台适配 > 保存成功直接结束，不弹授权窗口 2ms
+ ✓ tests/platform.test.ts > 微信平台适配 > 相册拒绝后保留图片并按选择打开设置：false 1ms
+ ✓ tests/platform.test.ts > 微信平台适配 > 相册拒绝后保留图片并按选择打开设置：true 0ms
+ ✓ tests/platform.test.ts > 微信平台适配 > 画布未准备好时允许重试，而不生成空图片 0ms
+ ✓ tests/platform.test.ts > 微信平台适配 > 生成双倍分辨率的真实PNG，遵守漫画颜色与原始吉祥物 2ms
+
+ Test Files  7 passed (7)
+      Tests  37 passed (37)
+   Start at  13:31:35
+   Duration  758ms (transform 189ms, setup 0ms, collect 599ms, tests 61ms, environment 1ms, prepare 1.51s)
+

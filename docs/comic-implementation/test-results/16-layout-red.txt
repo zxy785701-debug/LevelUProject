@@ -1,0 +1,30 @@
+
+Running 1 test using 1 worker
+
+(node:38328) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 e2e\core.spec.ts:37:5 › 01–03：游客、独立存储、首页、设置和扩展入口 (878ms)
+Testing stopped early after 1 maximum allowed failures.
+
+
+  1) e2e\core.spec.ts:37:5 › 01–03：游客、独立存储、首页、设置和扩展入口 ──────────────────────────────────────────────
+
+    Error: expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 341.046875
+    Received:    357.046875
+
+      44 |  await shot(page,'02-home')
+      45 |  const inputBox=await page.locator('.field').boundingBox(),textBox=await page.locator('textarea').boundingBox()
+    > 46 |  expect(textBox!.y+textBox!.height).toBeLessThanOrEqual(inputBox!.y+inputBox!.height)
+         |                                     ^
+      47 |  await page.getByRole('button',{name:'RAG 入门',exact:true}).click()
+      48 |  await page.getByRole('button',{name:/出题设置/}).click()
+      49 |  await page.getByRole('button',{name:'3 题',exact:true}).click();await page.getByRole('button',{name:'进阶',exact:true}).click()
+        at D:\nbproject\LevelUpProject\frontend-comic\e2e\core.spec.ts:46:37
+
+    Error Context: ..\docs\comic-implementation\e2e-results\core-01–03：游客、独立存储、首页、设置和扩展入口\error-context.md
+
+  1 failed
+    e2e\core.spec.ts:37:5 › 01–03：游客、独立存储、首页、设置和扩展入口 ───────────────────────────────────────────────
+  1 error was not a part of any test, see above for details

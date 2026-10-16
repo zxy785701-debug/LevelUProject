@@ -1,0 +1,227 @@
+{
+  "date": "2026-10-14",
+  "timezone": "Asia/Shanghai",
+  "source": "Direct user replies in the current conversation",
+  "wechat_validation": {
+    "question": "后端启动已修复且健康检查返回200。请在微信开发者工具重新编译后重试材料导入，反馈是否成功；新增流程验收还需要你提供开发工具/基础库版本，以及真机实际通过或失败项。",
+    "answer": "都成功了",
+    "result": "passed_by_user_confirmation",
+    "granularity": "overall_confirmation",
+    "developer_tools_version": null,
+    "base_library_version": null,
+    "device_model": null,
+    "screenshots_received": false
+  },
+  "quiz_review": {
+    "question": "20例真实生成、60题的逐题核对页已准备好：http://127.0.0.1:10089/review-20261014.html 。请亲自核对答案、讲解与引用，填写并导出记录后告知文件保存位置；这项人工判断是清单7.3/7.4的验收要求，系统审核不能代替。",
+    "answer": "正确",
+    "result": "accepted_by_user_confirmation",
+    "granularity": "overall_confirmation_of_current_20_cases_60_questions",
+    "individual_form_export_received": false,
+    "notes": "人工字段按用户对当前核对请求的总体确认登记；不是用户逐项提交的表单，也不是AI冒充人工核对。原始服务结果、工具轨迹和历史失败不变。",
+    "confirmed_packet_sha256": "9a5c476a8ea2d82fa0584e43f16132853e48870a10a7e0e81d1e824ecf31e3df",
+    "registered_records": [
+      {
+        "case_id": "harness-1",
+        "quiz_id": "d7ea766c-577c-4d8f-b4a7-18b3b59f9c53",
+        "file": "docs/quiz-grounding/live-runs/acceptance-20261014-sdkfix/harness-1.json",
+        "original_file_sha256": "381b9a4eb17657ac5d369faadf3cc8a221136e58fea54e328bd2a0e5056aeea2",
+        "provider_payload_sha256_before_and_after": "5e9705b92a6c5db64e5ae052d1fa646d0c0b735f4e889453dd20e122f65cf0e2",
+        "changed_fields": [
+          "human_review"
+        ]
+      },
+      {
+        "case_id": "harness-2",
+        "quiz_id": "f0a715e0-fc08-4825-846e-a0395c33eb14",
+        "file": "docs/quiz-grounding/live-runs/acceptance-20261014-sdkfix/harness-2.json",
+        "original_file_sha256": "5dfb08be889ffde0c9c78b012ee3ebb305955c913debf72a64187cb3436d65b5",
+        "provider_payload_sha256_before_and_after": "3a3e3d46547344e4988e5b35dd3c097cbf75f381bc18ab3a10e594807af0305f",
+        "changed_fields": [
+          "human_review"
+        ]
+      },
+      {
+        "case_id": "harness-3",
+        "quiz_id": "7a6da426-8fcb-4fd6-af50-5163f2a85909",
+        "file": "docs/quiz-grounding/live-runs/acceptance-20261014-sdkfix/harness-3.json",
+        "original_file_sha256": "18d912bf6faed314efdd56edcd1c924386b8f9cef4a68c42c8891c4b8622fdbd",
+        "provider_payload_sha256_before_and_after": "44d261b6681e9f49ef5456dc416c88813a06340629828267e8f70d8b45d42b52",
+        "changed_fields": [
+          "human_review"
+        ]
+      },
+      {
+        "case_id": "huashao-1",
+        "quiz_id": "eba490c9-4224-4e73-bcc7-4b0e086e300d",
+        "file": "docs/quiz-grounding/live-runs/acceptance-20261014-sdkfix/huashao-1.json",
+        "original_file_sha256": "85a826a5d7ef1a70464d81ce322b54f7aa1b6ae97771f8561de18c01622b861b",
+        "provider_payload_sha256_before_and_after": "e4fb0d214d49bfbc14eabfe8e34959bd4f52ddeac745d86df64504454aab67a3",
+        "changed_fields": [
+          "human_review"
+        ]
+      },
+      {
+        "case_id": "huashao-2",
+        "quiz_id": "611f6c35-7a0f-40ae-9575-920cb6ee0239",
+        "file": "docs/quiz-grounding/live-runs/acceptance-20261014-sdkfix/huashao-2.json",
+        "original_file_sha256": "0d742fc911dbe8daa2a9a617cffe2083628a6e2b83e2b3851ad9017832baf7c9",
+        "provider_payload_sha256_before_and_after": "02c283622b06eca5881bd5b6c6455495821a5473b9da84be085875f45a45e0da",
+        "changed_fields": [
+          "human_review"
+        ]
+      },
+      {
+        "case_id": "huashao-3",
+        "quiz_id": "ecd5ce31-188a-46e2-9c5e-47c98848fd4a",
+        "file": "docs/quiz-grounding/live-runs/acceptance-20261014-sdkfix/huashao-3.json",
+        "original_file_sha256": "0da2077be06b0dbd3d45cc315229de6539fa9b928706e1360cca4a99e43bc24f",
+        "provider_payload_sha256_before_and_after": "71bd09532b580bf32138da78682c116e04432fbd8e4e83b9e25e959dae26488f",
+        "changed_fields": [
+          "human_review"
+        ]
+      },
+      {
+        "case_id": "url-search",
+        "quiz_id": "be878ccb-d52f-421e-9127-94450256bd7a",
+        "file": "docs/quiz-grounding/live-runs/acceptance-20261014-sdkfix/url-search.json",
+        "original_file_sha256": "c1d211e835e84a1f1f8b11a3b3a40643d9bfe05b71d03fc9ee142c2defce4f7f",
+        "provider_payload_sha256_before_and_after": "23950df7a8b50b2b3b592c2491cd279073c954d9d69001b7f4b1a5d857d1fbc7",
+        "changed_fields": [
+          "human_review"
+        ]
+      },
+      {
+        "case_id": "url-extract",
+        "quiz_id": "d40bda3f-567f-493c-9db6-a225aa5e3771",
+        "file": "docs/quiz-grounding/live-runs/acceptance-20261014-retest3/url-extract.json",
+        "original_file_sha256": "3bb2160ec967eea1acc1ca522759bc3401cfc7f24616b286a752be5e4016539e",
+        "provider_payload_sha256_before_and_after": "f472e6dc6be113780d61b899a5eac315112a530be30954eb944181f14f913604",
+        "changed_fields": [
+          "human_review"
+        ]
+      },
+      {
+        "case_id": "url-python",
+        "quiz_id": "ac60457a-3881-4d62-9af1-4e632036f625",
+        "file": "docs/quiz-grounding/live-runs/acceptance-20261014-sdkfix/url-python.json",
+        "original_file_sha256": "8f393bf41d6e4c86255e82a913a6759110b96096fc72599c435f2a6cc6acff19",
+        "provider_payload_sha256_before_and_after": "19e789e8d7be2fd520cb53ddae7215e21b23badaf2bf3ee0059dde0d69505a90",
+        "changed_fields": [
+          "human_review"
+        ]
+      },
+      {
+        "case_id": "url-react",
+        "quiz_id": "bf0a7513-db60-4fe3-bd99-0ef9bef61e0c",
+        "file": "docs/quiz-grounding/live-runs/acceptance-20261014-sdkfix/url-react.json",
+        "original_file_sha256": "082b97789b53fad1ada2723c17671641fef7062798d23f8c9fdaa7ec68230c9c",
+        "provider_payload_sha256_before_and_after": "58115ecc6be2fd93daaff3d2c5eb92582f5f39f48a312cb873f5d98b219c34d5",
+        "changed_fields": [
+          "human_review"
+        ]
+      },
+      {
+        "case_id": "bilingual-otel",
+        "quiz_id": "ac803663-fa1f-4696-aa5b-009b7ddb41a0",
+        "file": "docs/quiz-grounding/live-runs/acceptance-20261014-sdkfix/bilingual-otel.json",
+        "original_file_sha256": "222c5b6785826539a3d471e052d7b345c268e3a78e2a8a0f539f3d4bd053f7d5",
+        "provider_payload_sha256_before_and_after": "776d60fba4a5417ea661e75ecb0a0bc03fcc3422f1ce8cdfe68e1a6c06f2008b",
+        "changed_fields": [
+          "human_review"
+        ]
+      },
+      {
+        "case_id": "bilingual-python",
+        "quiz_id": "a8029949-0261-424c-bf28-786e93bd40e2",
+        "file": "docs/quiz-grounding/live-runs/acceptance-20261014-sdkfix/bilingual-python.json",
+        "original_file_sha256": "8d2e0097cd3d2c53bd5184d6d6fe80d2156092652146c6be1e920c534d84d487",
+        "provider_payload_sha256_before_and_after": "e8ea00dee575a2402d5bfa6ee1866a09e9465b62a446226d97aeafc78126a7ca",
+        "changed_fields": [
+          "human_review"
+        ]
+      },
+      {
+        "case_id": "global-utc",
+        "quiz_id": "21ac6f19-d936-4112-9cb4-ddecb5f89b74",
+        "file": "docs/quiz-grounding/live-runs/acceptance-20261014-sdkfix/global-utc.json",
+        "original_file_sha256": "ab21d1c8dbd15bd8cec88544fa8f93ce0a80b61d7e8f8296ec0fcd4f61a11b73",
+        "provider_payload_sha256_before_and_after": "ef4344ee87524c54372aa0dc99319177602a6ce913e291a76d212067b36a5b86",
+        "changed_fields": [
+          "human_review"
+        ]
+      },
+      {
+        "case_id": "country-japan",
+        "quiz_id": "4775a01d-8b70-4cf6-8731-5c7ba2b859a2",
+        "file": "docs/quiz-grounding/live-runs/acceptance-20261014-sdkfix/country-japan.json",
+        "original_file_sha256": "ee733c7edf8b69446207b78188150ad3b81ddaede53fee3490467217560e0ca4",
+        "provider_payload_sha256_before_and_after": "1ba04cc72b4187a690b7a9f3a4b458ddfeb75906d3c70fd319173d7a06975a8f",
+        "changed_fields": [
+          "human_review"
+        ]
+      },
+      {
+        "case_id": "city-cambridge",
+        "quiz_id": "fff21d6c-6213-42c7-b108-3329e8846b66",
+        "file": "docs/quiz-grounding/live-runs/acceptance-20261014-sdkfix/city-cambridge.json",
+        "original_file_sha256": "f1e448072b139bf328b77388b85b04ab7b13805204381c8b117e150e3cedd52b",
+        "provider_payload_sha256_before_and_after": "fe646433b659ec4dacae378ee84e944a88ab234ec60670c2258a5e9b22d08c95",
+        "changed_fields": [
+          "human_review"
+        ]
+      },
+      {
+        "case_id": "city-hangzhou",
+        "quiz_id": "37f1c09d-fef5-4f53-91ff-69934224d82f",
+        "file": "docs/quiz-grounding/live-runs/acceptance-20261014-sdkfix/city-hangzhou.json",
+        "original_file_sha256": "3a4af4b2f092ce921c31b2f5b0ad66cc0591b4ce6933c26f858c5ea175dfceca",
+        "provider_payload_sha256_before_and_after": "b623914e99ec3bcab13cc5b410389735a606bc27d6b7dfb5cb84dd95c1a37b85",
+        "changed_fields": [
+          "human_review"
+        ]
+      },
+      {
+        "case_id": "simple-http",
+        "quiz_id": "32a67d8b-db88-44b7-a18e-184d8937221f",
+        "file": "docs/quiz-grounding/live-runs/acceptance-20261014-sdkfix/simple-http.json",
+        "original_file_sha256": "3a1f8072af17675ccb7340f3304b47a60184fb5c5e77f3b5dc17f1dd64642ab2",
+        "provider_payload_sha256_before_and_after": "fe5743809b9640680039ee6d45bcfdf7eefaf31ce100b2d4a2c81e82e0f256ce",
+        "changed_fields": [
+          "human_review"
+        ]
+      },
+      {
+        "case_id": "complex-k8s",
+        "quiz_id": "0bd4fab8-74b7-4e49-9ecb-9ccbe619fe1e",
+        "file": "docs/quiz-grounding/live-runs/acceptance-20261014-sdkfix/complex-k8s.json",
+        "original_file_sha256": "231558866fe5413d3fe000c57de03ef14f3f38e6295943825dbb4b248ae69a55",
+        "provider_payload_sha256_before_and_after": "868726b8035f778d4f8b7b8a078bdceca96e000649b5b95150cf9c0c7210d067",
+        "changed_fields": [
+          "human_review"
+        ]
+      },
+      {
+        "case_id": "english-rag",
+        "quiz_id": "2c8e8c14-65b9-4369-a8ab-ec02adc3377d",
+        "file": "docs/quiz-grounding/live-runs/acceptance-20261014-sdkfix/english-rag.json",
+        "original_file_sha256": "fa70a2083de2f82bf422f5943631723f2e7adce0da4c082ef8ef688dfa9e4512",
+        "provider_payload_sha256_before_and_after": "37b9a1edc88c917277ea512e9f46809957ea1b5e61fe9d84fabbf4d3148a52b0",
+        "changed_fields": [
+          "human_review"
+        ]
+      },
+      {
+        "case_id": "fresh-mcp",
+        "quiz_id": "9af345db-cb3e-4304-8907-baff4a172f4b",
+        "file": "docs/quiz-grounding/live-runs/acceptance-20261014-sdkfix/fresh-mcp.json",
+        "original_file_sha256": "016e23bcef588865978000b9392bf26a5a2c2ab7a4f57526a808eac1403a138f",
+        "provider_payload_sha256_before_and_after": "268beb8cff752d786a94d9a5952c439955a74f7d1e747803911d19a4c3841dba",
+        "changed_fields": [
+          "human_review"
+        ]
+      }
+    ],
+    "meme_classification_notes": "梗与场景分类由Codex检查实际题目，三例分别2/3、3/3、3/3；用户总体确认正确性，未单独提交梗覆盖复选项。"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "date": "2026-10-14",
+  "backend_health": {
+    "url": "http://127.0.0.1:8000/api/v1/health",
+    "http_status": 200,
+    "body_status": "ok",
+    "listener": "127.0.0.1:8000",
+    "process_id_observed": 33464
+  },
+  "affected_regression": {
+    "files": ["test_grounding_generation_api.py", "test_grounding_generation.py", "test_grounding_fallback.py", "test_grounding_api.py"],
+    "passed": 37,
+    "seconds": 8.82,
+    "exit_code": 0,
+    "database": "levelup_test",
+    "run_after_all_live_provider_operations_finished": true
+  },
+  "pure_unit_regression": {
+    "files": ["test_grounding_policy.py", "test_grounding_generation.py"],
+    "passed": 18,
+    "seconds": 2.76,
+    "exit_code": 0
+  },
+  "review_page_browser": {
+    "url": "http://127.0.0.1:10089/review-20261014.html",
+    "cases": 20,
+    "questions": 60,
+    "citation_displays": 91,
+    "all_human_selects_initially_blank": true,
+    "mobile_viewport": {"width": 375, "height": 812, "horizontal_overflow": false},
+    "javascript_console_errors_after_final_load": 0,
+    "external_dependencies": false,
+    "human_review_performed": false
+  },
+  "openspec_before_user_confirmation": {"complete": 27, "total": 30, "remaining": ["7.2", "7.3", "7.4"]},
+  "final_user_confirmation": {
+    "record": "live-runs/human-confirmation-20261014.json",
+    "wechat_answer": "都成功了",
+    "quiz_answer": "正确",
+    "granularity": "overall_chat_confirmation",
+    "individual_form_export_received": false,
+    "device_and_library_versions_received": false,
+    "provider_evidence_hash_unchanged": true,
+    "confirmed_cases": 20,
+    "confirmed_questions": 60
+  },
+  "summary_regression": {"passed": 10, "seconds": 4.11, "exit_code": 0},
+  "openspec": {"complete": 30, "total": 30, "remaining": [], "state": "all_done", "strict_validation_passed": true}
+}

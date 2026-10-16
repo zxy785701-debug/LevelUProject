@@ -1,0 +1,183 @@
+{
+  "id": "mv4tql93-8f2b2idm",
+  "quiz": {
+    "title": "HTTP 无状态基础练习",
+    "summary": "围绕 HTTP 无状态的含义、原因与影响，完成单选、多选和判断题。",
+    "questions": [
+      {
+        "id": "q1",
+        "type": "single",
+        "stem": "HTTP 被称为“无状态”协议，主要含义是什么？",
+        "options": [
+          {
+            "id": "A",
+            "text": "服务器不会保存任何数据"
+          },
+          {
+            "id": "B",
+            "text": "每个请求独立处理，服务器默认不保留前一次请求的上下文"
+          },
+          {
+            "id": "C",
+            "text": "客户端不能发送 Cookie"
+          },
+          {
+            "id": "D",
+            "text": "HTTP 不能用于登录功能"
+          }
+        ],
+        "answers": [
+          "B"
+        ],
+        "explanation": "HTTP 无状态指协议本身不要求服务器在两次请求之间保留会话上下文，每个请求可被独立理解与处理。服务器仍可保存数据，也可借助 Cookie、Session、Token 等机制实现状态管理，因此 A、C、D 都不准确。",
+        "knowledge_point": "HTTP 无状态的含义"
+      },
+      {
+        "id": "q2",
+        "type": "multi",
+        "stem": "下列哪些因素有助于解释 HTTP 为什么被设计为无状态？",
+        "options": [
+          {
+            "id": "A",
+            "text": "简化服务器实现，降低为每个客户端维护会话状态的负担"
+          },
+          {
+            "id": "B",
+            "text": "便于请求被独立处理，适合分布式和可扩展的服务器架构"
+          },
+          {
+            "id": "C",
+            "text": "使每个请求可以单独重试或路由，不依赖之前请求的上下文"
+          },
+          {
+            "id": "D",
+            "text": "强制要求所有网站必须使用 Cookie 才能运行"
+          }
+        ],
+        "answers": [
+          "A",
+          "B",
+          "C"
+        ],
+        "explanation": "无状态设计能简化服务器逻辑、降低状态维护成本，并让请求更容易被独立处理、重试和分发，从而提升可扩展性。D 说法错误：Cookie 是后来用于补充状态管理的机制，并非 HTTP 无状态设计的前提或强制要求。",
+        "knowledge_point": "HTTP 无状态的设计原因与优势"
+      },
+      {
+        "id": "q3",
+        "type": "judge",
+        "stem": "HTTP 本身是无状态协议，因此网站无法实现用户登录和购物车等需要连续状态的功能。",
+        "options": [
+          {
+            "id": "A",
+            "text": "正确"
+          },
+          {
+            "id": "B",
+            "text": "错误"
+          }
+        ],
+        "answers": [
+          "B"
+        ],
+        "explanation": "HTTP 协议本身无状态，但可以通过 Cookie、Session、Token 等机制在应用层保存和传递状态，从而实现登录、购物车等功能。因此“无法实现”的说法错误。",
+        "knowledge_point": "无状态与状态管理机制的关系"
+      }
+    ],
+    "id": "5a95027d-0076-49f4-a44d-d77748ba2940",
+    "created_at": "2026-10-12T05:41:16.682076+00:00",
+    "source_text": "HTTP 为什么是无状态的?",
+    "difficulty": "easy"
+  },
+  "mode": "new",
+  "answers": [
+    {
+      "question_id": "q1",
+      "selected": [
+        "B"
+      ],
+      "elapsed_ms": 78
+    },
+    {
+      "question_id": "q2",
+      "selected": [
+        "D"
+      ],
+      "elapsed_ms": 112
+    },
+    {
+      "question_id": "q3",
+      "selected": [
+        "B"
+      ],
+      "elapsed_ms": 62
+    }
+  ],
+  "cursor": 2,
+  "pending_ms": 0,
+  "started_at": "2026-10-12T05:41:16.695Z",
+  "completed_at": "2026-10-12T05:41:17.305Z",
+  "report": {
+    "summary": [
+      "本轮共 3 题，答对 2 题，正确率 67%，用时约 252 毫秒。",
+      "已掌握 HTTP 无状态的含义，以及无状态与状态管理机制的关系。",
+      "在 HTTP 无状态的设计原因与优势上出现错误，多选题只选了错误选项 D。"
+    ],
+    "mastered_points": [
+      "HTTP 无状态的含义",
+      "无状态与状态管理机制的关系"
+    ],
+    "weak_points": [
+      "HTTP 无状态的设计原因与优势"
+    ],
+    "suggestions": [
+      "重读 q2 解析，重点记忆无状态设计的三个优势：简化服务器实现、便于独立处理与扩展、支持请求单独重试或路由。",
+      "整理一张对比表：HTTP 无状态设计的原因与优势 vs. Cookie/Session/Token 等状态管理机制的作用，避免混淆。",
+      "针对多选题，练习先排除明显错误选项（如“强制要求所有网站必须使用 Cookie”），再确认正确选项。",
+      "用一句话复述：HTTP 无状态是为了简化与扩展，状态管理由应用层机制补充实现。"
+    ],
+    "share_quote": "每一次独立请求，都是理解无状态的一小步。",
+    "quiz_id": "5a95027d-0076-49f4-a44d-d77748ba2940",
+    "stats": {
+      "total": 3,
+      "correct_count": 2,
+      "accuracy": 67,
+      "duration_ms": 252,
+      "xp": 20,
+      "coins": 4,
+      "knowledge_points": [
+        {
+          "name": "HTTP 无状态的含义",
+          "total": 1,
+          "correct": 1,
+          "accuracy": 100
+        },
+        {
+          "name": "HTTP 无状态的设计原因与优势",
+          "total": 1,
+          "correct": 0,
+          "accuracy": 0
+        },
+        {
+          "name": "无状态与状态管理机制的关系",
+          "total": 1,
+          "correct": 1,
+          "accuracy": 100
+        }
+      ],
+      "results": [
+        {
+          "question_id": "q1",
+          "is_correct": true
+        },
+        {
+          "question_id": "q2",
+          "is_correct": false
+        },
+        {
+          "question_id": "q3",
+          "is_correct": true
+        }
+      ]
+    }
+  }
+}

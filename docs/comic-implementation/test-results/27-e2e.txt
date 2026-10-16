@@ -1,0 +1,19 @@
+
+> levelup-comic-mini@1.0.0 test:e2e
+> playwright test --max-failures=1
+
+
+Running 7 tests using 1 worker
+
+(node:35588) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 e2e\core.spec.ts:84:5 › 01–03：游客、独立存储、首页、设置和扩展入口 (1.2s)
+  ok 2 e2e\core.spec.ts:115:5 › 06–14：5题全对、即时反馈、连击、报告和真实PNG海报 (2.4s)
+  ok 3 e2e\core.spec.ts:177:5 › 08、15：全部答错、离线可答、暂停重启与报告重试 (1.5s)
+  ok 4 e2e\core.spec.ts:224:5 › 04–05：生成中取消、失败后保留草稿与重试 (1.0s)
+  ok 5 e2e\core.spec.ts:250:5 › 多选显式提交、允许漏选/多选判错，存储失败不发奖励 (904ms)
+  ok 6 e2e\core.spec.ts:263:5 › 320px长文本、恢复记录、扩展入口与空态 (843ms)
+  -  7 e2e\core.spec.ts:283:5 › 真实后端：3题混合作答与AI报告
+
+  1 skipped
+  6 passed (9.2s)

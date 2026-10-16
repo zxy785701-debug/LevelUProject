@@ -1,0 +1,40 @@
+
+> levelup-mini@1.0.0 test
+> vitest run --run tests/features.test.ts tests/material-api.test.ts
+
+
+ RUN  v3.2.7 D:/nbproject/LevelUpProject/frontend
+
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/features.test.ts [ tests/features.test.ts ]
+Error: Cannot find module '../src/features-domain' imported from 'D:/nbproject/LevelUpProject/frontend/tests/features.test.ts'
+ ❯ tests/features.test.ts:2:1
+      1| import { describe, expect, it } from 'vitest'
+      2| import { parseTime, pageScope, periodDates, reportHeading, selectedSeg…
+       | ^
+      3| 
+      4| describe('材料输入校验', () => {
+
+Caused by: Error: Failed to load url ../src/features-domain (resolved id: ../src/features-domain) in D:/nbproject/LevelUpProject/frontend/tests/features.test.ts. Does the file exist?
+ ❯ loadAndTransform node_modules/vitest/node_modules/vite/dist/node/chunks/config.js:22907:33
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/material-api.test.ts [ tests/material-api.test.ts ]
+Error: Cannot find module '../src/features-api' imported from 'D:/nbproject/LevelUpProject/frontend/tests/material-api.test.ts'
+ ❯ tests/material-api.test.ts:4:1
+
+
+Caused by: Error: Failed to load url ../src/features-api (resolved id: ../src/features-api) in D:/nbproject/LevelUpProject/frontend/tests/material-api.test.ts. Does the file exist?
+ ❯ loadAndTransform node_modules/vitest/node_modules/vite/dist/node/chunks/config.js:22907:33
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  no tests
+   Start at  21:01:26
+   Duration  690ms (transform 69ms, setup 0ms, collect 0ms, tests 0ms, environment 0ms, prepare 530ms)
+

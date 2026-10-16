@@ -6,7 +6,7 @@ from app.config import Settings
 from app.main import create_app
 from app.models import QuizContent, Question
 from tests.helpers import FakeGateway, quiz_payload
-from tests.test_mysql_accounts import system, login
+from tests.test_mysql_accounts import system, login, generate, confirmed_body
 
 @pytest.mark.parametrize("count", [3,5])
 @pytest.mark.parametrize("difficulty", ["easy","medium"])
@@ -16,12 +16,11 @@ async def test_quiz_contract(count,difficulty,system):
     system.state.gateway = gateway
     async with httpx.AsyncClient(transport=httpx.ASGITransport(app=system),base_url="http://test") as c:
         await login(c)
-        r=await c.post("/api/v1/quiz/generate",json={"text":"HTTP 基础","question_count":count,"difficulty":difficulty})
-    assert r.status_code == 200
-    data=r.json()["data"]['quiz']
+        session = await generate(c, count=count, difficulty=difficulty, text='HTTP 基础')
+    data=session['quiz']
     assert data["id"] and data["created_at"] and len(data["questions"])==count
     assert data["source_text"]=="HTTP 基础" and data["difficulty"]==difficulty
-    assert "JSON" in gateway.calls[0] and "HTTP 基础" in gateway.calls[0]
+    assert any('JSON' in prompt and 'HTTP 基础' in prompt for prompt in gateway.calls)
 
 @pytest.mark.parametrize("change", [
     {"answers":["Z"]}, {"answers":["A","A"]}, {"answers":[]},
@@ -49,5 +48,8 @@ async def test_wrong_mix_rejected(system):
     system.state.gateway = gateway
     async with httpx.AsyncClient(transport=httpx.ASGITransport(app=system),base_url="http://test") as c:
         await login(c)
-        r=await c.post("/api/v1/quiz/generate",json={"text":"HTTP","question_count":3})
-    assert r.status_code==502 and r.json()["code"]=="MODEL_INVALID_OUTPUT"
+        body = await confirmed_body(c)
+        r=await c.post('/api/v1/quiz/generate', headers={'Idempotency-Key': 'wrong-mix'}, json=body)
+        assert r.status_code == 200
+        result = (await c.get('/api/v1/operations/wrong-mix')).json()['data']
+    assert result['status'] == 'failed' and result['error_code'] == 'MODEL_INVALID_OUTPUT'

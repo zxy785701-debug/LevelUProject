@@ -1,0 +1,30 @@
+{
+  "run_id": "quiz-flow-speed-20261014",
+  "providers": [
+    "Tavily official LangChain Search/Extract",
+    "existing DeepSeek model"
+  ],
+  "configured": {
+    "tavily": true,
+    "deepseek": true
+  },
+  "database": "levelup_test",
+  "model": "deepseek-flash",
+  "minute_limit": 10,
+  "preparation_deadline_seconds": 240.0,
+  "generation_deadline_seconds": 300.0,
+  "cases": [
+    {
+      "id": "harness-2",
+      "text": "学习 AI 编码智能体中的 Harness Engineering：工具、环境与反馈循环",
+      "expected": "AI 智能体的工具环境及反馈循环",
+      "tags": [
+        "harness",
+        "global",
+        "complex"
+      ]
+    }
+  ],
+  "executed": true,
+  "blocked_reason": null
+}

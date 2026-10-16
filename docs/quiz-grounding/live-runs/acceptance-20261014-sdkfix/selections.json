@@ -1,0 +1,259 @@
+{
+  "url-extract": {
+    "point_ids": [
+      "s1",
+      "s2"
+    ],
+    "material_id": "02cadd0a-176d-47ef-b3a6-f938b7dd1d5f",
+    "confirmed": true,
+    "supplement": true,
+    "selection_actor": "Codex evaluation operator; specified learning instruction"
+  },
+  "harness-2": {
+    "selection_actor": "Codex evaluation operator; approved case intent",
+    "preparation_id": "396533c2-78ea-466a-8593-e39f7242c9fa",
+    "scope_point_ids": [
+      "point-verification-loops",
+      "point-constraints-first",
+      "point-feedforward-feedback"
+    ],
+    "focus_id": "focus-feedback-loops",
+    "candidate_id": "scope-harness-engineering-core",
+    "confirmed": true,
+    "scope_version": 1
+  },
+  "harness-1": {
+    "selection_actor": "Codex evaluation operator; approved case intent",
+    "preparation_id": "333aa96e-3ecc-4856-acb6-d1e6d470c6b8",
+    "scope_point_ids": [
+      "pt-he-comp-tools",
+      "pt-he-comp-exec-env",
+      "pt-he-comp-feedback-loop"
+    ],
+    "focus_id": "focus-he-components",
+    "candidate_id": "scope-harness-eng-core",
+    "confirmed": true,
+    "scope_version": 1
+  },
+  "huashao-2": {
+    "selection_actor": "Codex evaluation operator; approved case intent",
+    "preparation_id": "69965561-772f-4ad8-872e-7a8470ddfc07",
+    "scope_point_ids": [
+      "point-hs2-fangche-1",
+      "point-hs2-fangche-2",
+      "point-hs2-fangche-3"
+    ],
+    "focus_id": "focus-hs2-fangche",
+    "candidate_id": "scope-v1-hs2-mingchangmian",
+    "confirmed": true,
+    "scope_version": 1
+  },
+  "huashao-1": {
+    "selection_actor": "Codex evaluation operator; approved case intent",
+    "preparation_id": "e54cd784-3abd-4b72-a3fd-d17cfd778ea4",
+    "scope_point_ids": [
+      "point-hs2-v1-quotes-1",
+      "point-hs2-v1-quotes-2",
+      "point-hs2-v1-quotes-3"
+    ],
+    "focus_id": "focus-hs2-v1-quotes",
+    "candidate_id": "scope-hs2-v1-huaxue",
+    "confirmed": true,
+    "scope_version": 1
+  },
+  "harness-3": {
+    "selection_actor": "Codex evaluation operator; approved case intent",
+    "preparation_id": "9d00f4f2-a40c-434b-ab21-954e2b019641",
+    "scope_point_ids": [
+      "scope-v1-point-feedback-loop-engineering",
+      "scope-v1-point-verification-loops",
+      "scope-v1-point-tighten-loop"
+    ],
+    "focus_id": "scope-v1-focus-feedback-loops",
+    "candidate_id": "scope-v1-cand-feedback",
+    "confirmed": true,
+    "scope_version": 1
+  },
+  "url-search": {
+    "point_ids": [
+      "s1",
+      "s2",
+      "s3",
+      "s4",
+      "s5"
+    ],
+    "material_id": "b5c1e81f-414a-45f6-a3a6-8bdbda949f72",
+    "confirmed": true,
+    "supplement": false,
+    "selection_actor": "Codex evaluation operator; specified learning instruction"
+  },
+  "bilingual-otel": {
+    "selection_actor": "Codex evaluation operator; approved case intent",
+    "scope_point_ids": [
+      "pt-trace-def",
+      "pt-span-def",
+      "pt-span-tracks-ops"
+    ],
+    "scope_version": 1,
+    "candidate_id": "scope-otel-trace-span-core",
+    "preparation_id": "cddfbc25-e47c-4d69-bc3e-a5d5793e1e37",
+    "confirmed": true,
+    "focus_id": "focus-trace-span-definition"
+  },
+  "bilingual-python": {
+    "selection_actor": "Codex evaluation operator; approved case intent",
+    "scope_point_ids": [
+      "point-taskgroup-intro",
+      "point-structured-concurrency-concept",
+      "point-gather-to-taskgroup"
+    ],
+    "scope_version": 1,
+    "candidate_id": "scope-v1-python-structured-concurrency",
+    "preparation_id": "7986a675-fce2-4aba-80c0-80bcffd22a7e",
+    "confirmed": true,
+    "focus_id": "focus-taskgroup-basics"
+  },
+  "city-hangzhou": {
+    "selection_actor": "Codex evaluation operator; approved case intent",
+    "scope_point_ids": [
+      "point-ten-scenes",
+      "point-ten-scenes-song",
+      "point-three-pools-moon"
+    ],
+    "scope_version": 1,
+    "candidate_id": "scope-v1-hangzhou-westlake-culture",
+    "preparation_id": "cc70fc98-1251-409c-97ef-f7a49366cc72",
+    "confirmed": true,
+    "focus_id": "focus-culture-ten-scenes-legend"
+  },
+  "country-japan": {
+    "selection_actor": "Codex evaluation operator; approved case intent",
+    "scope_point_ids": [
+      "point-nozomi-v1",
+      "point-nozomi-frequency-v1",
+      "point-mizuho-v1"
+    ],
+    "scope_version": 1,
+    "candidate_id": "scope-shinkansen-train-classes-v1",
+    "preparation_id": "4b47f5ab-e4ee-4dde-b0bb-dae5b65ddee0",
+    "confirmed": true,
+    "focus_id": "focus-tokaido-sanyo-classes-v1"
+  },
+  "english-rag": {
+    "selection_actor": "Codex evaluation operator; approved case intent",
+    "scope_point_ids": [
+      "pt-param-memory-weights",
+      "pt-nonparam-external",
+      "pt-rag-fusion"
+    ],
+    "scope_version": 1,
+    "candidate_id": "scope-rag-evidence-vs-prior",
+    "preparation_id": "266922a4-e464-4147-966b-0f7a876fbfac",
+    "confirmed": true,
+    "focus_id": "focus-parametric-vs-nonparametric"
+  },
+  "fresh-mcp": {
+    "selection_actor": "Codex evaluation operator; approved case intent",
+    "scope_point_ids": [
+      "scope-v1-point-primitives-overview",
+      "scope-v1-point-capabilities",
+      "scope-v1-point-server-concepts"
+    ],
+    "scope_version": 1,
+    "candidate_id": "scope-v1-mcp-primitives-architecture",
+    "preparation_id": "e93d6cbd-9e74-41d2-bdee-8bf3996856db",
+    "confirmed": true,
+    "focus_id": "scope-v1-focus-primitives"
+  },
+  "global-utc": {
+    "selection_actor": "Codex evaluation operator; approved case intent",
+    "scope_point_ids": [
+      "pt-utc-standard-reference",
+      "pt-utc-atomic-clock",
+      "pt-utc-world-standard"
+    ],
+    "scope_version": 1,
+    "candidate_id": "scope-v1-utc-timezone-fundamentals",
+    "preparation_id": "69940ebe-2cd4-424e-ba07-802aa460ce88",
+    "confirmed": true,
+    "focus_id": "focus-utc-definition-nature"
+  },
+  "huashao-3": {
+    "selection_actor": "Codex evaluation operator; approved case intent",
+    "scope_point_ids": [
+      "point-hs2-london-bridge",
+      "point-hs2-yangyang-lost",
+      "point-hs2-tent-rv"
+    ],
+    "scope_version": 1,
+    "candidate_id": "scope-hs2-meme-scenes",
+    "preparation_id": "317e4626-03fb-4a5c-ad5a-9763dc18797b",
+    "confirmed": true,
+    "focus_id": "focus-hs2-classic-scenes"
+  },
+  "simple-http": {
+    "selection_actor": "Codex evaluation operator; approved case intent",
+    "scope_point_ids": [
+      "point-404-definition",
+      "point-404-broken-links",
+      "point-404-class-4xx"
+    ],
+    "scope_version": 1,
+    "candidate_id": "scope-http-status-200-404-500",
+    "preparation_id": "275ddcaa-f4a1-47fd-8327-20efa9b8199b",
+    "confirmed": true,
+    "focus_id": "focus-404-not-found"
+  },
+  "url-python": {
+    "point_ids": [
+      "s1",
+      "s3",
+      "s4",
+      "s5"
+    ],
+    "material_id": "676824c4-fee9-4f61-bd85-7ff9d39808dd",
+    "confirmed": true,
+    "supplement": false,
+    "selection_actor": "Codex evaluation operator; specified learning instruction"
+  },
+  "url-react": {
+    "point_ids": [
+      "s3",
+      "s4",
+      "s5",
+      "s13",
+      "s14",
+      "s8"
+    ],
+    "material_id": "15ab38ed-4044-42cd-a09a-2935128bb06d",
+    "confirmed": true,
+    "supplement": false,
+    "selection_actor": "Codex evaluation operator; specified learning instruction"
+  },
+  "city-cambridge": {
+    "scope_point_ids": [
+      "pt-fitzwilliam",
+      "pt-sedgwick",
+      "pt-archaeology-anthropology"
+    ],
+    "confirmed": true,
+    "preparation_id": "4ebfb62d-94d3-4e58-a03d-21a2f8b651d8",
+    "selection_actor": "Codex evaluation operator; approved region and case intent",
+    "candidate_id": "cand-cambridge-uk-museums-overview",
+    "focus_id": "focus-cambridge-museum-list",
+    "scope_version": 1
+  },
+  "complex-k8s": {
+    "scope_point_ids": [
+      "point-service-endpoints",
+      "point-readiness-endpoint-gate",
+      "point-zero-downtime"
+    ],
+    "confirmed": true,
+    "preparation_id": "6748f23f-5fbe-4aab-9ca1-de81b6352105",
+    "selection_actor": "Codex evaluation operator; approved region and case intent",
+    "candidate_id": "scope-v1-k8s-rollout-probe-traffic",
+    "focus_id": "focus-traffic-switch",
+    "scope_version": 1
+  }
+}

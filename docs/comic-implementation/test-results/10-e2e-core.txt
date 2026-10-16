@@ -1,0 +1,41 @@
+
+Running 6 tests using 1 worker
+
+(node:28060) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 e2e\core.spec.ts:37:5 › 01–03：游客、独立存储、首页、设置和扩展入口 (1.1s)
+  x  2 e2e\core.spec.ts:53:5 › 06–14：5题全对、即时反馈、连击、报告和真实PNG海报 (6.6s)
+Testing stopped early after 1 maximum allowed failures.
+
+
+  1) e2e\core.spec.ts:53:5 › 06–14：5题全对、即时反馈、连击、报告和真实PNG海报 ─────────────────────────────────────────
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('三句话总结', { exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByText('三句话总结', { exact: true }) with timeout 5000ms
+      - waiting for getByText('三句话总结', { exact: true })
+
+
+      33 |  })
+      34 |  await p.getByRole('button',{name:'查看复盘报告',exact:true}).click()
+    > 35 |  await expect(p.getByText('三句话总结',{exact:true})).toBeVisible()
+         |                                                  ^
+      36 | }
+      37 | test('01–03：游客、独立存储、首页、设置和扩展入口',async({page})=>{
+      38 |  await page.goto('/');await shot(page,'01-welcome')
+        at report (D:\nbproject\LevelUpProject\frontend-comic\e2e\core.spec.ts:35:50)
+        at D:\nbproject\LevelUpProject\frontend-comic\e2e\core.spec.ts:68:2
+
+    Error Context: ..\docs\comic-implementation\e2e-results\core-06–14：5题全对、即时反馈、连击、报告和真实PNG海报\error-context.md
+
+  1 failed
+    e2e\core.spec.ts:53:5 › 06–14：5题全对、即时反馈、连击、报告和真实PNG海报 ──────────────────────────────────────────
+  4 did not run
+  1 passed (8.7s)
+  1 error was not a part of any test, see above for details

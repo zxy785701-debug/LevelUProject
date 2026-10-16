@@ -1,0 +1,38 @@
+{
+  "run_id": "acceptance-20261014-sdkfix",
+  "providers": [
+    "Tavily official LangChain Search/Extract",
+    "existing DeepSeek model"
+  ],
+  "configured": {
+    "tavily": true,
+    "deepseek": true
+  },
+  "database": "levelup_test",
+  "model": "deepseek-flash",
+  "minute_limit": 3,
+  "preparation_deadline_seconds": 240.0,
+  "generation_deadline_seconds": 300.0,
+  "cases": [
+    {
+      "id": "city-cambridge",
+      "text": "学习英国剑桥市的主要博物馆和特色，注意不是美国马萨诸塞州 Cambridge",
+      "expected": "英国剑桥市的文化场馆，核对实际地域",
+      "tags": [
+        "city",
+        "disambiguation"
+      ]
+    },
+    {
+      "id": "complex-k8s",
+      "text": "学习 Kubernetes 中 Deployment 滚动更新、readiness probe 与流量切换的关系",
+      "expected": "滚动更新、就绪探针和服务流量",
+      "tags": [
+        "complex",
+        "global"
+      ]
+    }
+  ],
+  "executed": true,
+  "blocked_reason": null
+}

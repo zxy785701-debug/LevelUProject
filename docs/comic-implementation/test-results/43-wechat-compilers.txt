@@ -1,0 +1,58 @@
+
+> levelup-comic-mini@1.0.0 check:weapp
+> node scripts/verify-weapp.cjs D:\development\微信web开发者工具\code\package.nw\node_modules\wcc-exec
+
+{
+  "passed": true,
+  "pages": [
+    "pages/index/index"
+  ],
+  "bytes": 578258,
+  "results": [
+    {
+      "name": "WXML + WXS",
+      "passed": true,
+      "diagnostics": ""
+    },
+    {
+      "name": "WXSS",
+      "passed": true,
+      "diagnostics": ""
+    },
+    {
+      "name": "JavaScript: app.js",
+      "passed": true,
+      "diagnostics": ""
+    },
+    {
+      "name": "JavaScript: common.js",
+      "passed": true,
+      "diagnostics": ""
+    },
+    {
+      "name": "JavaScript: comp.js",
+      "passed": true,
+      "diagnostics": ""
+    },
+    {
+      "name": "JavaScript: runtime.js",
+      "passed": true,
+      "diagnostics": ""
+    },
+    {
+      "name": "JavaScript: taro.js",
+      "passed": true,
+      "diagnostics": ""
+    },
+    {
+      "name": "JavaScript: vendors.js",
+      "passed": true,
+      "diagnostics": ""
+    },
+    {
+      "name": "JavaScript: pages/index/index.js",
+      "passed": true,
+      "diagnostics": ""
+    }
+  ]
+}

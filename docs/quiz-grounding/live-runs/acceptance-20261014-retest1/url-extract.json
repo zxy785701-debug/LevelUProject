@@ -1,0 +1,853 @@
+{
+  "case": {
+    "id": "url-extract",
+    "text": "https://docs.langchain.com/oss/python/integrations/tools/tavily_extract 学习全文提取与定向片段的区别",
+    "expected": "指定网页中的 Tavily Extract 用法",
+    "tags": [
+      "url",
+      "english",
+      "complex"
+    ]
+  },
+  "error_code": null,
+  "status": "awaiting_human_evidence_review",
+  "material_job": {
+    "id": "4b26c915-de3b-474e-8092-ab1355ab9224",
+    "status": "succeeded",
+    "stage": "ready",
+    "material_id": "c01a4414-f7fe-4161-8b90-a3c2566c9ab7",
+    "preparation_id": null,
+    "error_code": null,
+    "message": null
+  },
+  "material": {
+    "id": "c01a4414-f7fe-4161-8b90-a3c2566c9ab7",
+    "url": "https://docs.langchain.com/oss/python/integrations/tools/tavily_extract",
+    "title": "Tavily extract integration - Docs by LangChain",
+    "points": [
+      {
+        "name": "Tavily extract 集成概览与集成信息",
+        "segment_ids": [
+          "s1"
+        ]
+      },
+      {
+        "name": "TavilyExtract 工具特性（返回原始内容与图片、异步、定价）",
+        "segment_ids": [
+          "s1"
+        ]
+      },
+      {
+        "name": "安装 langchain-tavily 与配置 TAVILY_API_KEY 凭证",
+        "segment_ids": [
+          "s1"
+        ]
+      },
+      {
+        "name": "实例化 TavilyExtract 及 extract_depth、include_images 参数",
+        "segment_ids": [
+          "s1"
+        ]
+      },
+      {
+        "name": "直接传参调用 tool.invoke 并查看返回结构",
+        "segment_ids": [
+          "s1"
+        ]
+      },
+      {
+        "name": "使用 ToolCall 形式调用并读取 JSON 字符串结果",
+        "segment_ids": [
+          "s1"
+        ]
+      },
+      {
+        "name": "在 agent 中使用 TavilyExtract 工具",
+        "segment_ids": [
+          "s2"
+        ]
+      },
+      {
+        "name": "agent 流式事件输出与工具调用参数示例",
+        "segment_ids": [
+          "s2"
+        ]
+      },
+      {
+        "name": "工具返回的维基百科原始内容示例（爱因斯坦与理论物理学）",
+        "segment_ids": [
+          "s2",
+          "s3"
+        ]
+      },
+      {
+        "name": "全文提取返回 raw content 与 images 而非定向片段",
+        "segment_ids": [
+          "s1",
+          "s2"
+        ]
+      },
+      {
+        "name": "API reference 与页面资源链接",
+        "segment_ids": [
+          "s3"
+        ]
+      }
+    ],
+    "summary": "本材料为 LangChain Python 中 Tavily extract 工具的集成文档，涵盖集成信息、工具特性、安装与凭证配置、实例化、直接调用与 ToolCall 调用、在 agent 中使用，以及调用返回的原始内容示例。材料同时包含通过该工具提取的维基百科页面内容（爱因斯坦与理论物理学）作为返回数据示例。结合学习意图，可关注全文提取与定向片段之间的区别：TavilyExtract 返回的是页面的 raw content 与 images，而非检索式片段。",
+    "segments": [
+      {
+        "id": "s1",
+        "url": "https://docs.langchain.com/oss/python/integrations/tools/tavily_extract",
+        "text": "## Documentation Index\n\nFetch the complete documentation index at: </llms.txt>\n\nUse this file to discover all available pages before exploring further.\n\nFall AMA Series: Live sessions on building, evaluating, deploying, and continously improving agents with LangSmith. [Register now →](https://events.langchain.com/fall-product-series/)\n\n![light logo](https://mintcdn.com/langchain-5e9cc07a/nQm-sjd_MByLhgeW/images/brand/langchain-docs-dark-blue.png?fit=max&auto=format&n=nQm-sjd_MByLhgeW&q=85&s=5babf1a1962208fd7eed942fa2432ecb)\n![dark logo](https://mintcdn.com/langchain-5e9cc07a/nQm-sjd_MByLhgeW/images/brand/langchain-docs-light-blue.png?fit=max&auto=format&n=nQm-sjd_MByLhgeW&q=85&s=0bcd2a1f2599ed228bcedf0f535b45b1)\n\nPython\n\n### Popular Providers\n\n### Integrations by component\n\n## On this page\n\n# Tavily extract integration\n\nIntegrate with the Tavily extract tool using LangChain Python.\n\n## [​](#overview) Overview\n\n### [​](#integration-details) Integration details\n\n| Class | Package | Serializable | [JS support](https://js.langchain.com/docs/integrations/tools/tavily_extract) | Version |\n| --- | --- | --- | --- | --- |\n| [`TavilyExtract`](https://reference.langchain.com/python/langchain-tavily/tavily_extract/TavilyExtract) | [`langchain-tavily`](https://reference.langchain.com/python/langchain-tavily/) | ✅ | ✅ | PyPI - Version |\n\n`TavilyExtract`\n`langchain-tavily`\n![PyPI - Version](https://img.shields.io/pypi/v/langchain-tavily?style=flat-square&label=%20)\n\n### [​](#tool-features) Tool features\n\n| [Returns artifact](/oss/python/langchain/tools) | Native async | Return data | Pricing |\n| --- | --- | --- | --- |\n| ❌ | ✅ | raw content and images | 1,000 free credits / month |\n\n## [​](#setup) Setup\n\n`langchain-tavily`\n`pip install -qU langchain-tavily`\n\n### [​](#credentials) Credentials\n\n`import getpass\nimport os\n\nif not os.environ.get(\"TAVILY_API_KEY\"):\n os.environ[\"TAVILY_API_KEY\"] = getpass.getpass(\"Tavily API key:\\n\")`\n\n## [​](#instantiation) Instantiation\n\n`extract_depth`\n`include_images`\n`from langchain_tavily import TavilyExtract\n\ntool = TavilyExtract(\n extract_depth=\"basic\",\n include_images=False,\n)`\n\n## [​](#invocation) Invocation\n\n### [​](#invoke-directly-with-args) [Invoke directly with args](/oss/python/langchain/tools)\n\n`urls`\n`extract_depth`\n`include_images`\n`tool.invoke({\"urls\": [\"https://en.wikipedia.org/wiki/Lionel_Messi\"]})`\n`{'results': [{'url': 'https://en.wikipedia.org/wiki/Lionel_Messi',\n 'raw_content': 'Lionel Messi - Wikipedia\\nJump to content\\nMain menu\\nMain menu\\nmove to sidebar hide\\nNavigation\\n\\nMain page\\nContents\\nCurrent events\\nRandom article\\nAbout Wikipedia\\nContact us\\n\\nContribute\\n\\nHelp\\nLearn to edit\\nCommunity portal\\nRecent changes\\nUpload file\\nSpecial pages\\n\\n \\nSearch\\nSearch\\nAppearance\\n\\nDonate\\nCreate account\\nLog in\\n\\nPersonal tools\\n\\nDonate\\nCreate account\\nLog in\\n\\nPages for logged out editors learn more\\n\\nContributions\\nTalk\\n\\nContents\\nm... (truncated) ',\n 'images': []}],\n 'failed_results': [],\n 'response_time': 0.02}`\n\n### [​](#invoke-with-toolcall) [Invoke with ToolCall](/oss/python/langchain/tools)\n\n`# This is usually generated by a model, but we'll create a tool call directly for demo purposes.\nmodel_generated_tool_call = {\n \"args\": {\"urls\": [\"https://en.wikipedia.org/wiki/Lionel_Messi\"]},\n \"id\": \"1\",\n \"name\": \"tavily\",\n \"type\": \"tool_call\",\n}\ntool_msg = tool.invoke(model_generated_tool_call)\n\n# The content is a JSON string of results\nprint(tool_msg.content[:400])`\n`{\"results\": [{\"url\": \"https://en.wikipedia.org/wiki/Lionel_Messi\", \"raw_content\": \"Lionel Messi - Wikipedia\\nJump to content\\nMain menu\\nMain menu\\nmove to sidebar hide\\nNavigation\\n\\nMain page\\nContents\\nCurrent events\\nRandom article\\nAbout Wikipedia\\nContact us\\n\\nContribute\\n\\nHelp\\nLearn to edit\\nCommunity portal\\nRecent changes\\nUpload file\\nSpecial pages\\n\\n \\nSearch\\nSearch\\nAppearance\\n\\`\n\n## [​](#use-within-an-agent) Use within an agent\n\n`if not os.environ.get(\"OPENAI_API_KEY\"):\n os.environ[\"OPENAI_A",
+        "title": "Tavily extract integration - Docs by LangChain",
+        "truncated": false,
+        "supplement": false,
+        "content_hash": "21574637cd854c2f3c6103a0652f37fec1a7b9750006cfffea870ace7247da8c",
+        "content_kind": "full_extract",
+        "original_url": "https://docs.langchain.com/oss/python/integrations/tools/tavily_extract",
+        "retrieved_at": "2026-10-14T12:33:01.656840Z",
+        "source_chars": 9402,
+        "context_truncated": false,
+        "acquisition_status": "available"
+      },
+      {
+        "id": "s2",
+        "url": "https://docs.langchain.com/oss/python/integrations/tools/tavily_extract",
+        "text": "PI_KEY\"] = getpass.getpass(\"OPENAI_API_KEY:\\n\")`\n`from langchain.chat_models import init_chat_model\n\nmodel = init_chat_model(model=\"gpt-5.5\", model_provider=\"openai\", temperature=0)`\n`from langchain_tavily import TavilyExtract\nfrom langchain.agents import create_agent\n\n\ntavily_extract_tool = TavilyExtract()\n\nagent = create_agent(model, [tavily_extract_tool])\n\nuser_input = \"['https://en.wikipedia.org/wiki/Albert_Einstein','https://en.wikipedia.org/wiki/Theoretical_physics']\"\n\nstream = agent.stream_events({\"messages\": user_input}, version=\"v3\")\nfor snapshot in stream.values:\n snapshot[\"messages\"][-1].pretty_print()`\n`================================ Human Message =================================\n\n['https://en.wikipedia.org/wiki/Albert_Einstein','https://en.wikipedia.org/wiki/Theoretical_physics']\n================================== Ai Message ==================================\nTool Calls:\n tavily_extract (call_BAK906Cpy8fDZttwqYTMdkKp)\n Call ID: call_BAK906Cpy8fDZttwqYTMdkKp\n Args:\n urls: ['https://en.wikipedia.org/wiki/Albert_Einstein']\n extract_depth: advanced\n include_images: False\n tavily_extract (call_4NFRB92QpiI5jnCTGr76dgMX)\n Call ID: call_4NFRB92QpiI5jnCTGr76dgMX\n Args:\n urls: ['https://en.wikipedia.org/wiki/Theoretical_physics']\n extract_depth: advanced\n include_images: False\n================================= Tool Message =================================\nName: tavily_extract\n\n{\"results\": [{\"url\": \"https://en.wikipedia.org/wiki/Theoretical_physics\", \"raw_content\": \"Published Time: 2003-09-21T15:11:11Z\\nTheoretical physics - Wikipedia\\nJump to content\\nMain menu\\nMain menu\\nmove to sidebar hide\\nNavigation\\n\\nMain page\\nContents\\nCurrent events\\nRandom article\\nAbout Wikipedia\\nContact us\\n\\nContribute\\n\\nHelp\\nLearn to edit\\nCommunity portal\\nRecent changes\\nUpload file\\nSpecial pages\\n\\n \\nSearch\\nSearch\\nAppearance\\n\\nDonate\\nCreate account\\nLog in\\n\\nPersonal tools\\n\\nDonate\\nCreate account\\nLog in\\n\\nPages for logged out editors learn more\\n\\nContributions\\nTalk\\n\\nContents\\nmove to sidebar hide\\n\\n(Top)\\n\\n1 Overview\\n\\n\\n2 History\\n\\n\\n3 Mainstream theories... (truncated) ...\", \"images\": []}], \"failed_results\": [], \"response_time\": 0.01}\n================================== Ai Message ==================================\n\nHere is a summary of the content from the Wikipedia pages on Albert Einstein and Theoretical Physics:\n\n### Albert Einstein\nAlbert Einstein was a German-born theoretical physicist renowned for developing the theory of relativity, which revolutionized our understanding of space, time, and energy. His mass-energy equivalence formula, E=mc², is one of the most famous equations in physics. Einstein received the 1921 Nobel Prize in Physics for his explanation of the photoelectric effect, which was pivotal in establishing quantum theory.\n\nEinstein's early life was marked by a deep interest in mathematics and physics, leading him to study at the Swiss Federal Polytechnic in Zurich. He worked at the Swiss Patent Office while developing his theories. His \"miracle year\" in 1905 saw the publication of four groundbreaking papers, including those on special relativity and the photoelectric effect.\n\nThroughout his career, Einstein made significant contributions to statistical mechanics, quantum theory, and cosmology. He was a vocal advocate for civil rights and pacifism, and he played a role in alerting the U.S. to the potential of nuclear weapons during World War II. Einstein spent his later years at the Institute for Advanced Study in Princeton, New Jersey, where he continued to work on a unified field theory until his death in 1955.\n\n### Theoretical Physics\nTheoretical physics is a branch of physics that uses mathematical models and abstractions to explain and predict natural phenomena. It contrasts with experimental physics, which uses empirical methods to test these theories. Theoretical physics has been instrumental in developing major scientific theories, such as relativity and quantum mechanics.\n\nThe field",
+        "title": "Tavily extract integration - Docs by LangChain",
+        "truncated": false,
+        "supplement": false,
+        "content_hash": "21574637cd854c2f3c6103a0652f37fec1a7b9750006cfffea870ace7247da8c",
+        "content_kind": "full_extract",
+        "original_url": "https://docs.langchain.com/oss/python/integrations/tools/tavily_extract",
+        "retrieved_at": "2026-10-14T12:33:01.656840Z",
+        "source_chars": 9402,
+        "context_truncated": false,
+        "acquisition_status": "available"
+      },
+      {
+        "id": "s3",
+        "url": "https://docs.langchain.com/oss/python/integrations/tools/tavily_extract",
+        "text": "involves creating models to describe physical events and is judged by how well these models predict empirical observations. Theoretical physics has a rich history, dating back to ancient philosophers and evolving significantly during the Scientific Revolution with figures like Galileo and Newton.\n\nModern theoretical physics seeks to unify existing theories and explore new concepts, often using advanced mathematics. It includes mainstream theories like the Big Bang, chaos theory, and quantum mechanics, as well as proposed and fringe theories that are still under investigation. Thought experiments, such as Schrödinger's cat, play a crucial role in theoretical physics by exploring scenarios that are not easily tested in reality.\n\nBoth pages highlight the interplay between theory and experimentation in advancing our understanding of the universe, with Einstein's work serving as a prime example of theoretical physics' impact.`\n\n## [​](#api-reference) API reference\n\nWas this page helpful?\n\n![light logo](https://mintcdn.com/langchain-5e9cc07a/nQm-sjd_MByLhgeW/images/brand/langchain-docs-dark-blue.png?fit=max&auto=format&n=nQm-sjd_MByLhgeW&q=85&s=5babf1a1962208fd7eed942fa2432ecb)\n![dark logo](https://mintcdn.com/langchain-5e9cc07a/nQm-sjd_MByLhgeW/images/brand/langchain-docs-light-blue.png?fit=max&auto=format&n=nQm-sjd_MByLhgeW&q=85&s=0bcd2a1f2599ed228bcedf0f535b45b1)\n\nResources\n\nCompany",
+        "title": "Tavily extract integration - Docs by LangChain",
+        "truncated": false,
+        "supplement": false,
+        "content_hash": "21574637cd854c2f3c6103a0652f37fec1a7b9750006cfffea870ace7247da8c",
+        "content_kind": "full_extract",
+        "original_url": "https://docs.langchain.com/oss/python/integrations/tools/tavily_extract",
+        "retrieved_at": "2026-10-14T12:33:01.656840Z",
+        "source_chars": 9402,
+        "context_truncated": false,
+        "acquisition_status": "available"
+      }
+    ],
+    "source_type": "web",
+    "learning_title": "Tavily extract 集成文档学习范围",
+    "extraction_status": "success",
+    "extraction_failures": [],
+    "learning_instruction": "学习全文提取与定向片段的区别",
+    "created_at": "2026-10-14T12:33:05+00:00",
+    "search_available": true
+  },
+  "wall_attempt_seconds": [
+    5.222,
+    85.292
+  ],
+  "elapsed_seconds": 90.514,
+  "api_timings": [
+    {
+      "method": "POST",
+      "path": "/auth/wechat",
+      "status": 200,
+      "seconds": 0.048
+    },
+    {
+      "method": "POST",
+      "path": "/quiz/preparations",
+      "status": 200,
+      "seconds": 0.12
+    },
+    {
+      "method": "POST",
+      "path": "/materials/web",
+      "status": 200,
+      "seconds": 5.035
+    },
+    {
+      "method": "GET",
+      "path": "/material-jobs/4b26c915-de3b-474e-8092-ab1355ab9224",
+      "status": 200,
+      "seconds": 0.009
+    },
+    {
+      "method": "GET",
+      "path": "/materials/c01a4414-f7fe-4161-8b90-a3c2566c9ab7",
+      "status": 200,
+      "seconds": 0.008
+    },
+    {
+      "method": "POST",
+      "path": "/auth/wechat",
+      "status": 200,
+      "seconds": 0.06
+    },
+    {
+      "method": "POST",
+      "path": "/quiz/preparations",
+      "status": 200,
+      "seconds": 0.022
+    },
+    {
+      "method": "POST",
+      "path": "/materials/web",
+      "status": 200,
+      "seconds": 0.015
+    },
+    {
+      "method": "GET",
+      "path": "/material-jobs/4b26c915-de3b-474e-8092-ab1355ab9224",
+      "status": 200,
+      "seconds": 0.008
+    },
+    {
+      "method": "GET",
+      "path": "/materials/c01a4414-f7fe-4161-8b90-a3c2566c9ab7",
+      "status": 200,
+      "seconds": 0.006
+    },
+    {
+      "method": "POST",
+      "path": "/quiz/generate",
+      "status": 200,
+      "seconds": 85.167
+    },
+    {
+      "method": "GET",
+      "path": "/operations/generate-url-extract",
+      "status": 200,
+      "seconds": 0.011
+    }
+  ],
+  "structured_model_usage": [
+    {
+      "operation": "56b450ee-b9f4-4986-88cb-7629d7be507b",
+      "attempt": 1,
+      "tokens": {
+        "input_tokens": 3772,
+        "output_tokens": 437,
+        "total_tokens": 4209
+      }
+    },
+    {
+      "operation": "7f4f56a1-99d0-4677-82fd-56b271d9b703",
+      "attempt": 1,
+      "tokens": {
+        "input_tokens": 14487,
+        "output_tokens": 926,
+        "total_tokens": 15413
+      }
+    },
+    {
+      "operation": "7f4f56a1-99d0-4677-82fd-56b271d9b703",
+      "attempt": 1,
+      "tokens": {
+        "input_tokens": 14184,
+        "output_tokens": 571,
+        "total_tokens": 14755
+      }
+    }
+  ],
+  "operations": [
+    {
+      "key": "generate-url-extract",
+      "kind": "quiz",
+      "status": "succeeded",
+      "stage": "succeeded",
+      "model_calls": 5,
+      "tool_calls": 3,
+      "page_attempts": 3,
+      "charged": 1,
+      "retrieval": {
+        "tools": [
+          {
+            "tool": "tavily_search",
+            "status": "success",
+            "call_id": "call_00_wn5W3bC72R77utKsybCB3675",
+            "credits": 2.0,
+            "elapsed_ms": 15771,
+            "parameters": {
+              "query": "Tavily extract integration LangChain TavilyExtract tool documentation",
+              "topic": "general",
+              "country": null,
+              "end_date": null,
+              "start_date": null,
+              "time_range": null,
+              "max_results": 6,
+              "content_mode": "full",
+              "search_depth": "advanced",
+              "exclude_domains": [],
+              "include_domains": []
+            },
+            "source_ids": [
+              "web-f1966d1df0ad4fccf8875e0b0d5cebf9",
+              "web-17c51bd04537e7f3436b9f952c417f9e",
+              "web-1f19e282c7c9529b3ea4364a45b4f0d2",
+              "web-c304ab0af2189fb19d19db2308347fb5",
+              "web-6f692004f2582f3e1e3eacec761d01ad",
+              "web-78a8c1e30679cf65ece789b1f49c2954",
+              "web-ccf19d3942f54019644144bec5270bd9",
+              "web-c5a1a0ecab5f7bc1c41a8c981a560f9b",
+              "web-e4da1e247967e97259a10ff67d1bd790",
+              "web-65b30486f38cdc4c9ababcf5af43b2c6",
+              "web-e9e58230ccf9511a469e54f1207b845b",
+              "web-84e4804de26af54fbcc704a77e680e16",
+              "web-8ee045cd39ef5eb4de3fdc9f57c038ba",
+              "web-654721f4cba7dd1b66175d07597c67d6",
+              "web-ce2c9c219c19ba6e7429e438699ce27e",
+              "web-b21366c3bd75f5f7ac06a55bb553d16e",
+              "web-6cb33c1d23ba6574e5838e7394c67b3c",
+              "web-f55d29a9366d97d44be53131cfca5cc4",
+              "web-34558329a005d94af8f880771f152b7b",
+              "web-e355c43ce31cd7b945940ded95c5c654"
+            ],
+            "reason_code": null
+          },
+          {
+            "tool": "tavily_search",
+            "status": "success",
+            "call_id": "call_01_bmQXVcxRwTUFubmJJIjH5379",
+            "credits": 2.0,
+            "elapsed_ms": 4268,
+            "parameters": {
+              "query": "langchain-tavily TavilyExtract extract_depth include_images install TAVILY_API_KEY",
+              "topic": "general",
+              "country": null,
+              "end_date": null,
+              "start_date": null,
+              "time_range": null,
+              "max_results": 6,
+              "content_mode": "full",
+              "search_depth": "advanced",
+              "exclude_domains": [],
+              "include_domains": []
+            },
+            "source_ids": [
+              "web-6f692004f2582f3e1e3eacec761d01ad",
+              "web-78a8c1e30679cf65ece789b1f49c2954",
+              "web-ccf19d3942f54019644144bec5270bd9",
+              "web-c5a1a0ecab5f7bc1c41a8c981a560f9b",
+              "web-e4da1e247967e97259a10ff67d1bd790",
+              "web-65b30486f38cdc4c9ababcf5af43b2c6",
+              "web-6cb33c1d23ba6574e5838e7394c67b3c",
+              "web-f55d29a9366d97d44be53131cfca5cc4",
+              "web-34558329a005d94af8f880771f152b7b",
+              "web-e9e58230ccf9511a469e54f1207b845b",
+              "web-84e4804de26af54fbcc704a77e680e16",
+              "web-8ee045cd39ef5eb4de3fdc9f57c038ba",
+              "web-654721f4cba7dd1b66175d07597c67d6",
+              "web-ce2c9c219c19ba6e7429e438699ce27e",
+              "web-b21366c3bd75f5f7ac06a55bb553d16e",
+              "web-e355c43ce31cd7b945940ded95c5c654",
+              "web-f1966d1df0ad4fccf8875e0b0d5cebf9",
+              "web-17c51bd04537e7f3436b9f952c417f9e",
+              "web-1f19e282c7c9529b3ea4364a45b4f0d2",
+              "web-c304ab0af2189fb19d19db2308347fb5"
+            ],
+            "reason_code": null
+          },
+          {
+            "tool": "tavily_extract",
+            "status": "success",
+            "call_id": "call_00_u2wWz1hsAcpBHQ9nbJ0o9762",
+            "credits": 1.0,
+            "elapsed_ms": 1660,
+            "parameters": {
+              "urls": [
+                "https://docs.langchain.com/oss/javascript/integrations/tools/tavily_extract",
+                "https://docs.tavily.com/documentation/integrations/langchain",
+                "https://github.com/tavily-ai/langchain-tavily"
+              ],
+              "query": null,
+              "content_mode": "full",
+              "extract_depth": "advanced",
+              "chunks_per_source": null
+            },
+            "source_ids": [
+              "web-f1966d1df0ad4fccf8875e0b0d5cebf9",
+              "web-17c51bd04537e7f3436b9f952c417f9e",
+              "web-1f19e282c7c9529b3ea4364a45b4f0d2",
+              "web-6f692004f2582f3e1e3eacec761d01ad",
+              "web-78a8c1e30679cf65ece789b1f49c2954",
+              "web-ccf19d3942f54019644144bec5270bd9",
+              "web-c5a1a0ecab5f7bc1c41a8c981a560f9b",
+              "web-e4da1e247967e97259a10ff67d1bd790",
+              "web-65b30486f38cdc4c9ababcf5af43b2c6",
+              "web-e9e58230ccf9511a469e54f1207b845b",
+              "web-84e4804de26af54fbcc704a77e680e16",
+              "web-8ee045cd39ef5eb4de3fdc9f57c038ba",
+              "web-654721f4cba7dd1b66175d07597c67d6",
+              "web-ce2c9c219c19ba6e7429e438699ce27e",
+              "web-b21366c3bd75f5f7ac06a55bb553d16e"
+            ],
+            "reason_code": null
+          }
+        ],
+        "model_usage": {
+          "input_tokens": 33900,
+          "total_tokens": 34629,
+          "output_tokens": 729
+        },
+        "reason_code": "RETRIEVAL_BUDGET_EXHAUSTED"
+      },
+      "error_code": null
+    },
+    {
+      "key": "material-4b26c915-de3b-474e-8092-ab1355ab9224",
+      "kind": "material",
+      "status": "succeeded",
+      "stage": "succeeded",
+      "model_calls": 1,
+      "tool_calls": 1,
+      "page_attempts": 1,
+      "charged": 1,
+      "retrieval": null,
+      "error_code": null
+    }
+  ],
+  "retrieval_preparations": [],
+  "confirmed_selection": {
+    "material_id": "c01a4414-f7fe-4161-8b90-a3c2566c9ab7",
+    "point_ids": [
+      "s1",
+      "s2"
+    ],
+    "supplement": true,
+    "question_count": 3,
+    "difficulty": "easy",
+    "execution": "background"
+  },
+  "operation": {
+    "status": "succeeded",
+    "result": {
+      "id": "28cbe604-09c7-4291-a481-50c953ef63a1",
+      "quiz": {
+        "id": "8fa2badf-bd96-49ec-8bda-7510c07cacc3",
+        "title": "Tavily extract 集成文档学习检测",
+        "reward": {
+          "xp": 10,
+          "coins": 2
+        },
+        "source": {
+          "url": "https://docs.langchain.com/oss/python/integrations/tools/tavily_extract",
+          "type": "web",
+          "title": "Tavily extract integration - Docs by LangChain",
+          "segments": [],
+          "material_id": "c01a4414-f7fe-4161-8b90-a3c2566c9ab7"
+        },
+        "summary": "基于所选材料，检测对 TavilyExtract 工具安装配置、实例化参数、调用方式与返回结构的理解，共 3 题（单选、多选、判断各 1 题）。",
+        "grounding": {
+          "status": "source_backed",
+          "provider": "tavily",
+          "reason_code": null,
+          "retrieved_at": "2026-10-14T12:36:59.642502Z",
+          "check_version": "evidence-review-v1"
+        },
+        "questions": [
+          {
+            "id": "q1",
+            "stem": "根据材料，安装 langchain-tavily 并配置凭证时，应设置哪个环境变量？",
+            "type": "single",
+            "origin": null,
+            "answers": [],
+            "options": [
+              {
+                "id": "A",
+                "text": "OPENAI_API_KEY"
+              },
+              {
+                "id": "B",
+                "text": "TAVILY_API_KEY"
+              },
+              {
+                "id": "C",
+                "text": "LANGCHAIN_API_KEY"
+              },
+              {
+                "id": "D",
+                "text": "TAVILY_SECRET_TOKEN"
+              }
+            ],
+            "grounding": {
+              "status": "source_backed"
+            },
+            "source_ids": [],
+            "explanation": "",
+            "knowledge_point": "安装 langchain-tavily 与配置 TAVILY_API_KEY 凭证"
+          },
+          {
+            "id": "q2",
+            "stem": "根据材料，关于 TavilyExtract 的实例化与调用，下列说法正确的有哪些？",
+            "type": "multi",
+            "origin": null,
+            "answers": [],
+            "options": [
+              {
+                "id": "A",
+                "text": "实例化时可以设置 extract_depth 与 include_images 参数"
+              },
+              {
+                "id": "B",
+                "text": "调用时 urls 是必填参数，用于提供要提取内容的 URL 列表"
+              },
+              {
+                "id": "C",
+                "text": "extract_depth 与 include_images 也可以在调用时设置"
+              },
+              {
+                "id": "D",
+                "text": "调用时 urls 是可选参数，不传也能正常提取"
+              }
+            ],
+            "grounding": {
+              "status": "source_backed"
+            },
+            "source_ids": [],
+            "explanation": "",
+            "knowledge_point": "TavilyExtract 实例化参数与调用参数"
+          },
+          {
+            "id": "q3",
+            "stem": "根据材料，TavilyExtract 工具返回的结果中包含 raw_content 与 images 字段。",
+            "type": "judge",
+            "origin": null,
+            "answers": [],
+            "options": [
+              {
+                "id": "A",
+                "text": "正确"
+              },
+              {
+                "id": "B",
+                "text": "错误"
+              }
+            ],
+            "grounding": {
+              "status": "source_backed"
+            },
+            "source_ids": [],
+            "explanation": "",
+            "knowledge_point": "全文提取返回 raw content 与 images 而非定向片段"
+          }
+        ],
+        "created_at": "2026-10-14T12:38:07.415320+00:00",
+        "difficulty": "easy",
+        "source_text": "学习全文提取与定向片段的区别",
+        "learning_scope": {
+          "focus": "所选材料知识点",
+          "topic": "Tavily extract 集成文档学习范围",
+          "domain": "用户提供的材料",
+          "points": [
+            "Tavily extract 集成概览与集成信息",
+            "TavilyExtract 工具特性（返回原始内容与图片、异步、定价）",
+            "安装 langchain-tavily 与配置 TAVILY_API_KEY 凭证",
+            "实例化 TavilyExtract 及 extract_depth、include_images 参数",
+            "直接传参调用 tool.invoke 并查看返回结构",
+            "使用 ToolCall 形式调用并读取 JSON 字符串结果",
+            "在 agent 中使用 TavilyExtract 工具",
+            "agent 流式事件输出与工具调用参数示例",
+            "工具返回的维基百科原始内容示例（爱因斯坦与理论物理学）",
+            "全文提取返回 raw content 与 images 而非定向片段"
+          ],
+          "focus_id": null,
+          "input_text": "学习全文提取与定向片段的区别",
+          "candidate_id": null,
+          "scope_version": null,
+          "preparation_id": null,
+          "scope_point_ids": []
+        }
+      },
+      "mode": "new",
+      "answers": [],
+      "cursor": 0,
+      "pending_ms": 0,
+      "started_at": "2026-10-14T12:38:07+00:00",
+      "completed_at": null,
+      "report": null,
+      "review_keys": []
+    },
+    "error_code": null,
+    "stage": "succeeded",
+    "retry_after_seconds": 0,
+    "deadline": "2026-10-14T12:41:42+00:00"
+  },
+  "quiz": {
+    "id": "8fa2badf-bd96-49ec-8bda-7510c07cacc3",
+    "title": "Tavily extract 集成文档学习检测",
+    "reward": {
+      "xp": 10,
+      "coins": 2
+    },
+    "source": {
+      "url": "https://docs.langchain.com/oss/python/integrations/tools/tavily_extract",
+      "type": "web",
+      "title": "Tavily extract integration - Docs by LangChain",
+      "segments": [
+        {
+          "id": "web-17c51bd04537e7f3436b9f952c417f9e",
+          "end": null,
+          "url": "https://docs.langchain.com/oss/javascript/integrations/tools/tavily_extract",
+          "page": null,
+          "text": "import { TavilyExtract } from \"@langchain/tavily\"; import { TavilyExtract }  from \"@langchain/tavily\"; const tool = new TavilyExtract({const  tool =  new  TavilyExtract({ extractDepth: \"basic\",  extractDepth:  \"basic\", includeImages: false,  includeImages:  false,});});\n```\n\n## [​](#invocation) Invocation\n\n### [​](#invoke-directly-with-args) [Invoke directly with args](/oss/javascript/langchain/tools)\n\nThe Tavily extract tool accepts the following arguments during invocation:\n\n* `urls` (required): A list of URLs to extract content from.\n* The following arguments can also be set during invocation: `extractDepth`, `includeImages`.\n\nNOTE: The optional arguments are available for agents to dynamically set. If you set an argument during instantiation and then invoke the tool with a different value, the tool will use the value you passed during invocation.\n\n```\nawait tool.invoke({ urls: [\"https://en.wikipedia.org/wiki/Lionel_Messi\"] }); await  tool. invoke({ urls: [\"https://en.wikipedia.org/wiki/Lionel_Messi\"] });\n```\n\n```\n{{ results: [{ results: [{ url: 'https://en.wikipedia.org/wiki/Lionel_Messi', url: 'https://en.wikipedia.org/wiki/Lionel_Messi', raw_content: 'Lionel Messi - Wikipedia\\nJump to content\\nMain menu\\n... (truncated)', raw_content: 'Lionel Messi - Wikipedia\\nJump to content\\nMain menu\\n... (truncated)', images: [] images: [] }], }], failed_results: [], failed_results: [], response_time: 0.02 response_time: 0.02}} \n```\n\n### [​](#invoke-with-toolcall) [Invoke with ToolCall](/oss/javascript/langchain/tools)\n\nWe can also invoke the tool with a model-generated `ToolCall`, in which case a [`ToolMessage`](https://reference.langchain.com/javascript/langchain-core/messages/ToolMessage) will be returned:\n\n```\n// This is usually generated by a model, but we'll create a tool call directly for demo purposes.// This is usually generated by a model, but we'll create a tool call directly for demo purposes.const modelGeneratedToolCall = {const  modelGeneratedToolCall = { args: { urls: [\"https://en.wikipedia.org/wiki/Lionel_Messi\"] },  args: { urls: [\"https://en.wikipedia.org/wiki/Lionel_Messi\"] }, id: \"1\",  id:  \"1\", name: tool.name,  name:  tool. name, type: \"tool_call\",  type:  \"tool_call\",};}; const toolMsg = await tool.invoke(modelGeneratedToolCall); const  toolMsg =  await  tool. invoke(modelGeneratedToolCall); // The content is a JSON string of results// The content is a JSON string of resultsconsole.log(toolMsg.content.slice(0, 400)); console. log(toolMsg. content. slice(0,  400));\n```\n\n```\n{\"results\": [{\"url\": \"https://en.wikipedia.org/wiki/Lionel_Messi\", \"raw_content\": \"Lionel Messi - Wikipedia\\nJump to content\\nMain menu\\nMain menu\\nmove to sidebar hide\\nNavigation\\n\\nMain page\\nContents\\nCurrent events\\nRandom article\\nAbout Wikipedia\\nContact us\\n\\nContribute\\n\\nHelp\\nLearn to edit\\nCommunity portal\\nRecent changes\\nUpload file\\nSpecial pages\\n... (truncated)\"}], \"failed_results\": [], \"response_time\": 0.02}{\" results \": [{\" url \": \"https://en.wikipedia.org/wiki/Lionel_Messi\",  \" raw_content \": \"Lionel Messi - Wikipedia \\n Jump to content \\n Main menu \\n Main menu \\n move to sidebar hide \\n Navigation \\n\\n Main page \\n Contents \\n Current events \\n Random article \\n About Wikipedia \\n Contact us \\n\\n Contribute \\n\\n Help \\n Learn to edit \\n Community portal \\n Recent changes \\n Upload file \\n Special pages \\n... (truncated)\"}],  \" failed_results \": [],  \" response_time \": 0.02}\n```\n\n## [​](#use-within-an-agent) Use within an agent\n\nWe can use the extract tool directly with a LangChain agent by passing it to `createAgent`. The agent can dynamically set the list of URLs and toggles like `extractDepth` and `includeImages` as part of its tool call.\n\n```\n// @lc-docs-hide-cell// @lc-docs-hide-cellimport { ChatOpenAI } from \"@langchain/openai\"; import { ChatOpenAI }  from \"@langchain/openai\"; const llm = new ChatOpenAI({const  llm =  new  ChatOpenAI({ model: \"gpt-5.5\",  model: \"gpt-5.5\", temperature: 0,  temperature:  0,});});\n``",
+          "start": null,
+          "title": "Tavily extract integration - Docs by LangChain",
+          "truncated": false,
+          "supplement": true,
+          "original_id": null,
+          "content_hash": "91d097251c53c7f9f31eec4cd01c2f310a7c1ff2c5e193d605c6714228c9428b",
+          "content_kind": "full_extract",
+          "original_url": "https://docs.langchain.com/oss/javascript/integrations/tools/tavily_extract",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:36:59.642502Z",
+          "source_chars": 10059,
+          "original_quiz_id": null,
+          "context_truncated": true,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-c304ab0af2189fb19d19db2308347fb5",
+          "end": null,
+          "url": "https://docs.langchain.com/oss/python/integrations/providers/tavily",
+          "page": null,
+          "text": "## Documentation Index\n\nFetch the complete documentation index at: </llms.txt>\n\nUse this file to discover all available pages before exploring further.\n\nInterrupt is coming to London on October 13! [Get tickets](https://interrupt.langchain.com/london)\n\n![light logo](https://mintcdn.com/langchain-5e9cc07a/nQm-sjd_MByLhgeW/images/brand/langchain-docs-dark-blue.png?fit=max&auto=format&n=nQm-sjd_MByLhgeW&q=85&s=5babf1a1962208fd7eed942fa2432ecb)\n![dark logo](https://mintcdn.com/langchain-5e9cc07a/nQm-sjd_MByLhgeW/images/brand/langchain-docs-light-blue.png?fit=max&auto=format&n=nQm-sjd_MByLhgeW&q=85&s=0bcd2a1f2599ed228bcedf0f535b45b1)\n\nPython\n\n### Popular Providers\n\n### Integrations by component\n\n## On this page\n\n# Tavily integrations\n\nIntegrate with Tavily using LangChain Python.\n\n`langchain-tavily`\n\n## [​](#installation-and-setup) Installation and setup\n\n`pip install langchain-tavily`\n`uv add langchain-tavily`\n`TAVILY_API_KEY`\n`export TAVILY_API_KEY=\"your-api-key\"`\n\n## [​](#tools) Tools\n\n### [​](#tavilysearch) TavilySearch\n\n`from langchain_tavily import TavilySearch`\n\n### [​](#tavilyextract) TavilyExtract\n\n`from langchain_tavily import TavilyExtract`\n\n### [​](#tavilycrawl) TavilyCrawl\n\n`from langchain_tavily import TavilyCrawl`\n\n### [​](#tavilymap) TavilyMap\n\n`from langchain_tavily import TavilyMap`\n\n## [​](#components-reference) Components reference\n\n| Class | Abstraction | Import path | Description |\n| --- | --- | --- | --- |\n| [`TavilySearch`](https://reference.langchain.com/python/langchain-tavily/tavily_search/TavilySearch) | Tool | `from langchain_tavily import TavilySearch` | Returns search results from the Tavily Search API. |\n| [`TavilyExtract`](https://reference.langchain.com/python/langchain-tavily/tavily_extract/TavilyExtract) | Tool | `from langchain_tavily import TavilyExtract` | Extracts cleaned content from one or more URLs. |\n| [`TavilyCrawl`](https://reference.langchain.com/python/langchain-tavily/tavily_crawl/TavilyCrawl) | Tool | `from langchain_tavily import TavilyCrawl` | Crawls a site starting from a base URL with depth and breadth controls. |\n| [`TavilyMap`](https://reference.langchain.com/python/langchain-tavily/tavily_map/TavilyMap) | Tool | `from langchain_tavily import TavilyMap` | Discovers the URL structure of a site without extracting page content. |\n\n`TavilySearch`\n`from langchain_tavily import TavilySearch`\n`TavilyExtract`\n`from langchain_tavily import TavilyExtract`\n`TavilyCrawl`\n`from langchain_tavily import TavilyCrawl`\n`TavilyMap`\n`from langchain_tavily import TavilyMap`\n\nWas this page helpful?\n\n![light logo](https://mintcdn.com/langchain-5e9cc07a/nQm-sjd_MByLhgeW/images/brand/langchain-docs-dark-blue.png?fit=max&auto=format&n=nQm-sjd_MByLhgeW&q=85&s=5babf1a1962208fd7eed942fa2432ecb)\n![dark logo](https://mintcdn.com/langchain-5e9cc07a/nQm-sjd_MByLhgeW/images/brand/langchain-docs-light-blue.png?fit=max&auto=format&n=nQm-sjd_MByLhgeW&q=85&s=0bcd2a1f2599ed228bcedf0f535b45b1)\n\nResources\n\nCompany",
+          "start": null,
+          "title": "Tavily integrations - Docs by LangChain",
+          "truncated": false,
+          "supplement": true,
+          "original_id": null,
+          "content_hash": "5601372fa4d11ef85ac98bfbf04006b5530004854fc85bac0467f7f1685e9052",
+          "content_kind": "full_extract",
+          "original_url": "https://docs.langchain.com/oss/python/integrations/providers/tavily",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:36:59.642502Z",
+          "source_chars": 2977,
+          "original_quiz_id": null,
+          "context_truncated": true,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-654721f4cba7dd1b66175d07597c67d6",
+          "end": null,
+          "url": "https://github.com/tavily-ai/langchain-tavily",
+          "page": null,
+          "text": "ing invocation\n\nNOTE: If you set an argument during instantiation this value will persist and overwrite the value passed during invocation.\n\n```\n# Extract content from a URL result = tool invoke \"urls\"\"https://en.wikipedia.org/wiki/Lionel_Messi\"\n```\n\noutput:\n\n```\n'results' ' ' 'url' ' ''https://en.wikipedia.org/wiki/Lionel_Messi' ' ' 'raw_content' ' ''Lionel Messi\\nLionel Andrés \"Leo\" Messi...' ' ' 'images' ' ' 'failed_results' ' ' 'response_time' ' '\n```\n\n## Tavily Crawl\n\nHere we show how to instantiate an instance of the Tavily crawl tool. After instantiation we invoke the tool with a URL. This tool allows you to crawl websites using Tavily's Crawl API endpoint.\n\n### Instantiation\n\nThe tool accepts various parameters during instantiation:\n\n* `max_depth` (optional, int): Max depth of the crawl from base URL. Default is 1.\n* `max_breadth` (optional, int): Max number of links to follow per page. Default is 20.\n* `limit` (optional, int): Total number of links to process before stopping. Default is 50.\n* `instructions` (optional, str): Natural language instructions to guide the crawler. Default is None.\n* `select_paths` (optional, List[str]): Regex patterns to select specific URL paths. Default is None.\n* `select_domains` (optional, List[str]): Regex patterns to select specific domains. Default is None.\n* `exclude_paths` (optional, List[str]): Regex patterns to exclude URLs with specific path patterns\n* `exclude_domains` (optional, List[str]): Regex patterns to exclude specific domains or subdomains from crawling\n* `allow_external` (optional, bool): Allow following external domain links. Default is False.\n* `include_images` (optional, bool): Whether to include images in the crawl results.\n* `categories` (optional, str): Filter URLs by predefined categories. Can be \"Careers\", \"Blogs\", \"Documentation\", \"About\", \"Pricing\", \"Community\", \"Developers\", \"Contact\", or \"Media\". Default is None.\n* `extract_depth` (optional, str): Depth of content extraction, either \"basic\" or \"advanced\". Default is \"basic\".\n* `include_favicon` (optional, bool): Whether to include the favicon URL for each result. Default is False.\n* `include_usage` (optional, bool): Whether to include credit usage information in the response. NOTE:The value may be 0 if the total use of /extract and /map calls has not yet reached minimum needed. See our [Credits & Pricing documentation](https://docs.tavily.com/documentation/api-credits) for details.\n* `format` (optional, str): The format of the extracted web page content. \"markdown\" returns content in markdown format. \"text\" returns plain text and may increase latency.\n\nFor a comprehensive overview of the available parameters, refer to the [Tavily Crawl API documentation](https://docs.tavily.com/documentation/api-reference/endpoint/crawl)\n\n```\nfrom langchain_tavily import TavilyCrawl tool = TavilyCrawl max_depth = 1 max_breadth = 20 limit = 50# instructions=None,# select_paths=None,# select_domains=None,# exclude_paths=None,# exclude_domains=None,# allow_external=False,# include_images=False,# categories=None,# extract_depth=None,# include_favicon=False,# format=None\n```\n\n### Invoke directly with args\n\nThe Tavily crawl tool accepts the following arguments during invocation:\n\n* `url` (required): The root URL to begin the crawl.\n* All other parameters can also be set during invocation: `max_depth`, `max_breadth`, `limit`, `instructions`, `select_paths`, `select_domains`, `exclude_paths`, `exclude_domains`, `allow_external`, `include_images`, `categories`, and `extract_depth`.\n\nNOTE: If you set an argument during instantiation this value will persist and overwrite the value passed during invocation.\n\n```\n# Basic crawl of a website result = tool invoke \"url\"\"https://docs.tavily.com\" \"instructions\" \"Find SDK documentation\" \"categories\" \"Documentation\"\n```\n\noutput:\n\n```\n'base_url' ' ''https://docs.tavily.com' ' ' 'results' ' ' 'url' ' ''https://docs.tavily.com/sdk/python' ' ' 'raw_content' ' ''Python SDK Documentation...' ' ' 'ima",
+          "start": null,
+          "title": "GitHub - tavily-ai/langchain-tavily · GitHub",
+          "truncated": false,
+          "supplement": true,
+          "original_id": null,
+          "content_hash": "31314375ebb9a7b5622c11ce16dac8d49c3ab6c98f4c02bd2717047090b2760f",
+          "content_kind": "full_extract",
+          "original_url": "https://github.com/tavily-ai/langchain-tavily",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:36:59.642502Z",
+          "source_chars": 22861,
+          "original_quiz_id": null,
+          "context_truncated": true,
+          "acquisition_status": "available"
+        }
+      ],
+      "material_id": "c01a4414-f7fe-4161-8b90-a3c2566c9ab7"
+    },
+    "summary": "基于所选材料，检测对 TavilyExtract 工具安装配置、实例化参数、调用方式与返回结构的理解，共 3 题（单选、多选、判断各 1 题）。",
+    "grounding": {
+      "status": "source_backed",
+      "provider": "tavily",
+      "reason_code": null,
+      "retrieved_at": "2026-10-14T12:36:59.642502Z",
+      "check_version": "evidence-review-v1"
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "stem": "根据材料，安装 langchain-tavily 并配置凭证时，应设置哪个环境变量？",
+        "type": "single",
+        "origin": null,
+        "answers": [
+          "B"
+        ],
+        "options": [
+          {
+            "id": "A",
+            "text": "OPENAI_API_KEY"
+          },
+          {
+            "id": "B",
+            "text": "TAVILY_API_KEY"
+          },
+          {
+            "id": "C",
+            "text": "LANGCHAIN_API_KEY"
+          },
+          {
+            "id": "D",
+            "text": "TAVILY_SECRET_TOKEN"
+          }
+        ],
+        "grounding": {
+          "status": "source_backed",
+          "provider": "tavily",
+          "reason_code": null,
+          "retrieved_at": "2026-10-14T12:36:59.642502Z",
+          "check_version": "evidence-review-v1"
+        },
+        "source_ids": [
+          "web-c304ab0af2189fb19d19db2308347fb5"
+        ],
+        "explanation": "材料中 Tavily integrations 页面在 Installation and setup 部分给出 `pip install langchain-tavily` / `uv add langchain-tavily`，并列出环境变量 `TAVILY_API_KEY`（`export TAVILY_API_KEY=\"your-api-key\"`）。因此应设置 TAVILY_API_KEY。OPENAI_API_KEY 是示例中初始化聊天模型时用到的凭证，不是 Tavily 的凭证；LANGCHAIN_API_KEY 与 TAVILY_SECRET_TOKEN 未在材料中出现。",
+        "knowledge_point": "安装 langchain-tavily 与配置 TAVILY_API_KEY 凭证"
+      },
+      {
+        "id": "q2",
+        "stem": "根据材料，关于 TavilyExtract 的实例化与调用，下列说法正确的有哪些？",
+        "type": "multi",
+        "origin": null,
+        "answers": [
+          "A",
+          "B",
+          "C"
+        ],
+        "options": [
+          {
+            "id": "A",
+            "text": "实例化时可以设置 extract_depth 与 include_images 参数"
+          },
+          {
+            "id": "B",
+            "text": "调用时 urls 是必填参数，用于提供要提取内容的 URL 列表"
+          },
+          {
+            "id": "C",
+            "text": "extract_depth 与 include_images 也可以在调用时设置"
+          },
+          {
+            "id": "D",
+            "text": "调用时 urls 是可选参数，不传也能正常提取"
+          }
+        ],
+        "grounding": {
+          "status": "source_backed",
+          "provider": "tavily",
+          "reason_code": null,
+          "retrieved_at": "2026-10-14T12:36:59.642502Z",
+          "check_version": "evidence-review-v1"
+        },
+        "source_ids": [
+          "web-17c51bd04537e7f3436b9f952c417f9e"
+        ],
+        "explanation": "材料中 JavaScript 集成页面的实例化示例为 `new TavilyExtract({ extractDepth: \"basic\", includeImages: false })`，说明实例化时可设置 extract_depth 与 include_images（A 正确）。Invocation 部分说明调用时接受 `urls`（required）：要提取内容的 URL 列表（B 正确），并说明 `extractDepth`、`includeImages` 也可在调用时设置（C 正确）。D 与材料中 urls 为必填相矛盾，错误。",
+        "knowledge_point": "TavilyExtract 实例化参数与调用参数"
+      },
+      {
+        "id": "q3",
+        "stem": "根据材料，TavilyExtract 工具返回的结果中包含 raw_content 与 images 字段。",
+        "type": "judge",
+        "origin": null,
+        "answers": [
+          "A"
+        ],
+        "options": [
+          {
+            "id": "A",
+            "text": "正确"
+          },
+          {
+            "id": "B",
+            "text": "错误"
+          }
+        ],
+        "grounding": {
+          "status": "source_backed",
+          "provider": "tavily",
+          "reason_code": null,
+          "retrieved_at": "2026-10-14T12:36:59.642502Z",
+          "check_version": "evidence-review-v1"
+        },
+        "source_ids": [
+          "web-654721f4cba7dd1b66175d07597c67d6"
+        ],
+        "explanation": "材料中 Tavily extract 的调用输出示例显示结果结构包含 `'results'`、`'url'`、`'raw_content'`（如 'Lionel Messi\\nLionel Andrés \"Leo\" Messi...'）、`'images'`、`'failed_results'`、`'response_time'` 等字段，说明返回结果中包含 raw_content 与 images。因此该说法正确。",
+        "knowledge_point": "全文提取返回 raw content 与 images 而非定向片段"
+      }
+    ],
+    "created_at": "2026-10-14T12:38:07.415320+00:00",
+    "difficulty": "easy",
+    "source_text": "学习全文提取与定向片段的区别",
+    "learning_scope": {
+      "focus": "所选材料知识点",
+      "topic": "Tavily extract 集成文档学习范围",
+      "domain": "用户提供的材料",
+      "points": [
+        "Tavily extract 集成概览与集成信息",
+        "TavilyExtract 工具特性（返回原始内容与图片、异步、定价）",
+        "安装 langchain-tavily 与配置 TAVILY_API_KEY 凭证",
+        "实例化 TavilyExtract 及 extract_depth、include_images 参数",
+        "直接传参调用 tool.invoke 并查看返回结构",
+        "使用 ToolCall 形式调用并读取 JSON 字符串结果",
+        "在 agent 中使用 TavilyExtract 工具",
+        "agent 流式事件输出与工具调用参数示例",
+        "工具返回的维基百科原始内容示例（爱因斯坦与理论物理学）",
+        "全文提取返回 raw content 与 images 而非定向片段"
+      ],
+      "focus_id": null,
+      "input_text": "学习全文提取与定向片段的区别",
+      "candidate_id": null,
+      "scope_version": null,
+      "preparation_id": null,
+      "scope_point_ids": []
+    }
+  },
+  "human_review": {
+    "scope_matches_intent": null,
+    "notes": "",
+    "questions": [
+      {
+        "id": "q1",
+        "status": "source_backed",
+        "source_ids": [
+          "web-c304ab0af2189fb19d19db2308347fb5"
+        ],
+        "supported_by_cited_text": null,
+        "contradicts": null,
+        "in_scope": null,
+        "meme_substantive": null,
+        "notes": ""
+      },
+      {
+        "id": "q2",
+        "status": "source_backed",
+        "source_ids": [
+          "web-17c51bd04537e7f3436b9f952c417f9e"
+        ],
+        "supported_by_cited_text": null,
+        "contradicts": null,
+        "in_scope": null,
+        "meme_substantive": null,
+        "notes": ""
+      },
+      {
+        "id": "q3",
+        "status": "source_backed",
+        "source_ids": [
+          "web-654721f4cba7dd1b66175d07597c67d6"
+        ],
+        "supported_by_cited_text": null,
+        "contradicts": null,
+        "in_scope": null,
+        "meme_substantive": null,
+        "notes": ""
+      }
+    ]
+  },
+  "account_deleted": true
+}

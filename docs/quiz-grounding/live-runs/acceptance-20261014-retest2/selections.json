@@ -1,0 +1,9 @@
+{
+  "url-extract": {
+    "material_id": "a8dcd363-0635-4f2d-917d-eb88708655e8",
+    "point_ids": ["s1", "s2"],
+    "confirmed": true,
+    "supplement": true,
+    "selection_actor": "Codex evaluation operator; specified learning instruction"
+  }
+}

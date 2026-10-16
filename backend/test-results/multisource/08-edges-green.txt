@@ -1,0 +1,13 @@
+....                                                                     [100%]
+============================== warnings summary ===============================
+tests/test_feature_edges.py::test_expired_job_recovery_cleanup_and_referenced_retention
+  D:\nbproject\LevelUpProject\backend\tests\test_feature_edges.py:37: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    with system.state.accounts.database.session() as s: s.get(MaterialJob, job['id']).created_at = datetime.utcnow()-timedelta(days=1)
+
+tests/test_feature_edges.py::test_expired_job_recovery_cleanup_and_referenced_retention
+tests/test_feature_edges.py::test_expired_job_recovery_cleanup_and_referenced_retention
+  D:\nbproject\LevelUpProject\backend\tests\test_feature_edges.py:43: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    for mid in (material['id'], orphan['id']): s.get(Material, mid).created_at = datetime.utcnow()-timedelta(days=2)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+4 passed, 3 warnings in 13.67s

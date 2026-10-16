@@ -42,10 +42,12 @@ async def test_report_failure_preserves_explicit_error(system):
 async def test_unhandled_error_is_sanitized(system):
     class Fail:
         async def generate(self,*args,**kwargs):raise RuntimeError("secret-upstream-detail")
-    system.state.gateway = Fail()
     async with httpx.AsyncClient(transport=httpx.ASGITransport(app=system,raise_app_exceptions=False),base_url="http://test") as c:
         await login(c)
-        r=await c.post("/api/v1/quiz/generate",json={"text":"HTTP"})
+        session = await generate(c)
+        for q in quiz_payload()['questions']: await answer(c, session, q['id'], q['answers'])
+        system.state.gateway = Fail()
+        r=await c.post('/api/v1/report/generate', json={'attempt_id': session['id']})
     assert r.status_code==500 and r.json()=={"code":"INTERNAL_ERROR","message":"服务暂时遇到问题，请稍后重试","data":None}
 
 @pytest.mark.anyio

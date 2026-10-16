@@ -14,7 +14,12 @@ export default defineConfig({
     API_BASE: JSON.stringify(process.env.API_BASE || 'http://127.0.0.1:8000'),
     MINI_CODE_URL: JSON.stringify(process.env.MINI_CODE_URL || ''),
   },
-  mini: { postcss: { pxtransform: { enable: true }, url: { enable: true, config: { limit: 0 } } } },
+  mini: {
+    // Taro 4.3 treats numeric limit=0 as its default inline threshold.
+    // Asset resources always pass short local paths to native Image components.
+    webpackChain(chain) { chain.module.rule('image').set('type', 'asset/resource') },
+    postcss: { pxtransform: { enable: true }, url: { enable: true, config: { limit: 0 } } },
+  },
   h5: {
     publicPath: '/',
     staticDirectory: 'static',

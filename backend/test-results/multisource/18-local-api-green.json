@@ -1,0 +1,43 @@
+{
+  "stage": "GREEN",
+  "base_url": "http://127.0.0.1:8000",
+  "passed": true,
+  "knowledge_map": {
+    "status": 200,
+    "topics": 1,
+    "point_total": 3,
+    "point_correct": 2,
+    "point_status": "weak"
+  },
+  "analytics": [
+    {
+      "query": "days=7",
+      "status": 200,
+      "total": 3,
+      "correct": 2,
+      "accuracy": 67
+    },
+    {
+      "query": "days=30",
+      "status": 200,
+      "total": 3,
+      "correct": 2,
+      "accuracy": 67
+    },
+    {
+      "query": "days=all",
+      "status": 200,
+      "total": 3,
+      "correct": 2,
+      "accuracy": 67
+    },
+    {
+      "query": "days=custom&start=2026-10-12&end=2026-10-12",
+      "status": 200,
+      "total": 3,
+      "correct": 2,
+      "accuracy": 67
+    }
+  ],
+  "temporary_account_deleted": true
+}

@@ -1,0 +1,186 @@
+{
+  "errors": [],
+  "checks": [
+    {
+      "screen": "L02",
+      "phones": 3,
+      "imagesLoaded": true,
+      "horizontalOverflow": false,
+      "scrollAreas": [
+        {
+          "width": 388,
+          "scrollWidth": 388,
+          "height": 666,
+          "scrollHeight": 670
+        },
+        {
+          "width": 388,
+          "scrollWidth": 388,
+          "height": 666,
+          "scrollHeight": 670
+        },
+        {
+          "width": 388,
+          "scrollWidth": 388,
+          "height": 666,
+          "scrollHeight": 670
+        }
+      ],
+      "headers": [
+        "rgb(51, 106, 232)",
+        "rgb(255, 223, 112)",
+        "rgb(205, 236, 226)"
+      ]
+    },
+    {
+      "screen": "L09",
+      "phones": 3,
+      "imagesLoaded": true,
+      "horizontalOverflow": false,
+      "scrollAreas": [
+        {
+          "width": 388,
+          "scrollWidth": 388,
+          "height": 637,
+          "scrollHeight": 637
+        },
+        {
+          "width": 388,
+          "scrollWidth": 388,
+          "height": 637,
+          "scrollHeight": 637
+        },
+        {
+          "width": 388,
+          "scrollWidth": 388,
+          "height": 637,
+          "scrollHeight": 637
+        }
+      ],
+      "headers": [
+        "rgb(51, 106, 232)",
+        "rgb(255, 223, 112)",
+        "rgb(205, 236, 226)"
+      ]
+    },
+    {
+      "screen": "L15",
+      "phones": 3,
+      "imagesLoaded": true,
+      "horizontalOverflow": false,
+      "scrollAreas": [
+        {
+          "width": 388,
+          "scrollWidth": 388,
+          "height": 610,
+          "scrollHeight": 615
+        },
+        {
+          "width": 388,
+          "scrollWidth": 388,
+          "height": 610,
+          "scrollHeight": 615
+        },
+        {
+          "width": 388,
+          "scrollWidth": 388,
+          "height": 610,
+          "scrollHeight": 615
+        }
+      ],
+      "headers": [
+        "rgb(51, 106, 232)",
+        "rgb(255, 223, 112)",
+        "rgb(205, 236, 226)"
+      ]
+    },
+    {
+      "originalToggle": true
+    },
+    {
+      "restoredThemes": true
+    },
+    {
+      "viewport": 1024,
+      "screen": "L02",
+      "horizontalOverflow": false,
+      "phoneOverflow": false
+    },
+    {
+      "viewport": 1024,
+      "screen": "L09",
+      "horizontalOverflow": false,
+      "phoneOverflow": false
+    },
+    {
+      "viewport": 1024,
+      "screen": "L15",
+      "horizontalOverflow": false,
+      "phoneOverflow": false
+    },
+    {
+      "viewport": 768,
+      "screen": "L02",
+      "horizontalOverflow": false,
+      "phoneOverflow": false
+    },
+    {
+      "viewport": 768,
+      "screen": "L09",
+      "horizontalOverflow": false,
+      "phoneOverflow": false
+    },
+    {
+      "viewport": 768,
+      "screen": "L15",
+      "horizontalOverflow": false,
+      "phoneOverflow": false
+    },
+    {
+      "viewport": 390,
+      "screen": "L02",
+      "horizontalOverflow": false,
+      "phoneOverflow": false
+    },
+    {
+      "viewport": 390,
+      "screen": "L09",
+      "horizontalOverflow": false,
+      "phoneOverflow": false
+    },
+    {
+      "viewport": 390,
+      "screen": "L15",
+      "horizontalOverflow": false,
+      "phoneOverflow": false
+    },
+    {
+      "viewport": 320,
+      "screen": "L02",
+      "horizontalOverflow": false,
+      "phoneOverflow": false
+    },
+    {
+      "viewport": 320,
+      "screen": "L09",
+      "horizontalOverflow": false,
+      "phoneOverflow": false
+    },
+    {
+      "viewport": 320,
+      "screen": "L15",
+      "horizontalOverflow": false,
+      "phoneOverflow": false
+    }
+  ],
+  "originalsUnchanged": true,
+  "originalHashes": {
+    "01-core-learning.html": "c0ff5d387a6e4c186beb01357cdaf0b718daaa4344c0abe014af0aefde1cdb11",
+    "assets/style.css": "b1f7396b4534621eb5d2c699d985b01bfef33d3b8ecb678f4472f7100d417890",
+    "assets/refined-footer.css": "d1c68d5c8a5b49f0a60fb46438204a276469bd5138801c2e4f89ab00fdda68ae",
+    "assets/ui.js": "8c2801c2e5401a36d729c1e324a98ceaf299b4821dcd53280c5dc4ab2a3e428b",
+    "assets/screens.js": "14c69ccf6d0ad4360b0c4dce9b300c5043fb61a4877fbd9d25d665b586401f36",
+    "assets/footer-theme.js": "a6237591628c57a14f5254bcba0ff2377b2b6cf7c0c9520d4ed43183fce55f75",
+    "assets/app.js": "3ace21f254cf2c1493a5d698b6f08312e41ba8260344e05ed28286f599523117"
+  }
+}

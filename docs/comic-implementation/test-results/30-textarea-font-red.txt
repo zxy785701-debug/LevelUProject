@@ -1,0 +1,32 @@
+
+> levelup-comic-mini@1.0.0 test:e2e
+> playwright test --grep 01–03
+
+
+Running 1 test using 1 worker
+
+(node:35640) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 e2e\core.spec.ts:84:5 › 01–03：游客、独立存储、首页、设置和扩展入口 (794ms)
+
+
+  1) e2e\core.spec.ts:84:5 › 01–03：游客、独立存储、首页、设置和扩展入口 ──────────────────────────────────────────────
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "15px"
+    Received: "13.3333px"
+
+       95 |   const inputBox = await page.locator(".field").boundingBox(),
+       96 |     textBox = await page.locator("textarea").boundingBox();
+    >  97 |   expect(await page.locator('textarea').evaluate(el => getComputedStyle(el).fontSize)).toBe('15px');
+          |                                                                                        ^
+       98 |   expect(textBox!.y + textBox!.height).toBeLessThanOrEqual(
+       99 |     inputBox!.y + inputBox!.height,
+      100 |   );
+        at D:\nbproject\LevelUpProject\frontend-comic\e2e\core.spec.ts:97:88
+
+    Error Context: ..\docs\comic-implementation\e2e-results\core-01–03：游客、独立存储、首页、设置和扩展入口\error-context.md
+
+  1 failed
+    e2e\core.spec.ts:84:5 › 01–03：游客、独立存储、首页、设置和扩展入口 ───────────────────────────────────────────────

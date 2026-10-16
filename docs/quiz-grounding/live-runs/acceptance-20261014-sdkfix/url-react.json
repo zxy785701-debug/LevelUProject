@@ -1,0 +1,948 @@
+{
+  "case": {
+    "id": "url-react",
+    "text": "https://react.dev/reference/react/useEffect 学习 Effect 清理和网络请求竞争",
+    "expected": "指定 React 文档中的清理与竞争",
+    "tags": [
+      "url",
+      "english",
+      "complex"
+    ]
+  },
+  "error_code": null,
+  "status": "awaiting_human_evidence_review",
+  "material_job": {
+    "id": "dfb9830b-653c-4857-97e6-1bb64b7e553f",
+    "status": "succeeded",
+    "stage": "ready",
+    "material_id": "15ab38ed-4044-42cd-a09a-2935128bb06d",
+    "preparation_id": null,
+    "error_code": null,
+    "message": null
+  },
+  "material": {
+    "id": "15ab38ed-4044-42cd-a09a-2935128bb06d",
+    "url": "https://react.dev/reference/react/useEffect",
+    "title": "useEffect – React",
+    "points": [
+      {
+        "name": "useEffect 的参数：setup 与可选 cleanup 函数",
+        "segment_ids": [
+          "s3",
+          "s4"
+        ]
+      },
+      {
+        "name": "dependencies 依赖数组与 Object.is 比较",
+        "segment_ids": [
+          "s4"
+        ]
+      },
+      {
+        "name": "setup 与 cleanup 的调用时机（挂载、依赖变化、卸载）",
+        "segment_ids": [
+          "s5"
+        ]
+      },
+      {
+        "name": "Strict Mode 下开发环境额外运行一次 setup+cleanup",
+        "segment_ids": [
+          "s5",
+          "s13"
+        ]
+      },
+      {
+        "name": "cleanup 逻辑必须与 setup 逻辑对称",
+        "segment_ids": [
+          "s14"
+        ]
+      },
+      {
+        "name": "在 Effect 中获取数据：ignore 变量避免竞争条件",
+        "segment_ids": [
+          "s8"
+        ]
+      },
+      {
+        "name": "使用 async/await 获取数据时仍需提供 cleanup 函数",
+        "segment_ids": [
+          "s8"
+        ]
+      },
+      {
+        "name": "在 Effect 中直接获取数据的缺点（服务端不运行、网络瀑布、无预加载缓存、样板代码）",
+        "segment_ids": [
+          "s8",
+          "s9"
+        ]
+      },
+      {
+        "name": "数据获取的替代方案：框架内置机制或客户端缓存",
+        "segment_ids": [
+          "s9"
+        ]
+      },
+      {
+        "name": "排查：Effect 每次重新渲染后都运行",
+        "segment_ids": [
+          "s13",
+          "s14"
+        ]
+      },
+      {
+        "name": "排查：Effect 陷入无限循环",
+        "segment_ids": [
+          "s14"
+        ]
+      },
+      {
+        "name": "排查：组件未卸载但 cleanup 逻辑运行",
+        "segment_ids": [
+          "s14"
+        ]
+      }
+    ],
+    "summary": "本学习范围基于 React 官方 useEffect 参考文档，围绕用户指定的学习意图——Effect 清理（cleanup）与网络请求竞争（race conditions）——整理材料内容。范围覆盖 useEffect 的参数与返回值、setup/cleanup 的调用时机、Strict Mode 下的额外 setup+cleanup 循环、清理逻辑与 setup 逻辑的对称性、在 Effect 中获取数据时用 ignore 变量避免竞争条件，以及相关的常见问题排查。所有知识点均指向材料中的真实分段。",
+    "segments": [
+      {
+        "id": "s1",
+        "url": "https://react.dev/reference/react/useEffect",
+        "text": "useEffect – React\n\n[![logo by @sawaratsuki1004](/_next/image?url=%2Fimages%2Fuwu.png&w=128&q=75 \"logo by @sawaratsuki1004\")](/)\n\n[React](/)\n\n[v19.3](/versions)\n\nSearch`⌘``Ctrl``K`\n\n[Learn](/learn)\n\n[Reference](/reference/react)\n\n[Community](/community)\n\n[Blog](/blog)\n\n### react@19.3\n\n* [Overview](/reference/react \"Overview\")\n* [Hooks](/reference/react/hooks \"Hooks\")\n\n  + [useActionState](/reference/react/useActionState \"useActionState\")\n  + [useCallback](/reference/react/useCallback \"useCallback\")\n  + [useContext](/reference/react/useContext \"useContext\")\n  + [useDebugValue](/reference/react/useDebugValue \"useDebugValue\")\n  + [useDeferredValue](/reference/react/useDeferredValue \"useDeferredValue\")\n  + [useEffect](/reference/react/useEffect \"useEffect\")\n  + [useEffectEvent](/reference/react/useEffectEvent \"useEffectEvent\")\n  + [useId](/reference/react/useId \"useId\")\n  + [useImperativeHandle](/reference/react/useImperativeHandle \"useImperativeHandle\")\n  + [useInsertionEffect](/reference/react/useInsertionEffect \"useInsertionEffect\")\n  + [useLayoutEffect](/reference/react/useLayoutEffect \"useLayoutEffect\")\n  + [useMemo](/reference/react/useMemo \"useMemo\")\n  + [useOptimistic](/reference/react/useOptimistic \"useOptimistic\")\n  + [useReducer](/reference/react/useReducer \"useReducer\")\n  + [useRef](/reference/react/useRef \"useRef\")\n  + [useState](/reference/react/useState \"useState\")\n  + [useSyncExternalStore](/reference/react/useSyncExternalStore \"useSyncExternalStore\")\n  + [useTransition](/reference/react/useTransition \"useTransition\")\n* [Components](/reference/react/components \"Components\")\n\n  + [<Fragment> (<>)](/reference/react/Fragment \"<Fragment> (<>)\")\n  + [<Profiler>](/reference/react/Profiler \"<Profiler>\")\n  + [<StrictMode>](/reference/react/StrictMode \"<StrictMode>\")\n  + [<Suspense>](/reference/react/Suspense \"<Suspense>\")\n  + [<Activity>](/reference/react/Activity \"<Activity>\")\n  + [<ViewTransition>](/reference/react/ViewTransition \"<ViewTransition>\")\n* [APIs](/reference/react/apis \"APIs\")\n\n  + [act](/reference/react/act \"act\")\n  + [addTransitionType](/reference/react/addTransitionType \"addTransitionType\")\n  + [cache](/reference/react/cache \"cache\")\n  + [cacheSignal](/reference/react/cacheSignal \"cacheSignal\")\n  + [captureOwnerStack](/reference/react/captureOwnerStack \"captureOwnerStack\")\n  + [createContext](/reference/react/createContext \"createContext\")\n  + [lazy](/reference/react/lazy \"lazy\")\n  + [memo](/reference/react/memo \"memo\")\n  + [startTransition](/reference/react/startTransition \"startTransition\")\n  + [use](/reference/react/use \"use\")\n  + [experimental\\_taintObjectReference  - This feature is available in the latest Experimental version of React](/reference/react/experimental_taintObjectReference \"experimental_taintObjectReference\")\n  + [experimental\\_taintUniqueValue  - This feature is available in the latest Experimental version of React](/reference/react/experimental_taintUniqueValue \"experimental_taintUniqueValue\")\n\n\n### react-dom@19.3\n\n* [Hooks](/reference/react-dom/hooks \"Hooks\")\n\n  + [useFormStatus](/reference/react-dom/hooks/useFormStatus \"useFormStatus\")\n* [Components](/reference/react-dom/components \"Components\")\n\n  + [Common (e.g. <div>)](/reference/react-dom/components/common \"Common (e.g. <div>)\")\n  + [<form>](/reference/react-dom/components/form \"<form>\")\n  + [<input>](/reference/react-dom/components/input \"<input>\")\n  + [<option>](/reference/react-dom/components/option \"<option>\")\n  + [<progress>](/reference/react-dom/components/progress \"<progress>\")\n  + [<select>](/reference/react-dom/components/select \"<select>\")\n  + [<textarea>](/reference/react-dom/components/textarea \"<textarea>\")\n  + [<img>](/reference/react-dom/components/img \"<img>\")\n  + [<link>](/reference/react-dom/components/link \"<link>\")\n  + [<meta>](/reference/react-dom/components/meta \"<meta>\")\n  + [<script>](/reference/react-dom/components/script \"<script>\")\n  + [<style>](/reference/react-dom/components/style \"<style>\")\n  + [<title",
+        "title": "useEffect – React",
+        "truncated": false,
+        "supplement": false,
+        "content_hash": "7a5d493d823996064304650f8937144031261c8999345369a0de11fcb4ffa7c6",
+        "content_kind": "full_extract",
+        "original_url": "https://react.dev/reference/react/useEffect",
+        "retrieved_at": "2026-10-14T12:17:43.805094Z",
+        "source_chars": 59201,
+        "context_truncated": false,
+        "acquisition_status": "available"
+      },
+      {
+        "id": "s2",
+        "url": "https://react.dev/reference/react/useEffect",
+        "text": ">](/reference/react-dom/components/title \"<title>\")\n* [APIs](/reference/react-dom \"APIs\")\n\n  + [browser](/reference/react-dom/browser \"browser\")\n  + [createPortal](/reference/react-dom/createPortal \"createPortal\")\n  + [flushSync](/reference/react-dom/flushSync \"flushSync\")\n  + [preconnect](/reference/react-dom/preconnect \"preconnect\")\n  + [prefetchDNS](/reference/react-dom/prefetchDNS \"prefetchDNS\")\n  + [preinit](/reference/react-dom/preinit \"preinit\")\n  + [preinitModule](/reference/react-dom/preinitModule \"preinitModule\")\n  + [preload](/reference/react-dom/preload \"preload\")\n  + [preloadModule](/reference/react-dom/preloadModule \"preloadModule\")\n* [Client APIs](/reference/react-dom/client \"Client APIs\")\n\n  + [createRoot](/reference/react-dom/client/createRoot \"createRoot\")\n  + [hydrateRoot](/reference/react-dom/client/hydrateRoot \"hydrateRoot\")\n* [Server APIs](/reference/react-dom/server \"Server APIs\")\n\n  + [renderToPipeableStream](/reference/react-dom/server/renderToPipeableStream \"renderToPipeableStream\")\n  + [renderToReadableStream](/reference/react-dom/server/renderToReadableStream \"renderToReadableStream\")\n  + [renderToStaticMarkup](/reference/react-dom/server/renderToStaticMarkup \"renderToStaticMarkup\")\n  + [renderToString](/reference/react-dom/server/renderToString \"renderToString\")\n  + [resume](/reference/react-dom/server/resume \"resume\")\n  + [resumeToPipeableStream](/reference/react-dom/server/resumeToPipeableStream \"resumeToPipeableStream\")\n* [Static APIs](/reference/react-dom/static \"Static APIs\")\n\n  + [prerender](/reference/react-dom/static/prerender \"prerender\")\n  + [prerenderToNodeStream](/reference/react-dom/static/prerenderToNodeStream \"prerenderToNodeStream\")\n  + [resumeAndPrerender](/reference/react-dom/static/resumeAndPrerender \"resumeAndPrerender\")\n  + [resumeAndPrerenderToNodeStream](/reference/react-dom/static/resumeAndPrerenderToNodeStream \"resumeAndPrerenderToNodeStream\")\n\n\n### React Compiler\n\n* [Configuration](/reference/react-compiler/configuration \"Configuration\")\n\n  + [compilationMode](/reference/react-compiler/compilationMode \"compilationMode\")\n  + [gating](/reference/react-compiler/gating \"gating\")\n  + [logger](/reference/react-compiler/logger \"logger\")\n  + [panicThreshold](/reference/react-compiler/panicThreshold \"panicThreshold\")\n  + [target](/reference/react-compiler/target \"target\")\n* [Directives](/reference/react-compiler/directives \"Directives\")\n\n  + [\"use memo\"](/reference/react-compiler/directives/use-memo \"\\\"use memo\\\"\")\n  + [\"use no memo\"](/reference/react-compiler/directives/use-no-memo \"\\\"use no memo\\\"\")\n* [Compiling Libraries](/reference/react-compiler/compiling-libraries \"Compiling Libraries\")\n\n\n### React DevTools\n\n* [React Performance tracks](/reference/dev-tools/react-performance-tracks \"React Performance tracks\")\n\n\n### eslint-plugin-react-hooks\n\n* [Lints](/reference/eslint-plugin-react-hooks \"Lints\")\n\n  + [exhaustive-deps](/reference/eslint-plugin-react-hooks/lints/exhaustive-deps \"exhaustive-deps\")\n  + [rules-of-hooks](/reference/eslint-plugin-react-hooks/lints/rules-of-hooks \"rules-of-hooks\")\n  + [component-hook-factories](/reference/eslint-plugin-react-hooks/lints/component-hook-factories \"component-hook-factories\")\n  + [config](/reference/eslint-plugin-react-hooks/lints/config \"config\")\n  + [error-boundaries](/reference/eslint-plugin-react-hooks/lints/error-boundaries \"error-boundaries\")\n  + [gating](/reference/eslint-plugin-react-hooks/lints/gating \"gating\")\n  + [globals](/reference/eslint-plugin-react-hooks/lints/globals \"globals\")\n  + [immutability](/reference/eslint-plugin-react-hooks/lints/immutability \"immutability\")\n  + [incompatible-library](/reference/eslint-plugin-react-hooks/lints/incompatible-library \"incompatible-library\")\n  + [preserve-manual-memoization](/reference/eslint-plugin-react-hooks/lints/preserve-manual-memoization \"preserve-manual-memoization\")\n  + [purity](/reference/eslint-plugin-react-hooks/lints/purity \"purity\")\n  + [refs](/reference/eslint-plugin",
+        "title": "useEffect – React",
+        "truncated": false,
+        "supplement": false,
+        "content_hash": "7a5d493d823996064304650f8937144031261c8999345369a0de11fcb4ffa7c6",
+        "content_kind": "full_extract",
+        "original_url": "https://react.dev/reference/react/useEffect",
+        "retrieved_at": "2026-10-14T12:17:43.805094Z",
+        "source_chars": 59201,
+        "context_truncated": false,
+        "acquisition_status": "available"
+      },
+      {
+        "id": "s3",
+        "url": "https://react.dev/reference/react/useEffect",
+        "text": "-react-hooks/lints/refs \"refs\")\n  + [set-state-in-effect](/reference/eslint-plugin-react-hooks/lints/set-state-in-effect \"set-state-in-effect\")\n  + [set-state-in-render](/reference/eslint-plugin-react-hooks/lints/set-state-in-render \"set-state-in-render\")\n  + [static-components](/reference/eslint-plugin-react-hooks/lints/static-components \"static-components\")\n  + [unsupported-syntax](/reference/eslint-plugin-react-hooks/lints/unsupported-syntax \"unsupported-syntax\")\n  + [use-memo](/reference/eslint-plugin-react-hooks/lints/use-memo \"use-memo\")\n\n\n### Rules of React\n\n* [Overview](/reference/rules \"Overview\")\n\n  + [Components and Hooks must be pure](/reference/rules/components-and-hooks-must-be-pure \"Components and Hooks must be pure\")\n  + [React calls Components and Hooks](/reference/rules/react-calls-components-and-hooks \"React calls Components and Hooks\")\n  + [Rules of Hooks](/reference/rules/rules-of-hooks \"Rules of Hooks\")\n\n\n### React Server Components\n\n* [Server Components](/reference/rsc/server-components \"Server Components\")\n* [Server Functions](/reference/rsc/server-functions \"Server Functions\")\n* [Directives](/reference/rsc/directives \"Directives\")\n\n  + ['use client'](/reference/rsc/use-client \"'use client'\")\n  + ['use server'](/reference/rsc/use-server \"'use server'\")\n\n\n### Legacy APIs\n\n* [Legacy React APIs](/reference/react/legacy \"Legacy React APIs\")\n\n  + [Children](/reference/react/Children \"Children\")\n  + [cloneElement](/reference/react/cloneElement \"cloneElement\")\n  + [Component](/reference/react/Component \"Component\")\n  + [createElement](/reference/react/createElement \"createElement\")\n  + [createRef](/reference/react/createRef \"createRef\")\n  + [forwardRef](/reference/react/forwardRef \"forwardRef\")\n  + [isValidElement](/reference/react/isValidElement \"isValidElement\")\n  + [PureComponent](/reference/react/PureComponent \"PureComponent\")\n\n[API Reference](/reference/react)\n\n[Hooks](/reference/react/hooks)\n\n Copy pageCopy\n\n# useEffect\n\n`useEffect` is a React Hook that lets you [synchronize a component with an external system.](/learn/synchronizing-with-effects)\n\n```\n\n\nuseEffect(setup, dependencies?)\n\n\n```\n\n* [Reference](#reference) \n  + [`useEffect(setup, dependencies?)`](#useeffect)\n* [Usage](#usage) \n  + [Connecting to an external system](#connecting-to-an-external-system)\n  + [Wrapping Effects in custom Hooks](#wrapping-effects-in-custom-hooks)\n  + [Controlling a non-React widget](#controlling-a-non-react-widget)\n  + [Fetching data with Effects](#fetching-data-with-effects)\n  + [Specifying reactive dependencies](#specifying-reactive-dependencies)\n  + [Updating state based on previous state from an Effect](#updating-state-based-on-previous-state-from-an-effect)\n  + [Removing unnecessary object dependencies](#removing-unnecessary-object-dependencies)\n  + [Removing unnecessary function dependencies](#removing-unnecessary-function-dependencies)\n  + [Reading the latest props and state from an Effect](#reading-the-latest-props-and-state-from-an-effect)\n  + [Displaying different content on the server and the client](#displaying-different-content-on-the-server-and-the-client)\n* [Troubleshooting](#troubleshooting) \n  + [My Effect runs twice when the component mounts](#my-effect-runs-twice-when-the-component-mounts)\n  + [My Effect runs after every re-render](#my-effect-runs-after-every-re-render)\n  + [My Effect keeps re-running in an infinite cycle](#my-effect-keeps-re-running-in-an-infinite-cycle)\n  + [My cleanup logic runs even though my component didn’t unmount](#my-cleanup-logic-runs-even-though-my-component-didnt-unmount)\n  + [My Effect does something visual, and I see a flicker before it runs](#my-effect-does-something-visual-and-i-see-a-flicker-before-it-runs)\n\n---\n\n## Reference\n\n### `useEffect(setup, dependencies?)`\n\nCall `useEffect` at the top level of your component to declare an Effect:\n\n```\n\n\nimport { useState, useEffect } from 'react';\n\n\n\nimport { createConnection } from './chat.js';\n\n\n\nfunction ChatRoom({ roomId",
+        "title": "useEffect – React",
+        "truncated": false,
+        "supplement": false,
+        "content_hash": "7a5d493d823996064304650f8937144031261c8999345369a0de11fcb4ffa7c6",
+        "content_kind": "full_extract",
+        "original_url": "https://react.dev/reference/react/useEffect",
+        "retrieved_at": "2026-10-14T12:17:43.805094Z",
+        "source_chars": 59201,
+        "context_truncated": false,
+        "acquisition_status": "available"
+      },
+      {
+        "id": "s4",
+        "url": "https://react.dev/reference/react/useEffect",
+        "text": "}) {\n\n\n\nconst [serverUrl, setServerUrl] = useState('https://localhost:1234');\n\n\n\nuseEffect(() => {\n\n\n\nconst connection = createConnection(serverUrl, roomId);\n\n\n\nconnection.connect();\n\n\n\nreturn () => {\n\n\n\nconnection.disconnect();\n\n\n\n};\n\n\n\n}, [serverUrl, roomId]);\n\n\n\n// ...\n\n\n\n}\n\n\n```\n\n[See more examples below.](#usage)\n\n#### Parameters\n\n* `setup`: The function with your Effect’s logic. Your setup function may also optionally return a *cleanup* function. When your [component commits](/learn/render-and-commit#step-3-react-commits-changes-to-the-dom), React will run your setup function. After every commit with changed dependencies, React will first run the cleanup function (if you provided it) with the old values, and then run your setup function with the new values. After your component is removed from the DOM, React will run your cleanup function.\n* **optional** `dependencies`: The list of all reactive values referenced inside of the `setup` code. Reactive values include props, state, and all the variables and functions declared directly inside your component body. If your linter is [configured for React](/learn/editor-setup#linting), it will verify that every reactive value is correctly specified as a dependency. The list of dependencies must have a constant number of items and be written inline like `[dep1, dep2, dep3]`. React will compare each dependency with its previous value using the [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison. If you omit this argument, your Effect will re-run after every commit of the component. [See the difference between passing an array of dependencies, an empty array, and no dependencies at all.](#examples-dependencies)\n\n#### Returns\n\n`useEffect` returns `undefined`.\n\n#### Caveats\n\n* `useEffect` is a Hook, so you can only call it **at the top level of your component** or your own Hooks. You can’t call it inside loops or conditions. If you need that, extract a new component and move the state into it.\n* If you’re **not trying to synchronize with some external system,** [you probably don’t need an Effect.](/learn/you-might-not-need-an-effect)\n* When Strict Mode is on, React will **run one extra development-only setup+cleanup cycle** before the first real setup. This is a stress-test that ensures that your cleanup logic “mirrors” your setup logic and that it stops or undoes whatever the setup is doing. If this causes a problem, [implement the cleanup function.](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)\n* If some of your dependencies are objects or functions defined inside the component, there is a risk that they will **cause the Effect to re-run more often than needed.** To fix this, remove unnecessary [object](#removing-unnecessary-object-dependencies) and [function](#removing-unnecessary-function-dependencies) dependencies. You can also [extract state updates](#updating-state-based-on-previous-state-from-an-effect) and [non-reactive logic](#reading-the-latest-props-and-state-from-an-effect) outside of your Effect.\n* If your Effect wasn’t caused by an interaction (like a click), React will generally let the browser **paint the updated screen first before running your Effect.** If your Effect is doing something visual (for example, positioning a tooltip), and the delay is noticeable (for example, it flickers), replace `useEffect` with [`useLayoutEffect`.](/reference/react/useLayoutEffect)\n* If your Effect is caused by an interaction (like a click), **React may run your Effect before the browser paints the updated screen**. This ensures that the result of the Effect can be observed by the event system. Usually, this works as expected. However, if you must defer the work until after paint, such as an `alert()`, you can use `setTimeout`. See [reactwg/react-18/128](https://github.com/reactwg/react-18/discussions/128) for more information.\n* Even if your Effect was caused by an interaction",
+        "title": "useEffect – React",
+        "truncated": false,
+        "supplement": false,
+        "content_hash": "7a5d493d823996064304650f8937144031261c8999345369a0de11fcb4ffa7c6",
+        "content_kind": "full_extract",
+        "original_url": "https://react.dev/reference/react/useEffect",
+        "retrieved_at": "2026-10-14T12:17:43.805094Z",
+        "source_chars": 59201,
+        "context_truncated": false,
+        "acquisition_status": "available"
+      },
+      {
+        "id": "s5",
+        "url": "https://react.dev/reference/react/useEffect",
+        "text": "(like a click), **React may allow the browser to repaint the screen before processing the state updates inside your Effect.** Usually, this works as expected. However, if you must block the browser from repainting the screen, you need to replace `useEffect` with [`useLayoutEffect`.](/reference/react/useLayoutEffect)\n* Effects **only run on the client.** They don’t run during server rendering.\n\n---\n\n## Usage\n\n### Connecting to an external system\n\nSome components need to stay connected to the network, some browser API, or a third-party library, while they are displayed on the page. These systems aren’t controlled by React, so they are called *external.*\n\nTo [connect your component to some external system,](/learn/synchronizing-with-effects) call `useEffect` at the top level of your component:\n\n```\n\n\nimport { useState, useEffect } from 'react';\n\n\n\nimport { createConnection } from './chat.js';\n\n\n\nfunction ChatRoom({ roomId }) {\n\n\n\nconst [serverUrl, setServerUrl] = useState('https://localhost:1234');\n\n\n\nuseEffect(() => {\n\n\n\nconst connection = createConnection(serverUrl, roomId);\n\n\n\nconnection.connect();\n\n\n\nreturn () => {\n\n\n\nconnection.disconnect();\n\n\n\n};\n\n\n\n}, [serverUrl, roomId]);\n\n\n\n// ...\n\n\n\n}\n\n\n```\n\nYou need to pass two arguments to `useEffect`:\n\n1. A *setup function* with setup code that connects to that system.\n   * It should return a *cleanup function* with cleanup code that disconnects from that system.\n2. A list of dependencies including every value from your component used inside of those functions.\n\n**React calls your setup and cleanup functions whenever it’s necessary, which may happen multiple times:**\n\n1. Your setup code runs when your component is added to the page *(mounts)*.\n2. After every commit of your component where the dependencies have changed:\n   * First, your cleanup code runs with the old props and state.\n   * Then, your setup code runs with the new props and state.\n3. Your cleanup code runs one final time after your component is removed from the page *(unmounts).*\n\n**Let’s illustrate this sequence for the example above.**\n\nWhen the `ChatRoom` component above gets added to the page, it will connect to the chat room with the initial `serverUrl` and `roomId`. If either `serverUrl` or `roomId` change as a result of a commit (say, if the user picks a different chat room in a dropdown), your Effect will *disconnect from the previous room, and connect to the next one.* When the `ChatRoom` component is removed from the page, your Effect will disconnect one last time.\n\n**To [help you find bugs,](/learn/synchronizing-with-effects#step-3-add-cleanup-if-needed) in development React runs setup and cleanup one extra time before the setup.** This is a stress-test that verifies your Effect’s logic is implemented correctly. If this causes visible issues, your cleanup function is missing some logic. The cleanup function should stop or undo whatever the setup function was doing. The rule of thumb is that the user shouldn’t be able to distinguish between the setup being called once (as in production) and a *setup* → *cleanup* → *setup* sequence (as in development). [See common solutions.](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)\n\n**Try to [write every Effect as an independent process](/learn/lifecycle-of-reactive-effects#each-effect-represents-a-separate-synchronization-process) and [think about a single setup/cleanup cycle at a time.](/learn/lifecycle-of-reactive-effects#thinking-from-the-effects-perspective)** It shouldn’t matter whether your component is mounting, updating, or unmounting. When your cleanup logic correctly “mirrors” the setup logic, your Effect is resilient to running setup and cleanup as often as needed.\n\n### Note\n\nAn Effect lets you [keep your component synchronized](/learn/synchronizing-with-effects) with some external system (like a chat service). Here, *external system* means any piece of code that’s not controlled by React, such as:\n\n* A timer managed w",
+        "title": "useEffect – React",
+        "truncated": false,
+        "supplement": false,
+        "content_hash": "7a5d493d823996064304650f8937144031261c8999345369a0de11fcb4ffa7c6",
+        "content_kind": "full_extract",
+        "original_url": "https://react.dev/reference/react/useEffect",
+        "retrieved_at": "2026-10-14T12:17:43.805094Z",
+        "source_chars": 59201,
+        "context_truncated": false,
+        "acquisition_status": "available"
+      },
+      {
+        "id": "s6",
+        "url": "https://react.dev/reference/react/useEffect",
+        "text": "ith [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/setInterval) and [`clearInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/clearInterval).\n* An event subscription using [`window.addEventListener()`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) and [`window.removeEventListener()`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener).\n* A third-party animation library with an API like `animation.start()` and `animation.reset()`.\n\n**If you’re not connecting to any external system, [you probably don’t need an Effect.](/learn/you-might-not-need-an-effect)**\n\n#### Examples of connecting to an external system\n\n1. Connecting to a chat server 2. Listening to a global browser event 3. Triggering an animation 4. Controlling a modal dialog 5. Tracking element visibility\n\n#### Example 1 of 5: Connecting to a chat server\n\nIn this example, the `ChatRoom` component uses an Effect to stay connected to an external system defined in `chat.js`. Press “Open chat” to make the `ChatRoom` component appear. This sandbox runs in development mode, so there is an extra connect-and-disconnect cycle, as [explained here.](/learn/synchronizing-with-effects#step-3-add-cleanup-if-needed) Try changing the `roomId` and `serverUrl` using the dropdown and the input, and see how the Effect re-connects to the chat. Press “Close chat” to see the Effect disconnect one last time.\n\nApp.jschat.js\n\nApp.js\n\nReloadClear[Fork](https://codesandbox.io/api/v1/sandboxes/define?undefined&environment=create-react-app \"Open in CodeSandbox\")\n\n```\nimport { useState, useEffect } from 'react';\nimport { createConnection } from './chat.js';\n\nfunction ChatRoom({ roomId }) {\n  const [serverUrl, setServerUrl] = useState('https://localhost:1234');\n\n  useEffect(() => {\n    const connection = createConnection(serverUrl, roomId);\n    connection.connect();\n    return () => {\n      connection.disconnect();\n    };\n  }, [roomId, serverUrl]);\n\n  return (\n    <>\n      <label>\n        Server URL:{' '}\n        <input\n          value={serverUrl}\n          onChange={e => setServerUrl(e.target.value)}\n        />\n      </label>\n      <h1>Welcome to the {roomId} room!</h1>\n    </>\n  );\n}\n\nexport default function App() {\n  const [roomId, setRoomId] = useState('general');\n  const [show, setShow] = useState(false);\n  return (\n    <>\n      <label>\n        Choose the chat room:{' '}\n        <select\n          value={roomId}\n          onChange={e => setRoomId(e.target.value)}\n        >\n          <option value=\"general\">general</option>\n          <option value=\"travel\">travel</option>\n          <option value=\"music\">music</option>\n        </select>\n      </label>\n      <button onClick={() => setShow(!show)}>\n        {show ? 'Close chat' : 'Open chat'}\n      </button>\n      {show && <hr />}\n      {show && <ChatRoom roomId={roomId} />}\n    </>\n  );\n}\n\n\n```\n\nShow more\n\nNext Example\n\n---\n\n### Wrapping Effects in custom Hooks\n\nEffects are an [“escape hatch”:](/learn/escape-hatches) you use them when you need to “step outside React” and when there is no better built-in solution for your use case. If you find yourself often needing to manually write Effects, it’s usually a sign that you need to extract some [custom Hooks](/learn/reusing-logic-with-custom-hooks) for common behaviors your components rely on.\n\nFor example, this `useChatRoom` custom Hook “hides” the logic of your Effect behind a more declarative API:\n\n```\n\n\nfunction useChatRoom({ serverUrl, roomId }) {\n\n\n\nuseEffect(() => {\n\n\n\nconst options = {\n\n\n\nserverUrl: serverUrl,\n\n\n\nroomId: roomId\n\n\n\n};\n\n\n\nconst connection = createConnection(options);\n\n\n\nconnection.connect();\n\n\n\nreturn () => connection.disconnect();\n\n\n\n}, [roomId, serverUrl]);\n\n\n\n}\n\n\n```\n\nThen you can use it from any component like this:\n\n```\n\n\nfunction ChatRoom({ roomId }) {\n\n\n\nconst [serverUrl, setServerUrl] = useState('https://localhost:1234');\n\n\n\nuseChatRoom({\n\n\n\nroomId: roomId,\n\n\n\nserverUrl: serverUrl",
+        "title": "useEffect – React",
+        "truncated": false,
+        "supplement": false,
+        "content_hash": "7a5d493d823996064304650f8937144031261c8999345369a0de11fcb4ffa7c6",
+        "content_kind": "full_extract",
+        "original_url": "https://react.dev/reference/react/useEffect",
+        "retrieved_at": "2026-10-14T12:17:43.805094Z",
+        "source_chars": 59201,
+        "context_truncated": false,
+        "acquisition_status": "available"
+      },
+      {
+        "id": "s7",
+        "url": "https://react.dev/reference/react/useEffect",
+        "text": "});\n\n\n\n// ...\n\n\n```\n\nThere are also many excellent custom Hooks for every purpose available in the React ecosystem.\n\n[Learn more about wrapping Effects in custom Hooks.](/learn/reusing-logic-with-custom-hooks)\n\n#### Examples of wrapping Effects in custom Hooks\n\n1. Custom `useChatRoom` Hook 2. Custom `useWindowListener` Hook 3. Custom `useIntersectionObserver` Hook\n\n#### Example 1 of 3: Custom `useChatRoom` Hook\n\nThis example is identical to one of the [earlier examples,](#examples-connecting) but the logic is extracted to a custom Hook.\n\nApp.jsuseChatRoom.jschat.js\n\nApp.js\n\nReloadClear[Fork](https://codesandbox.io/api/v1/sandboxes/define?undefined&environment=create-react-app \"Open in CodeSandbox\")\n\n```\nimport { useState } from 'react';\nimport { useChatRoom } from './useChatRoom.js';\n\nfunction ChatRoom({ roomId }) {\n  const [serverUrl, setServerUrl] = useState('https://localhost:1234');\n\n  useChatRoom({\n    roomId: roomId,\n    serverUrl: serverUrl\n  });\n\n  return (\n    <>\n      <label>\n        Server URL:{' '}\n        <input\n          value={serverUrl}\n          onChange={e => setServerUrl(e.target.value)}\n        />\n      </label>\n      <h1>Welcome to the {roomId} room!</h1>\n    </>\n  );\n}\n\nexport default function App() {\n  const [roomId, setRoomId] = useState('general');\n  const [show, setShow] = useState(false);\n  return (\n    <>\n      <label>\n        Choose the chat room:{' '}\n        <select\n          value={roomId}\n          onChange={e => setRoomId(e.target.value)}\n        >\n          <option value=\"general\">general</option>\n          <option value=\"travel\">travel</option>\n          <option value=\"music\">music</option>\n        </select>\n      </label>\n      <button onClick={() => setShow(!show)}>\n        {show ? 'Close chat' : 'Open chat'}\n      </button>\n      {show && <hr />}\n      {show && <ChatRoom roomId={roomId} />}\n    </>\n  );\n}\n\n\n```\n\nShow more\n\nNext Example\n\n---\n\n### Controlling a non-React widget\n\nSometimes, you want to keep an external system synchronized to some prop or state of your component.\n\nFor example, if you have a third-party map widget or a video player component written without React, you can use an Effect to call methods on it that make its state match the current state of your React component. This Effect creates an instance of a `MapWidget` class defined in `map-widget.js`. When you change the `zoomLevel` prop of the `Map` component, the Effect calls the `setZoom()` on the class instance to keep it synchronized:\n\nApp.jsMap.jsmap-widget.js\n\nMap.js\n\nReloadClear[Fork](https://codesandbox.io/api/v1/sandboxes/define?undefined&environment=create-react-app \"Open in CodeSandbox\")\n\n```\nimport { useRef, useEffect } from 'react';\nimport { MapWidget } from './map-widget.js';\n\nexport default function Map({ zoomLevel }) {\n  const containerRef = useRef(null);\n  const mapRef = useRef(null);\n\n  useEffect(() => {\n    if (mapRef.current === null) {\n      mapRef.current = new MapWidget(containerRef.current);\n    }\n\n    const map = mapRef.current;\n    map.setZoom(zoomLevel);\n  }, [zoomLevel]);\n\n  return (\n    <div\n      style={{ width: 200, height: 200 }}\n      ref={containerRef}\n    />\n  );\n}\n\n\n```\n\nShow more\n\nIn this example, a cleanup function is not needed because the `MapWidget` class manages only the DOM node that was passed to it. After the `Map` React component is removed from the tree, both the DOM node and the `MapWidget` class instance will be automatically garbage-collected by the browser JavaScript engine.\n\n---\n\n### Fetching data with Effects\n\nYou can use an Effect to fetch data for your component. Note that [if you use a framework,](/learn/creating-a-react-app#full-stack-frameworks) using your framework’s data fetching mechanism will be a lot more efficient than writing Effects manually.\n\nIf you want to fetch data from an Effect manually, your code might look like this:\n\n```\n\n\nimport { useState, useEffect } from 'react';\n\n\n\nimport { fetchBio } from './api.js';\n\n\n\nexport default function Page() {\n\n\n\nc",
+        "title": "useEffect – React",
+        "truncated": false,
+        "supplement": false,
+        "content_hash": "7a5d493d823996064304650f8937144031261c8999345369a0de11fcb4ffa7c6",
+        "content_kind": "full_extract",
+        "original_url": "https://react.dev/reference/react/useEffect",
+        "retrieved_at": "2026-10-14T12:17:43.805094Z",
+        "source_chars": 59201,
+        "context_truncated": false,
+        "acquisition_status": "available"
+      },
+      {
+        "id": "s8",
+        "url": "https://react.dev/reference/react/useEffect",
+        "text": "onst [person, setPerson] = useState('Alice');\n\n\n\nconst [bio, setBio] = useState(null);\n\n\n\nuseEffect(() => {\n\n\n\nlet ignore = false;\n\n\n\nsetBio(null);\n\n\n\nfetchBio(person).then(result => {\n\n\n\nif (!ignore) {\n\n\n\nsetBio(result);\n\n\n\n}\n\n\n\n});\n\n\n\nreturn () => {\n\n\n\nignore = true;\n\n\n\n};\n\n\n\n}, [person]);\n\n\n\n// ...\n\n\n```\n\nNote the `ignore` variable which is initialized to `false`, and is set to `true` during cleanup. This ensures [your code doesn’t suffer from “race conditions”:](https://maxrozen.com/race-conditions-fetching-data-react-with-useeffect) network responses may arrive in a different order than you sent them.\n\nApp.js\n\nApp.js\n\nReloadClear[Fork](https://codesandbox.io/api/v1/sandboxes/define?undefined&environment=create-react-app \"Open in CodeSandbox\")\n\n```\nimport { useState, useEffect } from 'react';\nimport { fetchBio } from './api.js';\n\nexport default function Page() {\n  const [person, setPerson] = useState('Alice');\n  const [bio, setBio] = useState(null);\n  useEffect(() => {\n    let ignore = false;\n    setBio(null);\n    fetchBio(person).then(result => {\n      if (!ignore) {\n        setBio(result);\n      }\n    });\n    return () => {\n      ignore = true;\n    }\n  }, [person]);\n\n  return (\n    <>\n      <select value={person} onChange={e => {\n        setPerson(e.target.value);\n      }}>\n        <option value=\"Alice\">Alice</option>\n        <option value=\"Bob\">Bob</option>\n        <option value=\"Taylor\">Taylor</option>\n      </select>\n      <hr />\n      <p><i>{bio ?? 'Loading...'}</i></p>\n    </>\n  );\n}\n\n\n```\n\nShow more\n\nYou can also rewrite using the [`async` / `await`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) syntax, but you still need to provide a cleanup function:\n\nApp.js\n\nApp.js\n\nReloadClear[Fork](https://codesandbox.io/api/v1/sandboxes/define?undefined&environment=create-react-app \"Open in CodeSandbox\")\n\n```\nimport { useState, useEffect } from 'react';\nimport { fetchBio } from './api.js';\n\nexport default function Page() {\n  const [person, setPerson] = useState('Alice');\n  const [bio, setBio] = useState(null);\n  useEffect(() => {\n    async function startFetching() {\n      setBio(null);\n      const result = await fetchBio(person);\n      if (!ignore) {\n        setBio(result);\n      }\n    }\n\n    let ignore = false;\n    startFetching();\n    return () => {\n      ignore = true;\n    }\n  }, [person]);\n\n  return (\n    <>\n      <select value={person} onChange={e => {\n        setPerson(e.target.value);\n      }}>\n        <option value=\"Alice\">Alice</option>\n        <option value=\"Bob\">Bob</option>\n        <option value=\"Taylor\">Taylor</option>\n      </select>\n      <hr />\n      <p><i>{bio ?? 'Loading...'}</i></p>\n    </>\n  );\n}\n\n\n```\n\nShow more\n\nWriting data fetching directly in Effects gets repetitive and makes it difficult to add optimizations like caching and server rendering later. [It’s easier to use a custom Hook—either your own or maintained by the community.](/learn/reusing-logic-with-custom-hooks#when-to-use-custom-hooks)\n\n##### Deep Dive\n\n#### What are good alternatives to data fetching in Effects?\n\nShow Details\n\nWriting `fetch` calls inside Effects is a [popular way to fetch data](https://www.robinwieruch.de/react-hooks-fetch-data/), especially in fully client-side apps. This is, however, a very manual approach and it has significant downsides:\n\n* **Effects don’t run on the server.** This means that the initial server-rendered HTML will only include a loading state with no data. The client computer will have to download all JavaScript and render your app only to discover that now it needs to load the data. This is not very efficient.\n* **Fetching directly in Effects makes it easy to create “network waterfalls”.** You render the parent component, it fetches some data, renders the child components, and then they start fetching their data. If the network is not very fast, this is significantly slower than fetching all data in parallel.\n* **Fetching directly in Effects usually means y",
+        "title": "useEffect – React",
+        "truncated": false,
+        "supplement": false,
+        "content_hash": "7a5d493d823996064304650f8937144031261c8999345369a0de11fcb4ffa7c6",
+        "content_kind": "full_extract",
+        "original_url": "https://react.dev/reference/react/useEffect",
+        "retrieved_at": "2026-10-14T12:17:43.805094Z",
+        "source_chars": 59201,
+        "context_truncated": false,
+        "acquisition_status": "available"
+      },
+      {
+        "id": "s9",
+        "url": "https://react.dev/reference/react/useEffect",
+        "text": "ou don’t preload or cache data.** For example, if the component unmounts and then mounts again, it would have to fetch the data again.\n* **It’s not very ergonomic.** There’s quite a bit of boilerplate code involved when writing `fetch` calls in a way that doesn’t suffer from bugs like [race conditions.](https://maxrozen.com/race-conditions-fetching-data-react-with-useeffect)\n\nThis list of downsides is not specific to React. It applies to fetching data on mount with any library. Like with routing, data fetching is not trivial to do well, so we recommend the following approaches:\n\n* **If you use a [framework](/learn/creating-a-react-app#full-stack-frameworks), use its built-in data fetching mechanism.** Modern React frameworks have integrated data fetching mechanisms that are efficient and don’t suffer from the above pitfalls.\n* **Otherwise, consider using or building a client-side cache.** Popular open source solutions include [TanStack Query](https://tanstack.com/query/latest/), [useSWR](https://swr.vercel.app/), and [React Router 6.4+.](https://beta.reactrouter.com/en/main/start/overview) You can build your own solution too, in which case you would use Effects under the hood but also add logic for deduplicating requests, caching responses, and avoiding network waterfalls (by preloading data or hoisting data requirements to routes).\n\nYou can continue fetching data directly in Effects if neither of these approaches suit you.\n\n\n\n---\n\n### Specifying reactive dependencies\n\n**Notice that you can’t “choose” the dependencies of your Effect.** Every reactive value used by your Effect’s code must be declared as a dependency. Your Effect’s dependency list is determined by the surrounding code:\n\n```\n\n\nfunction ChatRoom({ roomId }) { // This is a reactive value\n\n\n\nconst [serverUrl, setServerUrl] = useState('https://localhost:1234'); // This is a reactive value too\n\n\n\nuseEffect(() => {\n\n\n\nconst connection = createConnection(serverUrl, roomId); // This Effect reads these reactive values\n\n\n\nconnection.connect();\n\n\n\nreturn () => connection.disconnect();\n\n\n\n}, [serverUrl, roomId]); // ✅ So you must specify them as dependencies of your Effect\n\n\n\n// ...\n\n\n\n}\n\n\n```\n\nIf either `serverUrl` or `roomId` change, your Effect will reconnect to the chat using the new values.\n\n**[Reactive values](/learn/lifecycle-of-reactive-effects#effects-react-to-reactive-values) include props and all variables and functions declared directly inside of your component.** Since `roomId` and `serverUrl` are reactive values, you can’t remove them from the dependencies. If you try to omit them and [your linter is correctly configured for React,](/learn/editor-setup#linting) the linter will flag this as a mistake you need to fix:\n\n```\n\n\nfunction ChatRoom({ roomId }) {\n\n\n\nconst [serverUrl, setServerUrl] = useState('https://localhost:1234');\n\n\n\nuseEffect(() => {\n\n\n\nconst connection = createConnection(serverUrl, roomId);\n\n\n\nconnection.connect();\n\n\n\nreturn () => connection.disconnect();\n\n\n\n}, []); // 🔴 React Hook useEffect has missing dependencies: 'roomId' and 'serverUrl'\n\n\n\n// ...\n\n\n\n}\n\n\n```\n\n**To remove a dependency, you need to [“prove” to the linter that it *doesn’t need* to be a dependency.](/learn/removing-effect-dependencies#removing-unnecessary-dependencies)** For example, you can move `serverUrl` out of your component to prove that it’s not reactive and won’t change on re-renders:\n\n```\n\n\nconst serverUrl = 'https://localhost:1234'; // Not a reactive value anymore\n\n\n\nfunction ChatRoom({ roomId }) {\n\n\n\nuseEffect(() => {\n\n\n\nconst connection = createConnection(serverUrl, roomId);\n\n\n\nconnection.connect();\n\n\n\nreturn () => connection.disconnect();\n\n\n\n}, [roomId]); // ✅ All dependencies declared\n\n\n\n// ...\n\n\n\n}\n\n\n```\n\nNow that `serverUrl` is not a reactive value (and can’t change on a re-render), it doesn’t need to be a dependency. **If your Effect’s code doesn’t use any reactive values, its dependency list should be empty (`[]`):**\n\n```\n\n\nconst serverUrl = 'https://localhost:12",
+        "title": "useEffect – React",
+        "truncated": false,
+        "supplement": false,
+        "content_hash": "7a5d493d823996064304650f8937144031261c8999345369a0de11fcb4ffa7c6",
+        "content_kind": "full_extract",
+        "original_url": "https://react.dev/reference/react/useEffect",
+        "retrieved_at": "2026-10-14T12:17:43.805094Z",
+        "source_chars": 59201,
+        "context_truncated": false,
+        "acquisition_status": "available"
+      },
+      {
+        "id": "s10",
+        "url": "https://react.dev/reference/react/useEffect",
+        "text": "34'; // Not a reactive value anymore\n\n\n\nconst roomId = 'music'; // Not a reactive value anymore\n\n\n\nfunction ChatRoom() {\n\n\n\nuseEffect(() => {\n\n\n\nconst connection = createConnection(serverUrl, roomId);\n\n\n\nconnection.connect();\n\n\n\nreturn () => connection.disconnect();\n\n\n\n}, []); // ✅ All dependencies declared\n\n\n\n// ...\n\n\n\n}\n\n\n```\n\n[An Effect with empty dependencies](/learn/lifecycle-of-reactive-effects#what-an-effect-with-empty-dependencies-means) doesn’t re-run when any of your component’s props or state change.\n\n### Pitfall\n\nIf you have an existing codebase, you might have some Effects that suppress the linter like this:\n\n```\n\n\nuseEffect(() => {\n\n\n\n// ...\n\n\n\n// 🔴 Avoid suppressing the linter like this:\n\n\n\n// eslint-ignore-next-line react-hooks/exhaustive-deps\n\n\n\n}, []);\n\n\n```\n\n**When dependencies don’t match the code, there is a high risk of introducing bugs.** By suppressing the linter, you “lie” to React about the values your Effect depends on. [Instead, prove they’re unnecessary.](/learn/removing-effect-dependencies#removing-unnecessary-dependencies)\n\n#### Examples of passing reactive dependencies\n\n1. Passing a dependency array 2. Passing an empty dependency array 3. Passing no dependency array at all\n\n#### Example 1 of 3: Passing a dependency array\n\nIf you specify the dependencies, your Effect runs **after the initial commit *and* after commits with changed dependencies.**\n\n```\n\n\nuseEffect(() => {\n\n\n\n// ...\n\n\n\n}, [a, b]); // Runs again if a or b are different\n\n\n```\n\nIn the below example, `serverUrl` and `roomId` are [reactive values,](/learn/lifecycle-of-reactive-effects#effects-react-to-reactive-values) so they both must be specified as dependencies. As a result, selecting a different room in the dropdown or editing the server URL input causes the chat to re-connect. However, since `message` isn’t used in the Effect (and so it isn’t a dependency), editing the message doesn’t re-connect to the chat.\n\nApp.jschat.js\n\nApp.js\n\nReloadClear[Fork](https://codesandbox.io/api/v1/sandboxes/define?undefined&environment=create-react-app \"Open in CodeSandbox\")\n\n```\nimport { useState, useEffect } from 'react';\nimport { createConnection } from './chat.js';\n\nfunction ChatRoom({ roomId }) {\n  const [serverUrl, setServerUrl] = useState('https://localhost:1234');\n  const [message, setMessage] = useState('');\n\n  useEffect(() => {\n    const connection = createConnection(serverUrl, roomId);\n    connection.connect();\n    return () => {\n      connection.disconnect();\n    };\n  }, [serverUrl, roomId]);\n\n  return (\n    <>\n      <label>\n        Server URL:{' '}\n        <input\n          value={serverUrl}\n          onChange={e => setServerUrl(e.target.value)}\n        />\n      </label>\n      <h1>Welcome to the {roomId} room!</h1>\n      <label>\n        Your message:{' '}\n        <input value={message} onChange={e => setMessage(e.target.value)} />\n      </label>\n    </>\n  );\n}\n\nexport default function App() {\n  const [show, setShow] = useState(false);\n  const [roomId, setRoomId] = useState('general');\n  return (\n    <>\n      <label>\n        Choose the chat room:{' '}\n        <select\n          value={roomId}\n          onChange={e => setRoomId(e.target.value)}\n        >\n          <option value=\"general\">general</option>\n          <option value=\"travel\">travel</option>\n          <option value=\"music\">music</option>\n        </select>\n        <button onClick={() => setShow(!show)}>\n          {show ? 'Close chat' : 'Open chat'}\n        </button>\n      </label>\n      {show && <hr />}\n      {show && <ChatRoom roomId={roomId}/>}\n    </>\n  );\n}\n\n\n```\n\nShow more\n\nNext Example\n\n---\n\n### Updating state based on previous state from an Effect\n\nWhen you want to update state based on previous state from an Effect, you might run into a problem:\n\n```\n\n\nfunction Counter() {\n\n\n\nconst [count, setCount] = useState(0);\n\n\n\nuseEffect(() => {\n\n\n\nconst intervalId = setInterval(() => {\n\n\n\nsetCount(count + 1); // You want to increment the counter every second...\n\n\n\n}, 1000)\n\n\n\nreturn",
+        "title": "useEffect – React",
+        "truncated": false,
+        "supplement": false,
+        "content_hash": "7a5d493d823996064304650f8937144031261c8999345369a0de11fcb4ffa7c6",
+        "content_kind": "full_extract",
+        "original_url": "https://react.dev/reference/react/useEffect",
+        "retrieved_at": "2026-10-14T12:17:43.805094Z",
+        "source_chars": 59201,
+        "context_truncated": false,
+        "acquisition_status": "available"
+      },
+      {
+        "id": "s11",
+        "url": "https://react.dev/reference/react/useEffect",
+        "text": "() => clearInterval(intervalId);\n\n\n\n}, [count]); // 🚩 ... but specifying `count` as a dependency always resets the interval.\n\n\n\n// ...\n\n\n\n}\n\n\n```\n\nSince `count` is a reactive value, it must be specified in the list of dependencies. However, that causes the Effect to cleanup and setup again every time the `count` changes. This is not ideal.\n\nTo fix this, [pass the `c => c + 1` state updater](/reference/react/useState#updating-state-based-on-the-previous-state) to `setCount`:\n\nApp.js\n\nApp.js\n\nDownloadReloadClear[Fork](https://codesandbox.io/api/v1/sandboxes/define?undefined&environment=create-react-app \"Open in CodeSandbox\")\n\n```\nimport { useState, useEffect } from 'react';\n\nexport default function Counter() {\n  const [count, setCount] = useState(0);\n\n  useEffect(() => {\n    const intervalId = setInterval(() => {\n      setCount(c => c + 1); // ✅ Pass a state updater\n    }, 1000);\n    return () => clearInterval(intervalId);\n  }, []); // ✅ Now count is not a dependency\n\n  return <h1>{count}</h1>;\n}\n\n\n```\n\nNow that you’re passing `c => c + 1` instead of `count + 1`, [your Effect no longer needs to depend on `count`.](/learn/removing-effect-dependencies#are-you-reading-some-state-to-calculate-the-next-state) As a result of this fix, it won’t need to cleanup and setup the interval again every time the `count` changes.\n\n---\n\n### Removing unnecessary object dependencies\n\nIf your Effect depends on an object or a function created during rendering, it might run too often. For example, this Effect re-connects after every commit because the `options` object is [different for every render:](/learn/removing-effect-dependencies#does-some-reactive-value-change-unintentionally)\n\n```\n\n\nconst serverUrl = 'https://localhost:1234';\n\n\n\nfunction ChatRoom({ roomId }) {\n\n\n\nconst [message, setMessage] = useState('');\n\n\n\nconst options = { // 🚩 This object is created from scratch on every re-render\n\n\n\nserverUrl: serverUrl,\n\n\n\nroomId: roomId\n\n\n\n};\n\n\n\nuseEffect(() => {\n\n\n\nconst connection = createConnection(options); // It's used inside the Effect\n\n\n\nconnection.connect();\n\n\n\nreturn () => connection.disconnect();\n\n\n\n}, [options]); // 🚩 As a result, these dependencies are always different on a commit\n\n\n\n// ...\n\n\n```\n\nAvoid using an object created during rendering as a dependency. Instead, create the object inside the Effect:\n\nApp.jschat.js\n\nApp.js\n\nReloadClear[Fork](https://codesandbox.io/api/v1/sandboxes/define?undefined&environment=create-react-app \"Open in CodeSandbox\")\n\n```\nimport { useState, useEffect } from 'react';\nimport { createConnection } from './chat.js';\n\nconst serverUrl = 'https://localhost:1234';\n\nfunction ChatRoom({ roomId }) {\n  const [message, setMessage] = useState('');\n\n  useEffect(() => {\n    const options = {\n      serverUrl: serverUrl,\n      roomId: roomId\n    };\n    const connection = createConnection(options);\n    connection.connect();\n    return () => connection.disconnect();\n  }, [roomId]);\n\n  return (\n    <>\n      <h1>Welcome to the {roomId} room!</h1>\n      <input value={message} onChange={e => setMessage(e.target.value)} />\n    </>\n  );\n}\n\nexport default function App() {\n  const [roomId, setRoomId] = useState('general');\n  return (\n    <>\n      <label>\n        Choose the chat room:{' '}\n        <select\n          value={roomId}\n          onChange={e => setRoomId(e.target.value)}\n        >\n          <option value=\"general\">general</option>\n          <option value=\"travel\">travel</option>\n          <option value=\"music\">music</option>\n        </select>\n      </label>\n      <hr />\n      <ChatRoom roomId={roomId} />\n    </>\n  );\n}\n\n\n```\n\nShow more\n\nNow that you create the `options` object inside the Effect, the Effect itself only depends on the `roomId` string.\n\nWith this fix, typing into the input doesn’t reconnect the chat. Unlike an object which gets re-created, a string like `roomId` doesn’t change unless you set it to another value. [Read more about removing dependencies.](/learn/removing-effect-dependencies)\n\n---\n\n### Removing un",
+        "title": "useEffect – React",
+        "truncated": false,
+        "supplement": false,
+        "content_hash": "7a5d493d823996064304650f8937144031261c8999345369a0de11fcb4ffa7c6",
+        "content_kind": "full_extract",
+        "original_url": "https://react.dev/reference/react/useEffect",
+        "retrieved_at": "2026-10-14T12:17:43.805094Z",
+        "source_chars": 59201,
+        "context_truncated": false,
+        "acquisition_status": "available"
+      },
+      {
+        "id": "s12",
+        "url": "https://react.dev/reference/react/useEffect",
+        "text": "necessary function dependencies\n\nIf your Effect depends on an object or a function created during rendering, it might run too often. For example, this Effect re-connects after every commit because the `createOptions` function is [different for every render:](/learn/removing-effect-dependencies#does-some-reactive-value-change-unintentionally)\n\n```\n\n\nfunction ChatRoom({ roomId }) {\n\n\n\nconst [message, setMessage] = useState('');\n\n\n\nfunction createOptions() { // 🚩 This function is created from scratch on every re-render\n\n\n\nreturn {\n\n\n\nserverUrl: serverUrl,\n\n\n\nroomId: roomId\n\n\n\n};\n\n\n\n}\n\n\n\nuseEffect(() => {\n\n\n\nconst options = createOptions(); // It's used inside the Effect\n\n\n\nconst connection = createConnection();\n\n\n\nconnection.connect();\n\n\n\nreturn () => connection.disconnect();\n\n\n\n}, [createOptions]); // 🚩 As a result, these dependencies are always different on a commit\n\n\n\n// ...\n\n\n```\n\nBy itself, creating a function from scratch on every re-render is not a problem. You don’t need to optimize that. However, if you use it as a dependency of your Effect, it will cause your Effect to re-run after every commit.\n\nAvoid using a function created during rendering as a dependency. Instead, declare it inside the Effect:\n\nApp.jschat.js\n\nApp.js\n\nReloadClear[Fork](https://codesandbox.io/api/v1/sandboxes/define?undefined&environment=create-react-app \"Open in CodeSandbox\")\n\n```\nimport { useState, useEffect } from 'react';\nimport { createConnection } from './chat.js';\n\nconst serverUrl = 'https://localhost:1234';\n\nfunction ChatRoom({ roomId }) {\n  const [message, setMessage] = useState('');\n\n  useEffect(() => {\n    function createOptions() {\n      return {\n        serverUrl: serverUrl,\n        roomId: roomId\n      };\n    }\n\n    const options = createOptions();\n    const connection = createConnection(options);\n    connection.connect();\n    return () => connection.disconnect();\n  }, [roomId]);\n\n  return (\n    <>\n      <h1>Welcome to the {roomId} room!</h1>\n      <input value={message} onChange={e => setMessage(e.target.value)} />\n    </>\n  );\n}\n\nexport default function App() {\n  const [roomId, setRoomId] = useState('general');\n  return (\n    <>\n      <label>\n        Choose the chat room:{' '}\n        <select\n          value={roomId}\n          onChange={e => setRoomId(e.target.value)}\n        >\n          <option value=\"general\">general</option>\n          <option value=\"travel\">travel</option>\n          <option value=\"music\">music</option>\n        </select>\n      </label>\n      <hr />\n      <ChatRoom roomId={roomId} />\n    </>\n  );\n}\n\n\n```\n\nShow more\n\nNow that you define the `createOptions` function inside the Effect, the Effect itself only depends on the `roomId` string. With this fix, typing into the input doesn’t reconnect the chat. Unlike a function which gets re-created, a string like `roomId` doesn’t change unless you set it to another value. [Read more about removing dependencies.](/learn/removing-effect-dependencies)\n\n---\n\n### Reading the latest props and state from an Effect\n\nBy default, when you read a reactive value from an Effect, you have to add it as a dependency. This ensures that your Effect “reacts” to every change of that value. For most dependencies, that’s the behavior you want.\n\n**However, sometimes you’ll want to read the *latest* props and state from an Effect without “reacting” to them.** For example, imagine you want to log the number of the items in the shopping cart for every page visit:\n\n```\n\n\nfunction Page({ url, shoppingCart }) {\n\n\n\nuseEffect(() => {\n\n\n\nlogVisit(url, shoppingCart.length);\n\n\n\n}, [url, shoppingCart]); // ✅ All dependencies declared\n\n\n\n// ...\n\n\n\n}\n\n\n```\n\n**What if you want to log a new page visit after every `url` change, but *not* if only the `shoppingCart` changes?** You can’t exclude `shoppingCart` from dependencies without breaking the [reactivity rules.](#specifying-reactive-dependencies) However, you can express that you *don’t want* a piece of code to “react” to changes even though it is called from in",
+        "title": "useEffect – React",
+        "truncated": false,
+        "supplement": false,
+        "content_hash": "7a5d493d823996064304650f8937144031261c8999345369a0de11fcb4ffa7c6",
+        "content_kind": "full_extract",
+        "original_url": "https://react.dev/reference/react/useEffect",
+        "retrieved_at": "2026-10-14T12:17:43.805094Z",
+        "source_chars": 59201,
+        "context_truncated": false,
+        "acquisition_status": "available"
+      },
+      {
+        "id": "s13",
+        "url": "https://react.dev/reference/react/useEffect",
+        "text": "side an Effect. [Declare an *Effect Event*](/learn/separating-events-from-effects#declaring-an-effect-event) with the [`useEffectEvent`](/reference/react/useEffectEvent) Hook, and move the code reading `shoppingCart` inside of it:\n\n```\n\n\nfunction Page({ url, shoppingCart }) {\n\n\n\nconst onVisit = useEffectEvent(visitedUrl => {\n\n\n\nlogVisit(visitedUrl, shoppingCart.length)\n\n\n\n});\n\n\n\nuseEffect(() => {\n\n\n\nonVisit(url);\n\n\n\n}, [url]); // ✅ All dependencies declared\n\n\n\n// ...\n\n\n\n}\n\n\n```\n\n**Effect Events are not reactive and must always be omitted from dependencies of your Effect.** This is what lets you put non-reactive code (where you can read the latest value of some props and state) inside of them. By reading `shoppingCart` inside of `onVisit`, you ensure that `shoppingCart` won’t re-run your Effect.\n\n[Read more about how Effect Events let you separate reactive and non-reactive code.](/learn/separating-events-from-effects#reading-latest-props-and-state-with-effect-events)\n\n---\n\n### Displaying different content on the server and the client\n\nIf your app uses server rendering (either [directly](/reference/react-dom/server) or via a [framework](/learn/creating-a-react-app#full-stack-frameworks)), your component will render in two different environments. On the server, it will render to produce the initial HTML. On the client, React will run the rendering code again so that it can attach your event handlers to that HTML. This is why, for [hydration](/reference/react-dom/client/hydrateRoot#hydrating-server-rendered-html) to work, your initial render output must be identical on the client and the server.\n\nIn rare cases, you might need to display different content on the client. For example, if your app reads some data from [`localStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage), it can’t possibly do that on the server. Here is how you could implement this:\n\n\n\n```\n\n\nfunction MyComponent() {\n\n\n\nconst [didMount, setDidMount] = useState(false);\n\n\n\nuseEffect(() => {\n\n\n\nsetDidMount(true);\n\n\n\n}, []);\n\n\n\nif (didMount) {\n\n\n\n// ... return client-only JSX ...\n\n\n\n}  else {\n\n\n\n// ... return initial JSX ...\n\n\n\n}\n\n\n\n}\n\n\n```\n\nWhile the app is loading, the user will see the initial render output. Then, when it’s loaded and hydrated, your Effect will run and set `didMount` to `true`, triggering a re-render. This will switch to the client-only render output. Effects don’t run on the server, so this is why `didMount` was `false` during the initial server render.\n\nUse this pattern sparingly. Keep in mind that users with a slow connection will see the initial content for quite a bit of time—potentially, many seconds—so you don’t want to make jarring changes to your component’s appearance. In many cases, you can avoid the need for this by conditionally showing different things with CSS.\n\n---\n\n## Troubleshooting\n\n### My Effect runs twice when the component mounts\n\nWhen Strict Mode is on, in development, React runs setup and cleanup one extra time before the actual setup.\n\nThis is a stress-test that verifies your Effect’s logic is implemented correctly. If this causes visible issues, your cleanup function is missing some logic. The cleanup function should stop or undo whatever the setup function was doing. The rule of thumb is that the user shouldn’t be able to distinguish between the setup being called once (as in production) and a setup → cleanup → setup sequence (as in development).\n\nRead more about [how this helps find bugs](/learn/synchronizing-with-effects#step-3-add-cleanup-if-needed) and [how to fix your logic.](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)\n\n---\n\n### My Effect runs after every re-render\n\nFirst, check that you haven’t forgotten to specify the dependency array:\n\n```\n\n\nuseEffect(() => {\n\n\n\n// ...\n\n\n\n}); // 🚩 No dependency array: re-runs after every commit!\n\n\n```\n\nIf you’ve specified the dependency array but your Effect still re-runs in a loop, it’s because one of your de",
+        "title": "useEffect – React",
+        "truncated": false,
+        "supplement": false,
+        "content_hash": "7a5d493d823996064304650f8937144031261c8999345369a0de11fcb4ffa7c6",
+        "content_kind": "full_extract",
+        "original_url": "https://react.dev/reference/react/useEffect",
+        "retrieved_at": "2026-10-14T12:17:43.805094Z",
+        "source_chars": 59201,
+        "context_truncated": false,
+        "acquisition_status": "available"
+      },
+      {
+        "id": "s14",
+        "url": "https://react.dev/reference/react/useEffect",
+        "text": "pendencies is different on every re-render.\n\nYou can debug this problem by manually logging your dependencies to the console:\n\n```\n\n\nuseEffect(() => {\n\n\n\n// ..\n\n\n\n}, [serverUrl, roomId]);\n\n\n\nconsole.log([serverUrl, roomId]);\n\n\n```\n\nYou can then right-click on the arrays from different re-renders in the console and select “Store as a global variable” for both of them. Assuming the first one got saved as `temp1` and the second one got saved as `temp2`, you can then use the browser console to check whether each dependency in both arrays is the same:\n\n```\n\n\nObject.is(temp1[0], temp2[0]); // Is the first dependency the same between the arrays?\n\n\n\nObject.is(temp1[1], temp2[1]); // Is the second dependency the same between the arrays?\n\n\n\nObject.is(temp1[2], temp2[2]); // ... and so on for every dependency ...\n\n\n```\n\nWhen you find the dependency that is different on every re-render, you can usually fix it in one of these ways:\n\n* [Updating state based on previous state from an Effect](#updating-state-based-on-previous-state-from-an-effect)\n* [Removing unnecessary object dependencies](#removing-unnecessary-object-dependencies)\n* [Removing unnecessary function dependencies](#removing-unnecessary-function-dependencies)\n* [Reading the latest props and state from an Effect](#reading-the-latest-props-and-state-from-an-effect)\n\nAs a last resort (if these methods didn’t help), wrap its creation with [`useMemo`](/reference/react/useMemo#memoizing-a-dependency-of-another-hook) or [`useCallback`](/reference/react/useCallback#preventing-an-effect-from-firing-too-often) (for functions).\n\n---\n\n### My Effect keeps re-running in an infinite cycle\n\nIf your Effect runs in an infinite cycle, these two things must be true:\n\n* Your Effect is updating some state.\n* That state leads to a re-render, which causes the Effect’s dependencies to change.\n\nBefore you start fixing the problem, ask yourself whether your Effect is connecting to some external system (like DOM, network, a third-party widget, and so on). Why does your Effect need to set state? Does it synchronize with that external system? Or are you trying to manage your application’s data flow with it?\n\nIf there is no external system, consider whether [removing the Effect altogether](/learn/you-might-not-need-an-effect) would simplify your logic.\n\nIf you’re genuinely synchronizing with some external system, think about why and under what conditions your Effect should update the state. Has something changed that affects your component’s visual output? If you need to keep track of some data that isn’t used by rendering, a [ref](/reference/react/useRef#referencing-a-value-with-a-ref) (which doesn’t trigger re-renders) might be more appropriate. Verify your Effect doesn’t update the state (and trigger re-renders) more than needed.\n\nFinally, if your Effect is updating the state at the right time, but there is still a loop, it’s because that state update leads to one of the Effect’s dependencies changing. [Read how to debug dependency changes.](/reference/react/useEffect#my-effect-runs-after-every-re-render)\n\n---\n\n### My cleanup logic runs even though my component didn’t unmount\n\nThe cleanup function runs not only during unmount, but before every re-render with changed dependencies. Additionally, in development, React [runs setup+cleanup one extra time immediately after component mounts.](#my-effect-runs-twice-when-the-component-mounts)\n\nIf you have cleanup code without corresponding setup code, it’s usually a code smell:\n\n```\n\n\nuseEffect(() => {\n\n\n\n// 🔴 Avoid: Cleanup logic without corresponding setup logic\n\n\n\nreturn () => {\n\n\n\ndoSomething();\n\n\n\n};\n\n\n\n}, []);\n\n\n```\n\nYour cleanup logic should be “symmetrical” to the setup logic, and should stop or undo whatever setup did:\n\n```\n\n\nuseEffect(() => {\n\n\n\nconst connection = createConnection(serverUrl, roomId);\n\n\n\nconnection.connect();\n\n\n\nreturn () => {\n\n\n\nconnection.disconnect();\n\n\n\n};\n\n\n\n}, [serverUrl, roomId]);\n\n\n```\n\n[Learn how the Effect lifecycle is different",
+        "title": "useEffect – React",
+        "truncated": false,
+        "supplement": false,
+        "content_hash": "7a5d493d823996064304650f8937144031261c8999345369a0de11fcb4ffa7c6",
+        "content_kind": "full_extract",
+        "original_url": "https://react.dev/reference/react/useEffect",
+        "retrieved_at": "2026-10-14T12:17:43.805094Z",
+        "source_chars": 59201,
+        "context_truncated": false,
+        "acquisition_status": "available"
+      },
+      {
+        "id": "s15",
+        "url": "https://react.dev/reference/react/useEffect",
+        "text": "from the component’s lifecycle.](/learn/lifecycle-of-reactive-effects#the-lifecycle-of-an-effect)\n\n---\n\n### My Effect does something visual, and I see a flicker before it runs\n\nIf your Effect must block the browser from [painting the screen,](/learn/render-and-commit#epilogue-browser-paint) replace `useEffect` with [`useLayoutEffect`](/reference/react/useLayoutEffect). Note that **this shouldn’t be needed for the vast majority of Effects.** You’ll only need this if it’s crucial to run your Effect before the browser paint: for example, to measure and position a tooltip before the user sees it.\n\n[PrevioususeDeferredValue](/reference/react/useDeferredValue)[NextuseEffectEvent](/reference/react/useEffectEvent)\n\n---\n\nCopyright © Meta Platforms, Inc\n\nno uwu plz\n\nuwu?\n\nLogo by[@sawaratsuki1004](https://twitter.com/sawaratsuki1004)\n\n[Learn React](/learn)\n\n[Quick Start](/learn)\n\n[Installation](/learn/installation)\n\n[Describing the UI](/learn/describing-the-ui)\n\n[Adding Interactivity](/learn/adding-interactivity)\n\n[Managing State](/learn/managing-state)\n\n[Escape Hatches](/learn/escape-hatches)\n\n[API Reference](/reference/react)\n\n[React APIs](/reference/react)\n\n[React DOM APIs](/reference/react-dom)\n\n[Community](/community)\n\n[Code of Conduct](https://github.com/react/react/blob/main/CODE_OF_CONDUCT.md)\n\n[Meet the Team](/community/team)\n\n[Docs Contributors](/community/docs-contributors)\n\n[Acknowledgements](/community/acknowledgements)\n\nMore\n\n[Blog](/blog)\n\n[React Native](https://reactnative.dev/)\n\n[Privacy](https://opensource.facebook.com/legal/privacy)\n\n[Terms](https://opensource.fb.com/legal/terms/)\n\n## On this page\n\n* [Overview](#)\n* [Reference](#reference)\n* [`useEffect(setup, dependencies?)`](#useeffect)\n* [Usage](#usage)\n* [Connecting to an external system](#connecting-to-an-external-system)\n* [Wrapping Effects in custom Hooks](#wrapping-effects-in-custom-hooks)\n* [Controlling a non-React widget](#controlling-a-non-react-widget)\n* [Fetching data with Effects](#fetching-data-with-effects)\n* [Specifying reactive dependencies](#specifying-reactive-dependencies)\n* [Updating state based on previous state from an Effect](#updating-state-based-on-previous-state-from-an-effect)\n* [Removing unnecessary object dependencies](#removing-unnecessary-object-dependencies)\n* [Removing unnecessary function dependencies](#removing-unnecessary-function-dependencies)\n* [Reading the latest props and state from an Effect](#reading-the-latest-props-and-state-from-an-effect)\n* [Displaying different content on the server and the client](#displaying-different-content-on-the-server-and-the-client)\n* [Troubleshooting](#troubleshooting)\n* [My Effect runs twice when the component mounts](#my-effect-runs-twice-when-the-component-mounts)\n* [My Effect runs after every re-render](#my-effect-runs-after-every-re-render)\n* [My Effect keeps re-running in an infinite cycle](#my-effect-keeps-re-running-in-an-infinite-cycle)\n* [My cleanup logic runs even though my component didn’t unmount](#my-cleanup-logic-runs-even-though-my-component-didnt-unmount)\n* [My Effect does something visual, and I see a flicker before it runs](#my-effect-does-something-visual-and-i-see-a-flicker-before-it-runs)",
+        "title": "useEffect – React",
+        "truncated": false,
+        "supplement": false,
+        "content_hash": "7a5d493d823996064304650f8937144031261c8999345369a0de11fcb4ffa7c6",
+        "content_kind": "full_extract",
+        "original_url": "https://react.dev/reference/react/useEffect",
+        "retrieved_at": "2026-10-14T12:17:43.805094Z",
+        "source_chars": 59201,
+        "context_truncated": false,
+        "acquisition_status": "available"
+      }
+    ],
+    "source_type": "web",
+    "learning_title": "useEffect 学习范围：Effect 清理与网络请求竞争",
+    "extraction_status": "success",
+    "extraction_failures": [],
+    "learning_instruction": "学习 Effect 清理和网络请求竞争",
+    "created_at": "2026-10-14T12:17:48+00:00",
+    "search_available": true
+  },
+  "wall_attempt_seconds": [
+    6.176,
+    8.052
+  ],
+  "elapsed_seconds": 14.228,
+  "api_timings": [
+    {
+      "method": "POST",
+      "path": "/auth/wechat",
+      "status": 200,
+      "seconds": 0.029
+    },
+    {
+      "method": "POST",
+      "path": "/quiz/preparations",
+      "status": 200,
+      "seconds": 0.253
+    },
+    {
+      "method": "POST",
+      "path": "/materials/web",
+      "status": 200,
+      "seconds": 5.841
+    },
+    {
+      "method": "GET",
+      "path": "/material-jobs/dfb9830b-653c-4857-97e6-1bb64b7e553f",
+      "status": 200,
+      "seconds": 0.024
+    },
+    {
+      "method": "GET",
+      "path": "/materials/15ab38ed-4044-42cd-a09a-2935128bb06d",
+      "status": 200,
+      "seconds": 0.023
+    },
+    {
+      "method": "POST",
+      "path": "/auth/wechat",
+      "status": 200,
+      "seconds": 0.027
+    },
+    {
+      "method": "POST",
+      "path": "/quiz/preparations",
+      "status": 200,
+      "seconds": 0.116
+    },
+    {
+      "method": "POST",
+      "path": "/materials/web",
+      "status": 200,
+      "seconds": 0.025
+    },
+    {
+      "method": "GET",
+      "path": "/material-jobs/dfb9830b-653c-4857-97e6-1bb64b7e553f",
+      "status": 200,
+      "seconds": 0.012
+    },
+    {
+      "method": "GET",
+      "path": "/materials/15ab38ed-4044-42cd-a09a-2935128bb06d",
+      "status": 200,
+      "seconds": 0.018
+    },
+    {
+      "method": "POST",
+      "path": "/quiz/generate",
+      "status": 200,
+      "seconds": 7.831
+    },
+    {
+      "method": "GET",
+      "path": "/operations/generate-url-react",
+      "status": 200,
+      "seconds": 0.011
+    }
+  ],
+  "structured_model_usage": [
+    {
+      "operation": "2f39c083-3f41-402d-969c-a5d4987eba6d",
+      "attempt": 1,
+      "tokens": {
+        "input_tokens": 19334,
+        "output_tokens": 473,
+        "total_tokens": 19807
+      }
+    },
+    {
+      "operation": "7a6283d6-0a6c-4ab3-ad6b-72ac199695a7",
+      "attempt": 1,
+      "tokens": {
+        "input_tokens": 9700,
+        "output_tokens": 764,
+        "total_tokens": 10464
+      }
+    },
+    {
+      "operation": "7a6283d6-0a6c-4ab3-ad6b-72ac199695a7",
+      "attempt": 1,
+      "tokens": {
+        "input_tokens": 9265,
+        "output_tokens": 486,
+        "total_tokens": 9751
+      }
+    }
+  ],
+  "operations": [
+    {
+      "key": "generate-url-react",
+      "kind": "quiz",
+      "status": "succeeded",
+      "stage": "succeeded",
+      "model_calls": 2,
+      "tool_calls": 0,
+      "page_attempts": 0,
+      "charged": 1,
+      "retrieval": null,
+      "error_code": null
+    },
+    {
+      "key": "material-dfb9830b-653c-4857-97e6-1bb64b7e553f",
+      "kind": "material",
+      "status": "succeeded",
+      "stage": "succeeded",
+      "model_calls": 1,
+      "tool_calls": 1,
+      "page_attempts": 1,
+      "charged": 1,
+      "retrieval": null,
+      "error_code": null
+    }
+  ],
+  "retrieval_preparations": [],
+  "confirmed_selection": {
+    "material_id": "15ab38ed-4044-42cd-a09a-2935128bb06d",
+    "point_ids": [
+      "s3",
+      "s4",
+      "s5",
+      "s13",
+      "s14",
+      "s8"
+    ],
+    "supplement": false,
+    "question_count": 3,
+    "difficulty": "easy",
+    "execution": "background"
+  },
+  "operation": {
+    "status": "succeeded",
+    "result": {
+      "id": "07bdf510-054f-4598-9a82-08bf044ec078",
+      "quiz": {
+        "id": "bf0a7513-db60-4fe3-bd99-0ef9bef61e0c",
+        "title": "useEffect 清理与网络请求竞争练习",
+        "reward": {
+          "xp": 10,
+          "coins": 2
+        },
+        "source": {
+          "url": "https://react.dev/reference/react/useEffect",
+          "type": "web",
+          "title": "useEffect – React",
+          "segments": [],
+          "material_id": "15ab38ed-4044-42cd-a09a-2935128bb06d"
+        },
+        "summary": "基于 React 官方 useEffect 文档片段，练习 Effect 清理时机、依赖比较、Strict Mode 行为以及用 ignore 变量避免网络请求竞争条件。",
+        "grounding": {
+          "status": "source_backed",
+          "provider": "tavily",
+          "reason_code": null,
+          "retrieved_at": "2026-10-14T12:17:43.805094Z",
+          "check_version": "evidence-review-v1"
+        },
+        "questions": [
+          {
+            "id": "q1",
+            "stem": "根据材料，在 Effect 中获取数据时，ignore 变量（初始为 false，在 cleanup 中设为 true）的主要作用是什么？",
+            "type": "single",
+            "origin": null,
+            "answers": [],
+            "options": [
+              {
+                "id": "A",
+                "text": "确保网络响应按发送顺序到达"
+              },
+              {
+                "id": "B",
+                "text": "避免网络响应乱序到达导致的竞争条件，使过期响应不再更新状态"
+              },
+              {
+                "id": "C",
+                "text": "让 Effect 只在服务端运行"
+              },
+              {
+                "id": "D",
+                "text": "替代依赖数组，使 Effect 只运行一次"
+              }
+            ],
+            "grounding": {
+              "status": "source_backed"
+            },
+            "source_ids": [],
+            "explanation": "",
+            "knowledge_point": "在 Effect 中获取数据：ignore 变量避免竞争条件"
+          },
+          {
+            "id": "q2",
+            "stem": "根据材料，关于 useEffect 的 setup 与 cleanup 调用时机，下列哪些说法正确？",
+            "type": "multi",
+            "origin": null,
+            "answers": [],
+            "options": [
+              {
+                "id": "A",
+                "text": "组件挂载（添加到页面）时，setup 代码运行"
+              },
+              {
+                "id": "B",
+                "text": "依赖变化后的每次提交中，先用旧值运行 cleanup，再用新值运行 setup"
+              },
+              {
+                "id": "C",
+                "text": "组件从页面移除（卸载）后，cleanup 代码会最后运行一次"
+              },
+              {
+                "id": "D",
+                "text": "只要组件重新渲染，无论依赖是否变化，cleanup 都会先运行"
+              }
+            ],
+            "grounding": {
+              "status": "source_backed"
+            },
+            "source_ids": [],
+            "explanation": "",
+            "knowledge_point": "setup 与 cleanup 的调用时机（挂载、依赖变化、卸载）"
+          },
+          {
+            "id": "q3",
+            "stem": "根据材料，当 Strict Mode 开启时，React 会在首次真正的 setup 之前，额外运行一次仅限开发环境的 setup+cleanup 循环。",
+            "type": "judge",
+            "origin": null,
+            "answers": [],
+            "options": [
+              {
+                "id": "A",
+                "text": "正确"
+              },
+              {
+                "id": "B",
+                "text": "错误"
+              }
+            ],
+            "grounding": {
+              "status": "source_backed"
+            },
+            "source_ids": [],
+            "explanation": "",
+            "knowledge_point": "Strict Mode 下开发环境额外运行一次 setup+cleanup"
+          }
+        ],
+        "created_at": "2026-10-14T12:27:49.164377+00:00",
+        "difficulty": "easy",
+        "source_text": "学习 Effect 清理和网络请求竞争",
+        "learning_scope": {
+          "focus": "所选材料知识点",
+          "topic": "useEffect 学习范围：Effect 清理与网络请求竞争",
+          "domain": "用户提供的材料",
+          "points": [
+            "useEffect 的参数：setup 与可选 cleanup 函数",
+            "dependencies 依赖数组与 Object.is 比较",
+            "setup 与 cleanup 的调用时机（挂载、依赖变化、卸载）",
+            "Strict Mode 下开发环境额外运行一次 setup+cleanup",
+            "cleanup 逻辑必须与 setup 逻辑对称",
+            "在 Effect 中获取数据：ignore 变量避免竞争条件",
+            "使用 async/await 获取数据时仍需提供 cleanup 函数",
+            "在 Effect 中直接获取数据的缺点（服务端不运行、网络瀑布、无预加载缓存、样板代码）",
+            "排查：Effect 每次重新渲染后都运行",
+            "排查：Effect 陷入无限循环",
+            "排查：组件未卸载但 cleanup 逻辑运行"
+          ],
+          "focus_id": null,
+          "input_text": "学习 Effect 清理和网络请求竞争",
+          "candidate_id": null,
+          "scope_version": null,
+          "preparation_id": null,
+          "scope_point_ids": []
+        }
+      },
+      "mode": "new",
+      "answers": [],
+      "cursor": 0,
+      "pending_ms": 0,
+      "started_at": "2026-10-14T12:27:49+00:00",
+      "completed_at": null,
+      "report": null,
+      "review_keys": []
+    },
+    "error_code": null,
+    "stage": "succeeded",
+    "retry_after_seconds": 0,
+    "deadline": "2026-10-14T12:32:41+00:00"
+  },
+  "quiz": {
+    "id": "bf0a7513-db60-4fe3-bd99-0ef9bef61e0c",
+    "title": "useEffect 清理与网络请求竞争练习",
+    "reward": {
+      "xp": 10,
+      "coins": 2
+    },
+    "source": {
+      "url": "https://react.dev/reference/react/useEffect",
+      "type": "web",
+      "title": "useEffect – React",
+      "segments": [
+        {
+          "id": "s4",
+          "end": null,
+          "url": "https://react.dev/reference/react/useEffect",
+          "page": null,
+          "text": "}) {\n\n\n\nconst [serverUrl, setServerUrl] = useState('https://localhost:1234');\n\n\n\nuseEffect(() => {\n\n\n\nconst connection = createConnection(serverUrl, roomId);\n\n\n\nconnection.connect();\n\n\n\nreturn () => {\n\n\n\nconnection.disconnect();\n\n\n\n};\n\n\n\n}, [serverUrl, roomId]);\n\n\n\n// ...\n\n\n\n}\n\n\n```\n\n[See more examples below.](#usage)\n\n#### Parameters\n\n* `setup`: The function with your Effect’s logic. Your setup function may also optionally return a *cleanup* function. When your [component commits](/learn/render-and-commit#step-3-react-commits-changes-to-the-dom), React will run your setup function. After every commit with changed dependencies, React will first run the cleanup function (if you provided it) with the old values, and then run your setup function with the new values. After your component is removed from the DOM, React will run your cleanup function.\n* **optional** `dependencies`: The list of all reactive values referenced inside of the `setup` code. Reactive values include props, state, and all the variables and functions declared directly inside your component body. If your linter is [configured for React](/learn/editor-setup#linting), it will verify that every reactive value is correctly specified as a dependency. The list of dependencies must have a constant number of items and be written inline like `[dep1, dep2, dep3]`. React will compare each dependency with its previous value using the [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison. If you omit this argument, your Effect will re-run after every commit of the component. [See the difference between passing an array of dependencies, an empty array, and no dependencies at all.](#examples-dependencies)\n\n#### Returns\n\n`useEffect` returns `undefined`.\n\n#### Caveats\n\n* `useEffect` is a Hook, so you can only call it **at the top level of your component** or your own Hooks. You can’t call it inside loops or conditions. If you need that, extract a new component and move the state into it.\n* If you’re **not trying to synchronize with some external system,** [you probably don’t need an Effect.](/learn/you-might-not-need-an-effect)\n* When Strict Mode is on, React will **run one extra development-only setup+cleanup cycle** before the first real setup. This is a stress-test that ensures that your cleanup logic “mirrors” your setup logic and that it stops or undoes whatever the setup is doing. If this causes a problem, [implement the cleanup function.](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)\n* If some of your dependencies are objects or functions defined inside the component, there is a risk that they will **cause the Effect to re-run more often than needed.** To fix this, remove unnecessary [object](#removing-unnecessary-object-dependencies) and [function](#removing-unnecessary-function-dependencies) dependencies. You can also [extract state updates](#updating-state-based-on-previous-state-from-an-effect) and [non-reactive logic](#reading-the-latest-props-and-state-from-an-effect) outside of your Effect.\n* If your Effect wasn’t caused by an interaction (like a click), React will generally let the browser **paint the updated screen first before running your Effect.** If your Effect is doing something visual (for example, positioning a tooltip), and the delay is noticeable (for example, it flickers), replace `useEffect` with [`useLayoutEffect`.](/reference/react/useLayoutEffect)\n* If your Effect is caused by an interaction (like a click), **React may run your Effect before the browser paints the updated screen**. This ensures that the result of the Effect can be observed by the event system. Usually, this works as expected. However, if you must defer the work until after paint, such as an `alert()`, you can use `setTimeout`. See [reactwg/react-18/128](https://github.com/reactwg/react-18/discussions/128) for more information.\n* Even if your Effect was caused by an interaction",
+          "start": null,
+          "title": "useEffect – React",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "7a5d493d823996064304650f8937144031261c8999345369a0de11fcb4ffa7c6",
+          "content_kind": "full_extract",
+          "original_url": "https://react.dev/reference/react/useEffect",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:17:43.805094Z",
+          "source_chars": 59201,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "s5",
+          "end": null,
+          "url": "https://react.dev/reference/react/useEffect",
+          "page": null,
+          "text": "(like a click), **React may allow the browser to repaint the screen before processing the state updates inside your Effect.** Usually, this works as expected. However, if you must block the browser from repainting the screen, you need to replace `useEffect` with [`useLayoutEffect`.](/reference/react/useLayoutEffect)\n* Effects **only run on the client.** They don’t run during server rendering.\n\n---\n\n## Usage\n\n### Connecting to an external system\n\nSome components need to stay connected to the network, some browser API, or a third-party library, while they are displayed on the page. These systems aren’t controlled by React, so they are called *external.*\n\nTo [connect your component to some external system,](/learn/synchronizing-with-effects) call `useEffect` at the top level of your component:\n\n```\n\n\nimport { useState, useEffect } from 'react';\n\n\n\nimport { createConnection } from './chat.js';\n\n\n\nfunction ChatRoom({ roomId }) {\n\n\n\nconst [serverUrl, setServerUrl] = useState('https://localhost:1234');\n\n\n\nuseEffect(() => {\n\n\n\nconst connection = createConnection(serverUrl, roomId);\n\n\n\nconnection.connect();\n\n\n\nreturn () => {\n\n\n\nconnection.disconnect();\n\n\n\n};\n\n\n\n}, [serverUrl, roomId]);\n\n\n\n// ...\n\n\n\n}\n\n\n```\n\nYou need to pass two arguments to `useEffect`:\n\n1. A *setup function* with setup code that connects to that system.\n   * It should return a *cleanup function* with cleanup code that disconnects from that system.\n2. A list of dependencies including every value from your component used inside of those functions.\n\n**React calls your setup and cleanup functions whenever it’s necessary, which may happen multiple times:**\n\n1. Your setup code runs when your component is added to the page *(mounts)*.\n2. After every commit of your component where the dependencies have changed:\n   * First, your cleanup code runs with the old props and state.\n   * Then, your setup code runs with the new props and state.\n3. Your cleanup code runs one final time after your component is removed from the page *(unmounts).*\n\n**Let’s illustrate this sequence for the example above.**\n\nWhen the `ChatRoom` component above gets added to the page, it will connect to the chat room with the initial `serverUrl` and `roomId`. If either `serverUrl` or `roomId` change as a result of a commit (say, if the user picks a different chat room in a dropdown), your Effect will *disconnect from the previous room, and connect to the next one.* When the `ChatRoom` component is removed from the page, your Effect will disconnect one last time.\n\n**To [help you find bugs,](/learn/synchronizing-with-effects#step-3-add-cleanup-if-needed) in development React runs setup and cleanup one extra time before the setup.** This is a stress-test that verifies your Effect’s logic is implemented correctly. If this causes visible issues, your cleanup function is missing some logic. The cleanup function should stop or undo whatever the setup function was doing. The rule of thumb is that the user shouldn’t be able to distinguish between the setup being called once (as in production) and a *setup* → *cleanup* → *setup* sequence (as in development). [See common solutions.](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)\n\n**Try to [write every Effect as an independent process](/learn/lifecycle-of-reactive-effects#each-effect-represents-a-separate-synchronization-process) and [think about a single setup/cleanup cycle at a time.](/learn/lifecycle-of-reactive-effects#thinking-from-the-effects-perspective)** It shouldn’t matter whether your component is mounting, updating, or unmounting. When your cleanup logic correctly “mirrors” the setup logic, your Effect is resilient to running setup and cleanup as often as needed.\n\n### Note\n\nAn Effect lets you [keep your component synchronized](/learn/synchronizing-with-effects) with some external system (like a chat service). Here, *external system* means any piece of code that’s not controlled by React, such as:\n\n* A timer managed w",
+          "start": null,
+          "title": "useEffect – React",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "7a5d493d823996064304650f8937144031261c8999345369a0de11fcb4ffa7c6",
+          "content_kind": "full_extract",
+          "original_url": "https://react.dev/reference/react/useEffect",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:17:43.805094Z",
+          "source_chars": 59201,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "s8",
+          "end": null,
+          "url": "https://react.dev/reference/react/useEffect",
+          "page": null,
+          "text": "onst [person, setPerson] = useState('Alice');\n\n\n\nconst [bio, setBio] = useState(null);\n\n\n\nuseEffect(() => {\n\n\n\nlet ignore = false;\n\n\n\nsetBio(null);\n\n\n\nfetchBio(person).then(result => {\n\n\n\nif (!ignore) {\n\n\n\nsetBio(result);\n\n\n\n}\n\n\n\n});\n\n\n\nreturn () => {\n\n\n\nignore = true;\n\n\n\n};\n\n\n\n}, [person]);\n\n\n\n// ...\n\n\n```\n\nNote the `ignore` variable which is initialized to `false`, and is set to `true` during cleanup. This ensures [your code doesn’t suffer from “race conditions”:](https://maxrozen.com/race-conditions-fetching-data-react-with-useeffect) network responses may arrive in a different order than you sent them.\n\nApp.js\n\nApp.js\n\nReloadClear[Fork](https://codesandbox.io/api/v1/sandboxes/define?undefined&environment=create-react-app \"Open in CodeSandbox\")\n\n```\nimport { useState, useEffect } from 'react';\nimport { fetchBio } from './api.js';\n\nexport default function Page() {\n  const [person, setPerson] = useState('Alice');\n  const [bio, setBio] = useState(null);\n  useEffect(() => {\n    let ignore = false;\n    setBio(null);\n    fetchBio(person).then(result => {\n      if (!ignore) {\n        setBio(result);\n      }\n    });\n    return () => {\n      ignore = true;\n    }\n  }, [person]);\n\n  return (\n    <>\n      <select value={person} onChange={e => {\n        setPerson(e.target.value);\n      }}>\n        <option value=\"Alice\">Alice</option>\n        <option value=\"Bob\">Bob</option>\n        <option value=\"Taylor\">Taylor</option>\n      </select>\n      <hr />\n      <p><i>{bio ?? 'Loading...'}</i></p>\n    </>\n  );\n}\n\n\n```\n\nShow more\n\nYou can also rewrite using the [`async` / `await`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) syntax, but you still need to provide a cleanup function:\n\nApp.js\n\nApp.js\n\nReloadClear[Fork](https://codesandbox.io/api/v1/sandboxes/define?undefined&environment=create-react-app \"Open in CodeSandbox\")\n\n```\nimport { useState, useEffect } from 'react';\nimport { fetchBio } from './api.js';\n\nexport default function Page() {\n  const [person, setPerson] = useState('Alice');\n  const [bio, setBio] = useState(null);\n  useEffect(() => {\n    async function startFetching() {\n      setBio(null);\n      const result = await fetchBio(person);\n      if (!ignore) {\n        setBio(result);\n      }\n    }\n\n    let ignore = false;\n    startFetching();\n    return () => {\n      ignore = true;\n    }\n  }, [person]);\n\n  return (\n    <>\n      <select value={person} onChange={e => {\n        setPerson(e.target.value);\n      }}>\n        <option value=\"Alice\">Alice</option>\n        <option value=\"Bob\">Bob</option>\n        <option value=\"Taylor\">Taylor</option>\n      </select>\n      <hr />\n      <p><i>{bio ?? 'Loading...'}</i></p>\n    </>\n  );\n}\n\n\n```\n\nShow more\n\nWriting data fetching directly in Effects gets repetitive and makes it difficult to add optimizations like caching and server rendering later. [It’s easier to use a custom Hook—either your own or maintained by the community.](/learn/reusing-logic-with-custom-hooks#when-to-use-custom-hooks)\n\n##### Deep Dive\n\n#### What are good alternatives to data fetching in Effects?\n\nShow Details\n\nWriting `fetch` calls inside Effects is a [popular way to fetch data](https://www.robinwieruch.de/react-hooks-fetch-data/), especially in fully client-side apps. This is, however, a very manual approach and it has significant downsides:\n\n* **Effects don’t run on the server.** This means that the initial server-rendered HTML will only include a loading state with no data. The client computer will have to download all JavaScript and render your app only to discover that now it needs to load the data. This is not very efficient.\n* **Fetching directly in Effects makes it easy to create “network waterfalls”.** You render the parent component, it fetches some data, renders the child components, and then they start fetching their data. If the network is not very fast, this is significantly slower than fetching all data in parallel.\n* **Fetching directly in Effects usually means y",
+          "start": null,
+          "title": "useEffect – React",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "7a5d493d823996064304650f8937144031261c8999345369a0de11fcb4ffa7c6",
+          "content_kind": "full_extract",
+          "original_url": "https://react.dev/reference/react/useEffect",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:17:43.805094Z",
+          "source_chars": 59201,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "s13",
+          "end": null,
+          "url": "https://react.dev/reference/react/useEffect",
+          "page": null,
+          "text": "side an Effect. [Declare an *Effect Event*](/learn/separating-events-from-effects#declaring-an-effect-event) with the [`useEffectEvent`](/reference/react/useEffectEvent) Hook, and move the code reading `shoppingCart` inside of it:\n\n```\n\n\nfunction Page({ url, shoppingCart }) {\n\n\n\nconst onVisit = useEffectEvent(visitedUrl => {\n\n\n\nlogVisit(visitedUrl, shoppingCart.length)\n\n\n\n});\n\n\n\nuseEffect(() => {\n\n\n\nonVisit(url);\n\n\n\n}, [url]); // ✅ All dependencies declared\n\n\n\n// ...\n\n\n\n}\n\n\n```\n\n**Effect Events are not reactive and must always be omitted from dependencies of your Effect.** This is what lets you put non-reactive code (where you can read the latest value of some props and state) inside of them. By reading `shoppingCart` inside of `onVisit`, you ensure that `shoppingCart` won’t re-run your Effect.\n\n[Read more about how Effect Events let you separate reactive and non-reactive code.](/learn/separating-events-from-effects#reading-latest-props-and-state-with-effect-events)\n\n---\n\n### Displaying different content on the server and the client\n\nIf your app uses server rendering (either [directly](/reference/react-dom/server) or via a [framework](/learn/creating-a-react-app#full-stack-frameworks)), your component will render in two different environments. On the server, it will render to produce the initial HTML. On the client, React will run the rendering code again so that it can attach your event handlers to that HTML. This is why, for [hydration](/reference/react-dom/client/hydrateRoot#hydrating-server-rendered-html) to work, your initial render output must be identical on the client and the server.\n\nIn rare cases, you might need to display different content on the client. For example, if your app reads some data from [`localStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage), it can’t possibly do that on the server. Here is how you could implement this:\n\n\n\n```\n\n\nfunction MyComponent() {\n\n\n\nconst [didMount, setDidMount] = useState(false);\n\n\n\nuseEffect(() => {\n\n\n\nsetDidMount(true);\n\n\n\n}, []);\n\n\n\nif (didMount) {\n\n\n\n// ... return client-only JSX ...\n\n\n\n}  else {\n\n\n\n// ... return initial JSX ...\n\n\n\n}\n\n\n\n}\n\n\n```\n\nWhile the app is loading, the user will see the initial render output. Then, when it’s loaded and hydrated, your Effect will run and set `didMount` to `true`, triggering a re-render. This will switch to the client-only render output. Effects don’t run on the server, so this is why `didMount` was `false` during the initial server render.\n\nUse this pattern sparingly. Keep in mind that users with a slow connection will see the initial content for quite a bit of time—potentially, many seconds—so you don’t want to make jarring changes to your component’s appearance. In many cases, you can avoid the need for this by conditionally showing different things with CSS.\n\n---\n\n## Troubleshooting\n\n### My Effect runs twice when the component mounts\n\nWhen Strict Mode is on, in development, React runs setup and cleanup one extra time before the actual setup.\n\nThis is a stress-test that verifies your Effect’s logic is implemented correctly. If this causes visible issues, your cleanup function is missing some logic. The cleanup function should stop or undo whatever the setup function was doing. The rule of thumb is that the user shouldn’t be able to distinguish between the setup being called once (as in production) and a setup → cleanup → setup sequence (as in development).\n\nRead more about [how this helps find bugs](/learn/synchronizing-with-effects#step-3-add-cleanup-if-needed) and [how to fix your logic.](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)\n\n---\n\n### My Effect runs after every re-render\n\nFirst, check that you haven’t forgotten to specify the dependency array:\n\n```\n\n\nuseEffect(() => {\n\n\n\n// ...\n\n\n\n}); // 🚩 No dependency array: re-runs after every commit!\n\n\n```\n\nIf you’ve specified the dependency array but your Effect still re-runs in a loop, it’s because one of your de",
+          "start": null,
+          "title": "useEffect – React",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "7a5d493d823996064304650f8937144031261c8999345369a0de11fcb4ffa7c6",
+          "content_kind": "full_extract",
+          "original_url": "https://react.dev/reference/react/useEffect",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:17:43.805094Z",
+          "source_chars": 59201,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        }
+      ],
+      "material_id": "15ab38ed-4044-42cd-a09a-2935128bb06d"
+    },
+    "summary": "基于 React 官方 useEffect 文档片段，练习 Effect 清理时机、依赖比较、Strict Mode 行为以及用 ignore 变量避免网络请求竞争条件。",
+    "grounding": {
+      "status": "source_backed",
+      "provider": "tavily",
+      "reason_code": null,
+      "retrieved_at": "2026-10-14T12:17:43.805094Z",
+      "check_version": "evidence-review-v1"
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "stem": "根据材料，在 Effect 中获取数据时，ignore 变量（初始为 false，在 cleanup 中设为 true）的主要作用是什么？",
+        "type": "single",
+        "origin": null,
+        "answers": [
+          "B"
+        ],
+        "options": [
+          {
+            "id": "A",
+            "text": "确保网络响应按发送顺序到达"
+          },
+          {
+            "id": "B",
+            "text": "避免网络响应乱序到达导致的竞争条件，使过期响应不再更新状态"
+          },
+          {
+            "id": "C",
+            "text": "让 Effect 只在服务端运行"
+          },
+          {
+            "id": "D",
+            "text": "替代依赖数组，使 Effect 只运行一次"
+          }
+        ],
+        "grounding": {
+          "status": "source_backed",
+          "provider": "tavily",
+          "reason_code": null,
+          "retrieved_at": "2026-10-14T12:17:43.805094Z",
+          "check_version": "evidence-review-v1"
+        },
+        "source_ids": [
+          "s8"
+        ],
+        "explanation": "材料指出，ignore 变量初始化为 false，并在 cleanup 期间被设为 true，这确保代码不会遭遇“竞争条件”：网络响应到达的顺序可能与发送顺序不同。因此它的作用是忽略过期响应，而不是保证顺序、让 Effect 在服务端运行或替代依赖数组。",
+        "knowledge_point": "在 Effect 中获取数据：ignore 变量避免竞争条件"
+      },
+      {
+        "id": "q2",
+        "stem": "根据材料，关于 useEffect 的 setup 与 cleanup 调用时机，下列哪些说法正确？",
+        "type": "multi",
+        "origin": null,
+        "answers": [
+          "A",
+          "B",
+          "C"
+        ],
+        "options": [
+          {
+            "id": "A",
+            "text": "组件挂载（添加到页面）时，setup 代码运行"
+          },
+          {
+            "id": "B",
+            "text": "依赖变化后的每次提交中，先用旧值运行 cleanup，再用新值运行 setup"
+          },
+          {
+            "id": "C",
+            "text": "组件从页面移除（卸载）后，cleanup 代码会最后运行一次"
+          },
+          {
+            "id": "D",
+            "text": "只要组件重新渲染，无论依赖是否变化，cleanup 都会先运行"
+          }
+        ],
+        "grounding": {
+          "status": "source_backed",
+          "provider": "tavily",
+          "reason_code": null,
+          "retrieved_at": "2026-10-14T12:17:43.805094Z",
+          "check_version": "evidence-review-v1"
+        },
+        "source_ids": [
+          "s4",
+          "s5"
+        ],
+        "explanation": "材料明确列出：1）组件挂载时 setup 运行；2）依赖变化后的每次提交中，先用旧 props 和 state 运行 cleanup，再用新的运行 setup；3）组件卸载后 cleanup 最后运行一次。D 不成立，因为 cleanup 是在依赖变化的提交时运行，而非每次重新渲染都无条件运行。",
+        "knowledge_point": "setup 与 cleanup 的调用时机（挂载、依赖变化、卸载）"
+      },
+      {
+        "id": "q3",
+        "stem": "根据材料，当 Strict Mode 开启时，React 会在首次真正的 setup 之前，额外运行一次仅限开发环境的 setup+cleanup 循环。",
+        "type": "judge",
+        "origin": null,
+        "answers": [
+          "A"
+        ],
+        "options": [
+          {
+            "id": "A",
+            "text": "正确"
+          },
+          {
+            "id": "B",
+            "text": "错误"
+          }
+        ],
+        "grounding": {
+          "status": "source_backed",
+          "provider": "tavily",
+          "reason_code": null,
+          "retrieved_at": "2026-10-14T12:17:43.805094Z",
+          "check_version": "evidence-review-v1"
+        },
+        "source_ids": [
+          "s4",
+          "s13"
+        ],
+        "explanation": "材料在 Caveats 和 Troubleshooting 中都说明：当 Strict Mode 开启时，React 会在首次真正的 setup 之前运行一次额外的、仅开发环境的 setup+cleanup 循环，这是一种压力测试，用来验证 cleanup 逻辑是否正确“镜像”setup 逻辑。",
+        "knowledge_point": "Strict Mode 下开发环境额外运行一次 setup+cleanup"
+      }
+    ],
+    "created_at": "2026-10-14T12:27:49.164377+00:00",
+    "difficulty": "easy",
+    "source_text": "学习 Effect 清理和网络请求竞争",
+    "learning_scope": {
+      "focus": "所选材料知识点",
+      "topic": "useEffect 学习范围：Effect 清理与网络请求竞争",
+      "domain": "用户提供的材料",
+      "points": [
+        "useEffect 的参数：setup 与可选 cleanup 函数",
+        "dependencies 依赖数组与 Object.is 比较",
+        "setup 与 cleanup 的调用时机（挂载、依赖变化、卸载）",
+        "Strict Mode 下开发环境额外运行一次 setup+cleanup",
+        "cleanup 逻辑必须与 setup 逻辑对称",
+        "在 Effect 中获取数据：ignore 变量避免竞争条件",
+        "使用 async/await 获取数据时仍需提供 cleanup 函数",
+        "在 Effect 中直接获取数据的缺点（服务端不运行、网络瀑布、无预加载缓存、样板代码）",
+        "排查：Effect 每次重新渲染后都运行",
+        "排查：Effect 陷入无限循环",
+        "排查：组件未卸载但 cleanup 逻辑运行"
+      ],
+      "focus_id": null,
+      "input_text": "学习 Effect 清理和网络请求竞争",
+      "candidate_id": null,
+      "scope_version": null,
+      "preparation_id": null,
+      "scope_point_ids": []
+    }
+  },
+  "human_review": {
+    "scope_matches_intent": true,
+    "notes": "按用户对当前20例/60题核对请求的总体回复“正确”登记；未收到逐项表单导出。",
+    "questions": [
+      {
+        "id": "q1",
+        "status": "source_backed",
+        "source_ids": [
+          "s8"
+        ],
+        "supported_by_cited_text": true,
+        "contradicts": false,
+        "in_scope": true,
+        "meme_substantive": null,
+        "notes": "正确性及引用支持按用户对核对包的总体确认登记；不是用户逐题表单输入。"
+      },
+      {
+        "id": "q2",
+        "status": "source_backed",
+        "source_ids": [
+          "s4",
+          "s5"
+        ],
+        "supported_by_cited_text": true,
+        "contradicts": false,
+        "in_scope": true,
+        "meme_substantive": null,
+        "notes": "正确性及引用支持按用户对核对包的总体确认登记；不是用户逐题表单输入。"
+      },
+      {
+        "id": "q3",
+        "status": "source_backed",
+        "source_ids": [
+          "s4",
+          "s13"
+        ],
+        "supported_by_cited_text": true,
+        "contradicts": false,
+        "in_scope": true,
+        "meme_substantive": null,
+        "notes": "正确性及引用支持按用户对核对包的总体确认登记；不是用户逐题表单输入。"
+      }
+    ],
+    "confirmation": {
+      "kind": "direct_user_chat_overall_confirmation",
+      "record": "docs/quiz-grounding/live-runs/human-confirmation-20261014.json",
+      "answer": "正确",
+      "individual_form_export_received": false,
+      "structured_verdict_basis": "registered_from_user_overall_confirmation"
+    }
+  },
+  "account_deleted": true
+}

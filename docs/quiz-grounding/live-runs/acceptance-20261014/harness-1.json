@@ -1,0 +1,998 @@
+{
+  "case": {
+    "id": "harness-1",
+    "text": "Harness Engineering",
+    "expected": "AI 编码智能体工程，先消除与线束工程的歧义",
+    "tags": [
+      "harness",
+      "global",
+      "complex"
+    ]
+  },
+  "error_code": "EOFError",
+  "status": "failed",
+  "preparation": {
+    "id": "3d767df1-54dc-4cf5-be87-03dc647d1197",
+    "version": 1,
+    "input_text": "Harness Engineering",
+    "status": "ready",
+    "stage": "ready",
+    "content": {
+      "candidates": [
+        {
+          "id": "scope-v1-harness-engineering-core",
+          "topic": "Harness Engineering",
+          "domain": "软件工程 / 平台工程",
+          "description": "围绕 Harness 平台本身的工程实践，包括 CI/CD 流水线、部署策略、环境与基础设施管理等方向。本次未取得任何资料片段，以下候选基于已有知识保留，未经核实。",
+          "focuses": [
+            {
+              "id": "scope-v1-harness-engineering-core-ci-cd",
+              "name": "CI/CD 流水线工程",
+              "description": "在 Harness 平台上设计与维护持续集成与持续交付流水线的相关知识点。",
+              "points": [
+                {
+                  "id": "scope-v1-harness-engineering-core-ci-cd-p1",
+                  "name": "Pipeline 与 Stage 结构",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                },
+                {
+                  "id": "scope-v1-harness-engineering-core-ci-cd-p2",
+                  "name": "Step 与 Step Group 编排",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                },
+                {
+                  "id": "scope-v1-harness-engineering-core-ci-cd-p3",
+                  "name": "触发器与 Webhook 配置",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                },
+                {
+                  "id": "scope-v1-harness-engineering-core-ci-cd-p4",
+                  "name": "制品与缓存管理",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                },
+                {
+                  "id": "scope-v1-harness-engineering-core-ci-cd-p5",
+                  "name": "流水线模板与复用",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                },
+                {
+                  "id": "scope-v1-harness-engineering-core-ci-cd-p6",
+                  "name": "流水线执行与调试",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                }
+              ]
+            },
+            {
+              "id": "scope-v1-harness-engineering-core-cd-strategy",
+              "name": "部署策略与发布",
+              "description": "在 Harness 持续交付中实施各类部署与发布策略的知识点。",
+              "points": [
+                {
+                  "id": "scope-v1-harness-engineering-core-cd-strategy-p1",
+                  "name": "滚动部署",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                },
+                {
+                  "id": "scope-v1-harness-engineering-core-cd-strategy-p2",
+                  "name": "蓝绿部署",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                },
+                {
+                  "id": "scope-v1-harness-engineering-core-cd-strategy-p3",
+                  "name": "金丝雀部署",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                },
+                {
+                  "id": "scope-v1-harness-engineering-core-cd-strategy-p4",
+                  "name": "部署验证与自动回滚",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                },
+                {
+                  "id": "scope-v1-harness-engineering-core-cd-strategy-p5",
+                  "name": "审批与治理门禁",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                },
+                {
+                  "id": "scope-v1-harness-engineering-core-cd-strategy-p6",
+                  "name": "特性开关与发布编排",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                }
+              ]
+            },
+            {
+              "id": "scope-v1-harness-engineering-core-infra",
+              "name": "环境与基础设施管理",
+              "description": "Harness 中连接器、环境、基础设施定义与密钥管理的知识点。",
+              "points": [
+                {
+                  "id": "scope-v1-harness-engineering-core-infra-p1",
+                  "name": "Connector 与 Delegate 架构",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                },
+                {
+                  "id": "scope-v1-harness-engineering-core-infra-p2",
+                  "name": "Environment 与 Infrastructure Definition",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                },
+                {
+                  "id": "scope-v1-harness-engineering-core-infra-p3",
+                  "name": "Secrets 与凭据管理",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                },
+                {
+                  "id": "scope-v1-harness-engineering-core-infra-p4",
+                  "name": "服务与环境映射",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                },
+                {
+                  "id": "scope-v1-harness-engineering-core-infra-p5",
+                  "name": "Kubernetes 与云平台集成",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                },
+                {
+                  "id": "scope-v1-harness-engineering-core-infra-p6",
+                  "name": "权限与 RBAC 配置",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "scope-v1-harness-engineering-ai",
+          "topic": "Harness Engineering",
+          "domain": "AI 工程 / 智能体系统",
+          "description": "把 harness 理解为围绕大模型或智能体的工程化外壳，包括提示与上下文编排、工具调用与评测等方向。本次未取得任何资料片段，以下候选基于已有知识保留，未经核实。",
+          "focuses": [
+            {
+              "id": "scope-v1-harness-engineering-ai-prompt",
+              "name": "提示与上下文编排",
+              "description": "围绕模型调用的输入组织与上下文管理知识点。",
+              "points": [
+                {
+                  "id": "scope-v1-harness-engineering-ai-prompt-p1",
+                  "name": "系统提示与角色设定",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                },
+                {
+                  "id": "scope-v1-harness-engineering-ai-prompt-p2",
+                  "name": "上下文窗口与截断策略",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                },
+                {
+                  "id": "scope-v1-harness-engineering-ai-prompt-p3",
+                  "name": "少样本示例设计",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                },
+                {
+                  "id": "scope-v1-harness-engineering-ai-prompt-p4",
+                  "name": "输出格式约束与结构化输出",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                },
+                {
+                  "id": "scope-v1-harness-engineering-ai-prompt-p5",
+                  "name": "提示模板与版本管理",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                },
+                {
+                  "id": "scope-v1-harness-engineering-ai-prompt-p6",
+                  "name": "提示注入防护",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                }
+              ]
+            },
+            {
+              "id": "scope-v1-harness-engineering-ai-tools",
+              "name": "工具调用与执行循环",
+              "description": "智能体调用外部工具并迭代执行的工程知识点。",
+              "points": [
+                {
+                  "id": "scope-v1-harness-engineering-ai-tools-p1",
+                  "name": "工具定义与函数调用",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                },
+                {
+                  "id": "scope-v1-harness-engineering-ai-tools-p2",
+                  "name": "ReAct 与规划循环",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                },
+                {
+                  "id": "scope-v1-harness-engineering-ai-tools-p3",
+                  "name": "沙箱与执行隔离",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                },
+                {
+                  "id": "scope-v1-harness-engineering-ai-tools-p4",
+                  "name": "错误处理与重试",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                },
+                {
+                  "id": "scope-v1-harness-engineering-ai-tools-p5",
+                  "name": "记忆与状态管理",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                },
+                {
+                  "id": "scope-v1-harness-engineering-ai-tools-p6",
+                  "name": "多智能体协作",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                }
+              ]
+            },
+            {
+              "id": "scope-v1-harness-engineering-ai-eval",
+              "name": "评测与可观测性",
+              "description": "对模型与智能体系统进行评测、监控与迭代的知识点。",
+              "points": [
+                {
+                  "id": "scope-v1-harness-engineering-ai-eval-p1",
+                  "name": "评测集与基准设计",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                },
+                {
+                  "id": "scope-v1-harness-engineering-ai-eval-p2",
+                  "name": "自动评分与人工评估",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                },
+                {
+                  "id": "scope-v1-harness-engineering-ai-eval-p3",
+                  "name": "追踪与日志记录",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                },
+                {
+                  "id": "scope-v1-harness-engineering-ai-eval-p4",
+                  "name": "成本与延迟监控",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                },
+                {
+                  "id": "scope-v1-harness-engineering-ai-eval-p5",
+                  "name": "回归测试与灰度发布",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                },
+                {
+                  "id": "scope-v1-harness-engineering-ai-eval-p6",
+                  "name": "安全与合规评估",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "scope-v1-harness-engineering-testing",
+          "topic": "Harness Engineering",
+          "domain": "软件测试 / 测试工具",
+          "description": "把 harness 理解为测试脚手架与测试夹具的工程实践，包括测试替身、夹具管理与自动化测试基础设施等方向。本次未取得任何资料片段，以下候选基于已有知识保留，未经核实。",
+          "focuses": [
+            {
+              "id": "scope-v1-harness-engineering-testing-double",
+              "name": "测试替身与桩件",
+              "description": "构建测试替身以隔离被测对象的知识点。",
+              "points": [
+                {
+                  "id": "scope-v1-harness-engineering-testing-double-p1",
+                  "name": "Mock 与 Stub 的区别",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                },
+                {
+                  "id": "scope-v1-harness-engineering-testing-double-p2",
+                  "name": "Fake 与内存实现",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                },
+                {
+                  "id": "scope-v1-harness-engineering-testing-double-p3",
+                  "name": "依赖注入与可测性设计",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                },
+                {
+                  "id": "scope-v1-harness-engineering-testing-double-p4",
+                  "name": "网络与外部服务打桩",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                },
+                {
+                  "id": "scope-v1-harness-engineering-testing-double-p5",
+                  "name": "时间与随机性控制",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                },
+                {
+                  "id": "scope-v1-harness-engineering-testing-double-p6",
+                  "name": "契约测试",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                }
+              ]
+            },
+            {
+              "id": "scope-v1-harness-engineering-testing-fixture",
+              "name": "测试夹具与数据管理",
+              "description": "测试夹具、数据准备与清理的知识点。",
+              "points": [
+                {
+                  "id": "scope-v1-harness-engineering-testing-fixture-p1",
+                  "name": "Setup 与 Teardown 生命周期",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                },
+                {
+                  "id": "scope-v1-harness-engineering-testing-fixture-p2",
+                  "name": "测试数据构建器",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                },
+                {
+                  "id": "scope-v1-harness-engineering-testing-fixture-p3",
+                  "name": "数据库夹具与事务回滚",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                },
+                {
+                  "id": "scope-v1-harness-engineering-testing-fixture-p4",
+                  "name": "测试隔离与并行执行",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                },
+                {
+                  "id": "scope-v1-harness-engineering-testing-fixture-p5",
+                  "name": "快照与黄金文件",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                },
+                {
+                  "id": "scope-v1-harness-engineering-testing-fixture-p6",
+                  "name": "不稳定测试治理",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                }
+              ]
+            },
+            {
+              "id": "scope-v1-harness-engineering-testing-infra",
+              "name": "测试基础设施与自动化",
+              "description": "测试运行环境与自动化流水线的知识点。",
+              "points": [
+                {
+                  "id": "scope-v1-harness-engineering-testing-infra-p1",
+                  "name": "测试运行器与并行调度",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                },
+                {
+                  "id": "scope-v1-harness-engineering-testing-infra-p2",
+                  "name": "容器化测试环境",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                },
+                {
+                  "id": "scope-v1-harness-engineering-testing-infra-p3",
+                  "name": "覆盖率统计与门禁",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                },
+                {
+                  "id": "scope-v1-harness-engineering-testing-infra-p4",
+                  "name": "端到端测试与浏览器自动化",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                },
+                {
+                  "id": "scope-v1-harness-engineering-testing-infra-p5",
+                  "name": "性能与负载测试",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                },
+                {
+                  "id": "scope-v1-harness-engineering-testing-infra-p6",
+                  "name": "测试报告与失败分析",
+                  "evidence_ids": [],
+                  "evidence_status": "unverified"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "grounding": {
+      "status": "unverified",
+      "reason_code": "TAVILY_UNAVAILABLE",
+      "retrieved_at": null,
+      "provider": null,
+      "check_version": "evidence-review-v1"
+    },
+    "evidence": [],
+    "error_code": null,
+    "retry_after_seconds": 0,
+    "created_at": "2026-10-14T12:04:05Z",
+    "expires_at": "2026-10-15T12:04:05Z"
+  },
+  "wall_attempt_seconds": [
+    74.76
+  ],
+  "elapsed_seconds": 74.76,
+  "api_timings": [
+    {
+      "method": "POST",
+      "path": "/auth/wechat",
+      "status": 200,
+      "seconds": 0.055
+    },
+    {
+      "method": "POST",
+      "path": "/quiz/preparations",
+      "status": 200,
+      "seconds": 74.668
+    },
+    {
+      "method": "GET",
+      "path": "/quiz/preparations/3d767df1-54dc-4cf5-be87-03dc647d1197",
+      "status": 200,
+      "seconds": 0.03
+    }
+  ],
+  "structured_model_usage": [
+    {
+      "operation": "3d767df1-54dc-4cf5-be87-03dc647d1197",
+      "attempt": 1,
+      "tokens": {
+        "input_tokens": 950,
+        "output_tokens": 3000,
+        "total_tokens": 3950
+      }
+    }
+  ],
+  "operations": [
+    {
+      "key": "prepare:d7cc19301c625f234cdb097d9a3d37988104a80561da6e89dfbfe928993508b9",
+      "kind": "prepare",
+      "status": "succeeded",
+      "stage": "ready",
+      "model_calls": 4,
+      "tool_calls": 3,
+      "page_attempts": 0,
+      "charged": 0,
+      "retrieval": null,
+      "error_code": null
+    }
+  ],
+  "retrieval_preparations": [
+    {
+      "scope": {
+        "candidates": [
+          {
+            "id": "scope-v1-harness-engineering-core",
+            "topic": "Harness Engineering",
+            "domain": "软件工程 / 平台工程",
+            "focuses": [
+              {
+                "id": "scope-v1-harness-engineering-core-ci-cd",
+                "name": "CI/CD 流水线工程",
+                "points": [
+                  {
+                    "id": "scope-v1-harness-engineering-core-ci-cd-p1",
+                    "name": "Pipeline 与 Stage 结构",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  },
+                  {
+                    "id": "scope-v1-harness-engineering-core-ci-cd-p2",
+                    "name": "Step 与 Step Group 编排",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  },
+                  {
+                    "id": "scope-v1-harness-engineering-core-ci-cd-p3",
+                    "name": "触发器与 Webhook 配置",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  },
+                  {
+                    "id": "scope-v1-harness-engineering-core-ci-cd-p4",
+                    "name": "制品与缓存管理",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  },
+                  {
+                    "id": "scope-v1-harness-engineering-core-ci-cd-p5",
+                    "name": "流水线模板与复用",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  },
+                  {
+                    "id": "scope-v1-harness-engineering-core-ci-cd-p6",
+                    "name": "流水线执行与调试",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  }
+                ],
+                "description": "在 Harness 平台上设计与维护持续集成与持续交付流水线的相关知识点。"
+              },
+              {
+                "id": "scope-v1-harness-engineering-core-cd-strategy",
+                "name": "部署策略与发布",
+                "points": [
+                  {
+                    "id": "scope-v1-harness-engineering-core-cd-strategy-p1",
+                    "name": "滚动部署",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  },
+                  {
+                    "id": "scope-v1-harness-engineering-core-cd-strategy-p2",
+                    "name": "蓝绿部署",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  },
+                  {
+                    "id": "scope-v1-harness-engineering-core-cd-strategy-p3",
+                    "name": "金丝雀部署",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  },
+                  {
+                    "id": "scope-v1-harness-engineering-core-cd-strategy-p4",
+                    "name": "部署验证与自动回滚",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  },
+                  {
+                    "id": "scope-v1-harness-engineering-core-cd-strategy-p5",
+                    "name": "审批与治理门禁",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  },
+                  {
+                    "id": "scope-v1-harness-engineering-core-cd-strategy-p6",
+                    "name": "特性开关与发布编排",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  }
+                ],
+                "description": "在 Harness 持续交付中实施各类部署与发布策略的知识点。"
+              },
+              {
+                "id": "scope-v1-harness-engineering-core-infra",
+                "name": "环境与基础设施管理",
+                "points": [
+                  {
+                    "id": "scope-v1-harness-engineering-core-infra-p1",
+                    "name": "Connector 与 Delegate 架构",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  },
+                  {
+                    "id": "scope-v1-harness-engineering-core-infra-p2",
+                    "name": "Environment 与 Infrastructure Definition",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  },
+                  {
+                    "id": "scope-v1-harness-engineering-core-infra-p3",
+                    "name": "Secrets 与凭据管理",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  },
+                  {
+                    "id": "scope-v1-harness-engineering-core-infra-p4",
+                    "name": "服务与环境映射",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  },
+                  {
+                    "id": "scope-v1-harness-engineering-core-infra-p5",
+                    "name": "Kubernetes 与云平台集成",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  },
+                  {
+                    "id": "scope-v1-harness-engineering-core-infra-p6",
+                    "name": "权限与 RBAC 配置",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  }
+                ],
+                "description": "Harness 中连接器、环境、基础设施定义与密钥管理的知识点。"
+              }
+            ],
+            "description": "围绕 Harness 平台本身的工程实践，包括 CI/CD 流水线、部署策略、环境与基础设施管理等方向。本次未取得任何资料片段，以下候选基于已有知识保留，未经核实。"
+          },
+          {
+            "id": "scope-v1-harness-engineering-ai",
+            "topic": "Harness Engineering",
+            "domain": "AI 工程 / 智能体系统",
+            "focuses": [
+              {
+                "id": "scope-v1-harness-engineering-ai-prompt",
+                "name": "提示与上下文编排",
+                "points": [
+                  {
+                    "id": "scope-v1-harness-engineering-ai-prompt-p1",
+                    "name": "系统提示与角色设定",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  },
+                  {
+                    "id": "scope-v1-harness-engineering-ai-prompt-p2",
+                    "name": "上下文窗口与截断策略",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  },
+                  {
+                    "id": "scope-v1-harness-engineering-ai-prompt-p3",
+                    "name": "少样本示例设计",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  },
+                  {
+                    "id": "scope-v1-harness-engineering-ai-prompt-p4",
+                    "name": "输出格式约束与结构化输出",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  },
+                  {
+                    "id": "scope-v1-harness-engineering-ai-prompt-p5",
+                    "name": "提示模板与版本管理",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  },
+                  {
+                    "id": "scope-v1-harness-engineering-ai-prompt-p6",
+                    "name": "提示注入防护",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  }
+                ],
+                "description": "围绕模型调用的输入组织与上下文管理知识点。"
+              },
+              {
+                "id": "scope-v1-harness-engineering-ai-tools",
+                "name": "工具调用与执行循环",
+                "points": [
+                  {
+                    "id": "scope-v1-harness-engineering-ai-tools-p1",
+                    "name": "工具定义与函数调用",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  },
+                  {
+                    "id": "scope-v1-harness-engineering-ai-tools-p2",
+                    "name": "ReAct 与规划循环",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  },
+                  {
+                    "id": "scope-v1-harness-engineering-ai-tools-p3",
+                    "name": "沙箱与执行隔离",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  },
+                  {
+                    "id": "scope-v1-harness-engineering-ai-tools-p4",
+                    "name": "错误处理与重试",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  },
+                  {
+                    "id": "scope-v1-harness-engineering-ai-tools-p5",
+                    "name": "记忆与状态管理",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  },
+                  {
+                    "id": "scope-v1-harness-engineering-ai-tools-p6",
+                    "name": "多智能体协作",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  }
+                ],
+                "description": "智能体调用外部工具并迭代执行的工程知识点。"
+              },
+              {
+                "id": "scope-v1-harness-engineering-ai-eval",
+                "name": "评测与可观测性",
+                "points": [
+                  {
+                    "id": "scope-v1-harness-engineering-ai-eval-p1",
+                    "name": "评测集与基准设计",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  },
+                  {
+                    "id": "scope-v1-harness-engineering-ai-eval-p2",
+                    "name": "自动评分与人工评估",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  },
+                  {
+                    "id": "scope-v1-harness-engineering-ai-eval-p3",
+                    "name": "追踪与日志记录",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  },
+                  {
+                    "id": "scope-v1-harness-engineering-ai-eval-p4",
+                    "name": "成本与延迟监控",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  },
+                  {
+                    "id": "scope-v1-harness-engineering-ai-eval-p5",
+                    "name": "回归测试与灰度发布",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  },
+                  {
+                    "id": "scope-v1-harness-engineering-ai-eval-p6",
+                    "name": "安全与合规评估",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  }
+                ],
+                "description": "对模型与智能体系统进行评测、监控与迭代的知识点。"
+              }
+            ],
+            "description": "把 harness 理解为围绕大模型或智能体的工程化外壳，包括提示与上下文编排、工具调用与评测等方向。本次未取得任何资料片段，以下候选基于已有知识保留，未经核实。"
+          },
+          {
+            "id": "scope-v1-harness-engineering-testing",
+            "topic": "Harness Engineering",
+            "domain": "软件测试 / 测试工具",
+            "focuses": [
+              {
+                "id": "scope-v1-harness-engineering-testing-double",
+                "name": "测试替身与桩件",
+                "points": [
+                  {
+                    "id": "scope-v1-harness-engineering-testing-double-p1",
+                    "name": "Mock 与 Stub 的区别",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  },
+                  {
+                    "id": "scope-v1-harness-engineering-testing-double-p2",
+                    "name": "Fake 与内存实现",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  },
+                  {
+                    "id": "scope-v1-harness-engineering-testing-double-p3",
+                    "name": "依赖注入与可测性设计",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  },
+                  {
+                    "id": "scope-v1-harness-engineering-testing-double-p4",
+                    "name": "网络与外部服务打桩",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  },
+                  {
+                    "id": "scope-v1-harness-engineering-testing-double-p5",
+                    "name": "时间与随机性控制",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  },
+                  {
+                    "id": "scope-v1-harness-engineering-testing-double-p6",
+                    "name": "契约测试",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  }
+                ],
+                "description": "构建测试替身以隔离被测对象的知识点。"
+              },
+              {
+                "id": "scope-v1-harness-engineering-testing-fixture",
+                "name": "测试夹具与数据管理",
+                "points": [
+                  {
+                    "id": "scope-v1-harness-engineering-testing-fixture-p1",
+                    "name": "Setup 与 Teardown 生命周期",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  },
+                  {
+                    "id": "scope-v1-harness-engineering-testing-fixture-p2",
+                    "name": "测试数据构建器",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  },
+                  {
+                    "id": "scope-v1-harness-engineering-testing-fixture-p3",
+                    "name": "数据库夹具与事务回滚",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  },
+                  {
+                    "id": "scope-v1-harness-engineering-testing-fixture-p4",
+                    "name": "测试隔离与并行执行",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  },
+                  {
+                    "id": "scope-v1-harness-engineering-testing-fixture-p5",
+                    "name": "快照与黄金文件",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  },
+                  {
+                    "id": "scope-v1-harness-engineering-testing-fixture-p6",
+                    "name": "不稳定测试治理",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  }
+                ],
+                "description": "测试夹具、数据准备与清理的知识点。"
+              },
+              {
+                "id": "scope-v1-harness-engineering-testing-infra",
+                "name": "测试基础设施与自动化",
+                "points": [
+                  {
+                    "id": "scope-v1-harness-engineering-testing-infra-p1",
+                    "name": "测试运行器与并行调度",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  },
+                  {
+                    "id": "scope-v1-harness-engineering-testing-infra-p2",
+                    "name": "容器化测试环境",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  },
+                  {
+                    "id": "scope-v1-harness-engineering-testing-infra-p3",
+                    "name": "覆盖率统计与门禁",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  },
+                  {
+                    "id": "scope-v1-harness-engineering-testing-infra-p4",
+                    "name": "端到端测试与浏览器自动化",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  },
+                  {
+                    "id": "scope-v1-harness-engineering-testing-infra-p5",
+                    "name": "性能与负载测试",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  },
+                  {
+                    "id": "scope-v1-harness-engineering-testing-infra-p6",
+                    "name": "测试报告与失败分析",
+                    "evidence_ids": [],
+                    "evidence_status": "unverified"
+                  }
+                ],
+                "description": "测试运行环境与自动化流水线的知识点。"
+              }
+            ],
+            "description": "把 harness 理解为测试脚手架与测试夹具的工程实践，包括测试替身、夹具管理与自动化测试基础设施等方向。本次未取得任何资料片段，以下候选基于已有知识保留，未经核实。"
+          }
+        ]
+      },
+      "trace": [
+        {
+          "tool": "tavily_search",
+          "status": "failed",
+          "call_id": "call_00_0UUcHrZMbxuhJDF33Hpi5216",
+          "credits": null,
+          "elapsed_ms": 829,
+          "parameters": {
+            "query": "Harness Engineering",
+            "topic": "general",
+            "country": null,
+            "end_date": null,
+            "start_date": null,
+            "time_range": null,
+            "max_results": 5,
+            "content_mode": "summary",
+            "search_depth": "basic",
+            "exclude_domains": [],
+            "include_domains": []
+          },
+          "source_ids": [],
+          "reason_code": "TAVILY_UNAVAILABLE"
+        },
+        {
+          "tool": "tavily_search",
+          "status": "failed",
+          "call_id": "call_01_oIPkQOeuRqBeIYLdYfSA6448",
+          "credits": null,
+          "elapsed_ms": 760,
+          "parameters": {
+            "query": "\"harness engineering\" discipline definition",
+            "topic": "general",
+            "country": null,
+            "end_date": null,
+            "start_date": null,
+            "time_range": null,
+            "max_results": 5,
+            "content_mode": "summary",
+            "search_depth": "advanced",
+            "exclude_domains": [],
+            "include_domains": []
+          },
+          "source_ids": [],
+          "reason_code": "TAVILY_UNAVAILABLE"
+        },
+        {
+          "tool": "tavily_search",
+          "status": "failed",
+          "call_id": "call_00_lNNDsGmgtApf02jbCWbW9818",
+          "credits": null,
+          "elapsed_ms": 801,
+          "parameters": {
+            "query": "harness engineering",
+            "topic": "general",
+            "country": null,
+            "end_date": null,
+            "start_date": null,
+            "time_range": null,
+            "max_results": 3,
+            "content_mode": "summary",
+            "search_depth": "basic",
+            "exclude_domains": [],
+            "include_domains": []
+          },
+          "source_ids": [],
+          "reason_code": "TAVILY_UNAVAILABLE"
+        }
+      ],
+      "usage": {
+        "input_tokens": 6290,
+        "total_tokens": 7045,
+        "output_tokens": 755
+      },
+      "evidence": [],
+      "grounding": {
+        "status": "unverified",
+        "provider": null,
+        "reason_code": "TAVILY_UNAVAILABLE",
+        "retrieved_at": null,
+        "check_version": "evidence-review-v1"
+      },
+      "scope_prompt_version": "scope-v1"
+    }
+  ]
+}

@@ -1,0 +1,500 @@
+{
+  "case": {
+    "id": "url-extract",
+    "text": "https://docs.langchain.com/oss/python/integrations/tools/tavily_extract 学习全文提取与定向片段的区别",
+    "expected": "指定网页中的 Tavily Extract 用法",
+    "tags": [
+      "url",
+      "english",
+      "complex"
+    ]
+  },
+  "error_code": "INSUFFICIENT_KNOWLEDGE",
+  "status": "failed",
+  "material_job": {
+    "id": "d759aeba-f678-46d3-8ddd-7030c6397afd",
+    "status": "succeeded",
+    "stage": "ready",
+    "material_id": "a8dcd363-0635-4f2d-917d-eb88708655e8",
+    "preparation_id": null,
+    "error_code": null,
+    "message": null
+  },
+  "material": {
+    "id": "a8dcd363-0635-4f2d-917d-eb88708655e8",
+    "url": "https://docs.langchain.com/oss/python/integrations/tools/tavily_extract",
+    "title": "Tavily extract integration - Docs by LangChain",
+    "points": [
+      {
+        "name": "集成信息与工具特性（类、包、序列化、JS 支持、版本、返回数据与定价）",
+        "segment_ids": [
+          "s1"
+        ]
+      },
+      {
+        "name": "安装与凭证配置（pip 安装 langchain-tavily、设置 TAVILY_API_KEY）",
+        "segment_ids": [
+          "s1"
+        ]
+      },
+      {
+        "name": "实例化 TavilyExtract 及 extract_depth、include_images 参数",
+        "segment_ids": [
+          "s1"
+        ]
+      },
+      {
+        "name": "直接传参调用并返回原始内容与图片（urls、extract_depth、include_images）",
+        "segment_ids": [
+          "s1"
+        ]
+      },
+      {
+        "name": "使用 ToolCall 形式调用工具并读取 JSON 字符串结果",
+        "segment_ids": [
+          "s1"
+        ]
+      },
+      {
+        "name": "在 agent 中使用 TavilyExtract 与 create_agent、流式输出事件",
+        "segment_ids": [
+          "s2"
+        ]
+      },
+      {
+        "name": "agent 调用示例中的工具调用参数（urls、extract_depth: advanced、include_images: False）",
+        "segment_ids": [
+          "s2"
+        ]
+      },
+      {
+        "name": "工具消息返回的原始内容与失败结果、响应时间字段",
+        "segment_ids": [
+          "s2"
+        ]
+      },
+      {
+        "name": "对提取内容生成摘要的示例（爱因斯坦与理论物理学）",
+        "segment_ids": [
+          "s2",
+          "s3"
+        ]
+      },
+      {
+        "name": "API reference 与页面反馈入口",
+        "segment_ids": [
+          "s3"
+        ]
+      }
+    ],
+    "summary": "材料为 LangChain 文档中 Tavily extract 工具的集成页面，涵盖集成信息、安装与凭证配置、实例化、直接调用与 ToolCall 调用、在 agent 中使用，以及调用后返回的原始内容与摘要示例。按学习意图，范围同时覆盖整页全文提取的调用方式与针对指定 URL 的定向片段提取。",
+    "segments": [
+      {
+        "id": "s1",
+        "url": "https://docs.langchain.com/oss/python/integrations/tools/tavily_extract",
+        "text": "## Documentation Index\n\nFetch the complete documentation index at: </llms.txt>\n\nUse this file to discover all available pages before exploring further.\n\nFall AMA Series: Live sessions on building, evaluating, deploying, and continously improving agents with LangSmith. [Register now →](https://events.langchain.com/fall-product-series/)\n\n![light logo](https://mintcdn.com/langchain-5e9cc07a/nQm-sjd_MByLhgeW/images/brand/langchain-docs-dark-blue.png?fit=max&auto=format&n=nQm-sjd_MByLhgeW&q=85&s=5babf1a1962208fd7eed942fa2432ecb)\n![dark logo](https://mintcdn.com/langchain-5e9cc07a/nQm-sjd_MByLhgeW/images/brand/langchain-docs-light-blue.png?fit=max&auto=format&n=nQm-sjd_MByLhgeW&q=85&s=0bcd2a1f2599ed228bcedf0f535b45b1)\n\nPython\n\n### Popular Providers\n\n### Integrations by component\n\n## On this page\n\n# Tavily extract integration\n\nIntegrate with the Tavily extract tool using LangChain Python.\n\n## [​](#overview) Overview\n\n### [​](#integration-details) Integration details\n\n| Class | Package | Serializable | [JS support](https://js.langchain.com/docs/integrations/tools/tavily_extract) | Version |\n| --- | --- | --- | --- | --- |\n| [`TavilyExtract`](https://reference.langchain.com/python/langchain-tavily/tavily_extract/TavilyExtract) | [`langchain-tavily`](https://reference.langchain.com/python/langchain-tavily/) | ✅ | ✅ | PyPI - Version |\n\n`TavilyExtract`\n`langchain-tavily`\n![PyPI - Version](https://img.shields.io/pypi/v/langchain-tavily?style=flat-square&label=%20)\n\n### [​](#tool-features) Tool features\n\n| [Returns artifact](/oss/python/langchain/tools) | Native async | Return data | Pricing |\n| --- | --- | --- | --- |\n| ❌ | ✅ | raw content and images | 1,000 free credits / month |\n\n## [​](#setup) Setup\n\n`langchain-tavily`\n`pip install -qU langchain-tavily`\n\n### [​](#credentials) Credentials\n\n`import getpass\nimport os\n\nif not os.environ.get(\"TAVILY_API_KEY\"):\n os.environ[\"TAVILY_API_KEY\"] = getpass.getpass(\"Tavily API key:\\n\")`\n\n## [​](#instantiation) Instantiation\n\n`extract_depth`\n`include_images`\n`from langchain_tavily import TavilyExtract\n\ntool = TavilyExtract(\n extract_depth=\"basic\",\n include_images=False,\n)`\n\n## [​](#invocation) Invocation\n\n### [​](#invoke-directly-with-args) [Invoke directly with args](/oss/python/langchain/tools)\n\n`urls`\n`extract_depth`\n`include_images`\n`tool.invoke({\"urls\": [\"https://en.wikipedia.org/wiki/Lionel_Messi\"]})`\n`{'results': [{'url': 'https://en.wikipedia.org/wiki/Lionel_Messi',\n 'raw_content': 'Lionel Messi - Wikipedia\\nJump to content\\nMain menu\\nMain menu\\nmove to sidebar hide\\nNavigation\\n\\nMain page\\nContents\\nCurrent events\\nRandom article\\nAbout Wikipedia\\nContact us\\n\\nContribute\\n\\nHelp\\nLearn to edit\\nCommunity portal\\nRecent changes\\nUpload file\\nSpecial pages\\n\\n \\nSearch\\nSearch\\nAppearance\\n\\nDonate\\nCreate account\\nLog in\\n\\nPersonal tools\\n\\nDonate\\nCreate account\\nLog in\\n\\nPages for logged out editors learn more\\n\\nContributions\\nTalk\\n\\nContents\\nm... (truncated) ',\n 'images': []}],\n 'failed_results': [],\n 'response_time': 0.02}`\n\n### [​](#invoke-with-toolcall) [Invoke with ToolCall](/oss/python/langchain/tools)\n\n`# This is usually generated by a model, but we'll create a tool call directly for demo purposes.\nmodel_generated_tool_call = {\n \"args\": {\"urls\": [\"https://en.wikipedia.org/wiki/Lionel_Messi\"]},\n \"id\": \"1\",\n \"name\": \"tavily\",\n \"type\": \"tool_call\",\n}\ntool_msg = tool.invoke(model_generated_tool_call)\n\n# The content is a JSON string of results\nprint(tool_msg.content[:400])`\n`{\"results\": [{\"url\": \"https://en.wikipedia.org/wiki/Lionel_Messi\", \"raw_content\": \"Lionel Messi - Wikipedia\\nJump to content\\nMain menu\\nMain menu\\nmove to sidebar hide\\nNavigation\\n\\nMain page\\nContents\\nCurrent events\\nRandom article\\nAbout Wikipedia\\nContact us\\n\\nContribute\\n\\nHelp\\nLearn to edit\\nCommunity portal\\nRecent changes\\nUpload file\\nSpecial pages\\n\\n \\nSearch\\nSearch\\nAppearance\\n\\`\n\n## [​](#use-within-an-agent) Use within an agent\n\n`if not os.environ.get(\"OPENAI_API_KEY\"):\n os.environ[\"OPENAI_A",
+        "title": "Tavily extract integration - Docs by LangChain",
+        "truncated": false,
+        "supplement": false,
+        "content_hash": "21574637cd854c2f3c6103a0652f37fec1a7b9750006cfffea870ace7247da8c",
+        "content_kind": "full_extract",
+        "original_url": "https://docs.langchain.com/oss/python/integrations/tools/tavily_extract",
+        "retrieved_at": "2026-10-14T12:40:20.448783Z",
+        "source_chars": 9402,
+        "context_truncated": false,
+        "acquisition_status": "available"
+      },
+      {
+        "id": "s2",
+        "url": "https://docs.langchain.com/oss/python/integrations/tools/tavily_extract",
+        "text": "PI_KEY\"] = getpass.getpass(\"OPENAI_API_KEY:\\n\")`\n`from langchain.chat_models import init_chat_model\n\nmodel = init_chat_model(model=\"gpt-5.5\", model_provider=\"openai\", temperature=0)`\n`from langchain_tavily import TavilyExtract\nfrom langchain.agents import create_agent\n\n\ntavily_extract_tool = TavilyExtract()\n\nagent = create_agent(model, [tavily_extract_tool])\n\nuser_input = \"['https://en.wikipedia.org/wiki/Albert_Einstein','https://en.wikipedia.org/wiki/Theoretical_physics']\"\n\nstream = agent.stream_events({\"messages\": user_input}, version=\"v3\")\nfor snapshot in stream.values:\n snapshot[\"messages\"][-1].pretty_print()`\n`================================ Human Message =================================\n\n['https://en.wikipedia.org/wiki/Albert_Einstein','https://en.wikipedia.org/wiki/Theoretical_physics']\n================================== Ai Message ==================================\nTool Calls:\n tavily_extract (call_BAK906Cpy8fDZttwqYTMdkKp)\n Call ID: call_BAK906Cpy8fDZttwqYTMdkKp\n Args:\n urls: ['https://en.wikipedia.org/wiki/Albert_Einstein']\n extract_depth: advanced\n include_images: False\n tavily_extract (call_4NFRB92QpiI5jnCTGr76dgMX)\n Call ID: call_4NFRB92QpiI5jnCTGr76dgMX\n Args:\n urls: ['https://en.wikipedia.org/wiki/Theoretical_physics']\n extract_depth: advanced\n include_images: False\n================================= Tool Message =================================\nName: tavily_extract\n\n{\"results\": [{\"url\": \"https://en.wikipedia.org/wiki/Theoretical_physics\", \"raw_content\": \"Published Time: 2003-09-21T15:11:11Z\\nTheoretical physics - Wikipedia\\nJump to content\\nMain menu\\nMain menu\\nmove to sidebar hide\\nNavigation\\n\\nMain page\\nContents\\nCurrent events\\nRandom article\\nAbout Wikipedia\\nContact us\\n\\nContribute\\n\\nHelp\\nLearn to edit\\nCommunity portal\\nRecent changes\\nUpload file\\nSpecial pages\\n\\n \\nSearch\\nSearch\\nAppearance\\n\\nDonate\\nCreate account\\nLog in\\n\\nPersonal tools\\n\\nDonate\\nCreate account\\nLog in\\n\\nPages for logged out editors learn more\\n\\nContributions\\nTalk\\n\\nContents\\nmove to sidebar hide\\n\\n(Top)\\n\\n1 Overview\\n\\n\\n2 History\\n\\n\\n3 Mainstream theories... (truncated) ...\", \"images\": []}], \"failed_results\": [], \"response_time\": 0.01}\n================================== Ai Message ==================================\n\nHere is a summary of the content from the Wikipedia pages on Albert Einstein and Theoretical Physics:\n\n### Albert Einstein\nAlbert Einstein was a German-born theoretical physicist renowned for developing the theory of relativity, which revolutionized our understanding of space, time, and energy. His mass-energy equivalence formula, E=mc², is one of the most famous equations in physics. Einstein received the 1921 Nobel Prize in Physics for his explanation of the photoelectric effect, which was pivotal in establishing quantum theory.\n\nEinstein's early life was marked by a deep interest in mathematics and physics, leading him to study at the Swiss Federal Polytechnic in Zurich. He worked at the Swiss Patent Office while developing his theories. His \"miracle year\" in 1905 saw the publication of four groundbreaking papers, including those on special relativity and the photoelectric effect.\n\nThroughout his career, Einstein made significant contributions to statistical mechanics, quantum theory, and cosmology. He was a vocal advocate for civil rights and pacifism, and he played a role in alerting the U.S. to the potential of nuclear weapons during World War II. Einstein spent his later years at the Institute for Advanced Study in Princeton, New Jersey, where he continued to work on a unified field theory until his death in 1955.\n\n### Theoretical Physics\nTheoretical physics is a branch of physics that uses mathematical models and abstractions to explain and predict natural phenomena. It contrasts with experimental physics, which uses empirical methods to test these theories. Theoretical physics has been instrumental in developing major scientific theories, such as relativity and quantum mechanics.\n\nThe field",
+        "title": "Tavily extract integration - Docs by LangChain",
+        "truncated": false,
+        "supplement": false,
+        "content_hash": "21574637cd854c2f3c6103a0652f37fec1a7b9750006cfffea870ace7247da8c",
+        "content_kind": "full_extract",
+        "original_url": "https://docs.langchain.com/oss/python/integrations/tools/tavily_extract",
+        "retrieved_at": "2026-10-14T12:40:20.448783Z",
+        "source_chars": 9402,
+        "context_truncated": false,
+        "acquisition_status": "available"
+      },
+      {
+        "id": "s3",
+        "url": "https://docs.langchain.com/oss/python/integrations/tools/tavily_extract",
+        "text": "involves creating models to describe physical events and is judged by how well these models predict empirical observations. Theoretical physics has a rich history, dating back to ancient philosophers and evolving significantly during the Scientific Revolution with figures like Galileo and Newton.\n\nModern theoretical physics seeks to unify existing theories and explore new concepts, often using advanced mathematics. It includes mainstream theories like the Big Bang, chaos theory, and quantum mechanics, as well as proposed and fringe theories that are still under investigation. Thought experiments, such as Schrödinger's cat, play a crucial role in theoretical physics by exploring scenarios that are not easily tested in reality.\n\nBoth pages highlight the interplay between theory and experimentation in advancing our understanding of the universe, with Einstein's work serving as a prime example of theoretical physics' impact.`\n\n## [​](#api-reference) API reference\n\nWas this page helpful?\n\n![light logo](https://mintcdn.com/langchain-5e9cc07a/nQm-sjd_MByLhgeW/images/brand/langchain-docs-dark-blue.png?fit=max&auto=format&n=nQm-sjd_MByLhgeW&q=85&s=5babf1a1962208fd7eed942fa2432ecb)\n![dark logo](https://mintcdn.com/langchain-5e9cc07a/nQm-sjd_MByLhgeW/images/brand/langchain-docs-light-blue.png?fit=max&auto=format&n=nQm-sjd_MByLhgeW&q=85&s=0bcd2a1f2599ed228bcedf0f535b45b1)\n\nResources\n\nCompany",
+        "title": "Tavily extract integration - Docs by LangChain",
+        "truncated": false,
+        "supplement": false,
+        "content_hash": "21574637cd854c2f3c6103a0652f37fec1a7b9750006cfffea870ace7247da8c",
+        "content_kind": "full_extract",
+        "original_url": "https://docs.langchain.com/oss/python/integrations/tools/tavily_extract",
+        "retrieved_at": "2026-10-14T12:40:20.448783Z",
+        "source_chars": 9402,
+        "context_truncated": false,
+        "acquisition_status": "available"
+      }
+    ],
+    "source_type": "web",
+    "learning_title": "Tavily extract 集成文档学习范围",
+    "extraction_status": "success",
+    "extraction_failures": [],
+    "learning_instruction": "学习全文提取与定向片段的区别",
+    "created_at": "2026-10-14T12:40:23+00:00",
+    "search_available": true
+  },
+  "wall_attempt_seconds": [
+    3.648,
+    62.401
+  ],
+  "elapsed_seconds": 66.049,
+  "api_timings": [
+    {
+      "method": "POST",
+      "path": "/auth/wechat",
+      "status": 200,
+      "seconds": 0.073
+    },
+    {
+      "method": "POST",
+      "path": "/quiz/preparations",
+      "status": 200,
+      "seconds": 0.035
+    },
+    {
+      "method": "POST",
+      "path": "/materials/web",
+      "status": 200,
+      "seconds": 3.528
+    },
+    {
+      "method": "GET",
+      "path": "/material-jobs/d759aeba-f678-46d3-8ddd-7030c6397afd",
+      "status": 200,
+      "seconds": 0.007
+    },
+    {
+      "method": "GET",
+      "path": "/materials/a8dcd363-0635-4f2d-917d-eb88708655e8",
+      "status": 200,
+      "seconds": 0.005
+    },
+    {
+      "method": "POST",
+      "path": "/auth/wechat",
+      "status": 200,
+      "seconds": 0.061
+    },
+    {
+      "method": "POST",
+      "path": "/quiz/preparations",
+      "status": 200,
+      "seconds": 0.119
+    },
+    {
+      "method": "POST",
+      "path": "/materials/web",
+      "status": 200,
+      "seconds": 0.011
+    },
+    {
+      "method": "GET",
+      "path": "/material-jobs/d759aeba-f678-46d3-8ddd-7030c6397afd",
+      "status": 200,
+      "seconds": 0.008
+    },
+    {
+      "method": "GET",
+      "path": "/materials/a8dcd363-0635-4f2d-917d-eb88708655e8",
+      "status": 200,
+      "seconds": 0.006
+    },
+    {
+      "method": "POST",
+      "path": "/quiz/generate",
+      "status": 200,
+      "seconds": 62.186
+    },
+    {
+      "method": "GET",
+      "path": "/operations/generate-url-extract",
+      "status": 200,
+      "seconds": 0.008
+    }
+  ],
+  "structured_model_usage": [
+    {
+      "operation": "be91965d-960a-4210-a4f8-d4808791dc61",
+      "attempt": 1,
+      "tokens": {
+        "input_tokens": 3772,
+        "output_tokens": 376,
+        "total_tokens": 4148
+      }
+    },
+    {
+      "operation": "6c298126-a1e7-4614-86b1-dc2102bd0a6b",
+      "attempt": 1,
+      "tokens": {
+        "input_tokens": 39312,
+        "output_tokens": 103,
+        "total_tokens": 39415
+      }
+    }
+  ],
+  "operations": [
+    {
+      "key": "generate-url-extract",
+      "kind": "quiz",
+      "status": "failed",
+      "stage": "failed",
+      "model_calls": 4,
+      "tool_calls": 3,
+      "page_attempts": 3,
+      "charged": 1,
+      "retrieval": {
+        "tools": [
+          {
+            "tool": "tavily_search",
+            "status": "partial",
+            "call_id": "call_00_PBVaewpCKOdVYL11Mb0L5773",
+            "credits": 2.0,
+            "elapsed_ms": 19628,
+            "parameters": {
+              "query": "langchain-tavily TavilyExtract integration documentation extract_depth include_images",
+              "topic": "general",
+              "country": null,
+              "end_date": null,
+              "start_date": null,
+              "time_range": null,
+              "max_results": 6,
+              "content_mode": "full",
+              "search_depth": "advanced",
+              "exclude_domains": [],
+              "include_domains": []
+            },
+            "source_ids": [
+              "web-6f692004f2582f3e1e3eacec761d01ad",
+              "web-78a8c1e30679cf65ece789b1f49c2954",
+              "web-ccf19d3942f54019644144bec5270bd9",
+              "web-c5a1a0ecab5f7bc1c41a8c981a560f9b",
+              "web-e4da1e247967e97259a10ff67d1bd790",
+              "web-65b30486f38cdc4c9ababcf5af43b2c6",
+              "web-de9f0bbcf128c59a1d819e68582644a6",
+              "web-e76e9a74fd36253362e0fb99611a1666",
+              "web-02a6ce80b764ff427c4344c2bdf2f5d6",
+              "web-fcf138d11e2f950811acd5d08040b7a9",
+              "web-c8d97e8d6c53d0d8cfe41491d30fef5d",
+              "web-ee25ee0c6264b3033b5d773646377fd9",
+              "web-ff352796337c0da6bff9ff6f43f4b428",
+              "web-1c1734538ae8e4173c38d5b57b17c6e5",
+              "web-604a3f0f3860865cb7667418b4f171c3",
+              "web-0db904859d7935cf5ec2122a089ffc9a",
+              "web-07f180a70a99d40d8ce95118a9c0098b",
+              "web-c9225afb2fcd05d491fcdaebe7fc0d28",
+              "web-85dcd5608d193f302241c9eab963ca24",
+              "web-90350b4fd075a03c7f0eca21c2ffb3ef",
+              "web-91a8858691c25cbe5ad4de7ab9ade13d",
+              "web-473773e5ed79e1811959957198a6e28e",
+              "web-417e2b0586ae1466b934929ecbfc3ea2",
+              "web-bee1ff80dcb297f3843081172dfbcf3f",
+              "web-dc8e18ccda46e67c64ca836564c5d3f6",
+              "web-ec788a50d1a5047a60c3c95cb1b0ce27",
+              "web-c014853fd2f9165d64a6ade4bfd6ccf1",
+              "web-d9f8b8aa05a311e6fdd843c5efc26bea",
+              "web-5e9f5acf11891af0b4ff1a4788068928",
+              "web-0b5738ceba84146f385f9a2267ca0efe",
+              "web-a6f0fddf652a082645a1732e3dc15001",
+              "web-e1c5cd262ef779405aa1a0dd0a47f635",
+              "web-619f798ed54fc30edf40613963a8317f",
+              "web-fe1ef29b3d62b95cb7c7c9bc29593e18",
+              "web-ae6ed64c1fec4d215ec775d80be7cdac",
+              "web-e951b09f99692322e1f98fe827a24aa3",
+              "web-358560ecc2dd0df178c088099010118d",
+              "web-c83a48264c07e7ece445fa671b4c50de",
+              "web-8a2e20dc7484e9329953b4c2f3d52560",
+              "web-89db7706bfb6dafe56966ff0b042498c",
+              "web-9fd6da1cf08136459951dbfe08f9bc97",
+              "web-db8afd48a0cb1e0635e6e48479695365",
+              "web-9bf25f0ee00351b22d41843d42906601",
+              "web-ae9514cce998fbb0d717621c5502dc31",
+              "web-12c0ab531bafc65dc44bc41c9ec5611d",
+              "web-b50bb42c054447903a102d842a0b56a6",
+              "web-aa5e53792763f64823996a2a184bf3ca",
+              "web-04a4f17a0baf25329588c0e36799b7f6",
+              "web-17221071d987e6ad58a9c0bca4e4c0eb",
+              "web-4bc1959e082859d78ffd1c0cf097feb0",
+              "web-f86f80d4c736923d5b4153c58618e726",
+              "web-5c13d8863ae60c2f35ddc30ba38c8c2c",
+              "web-0ede677c7d6bd7c59c44ef4dafa6041b",
+              "web-33ec59d4f3b62b2e6f62ebadda926111",
+              "web-39b69bb2c09af9cfd05dd40cc633cee5",
+              "web-1ff41ee39ea36edc14967e6594066694",
+              "web-c61e09321387b50a7365b9edb28e9440",
+              "web-9511a35e0c293f51c0e3fd868ed8086d",
+              "web-28bf229e5adca5b13298cf1828e639fa",
+              "web-66d56ff2f27b41fb045b2cce192a60ec",
+              "web-602807a7b643037a04f65640e1b2f2a6",
+              "web-e560dc93f3f0b4dfa2460595a5743944",
+              "web-c1890893ab8056496c1ceabaa140d591",
+              "web-dadb8505d3ba719a6bbce39f0a693fa5",
+              "web-a31b19fb56a544e259d76edf1893c817",
+              "web-ec7b0ec8a06ce01b0cf84d642ebb198c",
+              "web-98c170ec64815b4b241a0bf316d78a06",
+              "web-c9bdf81698f310a2a9267cf4b0360db5",
+              "web-c024473b81454b4b5ef73bded168d4a8",
+              "web-0364671ee00f60d1dc71f0822af1a990",
+              "web-7171f91fcaf3b24a2f70cf3308b348e6",
+              "web-9dd8e7a5c925db19ff12bd3639cff68c",
+              "web-ccbec55807a0b02ba7555d924ec28591",
+              "web-b48875cdb631e949f47077b0a9c3a2d2",
+              "web-c2c09d36b1bc118884c57dd7fb9620c0",
+              "web-69b3b7e0e141d28390218c95cbdcd6bb",
+              "web-33e8446b71b60b6279d54406883fb78f",
+              "web-3db4fe84bee1e953956d9c9d481de002",
+              "web-6808fabe234774c480a23b3c87ff430c",
+              "web-c4bbbd236832a1e827556573790ebc83",
+              "web-e05dab22c474a9b067c8921aa5eabf6a",
+              "web-1e262a4f5a13f13503ce3848eac99e5b",
+              "web-64823fe6d0a83bebfc17b296152f83d3",
+              "web-3432a8206cb0675f2fb99a90fc661ac0",
+              "web-ce63129658b718030ac8c7f9f5c85a94",
+              "web-d076a63b2958df89386261ec1d79a8fc",
+              "web-90c2a4a9495a37ff01ad1514801d62f9",
+              "web-f4ee9eab27d5c40b4225c501ccb84049",
+              "web-0e4639f21d6610ae1c34dd290f77f3a1",
+              "web-c4a48b499f688e4d177456c833d20bba",
+              "web-f1966d1df0ad4fccf8875e0b0d5cebf9",
+              "web-17c51bd04537e7f3436b9f952c417f9e",
+              "web-1f19e282c7c9529b3ea4364a45b4f0d2",
+              "web-6cb33c1d23ba6574e5838e7394c67b3c",
+              "web-f55d29a9366d97d44be53131cfca5cc4",
+              "web-34558329a005d94af8f880771f152b7b",
+              "web-e9e58230ccf9511a469e54f1207b845b",
+              "web-84e4804de26af54fbcc704a77e680e16",
+              "web-8ee045cd39ef5eb4de3fdc9f57c038ba",
+              "web-654721f4cba7dd1b66175d07597c67d6",
+              "web-ce2c9c219c19ba6e7429e438699ce27e",
+              "web-b21366c3bd75f5f7ac06a55bb553d16e",
+              "web-d325284a0182f12cbdc5fc962bf50963",
+              "web-4661e8571d92ad008e08adf61fd8a675",
+              "web-b77d0d9d98f3f3781b02981781e12de7"
+            ],
+            "reason_code": null
+          },
+          {
+            "tool": "tavily_search",
+            "status": "success",
+            "call_id": "call_01_04UVIgJlJ2tmCo6Rd5Cl4769",
+            "credits": 2.0,
+            "elapsed_ms": 6428,
+            "parameters": {
+              "query": "Tavily extract API documentation extract_depth basic advanced include_images raw_content",
+              "topic": "general",
+              "country": null,
+              "end_date": null,
+              "start_date": null,
+              "time_range": null,
+              "max_results": 6,
+              "content_mode": "full",
+              "search_depth": "advanced",
+              "exclude_domains": [],
+              "include_domains": []
+            },
+            "source_ids": [
+              "web-76f415407b6643e6a50e22d1dc2eb969",
+              "web-6f692004f2582f3e1e3eacec761d01ad",
+              "web-78a8c1e30679cf65ece789b1f49c2954",
+              "web-ccf19d3942f54019644144bec5270bd9",
+              "web-c5a1a0ecab5f7bc1c41a8c981a560f9b",
+              "web-e4da1e247967e97259a10ff67d1bd790",
+              "web-65b30486f38cdc4c9ababcf5af43b2c6",
+              "web-65c312a611e1242f8b36c44de6c7abe2",
+              "web-54af18d72d3c1ec1315a4cbb6b9df0a7",
+              "web-26188aa410690f5a70298aae40b408d5",
+              "web-880c0b3f87da9886ab3fe3a768ad16db",
+              "web-1926dadb442f8247e059125acd51e991",
+              "web-b09a9aa90ff4e7091753e1056a0d4b36",
+              "web-d1a0c65a99b68c63c3a2c552979ce969",
+              "web-8f38068017d3f872328d5970ec64336a",
+              "web-d88a54d6ab42788c61725a8a50efb5c4",
+              "web-ad3742df11342b96ae74e44dcda0ca7f",
+              "web-3ce560112972dbc75e0c01dcbdce60ab"
+            ],
+            "reason_code": null
+          },
+          {
+            "tool": "tavily_extract",
+            "status": "success",
+            "call_id": "call_00_Gwv8y1gDbJp8LyvRKM9Y6207",
+            "credits": 1.0,
+            "elapsed_ms": 2857,
+            "parameters": {
+              "urls": [
+                "https://docs.langchain.com/oss/python/integrations/tools/tavily_extract",
+                "https://docs.tavily.com/documentation/api-reference/endpoint/extract",
+                "https://reference.langchain.com/python/langchain-tavily/tavily_extract/TavilyExtract"
+              ],
+              "query": null,
+              "content_mode": "full",
+              "extract_depth": "advanced",
+              "chunks_per_source": null
+            },
+            "source_ids": [
+              "web-d325284a0182f12cbdc5fc962bf50963",
+              "web-4661e8571d92ad008e08adf61fd8a675",
+              "web-b77d0d9d98f3f3781b02981781e12de7",
+              "web-880c0b3f87da9886ab3fe3a768ad16db",
+              "web-1926dadb442f8247e059125acd51e991",
+              "web-b09a9aa90ff4e7091753e1056a0d4b36",
+              "web-d1a0c65a99b68c63c3a2c552979ce969",
+              "web-6cb33c1d23ba6574e5838e7394c67b3c",
+              "web-f55d29a9366d97d44be53131cfca5cc4",
+              "web-34558329a005d94af8f880771f152b7b"
+            ],
+            "reason_code": null
+          }
+        ],
+        "model_usage": {
+          "input_tokens": 75127,
+          "total_tokens": 75856,
+          "output_tokens": 729
+        },
+        "reason_code": "RETRIEVAL_BUDGET_EXHAUSTED"
+      },
+      "error_code": "INSUFFICIENT_KNOWLEDGE"
+    },
+    {
+      "key": "material-d759aeba-f678-46d3-8ddd-7030c6397afd",
+      "kind": "material",
+      "status": "succeeded",
+      "stage": "succeeded",
+      "model_calls": 1,
+      "tool_calls": 1,
+      "page_attempts": 1,
+      "charged": 1,
+      "retrieval": null,
+      "error_code": null
+    }
+  ],
+  "retrieval_preparations": [],
+  "confirmed_selection": {
+    "material_id": "a8dcd363-0635-4f2d-917d-eb88708655e8",
+    "point_ids": [
+      "s1",
+      "s2"
+    ],
+    "supplement": true,
+    "question_count": 3,
+    "difficulty": "easy",
+    "execution": "background"
+  },
+  "operation": {
+    "status": "failed",
+    "result": null,
+    "error_code": "INSUFFICIENT_KNOWLEDGE",
+    "stage": "failed",
+    "retry_after_seconds": 0,
+    "deadline": "2026-10-14T12:46:27+00:00"
+  }
+}

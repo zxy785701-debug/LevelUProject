@@ -1,6 +1,6 @@
 from datetime import datetime, timezone
 from pathlib import Path
-from sqlalchemy import create_engine, String, Integer, Double, DateTime, JSON, ForeignKey, UniqueConstraint, LargeBinary
+from sqlalchemy import create_engine, String, Integer, Double, DateTime, JSON, ForeignKey, UniqueConstraint, LargeBinary, Text
 from sqlalchemy.engine import URL
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, sessionmaker
 from ..errors import AppError
@@ -88,6 +88,9 @@ class Quota(Base):
     identity: Mapped[str] = mapped_column(String(64), primary_key=True)
     day: Mapped[str] = mapped_column(String(10))
     quiz_count: Mapped[int] = mapped_column(Integer, default=0)
+    material_count: Mapped[int] = mapped_column(Integer, default=0)
+    period_count: Mapped[int] = mapped_column(Integer, default=0)
+    topic_prepare_count: Mapped[int] = mapped_column(Integer, default=0, server_default='0')
     calls: Mapped[list] = mapped_column(JSON, default=list)
     busy_id: Mapped[str | None] = mapped_column(String(36), nullable=True)
     busy_until: Mapped[float] = mapped_column(Double, default=0)
@@ -103,11 +106,75 @@ class Operation(Base):
     kind: Mapped[str] = mapped_column(String(12))
     attempt_id: Mapped[str | None] = mapped_column(String(36), nullable=True)
     status: Mapped[str] = mapped_column(String(16), default='running')
+    stage: Mapped[str | None] = mapped_column(String(32), nullable=True)
+    deadline_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
+    retry_after_seconds: Mapped[int] = mapped_column(Integer, default=0, server_default='0')
+    model_calls: Mapped[int] = mapped_column(Integer, default=0, server_default='0')
+    tool_calls: Mapped[int] = mapped_column(Integer, default=0, server_default='0')
+    page_attempts: Mapped[int] = mapped_column(Integer, default=0, server_default='0')
+    retrieval_log: Mapped[dict | None] = mapped_column(JSON, nullable=True)
     charged: Mapped[int] = mapped_column(Integer, default=0)
     result: Mapped[dict | None] = mapped_column(JSON, nullable=True)
     error_code: Mapped[str | None] = mapped_column(String(64), nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime, default=utcnow)
     __table_args__ = (UniqueConstraint('user_id', 'key', name='uq_user_operation'),)
+
+
+class TopicPreparation(Base):
+    __tablename__ = 'topic_preparations'
+    id: Mapped[str] = mapped_column(String(36), primary_key=True)
+    user_id: Mapped[str] = mapped_column(ForeignKey('users.id', ondelete='CASCADE'), index=True)
+    operation_id: Mapped[str] = mapped_column(ForeignKey('ai_operations.id', ondelete='CASCADE'), unique=True)
+    key: Mapped[str] = mapped_column(String(128, collation='utf8mb4_bin'))
+    digest: Mapped[str] = mapped_column(String(64))
+    input_text: Mapped[str] = mapped_column(Text)
+    version: Mapped[int] = mapped_column(Integer, default=1)
+    status: Mapped[str] = mapped_column(String(16), default='running')
+    stage: Mapped[str] = mapped_column(String(32), default='planning')
+    content: Mapped[dict | None] = mapped_column(JSON, nullable=True)
+    error_code: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=utcnow)
+    expires_at: Mapped[datetime] = mapped_column(DateTime, index=True)
+    __table_args__ = (UniqueConstraint('user_id', 'key', name='uq_topic_prepare_key'),)
+
+
+class MaterialJob(Base):
+    __tablename__ = 'material_jobs'
+    id: Mapped[str] = mapped_column(String(36), primary_key=True)
+    user_id: Mapped[str] = mapped_column(ForeignKey('users.id', ondelete='CASCADE'), index=True)
+    key: Mapped[str] = mapped_column(String(128, collation='utf8mb4_bin'))
+    digest: Mapped[str] = mapped_column(String(64))
+    status: Mapped[str] = mapped_column(String(16), default='running')
+    stage: Mapped[str] = mapped_column(String(32), default='reading')
+    material_id: Mapped[str | None] = mapped_column(String(36), nullable=True)
+    preparation_id: Mapped[str | None] = mapped_column(ForeignKey('topic_preparations.id', ondelete='SET NULL'), nullable=True)
+    error_code: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    message: Mapped[str | None] = mapped_column(String(300), nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=utcnow, index=True)
+    __table_args__ = (UniqueConstraint('user_id', 'key', name='uq_material_job_key'),)
+
+
+class Material(Base):
+    __tablename__ = 'materials'
+    id: Mapped[str] = mapped_column(String(36), primary_key=True)
+    user_id: Mapped[str] = mapped_column(ForeignKey('users.id', ondelete='CASCADE'), index=True)
+    content: Mapped[dict] = mapped_column(JSON)
+    referenced: Mapped[int] = mapped_column(Integer, default=0)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=utcnow, index=True)
+
+
+class PeriodReport(Base):
+    __tablename__ = 'period_reports'
+    id: Mapped[str] = mapped_column(String(36), primary_key=True)
+    user_id: Mapped[str] = mapped_column(ForeignKey('users.id', ondelete='CASCADE'), index=True)
+    digest: Mapped[str] = mapped_column(String(64))
+    snapshot: Mapped[dict] = mapped_column(JSON)
+    content: Mapped[dict | None] = mapped_column(JSON, nullable=True)
+    status: Mapped[str] = mapped_column(String(16), default='pending')
+    attempts: Mapped[int] = mapped_column(Integer, default=0)
+    error_code: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=utcnow)
+    __table_args__ = (UniqueConstraint('user_id', 'digest', name='uq_period_snapshot'),)
 
 
 class Database:

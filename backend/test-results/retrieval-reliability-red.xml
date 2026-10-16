@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="12" time="7.456" timestamp="2026-10-16T16:15:36.201150+08:00" hostname="zxy"><testcase classname="tests.test_model_reliability" name="test_schema_retry_gets_safe_correction_and_logs_validation_location" time="0.009" /><testcase classname="tests.test_model_reliability" name="test_permanent_provider_status_fails_without_spending_retry_budget[400]" time="0.003" /><testcase classname="tests.test_model_reliability" name="test_permanent_provider_status_fails_without_spending_retry_budget[402]" time="0.003" /><testcase classname="tests.test_model_reliability" name="test_permanent_provider_status_fails_without_spending_retry_budget[403]" time="0.003" /><testcase classname="tests.test_model_reliability" name="test_permanent_provider_status_fails_without_spending_retry_budget[404]" time="0.003" /><testcase classname="tests.test_model_reliability" name="test_permanent_provider_status_fails_without_spending_retry_budget[422]" time="0.003" /><testcase classname="tests.test_model_reliability" name="test_503_honors_provider_retry_delay_and_reserves_each_request[retry-after-3]" time="0.003" /><testcase classname="tests.test_model_reliability" name="test_503_honors_provider_retry_delay_and_reserves_each_request[retry-after-ms-1500]" time="0.003" /><testcase classname="tests.test_model_reliability" name="test_each_attempt_has_a_wall_clock_deadline_even_if_transport_keeps_alive" time="0.065" /><testcase classname="tests.test_model_reliability" name="test_cancellation_and_account_limits_do_not_trigger_extra_requests" time="0.004" /><testcase classname="tests.test_model_reliability" name="test_retrieval_uses_configured_attempts_and_never_replays_completed_tools" time="0.027"><failure message="app.errors.AppError: 暂时无法连接模型服务">tests\test_model_reliability.py:136: in test_retrieval_uses_configured_attempts_and_never_replays_completed_tools
+    result = await RetrievalAgent(retrieval_settings(), model=model, before_model=before).run('HTTP')
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app\quiz_grounding\agent.py:217: in run
+    raise AppError('MODEL_UNAVAILABLE', '暂时无法连接模型服务', 503) from None
+E   app.errors.AppError: 暂时无法连接模型服务</failure></testcase><testcase classname="tests.test_model_reliability" name="test_retrieval_deadline_cancels_a_continuously_open_model_request" time="0.522"><failure message="TimeoutError">tests\test_model_reliability.py:153: in test_retrieval_deadline_cancels_a_continuously_open_model_request
+    await RetrievalAgent(config, model=model).run('HTTP')
+app\quiz_grounding\agent.py:201: in run
+    await agent.ainvoke({'messages': [HumanMessage(content=text)]}, config={'recursion_limit': 24})
+.venv\Lib\site-packages\langgraph\pregel\main.py:4155: in ainvoke
+    async for chunk in self.astream(
+.venv\Lib\site-packages\langgraph\pregel\main.py:3505: in astream
+    async for _ in runner.atick(
+.venv\Lib\site-packages\langgraph\pregel\_runner.py:397: in atick
+    await arun_with_retry(
+.venv\Lib\site-packages\langgraph\pregel\_retry.py:744: in arun_with_retry
+    return await task.proc.ainvoke(task.input, config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\langgraph\_internal\_runnable.py:756: in ainvoke
+    input = await asyncio.create_task(
+.venv\Lib\site-packages\langgraph\_internal\_runnable.py:522: in ainvoke
+    ret = await self.afunc(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\langchain\agents\factory.py:1602: in amodel_node
+    result = await awrap_model_call_handler(request, _execute_model_async)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\langchain\agents\factory.py:418: in normalized_single
+    return _to_composed_result(await single_handler(request, handler))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\langsmith\run_helpers.py:717: in async_wrapper
+    function_result = await asyncio.create_task(  # type: ignore[call-arg]
+app\quiz_grounding\agent.py:55: in awrap_model_call
+    return await self._model_call(request, handler)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app\quiz_grounding\agent.py:91: in _model_call
+    response = await handler(request.override(messages=messages))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\langchain\agents\factory.py:1565: in _execute_model_async
+    output = await model_.ainvoke(messages)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\langchain_core\language_models\chat_models.py:511: in ainvoke
+    llm_result = await self.agenerate_prompt(
+.venv\Lib\site-packages\langchain_core\language_models\chat_models.py:1888: in agenerate_prompt
+    return await self.agenerate(
+.venv\Lib\site-packages\langchain_core\language_models\chat_models.py:1808: in agenerate
+    results = await asyncio.gather(
+.venv\Lib\site-packages\langchain_core\language_models\chat_models.py:2183: in _agenerate_with_cache
+    result = await self._agenerate(messages, stop=stop, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\test_model_reliability.py:147: in _agenerate
+    await asyncio.sleep(10)
+D:\anaconda3\Lib\asyncio\tasks.py:718: in sleep
+    return await future
+           ^^^^^^^^^^^^
+E   asyncio.exceptions.CancelledError
+
+The above exception was the direct cause of the following exception:
+tests\test_model_reliability.py:152: in test_retrieval_deadline_cancels_a_continuously_open_model_request
+    async with asyncio.timeout(0.5):
+               ^^^^^^^^^^^^^^^^^^^^
+D:\anaconda3\Lib\asyncio\timeouts.py:116: in __aexit__
+    raise TimeoutError from exc_val
+E   TimeoutError</failure></testcase></testsuite></testsuites>

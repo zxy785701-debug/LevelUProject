@@ -1,0 +1,30 @@
+{
+  "run_id": "acceptance-20261014",
+  "providers": [
+    "Tavily official LangChain Search/Extract",
+    "existing DeepSeek model"
+  ],
+  "configured": {
+    "tavily": true,
+    "deepseek": true
+  },
+  "database": "levelup_test",
+  "model": "deepseek-flash",
+  "minute_limit": 3,
+  "preparation_deadline_seconds": 240.0,
+  "generation_deadline_seconds": 300.0,
+  "cases": [
+    {
+      "id": "harness-1",
+      "text": "Harness Engineering",
+      "expected": "AI 编码智能体工程，先消除与线束工程的歧义",
+      "tags": [
+        "harness",
+        "global",
+        "complex"
+      ]
+    }
+  ],
+  "executed": true,
+  "blocked_reason": null
+}

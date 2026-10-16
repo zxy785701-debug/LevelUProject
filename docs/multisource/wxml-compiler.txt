@@ -1,0 +1,1 @@
+Official WeChat WXML/WXS compiler exit=0

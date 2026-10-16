@@ -1,0 +1,30 @@
+{
+  "run_id": "acceptance-20261014-retest2",
+  "providers": [
+    "Tavily official LangChain Search/Extract",
+    "existing DeepSeek model"
+  ],
+  "configured": {
+    "tavily": true,
+    "deepseek": true
+  },
+  "database": "levelup_test",
+  "model": "deepseek-flash",
+  "minute_limit": 3,
+  "preparation_deadline_seconds": 240.0,
+  "generation_deadline_seconds": 300.0,
+  "cases": [
+    {
+      "id": "url-extract",
+      "text": "https://docs.langchain.com/oss/python/integrations/tools/tavily_extract 学习全文提取与定向片段的区别",
+      "expected": "指定网页中的 Tavily Extract 用法",
+      "tags": [
+        "url",
+        "english",
+        "complex"
+      ]
+    }
+  ],
+  "executed": true,
+  "blocked_reason": null
+}

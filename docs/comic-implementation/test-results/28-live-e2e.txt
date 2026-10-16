@@ -1,0 +1,12 @@
+
+> levelup-comic-mini@1.0.0 test:e2e
+> playwright test --grep 真实后端
+
+
+Running 1 test using 1 worker
+
+(node:41428) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 e2e\core.spec.ts:283:5 › 真实后端：3题混合作答与AI报告 (8.3s)
+
+  1 passed (9.4s)

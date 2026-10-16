@@ -1,0 +1,2445 @@
+{
+  "case": {
+    "id": "huashao-1",
+    "text": "花少2",
+    "expected": "确认花儿与少年第二季的热门网络梗与名场面方向",
+    "tags": [
+      "huashao",
+      "memes"
+    ],
+    "expect_meme_majority": true
+  },
+  "error_code": null,
+  "status": "awaiting_human_evidence_review",
+  "preparation": {
+    "id": "e54cd784-3abd-4b72-a3fd-d17cfd778ea4",
+    "version": 1,
+    "input_text": "花少2",
+    "status": "ready",
+    "stage": "ready",
+    "content": {
+      "candidates": [
+        {
+          "id": "scope-hs2-v1-program",
+          "topic": "花少2",
+          "domain": "综艺节目本体信息",
+          "description": "《花儿与少年第二季》作为湖南卫视明星姐弟自助远行真人秀的节目本体信息，包括播出与制作、固定成员、行程与规则设定等。依据本次取得的百科与维基片段建立，仅表示取得依据，最终题目另行审核。",
+          "focuses": [
+            {
+              "id": "focus-hs2-v1-broadcast",
+              "name": "播出与制作信息",
+              "description": "节目播出平台、时间、期数与制作团队等基础信息。",
+              "points": [
+                {
+                  "id": "point-hs2-v1-broadcast-1",
+                  "name": "湖南卫视明星姐弟自助远行节目",
+                  "evidence_ids": [
+                    "web-d195a88ec6de9952100f33d22ec634b0",
+                    "web-686b1c38453a447e2872a0fc41ccfa0a"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-hs2-v1-broadcast-2",
+                  "name": "2015年4月25日起每周六22:00播出",
+                  "evidence_ids": [
+                    "web-d195a88ec6de9952100f33d22ec634b0",
+                    "web-686b1c38453a447e2872a0fc41ccfa0a"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-hs2-v1-broadcast-3",
+                  "name": "共11期",
+                  "evidence_ids": [
+                    "web-d195a88ec6de9952100f33d22ec634b0",
+                    "web-686b1c38453a447e2872a0fc41ccfa0a"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-hs2-v1-broadcast-4",
+                  "name": "第二季由廖珂及其团队打造",
+                  "evidence_ids": [
+                    "web-1b7b9b9f6796f6357bedaa562e03252d"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-hs2-v1-broadcast-5",
+                  "name": "接档《奇妙的朋友》播出",
+                  "evidence_ids": [
+                    "web-1b7b9b9f6796f6357bedaa562e03252d"
+                  ],
+                  "evidence_status": "available"
+                }
+              ]
+            },
+            {
+              "id": "focus-hs2-v1-cast",
+              "name": "固定成员构成",
+              "description": "第二季固定成员名单及姐弟组合设定。",
+              "points": [
+                {
+                  "id": "point-hs2-v1-cast-1",
+                  "name": "毛阿敏",
+                  "evidence_ids": [
+                    "web-d195a88ec6de9952100f33d22ec634b0",
+                    "web-686b1c38453a447e2872a0fc41ccfa0a"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-hs2-v1-cast-2",
+                  "name": "许晴",
+                  "evidence_ids": [
+                    "web-d195a88ec6de9952100f33d22ec634b0",
+                    "web-686b1c38453a447e2872a0fc41ccfa0a"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-hs2-v1-cast-3",
+                  "name": "宁静",
+                  "evidence_ids": [
+                    "web-d195a88ec6de9952100f33d22ec634b0",
+                    "web-686b1c38453a447e2872a0fc41ccfa0a"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-hs2-v1-cast-4",
+                  "name": "陈意涵",
+                  "evidence_ids": [
+                    "web-d195a88ec6de9952100f33d22ec634b0",
+                    "web-686b1c38453a447e2872a0fc41ccfa0a"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-hs2-v1-cast-5",
+                  "name": "井柏然",
+                  "evidence_ids": [
+                    "web-d195a88ec6de9952100f33d22ec634b0",
+                    "web-686b1c38453a447e2872a0fc41ccfa0a"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-hs2-v1-cast-6",
+                  "name": "杨洋",
+                  "evidence_ids": [
+                    "web-d195a88ec6de9952100f33d22ec634b0",
+                    "web-686b1c38453a447e2872a0fc41ccfa0a"
+                  ],
+                  "evidence_status": "available"
+                }
+              ]
+            },
+            {
+              "id": "focus-hs2-v1-format",
+              "name": "行程与规则设定",
+              "description": "节目核心玩法：无经纪人与助理、有限资金、多国旅行及文化差异展示。",
+              "points": [
+                {
+                  "id": "point-hs2-v1-format-1",
+                  "name": "两位明星弟弟（少年）与五位明星姐姐（花儿）",
+                  "evidence_ids": [
+                    "web-4d2a97c17bb5cf78743015cd4ef213c5"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-hs2-v1-format-2",
+                  "name": "没有经纪人与助理的安排和帮助",
+                  "evidence_ids": [
+                    "web-4d2a97c17bb5cf78743015cd4ef213c5"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-hs2-v1-format-3",
+                  "name": "利用15—20天左右的时间与有限的资金",
+                  "evidence_ids": [
+                    "web-4d2a97c17bb5cf78743015cd4ef213c5"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-hs2-v1-format-4",
+                  "name": "前往不同的国家及城市旅行，展现文化差异",
+                  "evidence_ids": [
+                    "web-4d2a97c17bb5cf78743015cd4ef213c5"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-hs2-v1-format-5",
+                  "name": "每季最后为成员取称号并颁奖",
+                  "evidence_ids": [
+                    "web-4d2a97c17bb5cf78743015cd4ef213c5"
+                  ],
+                  "evidence_status": "available"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "scope-hs2-v1-drama",
+          "topic": "花少2",
+          "domain": "名场面与冲突事件",
+          "description": "第二季被反复讨论的经典冲突事件与名场面，包括房车事件、杨洋走丢、伦敦桥对峙等，依据本次取得的文章片段建立。",
+          "focuses": [
+            {
+              "id": "focus-hs2-v1-rv",
+              "name": "房车事件",
+              "description": "土耳其露营分房引发的“房车大战”相关情节。",
+              "points": [
+                {
+                  "id": "point-hs2-v1-rv-1",
+                  "name": "土耳其第二站自驾游露营",
+                  "evidence_ids": [
+                    "web-8691285e72d9aaa5ccce2b282a0ef4b7",
+                    "web-077e455025651b83213e4d59d1b7d446"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-hs2-v1-rv-2",
+                  "name": "房车最多只能睡五个人，需分配帐篷",
+                  "evidence_ids": [
+                    "web-8691285e72d9aaa5ccce2b282a0ef4b7",
+                    "web-077e455025651b83213e4d59d1b7d446"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-hs2-v1-rv-3",
+                  "name": "大家都想睡帐篷",
+                  "evidence_ids": [
+                    "web-8691285e72d9aaa5ccce2b282a0ef4b7",
+                    "web-077e455025651b83213e4d59d1b7d446"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-hs2-v1-rv-4",
+                  "name": "宁静“这里可以睡三个人”的潜台词",
+                  "evidence_ids": [
+                    "web-8691285e72d9aaa5ccce2b282a0ef4b7",
+                    "web-077e455025651b83213e4d59d1b7d446"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-hs2-v1-rv-5",
+                  "name": "井柏然未领会潜台词",
+                  "evidence_ids": [
+                    "web-8691285e72d9aaa5ccce2b282a0ef4b7",
+                    "web-077e455025651b83213e4d59d1b7d446"
+                  ],
+                  "evidence_status": "available"
+                }
+              ]
+            },
+            {
+              "id": "focus-hs2-v1-yang",
+              "name": "杨洋走丢事件",
+              "description": "杨洋被落下/走丢的经过与多方沟通错位的讨论。",
+              "points": [
+                {
+                  "id": "point-hs2-v1-yang-1",
+                  "name": "宁静和许晴因划船效果不好被留下加练",
+                  "evidence_ids": [
+                    "web-a2dfd70c4b12a624c476f4744336f9c1"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-hs2-v1-yang-2",
+                  "name": "宁静先上车并询问司机能否走",
+                  "evidence_ids": [
+                    "web-a2dfd70c4b12a624c476f4744336f9c1"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-hs2-v1-yang-3",
+                  "name": "多方沟通错位的连锁乌龙",
+                  "evidence_ids": [
+                    "web-e58bb247cd757bc894b9c5118c578b3a"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-hs2-v1-yang-4",
+                  "name": "许晴误以为杨洋已随宁静回去",
+                  "evidence_ids": [
+                    "web-e58bb247cd757bc894b9c5118c578b3a"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-hs2-v1-yang-5",
+                  "name": "郑爽给每人誊抄了地址",
+                  "evidence_ids": [
+                    "web-e58bb247cd757bc894b9c5118c578b3a"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-hs2-v1-yang-6",
+                  "name": "两台通讯设备的限制导致即时通讯受阻",
+                  "evidence_ids": [
+                    "web-e32a0db84da6fae562aceea498150c01"
+                  ],
+                  "evidence_status": "available"
+                }
+              ]
+            },
+            {
+              "id": "focus-hs2-v1-london",
+              "name": "伦敦桥对峙与团队分裂",
+              "description": "伦敦桥行程分歧、成员抱团与情绪失控等情节。",
+              "points": [
+                {
+                  "id": "point-hs2-v1-london-1",
+                  "name": "宁静因疲惫情绪失控（当天只睡4小时、暴走5小时）",
+                  "evidence_ids": [
+                    "web-e32a0db84da6fae562aceea498150c01"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-hs2-v1-london-2",
+                  "name": "宁静表示明早谁也不要喊她",
+                  "evidence_ids": [
+                    "web-077e455025651b83213e4d59d1b7d446"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-hs2-v1-london-3",
+                  "name": "毛阿敏再次倒戈，表示去玩伦敦桥",
+                  "evidence_ids": [
+                    "web-077e455025651b83213e4d59d1b7d446"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-hs2-v1-london-4",
+                  "name": "成员抱团：郑爽、宁静、陈意涵 vs 许晴、毛阿敏",
+                  "evidence_ids": [
+                    "web-8691285e72d9aaa5ccce2b282a0ef4b7",
+                    "web-077e455025651b83213e4d59d1b7d446"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-hs2-v1-london-5",
+                  "name": "杨洋和井柏然夹在五个女人中间维持关系",
+                  "evidence_ids": [
+                    "web-8691285e72d9aaa5ccce2b282a0ef4b7",
+                    "web-077e455025651b83213e4d59d1b7d446"
+                  ],
+                  "evidence_status": "available"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "scope-hs2-v1-huaxue",
+          "topic": "花少2",
+          "domain": "花学与网络文化梗",
+          "description": "围绕第二季形成的“花学”讨论与网络热梗，包括“第五大名著”、许晴金句、名场面考古等，依据本次取得的社交平台与媒体片段建立。",
+          "focuses": [
+            {
+              "id": "focus-hs2-v1-meme",
+              "name": "热门梗与称号",
+              "description": "网友赋予第二季的称号与流行梗。",
+              "points": [
+                {
+                  "id": "point-hs2-v1-meme-1",
+                  "name": "被戏称为“第五大名著”",
+                  "evidence_ids": [
+                    "web-e063bd58b861080f7a343dc15fb154f9",
+                    "web-2dda93093a04d8ba235aaf97701f1392"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-hs2-v1-meme-2",
+                  "name": "“抓马巅峰”",
+                  "evidence_ids": [
+                    "web-e063bd58b861080f7a343dc15fb154f9"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-hs2-v1-meme-3",
+                  "name": "“花学”随开学季迎来讨论热潮",
+                  "evidence_ids": [
+                    "web-e063bd58b861080f7a343dc15fb154f9"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-hs2-v1-meme-4",
+                  "name": "随毛阿敏上歌手再度席卷社交平台",
+                  "evidence_ids": [
+                    "web-2dda93093a04d8ba235aaf97701f1392"
+                  ],
+                  "evidence_status": "available"
+                }
+              ]
+            },
+            {
+              "id": "focus-hs2-v1-quotes",
+              "name": "名场面金句",
+              "description": "被网友反复引用的经典台词与场面。",
+              "points": [
+                {
+                  "id": "point-hs2-v1-quotes-1",
+                  "name": "许晴“上一季的人都正常”",
+                  "evidence_ids": [
+                    "web-17af4c856ed48ad2b64e25d8e4eb2b96",
+                    "web-ddcb60d161f9f16b93cec2472b988af8"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-hs2-v1-quotes-2",
+                  "name": "伦敦桥对峙",
+                  "evidence_ids": [
+                    "web-17af4c856ed48ad2b64e25d8e4eb2b96"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-hs2-v1-quotes-3",
+                  "name": "杨洋被落街头",
+                  "evidence_ids": [
+                    "web-17af4c856ed48ad2b64e25d8e4eb2b96"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-hs2-v1-quotes-4",
+                  "name": "房车分房罗生门",
+                  "evidence_ids": [
+                    "web-17af4c856ed48ad2b64e25d8e4eb2b96"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-hs2-v1-quotes-5",
+                  "name": "“你们俩死哪去了”出自迪拜站录制结束时对经纪人的质问",
+                  "evidence_ids": [
+                    "web-6187428a1e8ba21e53a714a77b0a52d0"
+                  ],
+                  "evidence_status": "available"
+                }
+              ]
+            },
+            {
+              "id": "focus-hs2-v1-analysis",
+              "name": "花学解读与人物分析",
+              "description": "网友对嘉宾性格、微表情与潜台词的逐帧拆解与讨论。",
+              "points": [
+                {
+                  "id": "point-hs2-v1-analysis-1",
+                  "name": "网友逐帧拆解微表情与潜台词",
+                  "evidence_ids": [
+                    "web-17af4c856ed48ad2b64e25d8e4eb2b96"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-hs2-v1-analysis-2",
+                  "name": "许晴被质疑有“公主病”",
+                  "evidence_ids": [
+                    "web-ddcb60d161f9f16b93cec2472b988af8"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-hs2-v1-analysis-3",
+                  "name": "许晴与郑爽之间的误会与心结",
+                  "evidence_ids": [
+                    "web-ddcb60d161f9f16b93cec2472b988af8"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-hs2-v1-analysis-4",
+                  "name": "对郑爽“爽言爽语”与灾难化思维的分析",
+                  "evidence_ids": [
+                    "web-c63a817af5f43c8fab4fc41220cf165d"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-hs2-v1-analysis-5",
+                  "name": "对嘉宾性格错位导致矛盾发酵的分析",
+                  "evidence_ids": [
+                    "web-e32a0db84da6fae562aceea498150c01"
+                  ],
+                  "evidence_status": "available"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "grounding": {
+      "status": "source_backed",
+      "reason_code": null,
+      "retrieved_at": "2026-10-14T12:15:44.767687Z",
+      "provider": "tavily",
+      "check_version": "evidence-review-v1"
+    },
+    "evidence": [
+      {
+        "id": "web-d195a88ec6de9952100f33d22ec634b0",
+        "text": "《花儿与少年第二季》是湖南卫视推出的明星姐弟自助远行节目，由毛阿敏、许晴、宁静、陈意涵、井柏然、杨洋作为固定成员，共11期。该节目于2015年4月25日起每周六22:00",
+        "title": "花儿与少年第二季",
+        "url": "https://baike.baidu.com/item/%E8%8A%B1%E5%84%BF%E4%B8%8E%E5%B0%91%E5%B9%B4%E7%AC%AC%E4%BA%8C%E5%AD%A3/15973441",
+        "original_url": "https://baike.baidu.com/item/%E8%8A%B1%E5%84%BF%E4%B8%8E%E5%B0%91%E5%B9%B4%E7%AC%AC%E4%BA%8C%E5%AD%A3/15973441",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:15:29.753695Z",
+        "published_at": null,
+        "content_hash": "eee2b90b88cd3865903d6387481e23b7ec520b4cf0b00446b1102ff4217636eb",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 85,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-3fc238c71e5827fb8c1a7d834b5a70cd",
+        "text": "娱乐首页\n\n凤凰网首页|娱乐首页\n\n[电影] [明星] [电视] [图片] [星座]\n\n## 大话综艺\n\n凤 凰 娱 乐 出 品\n\n用微信扫描二维码  \n分享至好友和朋友圈\n\n# 《花少》成员“各怀鬼胎” 郑爽洗白\n\n```\n作者/小笼女\n```\n\n《花儿与少年》第一季播出的时候传出抄袭（韩国《花样姐姐》原版，后被东方卫视买下并制作播出），但版权风波却丝毫没有影响第一季的好评和关注。相较于东方卫视的《花样姐姐》的温情，《花儿与少年》从第一季开始就充斥着各种火药味和话题感。为了凑齐这7位风格迥异的嘉宾，芒果台没少下工夫。关于花少第二季嘉宾加盟的原因，江湖中亦有有很多版传闻，且都传的有模有样。小编作为资深花少粉，接触过两季花少成员，幕前幕后也是非常关注，在这种舆论纷繁的局面中，不由地心生一念：为大家大胆还（nao）原（dong）一下第二季七位明星加盟地个中缘由，如有雷同，纯属巧合。 [...] 敬请期待\n \n\n  敬请期待\n \n\n  敬请期待\n\n## 栏目介绍\n\n报道电视综艺节目热点，分析综艺行业现象，深度报道综艺节目幕后故事。 ——凤凰娱乐《大话综艺》\n\n## 制作团队\n\n采访：小笼女\n\n责编：小北\n\n监制：刘帆 李厦\n\n出品：凤凰娱乐\n\n凤凰娱乐官方微信\n\n凤凰娱乐官方微信\n\n网友评论\n\n分享到：\n\n共有人参与;)　评论条(查看);)\n\n凤凰新媒体介绍|投资者关系 Investor Relations|广告服务|诚征英才|保护隐私权|免责条款|意见反馈|凤凰卫视介绍\n\n 视频\n ·纪实\n ·直播\n 凤凰卫视\n\n凤凰新媒体 版权所有    Copyright © 2013 Phoenix New Media Limited All Rights Reserved.\n\n郑爽：洗白之旅;) 宁静：免费旅行玩玩看;) 毛阿敏：为复出小试水;)  许晴：不是只会撒娇滴;) 井柏然：电影咖要接地气;) 杨洋：想被芒果台“罩”;)  陈意涵：要突破寻转型;) [...] 更重要的是，这是湖南卫视的节目。作为最早一批来内地拍戏的台湾女星，她对内地市场非常熟悉，对内地团队的作风非常了解。《我是歌手》等节目在台湾岛内刮起的旋风依稀可记，这些大制作的真人秀节目不仅能引发两岸三地最多的关注度，也会让艺人保持最强的曝光和热度，促进事业的进步。陈意涵希望通过这个节目给自己打开一个新的转机，这两年她的资源被同是台湾甜姐儿的某短发女艺人抢去了大半，电影电视代表作寥寥，接演了一些“炒冷饭”的翻拍剧也反响平平，发展路逐渐变窄。对于年过三十的女艺人来说，不管外表看起来多没心没肺，内心始终还是存在些许焦虑：靠着一张娃娃脸卖甜美已经不能再吃多久，如果现在不努力转型，很容易被后来的90后、00后们拍在沙滩上。所以她“忍受”着一群整天“唧唧歪歪”不懂旅行意义的女人们，“承担”着各种考验心智体力的挑战、“配合”着的和杨洋配对成“洋洋得意”cp组合，……只是为了告诉大家：我才不是说话嗲嗲只会扮可爱的软妹子！\n\n本文系凤凰娱乐独家稿件，未经授权，禁止以任何形式转载，否则将追究法律责任。\n\n \n\n  敬请期待\n \n\n  敬请期待\n \n\n  敬请期待\n \n\n  敬请期待",
+        "title": "另类解读《花少2》_娱乐频道_凤凰网",
+        "url": "https://ent.ifeng.com/tv/dahuazongyi/special/heysn",
+        "original_url": "https://ent.ifeng.com/tv/dahuazongyi/special/heysn",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:15:29.753695Z",
+        "published_at": null,
+        "content_hash": "b2679cd103a49b2588819bb0fc8047835b2e85937c8481b042385d3cdaff4e0c",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 1331,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-4d2a97c17bb5cf78743015cd4ef213c5",
+        "text": "^ a. 《奇妙的朋友》在2015年3月28日播出结束后，2015年4月4日、11日和18日22:00的节目分别为《爸爸去哪儿大电影 \"爸爸去哪儿 (电影)\")》（重播）、《爸爸去哪儿2大电影 \"爸爸去哪儿2 (电影)\")》和《我是歌手第三季2015巅峰会#2015巔峰會 \"我是歌手 (第三季)\")》（重播）。\n ^ b. 2017年7月16日至8月20日22:00播出周播剧场《青春进行时》。\n ^ c. 《花儿与少年·露营季》在2022年9月2日播出结束后，2022年9月9日19:30的节目为《2022致敬大国工匠特别节目》。\n\n|  查  论  编  湖南卫视综艺节目 | [...] ## 节目简介\n\n[编辑]\n\n节目第一、二季分别于2014年及2015年制作，主要讲述两位明星弟弟（少年）与五位明星姐姐（花儿）在没有经纪人与助理的安排和帮助下，利用15—20天左右的时间与有限的资金前往不同的国家及城市旅行的故事，向观众展现不同国家和地区的文化差异。在每季节目的最后，节目成员还将根据每一位成员的特点为他们取下称号并颁奖，为该季节目画上一个圆满的句号。 [...] (第二季)\")  中餐厅1 \"中餐厅 (湖南卫视)\")  儿行千里&action=edit&redlink=1 \"儿行千里 (电视节目)（页面不存在）\")  亲爱的·客栈1  嗨！看电视  声临其境1 \"声临其境 (第一季)\")  我是大侦探  嘿！好样的  我家那小子  中餐厅2 \"中餐厅 (湖南卫视)\")  我是未来2  快乐哆唻咪  亲爱的·客栈2  我家那闺女  恋梦空间  歌手2019  我们的师父  我家小两口  中餐厅3 \"中餐厅 (湖南卫视)\")  舞蹈风暴  亲爱的·客栈3  声临其境3 \"声临其境 (第三季)\")  一键倾心  巧手神探  鲜厨100  运动吧少年  中餐厅4 \"中餐厅 (湖南卫视)\")  新手驾到  谁知盘中餐&action=edit&redlink=1 \"谁知盘中餐 (湖南卫视)（页面不存在）\")  姐姐的爱乐之程\\  你真的太棒了  怦然再心动  妈妈，你真好看  牛气满满的哥哥  中餐厅5 \"中餐厅 (湖南卫视)\")  欢唱大篷车  云上的小店1  勇往直前的我们  中国婚礼—我的女儿出嫁了  牧野家族  美好年华研习社\\  中餐厅6",
+        "title": "花儿与少年 - 维基百科，自由的百科全书",
+        "url": "https://zh.wikipedia.org/zh-hans/%E8%8A%B1%E5%85%92%E8%88%87%E5%B0%91%E5%B9%B4",
+        "original_url": "https://zh.wikipedia.org/zh-hans/%E8%8A%B1%E5%85%92%E8%88%87%E5%B0%91%E5%B9%B4",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:15:29.753695Z",
+        "published_at": null,
+        "content_hash": "0c43b2734700380963e4ffa69b8d57aadff3b7fea8836d3c5986479a272fce06",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 986,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-8691285e72d9aaa5ccce2b282a0ef4b7",
+        "text": "我的妈呀，你去搬那么多箱子试试？体力上不帮忙就算了，还不给予安慰和理解，两个男孩子真的很辛苦。后来井柏然还要跟大家商量，夜里四点起床，井柏然叫大家起床。\n\n花学高潮——房车事件\n\n在土耳其的第二站，花少团准备去自驾游，这也是整个节目的高潮。以往的综艺真人秀都是可控的，不会让其任意发展，但房车事件直接让节目失控。\n\n房车之旅开始前，井柏然抱怨：房车住不下七个人，需要一些帐篷。买帐篷也为后续埋下了伏笔。\n\n经过前面的一系列事件，花少7人团已经完全的分裂。郑爽、宁静和陈意涵抱团，许晴和毛阿敏抱团，杨洋和井柏然夹在五个女人中间，小心翼翼的维持她们的关系。\n\n毛阿敏、许晴、井柏然开一辆车。\n\n杨洋、郑爽、宁静和陈意涵开另一辆车。\n\n在土耳其的湖边，她们准备露营，房车大战悄然开始。\n\n八哥简单说一下背景，房车最多只能睡五个人，所以大家需要分配，有些人要在户外睡帐篷。大家都想睡帐篷，因为吃喝拉撒都在房车上，味道挺不好闻的。\n\n宁静看到帐篷后说：这里可以睡三个人。潜台词是，这个帐篷归我、郑爽和陈意涵睡了。不过井柏然没体会到宁静的潜台词意思。 [...] 陈意涵到处跑到处找，就是找不到人。\n\n人都去哪了呢？毛阿敏、许晴、宁静三个长辈没管陈意涵，直接拉着行李箱就跑进火车站了。\n\n只有郑爽提出要等一下陈意涵，如果几个小辈和毛阿敏她们三个老大姐一样，那陈意涵就彻底被抛弃了，在伦敦孤身一人，没有行李没有电话没有钱。\n\n陈意涵事后说：我今天比较沮丧，我觉得是不是我太管闲事了，是不是我傻傻的跟在大家旁边比较好呢？这件事情给陈意涵敲响了警钟，这并不是一趟团结友爱美好的旅行，所以在杨洋走丢那晚她并没有多管闲事，只是打了个电话。最后大家闹僵了，她和井柏然才出门去找人。\n\n井柏然的暴躁搬箱\n\n杨洋走丢回来后，这个团队已经有点一盘散沙的趋势了。在小心翼翼的气氛里，英国之旅快结束了。节目安排的路线也很折腾人，让她们爬山露营，结束后，大家又拖着箱子来到要住的酒店。\n\n从停车的地方到酒店，有很长很长的阶梯。\n\n7个人，13个大箱子。搬箱子的任务全部都落在了男生的肩膀上，井柏然不做声，默默的开始搬箱子。\n\n杨洋也开始拧箱子，这趟旅行一共23天，女明星们又爱美，箱子里面都是衣服、化妆品等，每个箱子都很重。\n\n5个女明星唯一帮两个男生搬箱子的，是陈意涵。 [...] 杨洋有点带着情绪的说：往回走，说了好几遍了。\n\n结果郑爽来了一句：你tm快点领路啊。没错，说脏话了，但消音了。郑爽的心不坏，但她的表达和脑回路增加了很多交流的困难，真的很难不生气。\n\n当天晚上，大家在桌上吃饭时，一起看白天游玩的照片。\n\n杨洋坐在一旁有点低气压，宁静这时候也不跟大家玩\n\n后来杨洋接受采访时说：我觉得有点孤单。\n\n伦敦之行就在宁静的暴躁和杨洋的心灵孤单中结束了，接下来他们去了剑桥。\n\n许晴和宁静的初次不和\n\n在剑桥旅行时，大家一起学划船。此时，许晴和杨洋、郑爽、一个英国人组成了四人队伍划船。\n\n划完船后，许晴特别开心，说：我们四个人特别齐心。\n\n节目组问：今天你和大家配合的好吗？许晴说：好呀，这就是团队精神。\n\n结果四人团队换成八人团队时，许晴的心情不一样了。她的身后坐着宁静，宁静也一脸不高兴。\n\n许晴接受采访时说：八个人时，配合不好。每个人的性格和要做的东西都很杂乱。\n\n如果单单是因为人数多了不好配合，那也没必要说性格问题吧？可以看出此时，许晴也有点不喜欢宁静了。八哥前面说了，宁静也不喜欢许晴这个和事佬。\n\n杨洋走丢事件，郑爽和许晴的决裂",
+        "title": "回顾花儿与少年第二季，它是如何从温馨崩成噩梦的？_郑爽",
+        "url": "https://www.sohu.com/a/358826484_649958",
+        "original_url": "https://www.sohu.com/a/358826484_649958",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:15:29.753695Z",
+        "published_at": null,
+        "content_hash": "7386e2d4728026959899360b0c3b758252972027ded9d135f5eba562f41e53d0",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 1459,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-57a5891e9336898a67321137d4585a7c",
+        "text": "# 《花儿与少年2》第1期20150425 郑爽接棒导游被虐 井柏然隔空秀恩爱【湖南卫视官方版1080p】",
+        "title": "Dailymotion",
+        "url": "https://www.dailymotion.com/video/x2nyp82",
+        "original_url": "https://www.dailymotion.com/video/x2nyp82",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:15:29.753695Z",
+        "published_at": null,
+        "content_hash": "ae210f7e0a3f466f6bd34366aaf47c824eb54ee0863f8db12e3580a173ff60f1",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 53,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-686b1c38453a447e2872a0fc41ccfa0a",
+        "text": "《花儿与少年第二季》是湖南卫视推出的明星姐弟自助远行节目,由毛阿敏、许晴、宁静、陈意涵、井柏然、杨洋作为固定成员,共11期。该节目于2015年4月25日起每周六22:00",
+        "title": "花儿与少年第二季",
+        "url": "https://baike.baidu.com/item/%E8%8A%B1%E5%84%BF%E4%B8%8E%E5%B0%91%E5%B9%B4%E7%AC%AC%E4%BA%8C%E5%AD%A3/15973441",
+        "original_url": "https://baike.baidu.com/item/%E8%8A%B1%E5%84%BF%E4%B8%8E%E5%B0%91%E5%B9%B4%E7%AC%AC%E4%BA%8C%E5%AD%A3/15973441",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:15:31.940142Z",
+        "published_at": null,
+        "content_hash": "232fd72cab9815a7be43a91f32441a44269f014b49708d311fd205f9fd1f6eda",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 85,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-1b7b9b9f6796f6357bedaa562e03252d",
+        "text": "Road），是中国大陆湖南卫视推出的一档明星姐弟自助远行真人秀节目，该节目是湖南卫视的原创节目，主要讲述7—9位明星姐弟利用15—27天左右的时间与有限的资金前往不同的国家及城市旅行的故事。《花儿与少年》每集约90分钟，按季播出。第一季共8期，由制作过《中国最强音》的制作人廖珂及其团队打造，于2014年4月25日起每週五22:00接档移回黄金档的常规节目《天天向上》播出。第二季共11期，依旧由制作过第一季的廖珂及其团队打造，于2015年4月25日起每週六22:00接档《奇妙的朋友》播出。第三季共12期，由原担任总撰稿的吴梦知及其团队打造，于2017年4月23日起每週日22:00接档《向往的生活》播出。第四季共12期，由李超、朱锋团队联合制作，于2022年6月17日起每週五20:10接档《春天花会开》播出，7月29日起改为每週五19:30播出。第五季共14期，出品方变更为芒果TV，由湖南卫视李超团队与芒果TV蔡熙团队联合制作，並由国家广播电视总局國際合作司指導製作，于2023年10月24日12:00在芒果TV、16:30在湖南卫视播出先导片 [...] | 声音制式 | 立体声 |\n| 播出日期 | 第一季：2014年4月25日 (2014-04-25)—2014年6月13日 (2014-06-13) 第二季：2015年4月25日 (2015-04-25)—2015年7月4日 (2015-07-04) 第三季：2017年4月23日 (2017-04-23)—2017年7月9日 (2017-07-09) 第四季：2022年6月17日 (2022-06-17)—2022年9月2日 (2022-09-02) 第五季：2023年10月26日 (2023-10-26)—2024年1月25日 (2024-01-25) 第七季：2025年8月16日 (2025-08-16)—2025年11月22日 (2025-11-22) |\n|  |\n| 芒果TV首播 | [...] ## 争议\n\n[编辑]\n\n### 伊斯兰服饰问题\n\n[编辑]\n\n在2015年播出的第二季节目中，女演员宁静并非伊斯兰教徒，由於录制節目的地点位于土耳其，而且是在清真寺內，宁静录製節目時穿着「希賈布」，这种服饰是伊斯兰教习俗下女性穿着的服饰，在中国被视为代表伊斯兰“极端主义”，受到中国政府的反对，新疆地方政府立法禁止穿着。湖南卫视在播出节目时，对涉及宁静的电视画面采取消音，直至完全删除。有报道称，此举是应国家新闻出版广电总局的要求，网民对此看法褒贬不一。\n\n### 第二季“花学”迷因\n\n[编辑]\n\n在2015年播出的第二季节目中，几位参与成员在旅行过程中矛盾不断：伦敦租房、杨洋剑桥走丢、许晴称“上一季的人都正常”、登山帐篷分配等话题，令节目在结束多年后，依旧被大众讨论，衍生出“花学”的网络迷因。郑爽代孕弃养风波后，第二季中郑爽的“疯狂”表现也被重新讨论。\n\n### 第六季“周学”迷因\n\n[编辑]",
+        "title": "花兒與少年 - 维基百科，自由的百科全书",
+        "url": "https://zh.wikipedia.org/wiki/%E8%8A%B1%E5%85%92%E8%88%87%E5%B0%91%E5%B9%B4",
+        "original_url": "https://zh.wikipedia.org/wiki/%E8%8A%B1%E5%85%92%E8%88%87%E5%B0%91%E5%B9%B4",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:15:31.940142Z",
+        "published_at": null,
+        "content_hash": "a32dd50fe07442584d252887327e2a592fab2d83128a8bd6f5583def0385f7b8",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 1244,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-077e455025651b83213e4d59d1b7d446",
+        "text": "我的妈呀，你去搬那么多箱子试试？体力上不帮忙就算了，还不给予安慰和理解，两个男孩子真的很辛苦。后来井柏然还要跟大家商量，夜里四点起床，井柏然叫大家起床。\n\n花学高潮——房车事件\n\n在土耳其的第二站，花少团准备去自驾游，这也是整个节目的高潮。以往的综艺真人秀都是可控的，不会让其任意发展，但房车事件直接让节目失控。\n\n房车之旅开始前，井柏然抱怨：房车住不下七个人，需要一些帐篷。买帐篷也为后续埋下了伏笔。\n\n经过前面的一系列事件，花少7人团已经完全的分裂。郑爽、宁静和陈意涵抱团，许晴和毛阿敏抱团，杨洋和井柏然夹在五个女人中间，小心翼翼的维持她们的关系。\n\n毛阿敏、许晴、井柏然开一辆车。\n\n杨洋、郑爽、宁静和陈意涵开另一辆车。\n\n在土耳其的湖边，她们准备露营，房车大战悄然开始。\n\n八哥简单说一下背景，房车最多只能睡五个人，所以大家需要分配，有些人要在户外睡帐篷。大家都想睡帐篷，因为吃喝拉撒都在房车上，味道挺不好闻的。\n\n宁静看到帐篷后说：这里可以睡三个人。潜台词是，这个帐篷归我、郑爽和陈意涵睡了。不过井柏然没体会到宁静的潜台词意思。 [...] 我觉得许晴也是不想去的，但她在支持郑爽的工作。为什么这样说呢？我看过第一季，许晴有点“懒”，逛景点方面她并不积极。她是带着“都说我第一季不懂事，第二季那我就懂事给你看，我多会做和事佬啊，我多会调节气氛啊，苦就苦一点，我要扭转观众对我的看法”的想法来的，所以特别好说话，帮郑爽打圆场。\n\n毛阿敏很快再次倒戈，表示大家走吧，去玩伦敦桥。杨洋和陈意涵听长辈的意见，所以很快就变成宁静一个人不想去了。\n\n宁静彻底不高兴的甩脸色了，当着大家面说：明天早上谁也不要喊我，我起得来就起，起不来也别喊我。说完就往前走，也没等别人。\n\n许晴有点被吓到，于是做了个双手投降的工作。\n\n结果走到餐厅门外，宁静又开始摆脸色：我不玩，我也不参加了！\n\n郑爽有点不知好歹，硬往枪口上撞，对怒气冲冲的宁静说：我觉得最好什么活动大家都一起参加，这样比较好。\n\n郑爽还是太天真了，宁静这架势哪是你一句话就能说服的？宁静依然摆脸色不为所动，于是郑爽开始劝她：我不能让你带着不好的情绪开始旅行。\n\n郑爽话还没说完，宁静就开始怼她：不要！不要！不要（这样说）！什么叫我有这样的情绪，昨天你还在哭鼻子呢！ [...] 我们来看看毛阿敏的表演\n\n离开伦敦时，毛阿敏对着搬箱子的井柏然说：我不舍得你啊，你要是我儿子我就心疼死了，我不忍心啊。\n\n说完漂亮话以后，井柏然一个人把13个箱子从民宿搬到了火车站。\n\n没有一个人去帮忙，在阴冷的伦敦，井柏然热的一身汗\n\n从英国到了土耳其，到达酒店后，又需要搬行李上楼。而且有六层楼，没有电梯。\n\n这时候宁静幸灾乐祸的哈哈大笑，潜台词：“啊哦~ 你们男生又要搬箱子啦。”\n\n于是，杨洋和井柏然又默默的开始搬箱子。\n\n陈意涵也在帮忙搬箱子，其他女嘉宾都没有帮忙，只有郑爽抱了一包上来。\n\n再来看看花少的第一季，郑佩佩当时68岁，自己拧箱子。\n\n刘涛更是一个人，把所有人的箱子搬到楼下去了（当时其他人都在外面陪张翰租车）\n\n老大姐们不会心疼小年轻，这个团队真的没啥人情味。\n\n这天晚上，搬完行李箱后大家睡觉。结果第二天，杨洋和井柏然起床迟了。\n\n井柏然道歉，表示自己睡过头了。毛阿敏批评他们：我们也根本起不来，都是使劲硬着头皮起来的，要守时。",
+        "title": "回顾花儿与少年第二季，它是如何从温馨崩成噩梦的？_郑爽",
+        "url": "https://www.sohu.com/a/358826484_649958",
+        "original_url": "https://www.sohu.com/a/358826484_649958",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:15:31.940142Z",
+        "published_at": null,
+        "content_hash": "5f37eba683393a9ad5f37c196f3920767e83ab4021ea99e77c8b515fa0dff530",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 1391,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-24e719eddfc7a346a7bdc288e98be464",
+        "text": "Image 6 29:30\n\n《花少远行记》花儿与少年第二季独家纪录片 20150704期 - 【湖南卫视官方版1080p】\n\n11 years ago\n\nImage 7 28:21\n\n《花少远行记》花儿与少年第二季独家纪录片 20150620期 -【湖南卫视官方版1080p】\n\n11 years ago\n\nImage 8 26:16\n\n《花少远行记》花儿与少年第二季独家纪录片20150606期 Divas Hit The Road 2 Documentary EP7【湖南卫视官方版1080p】\n\n11 years ago\n\nImage 9 1:29:26\n\n《花儿与少年2》第5期20150523: 露营之夜花少团吓破胆 Divas Hit The Road 2 EP5: The Divas Team Was Exhausted【湖南卫视官方版1080p】\n\n11 years ago\n\n1:28:04\n\n《花儿与少年2》第2期20150502: Divas Hit The Road 2 EP2: New Journey With Jing Boran【湖南卫视官方版1080p】 [...] Image 14 30:28\n\n《花少远行记》花儿与少年第二季独家纪录片 20150627期 - 【湖南卫视官方版1080p】\n\n11 years ago\n\nImage 15 33:48\n\n《花少远行记》花儿与少年第二季独家纪录片20150613期 Divas Hit The Road 2 Documentary EP8【湖南卫视官方版1080p】\n\n11 years ago\n\nImage 16 29:34\n\n《花少远行记》花儿与少年第二季独家纪录片20150530期 Divas Hit The Road 2 Documentary EP6【湖南卫视官方版1080p】\n\n11 years ago\n\nImage 17 26:26\n\n《花少远行记》20150516期：花少“一姐”毛阿敏音乐人生大揭秘\n\n11 years ago [...] 11 years ago\n\nImage 3 1:30:38\n\n《花儿与少年》第二季 第9期 20150620 -【湖南卫视官方版1080p】\n\n11 years ago\n\nImage 4 1:30:11\n\n《花儿与少年2》第7期20150606: 花少团高空滑翔尖叫不断 Divas Hit the Road 2 EP7: Screaming Parasailing Time!【湖南卫视官方版1080p】\n\n11 years ago\n\nImage 5 30:37\n\n《花少远行记》花儿与少年第二季独家纪录片20150523期 Divas Hit The Road 2 Documentary EP5【湖南卫视官方版1080p】\n\n11 years ago\n\n29:22\n\n《花少远行记》第2期: 花儿与少年第二季独家纪录片 Divas Hit The Road 2 Documentary EP2 20150502【湖南卫视官方版1080p】\n\n11 years ago\n\nImage 6 29:30",
+        "title": "花儿与少年 videos - Dailymotion",
+        "url": "https://www.dailymotion.com/user/divahittheroad",
+        "original_url": "https://www.dailymotion.com/user/divahittheroad",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:15:31.940142Z",
+        "published_at": null,
+        "content_hash": "97a2863e402d6d8b7a7e6a2c5534d45739aff833e60f4ddb787e7c628798d5fd",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 1327,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-e063bd58b861080f7a343dc15fb154f9",
+        "text": "《花儿与少年2》堪称内娱综艺史上无法超越的“抓马巅峰”，被网友戏称为“第五大名著”，其衍生出的“花学”至今仍在开学季迎来新一轮的讨论热潮。 一、为什么《花少2》能",
+        "title": "还有哪些《花少2》名场面被网友玩梗？ - 娱乐- 手机新浪网",
+        "url": "https://ent.sina.cn/2026-09-03/detail-iniqntuk7240844.d.html?oid=78win01%E3%80%9008.CYOU%E3%80%91.oaly&vt=4",
+        "original_url": "https://ent.sina.cn/2026-09-03/detail-iniqntuk7240844.d.html?oid=78win01%E3%80%9008.CYOU%E3%80%91.oaly&vt=4",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:15:39.229992Z",
+        "published_at": null,
+        "content_hash": "ba773cd8003df15a2d668686bafaa8901903f6b241bd9c69e045b3a25106b9d7",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 81,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-17af4c856ed48ad2b64e25d8e4eb2b96",
+        "text": "Aug 29, 2026 — 名场面封神:许晴“上一季的人都正常”、伦敦桥对峙、杨洋被落街头、房车分房罗生门......随便一个片段都是综艺史天花板· 衍生“花学”:网友逐帧拆解微表情、潜台",
+        "title": "花儿与少年第二季被称第五大名著花学考古翻红",
+        "url": "https://weibo.com/2/detail/5336833489113437",
+        "original_url": "https://weibo.com/2/detail/5336833489113437",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:15:39.229992Z",
+        "published_at": null,
+        "content_hash": "c28bc998964b10f17489426fd195600fcff9d3ebe5c703e9625c2abc152b805b",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 95,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-2dda93093a04d8ba235aaf97701f1392",
+        "text": "花少2被 》第二季因嘉宾在高压旅行中展露出教科书级别的人际冲突与微表情博弈,被网友戏称为继四大名著之后的“世界第五大名著”,这一梗近日随毛阿敏上歌手再度席卷社交平台。",
+        "title": "《花儿与少年第二季》被称第五大名著成人性社交经典真人秀",
+        "url": "https://weibo.com/2/detail/5336636848080623",
+        "original_url": "https://weibo.com/2/detail/5336636848080623",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:15:39.229992Z",
+        "published_at": null,
+        "content_hash": "cb35d817dabdca30fa896b8496f403f2bc1904d1d3406858d529ff41684f1094",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 83,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-e32a0db84da6fae562aceea498150c01",
+        "text": "《花少2》也是这种制作逻辑的产物。与后来经费充足、行程轻松的旅行综艺不同，早期“花少”的特点是“特种兵式穷游”。\n\n最明显的，住宿条件完全比不上现在的旅行节目。《花少2》中，前期有人需要睡沙发；露营时帐篷不够；登山前，所有嘉宾住在空间狭窄的上下铺，不少人起床时都撞到了头。\n\n在两天的登山露营行程中，嘉宾们买装备的预算不多，要么买二手，要么舍弃部分装备；到达露营地，就用了几乎一整天的时间；由于装备较多，嘉宾们还得负重前行，重量在5到11公斤不等。\n\n前一天负重徒步，晚上住帐篷，外面刮风下雨，第二天还得早起去登山。《花少2》播出的2015年，年纪最大的毛阿敏已经52岁，还有腰伤。\n\n节目组也没有给够通讯工具，全程没收手机，只有两台设备，进一步导致嘉宾之间的沟通不及时、不到位。\n\n这种被节目组严格限制的物质条件，直接引发了很多名垂内娱综艺史的名场面。\n\n比如只有两台设备的限制，阻断了成员间最基本的即时通讯，直接导致“杨洋被落下事件”的连环失控；有限的帐篷数量，则演变为经典的“房车大战”。\n\n甚至在旅程最开始，民宿没有暖气，宁静一度怀疑是节目组“搞的”。\n\n在体力透支与精神持续高压的环境中，即便是受过训练的明星，也很难维持完美人设。在24小时的镜头记录下，本能的情绪、真实的心态、性格的短板都会在某些时刻暴露。\n\n最初的“伦敦桥”事变中，宁静情绪失控的根本原因就是疲惫。据节目信息，当天她只睡了4小时，暴走了5小时，而第二天又要面对同样紧张的游客行程。\n\n在后来的另一档节目中，宁静称自己是“累急眼了”。\n\n“累”是一回事，更重要的是“谁在累”。《花少2》找到了一群性格完全错位的嘉宾，年龄跨度大、成长环境迥异，性格、处事逻辑、社交理念又完全不同。\n\n如果说环境是催生矛盾的直接原因，那差异化极强的嘉宾阵容，就是让矛盾持续发酵、无法调和的关键。 [...] 如果说环境是催生矛盾的直接原因，那差异化极强的嘉宾阵容，就是让矛盾持续发酵、无法调和的关键。\n\n或许正是这种高强度旅程与不同性格的碰撞，赋予了《花少2》一种后无来者的失控感。\n\n抓马综艺不是没有，但大多数的真人秀冲突要么是精心设计与剪辑塑造后的结果，要么由个别争议嘉宾承担了大部分“火力”。\n\n但《花少2》呈现了某种真正的、群体性的失控——一群性格迥异、互不让步的独立个体，被放入有限生存环境后，所引发的一系列难以预料、干预的化学反应。\n\n这种程度的真实、复杂与戏剧性，很难再靠人为策划。这或许就是《花少2》在11年后，仍被反复观看的原因。\n\n02 “花学”升级背后\n\n有趣的是，在新一轮翻红中，分析、探讨、解读的重点变了。\n\n在很长一段时间里，观众研究“花学”时，关心的是对错、好坏。最早被推上风口浪尖的，往往是那些情绪流露最为直接的嘉宾——初任导游、宁静、定语大王，都曾遭遇不同程度的“审判”。\n\n即便是一开始风评较好的嘉宾，舆论也经历过反转。比如在房车母带流出后，陈意涵一度被部分网友指责“看似治愈实则精明”。\n\n再后来，曾被称赞“成熟体面”的毛阿敏，成了“花学”新教材的核心人物。\n\n课件重点变成了那些曾经不太被关注的发言——“我是大姐”、“你要是我儿子我心疼死了”。她的“花少形象”被重新定义为“腹黑”，在网友制作的“心眼子排行榜”上，名列前茅。\n\n而在这次翻红中，单纯针对某一位嘉宾的争议变少了，更常见的观点是“没有单纯的好人和坏人”。\n\n观众似乎到了“双方都能理解的年纪”，不再纠结谁对谁错、谁好谁坏。“花学”从某种综艺抓马代名词，升级为一场关乎职场、性格、原生家庭，涉及心理学、社会学、博弈论的综合分析样本。 [...] # 《花儿与少年2》再次翻红，这档综艺为何无法被复制？\n\n搜狐娱乐\n\n搜狐娱乐专稿（李小狼/文）《花儿与少年2》又翻红了。\n\n这档11年前的旅游综艺，如今已成为“内娱第五名著”。观众像看《红楼梦》《甄嬛传》一样，对《花少2》的每帧画面做出文本精读。\n\n一档曾被评价“抓马”的旅行综艺，最终演变为一场关于性格、职场与社交的持久讨论，这或许是任何剧本都写不出来的结局。\n\n01 失控\n\n凌晨的B站，数千名观众在观看一则《花儿与少年2》的解说视频。高峰时间，同时在线观看人数超过3万人。\n\n这则长达8小时的综艺解说视频，已经有417万播放量。另一则3小时的解说视频，也积累了300万+播放量，高峰期观看人数同样上万。\n\n观众对这档11年前的综艺节目，展现了长久的、超乎寻常的热情。\n\n抓马综艺常有，但为什么只有《花少2》能一次次翻红，让一代代网友反复考古、逐帧研究？\n\n这轮翻红的直接原因有不少。\n\n比如某平台上出现了真假未证的新爆料，为经典事件“杨洋被落下”增加了新的解读角度；“花学”新课件核心人物毛阿敏再次出现在公众视野，在《歌手2026》决赛演唱了经典曲目《相思》——这首歌已经成为《花少2》民间认证主题曲。\n\n但更本质、重要的原因，在于这档节目本身不可复制的特殊性。\n\n《花少2》播出于2015年。与现在的明星聊天、旅游、做游戏不同，那个时期的内娱真人秀，流行的制作逻辑是把明星置于某种极端环境之中。\n\n《真正男子汉》让明星们去军训。女明星被要求三分钟内在镜头前卸妆，嘉宾们需要参加“猎人集训”，训练内容包括在泥地中匍匐前进、扛圆木等等。\n\n《咱们穿越吧》让明星“穿越”到不同时代，一群人穿草鞋爬山、黄小蕾吃野生虫子、沈腾毫无保护地被吊起来；《跟着贝尔去冒险》中，明星们需要横穿瀑布峡谷，工具是一根绳子。",
+        "title": "《花儿与少年2》再次翻红，这档综艺为何无法被复制？ - 搜狐时间线",
+        "url": "https://timeline.sohu.com/news/PSVwgFHtyH",
+        "original_url": "https://timeline.sohu.com/news/PSVwgFHtyH",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:15:39.229992Z",
+        "published_at": null,
+        "content_hash": "4eb0a199b44baf02f61497c414a3d67cc2370043826c2693b120bfac806b5e8a",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 2256,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-6187428a1e8ba21e53a714a77b0a52d0",
+        "text": "你们俩死哪去了”出自《花儿与少年第二季》迪拜站录制结束时对经纪人的崩溃质问，作为经典综艺名场面，近期因被考古再度全网刷屏。",
+        "title": "“你们俩死哪去了” 花儿与少年第二季名场面考古热议",
+        "url": "https://weibo.com/2/detail/5340104090715781",
+        "original_url": "https://weibo.com/2/detail/5340104090715781",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:15:39.229992Z",
+        "published_at": null,
+        "content_hash": "9241b58b689866b472a04014ed4b07ebc569a5e47063061e87bc2aaac1e945b5",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 61,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-a2dfd70c4b12a624c476f4744336f9c1",
+        "text": "杨洋走丢的前因：宁静和许晴因为划船效果不好，被留下来加练，杨洋因为 ... 转折点：宁静先上车了，她知道许晴还没走，但是还是问了司机能不能走",
+        "title": "重温了一下花少二，二更杨洋事件",
+        "url": "https://www.douban.com/group/topic/499818290?_spm_id=MjIzODk2NDgz",
+        "original_url": "https://www.douban.com/group/topic/499818290?_spm_id=MjIzODk2NDgz",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:15:44.767687Z",
+        "published_at": null,
+        "content_hash": "ae92c863914d39c73766af0710de95943151593c4439af0909c4822be3e5924d",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 70,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-e58bb247cd757bc894b9c5118c578b3a",
+        "text": "后续流出的事件还原视频则显示，杨洋走失更像一场多方沟通错位的连锁乌龙：宁静提前被司机送回、许晴误以为杨洋已随宁静回去、郑爽给每人誊抄了地址但杨洋",
+        "title": "花少2爆料文",
+        "url": "https://m.s.weibo.com/applink/go2?noclose=1&url=sinaweibo%3A%2F%2Fsearchall%3Fcontainerid%3D230958%26type%3D200%26q%3D%2523%25E8%258A%25B1%25E5%25B0%25912%25E7%2588%2586%25E6%2596%2599%25E6%2596%2587%2523%26t%3D761%26extparam%3Ddfp%253D200%2526share_page_id%253D232964d9e45ce93ca79d6116765c486556e50f%2526cot%253D2",
+        "original_url": "https://m.s.weibo.com/applink/go2?noclose=1&url=sinaweibo%3A%2F%2Fsearchall%3Fcontainerid%3D230958%26type%3D200%26q%3D%2523%25E8%258A%25B1%25E5%25B0%25912%25E7%2588%2586%25E6%2596%2599%25E6%2596%2587%2523%26t%3D761%26extparam%3Ddfp%253D200%2526share_page_id%253D232964d9e45ce93ca79d6116765c486556e50f%2526cot%253D2",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:15:44.767687Z",
+        "published_at": null,
+        "content_hash": "60b6ea730b1b8d089c13912b10554e9261743916bf9598d0e96dac16a20ecf57",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 72,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-ddcb60d161f9f16b93cec2472b988af8",
+        "text": "贵圈太乱。明明之前，说跟郑爽很多话聊的，也是许晴自己：“郑爽是个特别可爱的90后妹子，和她蛮有缘分，有很多私房话要聊。旅行中从郑爽身上可以看见当年的自己。”啪啪啪，前方谁在打脸，好大声。\n\n　　如果对象是男人 不会轻易撕脸？ 也有网友扒出疑似许晴跟郑爽撕逼的真正原因，说的是开车的路上，本来陈意涵郑爽宁静杨洋一个房车，毛毛姐许晴井宝一个车，开始三个人还有说有笑，中途在休息站停了下，后来井柏然就上了郑爽杨洋的车，开始讨论行程。那么房车上就是郑爽井宝陈意涵杨洋宁静，理所当然，另外一辆车就剩下许晴跟毛阿敏姐了。万能的网友表示许晴很不爽：“看过直播的表示，许晴一直把井宝当成私人物品，嫉妒井宝去了杨洋那辆车不回来了，然后找茬大爆发。对男生、对女生态度千差万别，对三个女生好凶！”“许晴一直贴着毛阿敏，因为毛阿敏宠她，不管真假，起码给她个面子。就像上季凯丽一样，虽然晕乎乎没什么能力，但是她宠许晴，所以许晴一直贴着她。井柏然是很会调节气氛的一个人，他本能地也想照顾每个人的情绪，这是他的一种习惯。他如果再往郑爽宁静陈意涵那边，就太冷落许晴和毛阿敏了，所以他一直在两个团体里游走。”\n\n　　网友也是很有道理的。在一期《快乐大本营》中，许晴对张翰的眼神，爱意满溢，她的眼里只有他，还说“只有翰从始至终选了她”，一口一个翰可亲密了。\n\n　　细看她的微博，这一季的嘉宾中只关注了两个男孩，在节目中也是猛夸两个男孩。许晴接受采访时候曾说过：“我一直特别霸道地说，喜欢我的人一定都是善良健康的，不喜欢的一定不健康，一定不善良。”45岁的许晴依然有着18岁以下的少女心和公主病，全世界都要围着她转的自我。\n\n　　对比上一季和这一季，嘉宾名单都有许晴，还都有许晴大哭的场面。碰到挫折后许晴在镜头前失控大哭：“我真的真的想回家。”原来长得美，是真可以任性的。这不是公主病的话，什么才是？ [...] 也许是想缓和气氛(效果真没有)，井柏然补充问一句，为什么是上一季？完全不谙世事的少女许晴开始开外挂：“因为上一季的人都正常。”人畜无害的陈意涵开始傻笑(此处省略一串哈哈哈哈哈哈)，郑爽的表情则是嘴角下弯的尴尬。陈意涵接着问，那什么原因让你愿意来两次。许大姐说：“因为剧组让我来。”一天之内许晴微博10万条评论，除了脑残粉之外全是骂她的。\n\n　　上一季，她和刘涛不和的消息就没停止过，微博上也取消关注了从中说和的郑佩佩。现在又说第一季的人正常，也不知道到底谁不正常。\n\n　　其实早在第一季，许晴因为档期原因，提早退出了花少团，还与大家依依惜别说：“如果有第二季，愿意再度出行，且零片酬加盟。”提到第三季，她似乎还是激情满满：“大家看第二季谁要是留级了，就是因为表现不及格。如果我还没有及格，我还会来第三季的。”\n\n　　果然，看来是及格不了了。网上几乎一边倒的态势在骂许晴：“花儿与少年，其实郑爽的问题没有错，许晴没给小辈起码的尊重，错之一；许晴说，至少上一季的人都正常，情商出演负值，错之二；没有团队精神，没有大局意识，不能包容忍耐，不会换位思考，错之三。现在，许晴黑历史，郑爽退出花少，许晴骂郑爽……纷纷上热搜，许晴将郑爽拉下水遭受质疑，许晴你真的炸了。”\n\n　　冰冻三尺非一日之寒。郑爽自己也说过：“我跟晴姐之间，一直有一些误会，我是觉得自己一直没有去沟通得很好。”其中一个心结，大概是杨洋走丢之后，许晴说要去找杨洋，郑爽以为杨洋有地址不会丢就说不用去。之后郑爽下楼拿外卖，许晴就以为郑爽是去接杨洋给自己加戏，开始不爽郑爽，什么解释也听不进去。许晴直接坦白地说：“她说的话我听不懂，费那个心思再去聊天。” [...] 中新网 • 文娱 • 正文\n\n\n\n 首页\n 新闻\n 国际\n 图片\n 文娱\n 财经\n 军事\n 港澳台\n 产经\n 视频\n 体育\n 地方\n 华人\n 最新\n 生活经\n\n# 许晴《花少2》中表现遭批 被质疑有“公主病”\n\n纽约时间6月7日，许晴身穿淡蓝色纱裙亮相2015托尼奖颁奖礼红毯，成为首位踏上托尼奖红毯的中国女星。\n\n　　她在微博晒出美照并附言：“不因现实的乌云，而背离戏剧的光彩；不以世界的复杂，而背叛内心的纯粹。”疑似对负面新闻作出回应。\n\n　　画风变得实在太快。参加第二季《花儿与少年》的初始，许晴还在美滋滋地说着爱情的话题，“她笑称参加完第二季之后，目前正在从女生向‘柔软的美男子’进化，更重要的是这次疯狂的旅行也让她深深地爱上了一起搭错地铁、一起深夜迷路的小伙伴们，她正陷入一场和每个人的热恋。”“对两次旅行的导游，许晴形容郑爽像小妈妈，而张翰更像哥哥：郑爽会细心地帮她把地铁卡收到小包里，而面对做事比较霸气的哥哥，有小意外可以顶撞他。”一副和美的景象不忍破坏。\n\n　　前后不到一个月，关于许晴的黑话题又上了话题榜。负面来得太快就像龙卷风。\n\n上一季矫揉这一季自我\n\n撒娇女人未必最好命\n\n　　在最新播出的《花儿与少年》中，播了一段大家伙玩真心话的片段，郑爽开始问许晴，到底是这一季开心还是上一季开心啊？这么正常的套近乎，却惹来许晴不正常的回答：“上一季。”没有一点点防备，也没有一丝顾虑，她就这样回答，斩钉截铁。当时人家就震惊了，也惹恼了紧追剧情的观众，许晴微博下面的评论一片叫骂，“做作”“负能量”的字眼满屏皆是。本来还黏在许晴身上的井柏然当时一下子就起来了，神情尴尬。许晴还咬了下嘴唇，场面一度僵持，感觉许晴内心一定是：说了就说了你们怎么着吧。",
+        "title": "许晴《花少2》中表现遭批 被质疑有“公主病”-中国新闻网",
+        "url": "https://www.chinanews.com.cn/m/yl/2015/06-10/7335375.shtml",
+        "original_url": "https://www.chinanews.com.cn/m/yl/2015/06-10/7335375.shtml",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:15:44.767687Z",
+        "published_at": null,
+        "content_hash": "b4868d3ddf1dd3b5f98f02b415c7243fdf6e49eb908b411073b96d00615b061b",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 2227,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-c63a817af5f43c8fab4fc41220cf165d",
+        "text": "不知道她具体经历了什么，但她的父母给到的一定是有条件的爱，达到与没达到条件，待遇千差万别。她被允许的试错空间一定是很小的，更常出现的是“错过了这次机会就如何”“完不成这次机会就如何”的恐吓。\n\n一个被吓大的小孩，只能随时准备使出十二分的力让自己看上去完美无缺、事事周到，而避免陷入那个可怕的“万丈深渊”里。\n\n一旦所谓万丈深渊真的到来，她就乱了、没办法了。切到我们开头说的破罐破摔状态，或者如杨洋走丢事件中那样单方面认定杨洋能自己回来的掩耳盗铃里，假装自己没有做错任何，事态会自动平息。\n\n结 语\n\n其实今天这篇文章的三个部分，应该倒着看：带着任务预防崩塌——发现苗头诱发崩塌——任崩塌后的碎片在眼前横飞。\n\n爽的颅内剧情有自己的一套完整闭环儿，常年在各种小事上自动化运作，自动到完全可以不把所谓外部事实纳入轨道。\n\n所以大家都说她脑回路清奇，常常已读乱回，常常疯言疯语。\n\n可是细想，常年在这么大的情绪张力下生活的人应该很辛苦吧？\n\n几年前的塌房退圈是旧剧情持续运行的最终结果，但好在没要了命、人也没进去，这又何尝不是一次人生转变的绝佳契机？\n\n听说现在的素人爽胖了，挺好，不知她看到如今沸沸扬扬的讨论和当年的《花少》片段，会作何感想？会不会边看边对当年的自己说——“傻姑娘，你明明可以不那么做呀”？\n\n《花少2》纪传体解析篇就此完结，\n\n撒花！再会！\n\nMISS BAO\n\n不可能永远年轻\n\n但永远相信：\n\n万物可爱，人间值得\n\n其实，总有办法的~\n\n特别声明：以上内容(如有图片或视频亦包括在内)为自媒体平台“网易号”用户上传并发布，本平台仅提供信息存储服务。 [...] 这句雷人之语背后藏着的，更多是对于现状和冲突束手无策的破罐儿破摔。\n\n再听一句。\n\n开头暖气事件里，她提前订好了房子，但是暖气出了问题，导致大家舟车劳顿抵达住所之后怨声四起。她当即开启雷霆发言：我不要住了，我要回家了，我们走吧，随便找个暖和的地方，找个什么快捷酒店，一人一间房吧。\n\n要知道，当时已经半夜十二点了。\n\n听起来好像也是个方案，但实则是一种不知所措的摆烂。仿佛邪恶外星人即将占领地球，如临大敌，打也打不过，逃也逃不掉，干脆两手一摊坐地上等死，或者能舒服一下是一下吧。\n\n她的这种一贯态度适配的场景是生死存亡之际的无计可施。\n\n哪怕现实里需要面对的是很小的问题——暖气坏了自己找开关或联系房东，觉得住房车会死人那就尽量手动关掉可能致命的因素。可对于她来说，情况就是严峻到“吓都吓死了，动弹不了一点儿”的程度。\n\n至少从《花少2》来看，她很难像正常的大人一样冷静下来，分析局势，做出行动。而总是像一个被吓坏的小孩，被“我要被针对了”“我要被惩罚了”“我要被挑剔了”“我要被欺负了”的恐惧摁在原地，什么建设性的行动都做不出来。\n\n谈判是谈不了的，因为她把冲突另一方定义为了一个极其凶神恶煞的角色，她根本没那个胆去正面对垒；\n\n解决问题是解决不了的，因为在当下想象里，她是个弱小无助的可怜小孩，除了等救世主来临，只能祈求史诗级大灾难自行结束。\n\n曾经的伤口没有愈合，那人就会被反复拉回那个阴雨森森的至暗时刻，一次次无力地战斗，一次次绝望地撂挑子、一次次发着抖蜷缩。\n\n房车大战的时候，在结果落地前，她说：“反正给我个位儿就行，我在剧组垫个塑料袋都能睡。”开头暖气事件里，她为没把大家照顾好而内疚，主动提出自己睡客厅沙发就行。\n\n她总是这样，把自己放到苦哈哈的境遇上面，像是一种认命——可能我就只配这样吧，又像是一种避免灾难持续恶化的自我保护——我都这么惩罚自己了，还能有更糟的吗？ [...] 脑袋里的那团情绪密密麻麻、嗡嗡作响，完全腾不出一丝理性思考的空间。其实爽子，你是个大人了，你完全可以给自己争取到更舒服的待遇。\n\n二、又菜又爱树敌\n\n由上可知，爽的灾难化思维很重，一点小事儿就会被上升到生死存亡的程度。所以在她的剧本里，总有人是加害者，是那个有意置她于死地的人。\n\n房车大战里，可怕的敌人是许晴，当许晴还没提及核心问题的时候，她就已经架起戒备模式了。\n\n晴：把行李箱放地上吧。\n\n爽：好脏啊这地方。\n\n晴：她们去逛是吧。\n\n爽：所有人都可以去逛，你也可以去逛，现在是自由时间。\n\n你说她菜吧，在宁静和陈意涵以逛逛之名主动退出“战场”时，人家愣是没走；你说她厉害吧，除了阴阳怪气夹枪带棒刺挠对方几下，根本没办法铿锵有力、有理有据地当面对质。\n\n塔桥那里也是一样，宁静说这个餐食不好吃，爽当即反驳——“已经很好了，很好吃的。”宁静确认了一下去塔桥的价格，她半开玩笑说——“怎么，你要花9磅打车回去吗？”宁静看她一眼，她说人家——“哇，你好凶啊，好吓人。”\n\n谁说宁静暴脾气的，这情况能连忍三轮，已经够可以了。\n\n不安全感重的人会预定冲突、放大冲突，用“隐形攻击”来“勾引”别人将小小的分歧和不对付扩展为最终落地的大战争。\n\n成熟的做法是大事化小、小事化了；咱们爽是，小事化大，大事化为大爆炸。\n\n因为冲突、被针对、被挑剔、不安全是她熟悉的，熟悉的剧情不会发生，她反而会觉得其中有诈。所以她总会在预判冲突与危险的前提下，主动将冷箭放给敌方，好让剧情按照自己熟悉的路径上演。\n\n有意思吧，最战战兢兢的那个人，反而是最容易在不知不觉中点燃炮火的冲突发起者。\n\n为啥通常是冷箭？\n\n她的攻击性是内收的、压抑的，相对于对外表达，她更习惯向内攻击。一方面，关于不情绪化地表达情绪这件事，她没有充足的体验和练习；另一方面，负面情绪压久了，等于在心里囤了一头不可控的野兽。",
+        "title": "《花少2》之精读【爽言爽语】篇：她只是一个被吓坏的小孩|许晴|杨洋|陈意涵|毛阿敏_网易订阅",
+        "url": "https://www.163.com/dy/article/L74HLFJO0556KC10.html",
+        "original_url": "https://www.163.com/dy/article/L74HLFJO0556KC10.html",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:15:44.767687Z",
+        "published_at": null,
+        "content_hash": "9b332e0e48e46c002e229900c318b116d75ec119088d5ab59af07cb69846e8f6",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 2273,
+        "original_id": null,
+        "original_quiz_id": null
+      },
+      {
+        "id": "web-037ff847434a3d0e7deea8ca51e3445c",
+        "text": "宁静爆料，杨洋走丢风波11年后再反转，原来许晴真的没说谎. 花少2房车名场面分析！真性情格格不入，装友谊其乐融融？",
+        "title": "【补档】花少2杨洋被落下：时隔11 年舆论大反转！少年的信任碎在 ...",
+        "url": "https://www.bilibili.com/video/BV1fYtJ6bEyM",
+        "original_url": "https://www.bilibili.com/video/BV1fYtJ6bEyM",
+        "page": null,
+        "start": null,
+        "end": null,
+        "supplement": false,
+        "content_kind": "snippet",
+        "retrieved_at": "2026-10-14T12:15:44.767687Z",
+        "published_at": null,
+        "content_hash": "4614a9e76939e4eae477f466c94aacbd55ebe638d3349712a0391232cc06b4d2",
+        "acquisition_status": "available",
+        "truncated": false,
+        "context_truncated": false,
+        "source_chars": 57,
+        "original_id": null,
+        "original_quiz_id": null
+      }
+    ],
+    "error_code": null,
+    "retry_after_seconds": 0,
+    "created_at": "2026-10-14T12:15:26Z",
+    "expires_at": "2026-10-15T12:15:26Z"
+  },
+  "wall_attempt_seconds": [
+    76.176,
+    7.297
+  ],
+  "elapsed_seconds": 83.473,
+  "api_timings": [
+    {
+      "method": "POST",
+      "path": "/auth/wechat",
+      "status": 200,
+      "seconds": 0.028
+    },
+    {
+      "method": "POST",
+      "path": "/quiz/preparations",
+      "status": 200,
+      "seconds": 76.117
+    },
+    {
+      "method": "GET",
+      "path": "/quiz/preparations/e54cd784-3abd-4b72-a3fd-d17cfd778ea4",
+      "status": 200,
+      "seconds": 0.024
+    },
+    {
+      "method": "POST",
+      "path": "/auth/wechat",
+      "status": 200,
+      "seconds": 0.056
+    },
+    {
+      "method": "POST",
+      "path": "/quiz/preparations",
+      "status": 200,
+      "seconds": 0.032
+    },
+    {
+      "method": "GET",
+      "path": "/quiz/preparations/e54cd784-3abd-4b72-a3fd-d17cfd778ea4",
+      "status": 200,
+      "seconds": 0.016
+    },
+    {
+      "method": "POST",
+      "path": "/quiz/generate",
+      "status": 200,
+      "seconds": 7.179
+    },
+    {
+      "method": "GET",
+      "path": "/operations/generate-huashao-1",
+      "status": 200,
+      "seconds": 0.009
+    }
+  ],
+  "structured_model_usage": [
+    {
+      "operation": "e54cd784-3abd-4b72-a3fd-d17cfd778ea4",
+      "attempt": 1,
+      "tokens": {
+        "input_tokens": 12794,
+        "output_tokens": 3599,
+        "total_tokens": 16393
+      }
+    },
+    {
+      "operation": "67661320-e246-43dc-878f-06108066c186",
+      "attempt": 1,
+      "tokens": {
+        "input_tokens": 4202,
+        "output_tokens": 831,
+        "total_tokens": 5033
+      }
+    },
+    {
+      "operation": "67661320-e246-43dc-878f-06108066c186",
+      "attempt": 1,
+      "tokens": {
+        "input_tokens": 3821,
+        "output_tokens": 508,
+        "total_tokens": 4329
+      }
+    }
+  ],
+  "operations": [
+    {
+      "key": "generate-huashao-1",
+      "kind": "quiz",
+      "status": "succeeded",
+      "stage": "succeeded",
+      "model_calls": 2,
+      "tool_calls": 0,
+      "page_attempts": 0,
+      "charged": 1,
+      "retrieval": null,
+      "error_code": null
+    },
+    {
+      "key": "prepare:9a850b084a5916c53c60b241b6f7c25b515ef94f3cc1678f0a3955e0f2157c20",
+      "kind": "prepare",
+      "status": "succeeded",
+      "stage": "ready",
+      "model_calls": 4,
+      "tool_calls": 4,
+      "page_attempts": 0,
+      "charged": 0,
+      "retrieval": null,
+      "error_code": null
+    }
+  ],
+  "retrieval_preparations": [
+    {
+      "scope": {
+        "candidates": [
+          {
+            "id": "scope-hs2-v1-program",
+            "topic": "花少2",
+            "domain": "综艺节目本体信息",
+            "focuses": [
+              {
+                "id": "focus-hs2-v1-broadcast",
+                "name": "播出与制作信息",
+                "points": [
+                  {
+                    "id": "point-hs2-v1-broadcast-1",
+                    "name": "湖南卫视明星姐弟自助远行节目",
+                    "evidence_ids": [
+                      "web-d195a88ec6de9952100f33d22ec634b0",
+                      "web-686b1c38453a447e2872a0fc41ccfa0a"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-hs2-v1-broadcast-2",
+                    "name": "2015年4月25日起每周六22:00播出",
+                    "evidence_ids": [
+                      "web-d195a88ec6de9952100f33d22ec634b0",
+                      "web-686b1c38453a447e2872a0fc41ccfa0a"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-hs2-v1-broadcast-3",
+                    "name": "共11期",
+                    "evidence_ids": [
+                      "web-d195a88ec6de9952100f33d22ec634b0",
+                      "web-686b1c38453a447e2872a0fc41ccfa0a"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-hs2-v1-broadcast-4",
+                    "name": "第二季由廖珂及其团队打造",
+                    "evidence_ids": [
+                      "web-1b7b9b9f6796f6357bedaa562e03252d"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-hs2-v1-broadcast-5",
+                    "name": "接档《奇妙的朋友》播出",
+                    "evidence_ids": [
+                      "web-1b7b9b9f6796f6357bedaa562e03252d"
+                    ],
+                    "evidence_status": "available"
+                  }
+                ],
+                "description": "节目播出平台、时间、期数与制作团队等基础信息。"
+              },
+              {
+                "id": "focus-hs2-v1-cast",
+                "name": "固定成员构成",
+                "points": [
+                  {
+                    "id": "point-hs2-v1-cast-1",
+                    "name": "毛阿敏",
+                    "evidence_ids": [
+                      "web-d195a88ec6de9952100f33d22ec634b0",
+                      "web-686b1c38453a447e2872a0fc41ccfa0a"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-hs2-v1-cast-2",
+                    "name": "许晴",
+                    "evidence_ids": [
+                      "web-d195a88ec6de9952100f33d22ec634b0",
+                      "web-686b1c38453a447e2872a0fc41ccfa0a"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-hs2-v1-cast-3",
+                    "name": "宁静",
+                    "evidence_ids": [
+                      "web-d195a88ec6de9952100f33d22ec634b0",
+                      "web-686b1c38453a447e2872a0fc41ccfa0a"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-hs2-v1-cast-4",
+                    "name": "陈意涵",
+                    "evidence_ids": [
+                      "web-d195a88ec6de9952100f33d22ec634b0",
+                      "web-686b1c38453a447e2872a0fc41ccfa0a"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-hs2-v1-cast-5",
+                    "name": "井柏然",
+                    "evidence_ids": [
+                      "web-d195a88ec6de9952100f33d22ec634b0",
+                      "web-686b1c38453a447e2872a0fc41ccfa0a"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-hs2-v1-cast-6",
+                    "name": "杨洋",
+                    "evidence_ids": [
+                      "web-d195a88ec6de9952100f33d22ec634b0",
+                      "web-686b1c38453a447e2872a0fc41ccfa0a"
+                    ],
+                    "evidence_status": "available"
+                  }
+                ],
+                "description": "第二季固定成员名单及姐弟组合设定。"
+              },
+              {
+                "id": "focus-hs2-v1-format",
+                "name": "行程与规则设定",
+                "points": [
+                  {
+                    "id": "point-hs2-v1-format-1",
+                    "name": "两位明星弟弟（少年）与五位明星姐姐（花儿）",
+                    "evidence_ids": [
+                      "web-4d2a97c17bb5cf78743015cd4ef213c5"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-hs2-v1-format-2",
+                    "name": "没有经纪人与助理的安排和帮助",
+                    "evidence_ids": [
+                      "web-4d2a97c17bb5cf78743015cd4ef213c5"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-hs2-v1-format-3",
+                    "name": "利用15—20天左右的时间与有限的资金",
+                    "evidence_ids": [
+                      "web-4d2a97c17bb5cf78743015cd4ef213c5"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-hs2-v1-format-4",
+                    "name": "前往不同的国家及城市旅行，展现文化差异",
+                    "evidence_ids": [
+                      "web-4d2a97c17bb5cf78743015cd4ef213c5"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-hs2-v1-format-5",
+                    "name": "每季最后为成员取称号并颁奖",
+                    "evidence_ids": [
+                      "web-4d2a97c17bb5cf78743015cd4ef213c5"
+                    ],
+                    "evidence_status": "available"
+                  }
+                ],
+                "description": "节目核心玩法：无经纪人与助理、有限资金、多国旅行及文化差异展示。"
+              }
+            ],
+            "description": "《花儿与少年第二季》作为湖南卫视明星姐弟自助远行真人秀的节目本体信息，包括播出与制作、固定成员、行程与规则设定等。依据本次取得的百科与维基片段建立，仅表示取得依据，最终题目另行审核。"
+          },
+          {
+            "id": "scope-hs2-v1-drama",
+            "topic": "花少2",
+            "domain": "名场面与冲突事件",
+            "focuses": [
+              {
+                "id": "focus-hs2-v1-rv",
+                "name": "房车事件",
+                "points": [
+                  {
+                    "id": "point-hs2-v1-rv-1",
+                    "name": "土耳其第二站自驾游露营",
+                    "evidence_ids": [
+                      "web-8691285e72d9aaa5ccce2b282a0ef4b7",
+                      "web-077e455025651b83213e4d59d1b7d446"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-hs2-v1-rv-2",
+                    "name": "房车最多只能睡五个人，需分配帐篷",
+                    "evidence_ids": [
+                      "web-8691285e72d9aaa5ccce2b282a0ef4b7",
+                      "web-077e455025651b83213e4d59d1b7d446"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-hs2-v1-rv-3",
+                    "name": "大家都想睡帐篷",
+                    "evidence_ids": [
+                      "web-8691285e72d9aaa5ccce2b282a0ef4b7",
+                      "web-077e455025651b83213e4d59d1b7d446"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-hs2-v1-rv-4",
+                    "name": "宁静“这里可以睡三个人”的潜台词",
+                    "evidence_ids": [
+                      "web-8691285e72d9aaa5ccce2b282a0ef4b7",
+                      "web-077e455025651b83213e4d59d1b7d446"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-hs2-v1-rv-5",
+                    "name": "井柏然未领会潜台词",
+                    "evidence_ids": [
+                      "web-8691285e72d9aaa5ccce2b282a0ef4b7",
+                      "web-077e455025651b83213e4d59d1b7d446"
+                    ],
+                    "evidence_status": "available"
+                  }
+                ],
+                "description": "土耳其露营分房引发的“房车大战”相关情节。"
+              },
+              {
+                "id": "focus-hs2-v1-yang",
+                "name": "杨洋走丢事件",
+                "points": [
+                  {
+                    "id": "point-hs2-v1-yang-1",
+                    "name": "宁静和许晴因划船效果不好被留下加练",
+                    "evidence_ids": [
+                      "web-a2dfd70c4b12a624c476f4744336f9c1"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-hs2-v1-yang-2",
+                    "name": "宁静先上车并询问司机能否走",
+                    "evidence_ids": [
+                      "web-a2dfd70c4b12a624c476f4744336f9c1"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-hs2-v1-yang-3",
+                    "name": "多方沟通错位的连锁乌龙",
+                    "evidence_ids": [
+                      "web-e58bb247cd757bc894b9c5118c578b3a"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-hs2-v1-yang-4",
+                    "name": "许晴误以为杨洋已随宁静回去",
+                    "evidence_ids": [
+                      "web-e58bb247cd757bc894b9c5118c578b3a"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-hs2-v1-yang-5",
+                    "name": "郑爽给每人誊抄了地址",
+                    "evidence_ids": [
+                      "web-e58bb247cd757bc894b9c5118c578b3a"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-hs2-v1-yang-6",
+                    "name": "两台通讯设备的限制导致即时通讯受阻",
+                    "evidence_ids": [
+                      "web-e32a0db84da6fae562aceea498150c01"
+                    ],
+                    "evidence_status": "available"
+                  }
+                ],
+                "description": "杨洋被落下/走丢的经过与多方沟通错位的讨论。"
+              },
+              {
+                "id": "focus-hs2-v1-london",
+                "name": "伦敦桥对峙与团队分裂",
+                "points": [
+                  {
+                    "id": "point-hs2-v1-london-1",
+                    "name": "宁静因疲惫情绪失控（当天只睡4小时、暴走5小时）",
+                    "evidence_ids": [
+                      "web-e32a0db84da6fae562aceea498150c01"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-hs2-v1-london-2",
+                    "name": "宁静表示明早谁也不要喊她",
+                    "evidence_ids": [
+                      "web-077e455025651b83213e4d59d1b7d446"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-hs2-v1-london-3",
+                    "name": "毛阿敏再次倒戈，表示去玩伦敦桥",
+                    "evidence_ids": [
+                      "web-077e455025651b83213e4d59d1b7d446"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-hs2-v1-london-4",
+                    "name": "成员抱团：郑爽、宁静、陈意涵 vs 许晴、毛阿敏",
+                    "evidence_ids": [
+                      "web-8691285e72d9aaa5ccce2b282a0ef4b7",
+                      "web-077e455025651b83213e4d59d1b7d446"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-hs2-v1-london-5",
+                    "name": "杨洋和井柏然夹在五个女人中间维持关系",
+                    "evidence_ids": [
+                      "web-8691285e72d9aaa5ccce2b282a0ef4b7",
+                      "web-077e455025651b83213e4d59d1b7d446"
+                    ],
+                    "evidence_status": "available"
+                  }
+                ],
+                "description": "伦敦桥行程分歧、成员抱团与情绪失控等情节。"
+              }
+            ],
+            "description": "第二季被反复讨论的经典冲突事件与名场面，包括房车事件、杨洋走丢、伦敦桥对峙等，依据本次取得的文章片段建立。"
+          },
+          {
+            "id": "scope-hs2-v1-huaxue",
+            "topic": "花少2",
+            "domain": "花学与网络文化梗",
+            "focuses": [
+              {
+                "id": "focus-hs2-v1-meme",
+                "name": "热门梗与称号",
+                "points": [
+                  {
+                    "id": "point-hs2-v1-meme-1",
+                    "name": "被戏称为“第五大名著”",
+                    "evidence_ids": [
+                      "web-e063bd58b861080f7a343dc15fb154f9",
+                      "web-2dda93093a04d8ba235aaf97701f1392"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-hs2-v1-meme-2",
+                    "name": "“抓马巅峰”",
+                    "evidence_ids": [
+                      "web-e063bd58b861080f7a343dc15fb154f9"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-hs2-v1-meme-3",
+                    "name": "“花学”随开学季迎来讨论热潮",
+                    "evidence_ids": [
+                      "web-e063bd58b861080f7a343dc15fb154f9"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-hs2-v1-meme-4",
+                    "name": "随毛阿敏上歌手再度席卷社交平台",
+                    "evidence_ids": [
+                      "web-2dda93093a04d8ba235aaf97701f1392"
+                    ],
+                    "evidence_status": "available"
+                  }
+                ],
+                "description": "网友赋予第二季的称号与流行梗。"
+              },
+              {
+                "id": "focus-hs2-v1-quotes",
+                "name": "名场面金句",
+                "points": [
+                  {
+                    "id": "point-hs2-v1-quotes-1",
+                    "name": "许晴“上一季的人都正常”",
+                    "evidence_ids": [
+                      "web-17af4c856ed48ad2b64e25d8e4eb2b96",
+                      "web-ddcb60d161f9f16b93cec2472b988af8"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-hs2-v1-quotes-2",
+                    "name": "伦敦桥对峙",
+                    "evidence_ids": [
+                      "web-17af4c856ed48ad2b64e25d8e4eb2b96"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-hs2-v1-quotes-3",
+                    "name": "杨洋被落街头",
+                    "evidence_ids": [
+                      "web-17af4c856ed48ad2b64e25d8e4eb2b96"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-hs2-v1-quotes-4",
+                    "name": "房车分房罗生门",
+                    "evidence_ids": [
+                      "web-17af4c856ed48ad2b64e25d8e4eb2b96"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-hs2-v1-quotes-5",
+                    "name": "“你们俩死哪去了”出自迪拜站录制结束时对经纪人的质问",
+                    "evidence_ids": [
+                      "web-6187428a1e8ba21e53a714a77b0a52d0"
+                    ],
+                    "evidence_status": "available"
+                  }
+                ],
+                "description": "被网友反复引用的经典台词与场面。"
+              },
+              {
+                "id": "focus-hs2-v1-analysis",
+                "name": "花学解读与人物分析",
+                "points": [
+                  {
+                    "id": "point-hs2-v1-analysis-1",
+                    "name": "网友逐帧拆解微表情与潜台词",
+                    "evidence_ids": [
+                      "web-17af4c856ed48ad2b64e25d8e4eb2b96"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-hs2-v1-analysis-2",
+                    "name": "许晴被质疑有“公主病”",
+                    "evidence_ids": [
+                      "web-ddcb60d161f9f16b93cec2472b988af8"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-hs2-v1-analysis-3",
+                    "name": "许晴与郑爽之间的误会与心结",
+                    "evidence_ids": [
+                      "web-ddcb60d161f9f16b93cec2472b988af8"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-hs2-v1-analysis-4",
+                    "name": "对郑爽“爽言爽语”与灾难化思维的分析",
+                    "evidence_ids": [
+                      "web-c63a817af5f43c8fab4fc41220cf165d"
+                    ],
+                    "evidence_status": "available"
+                  },
+                  {
+                    "id": "point-hs2-v1-analysis-5",
+                    "name": "对嘉宾性格错位导致矛盾发酵的分析",
+                    "evidence_ids": [
+                      "web-e32a0db84da6fae562aceea498150c01"
+                    ],
+                    "evidence_status": "available"
+                  }
+                ],
+                "description": "网友对嘉宾性格、微表情与潜台词的逐帧拆解与讨论。"
+              }
+            ],
+            "description": "围绕第二季形成的“花学”讨论与网络热梗，包括“第五大名著”、许晴金句、名场面考古等，依据本次取得的社交平台与媒体片段建立。"
+          }
+        ]
+      },
+      "trace": [
+        {
+          "tool": "tavily_search",
+          "status": "success",
+          "call_id": "call_00_8GjToRSXtru1fOKWJ4xx8998",
+          "credits": 1.0,
+          "elapsed_ms": 2109,
+          "parameters": {
+            "query": "花少2 综艺",
+            "topic": "general",
+            "country": null,
+            "end_date": null,
+            "start_date": null,
+            "time_range": null,
+            "max_results": 5,
+            "content_mode": "summary",
+            "search_depth": "basic",
+            "exclude_domains": [],
+            "include_domains": []
+          },
+          "source_ids": [
+            "web-d195a88ec6de9952100f33d22ec634b0",
+            "web-3fc238c71e5827fb8c1a7d834b5a70cd",
+            "web-4d2a97c17bb5cf78743015cd4ef213c5",
+            "web-8691285e72d9aaa5ccce2b282a0ef4b7",
+            "web-57a5891e9336898a67321137d4585a7c"
+          ],
+          "reason_code": null
+        },
+        {
+          "tool": "tavily_search",
+          "status": "success",
+          "call_id": "call_01_yj0RYBGW8KuUOYKdeRXJ5202",
+          "credits": 1.0,
+          "elapsed_ms": 2001,
+          "parameters": {
+            "query": "花儿与少年 第二季",
+            "topic": "general",
+            "country": null,
+            "end_date": null,
+            "start_date": null,
+            "time_range": null,
+            "max_results": 5,
+            "content_mode": "summary",
+            "search_depth": "basic",
+            "exclude_domains": [],
+            "include_domains": []
+          },
+          "source_ids": [
+            "web-686b1c38453a447e2872a0fc41ccfa0a",
+            "web-1b7b9b9f6796f6357bedaa562e03252d",
+            "web-077e455025651b83213e4d59d1b7d446",
+            "web-24e719eddfc7a346a7bdc288e98be464",
+            "web-57a5891e9336898a67321137d4585a7c"
+          ],
+          "reason_code": null
+        },
+        {
+          "tool": "tavily_search",
+          "status": "success",
+          "call_id": "call_00_V7YBQMOR9xGJ1mPymWB06243",
+          "credits": 2.0,
+          "elapsed_ms": 5373,
+          "parameters": {
+            "query": "花学 花儿与少年2 名场面 梗",
+            "topic": "general",
+            "country": null,
+            "end_date": null,
+            "start_date": null,
+            "time_range": null,
+            "max_results": 5,
+            "content_mode": "summary",
+            "search_depth": "advanced",
+            "exclude_domains": [],
+            "include_domains": []
+          },
+          "source_ids": [
+            "web-e063bd58b861080f7a343dc15fb154f9",
+            "web-17af4c856ed48ad2b64e25d8e4eb2b96",
+            "web-2dda93093a04d8ba235aaf97701f1392",
+            "web-e32a0db84da6fae562aceea498150c01",
+            "web-6187428a1e8ba21e53a714a77b0a52d0"
+          ],
+          "reason_code": null
+        },
+        {
+          "tool": "tavily_search",
+          "status": "success",
+          "call_id": "call_01_O587S5CA3ifKTX6WCVCo7861",
+          "credits": 2.0,
+          "elapsed_ms": 5407,
+          "parameters": {
+            "query": "花少2 杨洋走丢 房车事件 许晴",
+            "topic": "general",
+            "country": null,
+            "end_date": null,
+            "start_date": null,
+            "time_range": null,
+            "max_results": 5,
+            "content_mode": "summary",
+            "search_depth": "advanced",
+            "exclude_domains": [],
+            "include_domains": []
+          },
+          "source_ids": [
+            "web-a2dfd70c4b12a624c476f4744336f9c1",
+            "web-e58bb247cd757bc894b9c5118c578b3a",
+            "web-ddcb60d161f9f16b93cec2472b988af8",
+            "web-c63a817af5f43c8fab4fc41220cf165d",
+            "web-037ff847434a3d0e7deea8ca51e3445c"
+          ],
+          "reason_code": null
+        }
+      ],
+      "usage": {
+        "input_tokens": 21100,
+        "total_tokens": 22934,
+        "output_tokens": 1834
+      },
+      "evidence": [
+        {
+          "id": "web-d195a88ec6de9952100f33d22ec634b0",
+          "end": null,
+          "url": "https://baike.baidu.com/item/%E8%8A%B1%E5%84%BF%E4%B8%8E%E5%B0%91%E5%B9%B4%E7%AC%AC%E4%BA%8C%E5%AD%A3/15973441",
+          "page": null,
+          "text": "《花儿与少年第二季》是湖南卫视推出的明星姐弟自助远行节目，由毛阿敏、许晴、宁静、陈意涵、井柏然、杨洋作为固定成员，共11期。该节目于2015年4月25日起每周六22:00",
+          "start": null,
+          "title": "花儿与少年第二季",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "eee2b90b88cd3865903d6387481e23b7ec520b4cf0b00446b1102ff4217636eb",
+          "content_kind": "snippet",
+          "original_url": "https://baike.baidu.com/item/%E8%8A%B1%E5%84%BF%E4%B8%8E%E5%B0%91%E5%B9%B4%E7%AC%AC%E4%BA%8C%E5%AD%A3/15973441",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:15:29.753695Z",
+          "source_chars": 85,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-3fc238c71e5827fb8c1a7d834b5a70cd",
+          "end": null,
+          "url": "https://ent.ifeng.com/tv/dahuazongyi/special/heysn",
+          "page": null,
+          "text": "娱乐首页\n\n凤凰网首页|娱乐首页\n\n[电影] [明星] [电视] [图片] [星座]\n\n## 大话综艺\n\n凤 凰 娱 乐 出 品\n\n用微信扫描二维码  \n分享至好友和朋友圈\n\n# 《花少》成员“各怀鬼胎” 郑爽洗白\n\n```\n作者/小笼女\n```\n\n《花儿与少年》第一季播出的时候传出抄袭（韩国《花样姐姐》原版，后被东方卫视买下并制作播出），但版权风波却丝毫没有影响第一季的好评和关注。相较于东方卫视的《花样姐姐》的温情，《花儿与少年》从第一季开始就充斥着各种火药味和话题感。为了凑齐这7位风格迥异的嘉宾，芒果台没少下工夫。关于花少第二季嘉宾加盟的原因，江湖中亦有有很多版传闻，且都传的有模有样。小编作为资深花少粉，接触过两季花少成员，幕前幕后也是非常关注，在这种舆论纷繁的局面中，不由地心生一念：为大家大胆还（nao）原（dong）一下第二季七位明星加盟地个中缘由，如有雷同，纯属巧合。 [...] 敬请期待\n \n\n  敬请期待\n \n\n  敬请期待\n\n## 栏目介绍\n\n报道电视综艺节目热点，分析综艺行业现象，深度报道综艺节目幕后故事。 ——凤凰娱乐《大话综艺》\n\n## 制作团队\n\n采访：小笼女\n\n责编：小北\n\n监制：刘帆 李厦\n\n出品：凤凰娱乐\n\n凤凰娱乐官方微信\n\n凤凰娱乐官方微信\n\n网友评论\n\n分享到：\n\n共有人参与;)　评论条(查看);)\n\n凤凰新媒体介绍|投资者关系 Investor Relations|广告服务|诚征英才|保护隐私权|免责条款|意见反馈|凤凰卫视介绍\n\n 视频\n ·纪实\n ·直播\n 凤凰卫视\n\n凤凰新媒体 版权所有    Copyright © 2013 Phoenix New Media Limited All Rights Reserved.\n\n郑爽：洗白之旅;) 宁静：免费旅行玩玩看;) 毛阿敏：为复出小试水;)  许晴：不是只会撒娇滴;) 井柏然：电影咖要接地气;) 杨洋：想被芒果台“罩”;)  陈意涵：要突破寻转型;) [...] 更重要的是，这是湖南卫视的节目。作为最早一批来内地拍戏的台湾女星，她对内地市场非常熟悉，对内地团队的作风非常了解。《我是歌手》等节目在台湾岛内刮起的旋风依稀可记，这些大制作的真人秀节目不仅能引发两岸三地最多的关注度，也会让艺人保持最强的曝光和热度，促进事业的进步。陈意涵希望通过这个节目给自己打开一个新的转机，这两年她的资源被同是台湾甜姐儿的某短发女艺人抢去了大半，电影电视代表作寥寥，接演了一些“炒冷饭”的翻拍剧也反响平平，发展路逐渐变窄。对于年过三十的女艺人来说，不管外表看起来多没心没肺，内心始终还是存在些许焦虑：靠着一张娃娃脸卖甜美已经不能再吃多久，如果现在不努力转型，很容易被后来的90后、00后们拍在沙滩上。所以她“忍受”着一群整天“唧唧歪歪”不懂旅行意义的女人们，“承担”着各种考验心智体力的挑战、“配合”着的和杨洋配对成“洋洋得意”cp组合，……只是为了告诉大家：我才不是说话嗲嗲只会扮可爱的软妹子！\n\n本文系凤凰娱乐独家稿件，未经授权，禁止以任何形式转载，否则将追究法律责任。\n\n \n\n  敬请期待\n \n\n  敬请期待\n \n\n  敬请期待\n \n\n  敬请期待",
+          "start": null,
+          "title": "另类解读《花少2》_娱乐频道_凤凰网",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "b2679cd103a49b2588819bb0fc8047835b2e85937c8481b042385d3cdaff4e0c",
+          "content_kind": "snippet",
+          "original_url": "https://ent.ifeng.com/tv/dahuazongyi/special/heysn",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:15:29.753695Z",
+          "source_chars": 1331,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-4d2a97c17bb5cf78743015cd4ef213c5",
+          "end": null,
+          "url": "https://zh.wikipedia.org/zh-hans/%E8%8A%B1%E5%85%92%E8%88%87%E5%B0%91%E5%B9%B4",
+          "page": null,
+          "text": "^ a. 《奇妙的朋友》在2015年3月28日播出结束后，2015年4月4日、11日和18日22:00的节目分别为《爸爸去哪儿大电影 \"爸爸去哪儿 (电影)\")》（重播）、《爸爸去哪儿2大电影 \"爸爸去哪儿2 (电影)\")》和《我是歌手第三季2015巅峰会#2015巔峰會 \"我是歌手 (第三季)\")》（重播）。\n ^ b. 2017年7月16日至8月20日22:00播出周播剧场《青春进行时》。\n ^ c. 《花儿与少年·露营季》在2022年9月2日播出结束后，2022年9月9日19:30的节目为《2022致敬大国工匠特别节目》。\n\n|  查  论  编  湖南卫视综艺节目 | [...] ## 节目简介\n\n[编辑]\n\n节目第一、二季分别于2014年及2015年制作，主要讲述两位明星弟弟（少年）与五位明星姐姐（花儿）在没有经纪人与助理的安排和帮助下，利用15—20天左右的时间与有限的资金前往不同的国家及城市旅行的故事，向观众展现不同国家和地区的文化差异。在每季节目的最后，节目成员还将根据每一位成员的特点为他们取下称号并颁奖，为该季节目画上一个圆满的句号。 [...] (第二季)\")  中餐厅1 \"中餐厅 (湖南卫视)\")  儿行千里&action=edit&redlink=1 \"儿行千里 (电视节目)（页面不存在）\")  亲爱的·客栈1  嗨！看电视  声临其境1 \"声临其境 (第一季)\")  我是大侦探  嘿！好样的  我家那小子  中餐厅2 \"中餐厅 (湖南卫视)\")  我是未来2  快乐哆唻咪  亲爱的·客栈2  我家那闺女  恋梦空间  歌手2019  我们的师父  我家小两口  中餐厅3 \"中餐厅 (湖南卫视)\")  舞蹈风暴  亲爱的·客栈3  声临其境3 \"声临其境 (第三季)\")  一键倾心  巧手神探  鲜厨100  运动吧少年  中餐厅4 \"中餐厅 (湖南卫视)\")  新手驾到  谁知盘中餐&action=edit&redlink=1 \"谁知盘中餐 (湖南卫视)（页面不存在）\")  姐姐的爱乐之程\\  你真的太棒了  怦然再心动  妈妈，你真好看  牛气满满的哥哥  中餐厅5 \"中餐厅 (湖南卫视)\")  欢唱大篷车  云上的小店1  勇往直前的我们  中国婚礼—我的女儿出嫁了  牧野家族  美好年华研习社\\  中餐厅6",
+          "start": null,
+          "title": "花儿与少年 - 维基百科，自由的百科全书",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "0c43b2734700380963e4ffa69b8d57aadff3b7fea8836d3c5986479a272fce06",
+          "content_kind": "snippet",
+          "original_url": "https://zh.wikipedia.org/zh-hans/%E8%8A%B1%E5%85%92%E8%88%87%E5%B0%91%E5%B9%B4",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:15:29.753695Z",
+          "source_chars": 986,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-8691285e72d9aaa5ccce2b282a0ef4b7",
+          "end": null,
+          "url": "https://www.sohu.com/a/358826484_649958",
+          "page": null,
+          "text": "我的妈呀，你去搬那么多箱子试试？体力上不帮忙就算了，还不给予安慰和理解，两个男孩子真的很辛苦。后来井柏然还要跟大家商量，夜里四点起床，井柏然叫大家起床。\n\n花学高潮——房车事件\n\n在土耳其的第二站，花少团准备去自驾游，这也是整个节目的高潮。以往的综艺真人秀都是可控的，不会让其任意发展，但房车事件直接让节目失控。\n\n房车之旅开始前，井柏然抱怨：房车住不下七个人，需要一些帐篷。买帐篷也为后续埋下了伏笔。\n\n经过前面的一系列事件，花少7人团已经完全的分裂。郑爽、宁静和陈意涵抱团，许晴和毛阿敏抱团，杨洋和井柏然夹在五个女人中间，小心翼翼的维持她们的关系。\n\n毛阿敏、许晴、井柏然开一辆车。\n\n杨洋、郑爽、宁静和陈意涵开另一辆车。\n\n在土耳其的湖边，她们准备露营，房车大战悄然开始。\n\n八哥简单说一下背景，房车最多只能睡五个人，所以大家需要分配，有些人要在户外睡帐篷。大家都想睡帐篷，因为吃喝拉撒都在房车上，味道挺不好闻的。\n\n宁静看到帐篷后说：这里可以睡三个人。潜台词是，这个帐篷归我、郑爽和陈意涵睡了。不过井柏然没体会到宁静的潜台词意思。 [...] 陈意涵到处跑到处找，就是找不到人。\n\n人都去哪了呢？毛阿敏、许晴、宁静三个长辈没管陈意涵，直接拉着行李箱就跑进火车站了。\n\n只有郑爽提出要等一下陈意涵，如果几个小辈和毛阿敏她们三个老大姐一样，那陈意涵就彻底被抛弃了，在伦敦孤身一人，没有行李没有电话没有钱。\n\n陈意涵事后说：我今天比较沮丧，我觉得是不是我太管闲事了，是不是我傻傻的跟在大家旁边比较好呢？这件事情给陈意涵敲响了警钟，这并不是一趟团结友爱美好的旅行，所以在杨洋走丢那晚她并没有多管闲事，只是打了个电话。最后大家闹僵了，她和井柏然才出门去找人。\n\n井柏然的暴躁搬箱\n\n杨洋走丢回来后，这个团队已经有点一盘散沙的趋势了。在小心翼翼的气氛里，英国之旅快结束了。节目安排的路线也很折腾人，让她们爬山露营，结束后，大家又拖着箱子来到要住的酒店。\n\n从停车的地方到酒店，有很长很长的阶梯。\n\n7个人，13个大箱子。搬箱子的任务全部都落在了男生的肩膀上，井柏然不做声，默默的开始搬箱子。\n\n杨洋也开始拧箱子，这趟旅行一共23天，女明星们又爱美，箱子里面都是衣服、化妆品等，每个箱子都很重。\n\n5个女明星唯一帮两个男生搬箱子的，是陈意涵。 [...] 杨洋有点带着情绪的说：往回走，说了好几遍了。\n\n结果郑爽来了一句：你tm快点领路啊。没错，说脏话了，但消音了。郑爽的心不坏，但她的表达和脑回路增加了很多交流的困难，真的很难不生气。\n\n当天晚上，大家在桌上吃饭时，一起看白天游玩的照片。\n\n杨洋坐在一旁有点低气压，宁静这时候也不跟大家玩\n\n后来杨洋接受采访时说：我觉得有点孤单。\n\n伦敦之行就在宁静的暴躁和杨洋的心灵孤单中结束了，接下来他们去了剑桥。\n\n许晴和宁静的初次不和\n\n在剑桥旅行时，大家一起学划船。此时，许晴和杨洋、郑爽、一个英国人组成了四人队伍划船。\n\n划完船后，许晴特别开心，说：我们四个人特别齐心。\n\n节目组问：今天你和大家配合的好吗？许晴说：好呀，这就是团队精神。\n\n结果四人团队换成八人团队时，许晴的心情不一样了。她的身后坐着宁静，宁静也一脸不高兴。\n\n许晴接受采访时说：八个人时，配合不好。每个人的性格和要做的东西都很杂乱。\n\n如果单单是因为人数多了不好配合，那也没必要说性格问题吧？可以看出此时，许晴也有点不喜欢宁静了。八哥前面说了，宁静也不喜欢许晴这个和事佬。\n\n杨洋走丢事件，郑爽和许晴的决裂",
+          "start": null,
+          "title": "回顾花儿与少年第二季，它是如何从温馨崩成噩梦的？_郑爽",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "7386e2d4728026959899360b0c3b758252972027ded9d135f5eba562f41e53d0",
+          "content_kind": "snippet",
+          "original_url": "https://www.sohu.com/a/358826484_649958",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:15:29.753695Z",
+          "source_chars": 1459,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-57a5891e9336898a67321137d4585a7c",
+          "end": null,
+          "url": "https://www.dailymotion.com/video/x2nyp82",
+          "page": null,
+          "text": "# 《花儿与少年2》第1期20150425 郑爽接棒导游被虐 井柏然隔空秀恩爱【湖南卫视官方版1080p】",
+          "start": null,
+          "title": "Dailymotion",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "ae210f7e0a3f466f6bd34366aaf47c824eb54ee0863f8db12e3580a173ff60f1",
+          "content_kind": "snippet",
+          "original_url": "https://www.dailymotion.com/video/x2nyp82",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:15:29.753695Z",
+          "source_chars": 53,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-686b1c38453a447e2872a0fc41ccfa0a",
+          "end": null,
+          "url": "https://baike.baidu.com/item/%E8%8A%B1%E5%84%BF%E4%B8%8E%E5%B0%91%E5%B9%B4%E7%AC%AC%E4%BA%8C%E5%AD%A3/15973441",
+          "page": null,
+          "text": "《花儿与少年第二季》是湖南卫视推出的明星姐弟自助远行节目,由毛阿敏、许晴、宁静、陈意涵、井柏然、杨洋作为固定成员,共11期。该节目于2015年4月25日起每周六22:00",
+          "start": null,
+          "title": "花儿与少年第二季",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "232fd72cab9815a7be43a91f32441a44269f014b49708d311fd205f9fd1f6eda",
+          "content_kind": "snippet",
+          "original_url": "https://baike.baidu.com/item/%E8%8A%B1%E5%84%BF%E4%B8%8E%E5%B0%91%E5%B9%B4%E7%AC%AC%E4%BA%8C%E5%AD%A3/15973441",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:15:31.940142Z",
+          "source_chars": 85,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-1b7b9b9f6796f6357bedaa562e03252d",
+          "end": null,
+          "url": "https://zh.wikipedia.org/wiki/%E8%8A%B1%E5%85%92%E8%88%87%E5%B0%91%E5%B9%B4",
+          "page": null,
+          "text": "Road），是中国大陆湖南卫视推出的一档明星姐弟自助远行真人秀节目，该节目是湖南卫视的原创节目，主要讲述7—9位明星姐弟利用15—27天左右的时间与有限的资金前往不同的国家及城市旅行的故事。《花儿与少年》每集约90分钟，按季播出。第一季共8期，由制作过《中国最强音》的制作人廖珂及其团队打造，于2014年4月25日起每週五22:00接档移回黄金档的常规节目《天天向上》播出。第二季共11期，依旧由制作过第一季的廖珂及其团队打造，于2015年4月25日起每週六22:00接档《奇妙的朋友》播出。第三季共12期，由原担任总撰稿的吴梦知及其团队打造，于2017年4月23日起每週日22:00接档《向往的生活》播出。第四季共12期，由李超、朱锋团队联合制作，于2022年6月17日起每週五20:10接档《春天花会开》播出，7月29日起改为每週五19:30播出。第五季共14期，出品方变更为芒果TV，由湖南卫视李超团队与芒果TV蔡熙团队联合制作，並由国家广播电视总局國際合作司指導製作，于2023年10月24日12:00在芒果TV、16:30在湖南卫视播出先导片 [...] | 声音制式 | 立体声 |\n| 播出日期 | 第一季：2014年4月25日 (2014-04-25)—2014年6月13日 (2014-06-13) 第二季：2015年4月25日 (2015-04-25)—2015年7月4日 (2015-07-04) 第三季：2017年4月23日 (2017-04-23)—2017年7月9日 (2017-07-09) 第四季：2022年6月17日 (2022-06-17)—2022年9月2日 (2022-09-02) 第五季：2023年10月26日 (2023-10-26)—2024年1月25日 (2024-01-25) 第七季：2025年8月16日 (2025-08-16)—2025年11月22日 (2025-11-22) |\n|  |\n| 芒果TV首播 | [...] ## 争议\n\n[编辑]\n\n### 伊斯兰服饰问题\n\n[编辑]\n\n在2015年播出的第二季节目中，女演员宁静并非伊斯兰教徒，由於录制節目的地点位于土耳其，而且是在清真寺內，宁静录製節目時穿着「希賈布」，这种服饰是伊斯兰教习俗下女性穿着的服饰，在中国被视为代表伊斯兰“极端主义”，受到中国政府的反对，新疆地方政府立法禁止穿着。湖南卫视在播出节目时，对涉及宁静的电视画面采取消音，直至完全删除。有报道称，此举是应国家新闻出版广电总局的要求，网民对此看法褒贬不一。\n\n### 第二季“花学”迷因\n\n[编辑]\n\n在2015年播出的第二季节目中，几位参与成员在旅行过程中矛盾不断：伦敦租房、杨洋剑桥走丢、许晴称“上一季的人都正常”、登山帐篷分配等话题，令节目在结束多年后，依旧被大众讨论，衍生出“花学”的网络迷因。郑爽代孕弃养风波后，第二季中郑爽的“疯狂”表现也被重新讨论。\n\n### 第六季“周学”迷因\n\n[编辑]",
+          "start": null,
+          "title": "花兒與少年 - 维基百科，自由的百科全书",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "a32dd50fe07442584d252887327e2a592fab2d83128a8bd6f5583def0385f7b8",
+          "content_kind": "snippet",
+          "original_url": "https://zh.wikipedia.org/wiki/%E8%8A%B1%E5%85%92%E8%88%87%E5%B0%91%E5%B9%B4",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:15:31.940142Z",
+          "source_chars": 1244,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-077e455025651b83213e4d59d1b7d446",
+          "end": null,
+          "url": "https://www.sohu.com/a/358826484_649958",
+          "page": null,
+          "text": "我的妈呀，你去搬那么多箱子试试？体力上不帮忙就算了，还不给予安慰和理解，两个男孩子真的很辛苦。后来井柏然还要跟大家商量，夜里四点起床，井柏然叫大家起床。\n\n花学高潮——房车事件\n\n在土耳其的第二站，花少团准备去自驾游，这也是整个节目的高潮。以往的综艺真人秀都是可控的，不会让其任意发展，但房车事件直接让节目失控。\n\n房车之旅开始前，井柏然抱怨：房车住不下七个人，需要一些帐篷。买帐篷也为后续埋下了伏笔。\n\n经过前面的一系列事件，花少7人团已经完全的分裂。郑爽、宁静和陈意涵抱团，许晴和毛阿敏抱团，杨洋和井柏然夹在五个女人中间，小心翼翼的维持她们的关系。\n\n毛阿敏、许晴、井柏然开一辆车。\n\n杨洋、郑爽、宁静和陈意涵开另一辆车。\n\n在土耳其的湖边，她们准备露营，房车大战悄然开始。\n\n八哥简单说一下背景，房车最多只能睡五个人，所以大家需要分配，有些人要在户外睡帐篷。大家都想睡帐篷，因为吃喝拉撒都在房车上，味道挺不好闻的。\n\n宁静看到帐篷后说：这里可以睡三个人。潜台词是，这个帐篷归我、郑爽和陈意涵睡了。不过井柏然没体会到宁静的潜台词意思。 [...] 我觉得许晴也是不想去的，但她在支持郑爽的工作。为什么这样说呢？我看过第一季，许晴有点“懒”，逛景点方面她并不积极。她是带着“都说我第一季不懂事，第二季那我就懂事给你看，我多会做和事佬啊，我多会调节气氛啊，苦就苦一点，我要扭转观众对我的看法”的想法来的，所以特别好说话，帮郑爽打圆场。\n\n毛阿敏很快再次倒戈，表示大家走吧，去玩伦敦桥。杨洋和陈意涵听长辈的意见，所以很快就变成宁静一个人不想去了。\n\n宁静彻底不高兴的甩脸色了，当着大家面说：明天早上谁也不要喊我，我起得来就起，起不来也别喊我。说完就往前走，也没等别人。\n\n许晴有点被吓到，于是做了个双手投降的工作。\n\n结果走到餐厅门外，宁静又开始摆脸色：我不玩，我也不参加了！\n\n郑爽有点不知好歹，硬往枪口上撞，对怒气冲冲的宁静说：我觉得最好什么活动大家都一起参加，这样比较好。\n\n郑爽还是太天真了，宁静这架势哪是你一句话就能说服的？宁静依然摆脸色不为所动，于是郑爽开始劝她：我不能让你带着不好的情绪开始旅行。\n\n郑爽话还没说完，宁静就开始怼她：不要！不要！不要（这样说）！什么叫我有这样的情绪，昨天你还在哭鼻子呢！ [...] 我们来看看毛阿敏的表演\n\n离开伦敦时，毛阿敏对着搬箱子的井柏然说：我不舍得你啊，你要是我儿子我就心疼死了，我不忍心啊。\n\n说完漂亮话以后，井柏然一个人把13个箱子从民宿搬到了火车站。\n\n没有一个人去帮忙，在阴冷的伦敦，井柏然热的一身汗\n\n从英国到了土耳其，到达酒店后，又需要搬行李上楼。而且有六层楼，没有电梯。\n\n这时候宁静幸灾乐祸的哈哈大笑，潜台词：“啊哦~ 你们男生又要搬箱子啦。”\n\n于是，杨洋和井柏然又默默的开始搬箱子。\n\n陈意涵也在帮忙搬箱子，其他女嘉宾都没有帮忙，只有郑爽抱了一包上来。\n\n再来看看花少的第一季，郑佩佩当时68岁，自己拧箱子。\n\n刘涛更是一个人，把所有人的箱子搬到楼下去了（当时其他人都在外面陪张翰租车）\n\n老大姐们不会心疼小年轻，这个团队真的没啥人情味。\n\n这天晚上，搬完行李箱后大家睡觉。结果第二天，杨洋和井柏然起床迟了。\n\n井柏然道歉，表示自己睡过头了。毛阿敏批评他们：我们也根本起不来，都是使劲硬着头皮起来的，要守时。",
+          "start": null,
+          "title": "回顾花儿与少年第二季，它是如何从温馨崩成噩梦的？_郑爽",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "5f37eba683393a9ad5f37c196f3920767e83ab4021ea99e77c8b515fa0dff530",
+          "content_kind": "snippet",
+          "original_url": "https://www.sohu.com/a/358826484_649958",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:15:31.940142Z",
+          "source_chars": 1391,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-24e719eddfc7a346a7bdc288e98be464",
+          "end": null,
+          "url": "https://www.dailymotion.com/user/divahittheroad",
+          "page": null,
+          "text": "Image 6 29:30\n\n《花少远行记》花儿与少年第二季独家纪录片 20150704期 - 【湖南卫视官方版1080p】\n\n11 years ago\n\nImage 7 28:21\n\n《花少远行记》花儿与少年第二季独家纪录片 20150620期 -【湖南卫视官方版1080p】\n\n11 years ago\n\nImage 8 26:16\n\n《花少远行记》花儿与少年第二季独家纪录片20150606期 Divas Hit The Road 2 Documentary EP7【湖南卫视官方版1080p】\n\n11 years ago\n\nImage 9 1:29:26\n\n《花儿与少年2》第5期20150523: 露营之夜花少团吓破胆 Divas Hit The Road 2 EP5: The Divas Team Was Exhausted【湖南卫视官方版1080p】\n\n11 years ago\n\n1:28:04\n\n《花儿与少年2》第2期20150502: Divas Hit The Road 2 EP2: New Journey With Jing Boran【湖南卫视官方版1080p】 [...] Image 14 30:28\n\n《花少远行记》花儿与少年第二季独家纪录片 20150627期 - 【湖南卫视官方版1080p】\n\n11 years ago\n\nImage 15 33:48\n\n《花少远行记》花儿与少年第二季独家纪录片20150613期 Divas Hit The Road 2 Documentary EP8【湖南卫视官方版1080p】\n\n11 years ago\n\nImage 16 29:34\n\n《花少远行记》花儿与少年第二季独家纪录片20150530期 Divas Hit The Road 2 Documentary EP6【湖南卫视官方版1080p】\n\n11 years ago\n\nImage 17 26:26\n\n《花少远行记》20150516期：花少“一姐”毛阿敏音乐人生大揭秘\n\n11 years ago [...] 11 years ago\n\nImage 3 1:30:38\n\n《花儿与少年》第二季 第9期 20150620 -【湖南卫视官方版1080p】\n\n11 years ago\n\nImage 4 1:30:11\n\n《花儿与少年2》第7期20150606: 花少团高空滑翔尖叫不断 Divas Hit the Road 2 EP7: Screaming Parasailing Time!【湖南卫视官方版1080p】\n\n11 years ago\n\nImage 5 30:37\n\n《花少远行记》花儿与少年第二季独家纪录片20150523期 Divas Hit The Road 2 Documentary EP5【湖南卫视官方版1080p】\n\n11 years ago\n\n29:22\n\n《花少远行记》第2期: 花儿与少年第二季独家纪录片 Divas Hit The Road 2 Documentary EP2 20150502【湖南卫视官方版1080p】\n\n11 years ago\n\nImage 6 29:30",
+          "start": null,
+          "title": "花儿与少年 videos - Dailymotion",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "97a2863e402d6d8b7a7e6a2c5534d45739aff833e60f4ddb787e7c628798d5fd",
+          "content_kind": "snippet",
+          "original_url": "https://www.dailymotion.com/user/divahittheroad",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:15:31.940142Z",
+          "source_chars": 1327,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-e063bd58b861080f7a343dc15fb154f9",
+          "end": null,
+          "url": "https://ent.sina.cn/2026-09-03/detail-iniqntuk7240844.d.html?oid=78win01%E3%80%9008.CYOU%E3%80%91.oaly&vt=4",
+          "page": null,
+          "text": "《花儿与少年2》堪称内娱综艺史上无法超越的“抓马巅峰”，被网友戏称为“第五大名著”，其衍生出的“花学”至今仍在开学季迎来新一轮的讨论热潮。 一、为什么《花少2》能",
+          "start": null,
+          "title": "还有哪些《花少2》名场面被网友玩梗？ - 娱乐- 手机新浪网",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "ba773cd8003df15a2d668686bafaa8901903f6b241bd9c69e045b3a25106b9d7",
+          "content_kind": "snippet",
+          "original_url": "https://ent.sina.cn/2026-09-03/detail-iniqntuk7240844.d.html?oid=78win01%E3%80%9008.CYOU%E3%80%91.oaly&vt=4",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:15:39.229992Z",
+          "source_chars": 81,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-17af4c856ed48ad2b64e25d8e4eb2b96",
+          "end": null,
+          "url": "https://weibo.com/2/detail/5336833489113437",
+          "page": null,
+          "text": "Aug 29, 2026 — 名场面封神:许晴“上一季的人都正常”、伦敦桥对峙、杨洋被落街头、房车分房罗生门......随便一个片段都是综艺史天花板· 衍生“花学”:网友逐帧拆解微表情、潜台",
+          "start": null,
+          "title": "花儿与少年第二季被称第五大名著花学考古翻红",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "c28bc998964b10f17489426fd195600fcff9d3ebe5c703e9625c2abc152b805b",
+          "content_kind": "snippet",
+          "original_url": "https://weibo.com/2/detail/5336833489113437",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:15:39.229992Z",
+          "source_chars": 95,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-2dda93093a04d8ba235aaf97701f1392",
+          "end": null,
+          "url": "https://weibo.com/2/detail/5336636848080623",
+          "page": null,
+          "text": "花少2被 》第二季因嘉宾在高压旅行中展露出教科书级别的人际冲突与微表情博弈,被网友戏称为继四大名著之后的“世界第五大名著”,这一梗近日随毛阿敏上歌手再度席卷社交平台。",
+          "start": null,
+          "title": "《花儿与少年第二季》被称第五大名著成人性社交经典真人秀",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "cb35d817dabdca30fa896b8496f403f2bc1904d1d3406858d529ff41684f1094",
+          "content_kind": "snippet",
+          "original_url": "https://weibo.com/2/detail/5336636848080623",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:15:39.229992Z",
+          "source_chars": 83,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-e32a0db84da6fae562aceea498150c01",
+          "end": null,
+          "url": "https://timeline.sohu.com/news/PSVwgFHtyH",
+          "page": null,
+          "text": "《花少2》也是这种制作逻辑的产物。与后来经费充足、行程轻松的旅行综艺不同，早期“花少”的特点是“特种兵式穷游”。\n\n最明显的，住宿条件完全比不上现在的旅行节目。《花少2》中，前期有人需要睡沙发；露营时帐篷不够；登山前，所有嘉宾住在空间狭窄的上下铺，不少人起床时都撞到了头。\n\n在两天的登山露营行程中，嘉宾们买装备的预算不多，要么买二手，要么舍弃部分装备；到达露营地，就用了几乎一整天的时间；由于装备较多，嘉宾们还得负重前行，重量在5到11公斤不等。\n\n前一天负重徒步，晚上住帐篷，外面刮风下雨，第二天还得早起去登山。《花少2》播出的2015年，年纪最大的毛阿敏已经52岁，还有腰伤。\n\n节目组也没有给够通讯工具，全程没收手机，只有两台设备，进一步导致嘉宾之间的沟通不及时、不到位。\n\n这种被节目组严格限制的物质条件，直接引发了很多名垂内娱综艺史的名场面。\n\n比如只有两台设备的限制，阻断了成员间最基本的即时通讯，直接导致“杨洋被落下事件”的连环失控；有限的帐篷数量，则演变为经典的“房车大战”。\n\n甚至在旅程最开始，民宿没有暖气，宁静一度怀疑是节目组“搞的”。\n\n在体力透支与精神持续高压的环境中，即便是受过训练的明星，也很难维持完美人设。在24小时的镜头记录下，本能的情绪、真实的心态、性格的短板都会在某些时刻暴露。\n\n最初的“伦敦桥”事变中，宁静情绪失控的根本原因就是疲惫。据节目信息，当天她只睡了4小时，暴走了5小时，而第二天又要面对同样紧张的游客行程。\n\n在后来的另一档节目中，宁静称自己是“累急眼了”。\n\n“累”是一回事，更重要的是“谁在累”。《花少2》找到了一群性格完全错位的嘉宾，年龄跨度大、成长环境迥异，性格、处事逻辑、社交理念又完全不同。\n\n如果说环境是催生矛盾的直接原因，那差异化极强的嘉宾阵容，就是让矛盾持续发酵、无法调和的关键。 [...] 如果说环境是催生矛盾的直接原因，那差异化极强的嘉宾阵容，就是让矛盾持续发酵、无法调和的关键。\n\n或许正是这种高强度旅程与不同性格的碰撞，赋予了《花少2》一种后无来者的失控感。\n\n抓马综艺不是没有，但大多数的真人秀冲突要么是精心设计与剪辑塑造后的结果，要么由个别争议嘉宾承担了大部分“火力”。\n\n但《花少2》呈现了某种真正的、群体性的失控——一群性格迥异、互不让步的独立个体，被放入有限生存环境后，所引发的一系列难以预料、干预的化学反应。\n\n这种程度的真实、复杂与戏剧性，很难再靠人为策划。这或许就是《花少2》在11年后，仍被反复观看的原因。\n\n02 “花学”升级背后\n\n有趣的是，在新一轮翻红中，分析、探讨、解读的重点变了。\n\n在很长一段时间里，观众研究“花学”时，关心的是对错、好坏。最早被推上风口浪尖的，往往是那些情绪流露最为直接的嘉宾——初任导游、宁静、定语大王，都曾遭遇不同程度的“审判”。\n\n即便是一开始风评较好的嘉宾，舆论也经历过反转。比如在房车母带流出后，陈意涵一度被部分网友指责“看似治愈实则精明”。\n\n再后来，曾被称赞“成熟体面”的毛阿敏，成了“花学”新教材的核心人物。\n\n课件重点变成了那些曾经不太被关注的发言——“我是大姐”、“你要是我儿子我心疼死了”。她的“花少形象”被重新定义为“腹黑”，在网友制作的“心眼子排行榜”上，名列前茅。\n\n而在这次翻红中，单纯针对某一位嘉宾的争议变少了，更常见的观点是“没有单纯的好人和坏人”。\n\n观众似乎到了“双方都能理解的年纪”，不再纠结谁对谁错、谁好谁坏。“花学”从某种综艺抓马代名词，升级为一场关乎职场、性格、原生家庭，涉及心理学、社会学、博弈论的综合分析样本。 [...] # 《花儿与少年2》再次翻红，这档综艺为何无法被复制？\n\n搜狐娱乐\n\n搜狐娱乐专稿（李小狼/文）《花儿与少年2》又翻红了。\n\n这档11年前的旅游综艺，如今已成为“内娱第五名著”。观众像看《红楼梦》《甄嬛传》一样，对《花少2》的每帧画面做出文本精读。\n\n一档曾被评价“抓马”的旅行综艺，最终演变为一场关于性格、职场与社交的持久讨论，这或许是任何剧本都写不出来的结局。\n\n01 失控\n\n凌晨的B站，数千名观众在观看一则《花儿与少年2》的解说视频。高峰时间，同时在线观看人数超过3万人。\n\n这则长达8小时的综艺解说视频，已经有417万播放量。另一则3小时的解说视频，也积累了300万+播放量，高峰期观看人数同样上万。\n\n观众对这档11年前的综艺节目，展现了长久的、超乎寻常的热情。\n\n抓马综艺常有，但为什么只有《花少2》能一次次翻红，让一代代网友反复考古、逐帧研究？\n\n这轮翻红的直接原因有不少。\n\n比如某平台上出现了真假未证的新爆料，为经典事件“杨洋被落下”增加了新的解读角度；“花学”新课件核心人物毛阿敏再次出现在公众视野，在《歌手2026》决赛演唱了经典曲目《相思》——这首歌已经成为《花少2》民间认证主题曲。\n\n但更本质、重要的原因，在于这档节目本身不可复制的特殊性。\n\n《花少2》播出于2015年。与现在的明星聊天、旅游、做游戏不同，那个时期的内娱真人秀，流行的制作逻辑是把明星置于某种极端环境之中。\n\n《真正男子汉》让明星们去军训。女明星被要求三分钟内在镜头前卸妆，嘉宾们需要参加“猎人集训”，训练内容包括在泥地中匍匐前进、扛圆木等等。\n\n《咱们穿越吧》让明星“穿越”到不同时代，一群人穿草鞋爬山、黄小蕾吃野生虫子、沈腾毫无保护地被吊起来；《跟着贝尔去冒险》中，明星们需要横穿瀑布峡谷，工具是一根绳子。",
+          "start": null,
+          "title": "《花儿与少年2》再次翻红，这档综艺为何无法被复制？ - 搜狐时间线",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "4eb0a199b44baf02f61497c414a3d67cc2370043826c2693b120bfac806b5e8a",
+          "content_kind": "snippet",
+          "original_url": "https://timeline.sohu.com/news/PSVwgFHtyH",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:15:39.229992Z",
+          "source_chars": 2256,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-6187428a1e8ba21e53a714a77b0a52d0",
+          "end": null,
+          "url": "https://weibo.com/2/detail/5340104090715781",
+          "page": null,
+          "text": "你们俩死哪去了”出自《花儿与少年第二季》迪拜站录制结束时对经纪人的崩溃质问，作为经典综艺名场面，近期因被考古再度全网刷屏。",
+          "start": null,
+          "title": "“你们俩死哪去了” 花儿与少年第二季名场面考古热议",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "9241b58b689866b472a04014ed4b07ebc569a5e47063061e87bc2aaac1e945b5",
+          "content_kind": "snippet",
+          "original_url": "https://weibo.com/2/detail/5340104090715781",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:15:39.229992Z",
+          "source_chars": 61,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-a2dfd70c4b12a624c476f4744336f9c1",
+          "end": null,
+          "url": "https://www.douban.com/group/topic/499818290?_spm_id=MjIzODk2NDgz",
+          "page": null,
+          "text": "杨洋走丢的前因：宁静和许晴因为划船效果不好，被留下来加练，杨洋因为 ... 转折点：宁静先上车了，她知道许晴还没走，但是还是问了司机能不能走",
+          "start": null,
+          "title": "重温了一下花少二，二更杨洋事件",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "ae92c863914d39c73766af0710de95943151593c4439af0909c4822be3e5924d",
+          "content_kind": "snippet",
+          "original_url": "https://www.douban.com/group/topic/499818290?_spm_id=MjIzODk2NDgz",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:15:44.767687Z",
+          "source_chars": 70,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-e58bb247cd757bc894b9c5118c578b3a",
+          "end": null,
+          "url": "https://m.s.weibo.com/applink/go2?noclose=1&url=sinaweibo%3A%2F%2Fsearchall%3Fcontainerid%3D230958%26type%3D200%26q%3D%2523%25E8%258A%25B1%25E5%25B0%25912%25E7%2588%2586%25E6%2596%2599%25E6%2596%2587%2523%26t%3D761%26extparam%3Ddfp%253D200%2526share_page_id%253D232964d9e45ce93ca79d6116765c486556e50f%2526cot%253D2",
+          "page": null,
+          "text": "后续流出的事件还原视频则显示，杨洋走失更像一场多方沟通错位的连锁乌龙：宁静提前被司机送回、许晴误以为杨洋已随宁静回去、郑爽给每人誊抄了地址但杨洋",
+          "start": null,
+          "title": "花少2爆料文",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "60b6ea730b1b8d089c13912b10554e9261743916bf9598d0e96dac16a20ecf57",
+          "content_kind": "snippet",
+          "original_url": "https://m.s.weibo.com/applink/go2?noclose=1&url=sinaweibo%3A%2F%2Fsearchall%3Fcontainerid%3D230958%26type%3D200%26q%3D%2523%25E8%258A%25B1%25E5%25B0%25912%25E7%2588%2586%25E6%2596%2599%25E6%2596%2587%2523%26t%3D761%26extparam%3Ddfp%253D200%2526share_page_id%253D232964d9e45ce93ca79d6116765c486556e50f%2526cot%253D2",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:15:44.767687Z",
+          "source_chars": 72,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-ddcb60d161f9f16b93cec2472b988af8",
+          "end": null,
+          "url": "https://www.chinanews.com.cn/m/yl/2015/06-10/7335375.shtml",
+          "page": null,
+          "text": "贵圈太乱。明明之前，说跟郑爽很多话聊的，也是许晴自己：“郑爽是个特别可爱的90后妹子，和她蛮有缘分，有很多私房话要聊。旅行中从郑爽身上可以看见当年的自己。”啪啪啪，前方谁在打脸，好大声。\n\n　　如果对象是男人 不会轻易撕脸？ 也有网友扒出疑似许晴跟郑爽撕逼的真正原因，说的是开车的路上，本来陈意涵郑爽宁静杨洋一个房车，毛毛姐许晴井宝一个车，开始三个人还有说有笑，中途在休息站停了下，后来井柏然就上了郑爽杨洋的车，开始讨论行程。那么房车上就是郑爽井宝陈意涵杨洋宁静，理所当然，另外一辆车就剩下许晴跟毛阿敏姐了。万能的网友表示许晴很不爽：“看过直播的表示，许晴一直把井宝当成私人物品，嫉妒井宝去了杨洋那辆车不回来了，然后找茬大爆发。对男生、对女生态度千差万别，对三个女生好凶！”“许晴一直贴着毛阿敏，因为毛阿敏宠她，不管真假，起码给她个面子。就像上季凯丽一样，虽然晕乎乎没什么能力，但是她宠许晴，所以许晴一直贴着她。井柏然是很会调节气氛的一个人，他本能地也想照顾每个人的情绪，这是他的一种习惯。他如果再往郑爽宁静陈意涵那边，就太冷落许晴和毛阿敏了，所以他一直在两个团体里游走。”\n\n　　网友也是很有道理的。在一期《快乐大本营》中，许晴对张翰的眼神，爱意满溢，她的眼里只有他，还说“只有翰从始至终选了她”，一口一个翰可亲密了。\n\n　　细看她的微博，这一季的嘉宾中只关注了两个男孩，在节目中也是猛夸两个男孩。许晴接受采访时候曾说过：“我一直特别霸道地说，喜欢我的人一定都是善良健康的，不喜欢的一定不健康，一定不善良。”45岁的许晴依然有着18岁以下的少女心和公主病，全世界都要围着她转的自我。\n\n　　对比上一季和这一季，嘉宾名单都有许晴，还都有许晴大哭的场面。碰到挫折后许晴在镜头前失控大哭：“我真的真的想回家。”原来长得美，是真可以任性的。这不是公主病的话，什么才是？ [...] 也许是想缓和气氛(效果真没有)，井柏然补充问一句，为什么是上一季？完全不谙世事的少女许晴开始开外挂：“因为上一季的人都正常。”人畜无害的陈意涵开始傻笑(此处省略一串哈哈哈哈哈哈)，郑爽的表情则是嘴角下弯的尴尬。陈意涵接着问，那什么原因让你愿意来两次。许大姐说：“因为剧组让我来。”一天之内许晴微博10万条评论，除了脑残粉之外全是骂她的。\n\n　　上一季，她和刘涛不和的消息就没停止过，微博上也取消关注了从中说和的郑佩佩。现在又说第一季的人正常，也不知道到底谁不正常。\n\n　　其实早在第一季，许晴因为档期原因，提早退出了花少团，还与大家依依惜别说：“如果有第二季，愿意再度出行，且零片酬加盟。”提到第三季，她似乎还是激情满满：“大家看第二季谁要是留级了，就是因为表现不及格。如果我还没有及格，我还会来第三季的。”\n\n　　果然，看来是及格不了了。网上几乎一边倒的态势在骂许晴：“花儿与少年，其实郑爽的问题没有错，许晴没给小辈起码的尊重，错之一；许晴说，至少上一季的人都正常，情商出演负值，错之二；没有团队精神，没有大局意识，不能包容忍耐，不会换位思考，错之三。现在，许晴黑历史，郑爽退出花少，许晴骂郑爽……纷纷上热搜，许晴将郑爽拉下水遭受质疑，许晴你真的炸了。”\n\n　　冰冻三尺非一日之寒。郑爽自己也说过：“我跟晴姐之间，一直有一些误会，我是觉得自己一直没有去沟通得很好。”其中一个心结，大概是杨洋走丢之后，许晴说要去找杨洋，郑爽以为杨洋有地址不会丢就说不用去。之后郑爽下楼拿外卖，许晴就以为郑爽是去接杨洋给自己加戏，开始不爽郑爽，什么解释也听不进去。许晴直接坦白地说：“她说的话我听不懂，费那个心思再去聊天。” [...] 中新网 • 文娱 • 正文\n\n\n\n 首页\n 新闻\n 国际\n 图片\n 文娱\n 财经\n 军事\n 港澳台\n 产经\n 视频\n 体育\n 地方\n 华人\n 最新\n 生活经\n\n# 许晴《花少2》中表现遭批 被质疑有“公主病”\n\n纽约时间6月7日，许晴身穿淡蓝色纱裙亮相2015托尼奖颁奖礼红毯，成为首位踏上托尼奖红毯的中国女星。\n\n　　她在微博晒出美照并附言：“不因现实的乌云，而背离戏剧的光彩；不以世界的复杂，而背叛内心的纯粹。”疑似对负面新闻作出回应。\n\n　　画风变得实在太快。参加第二季《花儿与少年》的初始，许晴还在美滋滋地说着爱情的话题，“她笑称参加完第二季之后，目前正在从女生向‘柔软的美男子’进化，更重要的是这次疯狂的旅行也让她深深地爱上了一起搭错地铁、一起深夜迷路的小伙伴们，她正陷入一场和每个人的热恋。”“对两次旅行的导游，许晴形容郑爽像小妈妈，而张翰更像哥哥：郑爽会细心地帮她把地铁卡收到小包里，而面对做事比较霸气的哥哥，有小意外可以顶撞他。”一副和美的景象不忍破坏。\n\n　　前后不到一个月，关于许晴的黑话题又上了话题榜。负面来得太快就像龙卷风。\n\n上一季矫揉这一季自我\n\n撒娇女人未必最好命\n\n　　在最新播出的《花儿与少年》中，播了一段大家伙玩真心话的片段，郑爽开始问许晴，到底是这一季开心还是上一季开心啊？这么正常的套近乎，却惹来许晴不正常的回答：“上一季。”没有一点点防备，也没有一丝顾虑，她就这样回答，斩钉截铁。当时人家就震惊了，也惹恼了紧追剧情的观众，许晴微博下面的评论一片叫骂，“做作”“负能量”的字眼满屏皆是。本来还黏在许晴身上的井柏然当时一下子就起来了，神情尴尬。许晴还咬了下嘴唇，场面一度僵持，感觉许晴内心一定是：说了就说了你们怎么着吧。",
+          "start": null,
+          "title": "许晴《花少2》中表现遭批 被质疑有“公主病”-中国新闻网",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "b4868d3ddf1dd3b5f98f02b415c7243fdf6e49eb908b411073b96d00615b061b",
+          "content_kind": "snippet",
+          "original_url": "https://www.chinanews.com.cn/m/yl/2015/06-10/7335375.shtml",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:15:44.767687Z",
+          "source_chars": 2227,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-c63a817af5f43c8fab4fc41220cf165d",
+          "end": null,
+          "url": "https://www.163.com/dy/article/L74HLFJO0556KC10.html",
+          "page": null,
+          "text": "不知道她具体经历了什么，但她的父母给到的一定是有条件的爱，达到与没达到条件，待遇千差万别。她被允许的试错空间一定是很小的，更常出现的是“错过了这次机会就如何”“完不成这次机会就如何”的恐吓。\n\n一个被吓大的小孩，只能随时准备使出十二分的力让自己看上去完美无缺、事事周到，而避免陷入那个可怕的“万丈深渊”里。\n\n一旦所谓万丈深渊真的到来，她就乱了、没办法了。切到我们开头说的破罐破摔状态，或者如杨洋走丢事件中那样单方面认定杨洋能自己回来的掩耳盗铃里，假装自己没有做错任何，事态会自动平息。\n\n结 语\n\n其实今天这篇文章的三个部分，应该倒着看：带着任务预防崩塌——发现苗头诱发崩塌——任崩塌后的碎片在眼前横飞。\n\n爽的颅内剧情有自己的一套完整闭环儿，常年在各种小事上自动化运作，自动到完全可以不把所谓外部事实纳入轨道。\n\n所以大家都说她脑回路清奇，常常已读乱回，常常疯言疯语。\n\n可是细想，常年在这么大的情绪张力下生活的人应该很辛苦吧？\n\n几年前的塌房退圈是旧剧情持续运行的最终结果，但好在没要了命、人也没进去，这又何尝不是一次人生转变的绝佳契机？\n\n听说现在的素人爽胖了，挺好，不知她看到如今沸沸扬扬的讨论和当年的《花少》片段，会作何感想？会不会边看边对当年的自己说——“傻姑娘，你明明可以不那么做呀”？\n\n《花少2》纪传体解析篇就此完结，\n\n撒花！再会！\n\nMISS BAO\n\n不可能永远年轻\n\n但永远相信：\n\n万物可爱，人间值得\n\n其实，总有办法的~\n\n特别声明：以上内容(如有图片或视频亦包括在内)为自媒体平台“网易号”用户上传并发布，本平台仅提供信息存储服务。 [...] 这句雷人之语背后藏着的，更多是对于现状和冲突束手无策的破罐儿破摔。\n\n再听一句。\n\n开头暖气事件里，她提前订好了房子，但是暖气出了问题，导致大家舟车劳顿抵达住所之后怨声四起。她当即开启雷霆发言：我不要住了，我要回家了，我们走吧，随便找个暖和的地方，找个什么快捷酒店，一人一间房吧。\n\n要知道，当时已经半夜十二点了。\n\n听起来好像也是个方案，但实则是一种不知所措的摆烂。仿佛邪恶外星人即将占领地球，如临大敌，打也打不过，逃也逃不掉，干脆两手一摊坐地上等死，或者能舒服一下是一下吧。\n\n她的这种一贯态度适配的场景是生死存亡之际的无计可施。\n\n哪怕现实里需要面对的是很小的问题——暖气坏了自己找开关或联系房东，觉得住房车会死人那就尽量手动关掉可能致命的因素。可对于她来说，情况就是严峻到“吓都吓死了，动弹不了一点儿”的程度。\n\n至少从《花少2》来看，她很难像正常的大人一样冷静下来，分析局势，做出行动。而总是像一个被吓坏的小孩，被“我要被针对了”“我要被惩罚了”“我要被挑剔了”“我要被欺负了”的恐惧摁在原地，什么建设性的行动都做不出来。\n\n谈判是谈不了的，因为她把冲突另一方定义为了一个极其凶神恶煞的角色，她根本没那个胆去正面对垒；\n\n解决问题是解决不了的，因为在当下想象里，她是个弱小无助的可怜小孩，除了等救世主来临，只能祈求史诗级大灾难自行结束。\n\n曾经的伤口没有愈合，那人就会被反复拉回那个阴雨森森的至暗时刻，一次次无力地战斗，一次次绝望地撂挑子、一次次发着抖蜷缩。\n\n房车大战的时候，在结果落地前，她说：“反正给我个位儿就行，我在剧组垫个塑料袋都能睡。”开头暖气事件里，她为没把大家照顾好而内疚，主动提出自己睡客厅沙发就行。\n\n她总是这样，把自己放到苦哈哈的境遇上面，像是一种认命——可能我就只配这样吧，又像是一种避免灾难持续恶化的自我保护——我都这么惩罚自己了，还能有更糟的吗？ [...] 脑袋里的那团情绪密密麻麻、嗡嗡作响，完全腾不出一丝理性思考的空间。其实爽子，你是个大人了，你完全可以给自己争取到更舒服的待遇。\n\n二、又菜又爱树敌\n\n由上可知，爽的灾难化思维很重，一点小事儿就会被上升到生死存亡的程度。所以在她的剧本里，总有人是加害者，是那个有意置她于死地的人。\n\n房车大战里，可怕的敌人是许晴，当许晴还没提及核心问题的时候，她就已经架起戒备模式了。\n\n晴：把行李箱放地上吧。\n\n爽：好脏啊这地方。\n\n晴：她们去逛是吧。\n\n爽：所有人都可以去逛，你也可以去逛，现在是自由时间。\n\n你说她菜吧，在宁静和陈意涵以逛逛之名主动退出“战场”时，人家愣是没走；你说她厉害吧，除了阴阳怪气夹枪带棒刺挠对方几下，根本没办法铿锵有力、有理有据地当面对质。\n\n塔桥那里也是一样，宁静说这个餐食不好吃，爽当即反驳——“已经很好了，很好吃的。”宁静确认了一下去塔桥的价格，她半开玩笑说——“怎么，你要花9磅打车回去吗？”宁静看她一眼，她说人家——“哇，你好凶啊，好吓人。”\n\n谁说宁静暴脾气的，这情况能连忍三轮，已经够可以了。\n\n不安全感重的人会预定冲突、放大冲突，用“隐形攻击”来“勾引”别人将小小的分歧和不对付扩展为最终落地的大战争。\n\n成熟的做法是大事化小、小事化了；咱们爽是，小事化大，大事化为大爆炸。\n\n因为冲突、被针对、被挑剔、不安全是她熟悉的，熟悉的剧情不会发生，她反而会觉得其中有诈。所以她总会在预判冲突与危险的前提下，主动将冷箭放给敌方，好让剧情按照自己熟悉的路径上演。\n\n有意思吧，最战战兢兢的那个人，反而是最容易在不知不觉中点燃炮火的冲突发起者。\n\n为啥通常是冷箭？\n\n她的攻击性是内收的、压抑的，相对于对外表达，她更习惯向内攻击。一方面，关于不情绪化地表达情绪这件事，她没有充足的体验和练习；另一方面，负面情绪压久了，等于在心里囤了一头不可控的野兽。",
+          "start": null,
+          "title": "《花少2》之精读【爽言爽语】篇：她只是一个被吓坏的小孩|许晴|杨洋|陈意涵|毛阿敏_网易订阅",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "9b332e0e48e46c002e229900c318b116d75ec119088d5ab59af07cb69846e8f6",
+          "content_kind": "snippet",
+          "original_url": "https://www.163.com/dy/article/L74HLFJO0556KC10.html",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:15:44.767687Z",
+          "source_chars": 2273,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-037ff847434a3d0e7deea8ca51e3445c",
+          "end": null,
+          "url": "https://www.bilibili.com/video/BV1fYtJ6bEyM",
+          "page": null,
+          "text": "宁静爆料，杨洋走丢风波11年后再反转，原来许晴真的没说谎. 花少2房车名场面分析！真性情格格不入，装友谊其乐融融？",
+          "start": null,
+          "title": "【补档】花少2杨洋被落下：时隔11 年舆论大反转！少年的信任碎在 ...",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "4614a9e76939e4eae477f466c94aacbd55ebe638d3349712a0391232cc06b4d2",
+          "content_kind": "snippet",
+          "original_url": "https://www.bilibili.com/video/BV1fYtJ6bEyM",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:15:44.767687Z",
+          "source_chars": 57,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        }
+      ],
+      "grounding": {
+        "status": "source_backed",
+        "provider": "tavily",
+        "reason_code": null,
+        "retrieved_at": "2026-10-14T12:15:44.767687Z",
+        "check_version": "evidence-review-v1"
+      },
+      "scope_prompt_version": "scope-v1"
+    }
+  ],
+  "confirmed_selection": {
+    "preparation_id": "e54cd784-3abd-4b72-a3fd-d17cfd778ea4",
+    "scope_version": 1,
+    "candidate_id": "scope-hs2-v1-huaxue",
+    "focus_id": "focus-hs2-v1-quotes",
+    "scope_point_ids": [
+      "point-hs2-v1-quotes-1",
+      "point-hs2-v1-quotes-2",
+      "point-hs2-v1-quotes-3"
+    ],
+    "question_count": 3,
+    "difficulty": "easy"
+  },
+  "operation": {
+    "status": "succeeded",
+    "result": {
+      "id": "2c0c8fa8-6233-4217-aa4e-95c8616d54e9",
+      "quiz": {
+        "id": "eba490c9-4224-4e73-bcc7-4b0e086e300d",
+        "title": "花少2名场面金句小测",
+        "reward": {
+          "xp": 10,
+          "coins": 2
+        },
+        "source": {
+          "type": "topic",
+          "title": "花少2",
+          "segments": []
+        },
+        "summary": "围绕《花儿与少年》第二季“花学”名场面与金句，考查许晴“上一季的人都正常”等知识点的识记与理解，共3题。",
+        "grounding": {
+          "status": "source_backed",
+          "provider": "tavily",
+          "reason_code": null,
+          "retrieved_at": "2026-10-14T12:15:44.767687Z",
+          "check_version": "evidence-review-v1"
+        },
+        "questions": [
+          {
+            "id": "hs2-quotes-single-1",
+            "stem": "在《花儿与少年》第二季中，许晴在真心话环节被问到哪一季更开心时，说出了哪句引发巨大争议的话？",
+            "type": "single",
+            "origin": null,
+            "answers": [],
+            "options": [
+              {
+                "id": "A",
+                "text": "“这一季的人都正常。”"
+              },
+              {
+                "id": "B",
+                "text": "“上一季的人都正常。”"
+              },
+              {
+                "id": "C",
+                "text": "“我谁都不想理。”"
+              },
+              {
+                "id": "D",
+                "text": "“我真的真的想回家。”"
+              }
+            ],
+            "grounding": {
+              "status": "source_backed"
+            },
+            "source_ids": [],
+            "explanation": "",
+            "knowledge_point": "许晴“上一季的人都正常”"
+          },
+          {
+            "id": "hs2-quotes-multi-1",
+            "stem": "根据资料，《花儿与少年》第二季被网友称为“花学”素材的名场面包括下列哪些？",
+            "type": "multi",
+            "origin": null,
+            "answers": [],
+            "options": [
+              {
+                "id": "A",
+                "text": "许晴“上一季的人都正常”"
+              },
+              {
+                "id": "B",
+                "text": "伦敦桥对峙"
+              },
+              {
+                "id": "C",
+                "text": "杨洋被落街头"
+              },
+              {
+                "id": "D",
+                "text": "房车分房罗生门"
+              }
+            ],
+            "grounding": {
+              "status": "source_backed"
+            },
+            "source_ids": [],
+            "explanation": "",
+            "knowledge_point": "花少2名场面与“花学”"
+          },
+          {
+            "id": "hs2-quotes-judge-1",
+            "stem": "判断：资料显示，许晴在《花儿与少年》第二季中说出“上一季的人都正常”后，其微博一天之内涌入约10万条评论，其中除粉丝外多为批评声音。",
+            "type": "judge",
+            "origin": null,
+            "answers": [],
+            "options": [
+              {
+                "id": "A",
+                "text": "正确"
+              },
+              {
+                "id": "B",
+                "text": "错误"
+              }
+            ],
+            "grounding": {
+              "status": "source_backed"
+            },
+            "source_ids": [],
+            "explanation": "",
+            "knowledge_point": "许晴“上一季的人都正常”引发的舆论反应"
+          }
+        ],
+        "created_at": "2026-10-14T12:24:37.816935+00:00",
+        "difficulty": "easy",
+        "source_text": "花少2",
+        "learning_scope": {
+          "focus": "名场面金句",
+          "topic": "花少2",
+          "domain": "花学与网络文化梗",
+          "points": [
+            "许晴“上一季的人都正常”",
+            "伦敦桥对峙",
+            "杨洋被落街头"
+          ],
+          "focus_id": "focus-hs2-v1-quotes",
+          "input_text": "花少2",
+          "candidate_id": "scope-hs2-v1-huaxue",
+          "scope_version": 1,
+          "preparation_id": "e54cd784-3abd-4b72-a3fd-d17cfd778ea4",
+          "scope_point_ids": [
+            "point-hs2-v1-quotes-1",
+            "point-hs2-v1-quotes-2",
+            "point-hs2-v1-quotes-3"
+          ]
+        }
+      },
+      "mode": "new",
+      "answers": [],
+      "cursor": 0,
+      "pending_ms": 0,
+      "started_at": "2026-10-14T12:24:38+00:00",
+      "completed_at": null,
+      "report": null,
+      "review_keys": []
+    },
+    "error_code": null,
+    "stage": "succeeded",
+    "retry_after_seconds": 0,
+    "deadline": "2026-10-14T12:29:31+00:00"
+  },
+  "quiz": {
+    "id": "eba490c9-4224-4e73-bcc7-4b0e086e300d",
+    "title": "花少2名场面金句小测",
+    "reward": {
+      "xp": 10,
+      "coins": 2
+    },
+    "source": {
+      "type": "topic",
+      "title": "花少2",
+      "segments": [
+        {
+          "id": "web-17af4c856ed48ad2b64e25d8e4eb2b96",
+          "end": null,
+          "url": "https://weibo.com/2/detail/5336833489113437",
+          "page": null,
+          "text": "Aug 29, 2026 — 名场面封神:许晴“上一季的人都正常”、伦敦桥对峙、杨洋被落街头、房车分房罗生门......随便一个片段都是综艺史天花板· 衍生“花学”:网友逐帧拆解微表情、潜台",
+          "start": null,
+          "title": "花儿与少年第二季被称第五大名著花学考古翻红",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "c28bc998964b10f17489426fd195600fcff9d3ebe5c703e9625c2abc152b805b",
+          "content_kind": "snippet",
+          "original_url": "https://weibo.com/2/detail/5336833489113437",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:15:39.229992Z",
+          "source_chars": 95,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "web-ddcb60d161f9f16b93cec2472b988af8",
+          "end": null,
+          "url": "https://www.chinanews.com.cn/m/yl/2015/06-10/7335375.shtml",
+          "page": null,
+          "text": "贵圈太乱。明明之前，说跟郑爽很多话聊的，也是许晴自己：“郑爽是个特别可爱的90后妹子，和她蛮有缘分，有很多私房话要聊。旅行中从郑爽身上可以看见当年的自己。”啪啪啪，前方谁在打脸，好大声。\n\n　　如果对象是男人 不会轻易撕脸？ 也有网友扒出疑似许晴跟郑爽撕逼的真正原因，说的是开车的路上，本来陈意涵郑爽宁静杨洋一个房车，毛毛姐许晴井宝一个车，开始三个人还有说有笑，中途在休息站停了下，后来井柏然就上了郑爽杨洋的车，开始讨论行程。那么房车上就是郑爽井宝陈意涵杨洋宁静，理所当然，另外一辆车就剩下许晴跟毛阿敏姐了。万能的网友表示许晴很不爽：“看过直播的表示，许晴一直把井宝当成私人物品，嫉妒井宝去了杨洋那辆车不回来了，然后找茬大爆发。对男生、对女生态度千差万别，对三个女生好凶！”“许晴一直贴着毛阿敏，因为毛阿敏宠她，不管真假，起码给她个面子。就像上季凯丽一样，虽然晕乎乎没什么能力，但是她宠许晴，所以许晴一直贴着她。井柏然是很会调节气氛的一个人，他本能地也想照顾每个人的情绪，这是他的一种习惯。他如果再往郑爽宁静陈意涵那边，就太冷落许晴和毛阿敏了，所以他一直在两个团体里游走。”\n\n　　网友也是很有道理的。在一期《快乐大本营》中，许晴对张翰的眼神，爱意满溢，她的眼里只有他，还说“只有翰从始至终选了她”，一口一个翰可亲密了。\n\n　　细看她的微博，这一季的嘉宾中只关注了两个男孩，在节目中也是猛夸两个男孩。许晴接受采访时候曾说过：“我一直特别霸道地说，喜欢我的人一定都是善良健康的，不喜欢的一定不健康，一定不善良。”45岁的许晴依然有着18岁以下的少女心和公主病，全世界都要围着她转的自我。\n\n　　对比上一季和这一季，嘉宾名单都有许晴，还都有许晴大哭的场面。碰到挫折后许晴在镜头前失控大哭：“我真的真的想回家。”原来长得美，是真可以任性的。这不是公主病的话，什么才是？ [...] 也许是想缓和气氛(效果真没有)，井柏然补充问一句，为什么是上一季？完全不谙世事的少女许晴开始开外挂：“因为上一季的人都正常。”人畜无害的陈意涵开始傻笑(此处省略一串哈哈哈哈哈哈)，郑爽的表情则是嘴角下弯的尴尬。陈意涵接着问，那什么原因让你愿意来两次。许大姐说：“因为剧组让我来。”一天之内许晴微博10万条评论，除了脑残粉之外全是骂她的。\n\n　　上一季，她和刘涛不和的消息就没停止过，微博上也取消关注了从中说和的郑佩佩。现在又说第一季的人正常，也不知道到底谁不正常。\n\n　　其实早在第一季，许晴因为档期原因，提早退出了花少团，还与大家依依惜别说：“如果有第二季，愿意再度出行，且零片酬加盟。”提到第三季，她似乎还是激情满满：“大家看第二季谁要是留级了，就是因为表现不及格。如果我还没有及格，我还会来第三季的。”\n\n　　果然，看来是及格不了了。网上几乎一边倒的态势在骂许晴：“花儿与少年，其实郑爽的问题没有错，许晴没给小辈起码的尊重，错之一；许晴说，至少上一季的人都正常，情商出演负值，错之二；没有团队精神，没有大局意识，不能包容忍耐，不会换位思考，错之三。现在，许晴黑历史，郑爽退出花少，许晴骂郑爽……纷纷上热搜，许晴将郑爽拉下水遭受质疑，许晴你真的炸了。”\n\n　　冰冻三尺非一日之寒。郑爽自己也说过：“我跟晴姐之间，一直有一些误会，我是觉得自己一直没有去沟通得很好。”其中一个心结，大概是杨洋走丢之后，许晴说要去找杨洋，郑爽以为杨洋有地址不会丢就说不用去。之后郑爽下楼拿外卖，许晴就以为郑爽是去接杨洋给自己加戏，开始不爽郑爽，什么解释也听不进去。许晴直接坦白地说：“她说的话我听不懂，费那个心思再去聊天。” [...] 中新网 • 文娱 • 正文\n\n\n\n 首页\n 新闻\n 国际\n 图片\n 文娱\n 财经\n 军事\n 港澳台\n 产经\n 视频\n 体育\n 地方\n 华人\n 最新\n 生活经\n\n# 许晴《花少2》中表现遭批 被质疑有“公主病”\n\n纽约时间6月7日，许晴身穿淡蓝色纱裙亮相2015托尼奖颁奖礼红毯，成为首位踏上托尼奖红毯的中国女星。\n\n　　她在微博晒出美照并附言：“不因现实的乌云，而背离戏剧的光彩；不以世界的复杂，而背叛内心的纯粹。”疑似对负面新闻作出回应。\n\n　　画风变得实在太快。参加第二季《花儿与少年》的初始，许晴还在美滋滋地说着爱情的话题，“她笑称参加完第二季之后，目前正在从女生向‘柔软的美男子’进化，更重要的是这次疯狂的旅行也让她深深地爱上了一起搭错地铁、一起深夜迷路的小伙伴们，她正陷入一场和每个人的热恋。”“对两次旅行的导游，许晴形容郑爽像小妈妈，而张翰更像哥哥：郑爽会细心地帮她把地铁卡收到小包里，而面对做事比较霸气的哥哥，有小意外可以顶撞他。”一副和美的景象不忍破坏。\n\n　　前后不到一个月，关于许晴的黑话题又上了话题榜。负面来得太快就像龙卷风。\n\n上一季矫揉这一季自我\n\n撒娇女人未必最好命\n\n　　在最新播出的《花儿与少年》中，播了一段大家伙玩真心话的片段，郑爽开始问许晴，到底是这一季开心还是上一季开心啊？这么正常的套近乎，却惹来许晴不正常的回答：“上一季。”没有一点点防备，也没有一丝顾虑，她就这样回答，斩钉截铁。当时人家就震惊了，也惹恼了紧追剧情的观众，许晴微博下面的评论一片叫骂，“做作”“负能量”的字眼满屏皆是。本来还黏在许晴身上的井柏然当时一下子就起来了，神情尴尬。许晴还咬了下嘴唇，场面一度僵持，感觉许晴内心一定是：说了就说了你们怎么着吧。",
+          "start": null,
+          "title": "许晴《花少2》中表现遭批 被质疑有“公主病”-中国新闻网",
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "b4868d3ddf1dd3b5f98f02b415c7243fdf6e49eb908b411073b96d00615b061b",
+          "content_kind": "snippet",
+          "original_url": "https://www.chinanews.com.cn/m/yl/2015/06-10/7335375.shtml",
+          "published_at": null,
+          "retrieved_at": "2026-10-14T12:15:44.767687Z",
+          "source_chars": 2227,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        }
+      ]
+    },
+    "summary": "围绕《花儿与少年》第二季“花学”名场面与金句，考查许晴“上一季的人都正常”等知识点的识记与理解，共3题。",
+    "grounding": {
+      "status": "source_backed",
+      "provider": "tavily",
+      "reason_code": null,
+      "retrieved_at": "2026-10-14T12:15:44.767687Z",
+      "check_version": "evidence-review-v1"
+    },
+    "questions": [
+      {
+        "id": "hs2-quotes-single-1",
+        "stem": "在《花儿与少年》第二季中，许晴在真心话环节被问到哪一季更开心时，说出了哪句引发巨大争议的话？",
+        "type": "single",
+        "origin": null,
+        "answers": [
+          "B"
+        ],
+        "options": [
+          {
+            "id": "A",
+            "text": "“这一季的人都正常。”"
+          },
+          {
+            "id": "B",
+            "text": "“上一季的人都正常。”"
+          },
+          {
+            "id": "C",
+            "text": "“我谁都不想理。”"
+          },
+          {
+            "id": "D",
+            "text": "“我真的真的想回家。”"
+          }
+        ],
+        "grounding": {
+          "status": "source_backed",
+          "provider": "tavily",
+          "reason_code": null,
+          "retrieved_at": "2026-10-14T12:15:44.767687Z",
+          "check_version": "evidence-review-v1"
+        },
+        "source_ids": [
+          "web-ddcb60d161f9f16b93cec2472b988af8"
+        ],
+        "explanation": "资料记载，郑爽在真心话环节问许晴这一季开心还是上一季开心，许晴斩钉截铁回答“上一季”，并说出“因为上一季的人都正常”这句引发争议的话，随后许晴微博涌入大量评论。A项把“上一季”错写成“这一季”；D项“我真的真的想回家”是许晴在镜头前失控大哭时说的话，不是本题所问的争议金句；C项在资料中没有对应出处。",
+        "knowledge_point": "许晴“上一季的人都正常”"
+      },
+      {
+        "id": "hs2-quotes-multi-1",
+        "stem": "根据资料，《花儿与少年》第二季被网友称为“花学”素材的名场面包括下列哪些？",
+        "type": "multi",
+        "origin": null,
+        "answers": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "options": [
+          {
+            "id": "A",
+            "text": "许晴“上一季的人都正常”"
+          },
+          {
+            "id": "B",
+            "text": "伦敦桥对峙"
+          },
+          {
+            "id": "C",
+            "text": "杨洋被落街头"
+          },
+          {
+            "id": "D",
+            "text": "房车分房罗生门"
+          }
+        ],
+        "grounding": {
+          "status": "source_backed",
+          "provider": "tavily",
+          "reason_code": null,
+          "retrieved_at": "2026-10-14T12:15:39.229992Z",
+          "check_version": "evidence-review-v1"
+        },
+        "source_ids": [
+          "web-17af4c856ed48ad2b64e25d8e4eb2b96"
+        ],
+        "explanation": "资料明确列举：“名场面封神：许晴‘上一季的人都正常’、伦敦桥对峙、杨洋被落街头、房车分房罗生门……随便一个片段都是综艺史天花板”，并提到网友由此衍生出逐帧拆解微表情、潜台词的“花学”。因此四个选项均属于资料所列名场面。",
+        "knowledge_point": "花少2名场面与“花学”"
+      },
+      {
+        "id": "hs2-quotes-judge-1",
+        "stem": "判断：资料显示，许晴在《花儿与少年》第二季中说出“上一季的人都正常”后，其微博一天之内涌入约10万条评论，其中除粉丝外多为批评声音。",
+        "type": "judge",
+        "origin": null,
+        "answers": [
+          "A"
+        ],
+        "options": [
+          {
+            "id": "A",
+            "text": "正确"
+          },
+          {
+            "id": "B",
+            "text": "错误"
+          }
+        ],
+        "grounding": {
+          "status": "source_backed",
+          "provider": "tavily",
+          "reason_code": null,
+          "retrieved_at": "2026-10-14T12:15:44.767687Z",
+          "check_version": "evidence-review-v1"
+        },
+        "source_ids": [
+          "web-ddcb60d161f9f16b93cec2472b988af8"
+        ],
+        "explanation": "资料原文写道：“一天之内许晴微博10万条评论，除了脑残粉之外全是骂她的。”这与题干表述一致，故判断为正确。",
+        "knowledge_point": "许晴“上一季的人都正常”引发的舆论反应"
+      }
+    ],
+    "created_at": "2026-10-14T12:24:37.816935+00:00",
+    "difficulty": "easy",
+    "source_text": "花少2",
+    "learning_scope": {
+      "focus": "名场面金句",
+      "topic": "花少2",
+      "domain": "花学与网络文化梗",
+      "points": [
+        "许晴“上一季的人都正常”",
+        "伦敦桥对峙",
+        "杨洋被落街头"
+      ],
+      "focus_id": "focus-hs2-v1-quotes",
+      "input_text": "花少2",
+      "candidate_id": "scope-hs2-v1-huaxue",
+      "scope_version": 1,
+      "preparation_id": "e54cd784-3abd-4b72-a3fd-d17cfd778ea4",
+      "scope_point_ids": [
+        "point-hs2-v1-quotes-1",
+        "point-hs2-v1-quotes-2",
+        "point-hs2-v1-quotes-3"
+      ]
+    }
+  },
+  "human_review": {
+    "scope_matches_intent": true,
+    "notes": "按用户对当前20例/60题核对请求的总体回复“正确”登记；未收到逐项表单导出。",
+    "questions": [
+      {
+        "id": "hs2-quotes-single-1",
+        "status": "source_backed",
+        "source_ids": [
+          "web-ddcb60d161f9f16b93cec2472b988af8"
+        ],
+        "supported_by_cited_text": true,
+        "contradicts": false,
+        "in_scope": true,
+        "meme_substantive": true,
+        "notes": "正确性及引用支持按用户对核对包的总体确认登记；不是用户逐题表单输入。",
+        "meme_classification_basis": "agent inspection of actual question and scene, not an individual user checkbox"
+      },
+      {
+        "id": "hs2-quotes-multi-1",
+        "status": "source_backed",
+        "source_ids": [
+          "web-17af4c856ed48ad2b64e25d8e4eb2b96"
+        ],
+        "supported_by_cited_text": true,
+        "contradicts": false,
+        "in_scope": true,
+        "meme_substantive": true,
+        "notes": "正确性及引用支持按用户对核对包的总体确认登记；不是用户逐题表单输入。",
+        "meme_classification_basis": "agent inspection of actual question and scene, not an individual user checkbox"
+      },
+      {
+        "id": "hs2-quotes-judge-1",
+        "status": "source_backed",
+        "source_ids": [
+          "web-ddcb60d161f9f16b93cec2472b988af8"
+        ],
+        "supported_by_cited_text": true,
+        "contradicts": false,
+        "in_scope": true,
+        "meme_substantive": false,
+        "notes": "正确性及引用支持按用户对核对包的总体确认登记；不是用户逐题表单输入。",
+        "meme_classification_basis": "agent inspection of actual question and scene, not an individual user checkbox"
+      }
+    ],
+    "confirmation": {
+      "kind": "direct_user_chat_overall_confirmation",
+      "record": "docs/quiz-grounding/live-runs/human-confirmation-20261014.json",
+      "answer": "正确",
+      "individual_form_export_received": false,
+      "structured_verdict_basis": "registered_from_user_overall_confirmation"
+    }
+  },
+  "account_deleted": true
+}

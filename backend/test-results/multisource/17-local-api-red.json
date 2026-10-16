@@ -1,0 +1,12 @@
+{
+  "stage": "RED",
+  "required": [
+    "/api/v1/knowledge-map",
+    "/api/v1/analytics"
+  ],
+  "missing": [
+    "/api/v1/knowledge-map",
+    "/api/v1/analytics"
+  ],
+  "passed": false
+}

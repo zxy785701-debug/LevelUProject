@@ -1,8 +1,9 @@
 $levelup-weapp: false !default;
 @import './prototype.scss';
 @import './footer.scss';
+@import './features.scss';
 .question-records .icon-tile{display:flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:8px}
-.btn.primary{color:#fff}.btn.secondary{color:#202a3d}
+.btn.primary{background:#336ae8;color:#fff}.btn.secondary{color:#202a3d}
 .footer-refined .phone-bottom .btn.primary,.footer-refined .sheet .btn.primary,.global-dialog .btn.primary{min-height:50px;border:1px solid transparent;border-radius:12px;background:#336ae8;color:#fff;box-shadow:0 4px 10px #336ae80b;font-size:16px;font-weight:800}
 .footer-refined .phone-bottom .btn.secondary,.footer-refined .sheet .btn.secondary{min-height:46px;border:1px solid #dce3ee;border-radius:12px;box-shadow:none;font-size:14px;background:#fff;color:#202a3d}
 .btn.is-disabled,.footer-refined .phone-bottom .btn.is-disabled,.footer-refined .phone-bottom .btn.primary.is-disabled{background:#edf0f5;border-color:#dae0e9;color:#909bae;box-shadow:none}
@@ -75,3 +76,7 @@ button:after{border:0}
 .avatar-preview-image{width:100%;height:260px;display:block;border-radius:12px}
 .avatar-actions .btn+.btn{margin-top:10px}
 .app-shell .global-dialog{width:auto;max-width:none;margin:0;border:0;border-radius:0;box-shadow:none}
+
+.generation-progress { margin: 24px 0; }
+.history-entry { margin-bottom: 20px; }
+.history-entry > .btn { margin-top: 4px; }

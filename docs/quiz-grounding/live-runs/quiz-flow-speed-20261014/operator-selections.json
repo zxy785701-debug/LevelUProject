@@ -1,0 +1,15 @@
+{
+  "harness-2": {
+    "confirmed": true,
+    "preparation_id": "2c2aee33-e4e6-4009-8aca-f836afdf7d6d",
+    "scope_version": 1,
+    "candidate_id": "scope-v1-cand-3",
+    "focus_id": "scope-v1-cand-3-f1",
+    "scope_point_ids": [
+      "scope-v1-cand-3-f1-p1",
+      "scope-v1-cand-3-f1-p2",
+      "scope-v1-cand-3-f1-p3",
+      "scope-v1-cand-3-f1-p4"
+    ]
+  }
+}
