@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="1.144" timestamp="2026-10-18T23:24:57.651640+08:00" hostname="zxy"><testcase classname="tests.test_knowledge_worker_boundaries" name="test_worker_release_is_immediately_expired_at_mysql_datetime_precision" time="0.355"><failure message="app.errors.AppError: 知识库执行器仍在运行">repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x000001B2B7027E00&gt;
+
+    def test_worker_release_is_immediately_expired_at_mysql_datetime_precision(repo):
+        from app.knowledge.worker import WorkerGuard
+        instant=int(repo.accounts.clock())+.9
+        repo.accounts.clock=lambda:instant
+        first=WorkerGuard(repo.accounts,repo.config,'first')
+        first.acquire(); first.release()
+        second=WorkerGuard(repo.accounts,repo.config,'second')
+&gt;       second.acquire(); second.release()
+        ^^^^^^^^^^^^^^^^
+
+tests\test_knowledge_worker_boundaries.py:23: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;app.knowledge.worker.WorkerGuard object at 0x000001B2B70FC910&gt;
+
+    def acquire(self):
+        with self.database.session() as session:
+            now = self.now()
+            session.execute(insert(WorkerLease).values(id=self.identity,owner=self.owner,fence=0,
+                            expires_at=now,heartbeat_at=now).on_duplicate_key_update(id=self.identity))
+            row = session.scalar(select(WorkerLease).where(WorkerLease.id == self.identity).with_for_update())
+            if row.owner != self.owner and row.expires_at &gt; now:
+&gt;               raise AppError('KNOWLEDGE_WORKER_LOCKED', '知识库执行器仍在运行', 409)
+E               app.errors.AppError: 知识库执行器仍在运行
+
+app\knowledge\worker.py:84: AppError</failure></testcase></testsuite></testsuites>

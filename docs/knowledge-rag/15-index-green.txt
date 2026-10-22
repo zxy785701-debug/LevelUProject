@@ -1,0 +1,47 @@
+.....F                                                                   [100%]
+================================== FAILURES ===================================
+_ test_failed_reindex_preserves_previous_active_revision_and_final_delete_race _
+
+index = <app.knowledge.index.VectorIndex object at 0x0000028C7AA8AC30>
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x0000028C7AA8A690>
+
+    def test_failed_reindex_preserves_previous_active_revision_and_final_delete_race(index,repo):
+        from app.knowledge.indexing import ImportIndexer
+        from app.knowledge.database import Document
+        seed(repo)
+        pipeline = ImportIndexer(repo.accounts,repo.config,index,embedding_factory=lambda claim:None)
+        queued = pipeline.submit_reindex('alice','rebuild','doc')
+        assert pipeline.submit_reindex('alice','rebuild','doc')['id']==queued['id']
+        claim = pipeline.claim('worker')
+>       parsed = pipeline.parse(claim)
+                 ^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_knowledge_index.py:134: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\knowledge\importing.py:49: in parse
+    content = canonical_content(payload['material_content'],max_chars=self.accounts.settings.material_max_chars)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+content = {'title': '��ʵ���� doc', 'segments': [], 'source_type': 'md'}
+max_chars = 100000
+
+    def canonical_content(content, *, max_chars):
+        result = deepcopy(content)
+        segments, pieces, offset = [], [], 0
+        for block, original in enumerate(content.get('segments',[])):
+            text = original.get('text','').strip()
+            if not text: continue
+            if pieces: offset += 2
+            segment = {**original,'text':text,'block':block+1,'start_index':offset,'end_index':offset+len(text)}
+            segments.append(segment)
+            pieces.append(text)
+            offset += len(text)
+        if not segments:
+>           raise AppError('NO_READABLE_CONTENT','δ�ҵ��ɶ�ȡ���֣�ɨ�����Ҫ��ת��Ϊ���ְ�',422)
+E           app.errors.AppError: δ�ҵ��ɶ�ȡ���֣�ɨ�����Ҫ��ת��Ϊ���ְ�
+
+app\knowledge\parsing.py:25: AppError
+=========================== short test summary info ===========================
+FAILED tests/test_knowledge_index.py::test_failed_reindex_preserves_previous_active_revision_and_final_delete_race
+1 failed, 5 passed in 18.91s

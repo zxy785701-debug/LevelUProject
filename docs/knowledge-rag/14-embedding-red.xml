@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="17" failures="0" skipped="0" tests="17" time="4.032" timestamp="2026-10-18T20:26:20.822162+08:00" hostname="zxy"><testcase classname="tests.test_knowledge_embeddings" name="test_native_contract_batching_order_query_async_and_independent_credentials" time="0.446"><error message="failed on setup with &quot;ModuleNotFoundError: No module named 'app.knowledge.embeddings'&quot;">repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x00000194DFCDF8C0&gt;
+
+    @pytest.fixture
+    def embedding(repo):
+&gt;       from app.knowledge.embeddings import BailianEmbeddings
+E       ModuleNotFoundError: No module named 'app.knowledge.embeddings'
+
+tests\test_knowledge_embeddings.py:17: ModuleNotFoundError</error></testcase><testcase classname="tests.test_knowledge_embeddings" name="test_malformed_vectors_cannot_be_cached_or_published[count]" time="0.065"><error message="failed on setup with &quot;ModuleNotFoundError: No module named 'app.knowledge.embeddings'&quot;">repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x00000194DFDB6AD0&gt;
+
+    @pytest.fixture
+    def embedding(repo):
+&gt;       from app.knowledge.embeddings import BailianEmbeddings
+E       ModuleNotFoundError: No module named 'app.knowledge.embeddings'
+
+tests\test_knowledge_embeddings.py:17: ModuleNotFoundError</error></testcase><testcase classname="tests.test_knowledge_embeddings" name="test_malformed_vectors_cannot_be_cached_or_published[duplicate]" time="0.099"><error message="failed on setup with &quot;ModuleNotFoundError: No module named 'app.knowledge.embeddings'&quot;">repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x00000194DFE1B9D0&gt;
+
+    @pytest.fixture
+    def embedding(repo):
+&gt;       from app.knowledge.embeddings import BailianEmbeddings
+E       ModuleNotFoundError: No module named 'app.knowledge.embeddings'
+
+tests\test_knowledge_embeddings.py:17: ModuleNotFoundError</error></testcase><testcase classname="tests.test_knowledge_embeddings" name="test_malformed_vectors_cannot_be_cached_or_published[index]" time="0.083"><error message="failed on setup with &quot;ModuleNotFoundError: No module named 'app.knowledge.embeddings'&quot;">repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x00000194DFE743E0&gt;
+
+    @pytest.fixture
+    def embedding(repo):
+&gt;       from app.knowledge.embeddings import BailianEmbeddings
+E       ModuleNotFoundError: No module named 'app.knowledge.embeddings'
+
+tests\test_knowledge_embeddings.py:17: ModuleNotFoundError</error></testcase><testcase classname="tests.test_knowledge_embeddings" name="test_malformed_vectors_cannot_be_cached_or_published[dimension]" time="0.090"><error message="failed on setup with &quot;ModuleNotFoundError: No module named 'app.knowledge.embeddings'&quot;">repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x00000194DFE75810&gt;
+
+    @pytest.fixture
+    def embedding(repo):
+&gt;       from app.knowledge.embeddings import BailianEmbeddings
+E       ModuleNotFoundError: No module named 'app.knowledge.embeddings'
+
+tests\test_knowledge_embeddings.py:17: ModuleNotFoundError</error></testcase><testcase classname="tests.test_knowledge_embeddings" name="test_malformed_vectors_cannot_be_cached_or_published[nan]" time="0.092"><error message="failed on setup with &quot;ModuleNotFoundError: No module named 'app.knowledge.embeddings'&quot;">repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x00000194DFEE7650&gt;
+
+    @pytest.fixture
+    def embedding(repo):
+&gt;       from app.knowledge.embeddings import BailianEmbeddings
+E       ModuleNotFoundError: No module named 'app.knowledge.embeddings'
+
+tests\test_knowledge_embeddings.py:17: ModuleNotFoundError</error></testcase><testcase classname="tests.test_knowledge_embeddings" name="test_malformed_vectors_cannot_be_cached_or_published[boolean]" time="0.089"><error message="failed on setup with &quot;ModuleNotFoundError: No module named 'app.knowledge.embeddings'&quot;">repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x00000194DFE1ECF0&gt;
+
+    @pytest.fixture
+    def embedding(repo):
+&gt;       from app.knowledge.embeddings import BailianEmbeddings
+E       ModuleNotFoundError: No module named 'app.knowledge.embeddings'
+
+tests\test_knowledge_embeddings.py:17: ModuleNotFoundError</error></testcase><testcase classname="tests.test_knowledge_embeddings" name="test_bounded_transient_retries_and_no_auth_balance_retry[statuses0-2-True]" time="0.082"><error message="failed on setup with &quot;ModuleNotFoundError: No module named 'app.knowledge.embeddings'&quot;">repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x00000194DFE1FF00&gt;
+
+    @pytest.fixture
+    def embedding(repo):
+&gt;       from app.knowledge.embeddings import BailianEmbeddings
+E       ModuleNotFoundError: No module named 'app.knowledge.embeddings'
+
+tests\test_knowledge_embeddings.py:17: ModuleNotFoundError</error></testcase><testcase classname="tests.test_knowledge_embeddings" name="test_bounded_transient_retries_and_no_auth_balance_retry[statuses1-2-True]" time="0.162"><error message="failed on setup with &quot;ModuleNotFoundError: No module named 'app.knowledge.embeddings'&quot;">repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x00000194DFEAEC50&gt;
+
+    @pytest.fixture
+    def embedding(repo):
+&gt;       from app.knowledge.embeddings import BailianEmbeddings
+E       ModuleNotFoundError: No module named 'app.knowledge.embeddings'
+
+tests\test_knowledge_embeddings.py:17: ModuleNotFoundError</error></testcase><testcase classname="tests.test_knowledge_embeddings" name="test_bounded_transient_retries_and_no_auth_balance_retry[statuses2-3-False]" time="0.164"><error message="failed on setup with &quot;ModuleNotFoundError: No module named 'app.knowledge.embeddings'&quot;">repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x00000194DFD1A050&gt;
+
+    @pytest.fixture
+    def embedding(repo):
+&gt;       from app.knowledge.embeddings import BailianEmbeddings
+E       ModuleNotFoundError: No module named 'app.knowledge.embeddings'
+
+tests\test_knowledge_embeddings.py:17: ModuleNotFoundError</error></testcase><testcase classname="tests.test_knowledge_embeddings" name="test_bounded_transient_retries_and_no_auth_balance_retry[statuses3-1-False]" time="0.181"><error message="failed on setup with &quot;ModuleNotFoundError: No module named 'app.knowledge.embeddings'&quot;">repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x00000194DFED76B0&gt;
+
+    @pytest.fixture
+    def embedding(repo):
+&gt;       from app.knowledge.embeddings import BailianEmbeddings
+E       ModuleNotFoundError: No module named 'app.knowledge.embeddings'
+
+tests\test_knowledge_embeddings.py:17: ModuleNotFoundError</error></testcase><testcase classname="tests.test_knowledge_embeddings" name="test_bounded_transient_retries_and_no_auth_balance_retry[statuses4-1-False]" time="0.167"><error message="failed on setup with &quot;ModuleNotFoundError: No module named 'app.knowledge.embeddings'&quot;">repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x00000194DFCF3C50&gt;
+
+    @pytest.fixture
+    def embedding(repo):
+&gt;       from app.knowledge.embeddings import BailianEmbeddings
+E       ModuleNotFoundError: No module named 'app.knowledge.embeddings'
+
+tests\test_knowledge_embeddings.py:17: ModuleNotFoundError</error></testcase><testcase classname="tests.test_knowledge_embeddings" name="test_bounded_transient_retries_and_no_auth_balance_retry[statuses5-1-False]" time="0.170"><error message="failed on setup with &quot;ModuleNotFoundError: No module named 'app.knowledge.embeddings'&quot;">repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x00000194DFE392B0&gt;
+
+    @pytest.fixture
+    def embedding(repo):
+&gt;       from app.knowledge.embeddings import BailianEmbeddings
+E       ModuleNotFoundError: No module named 'app.knowledge.embeddings'
+
+tests\test_knowledge_embeddings.py:17: ModuleNotFoundError</error></testcase><testcase classname="tests.test_knowledge_embeddings" name="test_bounded_transient_retries_and_no_auth_balance_retry[statuses6-1-False]" time="0.163"><error message="failed on setup with &quot;ModuleNotFoundError: No module named 'app.knowledge.embeddings'&quot;">repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x00000194DFC1FCB0&gt;
+
+    @pytest.fixture
+    def embedding(repo):
+&gt;       from app.knowledge.embeddings import BailianEmbeddings
+E       ModuleNotFoundError: No module named 'app.knowledge.embeddings'
+
+tests\test_knowledge_embeddings.py:17: ModuleNotFoundError</error></testcase><testcase classname="tests.test_knowledge_embeddings" name="test_cache_is_owned_profile_specific_deduplicated_and_independent_of_query_type" time="0.161"><error message="failed on setup with &quot;ModuleNotFoundError: No module named 'app.knowledge.embeddings'&quot;">repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x00000194DFE2FD40&gt;
+
+    @pytest.fixture
+    def embedding(repo):
+&gt;       from app.knowledge.embeddings import BailianEmbeddings
+E       ModuleNotFoundError: No module named 'app.knowledge.embeddings'
+
+tests\test_knowledge_embeddings.py:17: ModuleNotFoundError</error></testcase><testcase classname="tests.test_knowledge_embeddings" name="test_input_upper_bounds_fail_before_paid_request_and_safe_parts_preserve_text" time="0.194"><error message="failed on setup with &quot;ModuleNotFoundError: No module named 'app.knowledge.embeddings'&quot;">repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x00000194DFD26690&gt;
+
+    @pytest.fixture
+    def embedding(repo):
+&gt;       from app.knowledge.embeddings import BailianEmbeddings
+E       ModuleNotFoundError: No module named 'app.knowledge.embeddings'
+
+tests\test_knowledge_embeddings.py:17: ModuleNotFoundError</error></testcase><testcase classname="tests.test_knowledge_embeddings" name="test_budget_exhaustion_response_loss_and_cancelled_response_are_accounted" time="0.173"><error message="failed on setup with &quot;ModuleNotFoundError: No module named 'app.knowledge.embeddings'&quot;">repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x00000194DFD271D0&gt;
+
+    @pytest.fixture
+    def embedding(repo):
+&gt;       from app.knowledge.embeddings import BailianEmbeddings
+E       ModuleNotFoundError: No module named 'app.knowledge.embeddings'
+
+tests\test_knowledge_embeddings.py:17: ModuleNotFoundError</error></testcase></testsuite></testsuites>

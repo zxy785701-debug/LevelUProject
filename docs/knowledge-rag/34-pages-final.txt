@@ -1,0 +1,96 @@
+
+Running 3 tests using 1 worker
+
+(node:40016) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 e2e-knowledge\knowledge.spec.ts:56:5 › 真实存储闭环：Markdown→问答来源→原问题出题→多选主题→确认答题→报告 (26.3s)
+(node:33328) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 2 e2e-knowledge\knowledge.spec.ts:103:5 › 断开响应与重新打开：恢复同一上传任务，不重复创建文档 (38.4s)
+  x  3 e2e-knowledge\knowledge.spec.ts:120:5 › 资料不足、问答删除和资料删除后的来源快照 (1.5m)
+
+
+  1) e2e-knowledge\knowledge.spec.ts:56:5 › 真实存储闭环：Markdown→问答来源→原问题出题→多选主题→确认答题→报告 ────────────────
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator: locator('taro-switch-core')
+    Expected: ""
+    Timeout: 20000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveAttribute" locator('taro-switch-core') with timeout 20000ms
+      - waiting for locator('taro-switch-core')
+
+
+      65 |   await page.locator('.mini-back').click()
+      66 |   await page.getByRole('button', { name: '向资料提问', exact: true }).click()
+    > 67 |   await expect(page.locator('taro-switch-core')).toHaveAttribute('checked', '')
+         |                                                  ^
+      68 |   await page.locator('textarea').fill('根据资料解释 HTTP 与会话')
+      69 |   await page.getByText('全部已就绪资料（提交时固定版本）', { exact: true }).click()
+      70 |   await snapshot(page, 'question')
+        at D:\nbproject\LevelUpProject\frontend\e2e-knowledge\knowledge.spec.ts:67:50
+
+    Error Context: ..\docs\knowledge-rag\page-results\knowledge-真实存储闭环：Markdown→问答来源→原问题出题→多选主题→确认答题→报告\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\docs\knowledge-rag\page-results\knowledge-真实存储闭环：Markdown→问答来源→原问题出题→多选主题→确认答题→报告\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\docs\knowledge-rag\page-results\knowledge-真实存储闭环：Markdown→问答来源→原问题出题→多选主题→确认答题→报告\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) e2e-knowledge\knowledge.spec.ts:120:5 › 资料不足、问答删除和资料删除后的来源快照 ──────────────────────────────────
+
+    Test timeout of 90000ms exceeded.
+
+    Error: apiRequestContext._wrapApiCall: ENOENT: no such file or directory, copyfile 'D:\nbproject\LevelUpProject\docs\knowledge-rag\page-results\.playwright-artifacts-1\traces\0828a03cd0e93ee0ce1b-ce27b0f51029cdea3133-recording5.network' -> 'D:\nbproject\LevelUpProject\docs\knowledge-rag\page-results\.playwright-artifacts-1\traces\0828a03cd0e93ee0ce1b-ce27b0f51029cdea3133-recording5-pwnetcopy-1.network'
+
+    Error: apiRequestContext._wrapApiCall: ENOENT: no such file or directory, copyfile 'D:\nbproject\LevelUpProject\docs\knowledge-rag\page-results\.playwright-artifacts-1\traces\0828a03cd0e93ee0ce1b-ce27b0f51029cdea3133-recording4.network' -> 'D:\nbproject\LevelUpProject\docs\knowledge-rag\page-results\.playwright-artifacts-1\traces\0828a03cd0e93ee0ce1b-ce27b0f51029cdea3133-recording4-pwnetcopy-1.network'
+
+    Error: browserContext._wrapApiCall: ENOENT: no such file or directory, open 'D:\nbproject\LevelUpProject\docs\knowledge-rag\page-results\.playwright-artifacts-1\traces\0828a03cd0e93ee0ce1b-ce27b0f51029cdea3133-recording3.trace'
+
+    Error: locator.click: Test ended.
+    Browser logs:
+
+    <launching> C:\Users\20777\AppData\Local\Google\Chrome\Application\chrome.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,NetworkTimeServiceQuerying,AimEnabled,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=C:\Users\20777\AppData\Local\Temp\playwright_chromiumdev_profile-c8HYWz --remote-debugging-pipe --no-startup-window
+    <launched> pid=38928
+    [pid=38928] <gracefully close start>
+    Call log:
+      - waiting for getByRole('button', { name: '提交问题', exact: true })
+        - locator resolved to <taro-button-core type="" disabled role="button" aria-label="提交问题" aria-disabled="true" class="btn primary is-disabled">…</taro-button-core>
+      - attempting click action
+        2 × waiting for element to be visible, enabled and stable
+          - element is not enabled
+        - retrying click action
+        - waiting 20ms
+        2 × waiting for element to be visible, enabled and stable
+          - element is not enabled
+        - retrying click action
+          - waiting 100ms
+        153 × waiting for element to be visible, enabled and stable
+            - element is not enabled
+          - retrying click action
+            - waiting 500ms
+        - waiting for element to be visible, enabled and stable
+
+
+      43 |   await page.locator('textarea').fill(question)
+      44 |   await page.getByText('全部已就绪资料（提交时固定版本）', { exact: true }).click()
+    > 45 |   await page.getByRole('button', { name: '提交问题', exact: true }).click()
+         |                                                                 ^
+      46 |   await expect(page.getByTestId('knowledge-answer')).toBeVisible()
+      47 | }
+      48 | async function snapshot(page: Page, name: string) {
+        at ask (D:\nbproject\LevelUpProject\frontend\e2e-knowledge\knowledge.spec.ts:45:65)
+        at D:\nbproject\LevelUpProject\frontend\e2e-knowledge\knowledge.spec.ts:127:45
+
+    Error: ENOENT: no such file or directory, open 'D:\nbproject\LevelUpProject\docs\knowledge-rag\page-results\.playwright-artifacts-1\4f9609ae7c2e6b2969f48281d1233f05.zip'
+
+  2 failed
+    e2e-knowledge\knowledge.spec.ts:56:5 › 真实存储闭环：Markdown→问答来源→原问题出题→多选主题→确认答题→报告 ─────────────────
+    e2e-knowledge\knowledge.spec.ts:120:5 › 资料不足、问答删除和资料删除后的来源快照 ───────────────────────────────────
+  1 passed (2.6m)

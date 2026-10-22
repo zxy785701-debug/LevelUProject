@@ -1,0 +1,16 @@
+{
+  "database_head": "007_personal_knowledge",
+  "health_status": 200,
+  "health": {
+    "code": 0,
+    "message": "ok",
+    "data": {
+      "status": "ok"
+    }
+  },
+  "knowledge_enabled": true,
+  "configuration_reason": null,
+  "worker_running": true,
+  "backup_bytes": 1046637,
+  "backup_sha256": "513e85506d6e4d663d8edf48ae38446ca3d8a8eb5b713a621d891fdec08487b8"
+}

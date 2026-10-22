@@ -1,0 +1,26 @@
+[
+  {
+    "file": "06-import-red.txt",
+    "bytes": 83902769,
+    "sha256": "6d75d2862eaca77164e0cee3bd96bb45b8f0428762197f2f1748fe86c730e678",
+    "compressed": "06-import-red.txt.gz"
+  },
+  {
+    "file": "06-import-red.xml",
+    "bytes": 20988951,
+    "sha256": "e3d36fd0bb9726fc05b5522e2b05df2c7f952955d43cec19f277f0e67f753e11",
+    "compressed": "06-import-red.xml.gz"
+  },
+  {
+    "file": "06-import-green.txt",
+    "bytes": 83892768,
+    "sha256": "d06f7e7ee698b600ceeeb3cc13ab321ae281c5ec3aaa06c18d3fa6d8ce90f684",
+    "compressed": "06-import-green.txt.gz"
+  },
+  {
+    "file": "06-import-green.xml",
+    "bytes": 20980892,
+    "sha256": "418cb7d28caaff4555059e996b5ca99a4163af16c4bcf4906facde907bce4789",
+    "compressed": "06-import-green.xml.gz"
+  }
+]

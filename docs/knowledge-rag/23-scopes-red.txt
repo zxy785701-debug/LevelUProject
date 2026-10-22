@@ -1,0 +1,93 @@
+FFFFF                                                                    [100%]
+================================== FAILURES ===================================
+__ test_scope_submission_is_durable_explicit_and_does_not_reserve_core_busy ___
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x000001DFA1B463C0>
+
+    def test_scope_submission_is_durable_explicit_and_does_not_reserve_core_busy(repo):
+>       from app.knowledge.scopes import ScopeRepository
+E       ModuleNotFoundError: No module named 'app.knowledge.scopes'
+
+tests\test_knowledge_scopes.py:37: ModuleNotFoundError
+___ test_prepared_scope_has_one_level_recommended_multi_topic_confirmation ____
+
+index = <app.knowledge.index.VectorIndex object at 0x000001DFA1B47CB0>
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x000001DFA2B574D0>
+
+    def test_prepared_scope_has_one_level_recommended_multi_topic_confirmation(index,repo):
+        from app.accounts.database import Attempt,Quota
+>       pipeline,claim,gateway,selected,queued,body = setup_scope(repo,index)
+                                                      ^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_knowledge_scopes.py:53: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x000001DFA2B574D0>
+index = <app.knowledge.index.VectorIndex object at 0x000001DFA1B47CB0>
+
+    def setup_scope(repo,index):
+>       from app.knowledge.scopes import ScopePipeline
+E       ModuleNotFoundError: No module named 'app.knowledge.scopes'
+
+tests\test_knowledge_scopes.py:22: ModuleNotFoundError
+_ test_scope_rejects_wrong_owner_version_permission_selection_and_changed_documents _
+
+index = <app.knowledge.index.VectorIndex object at 0x000001DFC17EC550>
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x000001DFC17ED6D0>
+
+    def test_scope_rejects_wrong_owner_version_permission_selection_and_changed_documents(index,repo):
+        from app.knowledge.cleanup import LibraryManagement
+>       pipeline,claim,gateway,selected,queued,body = setup_scope(repo,index)
+                                                      ^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_knowledge_scopes.py:69: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x000001DFC17ED6D0>
+index = <app.knowledge.index.VectorIndex object at 0x000001DFC17EC550>
+
+    def setup_scope(repo,index):
+>       from app.knowledge.scopes import ScopePipeline
+E       ModuleNotFoundError: No module named 'app.knowledge.scopes'
+
+tests\test_knowledge_scopes.py:22: ModuleNotFoundError
+__ test_scope_cannot_fabricate_evidence_and_insufficient_result_is_explicit ___
+
+index = <app.knowledge.index.VectorIndex object at 0x000001DFA2CBE350>
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x000001DFC17D50F0>
+
+    def test_scope_cannot_fabricate_evidence_and_insufficient_result_is_explicit(index,repo):
+        from app.knowledge.database import Scope
+>       pipeline,claim,gateway,selected,queued,body = setup_scope(repo,index)
+                                                      ^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_knowledge_scopes.py:80: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x000001DFC17D50F0>
+index = <app.knowledge.index.VectorIndex object at 0x000001DFA2CBE350>
+
+    def setup_scope(repo,index):
+>       from app.knowledge.scopes import ScopePipeline
+E       ModuleNotFoundError: No module named 'app.knowledge.scopes'
+
+tests\test_knowledge_scopes.py:22: ModuleNotFoundError
+_____________ test_scope_prepare_api_returns_job_and_get_is_owned _____________
+
+knowledge_app = <fastapi.applications.FastAPI object at 0x000001DFC1875450>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001DFC17D6060>
+
+    @pytest.mark.anyio
+    async def test_scope_prepare_api_returns_job_and_get_is_owned(knowledge_app,monkeypatch):
+        from app.knowledge.config import KnowledgeSettings
+>       from app.knowledge.scopes import ScopeRepository
+E       ModuleNotFoundError: No module named 'app.knowledge.scopes'
+
+tests\test_knowledge_scopes.py:92: ModuleNotFoundError
+=========================== short test summary info ===========================
+FAILED tests/test_knowledge_scopes.py::test_scope_submission_is_durable_explicit_and_does_not_reserve_core_busy
+FAILED tests/test_knowledge_scopes.py::test_prepared_scope_has_one_level_recommended_multi_topic_confirmation
+FAILED tests/test_knowledge_scopes.py::test_scope_rejects_wrong_owner_version_permission_selection_and_changed_documents
+FAILED tests/test_knowledge_scopes.py::test_scope_cannot_fabricate_evidence_and_insufficient_result_is_explicit
+FAILED tests/test_knowledge_scopes.py::test_scope_prepare_api_returns_job_and_get_is_owned
+5 failed in 6.26s

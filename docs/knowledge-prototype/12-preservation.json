@@ -1,0 +1,12 @@
+{
+  "baseline_source_count": 35,
+  "changed_baseline_source": [
+    "frontend/src/knowledge-api.ts",
+    "frontend/src/KnowledgeFlow.tsx",
+    "frontend/src/pages/index/index.tsx"
+  ],
+  "unexpected_changes": [],
+  "backend_source_changed_this_phase": false,
+  "prototype_source_changed_this_phase": false,
+  "test_adjustment": "frontend/e2e-accounts/interactions.spec.ts waits for loaded question after asynchronous navigation; answer logic unchanged"
+}

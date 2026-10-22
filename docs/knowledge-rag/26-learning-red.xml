@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="2" time="6.992" timestamp="2026-10-18T21:51:32.901968+08:00" hostname="zxy"><testcase classname="tests.test_knowledge_learning" name="test_knowledge_learning_report_replay_review_and_history_deletion_keep_core_behavior" time="2.058"><failure message="AssertionError: assert {'id': 'b3acf380-cf11-4ed3-b340-0972b6772f0e', 'mode': 'new', 'quiz': {'id': 'fefdcac6-9266-4eba-a1e3-453ecd7065da', '...: 2}, 'source': {'url': None, 'type': 'knowledge_base', 'title': '我的知识库', 'segments': [], ...}, ...}, 'cursor': 0, ...} is None&#10; +  where {'id': 'b3acf380-cf11-4ed3-b340-0972b6772f0e', 'mode': 'new', 'quiz': {'id': 'fefdcac6-9266-4eba-a1e3-453ecd7065da', '...: 2}, 'source': {'url': None, 'type': 'knowledge_base', 'title': '我的知识库', 'segments': [], ...}, ...}, 'cursor': 0, ...} = &lt;app.knowledge.database.Job object at 0x000002725ADA6190&gt;.result&#10; +    where &lt;app.knowledge.database.Job object at 0x000002725ADA6190&gt; = get(&lt;class 'app.knowledge.database.Job'&gt;, 'd6a422ea-abe6-44d6-8514-39723d55b4ca')&#10; +      where get = &lt;sqlalchemy.orm.session.Session object at 0x000002725ACCB4D0&gt;.get">index = &lt;app.knowledge.index.VectorIndex object at 0x000002723C157B60&gt;
+repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x000002723C156A50&gt;
+
+    def test_knowledge_learning_report_replay_review_and_history_deletion_keep_core_behavior(index,repo):
+        from app.accounts.database import Attempt,Quota,Reward
+        from app.models import ReportRequest
+        from app.services import generate_report
+        pipeline,claim,gateway,queued,body = setup_quiz(repo,index)
+        learning = pipeline.process(claim)
+        aid = learning['id']
+        for number,question in enumerate(quiz_payload()['questions']):
+            result = repo.accounts.answer('alice',aid,{'question_id':question['id'],'selected':['B'] if number==0 else question['answers'],'elapsed_ms':1000})
+        assert result['session']['completed_at'] and result['session']['quiz']['source']['segments']
+        before = repo.accounts.me('alice')['stats']
+        trusted = repo.accounts.report_input('alice',aid)
+        report = asyncio.run(generate_report(ReportRequest.model_validate(trusted),repo.accounts.settings,FakeGateway(REPORT)))
+        oid,_ = repo.accounts.reserve('alice','report','report',{'attempt_id':aid},aid)
+        repo.accounts.model_call('alice',oid)
+        repo.accounts.finish('alice',oid,report)
+        assert repo.accounts.attempt('alice',aid)['report']['verification']['status']=='material_only'
+        replay = repo.accounts.replay('alice',learning['quiz']['id'])
+        assert replay['quiz']['source']['segments']==[] and replay['mode']=='replay'
+        repo.accounts.answer('alice',replay['id'],{'question_id':'q0','selected':['A'],'elapsed_ms':100})
+        review = repo.accounts.review('alice',[aid+':q0'])
+        assert review['mode']=='review' and review['quiz']['source']['segments']==[]
+        checked = repo.accounts.answer('alice',review['id'],{'question_id':review['quiz']['questions'][0]['id'],'selected':['A'],'elapsed_ms':100})
+        assert checked['session']['quiz']['source']['segments'][0]['knowledge']['document_id']
+        assert repo.accounts.me('alice')['stats']['xp']==before['xp']
+        repo.accounts.delete_attempt('alice',aid)
+        with pytest.raises(AppError): repo.accounts.attempt('alice',aid)
+        result = pipeline.get('alice',queued['id'])
+        assert result['result'] is None and result['error_code']=='KNOWLEDGE_RESULT_DELETED'
+        from app.knowledge.database import Checkpoint,Job,PublishedResult
+        with repo.database.session() as session:
+&gt;           assert session.get(Job,queued['id']).result is None
+E           AssertionError: assert {'id': 'b3acf380-cf11-4ed3-b340-0972b6772f0e', 'mode': 'new', 'quiz': {'id': 'fefdcac6-9266-4eba-a1e3-453ecd7065da', '...: 2}, 'source': {'url': None, 'type': 'knowledge_base', 'title': '我的知识库', 'segments': [], ...}, ...}, 'cursor': 0, ...} is None
+E            +  where {'id': 'b3acf380-cf11-4ed3-b340-0972b6772f0e', 'mode': 'new', 'quiz': {'id': 'fefdcac6-9266-4eba-a1e3-453ecd7065da', '...: 2}, 'source': {'url': None, 'type': 'knowledge_base', 'title': '我的知识库', 'segments': [], ...}, ...}, 'cursor': 0, ...} = &lt;app.knowledge.database.Job object at 0x000002725ADA6190&gt;.result
+E            +    where &lt;app.knowledge.database.Job object at 0x000002725ADA6190&gt; = get(&lt;class 'app.knowledge.database.Job'&gt;, 'd6a422ea-abe6-44d6-8514-39723d55b4ca')
+E            +      where get = &lt;sqlalchemy.orm.session.Session object at 0x000002725ACCB4D0&gt;.get
+
+tests\test_knowledge_learning.py:43: AssertionError</failure></testcase><testcase classname="tests.test_knowledge_learning" name="test_new_quiz_source_delete_does_not_block_completed_history_but_blocks_new_publication" time="0.861" /></testsuite></testsuites>

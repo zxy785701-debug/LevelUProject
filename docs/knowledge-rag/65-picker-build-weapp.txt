@@ -1,0 +1,370 @@
+
+> levelup-mini@1.0.0 build:weapp
+> taro build --type weapp
+
+👽 Taro v4.3.0
+
+Tips:
+1. 建议开启持久化缓存功能，能有效提升二次编译速度，详情请参考: https://docs.taro.zone/docs/config-detail#cache。
+
+
+
+● Webpack █████████████████████████  (0%)  
+ 
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ setup (9%) compilation 
+ mini-css-extract-plugin
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ setup (9%) compilation 
+ CssMinimizerPlugin
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/6 entries 6/6 dependencie
+s 0/6 modules 1 active 
+ babel-loader › src\app.config.ts
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/6 entries 6/6 dependencie
+s 0/6 modules 1 active 
+ babel-loader › src\app.config.ts
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/6 entries 6/6 dependencie
+s 0/6 modules 2 active 
+ babel-loader › src\app.tsx
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/6 entries 6/6 dependencie
+s 0/6 modules 4 active 
+ babel-loader › src\pages\index\index.tsx
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/6 entries 6/6 dependencie
+s 1/6 modules 5 active 
+ ...l-loader › node_modules\@tarojs\webpack5-runner\dist\template\custom-wrapp
+er.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 2/6 entries 10/17 dependenc
+ies 2/7 modules 5 active 
+ babel-loader › node_modules\@tarojs\runtime\dist\index.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (25%) 2/6 entries 13/46 dependenc
+ies 2/10 modules 8 active 
+ babel-loader › node_modules\@tarojs\plugin-framework-react\dist\runtime.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (26%) 2/6 entries 14/46 dependenc
+ies 2/11 modules 9 active 
+ babel-loader › node_modules\@tarojs\plugin-platform-weapp\dist\runtime.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 2/6 entries 31/46 dependenc
+ies 2/27 modules 17 active 
+ babel-loader › src\WeeklyReview.tsx
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 2/6 entries 38/46 dependenc
+ies 2/30 modules 27 active 
+ node_modules\react\jsx-runtime.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 2/6 entries 39/47 dependenc
+ies 2/31 modules 29 active 
+ babel-loader › node_modules\@tarojs\taro\index.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 2/6 entries 66/149 dependen
+cies 2/32 modules 30 active 
+ babel-loader › node_modules\@tarojs\react\dist\react.esm.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 2/6 entries 75/149 dependen
+cies 2/33 modules 30 active 
+ babel-loader › node_modules\@tarojs\react\dist\react.esm.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 2/6 entries 214/244 depende
+ncies 3/75 modules 30 active 
+ babel-loader › node_modules\@tarojs\runtime\dist\env.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%)  
+ import loader .\node_modules\css-loader\dist\cjs.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%)  
+ import loader .\node_modules\postcss-loader\dist\cjs.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%)  
+ import loader .\node_modules\resolve-url-loader\index.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%)  
+ import loader .\node_modules\sass-loader\dist\cjs.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 2/6 entries 214/244 depende
+ncies 3/75 modules 45 active 
+ ...ss
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 2/6 entries 214/245 depende
+ncies 3/75 modules 46 active 
+ babel-loader › node_modules\@tarojs\runtime\dist\current.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 2/6 entries 233/245 depende
+ncies 3/90 modules 73 active 
+ ...der › node_modules\@tarojs\runtime\dist\dom-external\mutation-observer\ind
+ex.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 2/6 entries 233/245 depende
+ncies 3/90 modules 87 active 
+ ...loader › postcss-loader › resolve-url-loader › sass-loader › src\knowledge
+.scss
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 2/6 entries 242/249 depende
+ncies 3/95 modules 90 active 
+ asset\resource|D:\nbproject\LevelUpProject\frontend\src\assets\u-book.png
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 2/6 entries 245/252 depende
+ncies 4/97 modules 91 active 
+ asset\resource|D:\nbproject\LevelUpProject\frontend\src\assets\paper.png
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 2/6 entries 301/398 depende
+ncies 11/98 modules 84 active 
+ asset\resource|D:\nbproject\LevelUpProject\frontend\src\assets\paper.png
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 2/6 entries 357/426 depende
+ncies 12/100 modules 83 active 
+ asset\resource|D:\nbproject\LevelUpProject\frontend\src\assets\paper.png
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 2/6 entries 400/465 depende
+ncies 12/100 modules 83 active 
+ asset\resource|D:\nbproject\LevelUpProject\frontend\src\assets\paper.png
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 2/6 entries 479/492 depende
+ncies 12/112 modules 98 active 
+ babel-loader › node_modules\@tarojs\runtime\dist\dom\event-target.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 2/6 entries 480/492 depende
+ncies 15/113 modules 98 active 
+ ...oject\LevelUpProject\frontend\node_modules\@babel\runtime\helpers\esm\type
+of.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 2/6 entries 522/533 depende
+ncies 27/132 modules 90 active 
+ babel-loader › node_modules\@tarojs\runtime\dist\polyfill\object.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 2/6 entries 537/598 depende
+ncies 31/135 modules 102 active 
+ ...bproject\LevelUpProject\frontend\node_modules\@babel\runtime\helpers\esm\g
+et.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 2/6 entries 542/600 depende
+ncies 32/135 modules 103 active 
+ babel-loader › node_modules\@tarojs\runtime\dist\dom\anchor-element.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 2/6 entries 599/614 depende
+ncies 33/183 modules 103 active 
+ ...bproject\LevelUpProject\frontend\node_modules\@babel\runtime\helpers\esm\s
+et.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 2/6 entries 606/623 depende
+ncies 34/187 modules 150 active 
+ ...l-loader › node_modules\@tarojs\runtime\dist\dom-external\inner-html\scann
+er.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 2/6 entries 637/644 depende
+ncies 64/200 modules 124 active 
+ babel-loader › node_modules\@tarojs\shared\dist\components.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 2/6 entries 643/646 depende
+ncies 75/202 modules 126 active 
+ ...cript\esm|D:\nbproject\LevelUpProject\frontend\node_modules\tslib\tslib.es
+6.mjs
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 2/6 entries 654/654 depende
+ncies 117/203 modules 86 active 
+ babel-loader › node_modules\@tarojs\api\dist\index.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (37%) 3/6 entries 679/681 depende
+ncies 179/203 modules 24 active 
+ babel-loader › node_modules\@tarojs\api\dist\index.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (46%) 4/6 entries 684/686 depende
+ncies 182/207 modules 24 active 
+ babel-loader › node_modules\@tarojs\api\dist\env.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (46%) 4/6 entries 692/695 depende
+ncies 185/209 modules 24 active 
+ babel-loader › node_modules\@tarojs\api\dist\interceptor\index.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (46%) 4/6 entries 699/699 depende
+ncies 198/212 modules 14 active 
+ node_modules\scheduler\cjs\scheduler.production.min.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (46%) 4/6 entries 701/701 depende
+ncies 199/212 modules 13 active 
+ node_modules\scheduler\index.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (46%) 4/6 entries 703/705 depende
+ncies 203/214 modules 10 active 
+ node_modules\css-loader\dist\runtime\api.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (46%) 4/6 entries 709/709 depende
+ncies 207/216 modules 8 active 
+ ...› postcss-loader › resolve-url-loader › sass-loader › src\knowledge.scss|0
+|||}}
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (70%) finish module graph 
+ InnerGraphPlugin
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (71%)  
+ dependencies optimization
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (75%) chunk optimization 
+ RemoveEmptyChunksPlugin
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (78%)  
+ chunk modules optimization
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (87%)  
+ code generation
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (88%)  
+ runtime requirements
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (89%)  
+ after hashing
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (92%)  
+ asset processing
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (92%) asset processing 
+ TaroMiniPlugin
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (92%) asset processing 
+ CssMinimizerPlugin
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (92%) asset processing 
+ RealContentHashPlugin
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ emitting (98%)  
+ after emit
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+√ Webpack
+  Compiled successfully in 1.98m
+
+⚠️ Warnings: 
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 2, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:2:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+2 | @import './prototype.scss';
+
+
+src\app.scss 3:9  root stylesheet
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 3, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:3:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+3 | @import './footer.scss';
+
+
+src\app.scss 4:9  root stylesheet
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 4, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:4:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+4 | @import './features.scss';
+
+
+src\app.scss 5:9  root stylesheet
+
+Warning: app.wxss from Css Minimizer plugin
+postcss-calc: D:\nbproject\LevelUpProject\frontend\app.wxss:3424:5: Parse error on line 1: 
+100dvh - 240.38462rpx
+------------^
+Expecting end of input, "RPAREN", "ADD", "SUB", "MUL", "DIV", got unexpected "UNKNOWN_DIMENSION"
+
+Warning: app.wxss from Css Minimizer plugin
+postcss-calc: D:\nbproject\LevelUpProject\frontend\app.wxss:3804:3: Parse error on line 1: 
+100% + 80.76923rpx
+---------^
+Expecting end of input, "RPAREN", "ADD", "SUB", "MUL", "DIV", got unexpected "UNKNOWN_DIMENSION"
+
+Warning: app.wxss from Css Minimizer plugin
+postcss-calc: D:\nbproject\LevelUpProject\frontend\app.wxss:3850:3: Parse error on line 1: 
+100% - 184.61538rpx
+----------^
+Expecting end of input, "RPAREN", "ADD", "SUB", "MUL", "DIV", got unexpected "UNKNOWN_DIMENSION"
+
+Warning: app.wxss from Css Minimizer plugin
+postcss-calc: D:\nbproject\LevelUpProject\frontend\app.wxss:4722:3: Parse error on line 1: 
+100% - 173.07692rpx
+----------^
+Expecting end of input, "RPAREN", "ADD", "SUB", "MUL", "DIV", got unexpected "UNKNOWN_DIMENSION"
+
+Warning: app.wxss from Css Minimizer plugin
+postcss-calc: D:\nbproject\LevelUpProject\frontend\app.wxss:4786:3: Parse error on line 1: 
+123.07692rpx ...
+---^
+Expecting end of input, "ADD", "SUB", "MUL", "DIV", got unexpected "UNKNOWN_DIMENSION"
+
+Warning: app.wxss from Css Minimizer plugin
+postcss-calc: D:\nbproject\LevelUpProject\frontend\app.wxss:5565:3: Parse error on line 1: 
+100% - 184.61538rpx
+----------^
+Expecting end of input, "RPAREN", "ADD", "SUB", "MUL", "DIV", got unexpected "UNKNOWN_DIMENSION"
+

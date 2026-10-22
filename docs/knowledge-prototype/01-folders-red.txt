@@ -1,0 +1,26 @@
+
+> levelup-mini@1.0.0 test
+> vitest run --run tests/knowledge-folders.test.ts
+
+
+ RUN  v3.2.7 D:/nbproject/LevelUpProject/frontend
+
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/knowledge-folders.test.ts [ tests/knowledge-folders.test.ts ]
+Error: Cannot find module '../src/knowledge-folders' imported from 'D:/nbproject/LevelUpProject/frontend/tests/knowledge-folders.test.ts'
+ ❯ tests/knowledge-folders.test.ts:4:1
+
+
+Caused by: Error: Failed to load url ../src/knowledge-folders (resolved id: ../src/knowledge-folders) in D:/nbproject/LevelUpProject/frontend/tests/knowledge-folders.test.ts. Does the file exist?
+ ❯ loadAndTransform node_modules/vitest/node_modules/vite/dist/node/chunks/config.js:22907:33
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  no tests
+   Start at  09:08:50
+   Duration  810ms (transform 43ms, setup 0ms, collect 0ms, tests 0ms, environment 0ms, prepare 206ms)
+

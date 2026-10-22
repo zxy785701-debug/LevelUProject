@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="7.134" timestamp="2026-10-18T21:17:39.869548+08:00" hostname="zxy"><testcase classname="tests.test_knowledge_agent" name="test_repeated_evidence_in_model_messages_obeys_cumulative_context_budget" time="0.964"><failure message="assert 42006 &lt;= 24000">wire = {'calls': [{'url': 'https://api.tavily.com/search', 'body': {'query': 'HTTP semantics', 'max_results': 3, 'search_dept...ps://example.com/', 'content': 'summary', 'raw_content': 'body'}], 'usage': {'credits': 1}}, 'status': 200, 'delay': 0}
+
+    @pytest.mark.anyio
+    async def test_repeated_evidence_in_model_messages_obeys_cumulative_context_budget(wire):
+        from app.knowledge.retrieval import KnowledgeAgent
+        async def search(query,maximum): return [source('私有正文。'*3000)]
+        model = ScriptedModel(replies=[calls(('tavily_search',{'query':'HTTP semantics'})),
+            calls(('knowledge_search',{'query':'进一步核实'})),AIMessage(content='done')])
+        await KnowledgeAgent(settings(),knowledge_search=search,model=model,public_plan=plan()).run('HTTP semantics')
+        used = 0
+        for messages in model.requests:
+            for message in messages:
+                content = message.content
+                if not isinstance(content,str): continue
+                try: payload = json.loads(content if content.startswith('{') else content.split('\n',1)[1])
+                except (ValueError,IndexError): continue
+                used += sum(len(s['text']) for s in payload.get('evidence',[]))
+&gt;       assert 0 &lt; used &lt;= 24000
+E       assert 42006 &lt;= 24000
+
+tests\test_knowledge_agent.py:173: AssertionError</failure></testcase></testsuite></testsuites>

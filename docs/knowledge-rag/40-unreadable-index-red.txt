@@ -1,0 +1,64 @@
+..FF                                                                     [100%]
+================================== FAILURES ===================================
+_ test_exact_fallback_is_bounded_and_never_trusts_corrupt_vectors[no_vectors] _
+
+index = <app.knowledge.index.VectorIndex object at 0x000001A688630E10>
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x000001A688631450>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001A68809B2F0>
+case = 'no_vectors'
+
+    @pytest.mark.parametrize('case',['too_many','bad_vector','no_vectors','zero_norm'])
+    def test_exact_fallback_is_bounded_and_never_trusts_corrupt_vectors(index,repo,monkeypatch,case):
+        import numpy as np
+        selected=ready(repo,index); ai_job(repo); claim=index.jobs.claim('worker')
+        ids=['unknown']*257 if case=='too_many' else ['unknown']
+        values=None if case=='no_vectors' else [np.array([1.0] if case=='bad_vector' else [0.0]*1024)]
+        collection=SimpleNamespace(count=lambda:300,query=lambda **kw:{'ids':[[]],'distances':[[]]},get=lambda **kw:{'ids':ids,'embeddings':values})
+        monkeypatch.setattr(index,'collection',lambda uid:collection)
+>       fails('KNOWLEDGE_INDEX_UNAVAILABLE',lambda:index.search(claim,selected,[1.0]*1024))
+
+tests\test_knowledge_storage_boundaries.py:120: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+code = 'KNOWLEDGE_INDEX_UNAVAILABLE'
+call = <function test_exact_fallback_is_bounded_and_never_trusts_corrupt_vectors.<locals>.<lambda> at 0x000001A688612480>
+
+    def fails(code,call):
+>       with pytest.raises(AppError) as caught: call()
+             ^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE AppError
+
+tests\test_knowledge_boundaries.py:23: Failed
+_ test_exact_fallback_is_bounded_and_never_trusts_corrupt_vectors[zero_norm] __
+
+index = <app.knowledge.index.VectorIndex object at 0x000001A6880B1810>
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x000001A6880B1E00>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001A6880919D0>
+case = 'zero_norm'
+
+    @pytest.mark.parametrize('case',['too_many','bad_vector','no_vectors','zero_norm'])
+    def test_exact_fallback_is_bounded_and_never_trusts_corrupt_vectors(index,repo,monkeypatch,case):
+        import numpy as np
+        selected=ready(repo,index); ai_job(repo); claim=index.jobs.claim('worker')
+        ids=['unknown']*257 if case=='too_many' else ['unknown']
+        values=None if case=='no_vectors' else [np.array([1.0] if case=='bad_vector' else [0.0]*1024)]
+        collection=SimpleNamespace(count=lambda:300,query=lambda **kw:{'ids':[[]],'distances':[[]]},get=lambda **kw:{'ids':ids,'embeddings':values})
+        monkeypatch.setattr(index,'collection',lambda uid:collection)
+>       fails('KNOWLEDGE_INDEX_UNAVAILABLE',lambda:index.search(claim,selected,[1.0]*1024))
+
+tests\test_knowledge_storage_boundaries.py:120: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+code = 'KNOWLEDGE_INDEX_UNAVAILABLE'
+call = <function test_exact_fallback_is_bounded_and_never_trusts_corrupt_vectors.<locals>.<lambda> at 0x000001A6881B5300>
+
+    def fails(code,call):
+>       with pytest.raises(AppError) as caught: call()
+             ^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE AppError
+
+tests\test_knowledge_boundaries.py:23: Failed
+=========================== short test summary info ===========================
+FAILED tests/test_knowledge_storage_boundaries.py::test_exact_fallback_is_bounded_and_never_trusts_corrupt_vectors[no_vectors]
+FAILED tests/test_knowledge_storage_boundaries.py::test_exact_fallback_is_bounded_and_never_trusts_corrupt_vectors[zero_norm]
+2 failed, 2 passed, 11 deselected in 11.74s

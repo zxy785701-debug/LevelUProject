@@ -10,7 +10,7 @@ from copy import deepcopy
 from datetime import datetime, timedelta, timezone
 from uuid import uuid4
 from PIL import Image, ImageOps, UnidentifiedImageError
-from sqlalchemy import select, delete, func
+from sqlalchemy import select, delete, func, inspect
 from sqlalchemy.dialects.mysql import insert
 from .database import User, LoginSession, QuizRow, Attempt, Reward, WrongRow, Quota, Operation, PeriodReport, utcnow
 from ..errors import AppError
@@ -57,6 +57,10 @@ def serialize(a):
             visible_sources.update(q.get('source_ids', []))
     if quiz.get('source'):
         quiz['source']['segments'] = [v for v in quiz['source'].get('segments', []) if v['id'] in visible_sources]
+        state = inspect(a,raiseerr=False)
+        if state is not None and state.session is not None and any(v.get('knowledge') for v in quiz['source']['segments']):
+            from ..knowledge.evidence import mark_deleted_sources
+            mark_deleted_sources(state.session,a.user_id,quiz['source']['segments'])
     return {'id': a.id, 'quiz': quiz, 'mode': a.mode, 'answers': a.answers, 'cursor': a.cursor, 'pending_ms': 0, 'started_at': stamp(a.started_at), 'completed_at': stamp(a.completed_at), 'report': a.report, 'review_keys': a.review_keys}
 
 
@@ -180,23 +184,29 @@ class Accounts:
                 raise AppError('NOT_FOUND', '尚未设置头像', 404)
             return u.avatar
 
-    def store_quiz(self, uid, quiz, operation_id=None):
+    def store_quiz(self, uid, quiz, operation_id=None, *, session=None):
+        if session is not None:
+            return self._store_quiz(session,uid,quiz,operation_id)
+        with self.database.session() as current:
+            result = self._store_quiz(current,uid,quiz,operation_id)
+        if operation_id: logger.info('ai_finished operation=%s status=succeeded',operation_id)
+        return result
+
+    def _store_quiz(self, s, uid, quiz, operation_id):
         quiz = {**deepcopy(quiz), 'reward': new_quiz_reward(quiz['difficulty'])}
-        with self.database.session() as s:
-            u = self._user(s, uid, True)
-            q = self._quota(s, u.identity)
-            op = self._active_operation(s, uid, operation_id, q) if operation_id else None
-            s.add(QuizRow(id=quiz['id'], user_id=uid, content=quiz))
-            s.flush()
-            a = Attempt(id=str(uuid4()), user_id=uid, quiz_id=quiz['id'], quiz=quiz, mode='new')
-            s.add(a)
-            s.flush()
-            result = serialize(a)
-            if op:
-                op.status, op.result = 'succeeded', result
-                op.stage, op.retry_after_seconds = 'succeeded', 0
-                q.busy_id, q.busy_until = None, 0
-        if op: logger.info('ai_finished operation=%s status=succeeded', operation_id)
+        u = self._user(s, uid, True)
+        q = self._quota(s, u.identity)
+        op = self._active_operation(s, uid, operation_id, q) if operation_id else None
+        s.add(QuizRow(id=quiz['id'], user_id=uid, content=quiz))
+        s.flush()
+        a = Attempt(id=str(uuid4()), user_id=uid, quiz_id=quiz['id'], quiz=quiz, mode='new')
+        s.add(a)
+        s.flush()
+        result = serialize(a)
+        if op:
+            op.status, op.result = 'succeeded', result
+            op.stage, op.retry_after_seconds = 'succeeded', 0
+            q.busy_id, q.busy_until = None, 0
         return result
 
     def replay(self, uid, quiz_id):
@@ -313,6 +323,8 @@ class Accounts:
             # Clear cached operation results so retries cannot restore a deleted attempt.
             for op in related:
                 op.result, op.status, op.error_code = None, 'failed', 'RECORD_DELETED'
+            from ..knowledge.cleanup import clear_deleted_learning_result
+            clear_deleted_learning_result(s,uid,aid)
             s.delete(a)  # Associated wrongs cascade; earned rewards remain in their ledger.
             s.flush()
             return self._profile(s, u)
@@ -395,30 +407,34 @@ class Accounts:
 
     def model_call(self, uid, oid):
         with self.database.session() as s:
-            u = self._user(s, uid, True)
-            q = self._quota(s, u.identity)
-            op = self._active_operation(s, uid, oid, q)
-            if op.kind == 'material' and op.model_calls >= self.settings.prepare_model_call_limit:
-                raise AppError('MODEL_BUDGET_EXHAUSTED', '材料准备已达到模型调用上限', 409)
-            if len(q.calls) >= self.settings.ai_minute_limit: raise AppError('AI_RATE_LIMIT', 'AI 请求较频繁，请稍后重试', 429)
-            if not op.charged:
-                if op.kind == 'quiz':
-                    if q.quiz_count >= self.settings.quiz_daily_limit: raise AppError('DAILY_QUOTA_EXCEEDED', '今天的出题额度已用完', 429)
-                    q.quiz_count += 1
-                elif op.kind == 'report':
-                    a = self._attempt(s, uid, op.attempt_id)
-                    a.report_attempts += 1
-                elif op.kind == 'period':
-                    period = s.get(PeriodReport, op.attempt_id)
-                    if not period or period.user_id != uid: raise AppError('NOT_FOUND', '报告不存在', 404)
-                    if period.attempts >= self.settings.report_attempt_limit: raise AppError('REPORT_RETRY_LIMIT', '本份报告已达到生成次数上限', 429)
-                    if q.period_count >= self.settings.period_daily_limit: raise AppError('PERIOD_DAILY_LIMIT', '今天的周期报告额度已用完', 429)
-                    period.attempts += 1
-                    period.status = 'running'
-                    q.period_count += 1
-                op.charged = 1
-            q.calls = [*q.calls, self.clock()]
-            op.model_calls += 1
+            self._model_call(s, uid, oid)
+
+    def _model_call(self, s, uid, oid):
+        """Optional existing transaction adapter; the public call keeps its old boundary."""
+        u = self._user(s, uid, True)
+        q = self._quota(s, u.identity)
+        op = self._active_operation(s, uid, oid, q)
+        if op.kind == 'material' and op.model_calls >= self.settings.prepare_model_call_limit:
+            raise AppError('MODEL_BUDGET_EXHAUSTED', '材料准备已达到模型调用上限', 409)
+        if len(q.calls) >= self.settings.ai_minute_limit: raise AppError('AI_RATE_LIMIT', 'AI 请求较频繁，请稍后重试', 429)
+        if not op.charged:
+            if op.kind == 'quiz':
+                if q.quiz_count >= self.settings.quiz_daily_limit: raise AppError('DAILY_QUOTA_EXCEEDED', '今天的出题额度已用完', 429)
+                q.quiz_count += 1
+            elif op.kind == 'report':
+                a = self._attempt(s, uid, op.attempt_id)
+                a.report_attempts += 1
+            elif op.kind == 'period':
+                period = s.get(PeriodReport, op.attempt_id)
+                if not period or period.user_id != uid: raise AppError('NOT_FOUND', '报告不存在', 404)
+                if period.attempts >= self.settings.report_attempt_limit: raise AppError('REPORT_RETRY_LIMIT', '本份报告已达到生成次数上限', 429)
+                if q.period_count >= self.settings.period_daily_limit: raise AppError('PERIOD_DAILY_LIMIT', '今天的周期报告额度已用完', 429)
+                period.attempts += 1
+                period.status = 'running'
+                q.period_count += 1
+            op.charged = 1
+        q.calls = [*q.calls, self.clock()]
+        op.model_calls += 1
         logger.info('ai_call operation=%s kind=%s minute_calls=%s', oid, op.kind, len(q.calls))
 
     def finish(self, uid, oid, result=None, error=None):
@@ -489,6 +505,8 @@ class Accounts:
             now = datetime.fromtimestamp(self.clock(), SHANGHAI)
             tomorrow = datetime.combine(now.date() + timedelta(days=1), datetime.min.time(), SHANGHAI).timestamp()
             q.retire_after = max(tomorrow, q.busy_until, self.clock() + 60)
+            from ..knowledge.cleanup import record_account_cleanup
+            record_account_cleanup(s,uid)
             s.delete(u)
 
     def cleanup(self):

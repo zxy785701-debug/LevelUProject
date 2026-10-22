@@ -1,0 +1,106 @@
+[
+  {
+    "path": "docs/quiz-grounding/screenshots/knowledge-atlas-1000-320.png",
+    "sha256": "d5abd0e951511a48927083dfdc3128fe682feb40d78ce89ce7f3e31ac3b1b9fc"
+  },
+  {
+    "path": "docs/quiz-grounding/screenshots/knowledge-atlas-390.png",
+    "sha256": "a6e180015634cc7e68f61180d41ad02220faa11add51ce853509d2d7dce1dbac"
+  },
+  {
+    "path": "docs/quiz-grounding/screenshots/period-retry-390.png",
+    "sha256": "d4de593388976a0c989c2077cd0a8e92243a479c21c731225cb0c9b645e463f6"
+  },
+  {
+    "path": "docs/quiz-grounding/screenshots/scope-confirmation.png",
+    "sha256": "8819c8b0bfe8dcb3d6bdbd08041bb2e8d74fce3874533342ed5e7d036299da63"
+  },
+  {
+    "path": "docs/quiz-grounding/screenshots/scope-unverified-320.png",
+    "sha256": "d1b5abe99e2f1d62ac2cd4af2169be214036cab4f1a1585bceaba2ef009efc98"
+  },
+  {
+    "path": "docs/quiz-grounding/screenshots/source-details-320.png",
+    "sha256": "d0c8336b5112b8366971f790e867c2a5471010c363ebac96dde33f693d7861e5"
+  },
+  {
+    "path": "docs/quiz-grounding/account-screenshots/A01-390.png",
+    "sha256": "267c5bd3c0f40f62410847f32c217a2274f1978c8b78c852644aaa1c3a77edab"
+  },
+  {
+    "path": "docs/quiz-grounding/account-screenshots/A02-320.png",
+    "sha256": "62ec4af1eacbb9f6d971093cf76513c6ba0bbac7b6674100324c6013903e856d"
+  },
+  {
+    "path": "docs/quiz-grounding/account-screenshots/interactions-avatar-menu.png",
+    "sha256": "26d5c6dbef30965b3a2cdf180f76423cb0e82e5e3a507a0058a901774a5770d2"
+  },
+  {
+    "path": "docs/quiz-grounding/account-screenshots/interactions-avatar-preview.png",
+    "sha256": "ebd6d1c7f46931b2cee4e1e02e442786fbdfbda342d3e64e1e432fa1af4ef3ec"
+  },
+  {
+    "path": "docs/quiz-grounding/account-screenshots/interactions-quiz.png",
+    "sha256": "5b1ac41b688fa1a4fbed046159431c60f554cf0bcb26d6b3c6ea714a4f948bc1"
+  },
+  {
+    "path": "docs/quiz-grounding/account-screenshots/interactions-scroll-return-320.png",
+    "sha256": "9216e6f4c435c6795e839f5bd46dc9dde5fc062c203d4bc514aef6755b1b72fe"
+  },
+  {
+    "path": "docs/quiz-grounding/account-screenshots/K05-390.png",
+    "sha256": "27d217ea174c49a6f70085ce631d9b584668d471dfdd4f913af1449f36758b2d"
+  },
+  {
+    "path": "docs/quiz-grounding/account-screenshots/L02-390.png",
+    "sha256": "ba08c684db18c6de2621612415ceb80c6473b78ea2db750c7f29b79cca334462"
+  },
+  {
+    "path": "docs/quiz-grounding/account-screenshots/L06-390.png",
+    "sha256": "0d0edda28fa1e4fafcd848ed2a3fb66a0f8a8a768a4957878e044b4896a8cf57"
+  },
+  {
+    "path": "docs/quiz-grounding/account-screenshots/L12-source-390.png",
+    "sha256": "b15717eaec53e23c1425cb0db4f3f39b8e6dc660563fbb45b36369790a78c3ab"
+  },
+  {
+    "path": "docs/quiz-grounding/account-screenshots/learning-poster.png",
+    "sha256": "2853f52f81858119b24b6add5a702bee29dd19a7cfbca7032ab0e4870fe7123e"
+  },
+  {
+    "path": "docs/quiz-grounding/account-screenshots/R04-320.png",
+    "sha256": "1ad3ffa0ac6bed8694c3b0fe21021c2f3b8bc0fa9a344e76544a46bf6d2fc346"
+  },
+  {
+    "path": "docs/quiz-grounding/account-screenshots/R04-390.png",
+    "sha256": "b65e6fb39f95efaf622e3ebb5f6f7549db6043e1d4558e111e120ccb3c4d8b8d"
+  },
+  {
+    "path": "docs/quiz-grounding/account-screenshots/R04-empty-320.png",
+    "sha256": "e84e8343b5754d883774123c0a5bf77ade2607e8a7018ab2f9fb59e995497513"
+  },
+  {
+    "path": "docs/quiz-grounding/account-screenshots/R05-390.png",
+    "sha256": "892947874dd056c618d48ba56fa8dd592a528bfaa8ff7e4dbd11d2937c7b3f3c"
+  },
+  {
+    "path": "docs/quiz-grounding/account-screenshots/R06-320.png",
+    "sha256": "6ab122b57b2c9eb59da0ed40561219ae17e718784c44a59be86b0896229a2ca4"
+  },
+  {
+    "path": "docs/quiz-grounding/account-screenshots/R06-390.png",
+    "sha256": "cb11b9b804510add6d0b0377f39f376b2866d12f03b9b48d2020b3e8178b3072"
+  },
+  {
+    "path": "docs/quiz-grounding/account-screenshots/R07-320.png",
+    "sha256": "8599b2d8b0add045135fa047dfd385362592b81d0c47ff124e28352fde914af2"
+  },
+  {
+    "path": "docs/quiz-grounding/account-screenshots/R07-390.png",
+    "sha256": "82828ccb9cac61fe09ff05c2f07da19e076afe21bf0f90bb8604daff16d7f836"
+  },
+  {
+    "path": "docs/quiz-grounding/account-screenshots/R08-390.png",
+    "sha256": "10cab9bcd427d48d77b2e803c4f8f7f5c8a695ef44c5395d7544b92841844f96"
+  }
+]

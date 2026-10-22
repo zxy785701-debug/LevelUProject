@@ -9,6 +9,7 @@ export interface EvidenceSegment {
   retrieved_at?: string | null; published_at?: string | null; content_hash?: string | null
   acquisition_status?: 'available' | 'partial' | 'unknown'; truncated?: boolean; context_truncated?: boolean
   source_chars?: number | null; original_id?: string | null; original_quiz_id?: string | null
+  knowledge?: { document_id: string; revision_id: string; chunk_id: string; document_title: string; source_type: string; document_version: number; chunk_position: number; header_path: string[]; start_index: number; end_index: number; block?: number | null; deleted?: boolean; version_changed?: boolean } | null
 }
 export interface QuizSource { type: string; title: string; material_id?: string | null; url?: string | null; segments: EvidenceSegment[] }
 export interface LearningScope { input_text: string; topic: string; domain: string; focus: string; points: string[]; preparation_id?: string | null; scope_version?: number | null; candidate_id?: string | null; focus_id?: string | null; scope_point_ids?: string[] }

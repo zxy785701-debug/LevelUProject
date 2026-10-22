@@ -1,0 +1,1 @@
+{"versions": {"chromadb": "1.5.9", "langchain-chroma": "1.1.0", "langchain-text-splitters": "1.1.3", "langchain": "1.4.4", "langchain-core": "1.6.9"}, "dimension": 1024, "native_upsert_filter_delete": true, "langchain_adapter": true, "structured_splitter": true, "temporary_directory": "C:\\Users\\20777\\AppData\\Local\\Temp\\levelup-rag-compat-o768zqpe"}

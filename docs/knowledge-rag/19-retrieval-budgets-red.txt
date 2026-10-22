@@ -1,0 +1,45 @@
+......F.......F                                                          [100%]
+================================== FAILURES ===================================
+_ test_retrieval_cannot_spend_generation_review_reserve_or_reset_its_phase_budget _
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x000001F2BFDBD6A0>
+
+    def test_retrieval_cannot_spend_generation_review_reserve_or_reset_its_phase_budget(repo):
+        from app.knowledge.budgets import JobBudgets
+        ai_job(repo)
+        jobs = JobBudgets(repo.accounts,repo.config)
+        claim = jobs.claim('worker')
+>       for _ in range(3): jobs.model_call(claim,7,phase='retrieval',reserve=2)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: JobBudgets.model_call() got an unexpected keyword argument 'phase'
+
+tests\test_knowledge_budgets.py:139: TypeError
+___ test_document_coverage_is_allocated_before_one_document_uses_all_slots ____
+
+wire = {'calls': [], 'body': {'results': [{'url': 'https://example.com/', 'content': 'summary', 'raw_content': 'body'}], 'usage': {'credits': 1}}, 'status': 200, 'delay': 0}
+
+    @pytest.mark.anyio
+    async def test_document_coverage_is_allocated_before_one_document_uses_all_slots(wire):
+        from app.knowledge.retrieval import KnowledgeAgent
+        values = []
+        for n in range(15):
+            item = source('��һ����������'+str(n))
+            item = item.model_copy(update={'id':'part-'+str(n)})
+            values.append(item)
+        other = source('�ڶ������ϵı�Ҫ֤��')
+        other = other.model_copy(update={'id':'second','knowledge':other.knowledge.model_copy(update={'document_id':'second-doc'})})
+        async def search(query,maximum): return values+[other]
+        result = await KnowledgeAgent(settings(),knowledge_search=search).run('�Ƚ�����',allow_web=False)
+        assert len(result.evidence)<=12
+>       assert {s.knowledge.document_id for s in result.evidence}=={'doc','second-doc'}
+E       AssertionError: assert {'doc'} == {'doc', 'second-doc'}
+E         
+E         Extra items in the right set:
+E         'second-doc'
+E         Use -v to get more diff
+
+tests\test_knowledge_agent.py:126: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_knowledge_budgets.py::test_retrieval_cannot_spend_generation_review_reserve_or_reset_its_phase_budget
+FAILED tests/test_knowledge_agent.py::test_document_coverage_is_allocated_before_one_document_uses_all_slots
+2 failed, 13 passed in 13.60s

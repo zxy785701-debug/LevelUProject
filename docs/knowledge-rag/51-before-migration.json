@@ -1,0 +1,61 @@
+{
+  "database": "levelup",
+  "before_head": "006_retrieval_audit",
+  "backup_path": "D:\\nbproject\\LevelUpProject\\artifacts\\knowledge-backups\\before-knowledge-20261018-233045.sql",
+  "backup_bytes": 1046637,
+  "backup_sha256": "513e85506d6e4d663d8edf48ae38446ca3d8a8eb5b713a621d891fdec08487b8",
+  "before_tables": {
+    "ai_operations": {
+      "rows": 46,
+      "sha256": "83f6ee6150a19136220313750252a18d01e230b2bbab6bc0e9a15a2c62ea38e5"
+    },
+    "ai_quotas": {
+      "rows": 1,
+      "sha256": "801651adfe6c4ac920592a2e1ce357aa058ac84a5594c47590c7a455659bdeb9"
+    },
+    "alembic_version": {
+      "rows": 1,
+      "sha256": "8941d2d0a1368b97cf39d973c47cf5660ee4c710942ae3fed85f01b00aae6f91"
+    },
+    "learning_attempts": {
+      "rows": 13,
+      "sha256": "fd1b9313e42214536c755bd3e82e2dcd3622ca7bfcaf65594e87004ec6447dc5"
+    },
+    "login_sessions": {
+      "rows": 3,
+      "sha256": "f4aab814d4b1e22ab9e8f2d2c694ee823a3b38abe0f48ce4f83948dc4a967d32"
+    },
+    "material_jobs": {
+      "rows": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "materials": {
+      "rows": 3,
+      "sha256": "83e71258c47874eebce8dd432c5a5216b2276c294c67e3c51cd53bb5adb720c6"
+    },
+    "period_reports": {
+      "rows": 2,
+      "sha256": "62550faea7e3b2968447a0f93d82dac64d5ddfded2f73f127c12fe2ae5741406"
+    },
+    "quizzes": {
+      "rows": 13,
+      "sha256": "19687aafa46ed67d18d9991a7b90939ce8a04348922729a304dd1195d3067d40"
+    },
+    "reward_ledger": {
+      "rows": 53,
+      "sha256": "fe2d56190a4cc42ef25f2f20cbf7cd6de80f8bb8e09d28b7c0812440dd374716"
+    },
+    "topic_preparations": {
+      "rows": 1,
+      "sha256": "9a28d7d7ca0b8e08289330e76d9dbee87764ce8a725d23e1edeb75bfda17e2db"
+    },
+    "users": {
+      "rows": 1,
+      "sha256": "2aa7732bdbcd73fa86a91d87a92be92ac1f5b570538b3a7e44d635c74ff48ef9"
+    },
+    "wrong_questions": {
+      "rows": 7,
+      "sha256": "13d511f6eb93238480dfa93a7111cd9e5f378d7b94e9c45b7efedd6caa544e7e"
+    }
+  }
+}

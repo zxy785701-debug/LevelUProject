@@ -1,0 +1,45 @@
+FF                                                                       [100%]
+================================== FAILURES ===================================
+_____ test_upload_submission_returns_a_job_and_rejects_client_owned_paths _____
+
+knowledge_app = <fastapi.applications.FastAPI object at 0x000001CDBF02F610>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001CDBEF2EEA0>
+
+    @pytest.mark.anyio
+    async def test_upload_submission_returns_a_job_and_rejects_client_owned_paths(knowledge_app, monkeypatch):
+        monkeypatch.setattr(KnowledgeSettings, 'unavailable_reason', lambda self, **kw: None)
+        app = knowledge_app
+        async with httpx.AsyncClient(transport=httpx.ASGITransport(app=app), base_url='http://test') as c:
+            await login(c)
+            response = await c.post('/api/v1/knowledge/documents/upload', headers={'Idempotency-Key':'file-key'}, files={'file':('note.md',b'# Notes\nOriginal material','text/markdown')})
+>           assert response.status_code == 200, response.text
+E           AssertionError: {"code":"HTTP_ERROR","message":"�����޷����","data":null}
+E           assert 405 == 200
+E            +  where 405 = <Response [405 Method Not Allowed]>.status_code
+
+tests\test_knowledge_api.py:67: AssertionError
+_________________ test_web_and_owned_material_submission_api __________________
+
+knowledge_app = <fastapi.applications.FastAPI object at 0x000001CDC024A850>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001CDBF0C1350>
+
+    @pytest.mark.anyio
+    async def test_web_and_owned_material_submission_api(knowledge_app, monkeypatch):
+        from app.accounts.database import Material
+        from app.materials.parsers import validate_url
+        import app.knowledge.repository as module
+        monkeypatch.setattr(KnowledgeSettings, 'unavailable_reason', lambda self, **kw: None)
+        monkeypatch.setattr(module, 'validate_url', lambda url: validate_url(url, resolve=lambda _: ['93.184.216.34']))
+        app = knowledge_app
+        async with httpx.AsyncClient(transport=httpx.ASGITransport(app=app), base_url='http://test') as c:
+            identity = await login(c)
+            response = await c.post('/api/v1/knowledge/documents/web', json={'url':'https://example.org/page'})
+>           assert response.status_code == 200 and response.json()['data']['status'] == 'queued'
+E           assert (405 == 200)
+E            +  where 405 = <Response [405 Method Not Allowed]>.status_code
+
+tests\test_knowledge_api.py:87: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_knowledge_api.py::test_upload_submission_returns_a_job_and_rejects_client_owned_paths
+FAILED tests/test_knowledge_api.py::test_web_and_owned_material_submission_api
+2 failed, 3 deselected in 30.30s

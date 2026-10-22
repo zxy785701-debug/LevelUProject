@@ -1,0 +1,46 @@
+
+Running 5 tests using 1 worker
+
+(node:4472) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 e2e-knowledge\knowledge.spec.ts:63:5 › 真实存储闭环：Markdown→问答来源→原问题出题→多选主题→确认答题→报告 (31.5s)
+  ok 2 e2e-knowledge\knowledge.spec.ts:115:5 › 断开响应与重新打开：恢复同一上传任务，不重复创建文档 (11.2s)
+  ok 3 e2e-knowledge\knowledge.spec.ts:132:5 › 资料不足、问答删除和资料删除后的来源快照 (23.1s)
+  x  4 e2e-knowledge\knowledge.spec.ts:150:5 › 公开网页、已有材料复制、取消重建后重试及资料删除 (16.8s)
+(node:15972) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 5 e2e-knowledge\knowledge.spec.ts:179:5 › 文件选择期间切后台可返回；切换账号不显示前一账号资料或草稿 (14.3s)
+
+
+  1) e2e-knowledge\knowledge.spec.ts:150:5 › 公开网页、已有材料复制、取消重建后重试及资料删除 ──────────────────────────────
+
+    Error: locator.click: Error: strict mode violation: getByText('确定', { exact: true }) resolved to 2 elements:
+        1) <div class="weui-picker__action">确定</div> aka getByText('确定').first()
+        2) <div class="taro-model__btn taro-model__confirm">确定</div> aka getByText('确定').nth(1)
+
+    Call log:
+      - waiting for getByText('确定', { exact: true })
+
+
+      163 |   await page.getByRole('button', { name: /^查看资料：/ }).click()
+      164 |   await page.getByRole('button', { name: '移除此材料', exact: true }).click()
+    > 165 |   await page.getByText('确定', { exact: true }).click()
+          |                                               ^
+      166 |   await expect(page.getByText('资料已删除，原文与索引正在后台清理。', { exact: true })).toBeVisible()
+      167 |   const old = await request.post(origin + '/api/v1/materials/document', { headers: { ...account.headers, 'Idempotency-Key': 'existing-' + Date.now() }, multipart: { file: { name: '已有材料.txt', mimeType: 'text/plain', buffer: Buffer.from('HTTP 每次请求独立。Cookie 用来保存状态。Session 保存会话信息。') } } })
+      168 |   expect(old.status()).toBe(200)
+        at D:\nbproject\LevelUpProject\frontend\e2e-knowledge\knowledge.spec.ts:165:47
+
+    Error Context: ..\docs\knowledge-prototype\functional-results\knowledge-公开网页、已有材料复制、取消重建后重试及资料删除\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\docs\knowledge-prototype\functional-results\knowledge-公开网页、已有材料复制、取消重建后重试及资料删除\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\docs\knowledge-prototype\functional-results\knowledge-公开网页、已有材料复制、取消重建后重试及资料删除\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    e2e-knowledge\knowledge.spec.ts:150:5 › 公开网页、已有材料复制、取消重建后重试及资料删除 ───────────────────────────────
+  4 passed (1.7m)

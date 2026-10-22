@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="7" skipped="0" tests="7" time="3.489" timestamp="2026-10-18T20:22:12.627043+08:00" hostname="zxy"><testcase classname="tests.test_knowledge_import_pipeline" name="test_web_import_uses_requested_actual_body_with_fetch_time_and_truncation" time="0.004"><failure message="ModuleNotFoundError: No module named 'app.knowledge.importing'">wire = {'calls': [], 'body': {'results': [{'url': 'https://example.com/', 'content': 'summary', 'raw_content': 'body'}], 'usage': {'credits': 1}}, 'status': 200, 'delay': 0}
+
+    @pytest.mark.anyio
+    async def test_web_import_uses_requested_actual_body_with_fetch_time_and_truncation(wire):
+&gt;       from app.knowledge.importing import fetch_web
+E       ModuleNotFoundError: No module named 'app.knowledge.importing'
+
+tests\test_knowledge_import_pipeline.py:15: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_knowledge_import_pipeline" name="test_summary_or_unrequested_redirect_cannot_be_imported[row0]" time="0.013"><failure message="ModuleNotFoundError: No module named 'app.knowledge.importing'">wire = {'calls': [], 'body': {'results': [{'url': 'https://example.com/', 'content': 'summary', 'raw_content': 'body'}], 'usage': {'credits': 1}}, 'status': 200, 'delay': 0}
+row = {'url': 'https://example.com/', 'content': 'A summary cannot become a document'}
+
+    @pytest.mark.anyio
+    @pytest.mark.parametrize('row',[
+        {'url':'https://example.com/','content':'A summary cannot become a document'},
+        {'url':'http://127.0.0.1/private','raw_content':'private redirect'},
+        {'url':'https://different.example/','raw_content':'unrequested redirect'},
+    ])
+    async def test_summary_or_unrequested_redirect_cannot_be_imported(wire,row):
+&gt;       from app.knowledge.importing import fetch_web
+E       ModuleNotFoundError: No module named 'app.knowledge.importing'
+
+tests\test_knowledge_import_pipeline.py:35: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_knowledge_import_pipeline" name="test_summary_or_unrequested_redirect_cannot_be_imported[row1]" time="0.002"><failure message="ModuleNotFoundError: No module named 'app.knowledge.importing'">wire = {'calls': [], 'body': {'results': [{'url': 'https://example.com/', 'content': 'summary', 'raw_content': 'body'}], 'usage': {'credits': 1}}, 'status': 200, 'delay': 0}
+row = {'url': 'http://127.0.0.1/private', 'raw_content': 'private redirect'}
+
+    @pytest.mark.anyio
+    @pytest.mark.parametrize('row',[
+        {'url':'https://example.com/','content':'A summary cannot become a document'},
+        {'url':'http://127.0.0.1/private','raw_content':'private redirect'},
+        {'url':'https://different.example/','raw_content':'unrequested redirect'},
+    ])
+    async def test_summary_or_unrequested_redirect_cannot_be_imported(wire,row):
+&gt;       from app.knowledge.importing import fetch_web
+E       ModuleNotFoundError: No module named 'app.knowledge.importing'
+
+tests\test_knowledge_import_pipeline.py:35: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_knowledge_import_pipeline" name="test_summary_or_unrequested_redirect_cannot_be_imported[row2]" time="0.002"><failure message="ModuleNotFoundError: No module named 'app.knowledge.importing'">wire = {'calls': [], 'body': {'results': [{'url': 'https://example.com/', 'content': 'summary', 'raw_content': 'body'}], 'usage': {'credits': 1}}, 'status': 200, 'delay': 0}
+row = {'url': 'https://different.example/', 'raw_content': 'unrequested redirect'}
+
+    @pytest.mark.anyio
+    @pytest.mark.parametrize('row',[
+        {'url':'https://example.com/','content':'A summary cannot become a document'},
+        {'url':'http://127.0.0.1/private','raw_content':'private redirect'},
+        {'url':'https://different.example/','raw_content':'unrequested redirect'},
+    ])
+    async def test_summary_or_unrequested_redirect_cannot_be_imported(wire,row):
+&gt;       from app.knowledge.importing import fetch_web
+E       ModuleNotFoundError: No module named 'app.knowledge.importing'
+
+tests\test_knowledge_import_pipeline.py:35: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_knowledge_import_pipeline" name="test_parsing_checkpoint_survives_process_reconstruction_without_new_revision_or_file_read" time="0.990"><failure message="ModuleNotFoundError: No module named 'app.knowledge.importing'">repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x0000013ED57CB770&gt;
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000013ED57ECC00&gt;
+
+    def test_parsing_checkpoint_survives_process_reconstruction_without_new_revision_or_file_read(repo,monkeypatch):
+&gt;       from app.knowledge.importing import ImportPipeline
+E       ModuleNotFoundError: No module named 'app.knowledge.importing'
+
+tests\test_knowledge_import_pipeline.py:41: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_knowledge_import_pipeline" name="test_staging_commit_failure_rolls_back_and_retry_is_deterministic" time="0.213"><failure message="ModuleNotFoundError: No module named 'app.knowledge.importing'">repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x0000013ED580B9D0&gt;
+
+    def test_staging_commit_failure_rolls_back_and_retry_is_deterministic(repo):
+&gt;       from app.knowledge.importing import ImportPipeline
+E       ModuleNotFoundError: No module named 'app.knowledge.importing'
+
+tests\test_knowledge_import_pipeline.py:61: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_knowledge_import_pipeline" name="test_total_text_limit_and_changed_file_are_rejected_before_embedding" time="0.197"><failure message="ModuleNotFoundError: No module named 'app.knowledge.importing'">repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x0000013ED580AE90&gt;
+
+    def test_total_text_limit_and_changed_file_are_rejected_before_embedding(repo):
+&gt;       from app.knowledge.importing import ImportPipeline
+E       ModuleNotFoundError: No module named 'app.knowledge.importing'
+
+tests\test_knowledge_import_pipeline.py:76: ModuleNotFoundError</failure></testcase></testsuite></testsuites>

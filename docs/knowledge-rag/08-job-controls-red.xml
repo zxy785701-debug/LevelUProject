@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="2" time="5.705" timestamp="2026-10-18T18:36:22.974244+08:00" hostname="zxy"><testcase classname="tests.test_knowledge_jobs" name="test_cancel_and_manual_retry_preserve_operation_and_stop_late_results" time="2.528"><failure message="AttributeError: 'DurableJobs' object has no attribute 'cancel'">repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x0000022062EB74D0&gt;
+
+    def test_cancel_and_manual_retry_preserve_operation_and_stop_late_results(repo):
+        from app.knowledge.jobs import DurableJobs
+        result = submit(repo)
+        jobs = DurableJobs(repo.accounts, repo.config)
+        claim = jobs.claim('worker')
+        jobs.consume(claim,'model_calls',1,7)
+        jobs.advance(claim,'embedding',70)
+&gt;       with pytest.raises(AppError) as error: jobs.cancel('bob',result['id'])
+                                               ^^^^^^^^^^^
+E       AttributeError: 'DurableJobs' object has no attribute 'cancel'
+
+tests\test_knowledge_jobs.py:137: AttributeError</failure></testcase><testcase classname="tests.test_knowledge_jobs" name="test_retry_cannot_reset_deadline_or_bypass_deleted_documents" time="0.255"><failure message="AttributeError: 'DurableJobs' object has no attribute 'cancel'">repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x0000022062FB79D0&gt;
+
+    def test_retry_cannot_reset_deadline_or_bypass_deleted_documents(repo):
+        from app.knowledge.jobs import DurableJobs
+        from app.knowledge.database import Document, Job
+        result = submit(repo)
+        jobs = DurableJobs(repo.accounts, repo.config)
+&gt;       jobs.cancel('alice',result['id'])
+        ^^^^^^^^^^^
+E       AttributeError: 'DurableJobs' object has no attribute 'cancel'
+
+tests\test_knowledge_jobs.py:156: AttributeError</failure></testcase></testsuite></testsuites>

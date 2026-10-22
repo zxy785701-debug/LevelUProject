@@ -1,0 +1,54 @@
+INFO:     Started server process [3156]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8001 (Press CTRL+C to quit)
+[levelup] app.accounts.repository ai_finished operation=57e85f11-e41d-4f49-8341-8b2e48dfecba status=succeeded
+[levelup] app.accounts.repository ai_call operation=ad7a60af-d7a1-490c-b4b8-485676ddd9b4 kind=report minute_calls=4
+[levelup] app.accounts.repository ai_finished operation=ad7a60af-d7a1-490c-b4b8-485676ddd9b4 status=succeeded error_code=None
+[levelup] app.accounts.repository ai_finished operation=c418a56e-3ad5-4c2a-b2f4-86e6e80a7a69 status=succeeded
+[levelup] app.accounts.repository ai_call operation=0e26389b-ffc5-4e7f-9e84-6cd83cefc2ce kind=report minute_calls=4
+[levelup] app.accounts.repository ai_finished operation=0e26389b-ffc5-4e7f-9e84-6cd83cefc2ce status=succeeded error_code=None
+[levelup] app.accounts.repository ai_finished operation=d901cd2b-7164-4624-afaf-e8de1e1623de status=succeeded
+[levelup] app.accounts.repository ai_finished operation=8f875a96-8988-43dd-b42d-292d8350c2d0 status=succeeded
+[levelup] app.accounts.repository ai_call operation=d0a32012-b556-4d5c-8953-68f67b6b83ca kind=material minute_calls=1
+[levelup] app.accounts.repository ai_finished operation=d0a32012-b556-4d5c-8953-68f67b6b83ca status=succeeded error_code=None
+[levelup] app.accounts.repository ai_finished operation=07089d36-f3d8-4c14-b333-be54b3e3acab status=succeeded
+[levelup] app.accounts.repository ai_call operation=42de012d-a088-40f7-950d-194b02766877 kind=report minute_calls=4
+[levelup] app.accounts.repository ai_finished operation=42de012d-a088-40f7-950d-194b02766877 status=succeeded error_code=None
+[levelup] app.accounts.repository ai_finished operation=242a58fc-b706-444f-a9f5-009ac790cab5 status=succeeded
+[levelup] app.accounts.repository ai_call operation=41f7690d-25ac-4c47-a261-dd4a5f71a89a kind=period minute_calls=4
+[levelup] app.accounts.repository ai_finished operation=41f7690d-25ac-4c47-a261-dd4a5f71a89a status=succeeded error_code=None
+[levelup] app.accounts.repository ai_finished operation=43263f3b-7c67-460c-b0d0-245d85b9245a status=succeeded
+[levelup] app.accounts.repository ai_call operation=b823a6e4-eb67-4702-850e-ee48dcd86910 kind=report minute_calls=4
+[levelup] app.accounts.repository ai_finished operation=b823a6e4-eb67-4702-850e-ee48dcd86910 status=succeeded error_code=None
+[levelup] app.accounts.repository ai_finished operation=911d58d3-9c72-4ff4-8185-386578ccfad6 status=succeeded
+[levelup] app.accounts.repository ai_call operation=efc8198d-b68e-4ed4-960c-011fc9d19c87 kind=report minute_calls=4
+[levelup] app.accounts.repository ai_finished operation=efc8198d-b68e-4ed4-960c-011fc9d19c87 status=succeeded error_code=None
+[levelup] app.accounts.repository ai_finished operation=be6a8b62-90c8-48c9-bf9b-7f5437d9200c status=succeeded
+[levelup] app.accounts.repository ai_finished operation=795d78af-a711-492b-9f0f-c4908bca6fce status=succeeded
+[levelup] app.accounts.repository ai_call operation=877bb219-5db2-445d-9367-49b79572f663 kind=material minute_calls=1
+[levelup] app.accounts.repository ai_finished operation=877bb219-5db2-445d-9367-49b79572f663 status=succeeded error_code=None
+[levelup] app.accounts.repository ai_finished operation=65ab456a-29ea-4824-ad62-10c23bb53eff status=succeeded
+[levelup] app.accounts.repository ai_call operation=5b6fdc75-c5ca-4fb7-94d6-8b7fffa24f88 kind=report minute_calls=4
+[levelup] app.accounts.repository ai_finished operation=5b6fdc75-c5ca-4fb7-94d6-8b7fffa24f88 status=succeeded error_code=None
+[levelup] app.accounts.repository ai_finished operation=131c3fa4-11f6-4018-9d97-43f18966f2e5 status=succeeded
+[levelup] app.accounts.repository ai_call operation=514dfe81-eb3f-4e3d-8843-807c14442c3d kind=period minute_calls=4
+[levelup] app.accounts.repository ai_finished operation=514dfe81-eb3f-4e3d-8843-807c14442c3d status=succeeded error_code=None
+[levelup] app.accounts.repository ai_finished operation=da8b5217-0141-4214-bff4-49c22420178d status=succeeded
+[levelup] app.accounts.repository ai_call operation=c14bbd59-33cb-4156-9c1f-2aeb00416041 kind=report minute_calls=4
+[levelup] app.accounts.repository ai_finished operation=c14bbd59-33cb-4156-9c1f-2aeb00416041 status=succeeded error_code=None
+[levelup] app.accounts.repository ai_finished operation=f8434422-6fbf-4d4d-96ed-b026d61c3df4 status=succeeded
+[levelup] app.accounts.repository ai_call operation=b7ddedad-bc03-4277-a32d-75c6c81ff19a kind=report minute_calls=4
+[levelup] app.accounts.repository ai_finished operation=b7ddedad-bc03-4277-a32d-75c6c81ff19a status=succeeded error_code=None
+[levelup] app.accounts.repository ai_finished operation=30207773-952d-4d16-b965-a48e0d11b120 status=succeeded
+[levelup] app.accounts.repository ai_finished operation=18738385-ea61-4887-900a-e64019c3e719 status=succeeded
+[levelup] app.accounts.repository ai_call operation=9ede8f83-721a-483b-a9cd-b1fbdedbe0a2 kind=report minute_calls=4
+[levelup] app.accounts.repository ai_finished operation=9ede8f83-721a-483b-a9cd-b1fbdedbe0a2 status=succeeded error_code=None
+[levelup] app.accounts.repository ai_call operation=6d741115-bbd3-4853-b84d-f713b4b7954f kind=material minute_calls=1
+[levelup] app.accounts.repository ai_finished operation=6d741115-bbd3-4853-b84d-f713b4b7954f status=succeeded error_code=None
+[levelup] app.accounts.repository ai_finished operation=5b955634-9cd9-470b-8ac8-b0f34eea64c0 status=succeeded
+[levelup] app.accounts.repository ai_call operation=f620663d-f042-4f7a-bd3a-33d065d2aa40 kind=report minute_calls=4
+[levelup] app.accounts.repository ai_finished operation=f620663d-f042-4f7a-bd3a-33d065d2aa40 status=succeeded error_code=None
+[levelup] app.accounts.repository ai_finished operation=8d67d408-f0f8-4c11-b28a-e0a3f27d0056 status=succeeded
+[levelup] app.accounts.repository ai_call operation=3aa43f9f-5a01-4e20-ab2f-5365d39d3756 kind=period minute_calls=4
+[levelup] app.accounts.repository ai_finished operation=3aa43f9f-5a01-4e20-ab2f-5365d39d3756 status=succeeded error_code=None

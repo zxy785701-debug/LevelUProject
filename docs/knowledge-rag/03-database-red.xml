@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="4" failures="0" skipped="0" tests="4" time="1.366" timestamp="2026-10-18T18:10:28.235911+08:00" hostname="zxy"><testcase classname="tests.test_knowledge_database" name="test_incremental_schema_and_no_core_rewrite" time="0.004"><error message="failed on setup with &quot;ImportError: cannot import name 'database' from 'app.knowledge' (D:\nbproject\LevelUpProject\backend\app\knowledge\__init__.py)&quot;">@pytest.fixture
+    def db():
+&gt;       from app.knowledge import database as models
+E       ImportError: cannot import name 'database' from 'app.knowledge' (D:\nbproject\LevelUpProject\backend\app\knowledge\__init__.py)
+
+tests\test_knowledge_database.py:14: ImportError</error></testcase><testcase classname="tests.test_knowledge_database" name="test_revision_chunk_and_job_keys_are_unique" time="0.001"><error message="failed on setup with &quot;ImportError: cannot import name 'database' from 'app.knowledge' (D:\nbproject\LevelUpProject\backend\app\knowledge\__init__.py)&quot;">@pytest.fixture
+    def db():
+&gt;       from app.knowledge import database as models
+E       ImportError: cannot import name 'database' from 'app.knowledge' (D:\nbproject\LevelUpProject\backend\app\knowledge\__init__.py)
+
+tests\test_knowledge_database.py:14: ImportError</error></testcase><testcase classname="tests.test_knowledge_database" name="test_account_cascade_preserves_independent_cleanup_and_identity_usage" time="0.001"><error message="failed on setup with &quot;ImportError: cannot import name 'database' from 'app.knowledge' (D:\nbproject\LevelUpProject\backend\app\knowledge\__init__.py)&quot;">@pytest.fixture
+    def db():
+&gt;       from app.knowledge import database as models
+E       ImportError: cannot import name 'database' from 'app.knowledge' (D:\nbproject\LevelUpProject\backend\app\knowledge\__init__.py)
+
+tests\test_knowledge_database.py:14: ImportError</error></testcase><testcase classname="tests.test_knowledge_database" name="test_empty_knowledge_downgrade_is_safe_but_nonempty_is_refused" time="0.001"><error message="failed on setup with &quot;ImportError: cannot import name 'database' from 'app.knowledge' (D:\nbproject\LevelUpProject\backend\app\knowledge\__init__.py)&quot;">@pytest.fixture
+    def db():
+&gt;       from app.knowledge import database as models
+E       ImportError: cannot import name 'database' from 'app.knowledge' (D:\nbproject\LevelUpProject\backend\app\knowledge\__init__.py)
+
+tests\test_knowledge_database.py:14: ImportError</error></testcase></testsuite></testsuites>

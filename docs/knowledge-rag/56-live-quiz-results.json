@@ -1,0 +1,1109 @@
+{
+  "provider_mode": "real-paid",
+  "database": "isolated-test",
+  "model_call_limit": 8,
+  "operations": [
+    {
+      "sample": "txt-import",
+      "kind": "import",
+      "status": "succeeded",
+      "error_code": null,
+      "seconds": 6.12
+    },
+    {
+      "sample": "docx-import",
+      "kind": "import",
+      "status": "succeeded",
+      "error_code": null,
+      "seconds": 1.54
+    },
+    {
+      "sample": "scope",
+      "kind": "prepare",
+      "status": "succeeded",
+      "error_code": null,
+      "seconds": 6.18
+    },
+    {
+      "sample": "quiz",
+      "kind": "quiz",
+      "status": "succeeded",
+      "error_code": null,
+      "seconds": 9.52
+    }
+  ],
+  "questions": [],
+  "scope": {
+    "kind": "knowledge_scope",
+    "id": "7c8d6324-546f-55f2-808d-ce50923475f5",
+    "version": 1,
+    "goal": "根据资料练习 Cookie、Session 的职责，以及极光试验系统的轮换周期",
+    "input_text": "根据资料练习 Cookie、Session 的职责，以及极光试验系统的轮换周期",
+    "documents": [
+      {
+        "id": "94d6670b-6a90-4989-ab9e-645c1ff8f9c8",
+        "title": "中文说明.txt",
+        "source": {
+          "filename": "中文说明.txt"
+        },
+        "version": 1,
+        "revision_id": "02cdd239-5df4-5bb9-8c58-1ed792ed60e5",
+        "source_type": "txt"
+      },
+      {
+        "id": "be6740cc-82f2-43e7-a275-413106641ab8",
+        "title": "极光新知识.docx",
+        "source": {
+          "filename": "极光新知识.docx"
+        },
+        "version": 1,
+        "revision_id": "9ec30a7d-b709-5b2e-a0c1-70927bca4f56",
+        "source_type": "docx"
+      }
+    ],
+    "supplement": false,
+    "status": "ready",
+    "content": {
+      "candidates": [
+        {
+          "id": "scope-cookie-session-aurora",
+          "topic": "Cookie、Session 职责与极光试验系统轮换周期",
+          "domain": "Web 会话机制与内部系统参数",
+          "description": "比较无状态请求下 Cookie 与 Session 的职责分工，并结合极光试验系统手册确认其轮换周期与项目信息。",
+          "focuses": [
+            {
+              "id": "focus-cookie-session",
+              "name": "Cookie 与 Session 的职责",
+              "description": "依据资料理解无状态请求、服务端 Session 保存会话信息、客户端 Cookie 携带会话标识的分工。",
+              "points": [
+                {
+                  "id": "point-stateless-request",
+                  "name": "无状态请求的含义",
+                  "evidence_ids": [
+                    "kb-6578e17d4797324b00de07a6948cb6467f24429d7f4bd38d2a8883b225636dc7"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-server-session",
+                  "name": "服务端 Session 保存会话信息",
+                  "evidence_ids": [
+                    "kb-6578e17d4797324b00de07a6948cb6467f24429d7f4bd38d2a8883b225636dc7"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-client-cookie",
+                  "name": "客户端 Cookie 携带会话标识",
+                  "evidence_ids": [
+                    "kb-6578e17d4797324b00de07a6948cb6467f24429d7f4bd38d2a8883b225636dc7"
+                  ],
+                  "evidence_status": "available"
+                }
+              ]
+            },
+            {
+              "id": "focus-aurora-rotation",
+              "name": "极光试验系统轮换周期",
+              "description": "依据手册片段确认极光试验系统的项目代号、轮换周期与测试负责人。",
+              "points": [
+                {
+                  "id": "point-aurora-code",
+                  "name": "项目代号 LUP7319",
+                  "evidence_ids": [
+                    "kb-a21cf07d43b6886746ac54101d15bb9cb4cd85dda0b8aa65a4753dcf620cadd4"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-aurora-cycle",
+                  "name": "轮换周期 83 分钟",
+                  "evidence_ids": [
+                    "kb-a21cf07d43b6886746ac54101d15bb9cb4cd85dda0b8aa65a4753dcf620cadd4"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "point-aurora-owner",
+                  "name": "测试负责人为蓝桥小组",
+                  "evidence_ids": [
+                    "kb-a21cf07d43b6886746ac54101d15bb9cb4cd85dda0b8aa65a4753dcf620cadd4"
+                  ],
+                  "evidence_status": "available"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "evidence": [
+      {
+        "id": "kb-6578e17d4797324b00de07a6948cb6467f24429d7f4bd38d2a8883b225636dc7",
+        "text": "演示请求是无状态的，每次独立处理。会话信息由服务端 Session 保存，Cookie 在客户端携带会话标识。",
+        "title": "中文说明.txt",
+        "knowledge": {
+          "block": 1,
+          "deleted": false,
+          "chunk_id": "6578e17d4797324b00de07a6948cb6467f24429d7f4bd38d2a8883b225636dc7",
+          "end_index": 55,
+          "document_id": "94d6670b-6a90-4989-ab9e-645c1ff8f9c8",
+          "header_path": [],
+          "revision_id": "02cdd239-5df4-5bb9-8c58-1ed792ed60e5",
+          "source_type": "txt",
+          "start_index": 0,
+          "chunk_position": 0,
+          "document_title": "中文说明.txt",
+          "version_changed": false,
+          "document_version": 1
+        },
+        "truncated": false,
+        "supplement": false,
+        "content_hash": "1544b987015432ae9a7e3f6f43d82d3ff414952af8df2f009be78bbd70674415",
+        "content_kind": "material",
+        "context_truncated": false,
+        "acquisition_status": "available"
+      },
+      {
+        "id": "kb-a21cf07d43b6886746ac54101d15bb9cb4cd85dda0b8aa65a4753dcf620cadd4",
+        "text": "极光试验系统手册：项目代号 LUP7319，轮换周期为83分钟；测试负责人是蓝桥小组。该设定仅用于新知识检索验收。",
+        "title": "极光新知识.docx",
+        "knowledge": {
+          "block": 1,
+          "deleted": false,
+          "chunk_id": "a21cf07d43b6886746ac54101d15bb9cb4cd85dda0b8aa65a4753dcf620cadd4",
+          "end_index": 57,
+          "document_id": "be6740cc-82f2-43e7-a275-413106641ab8",
+          "header_path": [],
+          "revision_id": "9ec30a7d-b709-5b2e-a0c1-70927bca4f56",
+          "source_type": "docx",
+          "start_index": 0,
+          "chunk_position": 0,
+          "document_title": "极光新知识.docx",
+          "version_changed": false,
+          "document_version": 1
+        },
+        "truncated": false,
+        "supplement": false,
+        "content_hash": "be6c3ea3a33426dabf0767efa14e5e8aa72026363bc8d436915fd0d112bf6ed8",
+        "content_kind": "material",
+        "context_truncated": false,
+        "acquisition_status": "available"
+      }
+    ],
+    "grounding": {
+      "status": "material_only",
+      "provider": null,
+      "reason_code": null
+    },
+    "recommended_candidate_ids": [
+      "scope-cookie-session-aurora"
+    ],
+    "created_at": "2026-10-19T00:39:07+00:00",
+    "expires_at": "2026-10-20T00:39:07+00:00"
+  },
+  "quiz": {
+    "id": "42e6b55a-9d81-475c-8a8c-956d5a2ecd80",
+    "quiz": {
+      "id": "f185f816-5352-487f-9424-c998270bb3fe",
+      "title": "Cookie、Session 职责与极光试验系统轮换周期",
+      "reward": {
+        "xp": 10,
+        "coins": 2
+      },
+      "source": {
+        "url": null,
+        "type": "knowledge_base",
+        "title": "我的知识库",
+        "segments": [],
+        "material_id": null
+      },
+      "summary": "本练习围绕无状态请求、Cookie 与 Session 的分工，以及极光试验系统的项目代号、轮换周期和测试负责人，覆盖所选全部知识点。",
+      "grounding": {
+        "status": "material_only",
+        "provider": null,
+        "reason_code": null,
+        "retrieved_at": null,
+        "check_version": "evidence-review-v2"
+      },
+      "questions": [
+        {
+          "id": "q1",
+          "stem": "根据资料，极光试验系统的轮换周期是多少？",
+          "type": "single",
+          "origin": null,
+          "answers": [],
+          "options": [
+            {
+              "id": "A",
+              "text": "38 分钟"
+            },
+            {
+              "id": "B",
+              "text": "83 分钟"
+            },
+            {
+              "id": "C",
+              "text": "7319 分钟"
+            },
+            {
+              "id": "D",
+              "text": "8 分钟"
+            }
+          ],
+          "grounding": {
+            "status": "material_only"
+          },
+          "source_ids": [],
+          "explanation": "",
+          "knowledge_point": "轮换周期 83 分钟"
+        },
+        {
+          "id": "q2",
+          "stem": "根据资料，关于无状态请求、Cookie 与 Session 的职责，下列说法正确的有哪些？",
+          "type": "multi",
+          "origin": null,
+          "answers": [],
+          "options": [
+            {
+              "id": "A",
+              "text": "演示请求是无状态的，每次独立处理"
+            },
+            {
+              "id": "B",
+              "text": "会话信息由服务端 Session 保存"
+            },
+            {
+              "id": "C",
+              "text": "Cookie 在客户端携带会话标识"
+            },
+            {
+              "id": "D",
+              "text": "会话信息全部保存在客户端 Cookie 中，服务端不保存"
+            }
+          ],
+          "grounding": {
+            "status": "material_only"
+          },
+          "source_ids": [],
+          "explanation": "",
+          "knowledge_point": "无状态请求与 Cookie/Session 职责"
+        },
+        {
+          "id": "q3",
+          "stem": "根据资料，极光试验系统的项目代号是 LUP7319，测试负责人是蓝桥小组。",
+          "type": "judge",
+          "origin": null,
+          "answers": [],
+          "options": [
+            {
+              "id": "A",
+              "text": "正确"
+            },
+            {
+              "id": "B",
+              "text": "错误"
+            }
+          ],
+          "grounding": {
+            "status": "material_only"
+          },
+          "source_ids": [],
+          "explanation": "",
+          "knowledge_point": "项目代号 LUP7319 与测试负责人"
+        }
+      ],
+      "created_at": "2026-10-19T00:39:16.408801Z",
+      "difficulty": "easy",
+      "source_text": "根据资料练习 Cookie、Session 的职责，以及极光试验系统的轮换周期",
+      "learning_scope": {
+        "focus": "综合学习所选主题，兼顾每个主题",
+        "topic": "Cookie、Session 职责与极光试验系统轮换周期",
+        "domain": "Web 会话机制与内部系统参数",
+        "points": [
+          "无状态请求的含义",
+          "项目代号 LUP7319",
+          "服务端 Session 保存会话信息",
+          "轮换周期 83 分钟",
+          "客户端 Cookie 携带会话标识",
+          "测试负责人为蓝桥小组"
+        ],
+        "focus_id": null,
+        "input_text": "根据资料练习 Cookie、Session 的职责，以及极光试验系统的轮换周期",
+        "candidate_id": null,
+        "scope_version": 1,
+        "preparation_id": "7c8d6324-546f-55f2-808d-ce50923475f5",
+        "scope_point_ids": [
+          "point-83b57cd9da9cb98340ad1212dba06604",
+          "point-b68acf9226bad37b47177d508b3fd86b",
+          "point-d7a3fb757850d9d0a4173d9e9cadeb48",
+          "point-3102c2a0f0175163bdf9a2c7de0bffe0",
+          "point-466cdff309ba0f1eec116afd91fc829a",
+          "point-725ad9dcedbec10c286953c1f19cf9d8"
+        ],
+        "selected_topics": [
+          {
+            "topic": "Cookie、Session 职责与极光试验系统轮换周期",
+            "domain": "Web 会话机制与内部系统参数",
+            "candidate_id": "scope-cookie-session-aurora",
+            "scope_point_ids": [
+              "point-83b57cd9da9cb98340ad1212dba06604",
+              "point-b68acf9226bad37b47177d508b3fd86b",
+              "point-d7a3fb757850d9d0a4173d9e9cadeb48",
+              "point-3102c2a0f0175163bdf9a2c7de0bffe0",
+              "point-466cdff309ba0f1eec116afd91fc829a",
+              "point-725ad9dcedbec10c286953c1f19cf9d8"
+            ]
+          }
+        ]
+      }
+    },
+    "mode": "new",
+    "answers": [],
+    "cursor": 0,
+    "pending_ms": 0,
+    "started_at": "2026-10-19T00:39:17+00:00",
+    "completed_at": null,
+    "report": null,
+    "review_keys": []
+  },
+  "validated_quiz": {
+    "id": "f185f816-5352-487f-9424-c998270bb3fe",
+    "title": "Cookie、Session 职责与极光试验系统轮换周期",
+    "reward": null,
+    "source": {
+      "url": null,
+      "type": "knowledge_base",
+      "title": "我的知识库",
+      "segments": [
+        {
+          "id": "kb-6578e17d4797324b00de07a6948cb6467f24429d7f4bd38d2a8883b225636dc7",
+          "end": null,
+          "url": null,
+          "page": null,
+          "text": "演示请求是无状态的，每次独立处理。会话信息由服务端 Session 保存，Cookie 在客户端携带会话标识。",
+          "start": null,
+          "title": "中文说明.txt",
+          "knowledge": {
+            "block": 1,
+            "deleted": false,
+            "chunk_id": "6578e17d4797324b00de07a6948cb6467f24429d7f4bd38d2a8883b225636dc7",
+            "end_index": 55,
+            "document_id": "94d6670b-6a90-4989-ab9e-645c1ff8f9c8",
+            "header_path": [],
+            "revision_id": "02cdd239-5df4-5bb9-8c58-1ed792ed60e5",
+            "source_type": "txt",
+            "start_index": 0,
+            "chunk_position": 0,
+            "document_title": "中文说明.txt",
+            "version_changed": false,
+            "document_version": 1
+          },
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "1544b987015432ae9a7e3f6f43d82d3ff414952af8df2f009be78bbd70674415",
+          "content_kind": "material",
+          "original_url": null,
+          "published_at": null,
+          "retrieved_at": null,
+          "source_chars": null,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "kb-a21cf07d43b6886746ac54101d15bb9cb4cd85dda0b8aa65a4753dcf620cadd4",
+          "end": null,
+          "url": null,
+          "page": null,
+          "text": "极光试验系统手册：项目代号 LUP7319，轮换周期为83分钟；测试负责人是蓝桥小组。该设定仅用于新知识检索验收。",
+          "start": null,
+          "title": "极光新知识.docx",
+          "knowledge": {
+            "block": 1,
+            "deleted": false,
+            "chunk_id": "a21cf07d43b6886746ac54101d15bb9cb4cd85dda0b8aa65a4753dcf620cadd4",
+            "end_index": 57,
+            "document_id": "be6740cc-82f2-43e7-a275-413106641ab8",
+            "header_path": [],
+            "revision_id": "9ec30a7d-b709-5b2e-a0c1-70927bca4f56",
+            "source_type": "docx",
+            "start_index": 0,
+            "chunk_position": 0,
+            "document_title": "极光新知识.docx",
+            "version_changed": false,
+            "document_version": 1
+          },
+          "truncated": false,
+          "supplement": false,
+          "original_id": null,
+          "content_hash": "be6c3ea3a33426dabf0767efa14e5e8aa72026363bc8d436915fd0d112bf6ed8",
+          "content_kind": "material",
+          "original_url": null,
+          "published_at": null,
+          "retrieved_at": null,
+          "source_chars": null,
+          "original_quiz_id": null,
+          "context_truncated": false,
+          "acquisition_status": "available"
+        }
+      ],
+      "material_id": null
+    },
+    "summary": "本练习围绕无状态请求、Cookie 与 Session 的分工，以及极光试验系统的项目代号、轮换周期和测试负责人，覆盖所选全部知识点。",
+    "grounding": {
+      "status": "material_only",
+      "provider": null,
+      "reason_code": null,
+      "retrieved_at": null,
+      "check_version": "evidence-review-v2"
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "stem": "根据资料，极光试验系统的轮换周期是多少？",
+        "type": "single",
+        "origin": null,
+        "answers": [
+          "B"
+        ],
+        "options": [
+          {
+            "id": "A",
+            "text": "38 分钟"
+          },
+          {
+            "id": "B",
+            "text": "83 分钟"
+          },
+          {
+            "id": "C",
+            "text": "7319 分钟"
+          },
+          {
+            "id": "D",
+            "text": "8 分钟"
+          }
+        ],
+        "grounding": {
+          "status": "material_only",
+          "provider": null,
+          "reason_code": null,
+          "retrieved_at": null,
+          "check_version": "evidence-review-v2"
+        },
+        "source_ids": [
+          "kb-a21cf07d43b6886746ac54101d15bb9cb4cd85dda0b8aa65a4753dcf620cadd4"
+        ],
+        "explanation": "极光试验系统手册明确写明：项目代号 LUP7319，轮换周期为83分钟；测试负责人是蓝桥小组。因此轮换周期是83分钟，其余数值均无资料支持。",
+        "knowledge_point": "轮换周期 83 分钟"
+      },
+      {
+        "id": "q2",
+        "stem": "根据资料，关于无状态请求、Cookie 与 Session 的职责，下列说法正确的有哪些？",
+        "type": "multi",
+        "origin": null,
+        "answers": [
+          "A",
+          "B",
+          "C"
+        ],
+        "options": [
+          {
+            "id": "A",
+            "text": "演示请求是无状态的，每次独立处理"
+          },
+          {
+            "id": "B",
+            "text": "会话信息由服务端 Session 保存"
+          },
+          {
+            "id": "C",
+            "text": "Cookie 在客户端携带会话标识"
+          },
+          {
+            "id": "D",
+            "text": "会话信息全部保存在客户端 Cookie 中，服务端不保存"
+          }
+        ],
+        "grounding": {
+          "status": "material_only",
+          "provider": null,
+          "reason_code": null,
+          "retrieved_at": null,
+          "check_version": "evidence-review-v2"
+        },
+        "source_ids": [
+          "kb-6578e17d4797324b00de07a6948cb6467f24429d7f4bd38d2a8883b225636dc7"
+        ],
+        "explanation": "资料说明：演示请求是无状态的，每次独立处理；会话信息由服务端 Session 保存，Cookie 在客户端携带会话标识。D 项与“会话信息由服务端 Session 保存”相矛盾，故错误。",
+        "knowledge_point": "无状态请求与 Cookie/Session 职责"
+      },
+      {
+        "id": "q3",
+        "stem": "根据资料，极光试验系统的项目代号是 LUP7319，测试负责人是蓝桥小组。",
+        "type": "judge",
+        "origin": null,
+        "answers": [
+          "A"
+        ],
+        "options": [
+          {
+            "id": "A",
+            "text": "正确"
+          },
+          {
+            "id": "B",
+            "text": "错误"
+          }
+        ],
+        "grounding": {
+          "status": "material_only",
+          "provider": null,
+          "reason_code": null,
+          "retrieved_at": null,
+          "check_version": "evidence-review-v2"
+        },
+        "source_ids": [
+          "kb-a21cf07d43b6886746ac54101d15bb9cb4cd85dda0b8aa65a4753dcf620cadd4"
+        ],
+        "explanation": "极光试验系统手册写明：项目代号 LUP7319，轮换周期为83分钟；测试负责人是蓝桥小组。题干两项表述均与资料一致，故判断为正确。",
+        "knowledge_point": "项目代号 LUP7319 与测试负责人"
+      }
+    ],
+    "created_at": "2026-10-19T00:39:16.408801Z",
+    "difficulty": "easy",
+    "source_text": "根据资料练习 Cookie、Session 的职责，以及极光试验系统的轮换周期",
+    "learning_scope": {
+      "focus": "综合学习所选主题，兼顾每个主题",
+      "topic": "Cookie、Session 职责与极光试验系统轮换周期",
+      "domain": "Web 会话机制与内部系统参数",
+      "points": [
+        "无状态请求的含义",
+        "项目代号 LUP7319",
+        "服务端 Session 保存会话信息",
+        "轮换周期 83 分钟",
+        "客户端 Cookie 携带会话标识",
+        "测试负责人为蓝桥小组"
+      ],
+      "focus_id": null,
+      "input_text": "根据资料练习 Cookie、Session 的职责，以及极光试验系统的轮换周期",
+      "candidate_id": null,
+      "scope_version": 1,
+      "preparation_id": "7c8d6324-546f-55f2-808d-ce50923475f5",
+      "scope_point_ids": [
+        "point-83b57cd9da9cb98340ad1212dba06604",
+        "point-b68acf9226bad37b47177d508b3fd86b",
+        "point-d7a3fb757850d9d0a4173d9e9cadeb48",
+        "point-3102c2a0f0175163bdf9a2c7de0bffe0",
+        "point-466cdff309ba0f1eec116afd91fc829a",
+        "point-725ad9dcedbec10c286953c1f19cf9d8"
+      ],
+      "selected_topics": [
+        {
+          "topic": "Cookie、Session 职责与极光试验系统轮换周期",
+          "domain": "Web 会话机制与内部系统参数",
+          "candidate_id": "scope-cookie-session-aurora",
+          "scope_point_ids": [
+            "point-83b57cd9da9cb98340ad1212dba06604",
+            "point-b68acf9226bad37b47177d508b3fd86b",
+            "point-d7a3fb757850d9d0a4173d9e9cadeb48",
+            "point-3102c2a0f0175163bdf9a2c7de0bffe0",
+            "point-466cdff309ba0f1eec116afd91fc829a",
+            "point-725ad9dcedbec10c286953c1f19cf9d8"
+          ]
+        }
+      ]
+    }
+  },
+  "completed_session": {
+    "id": "42e6b55a-9d81-475c-8a8c-956d5a2ecd80",
+    "quiz": {
+      "id": "f185f816-5352-487f-9424-c998270bb3fe",
+      "title": "Cookie、Session 职责与极光试验系统轮换周期",
+      "reward": {
+        "xp": 10,
+        "coins": 2
+      },
+      "source": {
+        "url": null,
+        "type": "knowledge_base",
+        "title": "我的知识库",
+        "segments": [
+          {
+            "id": "kb-6578e17d4797324b00de07a6948cb6467f24429d7f4bd38d2a8883b225636dc7",
+            "end": null,
+            "url": null,
+            "page": null,
+            "text": "演示请求是无状态的，每次独立处理。会话信息由服务端 Session 保存，Cookie 在客户端携带会话标识。",
+            "start": null,
+            "title": "中文说明.txt",
+            "knowledge": {
+              "block": 1,
+              "deleted": false,
+              "chunk_id": "6578e17d4797324b00de07a6948cb6467f24429d7f4bd38d2a8883b225636dc7",
+              "end_index": 55,
+              "document_id": "94d6670b-6a90-4989-ab9e-645c1ff8f9c8",
+              "header_path": [],
+              "revision_id": "02cdd239-5df4-5bb9-8c58-1ed792ed60e5",
+              "source_type": "txt",
+              "start_index": 0,
+              "chunk_position": 0,
+              "document_title": "中文说明.txt",
+              "version_changed": false,
+              "document_version": 1
+            },
+            "truncated": false,
+            "supplement": false,
+            "original_id": null,
+            "content_hash": "1544b987015432ae9a7e3f6f43d82d3ff414952af8df2f009be78bbd70674415",
+            "content_kind": "material",
+            "original_url": null,
+            "published_at": null,
+            "retrieved_at": null,
+            "source_chars": null,
+            "original_quiz_id": null,
+            "context_truncated": false,
+            "acquisition_status": "available"
+          },
+          {
+            "id": "kb-a21cf07d43b6886746ac54101d15bb9cb4cd85dda0b8aa65a4753dcf620cadd4",
+            "end": null,
+            "url": null,
+            "page": null,
+            "text": "极光试验系统手册：项目代号 LUP7319，轮换周期为83分钟；测试负责人是蓝桥小组。该设定仅用于新知识检索验收。",
+            "start": null,
+            "title": "极光新知识.docx",
+            "knowledge": {
+              "block": 1,
+              "deleted": false,
+              "chunk_id": "a21cf07d43b6886746ac54101d15bb9cb4cd85dda0b8aa65a4753dcf620cadd4",
+              "end_index": 57,
+              "document_id": "be6740cc-82f2-43e7-a275-413106641ab8",
+              "header_path": [],
+              "revision_id": "9ec30a7d-b709-5b2e-a0c1-70927bca4f56",
+              "source_type": "docx",
+              "start_index": 0,
+              "chunk_position": 0,
+              "document_title": "极光新知识.docx",
+              "version_changed": false,
+              "document_version": 1
+            },
+            "truncated": false,
+            "supplement": false,
+            "original_id": null,
+            "content_hash": "be6c3ea3a33426dabf0767efa14e5e8aa72026363bc8d436915fd0d112bf6ed8",
+            "content_kind": "material",
+            "original_url": null,
+            "published_at": null,
+            "retrieved_at": null,
+            "source_chars": null,
+            "original_quiz_id": null,
+            "context_truncated": false,
+            "acquisition_status": "available"
+          }
+        ],
+        "material_id": null
+      },
+      "summary": "本练习围绕无状态请求、Cookie 与 Session 的分工，以及极光试验系统的项目代号、轮换周期和测试负责人，覆盖所选全部知识点。",
+      "grounding": {
+        "status": "material_only",
+        "provider": null,
+        "reason_code": null,
+        "retrieved_at": null,
+        "check_version": "evidence-review-v2"
+      },
+      "questions": [
+        {
+          "id": "q1",
+          "stem": "根据资料，极光试验系统的轮换周期是多少？",
+          "type": "single",
+          "origin": null,
+          "answers": [
+            "B"
+          ],
+          "options": [
+            {
+              "id": "A",
+              "text": "38 分钟"
+            },
+            {
+              "id": "B",
+              "text": "83 分钟"
+            },
+            {
+              "id": "C",
+              "text": "7319 分钟"
+            },
+            {
+              "id": "D",
+              "text": "8 分钟"
+            }
+          ],
+          "grounding": {
+            "status": "material_only",
+            "provider": null,
+            "reason_code": null,
+            "retrieved_at": null,
+            "check_version": "evidence-review-v2"
+          },
+          "source_ids": [
+            "kb-a21cf07d43b6886746ac54101d15bb9cb4cd85dda0b8aa65a4753dcf620cadd4"
+          ],
+          "explanation": "极光试验系统手册明确写明：项目代号 LUP7319，轮换周期为83分钟；测试负责人是蓝桥小组。因此轮换周期是83分钟，其余数值均无资料支持。",
+          "knowledge_point": "轮换周期 83 分钟"
+        },
+        {
+          "id": "q2",
+          "stem": "根据资料，关于无状态请求、Cookie 与 Session 的职责，下列说法正确的有哪些？",
+          "type": "multi",
+          "origin": null,
+          "answers": [
+            "A",
+            "B",
+            "C"
+          ],
+          "options": [
+            {
+              "id": "A",
+              "text": "演示请求是无状态的，每次独立处理"
+            },
+            {
+              "id": "B",
+              "text": "会话信息由服务端 Session 保存"
+            },
+            {
+              "id": "C",
+              "text": "Cookie 在客户端携带会话标识"
+            },
+            {
+              "id": "D",
+              "text": "会话信息全部保存在客户端 Cookie 中，服务端不保存"
+            }
+          ],
+          "grounding": {
+            "status": "material_only",
+            "provider": null,
+            "reason_code": null,
+            "retrieved_at": null,
+            "check_version": "evidence-review-v2"
+          },
+          "source_ids": [
+            "kb-6578e17d4797324b00de07a6948cb6467f24429d7f4bd38d2a8883b225636dc7"
+          ],
+          "explanation": "资料说明：演示请求是无状态的，每次独立处理；会话信息由服务端 Session 保存，Cookie 在客户端携带会话标识。D 项与“会话信息由服务端 Session 保存”相矛盾，故错误。",
+          "knowledge_point": "无状态请求与 Cookie/Session 职责"
+        },
+        {
+          "id": "q3",
+          "stem": "根据资料，极光试验系统的项目代号是 LUP7319，测试负责人是蓝桥小组。",
+          "type": "judge",
+          "origin": null,
+          "answers": [
+            "A"
+          ],
+          "options": [
+            {
+              "id": "A",
+              "text": "正确"
+            },
+            {
+              "id": "B",
+              "text": "错误"
+            }
+          ],
+          "grounding": {
+            "status": "material_only",
+            "provider": null,
+            "reason_code": null,
+            "retrieved_at": null,
+            "check_version": "evidence-review-v2"
+          },
+          "source_ids": [
+            "kb-a21cf07d43b6886746ac54101d15bb9cb4cd85dda0b8aa65a4753dcf620cadd4"
+          ],
+          "explanation": "极光试验系统手册写明：项目代号 LUP7319，轮换周期为83分钟；测试负责人是蓝桥小组。题干两项表述均与资料一致，故判断为正确。",
+          "knowledge_point": "项目代号 LUP7319 与测试负责人"
+        }
+      ],
+      "created_at": "2026-10-19T00:39:16.408801Z",
+      "difficulty": "easy",
+      "source_text": "根据资料练习 Cookie、Session 的职责，以及极光试验系统的轮换周期",
+      "learning_scope": {
+        "focus": "综合学习所选主题，兼顾每个主题",
+        "topic": "Cookie、Session 职责与极光试验系统轮换周期",
+        "domain": "Web 会话机制与内部系统参数",
+        "points": [
+          "无状态请求的含义",
+          "项目代号 LUP7319",
+          "服务端 Session 保存会话信息",
+          "轮换周期 83 分钟",
+          "客户端 Cookie 携带会话标识",
+          "测试负责人为蓝桥小组"
+        ],
+        "focus_id": null,
+        "input_text": "根据资料练习 Cookie、Session 的职责，以及极光试验系统的轮换周期",
+        "candidate_id": null,
+        "scope_version": 1,
+        "preparation_id": "7c8d6324-546f-55f2-808d-ce50923475f5",
+        "scope_point_ids": [
+          "point-83b57cd9da9cb98340ad1212dba06604",
+          "point-b68acf9226bad37b47177d508b3fd86b",
+          "point-d7a3fb757850d9d0a4173d9e9cadeb48",
+          "point-3102c2a0f0175163bdf9a2c7de0bffe0",
+          "point-466cdff309ba0f1eec116afd91fc829a",
+          "point-725ad9dcedbec10c286953c1f19cf9d8"
+        ],
+        "selected_topics": [
+          {
+            "topic": "Cookie、Session 职责与极光试验系统轮换周期",
+            "domain": "Web 会话机制与内部系统参数",
+            "candidate_id": "scope-cookie-session-aurora",
+            "scope_point_ids": [
+              "point-83b57cd9da9cb98340ad1212dba06604",
+              "point-b68acf9226bad37b47177d508b3fd86b",
+              "point-d7a3fb757850d9d0a4173d9e9cadeb48",
+              "point-3102c2a0f0175163bdf9a2c7de0bffe0",
+              "point-466cdff309ba0f1eec116afd91fc829a",
+              "point-725ad9dcedbec10c286953c1f19cf9d8"
+            ]
+          }
+        ]
+      }
+    },
+    "mode": "new",
+    "answers": [
+      {
+        "selected": [
+          "B"
+        ],
+        "elapsed_ms": 1000,
+        "question_id": "q1"
+      },
+      {
+        "selected": [
+          "A",
+          "B",
+          "C"
+        ],
+        "elapsed_ms": 1000,
+        "question_id": "q2"
+      },
+      {
+        "question_id": "q3",
+        "selected": [
+          "A"
+        ],
+        "elapsed_ms": 1000
+      }
+    ],
+    "cursor": 2,
+    "pending_ms": 0,
+    "started_at": "2026-10-19T00:39:17+00:00",
+    "completed_at": "2026-10-19T00:39:17.385463+00:00",
+    "report": null,
+    "review_keys": []
+  },
+  "answer_strategy": "Use the saved answer key only to exercise grading; inspect question facts and citations separately.",
+  "report_result": {
+    "status_code": 200,
+    "code": 0,
+    "data": {
+      "summary": [
+        "本轮共作答 3 题，全部答对，正确率 100%，用时约 3 秒。",
+        "答对内容覆盖轮换周期 83 分钟、无状态请求与 Cookie/Session 职责、项目代号 LUP7319 与测试负责人三个知识点。",
+        "本轮题目均基于所给资料，知识核实状态为仅材料支撑，答对不代表事实已联网核实。"
+      ],
+      "mastered_points": [
+        "轮换周期 83 分钟",
+        "无状态请求与 Cookie/Session 职责",
+        "项目代号 LUP7319 与测试负责人"
+      ],
+      "weak_points": [],
+      "suggestions": [
+        "回看资料原文，用自己的话复述“请求无状态、Session 存服务端、Cookie 携带会话标识”三者的分工。",
+        "把 83 分钟、LUP7319、蓝桥小组等参数整理成一张小卡片，隔天自测一次以巩固记忆。",
+        "注意区分“答对”与“已核实”：这些结论目前仅有材料支撑，引用前请对照原始资料确认。"
+      ],
+      "share_quote": "答对是理解的起点，复述才是掌握的证明。",
+      "quiz_id": "f185f816-5352-487f-9424-c998270bb3fe",
+      "stats": {
+        "total": 3,
+        "correct_count": 3,
+        "accuracy": 100,
+        "duration_ms": 3000,
+        "xp": 30,
+        "coins": 6,
+        "knowledge_points": [
+          {
+            "name": "轮换周期 83 分钟",
+            "total": 1,
+            "correct": 1,
+            "accuracy": 100
+          },
+          {
+            "name": "无状态请求与 Cookie/Session 职责",
+            "total": 1,
+            "correct": 1,
+            "accuracy": 100
+          },
+          {
+            "name": "项目代号 LUP7319 与测试负责人",
+            "total": 1,
+            "correct": 1,
+            "accuracy": 100
+          }
+        ],
+        "results": [
+          {
+            "question_id": "q1",
+            "is_correct": true
+          },
+          {
+            "question_id": "q2",
+            "is_correct": true
+          },
+          {
+            "question_id": "q3",
+            "is_correct": true
+          }
+        ]
+      },
+      "verification": {
+        "status": "material_only",
+        "counts": {
+          "material_only": 3
+        },
+        "rule": "正确率与知识核实状态不同；未核实和旧题库的未知状态不能升级为已核实。"
+      },
+      "source": {
+        "type": "knowledge_base",
+        "title": "我的知识库",
+        "material_id": null,
+        "url": null,
+        "segments": [
+          {
+            "id": "kb-6578e17d4797324b00de07a6948cb6467f24429d7f4bd38d2a8883b225636dc7",
+            "text": "演示请求是无状态的，每次独立处理。会话信息由服务端 Session 保存，Cookie 在客户端携带会话标识。",
+            "title": "中文说明.txt",
+            "url": null,
+            "original_url": null,
+            "page": null,
+            "start": null,
+            "end": null,
+            "supplement": false,
+            "content_kind": "material",
+            "retrieved_at": null,
+            "published_at": null,
+            "content_hash": "1544b987015432ae9a7e3f6f43d82d3ff414952af8df2f009be78bbd70674415",
+            "acquisition_status": "available",
+            "truncated": false,
+            "context_truncated": false,
+            "source_chars": null,
+            "original_id": null,
+            "original_quiz_id": null,
+            "knowledge": {
+              "document_id": "94d6670b-6a90-4989-ab9e-645c1ff8f9c8",
+              "revision_id": "02cdd239-5df4-5bb9-8c58-1ed792ed60e5",
+              "chunk_id": "6578e17d4797324b00de07a6948cb6467f24429d7f4bd38d2a8883b225636dc7",
+              "document_title": "中文说明.txt",
+              "source_type": "txt",
+              "document_version": 1,
+              "chunk_position": 0,
+              "header_path": [],
+              "start_index": 0,
+              "end_index": 55,
+              "block": 1,
+              "deleted": false,
+              "version_changed": false
+            }
+          },
+          {
+            "id": "kb-a21cf07d43b6886746ac54101d15bb9cb4cd85dda0b8aa65a4753dcf620cadd4",
+            "text": "极光试验系统手册：项目代号 LUP7319，轮换周期为83分钟；测试负责人是蓝桥小组。该设定仅用于新知识检索验收。",
+            "title": "极光新知识.docx",
+            "url": null,
+            "original_url": null,
+            "page": null,
+            "start": null,
+            "end": null,
+            "supplement": false,
+            "content_kind": "material",
+            "retrieved_at": null,
+            "published_at": null,
+            "content_hash": "be6c3ea3a33426dabf0767efa14e5e8aa72026363bc8d436915fd0d112bf6ed8",
+            "acquisition_status": "available",
+            "truncated": false,
+            "context_truncated": false,
+            "source_chars": null,
+            "original_id": null,
+            "original_quiz_id": null,
+            "knowledge": {
+              "document_id": "be6740cc-82f2-43e7-a275-413106641ab8",
+              "revision_id": "9ec30a7d-b709-5b2e-a0c1-70927bca4f56",
+              "chunk_id": "a21cf07d43b6886746ac54101d15bb9cb4cd85dda0b8aa65a4753dcf620cadd4",
+              "document_title": "极光新知识.docx",
+              "source_type": "docx",
+              "document_version": 1,
+              "chunk_position": 0,
+              "header_path": [],
+              "start_index": 0,
+              "end_index": 57,
+              "block": 1,
+              "deleted": false,
+              "version_changed": false
+            }
+          }
+        ]
+      },
+      "learning_scope": {
+        "input_text": "根据资料练习 Cookie、Session 的职责，以及极光试验系统的轮换周期",
+        "topic": "Cookie、Session 职责与极光试验系统轮换周期",
+        "domain": "Web 会话机制与内部系统参数",
+        "focus": "综合学习所选主题，兼顾每个主题",
+        "points": [
+          "无状态请求的含义",
+          "项目代号 LUP7319",
+          "服务端 Session 保存会话信息",
+          "轮换周期 83 分钟",
+          "客户端 Cookie 携带会话标识",
+          "测试负责人为蓝桥小组"
+        ],
+        "preparation_id": "7c8d6324-546f-55f2-808d-ce50923475f5",
+        "scope_version": 1,
+        "candidate_id": null,
+        "focus_id": null,
+        "scope_point_ids": [
+          "point-83b57cd9da9cb98340ad1212dba06604",
+          "point-b68acf9226bad37b47177d508b3fd86b",
+          "point-d7a3fb757850d9d0a4173d9e9cadeb48",
+          "point-3102c2a0f0175163bdf9a2c7de0bffe0",
+          "point-466cdff309ba0f1eec116afd91fc829a",
+          "point-725ad9dcedbec10c286953c1f19cf9d8"
+        ],
+        "selected_topics": [
+          {
+            "candidate_id": "scope-cookie-session-aurora",
+            "topic": "Cookie、Session 职责与极光试验系统轮换周期",
+            "domain": "Web 会话机制与内部系统参数",
+            "scope_point_ids": [
+              "point-83b57cd9da9cb98340ad1212dba06604",
+              "point-b68acf9226bad37b47177d508b3fd86b",
+              "point-d7a3fb757850d9d0a4173d9e9cadeb48",
+              "point-3102c2a0f0175163bdf9a2c7de0bffe0",
+              "point-466cdff309ba0f1eec116afd91fc829a",
+              "point-725ad9dcedbec10c286953c1f19cf9d8"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "embedding_usage": {
+    "reserved": 0,
+    "actual": 89
+  },
+  "model_calls": 4,
+  "elapsed_seconds": 29.08
+}

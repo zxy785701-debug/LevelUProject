@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="4" skipped="0" tests="4" time="3.547" timestamp="2026-10-18T21:38:39.098737+08:00" hostname="zxy"><testcase classname="tests.test_knowledge_quiz_generation" name="test_knowledge_quiz_has_explicit_strict_policy_and_real_snapshots_without_fake_material" time="0.012"><failure message="AssertionError: assert ('topic' == 'knowledge_base'&#10;  &#10;  - knowledge_base&#10;  + topic)">@pytest.mark.anyio
+    async def test_knowledge_quiz_has_explicit_strict_policy_and_real_snapshots_without_fake_material():
+        ids = [context()['segments'][0]['id']]
+        gateway = SequenceGateway([{'status':'ready','quiz':quiz_payload()},review(ids=ids)])
+        result = await run(gateway)
+&gt;       assert result['source']['type']=='knowledge_base' and 'material_id' not in result['source']
+E       AssertionError: assert ('topic' == 'knowledge_base'
+E         
+E         - knowledge_base
+E         + topic)
+
+tests\test_knowledge_quiz_generation.py:31: AssertionError</failure></testcase><testcase classname="tests.test_knowledge_quiz_generation" name="test_unsupported_knowledge_questions_cannot_use_old_general_topic_fallback" time="0.007"><failure message="Failed: DID NOT RAISE AppError">@pytest.mark.anyio
+    async def test_unsupported_knowledge_questions_cannot_use_old_general_topic_fallback():
+        gateway = SequenceGateway([{'status':'ready','quiz':quiz_payload()},review(statuses=['unsupported']*3)])
+&gt;       with pytest.raises(AppError) as error: await run(gateway,budget=3)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE AppError
+
+tests\test_knowledge_quiz_generation.py:41: Failed</failure></testcase><testcase classname="tests.test_knowledge_quiz_generation" name="test_no_knowledge_evidence_is_rejected_before_model_and_missing_topic_coverage_fails" time="0.025"><failure message="IndexError: pop from empty list">@pytest.mark.anyio
+    async def test_no_knowledge_evidence_is_rejected_before_model_and_missing_topic_coverage_fails():
+        empty = context()
+        empty['segments']=[]
+        gateway = SequenceGateway([])
+&gt;       with pytest.raises(AppError) as error: await run(gateway,empty)
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_knowledge_quiz_generation.py:50: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_knowledge_quiz_generation.py:22: in run
+    return await generate_grounded(GenerateRequest(text='HTTP',question_count=3),ctx or context(),gateway,Settings(_env_file=None),
+app\quiz_grounding\generation.py:109: in generate_grounded
+    draft = await gateway.generate(QuizDraftResult, draft_prompt(body, context, evidence, correction=correction), check_draft)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;tests.test_grounding_generation.SequenceGateway object at 0x000001B47FB042D0&gt;
+schema = &lt;class 'app.quiz_grounding.models.QuizDraftResult'&gt;
+prompt = 'System: 你是严谨的出题者，模板 unverified-draft-v2。完整保留已确认领域、方向和知识点，不切换领域。\n出 3 道中文题，难度 easy，题型数量严格为 {"single": 1, "multi": 1, "...p1"]},{"candidate_id":"t2","topic":"会话状态","domain":"HTTP","scope_point_ids":["p2"]}]},"evidence":[],"correction":null}'
+check = &lt;function generate_grounded.&lt;locals&gt;.check_draft at 0x000001B47FAC7060&gt;
+
+    async def generate(self, schema, prompt, check=None):
+        self.calls.append((schema.__name__, prompt))
+&gt;       response = self.responses.pop(0)
+                   ^^^^^^^^^^^^^^^^^^^^^
+E       IndexError: pop from empty list
+
+tests\test_grounding_generation.py:39: IndexError</failure></testcase><testcase classname="tests.test_knowledge_quiz_generation" name="test_failed_network_does_not_mislabel_independently_supported_knowledge_as_unverified" time="0.033"><failure message="AssertionError: assert ('unverified' == 'material_only'&#10;  &#10;  - material_only&#10;  + unverified)">@pytest.mark.anyio
+    async def test_failed_network_does_not_mislabel_independently_supported_knowledge_as_unverified():
+        ctx = context()
+        ctx['supplement_failed']=True
+        gateway = SequenceGateway([{'status':'ready','quiz':quiz_payload()},review(ids=[ctx['segments'][0]['id']])])
+        result = await run(gateway,ctx)
+&gt;       assert result['grounding']['status']=='material_only' and result['grounding']['reason_code']=='SUPPLEMENT_FAILED'
+E       AssertionError: assert ('unverified' == 'material_only'
+E         
+E         - material_only
+E         + unverified)
+
+tests\test_knowledge_quiz_generation.py:64: AssertionError</failure></testcase></testsuite></testsuites>

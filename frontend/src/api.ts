@@ -14,14 +14,14 @@ export class ApiError extends Error {
 export class RequestScope {
   readonly epoch = credentials().epoch
   private closed = false
-  private tasks = new Set<ReturnType<typeof Taro.request>>()
+  private tasks = new Set<{ abort: () => void }>()
   private waits = new Set<() => void>()
   assertCurrent() {
     if (this.epoch !== credentials().epoch) throw new ApiError('账号已切换，请重新操作', 'SESSION_CHANGED')
     if (this.closed) throw new ApiError('已停止本页查询，后台任务仍可恢复', 'REQUEST_CANCELLED')
   }
-  track(task: ReturnType<typeof Taro.request>) { this.assertCurrent(); this.tasks.add(task) }
-  release(task: ReturnType<typeof Taro.request>) { this.tasks.delete(task) }
+  track(task: { abort: () => void }) { this.assertCurrent(); this.tasks.add(task) }
+  release(task: { abort: () => void }) { this.tasks.delete(task) }
   cancel() { this.closed = true; this.tasks.forEach(task => { if (typeof task.abort === 'function') task.abort() }); this.tasks.clear(); this.waits.forEach(stop => stop()); this.waits.clear() }
   sleep(ms: number) {
     this.assertCurrent()

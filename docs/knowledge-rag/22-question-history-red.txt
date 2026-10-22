@@ -1,0 +1,98 @@
+FFFF                                                                     [100%]
+================================== FAILURES ===================================
+_ test_full_question_publication_creates_history_but_no_learning_attempt_or_reward _
+
+index = <app.knowledge.index.VectorIndex object at 0x0000022A2C4501A0>
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x0000022A2C372E40>
+
+    def test_full_question_publication_creates_history_but_no_learning_attempt_or_reward(index,repo):
+        from app.knowledge.database import Question,Usage
+        from app.accounts.database import Attempt,Reward,User,Quota
+>       pipeline,claim,gateway,selected,row = setup_question(repo,index)
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_knowledge_question_history.py:34: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x0000022A2C372E40>
+index = <app.knowledge.index.VectorIndex object at 0x0000022A2C4501A0>
+
+    def setup_question(repo,index):
+>       from app.knowledge.question_pipeline import QuestionPipeline
+E       ModuleNotFoundError: No module named 'app.knowledge.question_pipeline'
+
+tests\test_knowledge_question_history.py:18: ModuleNotFoundError
+_ test_publish_commit_failure_restores_without_new_model_calls_or_duplicate_history _
+
+index = <app.knowledge.index.VectorIndex object at 0x0000022A4AEFD6D0>
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x0000022A4AEFE990>
+
+    def test_publish_commit_failure_restores_without_new_model_calls_or_duplicate_history(index,repo):
+        from app.knowledge.database import Question,Job
+>       pipeline,claim,gateway,selected,row = setup_question(repo,index)
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_knowledge_question_history.py:52: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x0000022A4AEFE990>
+index = <app.knowledge.index.VectorIndex object at 0x0000022A4AEFD6D0>
+
+    def setup_question(repo,index):
+>       from app.knowledge.question_pipeline import QuestionPipeline
+E       ModuleNotFoundError: No module named 'app.knowledge.question_pipeline'
+
+tests\test_knowledge_question_history.py:18: ModuleNotFoundError
+__ test_history_and_quiz_context_use_original_goal_and_version_not_ai_answer __
+
+index = <app.knowledge.index.VectorIndex object at 0x0000022A4B03DD10>
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x0000022A4B084410>
+
+    def test_history_and_quiz_context_use_original_goal_and_version_not_ai_answer(index,repo):
+        from app.knowledge.cleanup import LibraryManagement
+>       pipeline,claim,gateway,selected,row = setup_question(repo,index)
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_knowledge_question_history.py:73: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x0000022A4B084410>
+index = <app.knowledge.index.VectorIndex object at 0x0000022A4B03DD10>
+
+    def setup_question(repo,index):
+>       from app.knowledge.question_pipeline import QuestionPipeline
+E       ModuleNotFoundError: No module named 'app.knowledge.question_pipeline'
+
+tests\test_knowledge_question_history.py:18: ModuleNotFoundError
+_____ test_history_api_is_owned_and_available_when_new_entry_is_disabled ______
+
+knowledge_app = <fastapi.applications.FastAPI object at 0x0000022A4B087610>
+
+    @pytest.mark.anyio
+    async def test_history_api_is_owned_and_available_when_new_entry_is_disabled(knowledge_app):
+        from app.knowledge.questions import QuestionRepository
+        from app.knowledge.database import Question
+        from uuid import uuid4
+        repo = QuestionRepository(knowledge_app.state.accounts,knowledge_app.state.knowledge_config)
+        async with httpx.AsyncClient(transport=httpx.ASGITransport(app=knowledge_app),base_url='http://test') as client:
+            identity = await login(client)
+            uid = identity['user']['id']
+            seed(repo,uid=uid)
+            qid = str(uuid4())
+            with repo.database.session() as session:
+                session.add(Question(id=qid,user_id=uid,operation_id=str(uuid4()),question='ԭʼ����',documents=repo.select_documents(uid,['doc']),supplement=1,
+                    content={'status':'insufficient','paragraphs':[],'sources':[],'grounding':None,'conflicts':[],'reason_code':'INSUFFICIENT_KNOWLEDGE','message':'���ϲ���','network':{'requested':True,'status':'skipped','reason_code':None}}))
+            knowledge_app.state.knowledge_config.enabled=False
+            response = await client.get('/api/v1/knowledge/questions/'+qid)
+>           assert response.status_code==200,response.text
+E           AssertionError: {"code":"NOT_FOUND","message":"�ӿڲ�����","data":null}
+E           assert 404 == 200
+E            +  where 404 = <Response [404 Not Found]>.status_code
+
+tests\test_knowledge_question_history.py:109: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_knowledge_question_history.py::test_full_question_publication_creates_history_but_no_learning_attempt_or_reward
+FAILED tests/test_knowledge_question_history.py::test_publish_commit_failure_restores_without_new_model_calls_or_duplicate_history
+FAILED tests/test_knowledge_question_history.py::test_history_and_quiz_context_use_original_goal_and_version_not_ai_answer
+FAILED tests/test_knowledge_question_history.py::test_history_api_is_owned_and_available_when_new_entry_is_disabled
+4 failed in 14.53s

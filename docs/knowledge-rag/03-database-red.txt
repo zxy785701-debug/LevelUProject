@@ -1,0 +1,40 @@
+EEEE                                                                     [100%]
+=================================== ERRORS ====================================
+________ ERROR at setup of test_incremental_schema_and_no_core_rewrite ________
+
+    @pytest.fixture
+    def db():
+>       from app.knowledge import database as models
+E       ImportError: cannot import name 'database' from 'app.knowledge' (D:\nbproject\LevelUpProject\backend\app\knowledge\__init__.py)
+
+tests\test_knowledge_database.py:14: ImportError
+________ ERROR at setup of test_revision_chunk_and_job_keys_are_unique ________
+
+    @pytest.fixture
+    def db():
+>       from app.knowledge import database as models
+E       ImportError: cannot import name 'database' from 'app.knowledge' (D:\nbproject\LevelUpProject\backend\app\knowledge\__init__.py)
+
+tests\test_knowledge_database.py:14: ImportError
+_ ERROR at setup of test_account_cascade_preserves_independent_cleanup_and_identity_usage _
+
+    @pytest.fixture
+    def db():
+>       from app.knowledge import database as models
+E       ImportError: cannot import name 'database' from 'app.knowledge' (D:\nbproject\LevelUpProject\backend\app\knowledge\__init__.py)
+
+tests\test_knowledge_database.py:14: ImportError
+_ ERROR at setup of test_empty_knowledge_downgrade_is_safe_but_nonempty_is_refused _
+
+    @pytest.fixture
+    def db():
+>       from app.knowledge import database as models
+E       ImportError: cannot import name 'database' from 'app.knowledge' (D:\nbproject\LevelUpProject\backend\app\knowledge\__init__.py)
+
+tests\test_knowledge_database.py:14: ImportError
+=========================== short test summary info ===========================
+ERROR tests/test_knowledge_database.py::test_incremental_schema_and_no_core_rewrite
+ERROR tests/test_knowledge_database.py::test_revision_chunk_and_job_keys_are_unique
+ERROR tests/test_knowledge_database.py::test_account_cascade_preserves_independent_cleanup_and_identity_usage
+ERROR tests/test_knowledge_database.py::test_empty_knowledge_downgrade_is_safe_but_nonempty_is_refused
+4 errors in 1.36s

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="2" time="9.148" timestamp="2026-10-18T22:04:06.761164+08:00" hostname="zxy"><testcase classname="tests.test_knowledge_frontend_contract" name="test_material_choices_and_key_lookup_are_owned_and_hide_private_payloads" time="0.726"><failure message="AssertionError: {&quot;code&quot;:&quot;NOT_FOUND&quot;,&quot;message&quot;:&quot;接口不存在&quot;,&quot;data&quot;:null}&#10;assert 404 == 200&#10; +  where 404 = &lt;Response [404 Not Found]&gt;.status_code">knowledge_app = &lt;fastapi.applications.FastAPI object at 0x0000028758F64F50&gt;
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000028757E2B950&gt;
+
+    @pytest.mark.anyio
+    async def test_material_choices_and_key_lookup_are_owned_and_hide_private_payloads(knowledge_app,monkeypatch):
+        from app.accounts.database import Material
+        from app.knowledge.config import KnowledgeSettings
+        monkeypatch.setattr(KnowledgeSettings,'unavailable_reason',lambda self,**kw:None)
+        async with httpx.AsyncClient(transport=httpx.ASGITransport(app=knowledge_app),base_url='http://test') as client:
+            identity = await login(client)
+            uid = identity['user']['id']
+            with knowledge_app.state.accounts.database.session() as session:
+                for kind in ('txt','web','video'):
+                    session.add(Material(id=kind,user_id=uid,content={'title':'原材料'+kind,'source_type':kind,'segments':[{'id':'s','text':'private original text'}]}))
+            response = await client.get('/api/v1/knowledge/materials')
+&gt;           assert response.status_code==200,response.text
+E           AssertionError: {"code":"NOT_FOUND","message":"接口不存在","data":null}
+E           assert 404 == 200
+E            +  where 404 = &lt;Response [404 Not Found]&gt;.status_code
+
+tests\test_knowledge_frontend_contract.py:19: AssertionError</failure></testcase><testcase classname="tests.test_knowledge_frontend_contract" name="test_delete_returns_real_durable_cleanup_identity_and_owned_status" time="0.570"><failure message="KeyError: 'cleanup'">knowledge_app = &lt;fastapi.applications.FastAPI object at 0x0000028759194A50&gt;
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000028758F7E060&gt;
+
+    @pytest.mark.anyio
+    async def test_delete_returns_real_durable_cleanup_identity_and_owned_status(knowledge_app,monkeypatch):
+        from app.knowledge.config import KnowledgeSettings
+        monkeypatch.setattr(KnowledgeSettings,'unavailable_reason',lambda self,**kw:None)
+        async with httpx.AsyncClient(transport=httpx.ASGITransport(app=knowledge_app),base_url='http://test') as client:
+            await login(client)
+            queued = (await client.post('/api/v1/knowledge/documents/upload',files={'file':('a.txt',b'actual body')})).json()['data']
+            response = await client.delete('/api/v1/knowledge/documents/'+queued['document_id'])
+&gt;           cleanup = response.json()['data']['cleanup']
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           KeyError: 'cleanup'
+
+tests\test_knowledge_frontend_contract.py:39: KeyError</failure></testcase></testsuite></testsuites>

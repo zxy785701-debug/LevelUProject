@@ -94,6 +94,9 @@ export function Btn({
 }) {
   return (
     <Button
+      {...(process.env.TARO_ENV === 'h5' ? { role: 'button' } : { ariaRole: 'button' })}
+      aria-label={typeof children === 'string' ? children : undefined}
+      aria-disabled={disabled}
       className={`btn ${secondary ? 'secondary' : 'primary'} ${disabled ? 'is-disabled' : ''}`}
       disabled={disabled}
       onClick={disabled ? undefined : onClick}

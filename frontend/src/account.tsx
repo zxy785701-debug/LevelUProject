@@ -10,10 +10,12 @@ export function Mine({
   profile,
   go,
   future,
+  onKnowledge,
 }: {
   profile: { xp: number; coins: number; level: number; topics: number; streak: number }
   go: (s: 'settings') => void
   future: (s: string) => void
+  onKnowledge?: () => void
 }) {
   const { user, update } = useAuth()
   const [avatar, setAvatar] = useState(''), [editing, setEditing] = useState(false), [saving, setSaving] = useState(false)
@@ -100,7 +102,7 @@ export function Mine({
         title="私有知识库"
         sub="自己的笔记，自己的关卡"
         icon="folder"
-        onClick={() => future('私有知识库')}
+        onClick={onKnowledge || (() => future('私有知识库'))}
       />
       <Row
         title="好友挑战"

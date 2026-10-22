@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.918" timestamp="2026-10-18T22:07:28.120615+08:00" hostname="zxy"><testcase classname="tests.test_knowledge_launcher" name="test_optional_worker_exit_keeps_required_development_processes_alive" time="0.161"><failure message="AssertionError: The argument 'D:\nbproject\LevelUpProject\scripts\tests\knowledge-optional.ps1' to the -File parameter does not exist. Provide the path to an existing '.ps1' file as an argument to the -File parameter.&#10;  &#10;assert 4294770688 == 0&#10; +  where 4294770688 = CompletedProcess(args=['powershell', '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', 'D:\\nbproject\\LevelUpProje... -File parameter does not exist. Provide the path to an existing '.ps1' file as an argument to the -File parameter.\n&quot;).returncode">def test_optional_worker_exit_keeps_required_development_processes_alive():
+        root = Path(__file__).resolve().parents[2]
+        process = subprocess.run(['powershell','-NoProfile','-ExecutionPolicy','Bypass','-File',str(root/'scripts/tests/knowledge-optional.ps1')],
+            cwd=root,capture_output=True,text=True,timeout=30)
+&gt;       assert process.returncode==0,process.stderr
+E       AssertionError: The argument 'D:\nbproject\LevelUpProject\scripts\tests\knowledge-optional.ps1' to the -File parameter does not exist. Provide the path to an existing '.ps1' file as an argument to the -File parameter.
+E         
+E       assert 4294770688 == 0
+E        +  where 4294770688 = CompletedProcess(args=['powershell', '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', 'D:\\nbproject\\LevelUpProje... -File parameter does not exist. Provide the path to an existing '.ps1' file as an argument to the -File parameter.\n").returncode
+
+tests\test_knowledge_launcher.py:53: AssertionError</failure></testcase></testsuite></testsuites>

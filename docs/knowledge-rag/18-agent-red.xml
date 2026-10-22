@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="7" skipped="0" tests="7" time="7.970" timestamp="2026-10-18T20:50:08.288588+08:00" hostname="zxy"><testcase classname="tests.test_knowledge_agent" name="test_pure_knowledge_path_works_without_tavily_and_never_sends_private_text" time="0.007"><failure message="ModuleNotFoundError: No module named 'app.knowledge.retrieval'">wire = {'calls': [], 'body': {'results': [{'url': 'https://example.com/', 'content': 'summary', 'raw_content': 'body'}], 'usage': {'credits': 1}}, 'status': 200, 'delay': 0}
+
+    @pytest.mark.anyio
+    async def test_pure_knowledge_path_works_without_tavily_and_never_sends_private_text(wire):
+&gt;       from app.knowledge.retrieval import KnowledgeAgent
+E       ModuleNotFoundError: No module named 'app.knowledge.retrieval'
+
+tests\test_knowledge_agent.py:24: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_knowledge_agent" name="test_pure_web_and_mixed_use_official_tools_with_approved_dynamic_parameters" time="0.006"><failure message="ModuleNotFoundError: No module named 'app.knowledge.retrieval'">wire = {'calls': [], 'body': {'results': [{'url': 'https://example.com/', 'content': 'summary', 'raw_content': 'body'}], 'usage': {'credits': 1}}, 'status': 200, 'delay': 0}
+
+    @pytest.mark.anyio
+    async def test_pure_web_and_mixed_use_official_tools_with_approved_dynamic_parameters(wire):
+&gt;       from app.knowledge.retrieval import KnowledgeAgent
+E       ModuleNotFoundError: No module named 'app.knowledge.retrieval'
+
+tests\test_knowledge_agent.py:35: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_knowledge_agent" name="test_private_injection_cannot_expand_scope_or_public_parameters" time="0.024"><failure message="ModuleNotFoundError: No module named 'app.knowledge.retrieval'">wire = {'calls': [], 'body': {'results': [{'url': 'https://example.com/', 'content': 'summary', 'raw_content': 'body'}], 'usage': {'credits': 1}}, 'status': 200, 'delay': 0}
+
+    @pytest.mark.anyio
+    async def test_private_injection_cannot_expand_scope_or_public_parameters(wire):
+&gt;       from app.knowledge.retrieval import KnowledgeAgent
+E       ModuleNotFoundError: No module named 'app.knowledge.retrieval'
+
+tests\test_knowledge_agent.py:53: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_knowledge_agent" name="test_disabled_network_never_invokes_public_plan_or_tools" time="0.006"><failure message="ModuleNotFoundError: No module named 'app.knowledge.retrieval'">wire = {'calls': [], 'body': {'results': [{'url': 'https://example.com/', 'content': 'summary', 'raw_content': 'body'}], 'usage': {'credits': 1}}, 'status': 200, 'delay': 0}
+
+    @pytest.mark.anyio
+    async def test_disabled_network_never_invokes_public_plan_or_tools(wire):
+&gt;       from app.knowledge.retrieval import KnowledgeAgent
+E       ModuleNotFoundError: No module named 'app.knowledge.retrieval'
+
+tests\test_knowledge_agent.py:67: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_knowledge_agent" name="test_public_plan_is_built_without_document_content_and_parameters_are_pinned" time="0.006"><failure message="ModuleNotFoundError: No module named 'app.knowledge.retrieval'">wire = {'calls': [], 'body': {'results': [{'url': 'https://example.com/', 'content': 'summary', 'raw_content': 'body'}], 'usage': {'credits': 1}}, 'status': 200, 'delay': 0}
+
+    @pytest.mark.anyio
+    async def test_public_plan_is_built_without_document_content_and_parameters_are_pinned(wire):
+&gt;       from app.knowledge.retrieval import KnowledgeAgent
+E       ModuleNotFoundError: No module named 'app.knowledge.retrieval'
+
+tests\test_knowledge_agent.py:77: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_knowledge_agent" name="test_empty_repeated_attempts_and_all_tool_failures_still_spend_budget" time="0.005"><failure message="ModuleNotFoundError: No module named 'app.knowledge.retrieval'">wire = {'calls': [], 'body': {'results': [{'url': 'https://example.com/', 'content': 'summary', 'raw_content': 'body'}], 'usage': {'credits': 1}}, 'status': 200, 'delay': 0}
+
+    @pytest.mark.anyio
+    async def test_empty_repeated_attempts_and_all_tool_failures_still_spend_budget(wire):
+&gt;       from app.knowledge.retrieval import KnowledgeAgent
+E       ModuleNotFoundError: No module named 'app.knowledge.retrieval'
+
+tests\test_knowledge_agent.py:92: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_knowledge_agent" name="test_context_fairness_deduplication_and_honest_index_failure" time="0.005"><failure message="ModuleNotFoundError: No module named 'app.knowledge.retrieval'">wire = {'calls': [], 'body': {'results': [{'url': 'https://example.com/', 'content': 'summary', 'raw_content': 'body'}], 'usage': {'credits': 1}}, 'status': 200, 'delay': 0}
+
+    @pytest.mark.anyio
+    async def test_context_fairness_deduplication_and_honest_index_failure(wire):
+&gt;       from app.knowledge.retrieval import KnowledgeAgent
+E       ModuleNotFoundError: No module named 'app.knowledge.retrieval'
+
+tests\test_knowledge_agent.py:103: ModuleNotFoundError</failure></testcase></testsuite></testsuites>

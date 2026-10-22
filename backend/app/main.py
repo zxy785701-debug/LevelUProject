@@ -103,6 +103,8 @@ def create_app(settings: Settings | None = None, gateway=None, accounts=None, we
     app.include_router(feature_router)
     from .quiz_grounding.api import router as grounding_router
     app.include_router(grounding_router)
+    from .knowledge.api import router as knowledge_router
+    app.include_router(knowledge_router)
 
     return app
 

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="5" skipped="0" tests="5" time="5.870" timestamp="2026-10-18T21:42:51.108924+08:00" hostname="zxy"><testcase classname="tests.test_knowledge_quiz_publication" name="test_optional_store_transaction_rolls_back_and_old_default_still_commits" time="0.355"><failure message="TypeError: Accounts.store_quiz() got an unexpected keyword argument 'session'">repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x00000200F6D2A7B0&gt;
+
+    def test_optional_store_transaction_rolls_back_and_old_default_still_commits(repo):
+        from app.accounts.database import QuizRow,Attempt
+        quiz = sourced_quiz()
+        with pytest.raises(RuntimeError):
+            with repo.database.session() as session:
+&gt;               repo.accounts.store_quiz('alice',quiz,session=session)
+E               TypeError: Accounts.store_quiz() got an unexpected keyword argument 'session'
+
+tests\test_knowledge_quiz_publication.py:34: TypeError</failure></testcase><testcase classname="tests.test_knowledge_quiz_publication" name="test_quiz_job_publishes_one_original_session_and_refreshes_after_answers" time="1.068"><failure message="ModuleNotFoundError: No module named 'app.knowledge.quizzes'">index = &lt;app.knowledge.index.VectorIndex object at 0x00000200F7EC41A0&gt;
+repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x00000200F7D37890&gt;
+
+    def test_quiz_job_publishes_one_original_session_and_refreshes_after_answers(index,repo):
+        from app.accounts.database import Quota,Attempt
+&gt;       pipeline,claim,gateway,queued,body = setup_quiz(repo,index)
+                                             ^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_knowledge_quiz_publication.py:44: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x00000200F7D37890&gt;
+index = &lt;app.knowledge.index.VectorIndex object at 0x00000200F7EC41A0&gt;
+
+    def setup_quiz(repo,index):
+&gt;       from app.knowledge.quizzes import QuizPipeline
+E       ModuleNotFoundError: No module named 'app.knowledge.quizzes'
+
+tests\test_knowledge_quiz_publication.py:15: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_knowledge_quiz_publication" name="test_final_transaction_failure_reuses_validated_quiz_and_never_double_charges" time="0.151"><failure message="ModuleNotFoundError: No module named 'app.knowledge.quizzes'">index = &lt;app.knowledge.index.VectorIndex object at 0x0000020096A04A50&gt;
+repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x0000020096A05BD0&gt;
+
+    def test_final_transaction_failure_reuses_validated_quiz_and_never_double_charges(index,repo):
+        from app.knowledge.database import Job
+        from app.accounts.database import Attempt,Quota
+&gt;       pipeline,claim,gateway,queued,body = setup_quiz(repo,index)
+                                             ^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_knowledge_quiz_publication.py:62: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x0000020096A05BD0&gt;
+index = &lt;app.knowledge.index.VectorIndex object at 0x0000020096A04A50&gt;
+
+    def setup_quiz(repo,index):
+&gt;       from app.knowledge.quizzes import QuizPipeline
+E       ModuleNotFoundError: No module named 'app.knowledge.quizzes'
+
+tests\test_knowledge_quiz_publication.py:15: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_knowledge_quiz_publication" name="test_cancel_and_source_deletion_prevent_late_quiz_publication" time="0.171"><failure message="ModuleNotFoundError: No module named 'app.knowledge.quizzes'">index = &lt;app.knowledge.index.VectorIndex object at 0x0000020096A107D0&gt;
+repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x0000020096A410F0&gt;
+
+    def test_cancel_and_source_deletion_prevent_late_quiz_publication(index,repo):
+        from app.knowledge.cleanup import LibraryManagement
+        from app.accounts.database import Attempt
+&gt;       pipeline,claim,gateway,queued,body = setup_quiz(repo,index)
+                                             ^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_knowledge_quiz_publication.py:87: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x0000020096A410F0&gt;
+index = &lt;app.knowledge.index.VectorIndex object at 0x0000020096A107D0&gt;
+
+    def setup_quiz(repo,index):
+&gt;       from app.knowledge.quizzes import QuizPipeline
+E       ModuleNotFoundError: No module named 'app.knowledge.quizzes'
+
+tests\test_knowledge_quiz_publication.py:15: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_knowledge_quiz_publication" name="test_confirmation_rejects_changed_network_or_foreign_scope" time="0.152"><failure message="ModuleNotFoundError: No module named 'app.knowledge.quizzes'">index = &lt;app.knowledge.index.VectorIndex object at 0x0000020096A41BA0&gt;
+repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x0000020096A41F30&gt;
+
+    def test_confirmation_rejects_changed_network_or_foreign_scope(index,repo):
+&gt;       pipeline,claim,gateway,queued,body = setup_quiz(repo,index)
+                                             ^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_knowledge_quiz_publication.py:94: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x0000020096A41F30&gt;
+index = &lt;app.knowledge.index.VectorIndex object at 0x0000020096A41BA0&gt;
+
+    def setup_quiz(repo,index):
+&gt;       from app.knowledge.quizzes import QuizPipeline
+E       ModuleNotFoundError: No module named 'app.knowledge.quizzes'
+
+tests\test_knowledge_quiz_publication.py:15: ModuleNotFoundError</failure></testcase></testsuite></testsuites>

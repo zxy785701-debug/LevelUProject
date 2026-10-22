@@ -14,6 +14,7 @@ $frontendRoot = Join-Path $projectRoot 'frontend'
 $pythonPath = Join-Path $backendRoot '.venv/Scripts/python.exe'
 $taroPath = Join-Path $frontendRoot 'node_modules/@tarojs/cli/bin/taro'
 $ownedProcesses = @()
+$optionalWorkerId = 0
 
 function Test-LocalPort([int]$Port) {
     $connection = New-Object System.Net.Sockets.TcpClient
@@ -29,7 +30,8 @@ function Test-LevelUpBackend {
         return $spec.info.title -eq 'LevelUp API' -and
             $routes -contains '/api/v1/knowledge-map' -and
             $routes -contains '/api/v1/analytics' -and
-            $routes -contains '/api/v1/materials/document'
+            $routes -contains '/api/v1/materials/document' -and
+            $routes -contains '/api/v1/knowledge/capabilities'
     } catch { return $false }
 }
 
@@ -49,6 +51,26 @@ function Stop-OwnedProcess($Process) {
     }
 }
 
+function Get-RunningDevelopmentProcesses([object[]]$Children, [int]$OptionalWorkerId) {
+    foreach ($child in $Children) {
+        $child.Refresh()
+        if ($child.HasExited) {
+            if ($child.Id -eq $OptionalWorkerId) {
+                Write-Warning 'The optional knowledge executor stopped. Core learning and the frontend remain running; check backend/logs/start-knowledge.error.log.'
+                continue
+            }
+            throw "A development process stopped (exit $($child.ExitCode)). Check backend/logs and frontend/logs."
+        }
+        $child
+    }
+}
+
+function Get-KnowledgeWorkerPlan {
+    $output = & $pythonPath -m app.knowledge.worker --check
+    if ($LASTEXITCODE -ne 0) { throw 'Unable to check optional knowledge worker configuration.' }
+    return $output | ConvertFrom-Json
+}
+
 foreach ($requiredPath in @($pythonPath, $taroPath, (Join-Path $backendRoot '.env'))) {
     if (-not (Test-Path -LiteralPath $requiredPath -PathType Leaf)) {
         throw "Missing $requiredPath. Run scripts/setup.ps1 and configure backend/.env first."
@@ -66,6 +88,8 @@ if ($Check) {
     Write-Host 'Dependencies and backend/.env found; required ports checked.'
     Write-Host "Frontend target: $Target"
     Write-Host "Reuse existing compatible backend: $reuseBackend"
+    Push-Location -LiteralPath $backendRoot
+    try { Get-KnowledgeWorkerPlan | ConvertTo-Json -Compress } finally { Pop-Location }
     return
 }
 
@@ -74,9 +98,6 @@ $frontendLogRoot = Join-Path $frontendRoot 'logs'
 New-Item -ItemType Directory -Path $backendLogRoot, $frontendLogRoot -Force | Out-Null
 
 try {
-    if ($reuseBackend) {
-        Write-Host 'Using the existing compatible LevelUp backend on port 8000.'
-    } else {
         Write-Host 'Applying database migrations...'
         # PowerShell 5.1 can lose ExitCode when redirected processes are only polled.
         # Wait here so both zero and nonzero migration exits remain distinguishable.
@@ -89,6 +110,9 @@ try {
             throw "Database migration failed (exit $($migrationProcess.ExitCode)). Check MySQL and backend/.env. Details: $backendLogRoot/start-migrate.error.log"
         }
         $ownedProcesses = @($ownedProcesses | Where-Object { $_.Id -ne $migrationProcess.Id })
+    if ($reuseBackend) {
+        Write-Host 'Using the existing compatible LevelUp backend on port 8000.'
+    } else {
         $backendProcess = Start-LoggedProcess $pythonPath @('-m', 'uvicorn', 'app.main:app', '--host', '127.0.0.1', '--port', '8000', '--reload', '--reload-dir', 'app') $backendRoot (Join-Path $backendLogRoot 'start-backend')
         $ownedProcesses += $backendProcess
         $deadline = (Get-Date).AddSeconds(45)
@@ -99,6 +123,27 @@ try {
             }
             Start-Sleep -Milliseconds 500
         }
+    }
+
+    Push-Location -LiteralPath $backendRoot
+    try { $knowledgePlan = Get-KnowledgeWorkerPlan } finally { Pop-Location }
+    if ($knowledgePlan.start_worker) {
+        $workerState = $null
+        Push-Location -LiteralPath $backendRoot
+        try {
+            $stateOutput = & $pythonPath -m app.knowledge.worker --status
+            if ($LASTEXITCODE -eq 0) { $workerState = $stateOutput | ConvertFrom-Json }
+        } finally { Pop-Location }
+        if ($workerState -and $workerState.worker_running) {
+            Write-Host 'Using the existing knowledge executor; this launcher will not stop it.'
+        } else {
+            $knowledgeProcess = Start-LoggedProcess $pythonPath @('-m','app.knowledge.worker') $backendRoot (Join-Path $backendLogRoot 'start-knowledge')
+            $ownedProcesses += $knowledgeProcess
+            $optionalWorkerId = $knowledgeProcess.Id
+            Write-Host 'Knowledge executor started; activity is recorded in backend/logs/start-knowledge.error.log.'
+        }
+    } else {
+        Write-Host "Knowledge executor inactive: $($knowledgePlan.reason_code)"
     }
 
     $frontendProcess = Start-LoggedProcess $nodePath @("`"$taroPath`"", 'build', '--type', $Target, '--watch') $frontendRoot (Join-Path $frontendLogRoot "start-$Target")
@@ -113,12 +158,7 @@ try {
     Write-Host 'Keep this terminal open. Press Ctrl+C to stop the processes started here.'
 
     while ($true) {
-        foreach ($child in $ownedProcesses) {
-            $child.Refresh()
-            if ($child.HasExited) {
-                throw "A development process stopped (exit $($child.ExitCode)). Check backend/logs and frontend/logs."
-            }
-        }
+        $ownedProcesses = @(Get-RunningDevelopmentProcesses $ownedProcesses $optionalWorkerId)
         Start-Sleep -Milliseconds 500
     }
 } finally {

@@ -1,0 +1,52 @@
+FFFF.........                                                            [100%]
+================================== FAILURES ===================================
+____ test_directory_lock_refuses_a_second_process_and_releases_after_exit _____
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x00000243C64F3A10>
+
+    def test_directory_lock_refuses_a_second_process_and_releases_after_exit(repo):
+>       from app.knowledge.worker import DirectoryLock
+E       ModuleNotFoundError: No module named 'app.knowledge.worker'
+
+tests\test_knowledge_worker.py:17: ModuleNotFoundError
+______ test_database_lease_fences_stale_worker_even_on_different_process ______
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x00000243C65D2990>
+
+    def test_database_lease_fences_stale_worker_even_on_different_process(repo):
+>       from app.knowledge.worker import WorkerGuard
+E       ModuleNotFoundError: No module named 'app.knowledge.worker'
+
+tests\test_knowledge_worker.py:39: ModuleNotFoundError
+_ test_bounded_worker_threads_leave_heartbeat_alive_and_prioritize_interaction _
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+___ test_worker_errors_are_safe_and_disabled_entry_keeps_cleanup_processing ___
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+============================== warnings summary ===============================
+tests\test_knowledge_worker.py:53
+  D:\nbproject\LevelUpProject\backend\tests\test_knowledge_worker.py:53: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests\test_knowledge_worker.py:94
+  D:\nbproject\LevelUpProject\backend\tests\test_knowledge_worker.py:94: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_knowledge_worker.py::test_directory_lock_refuses_a_second_process_and_releases_after_exit
+FAILED tests/test_knowledge_worker.py::test_database_lease_fences_stale_worker_even_on_different_process
+FAILED tests/test_knowledge_worker.py::test_bounded_worker_threads_leave_heartbeat_alive_and_prioritize_interaction
+FAILED tests/test_knowledge_worker.py::test_worker_errors_are_safe_and_disabled_entry_keeps_cleanup_processing
+4 failed, 9 passed, 2 warnings in 7.97s

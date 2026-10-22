@@ -1,10 +1,14 @@
 backend/.venv/
 backend/.env
 backend/.packages/
+backend/.rag-compat/
+backend/knowledge-data/
+backend/.knowledge-test-data/
 backend/logs/
 **/__pycache__/
 **/.pytest_cache/
 **/.coverage
+**/.coverage.*
 frontend/node_modules/
 frontend/.swc/
 frontend/.taro/

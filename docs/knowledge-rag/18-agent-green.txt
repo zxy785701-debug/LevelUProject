@@ -1,0 +1,43 @@
+....FF.                                                                  [100%]
+================================== FAILURES ===================================
+_ test_public_plan_is_built_without_document_content_and_parameters_are_pinned _
+
+wire = {'calls': [], 'body': {'results': [{'url': 'https://example.com/', 'content': 'summary', 'raw_content': 'body'}], 'usage': {'credits': 1}}, 'status': 200, 'delay': 0}
+
+    @pytest.mark.anyio
+    async def test_public_plan_is_built_without_document_content_and_parameters_are_pinned(wire):
+        from app.knowledge.retrieval import KnowledgeAgent
+        seen = []
+        class Planner:
+            async def generate(self,schema,prompt,check=None):
+                seen.append(prompt)
+                return schema.model_validate({'searches':[{'query':'HTTP semantics'}]})
+        async def search(query,maximum): return [source()]
+        model = ScriptedModel(replies=[calls(('tavily_search',{'query':'HTTP semantics','include_domains':['private.example']})),AIMessage(content='done')])
+        result = await KnowledgeAgent(settings(),knowledge_search=search,model=model,plan_gateway=Planner()).run('HTTP semantics')
+>       assert seen and all('PRIVATE_SENTINEL' not in p and '˽���ļ���' not in p for p in seen)
+E       assert (['���ǹ���������˽�滮Ա��ֻ���ݱ���ԭʼĿ��滮�������ϲ�ѯ���������ļ����˺Ż���ʷ����ֹ����˽���ļ�����ԭ�ġ���˾�ڲ���ʵ����Ա��ʶ����Կ�����䡢���������ʶ���롣ֻ�пɰ�ȫ�����Ĺ���������ܽ��� searches���޷���ȫ������ ...ends On Documents", "type": "boolean"}}, "title": "PublicWebPlan", "type": "object"}\nĿ������:{"goal": "HTTP semantics"}'] and False)
+E        +  where False = all(<generator object test_public_plan_is_built_without_document_content_and_parameters_are_pinned.<locals>.<genexpr> at 0x000001ECA3BF2A80>)
+
+tests\test_knowledge_agent.py:87: AssertionError
+____ test_empty_repeated_attempts_and_all_tool_failures_still_spend_budget ____
+
+wire = {'calls': [], 'body': {'results': [{'url': 'https://example.com/', 'content': 'summary', 'raw_content': 'body'}], 'usage': {'credits': 1}}, 'status': 429, 'delay': 0}
+
+    @pytest.mark.anyio
+    async def test_empty_repeated_attempts_and_all_tool_failures_still_spend_budget(wire):
+        from app.knowledge.retrieval import KnowledgeAgent
+        async def search(query,maximum): return []
+        wire['status'] = 429
+        model = ScriptedModel(replies=[calls(*[('tavily_search',{'query':'HTTP semantics'})]*5)])
+        result = await KnowledgeAgent(settings(),knowledge_search=search,model=model,public_plan=plan()).run('HTTP semantics')
+>       assert result.tool_calls<=4 and len(wire['calls'])==1 and not result.evidence
+E       AssertionError: assert (1 <= 4 and 0 == 1)
+E        +  where 1 = KnowledgeOutcome(evidence=[], trace=[{'tool': 'knowledge_search', 'status': 'failed', 'query_hash': '14ccfd889803cc9b1..., page_attempts=0, reason_code='RETRIEVAL_BUDGET_EXHAUSTED', usage={}, depends_on_documents=True, knowledge_error=None).tool_calls
+E        +  and   0 = len([])
+
+tests\test_knowledge_agent.py:98: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_knowledge_agent.py::test_public_plan_is_built_without_document_content_and_parameters_are_pinned
+FAILED tests/test_knowledge_agent.py::test_empty_repeated_attempts_and_all_tool_failures_still_spend_budget
+2 failed, 5 passed in 8.25s

@@ -1,0 +1,9 @@
+{
+  "stopped_temporary_processes": [
+    24456,
+    10380,
+    7660
+  ],
+  "business_api_status": 200,
+  "business_worker_running": true
+}

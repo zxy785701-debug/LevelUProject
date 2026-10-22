@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="17" time="49.033" timestamp="2026-10-18T23:22:41.479670+08:00" hostname="zxy"><testcase classname="tests.test_knowledge_worker_boundaries" name="test_worker_cli_invalid_duration_disabled_bad_configuration_and_status" time="2.096" /><testcase classname="tests.test_knowledge_worker_boundaries" name="test_cli_owns_one_runtime_and_closes_before_releasing_directory_lock" time="1.754" /><testcase classname="tests.test_knowledge_worker_boundaries" name="test_cli_shutdown_and_startup_failure_keep_safe_exit_codes[exception0]" time="0.392" /><testcase classname="tests.test_knowledge_worker_boundaries" name="test_cli_shutdown_and_startup_failure_keep_safe_exit_codes[exception1]" time="0.363" /><testcase classname="tests.test_knowledge_worker_boundaries" name="test_cli_shutdown_and_startup_failure_keep_safe_exit_codes[exception2]" time="0.432" /><testcase classname="tests.test_knowledge_worker_boundaries" name="test_directory_lock_rejects_symlink_before_open_and_can_be_released_twice" time="0.341" /><testcase classname="tests.test_knowledge_worker_boundaries" name="test_unsupported_job_is_terminal_and_stale_error_cannot_overwrite_cancellation" time="5.675"><failure message="app.errors.AppError: 知识库执行器仍在运行">repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x000001A114B53350&gt;
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x000001A114AD2D50&gt;
+
+    @pytest.mark.anyio
+    async def test_unsupported_job_is_terminal_and_stale_error_cannot_overwrite_cancellation(repo,monkeypatch):
+        queued=submit(repo); jobs=DurableJobs(repo.accounts,repo.config)
+        worker=KnowledgeWorker(repo.accounts,repo.config,handlers={},poll_seconds=.01)
+        serving=asyncio.create_task(worker.run())
+        try:
+            for _ in range(100):
+                state=await asyncio.to_thread(jobs.get,'alice',queued['id'])
+                if state['status']=='failed': break
+                await asyncio.sleep(.02)
+            assert state['error_code']=='KNOWLEDGE_JOB_UNSUPPORTED'
+        finally: worker.stop(); await serving
+        second=submit(repo,'cancelled')
+        def cancelled(claim): jobs.cancel('alice',claim.id); raise RuntimeError('late failure')
+        worker=KnowledgeWorker(repo.accounts,repo.config,handlers={'import':cancelled},poll_seconds=.01)
+        serving=asyncio.create_task(worker.run())
+        try:
+            for _ in range(100):
+                state=await asyncio.to_thread(jobs.get,'alice',second['id'])
+                if state['status']=='cancelled': break
+                await asyncio.sleep(.02)
+&gt;           assert state['status']=='cancelled'
+E           AssertionError: assert 'queued' == 'cancelled'
+E             
+E             - cancelled
+E             + queued
+
+tests\test_knowledge_worker_boundaries.py:93: AssertionError
+
+During handling of the above exception, another exception occurred:
+
+repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x000001A114B53350&gt;
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x000001A114AD2D50&gt;
+
+    @pytest.mark.anyio
+    async def test_unsupported_job_is_terminal_and_stale_error_cannot_overwrite_cancellation(repo,monkeypatch):
+        queued=submit(repo); jobs=DurableJobs(repo.accounts,repo.config)
+        worker=KnowledgeWorker(repo.accounts,repo.config,handlers={},poll_seconds=.01)
+        serving=asyncio.create_task(worker.run())
+        try:
+            for _ in range(100):
+                state=await asyncio.to_thread(jobs.get,'alice',queued['id'])
+                if state['status']=='failed': break
+                await asyncio.sleep(.02)
+            assert state['error_code']=='KNOWLEDGE_JOB_UNSUPPORTED'
+        finally: worker.stop(); await serving
+        second=submit(repo,'cancelled')
+        def cancelled(claim): jobs.cancel('alice',claim.id); raise RuntimeError('late failure')
+        worker=KnowledgeWorker(repo.accounts,repo.config,handlers={'import':cancelled},poll_seconds=.01)
+        serving=asyncio.create_task(worker.run())
+        try:
+            for _ in range(100):
+                state=await asyncio.to_thread(jobs.get,'alice',second['id'])
+                if state['status']=='cancelled': break
+                await asyncio.sleep(.02)
+            assert state['status']=='cancelled'
+&gt;       finally: worker.stop(); await serving
+                                ^^^^^^^^^^^^^
+
+tests\test_knowledge_worker_boundaries.py:94: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\knowledge\worker.py:149: in run
+    await asyncio.to_thread(self.guard.acquire)
+D:\anaconda3\Lib\asyncio\threads.py:25: in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+D:\anaconda3\Lib\concurrent\futures\thread.py:59: in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;app.knowledge.worker.WorkerGuard object at 0x000001A114BE2330&gt;
+
+    def acquire(self):
+        with self.database.session() as session:
+            now = self.now()
+            session.execute(insert(WorkerLease).values(id=self.identity,owner=self.owner,fence=0,
+                            expires_at=now,heartbeat_at=now).on_duplicate_key_update(id=self.identity))
+            row = session.scalar(select(WorkerLease).where(WorkerLease.id == self.identity).with_for_update())
+            if row.owner != self.owner and row.expires_at &gt; now:
+&gt;               raise AppError('KNOWLEDGE_WORKER_LOCKED', '知识库执行器仍在运行', 409)
+E               app.errors.AppError: 知识库执行器仍在运行
+
+app\knowledge\worker.py:84: AppError</failure></testcase><testcase classname="tests.test_knowledge_worker_boundaries" name="test_lost_worker_heartbeat_stops_new_dispatch_and_releases_os_lock" time="0.412" /><testcase classname="tests.test_knowledge_remaining_boundaries" name="test_private_storage_rejects_relative_root_wrong_marker_and_write_failure" time="0.092" /><testcase classname="tests.test_knowledge_remaining_boundaries" name="test_storage_symlink_race_and_account_bucket_are_rejected" time="0.042" /><testcase classname="tests.test_knowledge_remaining_boundaries" name="test_optional_storage_probe_errors_and_incoherent_heartbeat_disable_safely" time="0.020" /><testcase classname="tests.test_knowledge_remaining_boundaries" name="test_actual_question_pipeline_checks_remaining_budget_on_correction" time="12.827" /><testcase classname="tests.test_knowledge_remaining_boundaries" name="test_question_pipeline_requires_real_model_configuration_after_retrieval" time="3.870" /><testcase classname="tests.test_knowledge_remaining_boundaries" name="test_embedding_duplicate_cache_save_and_unreported_usage_are_conservative" time="0.824" /><testcase classname="tests.test_knowledge_remaining_boundaries" name="test_embedding_oversized_or_invalid_json_response_is_never_cached" time="0.576" /><testcase classname="tests.test_knowledge_remaining_boundaries" name="test_runtime_dispatch_cleanup_close_and_unavailable_configuration" time="0.280" /><testcase classname="tests.test_knowledge_remaining_boundaries" name="test_quiz_topic_duplicates_are_invalid_at_the_dto_boundary" time="0.002" /></testsuite></testsuites>

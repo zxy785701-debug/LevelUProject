@@ -1,0 +1,27 @@
+FF                                                                       [100%]
+================================== FAILURES ===================================
+__ test_retrieval_checkpoints_restore_only_original_owned_document_versions ___
+
+index = <app.knowledge.index.VectorIndex object at 0x0000019896011A90>
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x0000019895B6FB60>
+
+    def test_retrieval_checkpoints_restore_only_original_owned_document_versions(index,repo):
+>       from app.knowledge.retrieval_store import KnowledgeRetriever
+E       ModuleNotFoundError: No module named 'app.knowledge.retrieval_store'
+
+tests\test_knowledge_retrieval_store.py:22: ModuleNotFoundError
+_ test_index_errors_are_recorded_without_guessing_content_and_scope_failure_can_finish _
+
+index = <app.knowledge.index.VectorIndex object at 0x00000198B6091090>
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x00000198B6092490>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000198B5F62780>
+
+    def test_index_errors_are_recorded_without_guessing_content_and_scope_failure_can_finish(index,repo,monkeypatch):
+>       from app.knowledge.retrieval_store import KnowledgeRetriever
+E       ModuleNotFoundError: No module named 'app.knowledge.retrieval_store'
+
+tests\test_knowledge_retrieval_store.py:42: ModuleNotFoundError
+=========================== short test summary info ===========================
+FAILED tests/test_knowledge_retrieval_store.py::test_retrieval_checkpoints_restore_only_original_owned_document_versions
+FAILED tests/test_knowledge_retrieval_store.py::test_index_errors_are_recorded_without_guessing_content_and_scope_failure_can_finish
+2 failed in 7.53s

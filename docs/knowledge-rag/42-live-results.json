@@ -1,0 +1,1638 @@
+{
+  "provider_mode": "real-paid",
+  "database": "isolated-test",
+  "model_call_limit": 24,
+  "operations": [
+    {
+      "sample": "txt-import",
+      "kind": "import",
+      "status": "succeeded",
+      "error_code": null,
+      "seconds": 5.88
+    },
+    {
+      "sample": "pdf-import",
+      "kind": "import",
+      "status": "succeeded",
+      "error_code": null,
+      "seconds": 2.31
+    },
+    {
+      "sample": "docx-import",
+      "kind": "import",
+      "status": "succeeded",
+      "error_code": null,
+      "seconds": 2.33
+    },
+    {
+      "sample": "md-import",
+      "kind": "import",
+      "status": "succeeded",
+      "error_code": null,
+      "seconds": 1.56
+    },
+    {
+      "sample": "conflict_a-import",
+      "kind": "import",
+      "status": "succeeded",
+      "error_code": null,
+      "seconds": 1.55
+    },
+    {
+      "sample": "conflict_b-import",
+      "kind": "import",
+      "status": "succeeded",
+      "error_code": null,
+      "seconds": 1.54
+    },
+    {
+      "sample": "web-import",
+      "kind": "import",
+      "status": "succeeded",
+      "error_code": null,
+      "seconds": 3.1
+    },
+    {
+      "sample": "中文",
+      "kind": "question",
+      "status": "succeeded",
+      "error_code": null,
+      "seconds": 5.61
+    },
+    {
+      "sample": "英文PDF",
+      "kind": "question",
+      "status": "failed",
+      "error_code": "KNOWLEDGE_PROCESSING_FAILED",
+      "seconds": 2.32
+    },
+    {
+      "sample": "新增知识",
+      "kind": "question",
+      "status": "succeeded",
+      "error_code": null,
+      "seconds": 5.43
+    },
+    {
+      "sample": "Markdown注入",
+      "kind": "question",
+      "status": "failed",
+      "error_code": "KNOWLEDGE_PROCESSING_FAILED",
+      "seconds": 2.35
+    },
+    {
+      "sample": "资料不足",
+      "kind": "question",
+      "status": "succeeded",
+      "error_code": null,
+      "seconds": 1.54
+    },
+    {
+      "sample": "冲突",
+      "kind": "question",
+      "status": "succeeded",
+      "error_code": null,
+      "seconds": 5.52
+    },
+    {
+      "sample": "网页及联网",
+      "kind": "question",
+      "status": "failed",
+      "error_code": "KNOWLEDGE_PROCESSING_FAILED",
+      "seconds": 1.56
+    },
+    {
+      "sample": "scope",
+      "kind": "prepare",
+      "status": "succeeded",
+      "error_code": null,
+      "seconds": 8.5
+    },
+    {
+      "sample": "quiz",
+      "kind": "quiz",
+      "status": "failed",
+      "error_code": "KNOWLEDGE_PROCESSING_FAILED",
+      "seconds": 30.98
+    }
+  ],
+  "questions": [
+    {
+      "sample": "中文",
+      "status": "answered",
+      "message": null,
+      "network": {
+        "status": "disabled",
+        "requested": false,
+        "reason_code": null
+      },
+      "sources": [
+        {
+          "id": "kb-cd2be525c7549afedba2c85c55caec2995a5aea4dddd9be77daf462d2b84ad7a",
+          "text": "演示请求是无状态的，每次独立处理。会话信息由服务端 Session 保存，Cookie 在客户端携带会话标识。",
+          "title": "中文说明.txt",
+          "knowledge": {
+            "block": 1,
+            "deleted": false,
+            "chunk_id": "cd2be525c7549afedba2c85c55caec2995a5aea4dddd9be77daf462d2b84ad7a",
+            "end_index": 55,
+            "document_id": "cb8c3903-bb09-4ea3-a2e0-bd8f565fa71b",
+            "header_path": [],
+            "revision_id": "481fbc72-dda8-5694-b9e2-84293e37fbbc",
+            "source_type": "txt",
+            "start_index": 0,
+            "chunk_position": 0,
+            "document_title": "中文说明.txt",
+            "version_changed": false,
+            "document_version": 1
+          },
+          "truncated": false,
+          "supplement": false,
+          "content_hash": "1544b987015432ae9a7e3f6f43d82d3ff414952af8df2f009be78bbd70674415",
+          "content_kind": "material",
+          "context_truncated": false,
+          "acquisition_status": "available"
+        }
+      ],
+      "conflicts": [],
+      "grounding": {
+        "status": "material_only",
+        "provider": null,
+        "reason_code": null,
+        "retrieved_at": null,
+        "check_version": "knowledge-answer-review-v1"
+      },
+      "paragraphs": [
+        {
+          "id": "p1",
+          "text": "资料指出，演示请求是无状态的，每次独立处理。会话信息由服务端 Session 保存，Cookie 在客户端携带会话标识。",
+          "source_ids": [
+            "kb-cd2be525c7549afedba2c85c55caec2995a5aea4dddd9be77daf462d2b84ad7a"
+          ]
+        }
+      ],
+      "reason_code": null,
+      "kind": "knowledge_answer",
+      "id": "ccffa9d3-5c01-58a6-8494-9e6f03e07621",
+      "question": "根据资料说明 Cookie 和 Session 分别做什么。",
+      "documents": [
+        {
+          "id": "cb8c3903-bb09-4ea3-a2e0-bd8f565fa71b",
+          "title": "中文说明.txt",
+          "source": {
+            "filename": "中文说明.txt"
+          },
+          "version": 1,
+          "revision_id": "481fbc72-dda8-5694-b9e2-84293e37fbbc",
+          "source_type": "txt",
+          "deleted": false,
+          "version_changed": false
+        }
+      ],
+      "supplement": false,
+      "created_at": "2026-10-18T15:10:37+00:00",
+      "retrieval_trace": [
+        {
+          "tool": "knowledge_search",
+          "status": "success",
+          "query_hash": "6ab7b135492ba7737e9d51d15ebeeb9ff83251db14f77f4a2d04dfec966f3192",
+          "source_ids": [
+            "kb-cd2be525c7549afedba2c85c55caec2995a5aea4dddd9be77daf462d2b84ad7a"
+          ]
+        }
+      ]
+    },
+    {
+      "sample": "新增知识",
+      "status": "answered",
+      "message": null,
+      "network": {
+        "status": "disabled",
+        "requested": false,
+        "reason_code": null
+      },
+      "sources": [
+        {
+          "id": "kb-71c438cf8a628386ac220c969c70871e4bbae873891182a0b1a369858237ef2d",
+          "text": "极光试验系统手册：项目代号 LUP7319，轮换周期为83分钟；测试负责人是蓝桥小组。该设定仅用于新知识检索验收。",
+          "title": "极光新知识.docx",
+          "knowledge": {
+            "block": 1,
+            "deleted": false,
+            "chunk_id": "71c438cf8a628386ac220c969c70871e4bbae873891182a0b1a369858237ef2d",
+            "end_index": 57,
+            "document_id": "67e3ff7f-7e3d-4985-9d96-161ec318cfb4",
+            "header_path": [],
+            "revision_id": "db1ce6d6-8597-55aa-a6f7-d16f4d50f3ed",
+            "source_type": "docx",
+            "start_index": 0,
+            "chunk_position": 0,
+            "document_title": "极光新知识.docx",
+            "version_changed": false,
+            "document_version": 1
+          },
+          "truncated": false,
+          "supplement": false,
+          "content_hash": "be6c3ea3a33426dabf0767efa14e5e8aa72026363bc8d436915fd0d112bf6ed8",
+          "content_kind": "material",
+          "context_truncated": false,
+          "acquisition_status": "available"
+        }
+      ],
+      "conflicts": [],
+      "grounding": {
+        "status": "material_only",
+        "provider": null,
+        "reason_code": null,
+        "retrieved_at": null,
+        "check_version": "knowledge-answer-review-v1"
+      },
+      "paragraphs": [
+        {
+          "id": "p1",
+          "text": "根据《极光新知识.docx》中的极光试验系统手册记载：项目代号为 LUP7319，轮换周期为83分钟，测试负责人是蓝桥小组。",
+          "source_ids": [
+            "kb-71c438cf8a628386ac220c969c70871e4bbae873891182a0b1a369858237ef2d"
+          ]
+        }
+      ],
+      "reason_code": null,
+      "kind": "knowledge_answer",
+      "id": "b44b8542-1ac1-504a-8697-904e540d2edf",
+      "question": "根据极光试验系统手册，项目代号、轮换周期和测试负责人分别是什么？",
+      "documents": [
+        {
+          "id": "67e3ff7f-7e3d-4985-9d96-161ec318cfb4",
+          "title": "极光新知识.docx",
+          "source": {
+            "filename": "极光新知识.docx"
+          },
+          "version": 1,
+          "revision_id": "db1ce6d6-8597-55aa-a6f7-d16f4d50f3ed",
+          "source_type": "docx",
+          "deleted": false,
+          "version_changed": false
+        }
+      ],
+      "supplement": false,
+      "created_at": "2026-10-18T15:10:45+00:00",
+      "retrieval_trace": [
+        {
+          "tool": "knowledge_search",
+          "status": "success",
+          "query_hash": "711cfdbf564d23ed8ff6c3e330546f842ba5c591eeaf044a0fb4d13f84e0be28",
+          "source_ids": [
+            "kb-71c438cf8a628386ac220c969c70871e4bbae873891182a0b1a369858237ef2d"
+          ]
+        }
+      ]
+    },
+    {
+      "sample": "资料不足",
+      "status": "insufficient",
+      "message": "现有资料不足以支持可靠回答，请补充资料或缩小问题。",
+      "network": {
+        "status": "disabled",
+        "requested": false,
+        "reason_code": "NO_RETRIEVED_EVIDENCE"
+      },
+      "sources": [],
+      "conflicts": [],
+      "grounding": null,
+      "paragraphs": [],
+      "reason_code": "INSUFFICIENT_KNOWLEDGE",
+      "kind": "knowledge_answer",
+      "id": "8bc7e0e4-24d7-56ff-b40c-a3b1cd015be8",
+      "question": "根据这份资料列出试验系统的精确启动日期和预算金额。",
+      "documents": [
+        {
+          "id": "cb8c3903-bb09-4ea3-a2e0-bd8f565fa71b",
+          "title": "中文说明.txt",
+          "source": {
+            "filename": "中文说明.txt"
+          },
+          "version": 1,
+          "revision_id": "481fbc72-dda8-5694-b9e2-84293e37fbbc",
+          "source_type": "txt",
+          "deleted": false,
+          "version_changed": false
+        }
+      ],
+      "supplement": false,
+      "created_at": "2026-10-18T15:10:49+00:00",
+      "retrieval_trace": [
+        {
+          "tool": "knowledge_search",
+          "status": "failed",
+          "query_hash": "71870951430672087b65afb4723f926d87172545db713202142926852298d2d3",
+          "source_ids": []
+        }
+      ]
+    },
+    {
+      "sample": "冲突",
+      "status": "answered",
+      "message": null,
+      "network": {
+        "status": "disabled",
+        "requested": false,
+        "reason_code": null
+      },
+      "sources": [
+        {
+          "id": "kb-b15d071b009c52831a4437c8b760386b4793b1dcb14079b08c1eab4c2df4cb77",
+          "text": "# 留存说明乙\n同一演示系统的日志留存期为45天。此版本未给生效时间。",
+          "title": "留存手册乙.md",
+          "knowledge": {
+            "deleted": false,
+            "chunk_id": "b15d071b009c52831a4437c8b760386b4793b1dcb14079b08c1eab4c2df4cb77",
+            "end_index": 35,
+            "document_id": "a0131328-df5d-4af0-96dc-277cf14e244f",
+            "header_path": [
+              "留存说明乙"
+            ],
+            "revision_id": "09bda1f7-d9bc-5a61-a184-a80246eece4d",
+            "source_type": "md",
+            "start_index": 0,
+            "chunk_position": 0,
+            "document_title": "留存手册乙.md",
+            "version_changed": false,
+            "document_version": 1
+          },
+          "truncated": false,
+          "supplement": false,
+          "content_hash": "aabbab11235393b7552852639f658ede75432484f68a91178e3d63c331ec544a",
+          "content_kind": "material",
+          "context_truncated": false,
+          "acquisition_status": "available"
+        },
+        {
+          "id": "kb-2d6350312d6d8f482552855afc45f755669f47de2865e855d92101764abdff02",
+          "text": "# 留存说明甲\n同一演示系统的日志留存期为30天。此版本未给生效时间。",
+          "title": "留存手册甲.md",
+          "knowledge": {
+            "deleted": false,
+            "chunk_id": "2d6350312d6d8f482552855afc45f755669f47de2865e855d92101764abdff02",
+            "end_index": 35,
+            "document_id": "0c959d49-7e1e-4695-bd5e-8ff431f0fc5d",
+            "header_path": [
+              "留存说明甲"
+            ],
+            "revision_id": "96714d22-a88b-5236-aad0-f3d3cf229ac0",
+            "source_type": "md",
+            "start_index": 0,
+            "chunk_position": 0,
+            "document_title": "留存手册甲.md",
+            "version_changed": false,
+            "document_version": 1
+          },
+          "truncated": false,
+          "supplement": false,
+          "content_hash": "750df580f83f7fa323fd243d7a65127bbb8aab26f0bb591b0d57bfcc3747769d",
+          "content_kind": "material",
+          "context_truncated": false,
+          "acquisition_status": "available"
+        }
+      ],
+      "conflicts": [
+        {
+          "message": "这些来源存在差异，请结合正文中的出处限定阅读。",
+          "source_ids": [
+            "kb-2d6350312d6d8f482552855afc45f755669f47de2865e855d92101764abdff02",
+            "kb-b15d071b009c52831a4437c8b760386b4793b1dcb14079b08c1eab4c2df4cb77"
+          ]
+        }
+      ],
+      "grounding": {
+        "status": "material_only",
+        "provider": null,
+        "reason_code": null,
+        "retrieved_at": null,
+        "check_version": "knowledge-answer-review-v1"
+      },
+      "paragraphs": [
+        {
+          "id": "p1",
+          "text": "留存说明甲规定，同一演示系统的日志留存期为30天；该版本未给出生效时间。",
+          "source_ids": [
+            "kb-2d6350312d6d8f482552855afc45f755669f47de2865e855d92101764abdff02"
+          ]
+        },
+        {
+          "id": "p2",
+          "text": "留存说明乙规定，同一演示系统的日志留存期为45天；该版本同样未给出生效时间。",
+          "source_ids": [
+            "kb-b15d071b009c52831a4437c8b760386b4793b1dcb14079b08c1eab4c2df4cb77"
+          ]
+        },
+        {
+          "id": "p3",
+          "text": "两份资料对同一系统分别给出30天与45天，且均未注明生效时间，因此仅凭所列证据无法确定哪一期限唯一有效，只能分别限定出处陈述两种规定。",
+          "source_ids": [
+            "kb-2d6350312d6d8f482552855afc45f755669f47de2865e855d92101764abdff02",
+            "kb-b15d071b009c52831a4437c8b760386b4793b1dcb14079b08c1eab4c2df4cb77"
+          ]
+        }
+      ],
+      "reason_code": null,
+      "kind": "knowledge_answer",
+      "id": "624bcb48-8df5-58c9-9f37-b80572bc570a",
+      "question": "两份留存说明对同一演示系统日志留存期各有什么规定？能否据此确定唯一有效期限？",
+      "documents": [
+        {
+          "id": "0c959d49-7e1e-4695-bd5e-8ff431f0fc5d",
+          "title": "留存手册甲.md",
+          "source": {
+            "filename": "留存手册甲.md"
+          },
+          "version": 1,
+          "revision_id": "96714d22-a88b-5236-aad0-f3d3cf229ac0",
+          "source_type": "md",
+          "deleted": false,
+          "version_changed": false
+        },
+        {
+          "id": "a0131328-df5d-4af0-96dc-277cf14e244f",
+          "title": "留存手册乙.md",
+          "source": {
+            "filename": "留存手册乙.md"
+          },
+          "version": 1,
+          "revision_id": "09bda1f7-d9bc-5a61-a184-a80246eece4d",
+          "source_type": "md",
+          "deleted": false,
+          "version_changed": false
+        }
+      ],
+      "supplement": false,
+      "created_at": "2026-10-18T15:10:55+00:00",
+      "retrieval_trace": [
+        {
+          "tool": "knowledge_search",
+          "status": "success",
+          "query_hash": "98ef60039ace0d449aec24dfee0f117b7130f8948507afbfc8cb7c9f3e9fa3da",
+          "source_ids": [
+            "kb-b15d071b009c52831a4437c8b760386b4793b1dcb14079b08c1eab4c2df4cb77",
+            "kb-2d6350312d6d8f482552855afc45f755669f47de2865e855d92101764abdff02"
+          ]
+        }
+      ]
+    }
+  ],
+  "diagnostics": [
+    {
+      "kind": "question",
+      "type": "RuntimeError",
+      "frames": [
+        {
+          "file": "run_knowledge_live.py",
+          "function": "handle",
+          "line": 69
+        },
+        {
+          "file": "runtime.py",
+          "function": "process",
+          "line": 26
+        },
+        {
+          "file": "question_pipeline.py",
+          "function": "process",
+          "line": 45
+        },
+        {
+          "file": "runners.py",
+          "function": "run",
+          "line": 195
+        },
+        {
+          "file": "runners.py",
+          "function": "run",
+          "line": 118
+        },
+        {
+          "file": "base_events.py",
+          "function": "run_until_complete",
+          "line": 725
+        },
+        {
+          "file": "question_pipeline.py",
+          "function": "process_async",
+          "line": 41
+        },
+        {
+          "file": "answering.py",
+          "function": "create_answer",
+          "line": 110
+        },
+        {
+          "file": "llm.py",
+          "function": "generate",
+          "line": 110
+        },
+        {
+          "file": "base.py",
+          "function": "ainvoke",
+          "line": 3500
+        },
+        {
+          "file": "base.py",
+          "function": "ainvoke",
+          "line": 4236
+        },
+        {
+          "file": "base.py",
+          "function": "_ainvoke_step",
+          "line": 4228
+        },
+        {
+          "file": "base.py",
+          "function": "ainvoke",
+          "line": 6031
+        },
+        {
+          "file": "chat_models.py",
+          "function": "ainvoke",
+          "line": 511
+        },
+        {
+          "file": "chat_models.py",
+          "function": "agenerate_prompt",
+          "line": 1888
+        },
+        {
+          "file": "chat_models.py",
+          "function": "agenerate",
+          "line": 1846
+        },
+        {
+          "file": "chat_models.py",
+          "function": "_agenerate_with_cache",
+          "line": 2179
+        },
+        {
+          "file": "base.py",
+          "function": "_agenerate",
+          "line": 2293
+        },
+        {
+          "file": "base.py",
+          "function": "_agenerate",
+          "line": 2241
+        },
+        {
+          "file": "_legacy_response.py",
+          "function": "wrapped",
+          "line": 386
+        },
+        {
+          "file": "completions.py",
+          "function": "parse",
+          "line": 1828
+        },
+        {
+          "file": "_base_client.py",
+          "function": "post",
+          "line": 2053
+        },
+        {
+          "file": "_base_client.py",
+          "function": "request",
+          "line": 1773
+        },
+        {
+          "file": "_client.py",
+          "function": "_send_request",
+          "line": 1375
+        },
+        {
+          "file": "_client.py",
+          "function": "_send_with_auth_retry",
+          "line": 1354
+        },
+        {
+          "file": "_base_client.py",
+          "function": "_send_request",
+          "line": 1690
+        },
+        {
+          "file": "_client.py",
+          "function": "send",
+          "line": 1818
+        },
+        {
+          "file": "_client.py",
+          "function": "_send_handling_auth",
+          "line": 1846
+        },
+        {
+          "file": "_client.py",
+          "function": "_send_handling_redirects",
+          "line": 1881
+        },
+        {
+          "file": "_client.py",
+          "function": "_send_single_request",
+          "line": 1915
+        },
+        {
+          "file": "default.py",
+          "function": "handle_async_request",
+          "line": 388
+        },
+        {
+          "file": "connection_pool.py",
+          "function": "handle_async_request",
+          "line": 242
+        },
+        {
+          "file": "connection_pool.py",
+          "function": "handle_async_request",
+          "line": 224
+        },
+        {
+          "file": "http_proxy.py",
+          "function": "handle_async_request",
+          "line": 326
+        },
+        {
+          "file": "http11.py",
+          "function": "handle_async_request",
+          "line": 124
+        },
+        {
+          "file": "http11.py",
+          "function": "_response_closed",
+          "line": 228
+        },
+        {
+          "file": "http11.py",
+          "function": "aclose",
+          "line": 236
+        },
+        {
+          "file": "anyio.py",
+          "function": "aclose",
+          "line": 55
+        },
+        {
+          "file": "tls.py",
+          "function": "aclose",
+          "line": 248
+        },
+        {
+          "file": "_asyncio.py",
+          "function": "aclose",
+          "line": 1467
+        },
+        {
+          "file": "proactor_events.py",
+          "function": "close",
+          "line": 109
+        },
+        {
+          "file": "base_events.py",
+          "function": "call_soon",
+          "line": 833
+        },
+        {
+          "file": "base_events.py",
+          "function": "_check_closed",
+          "line": 556
+        }
+      ]
+    },
+    {
+      "kind": "question",
+      "type": "RuntimeError",
+      "frames": [
+        {
+          "file": "run_knowledge_live.py",
+          "function": "handle",
+          "line": 69
+        },
+        {
+          "file": "runtime.py",
+          "function": "process",
+          "line": 26
+        },
+        {
+          "file": "question_pipeline.py",
+          "function": "process",
+          "line": 45
+        },
+        {
+          "file": "runners.py",
+          "function": "run",
+          "line": 195
+        },
+        {
+          "file": "runners.py",
+          "function": "run",
+          "line": 118
+        },
+        {
+          "file": "base_events.py",
+          "function": "run_until_complete",
+          "line": 725
+        },
+        {
+          "file": "question_pipeline.py",
+          "function": "process_async",
+          "line": 41
+        },
+        {
+          "file": "answering.py",
+          "function": "create_answer",
+          "line": 110
+        },
+        {
+          "file": "llm.py",
+          "function": "generate",
+          "line": 110
+        },
+        {
+          "file": "base.py",
+          "function": "ainvoke",
+          "line": 3500
+        },
+        {
+          "file": "base.py",
+          "function": "ainvoke",
+          "line": 4236
+        },
+        {
+          "file": "base.py",
+          "function": "_ainvoke_step",
+          "line": 4228
+        },
+        {
+          "file": "base.py",
+          "function": "ainvoke",
+          "line": 6031
+        },
+        {
+          "file": "chat_models.py",
+          "function": "ainvoke",
+          "line": 511
+        },
+        {
+          "file": "chat_models.py",
+          "function": "agenerate_prompt",
+          "line": 1888
+        },
+        {
+          "file": "chat_models.py",
+          "function": "agenerate",
+          "line": 1846
+        },
+        {
+          "file": "chat_models.py",
+          "function": "_agenerate_with_cache",
+          "line": 2179
+        },
+        {
+          "file": "base.py",
+          "function": "_agenerate",
+          "line": 2293
+        },
+        {
+          "file": "base.py",
+          "function": "_agenerate",
+          "line": 2241
+        },
+        {
+          "file": "_legacy_response.py",
+          "function": "wrapped",
+          "line": 386
+        },
+        {
+          "file": "completions.py",
+          "function": "parse",
+          "line": 1828
+        },
+        {
+          "file": "_base_client.py",
+          "function": "post",
+          "line": 2053
+        },
+        {
+          "file": "_base_client.py",
+          "function": "request",
+          "line": 1773
+        },
+        {
+          "file": "_client.py",
+          "function": "_send_request",
+          "line": 1375
+        },
+        {
+          "file": "_client.py",
+          "function": "_send_with_auth_retry",
+          "line": 1354
+        },
+        {
+          "file": "_base_client.py",
+          "function": "_send_request",
+          "line": 1690
+        },
+        {
+          "file": "_client.py",
+          "function": "send",
+          "line": 1818
+        },
+        {
+          "file": "_client.py",
+          "function": "_send_handling_auth",
+          "line": 1846
+        },
+        {
+          "file": "_client.py",
+          "function": "_send_handling_redirects",
+          "line": 1881
+        },
+        {
+          "file": "_client.py",
+          "function": "_send_single_request",
+          "line": 1915
+        },
+        {
+          "file": "default.py",
+          "function": "handle_async_request",
+          "line": 388
+        },
+        {
+          "file": "connection_pool.py",
+          "function": "handle_async_request",
+          "line": 242
+        },
+        {
+          "file": "connection_pool.py",
+          "function": "handle_async_request",
+          "line": 224
+        },
+        {
+          "file": "http_proxy.py",
+          "function": "handle_async_request",
+          "line": 326
+        },
+        {
+          "file": "http11.py",
+          "function": "handle_async_request",
+          "line": 124
+        },
+        {
+          "file": "http11.py",
+          "function": "_response_closed",
+          "line": 228
+        },
+        {
+          "file": "http11.py",
+          "function": "aclose",
+          "line": 236
+        },
+        {
+          "file": "anyio.py",
+          "function": "aclose",
+          "line": 55
+        },
+        {
+          "file": "tls.py",
+          "function": "aclose",
+          "line": 248
+        },
+        {
+          "file": "_asyncio.py",
+          "function": "aclose",
+          "line": 1467
+        },
+        {
+          "file": "proactor_events.py",
+          "function": "close",
+          "line": 109
+        },
+        {
+          "file": "base_events.py",
+          "function": "call_soon",
+          "line": 833
+        },
+        {
+          "file": "base_events.py",
+          "function": "_check_closed",
+          "line": 556
+        }
+      ]
+    },
+    {
+      "kind": "question",
+      "type": "RuntimeError",
+      "frames": [
+        {
+          "file": "run_knowledge_live.py",
+          "function": "handle",
+          "line": 69
+        },
+        {
+          "file": "runtime.py",
+          "function": "process",
+          "line": 26
+        },
+        {
+          "file": "question_pipeline.py",
+          "function": "process",
+          "line": 45
+        },
+        {
+          "file": "runners.py",
+          "function": "run",
+          "line": 195
+        },
+        {
+          "file": "runners.py",
+          "function": "run",
+          "line": 118
+        },
+        {
+          "file": "base_events.py",
+          "function": "run_until_complete",
+          "line": 725
+        },
+        {
+          "file": "question_pipeline.py",
+          "function": "process_async",
+          "line": 28
+        },
+        {
+          "file": "retrieval_store.py",
+          "function": "retrieve",
+          "line": 53
+        },
+        {
+          "file": "retrieval.py",
+          "function": "run",
+          "line": 197
+        },
+        {
+          "file": "retrieval.py",
+          "function": "_plan",
+          "line": 143
+        },
+        {
+          "file": "llm.py",
+          "function": "generate",
+          "line": 110
+        },
+        {
+          "file": "base.py",
+          "function": "ainvoke",
+          "line": 3500
+        },
+        {
+          "file": "base.py",
+          "function": "ainvoke",
+          "line": 4236
+        },
+        {
+          "file": "base.py",
+          "function": "_ainvoke_step",
+          "line": 4228
+        },
+        {
+          "file": "base.py",
+          "function": "ainvoke",
+          "line": 6031
+        },
+        {
+          "file": "chat_models.py",
+          "function": "ainvoke",
+          "line": 511
+        },
+        {
+          "file": "chat_models.py",
+          "function": "agenerate_prompt",
+          "line": 1888
+        },
+        {
+          "file": "chat_models.py",
+          "function": "agenerate",
+          "line": 1846
+        },
+        {
+          "file": "chat_models.py",
+          "function": "_agenerate_with_cache",
+          "line": 2179
+        },
+        {
+          "file": "base.py",
+          "function": "_agenerate",
+          "line": 2293
+        },
+        {
+          "file": "base.py",
+          "function": "_agenerate",
+          "line": 2241
+        },
+        {
+          "file": "_legacy_response.py",
+          "function": "wrapped",
+          "line": 386
+        },
+        {
+          "file": "completions.py",
+          "function": "parse",
+          "line": 1828
+        },
+        {
+          "file": "_base_client.py",
+          "function": "post",
+          "line": 2053
+        },
+        {
+          "file": "_base_client.py",
+          "function": "request",
+          "line": 1773
+        },
+        {
+          "file": "_client.py",
+          "function": "_send_request",
+          "line": 1375
+        },
+        {
+          "file": "_client.py",
+          "function": "_send_with_auth_retry",
+          "line": 1354
+        },
+        {
+          "file": "_base_client.py",
+          "function": "_send_request",
+          "line": 1690
+        },
+        {
+          "file": "_client.py",
+          "function": "send",
+          "line": 1818
+        },
+        {
+          "file": "_client.py",
+          "function": "_send_handling_auth",
+          "line": 1846
+        },
+        {
+          "file": "_client.py",
+          "function": "_send_handling_redirects",
+          "line": 1881
+        },
+        {
+          "file": "_client.py",
+          "function": "_send_single_request",
+          "line": 1915
+        },
+        {
+          "file": "default.py",
+          "function": "handle_async_request",
+          "line": 388
+        },
+        {
+          "file": "connection_pool.py",
+          "function": "handle_async_request",
+          "line": 242
+        },
+        {
+          "file": "connection_pool.py",
+          "function": "handle_async_request",
+          "line": 224
+        },
+        {
+          "file": "http_proxy.py",
+          "function": "handle_async_request",
+          "line": 326
+        },
+        {
+          "file": "http11.py",
+          "function": "handle_async_request",
+          "line": 124
+        },
+        {
+          "file": "http11.py",
+          "function": "_response_closed",
+          "line": 228
+        },
+        {
+          "file": "http11.py",
+          "function": "aclose",
+          "line": 236
+        },
+        {
+          "file": "anyio.py",
+          "function": "aclose",
+          "line": 55
+        },
+        {
+          "file": "tls.py",
+          "function": "aclose",
+          "line": 248
+        },
+        {
+          "file": "_asyncio.py",
+          "function": "aclose",
+          "line": 1467
+        },
+        {
+          "file": "proactor_events.py",
+          "function": "close",
+          "line": 109
+        },
+        {
+          "file": "base_events.py",
+          "function": "call_soon",
+          "line": 833
+        },
+        {
+          "file": "base_events.py",
+          "function": "_check_closed",
+          "line": 556
+        }
+      ]
+    },
+    {
+      "kind": "quiz",
+      "type": "RuntimeError",
+      "frames": [
+        {
+          "file": "run_knowledge_live.py",
+          "function": "handle",
+          "line": 69
+        },
+        {
+          "file": "runtime.py",
+          "function": "process",
+          "line": 28
+        },
+        {
+          "file": "quizzes.py",
+          "function": "process",
+          "line": 127
+        },
+        {
+          "file": "runners.py",
+          "function": "run",
+          "line": 195
+        },
+        {
+          "file": "runners.py",
+          "function": "run",
+          "line": 118
+        },
+        {
+          "file": "base_events.py",
+          "function": "run_until_complete",
+          "line": 725
+        },
+        {
+          "file": "quizzes.py",
+          "function": "process_async",
+          "line": 118
+        },
+        {
+          "file": "generation.py",
+          "function": "generate_grounded",
+          "line": 113
+        },
+        {
+          "file": "quizzes.py",
+          "function": "generate",
+          "line": 65
+        },
+        {
+          "file": "llm.py",
+          "function": "generate",
+          "line": 110
+        },
+        {
+          "file": "base.py",
+          "function": "ainvoke",
+          "line": 3500
+        },
+        {
+          "file": "base.py",
+          "function": "ainvoke",
+          "line": 4236
+        },
+        {
+          "file": "base.py",
+          "function": "_ainvoke_step",
+          "line": 4228
+        },
+        {
+          "file": "base.py",
+          "function": "ainvoke",
+          "line": 6031
+        },
+        {
+          "file": "chat_models.py",
+          "function": "ainvoke",
+          "line": 511
+        },
+        {
+          "file": "chat_models.py",
+          "function": "agenerate_prompt",
+          "line": 1888
+        },
+        {
+          "file": "chat_models.py",
+          "function": "agenerate",
+          "line": 1846
+        },
+        {
+          "file": "chat_models.py",
+          "function": "_agenerate_with_cache",
+          "line": 2179
+        },
+        {
+          "file": "base.py",
+          "function": "_agenerate",
+          "line": 2293
+        },
+        {
+          "file": "base.py",
+          "function": "_agenerate",
+          "line": 2241
+        },
+        {
+          "file": "_legacy_response.py",
+          "function": "wrapped",
+          "line": 386
+        },
+        {
+          "file": "completions.py",
+          "function": "parse",
+          "line": 1828
+        },
+        {
+          "file": "_base_client.py",
+          "function": "post",
+          "line": 2053
+        },
+        {
+          "file": "_base_client.py",
+          "function": "request",
+          "line": 1773
+        },
+        {
+          "file": "_client.py",
+          "function": "_send_request",
+          "line": 1375
+        },
+        {
+          "file": "_client.py",
+          "function": "_send_with_auth_retry",
+          "line": 1354
+        },
+        {
+          "file": "_base_client.py",
+          "function": "_send_request",
+          "line": 1690
+        },
+        {
+          "file": "_client.py",
+          "function": "send",
+          "line": 1818
+        },
+        {
+          "file": "_client.py",
+          "function": "_send_handling_auth",
+          "line": 1846
+        },
+        {
+          "file": "_client.py",
+          "function": "_send_handling_redirects",
+          "line": 1881
+        },
+        {
+          "file": "_client.py",
+          "function": "_send_single_request",
+          "line": 1915
+        },
+        {
+          "file": "default.py",
+          "function": "handle_async_request",
+          "line": 388
+        },
+        {
+          "file": "connection_pool.py",
+          "function": "handle_async_request",
+          "line": 242
+        },
+        {
+          "file": "connection_pool.py",
+          "function": "handle_async_request",
+          "line": 217
+        },
+        {
+          "file": "connection_pool.py",
+          "function": "_close_connections",
+          "line": 374
+        },
+        {
+          "file": "http_proxy.py",
+          "function": "aclose",
+          "line": 332
+        },
+        {
+          "file": "http11.py",
+          "function": "aclose",
+          "line": 236
+        },
+        {
+          "file": "anyio.py",
+          "function": "aclose",
+          "line": 55
+        },
+        {
+          "file": "tls.py",
+          "function": "aclose",
+          "line": 248
+        },
+        {
+          "file": "_asyncio.py",
+          "function": "aclose",
+          "line": 1467
+        },
+        {
+          "file": "proactor_events.py",
+          "function": "close",
+          "line": 109
+        },
+        {
+          "file": "base_events.py",
+          "function": "call_soon",
+          "line": 833
+        },
+        {
+          "file": "base_events.py",
+          "function": "_check_closed",
+          "line": 556
+        }
+      ]
+    }
+  ],
+  "scope": {
+    "kind": "knowledge_scope",
+    "id": "5eca6372-5d5c-533f-995a-f9f6a1e7942f",
+    "version": 1,
+    "goal": "理解请求、会话机制与极光试验系统手册中的项目设定",
+    "input_text": "理解请求、会话机制与极光试验系统手册中的项目设定",
+    "documents": [
+      {
+        "id": "67e3ff7f-7e3d-4985-9d96-161ec318cfb4",
+        "title": "极光新知识.docx",
+        "source": {
+          "filename": "极光新知识.docx"
+        },
+        "version": 1,
+        "revision_id": "db1ce6d6-8597-55aa-a6f7-d16f4d50f3ed",
+        "source_type": "docx"
+      },
+      {
+        "id": "cb8c3903-bb09-4ea3-a2e0-bd8f565fa71b",
+        "title": "中文说明.txt",
+        "source": {
+          "filename": "中文说明.txt"
+        },
+        "version": 1,
+        "revision_id": "481fbc72-dda8-5694-b9e2-84293e37fbbc",
+        "source_type": "txt"
+      }
+    ],
+    "supplement": false,
+    "status": "ready",
+    "content": {
+      "candidates": [
+        {
+          "id": "cand-request-session-aurora",
+          "topic": "请求无状态与会话机制，兼及极光试验系统项目设定",
+          "domain": "Web 请求与会话机制 / 项目设定",
+          "description": "理解请求无状态、服务端 Session 与客户端 Cookie 的分工，并掌握极光试验系统手册中的项目代号、轮换周期与测试负责人设定。",
+          "focuses": [
+            {
+              "id": "f-request-stateless",
+              "name": "请求无状态特性",
+              "description": "演示请求每次独立处理，不保留前次状态。",
+              "points": [
+                {
+                  "id": "p-stateless-independent",
+                  "name": "请求无状态：每次独立处理",
+                  "evidence_ids": [
+                    "kb-cd2be525c7549afedba2c85c55caec2995a5aea4dddd9be77daf462d2b84ad7a"
+                  ],
+                  "evidence_status": "available"
+                }
+              ]
+            },
+            {
+              "id": "f-session-cookie",
+              "name": "会话信息的保存与携带",
+              "description": "会话信息由服务端 Session 保存，Cookie 在客户端携带会话标识。",
+              "points": [
+                {
+                  "id": "p-session-server",
+                  "name": "服务端 Session 保存会话信息",
+                  "evidence_ids": [
+                    "kb-cd2be525c7549afedba2c85c55caec2995a5aea4dddd9be77daf462d2b84ad7a"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "p-cookie-client",
+                  "name": "Cookie 在客户端携带会话标识",
+                  "evidence_ids": [
+                    "kb-cd2be525c7549afedba2c85c55caec2995a5aea4dddd9be77daf462d2b84ad7a"
+                  ],
+                  "evidence_status": "available"
+                }
+              ]
+            },
+            {
+              "id": "f-aurora-manual",
+              "name": "极光试验系统手册项目设定",
+              "description": "项目代号 LUP7319，轮换周期 83 分钟，测试负责人为蓝桥小组。",
+              "points": [
+                {
+                  "id": "p-project-code",
+                  "name": "项目代号 LUP7319",
+                  "evidence_ids": [
+                    "kb-71c438cf8a628386ac220c969c70871e4bbae873891182a0b1a369858237ef2d"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "p-rotation-cycle",
+                  "name": "轮换周期 83 分钟",
+                  "evidence_ids": [
+                    "kb-71c438cf8a628386ac220c969c70871e4bbae873891182a0b1a369858237ef2d"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "p-test-owner",
+                  "name": "测试负责人为蓝桥小组",
+                  "evidence_ids": [
+                    "kb-71c438cf8a628386ac220c969c70871e4bbae873891182a0b1a369858237ef2d"
+                  ],
+                  "evidence_status": "available"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cand-session-mechanism",
+          "topic": "会话机制：服务端 Session 与客户端 Cookie",
+          "domain": "Web 会话机制",
+          "description": "聚焦会话机制本身：请求无状态、服务端 Session 保存会话信息、客户端 Cookie 携带会话标识。",
+          "focuses": [
+            {
+              "id": "f-stateless-vs-session",
+              "name": "无状态请求与会话保持",
+              "description": "请求独立处理，会话状态另由服务端与客户端配合维持。",
+              "points": [
+                {
+                  "id": "p2-stateless",
+                  "name": "请求无状态、每次独立处理",
+                  "evidence_ids": [
+                    "kb-cd2be525c7549afedba2c85c55caec2995a5aea4dddd9be77daf462d2b84ad7a"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "p2-session",
+                  "name": "服务端 Session 保存会话信息",
+                  "evidence_ids": [
+                    "kb-cd2be525c7549afedba2c85c55caec2995a5aea4dddd9be77daf462d2b84ad7a"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "p2-cookie",
+                  "name": "Cookie 携带会话标识",
+                  "evidence_ids": [
+                    "kb-cd2be525c7549afedba2c85c55caec2995a5aea4dddd9be77daf462d2b84ad7a"
+                  ],
+                  "evidence_status": "available"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cand-aurora-settings",
+          "topic": "极光试验系统手册项目设定",
+          "domain": "项目设定",
+          "description": "聚焦手册中的项目设定：项目代号 LUP7319、轮换周期 83 分钟、测试负责人蓝桥小组。",
+          "focuses": [
+            {
+              "id": "f-manual-facts",
+              "name": "手册项目设定要点",
+              "description": "项目代号、轮换周期与测试负责人三项设定。",
+              "points": [
+                {
+                  "id": "p3-code",
+                  "name": "项目代号 LUP7319",
+                  "evidence_ids": [
+                    "kb-71c438cf8a628386ac220c969c70871e4bbae873891182a0b1a369858237ef2d"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "p3-cycle",
+                  "name": "轮换周期 83 分钟",
+                  "evidence_ids": [
+                    "kb-71c438cf8a628386ac220c969c70871e4bbae873891182a0b1a369858237ef2d"
+                  ],
+                  "evidence_status": "available"
+                },
+                {
+                  "id": "p3-owner",
+                  "name": "测试负责人蓝桥小组",
+                  "evidence_ids": [
+                    "kb-71c438cf8a628386ac220c969c70871e4bbae873891182a0b1a369858237ef2d"
+                  ],
+                  "evidence_status": "available"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "evidence": [
+      {
+        "id": "kb-71c438cf8a628386ac220c969c70871e4bbae873891182a0b1a369858237ef2d",
+        "text": "极光试验系统手册：项目代号 LUP7319，轮换周期为83分钟；测试负责人是蓝桥小组。该设定仅用于新知识检索验收。",
+        "title": "极光新知识.docx",
+        "knowledge": {
+          "block": 1,
+          "deleted": false,
+          "chunk_id": "71c438cf8a628386ac220c969c70871e4bbae873891182a0b1a369858237ef2d",
+          "end_index": 57,
+          "document_id": "67e3ff7f-7e3d-4985-9d96-161ec318cfb4",
+          "header_path": [],
+          "revision_id": "db1ce6d6-8597-55aa-a6f7-d16f4d50f3ed",
+          "source_type": "docx",
+          "start_index": 0,
+          "chunk_position": 0,
+          "document_title": "极光新知识.docx",
+          "version_changed": false,
+          "document_version": 1
+        },
+        "truncated": false,
+        "supplement": false,
+        "content_hash": "be6c3ea3a33426dabf0767efa14e5e8aa72026363bc8d436915fd0d112bf6ed8",
+        "content_kind": "material",
+        "context_truncated": false,
+        "acquisition_status": "available"
+      },
+      {
+        "id": "kb-cd2be525c7549afedba2c85c55caec2995a5aea4dddd9be77daf462d2b84ad7a",
+        "text": "演示请求是无状态的，每次独立处理。会话信息由服务端 Session 保存，Cookie 在客户端携带会话标识。",
+        "title": "中文说明.txt",
+        "knowledge": {
+          "block": 1,
+          "deleted": false,
+          "chunk_id": "cd2be525c7549afedba2c85c55caec2995a5aea4dddd9be77daf462d2b84ad7a",
+          "end_index": 55,
+          "document_id": "cb8c3903-bb09-4ea3-a2e0-bd8f565fa71b",
+          "header_path": [],
+          "revision_id": "481fbc72-dda8-5694-b9e2-84293e37fbbc",
+          "source_type": "txt",
+          "start_index": 0,
+          "chunk_position": 0,
+          "document_title": "中文说明.txt",
+          "version_changed": false,
+          "document_version": 1
+        },
+        "truncated": false,
+        "supplement": false,
+        "content_hash": "1544b987015432ae9a7e3f6f43d82d3ff414952af8df2f009be78bbd70674415",
+        "content_kind": "material",
+        "context_truncated": false,
+        "acquisition_status": "available"
+      }
+    ],
+    "grounding": {
+      "status": "material_only",
+      "provider": null,
+      "reason_code": null
+    },
+    "recommended_candidate_ids": [
+      "cand-request-session-aurora"
+    ],
+    "created_at": "2026-10-18T15:11:05+00:00",
+    "expires_at": "2026-10-19T15:11:05+00:00"
+  },
+  "embedding_usage": {
+    "reserved": 0,
+    "actual": 2203
+  },
+  "model_calls": 11,
+  "elapsed_seconds": 84.91
+}

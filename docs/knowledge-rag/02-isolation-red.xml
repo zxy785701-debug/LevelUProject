@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="3" skipped="0" tests="3" time="1.614" timestamp="2026-10-18T18:08:09.348018+08:00" hostname="zxy"><testcase classname="tests.test_knowledge_isolation" name="test_storage_and_database_must_be_explicitly_isolated" time="0.021"><failure message="ModuleNotFoundError: No module named 'tests.knowledge_support'">tmp_path = WindowsPath('C:/Users/20777/AppData/Local/Temp/pytest-of-20777/pytest-67/test_storage_and_database_must0')
+
+    def test_storage_and_database_must_be_explicitly_isolated(tmp_path):
+&gt;       from tests.knowledge_support import assert_test_boundary
+E       ModuleNotFoundError: No module named 'tests.knowledge_support'
+
+tests\test_knowledge_isolation.py:7: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_knowledge_isolation" name="test_test_guard_rejects_temp_directory_itself_and_symlinks" time="0.005"><failure message="ModuleNotFoundError: No module named 'tests.knowledge_support'">tmp_path = WindowsPath('C:/Users/20777/AppData/Local/Temp/pytest-of-20777/pytest-67/test_test_guard_rejects_temp_d0')
+
+    def test_test_guard_rejects_temp_directory_itself_and_symlinks(tmp_path):
+&gt;       from tests.knowledge_support import assert_test_boundary
+E       ModuleNotFoundError: No module named 'tests.knowledge_support'
+
+tests\test_knowledge_isolation.py:21: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_knowledge_isolation" name="test_real_mysql_identity_is_checked_before_test_cleanup" time="1.311"><failure message="ModuleNotFoundError: No module named 'tests.knowledge_support'">def test_real_mysql_identity_is_checked_before_test_cleanup():
+        from app.config import Settings
+        from app.accounts.database import Database
+&gt;       from tests.knowledge_support import assert_database
+E       ModuleNotFoundError: No module named 'tests.knowledge_support'
+
+tests\test_knowledge_isolation.py:32: ModuleNotFoundError</failure></testcase></testsuite></testsuites>

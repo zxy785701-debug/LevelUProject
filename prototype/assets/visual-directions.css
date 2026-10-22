@@ -27,6 +27,7 @@
 .theme-a .proposal-label { color:#285cda; background:#e1eafd; padding:3px 8px; border-radius:5px; }
 .proposal-heading p { font-size:12px; color:#5e6c80; line-height:1.7; margin-top:9px; }
 .proposal .phone { height:844px; border:1px solid #c5cfde; box-shadow:0 5px 0 #dbe2ec,0 14px 28px #26395509; isolation:isolate; }
+.phone-chrome { flex:none; }
 .proposal .content { position:relative; padding:23px 22px 24px; overflow:hidden; }
 .proposal .content > * { position:relative; z-index:1; }
 .proposal .mini-bar { padding-bottom:2px; }
@@ -40,6 +41,7 @@
 .proposal-notes { max-width:390px; margin:23px auto 0; }
 .palette { display:flex; align-items:center; gap:5px; }
 .palette > span:not(.palette-label) { width:15px; height:15px; border-radius:50%; border:1px solid #202a3d18; }
+.palette > .gradient-swatch:not(.palette-label) { width:48px; border-radius:5px; }
 .palette-label { color:#5a687c; font-size:11px; margin-left:5px; }
 .proposal-notes ul { list-style:none; padding:0; margin:12px 0 0; color:#526179; font-size:12px; line-height:1.9; }
 .review-recommendation { margin-top:32px; display:flex; gap:24px; align-items:center; padding:20px 24px; background:#fff; border-radius:12px; border-left:4px solid #336ae8; }
@@ -49,67 +51,62 @@
 .review-footer { display:flex; justify-content:space-between; gap:16px; color:#647187; font-size:12px; margin-top:21px; }
 .review-footer a { text-decoration:underline; text-underline-offset:3px; }
 
-/* A: A confident blue navigation band and a restrained card motif. */
-.theme-a .status-bar,.theme-a .mini-bar { background:#336ae8; color:#fff; }
-.theme-a .mini-bar { border-bottom:1px solid #265bcf; }
-.theme-a .wechat-capsule { background:#ffffff16; border-color:#ffffff75; }
-.theme-a .wechat-capsule::after { border-color:#fff; background:#fff; box-shadow:inset 0 0 0 3px #336ae8; }
-.theme-a .capsule-divider { border-color:#ffffff75; }
-.theme-a .battery { border-color:currentColor; }
-.theme-a .battery::after,.theme-a .battery b { background:currentColor; }
-.theme-a .phone { background:#edf3ff; }
-.theme-a .phone-scroll { background:linear-gradient(#edf3ff 0 220px,#f6f8fc 420px); }
-.theme-a .content::before,.theme-a .content::after { content:""; position:absolute; width:92px; height:118px; border:1px solid #b9cdf3; border-radius:12px; right:-37px; top:27px; transform:rotate(19deg); pointer-events:none; }
-.theme-a .content::after { right:-19px; top:39px; opacity:.6; }
-.theme-a .upload-zone { background:#fff; border-color:#aac1ef; box-shadow:0 6px 14px #294c8c05; }
-.theme-a .file-card { background:#fff; border-color:#dce5f4; }
-.theme-a .bubble { background:#fff; }
-.theme-a .phone-bottom { background:#f9fbff; border-color:#e1e8f3; }
+/* One shared surface keeps the gradient continuous across both navigation rows. */
+.proposal:not(.original) .phone-chrome { background:var(--nav-gradient); color:var(--nav-ink,#fff); }
+.proposal:not(.original) .status-bar,.proposal:not(.original) .mini-bar { background:transparent; color:inherit; }
+.proposal:not(.original) .wechat-capsule { background:#ffffff1f; border-color:var(--capsule-line,#ffffff70); }
+.proposal:not(.original) .wechat-capsule::after { border-color:currentColor; background:radial-gradient(circle,currentColor 0 2px,transparent 2.4px); box-shadow:none; }
+.proposal:not(.original) .wechat-capsule::before { color:inherit; }
+.proposal:not(.original) .capsule-divider { border-color:var(--capsule-line,#ffffff70); }
+.proposal:not(.original) .battery { border-color:currentColor; }
+.proposal:not(.original) .battery::after,.proposal:not(.original) .battery b { background:currentColor; }
+.proposal:not(.original) .upload-zone { background:#ffffffed; border-color:var(--surface-border); box-shadow:0 6px 16px #294c8c05; }
+.proposal:not(.original) .file-card { background:#fff; border-color:var(--surface-border); }
+.proposal:not(.original) .bubble { background:#fff; border-color:var(--surface-border); }
+.proposal:not(.original) .phone-bottom { background:#fbfcff; border-color:#e2e9f4; }
+.proposal:not(.original) .content::before,.proposal:not(.original) .content::after { pointer-events:none; }
 
-/* B: The notebook theme belongs to learning, with a quiet 24px grid. */
-.theme-b .status-bar,.theme-b .mini-bar { background:#ffdf70; color:#303343; }
-.theme-b .mini-bar { border-bottom:1px solid #e3c458; }
-.theme-b .wechat-capsule { border-color:#9b823e66; background:#fff7d266; }
-.theme-b .capsule-divider { border-color:#9b823e66; }
-.theme-b .phone { background:#fffcf2; }
-.theme-b .phone-scroll { background-color:#fffcf2; background-image:linear-gradient(#c1ad6510 1px,transparent 1px),linear-gradient(90deg,#c1ad6510 1px,transparent 1px); background-size:24px 24px; }
-.theme-b .upload-zone { background:#fffefb; border-color:#c8ae59; box-shadow:3px 4px 0 #ead99840; border-radius:12px; }
-.theme-b .file-card { background:#fffefb; border-color:#e7dfc7; }
-.theme-b .bubble { background:#fffefb; border-color:#e7dfc7; }
-.theme-b .phone-bottom { background:#fffdf7; border-color:#eae1c8; }
+/* A: vivid blue navigation, followed by a pale blue wash that fades to white. */
+.theme-a { --nav-gradient:linear-gradient(105deg,#163c9f 0%,#285ddd 38%,#429af0 72%,#9adeff 100%); --surface-border:#c5d7f1; --capsule-line:#173d7066; }
+.theme-a .status-icons { color:#173d70; }
+.proposal.theme-a .wechat-capsule { color:#173d70; background:#ffffff4d; }
+.theme-a .phone { background:#f7faff; }
+.theme-a .phone-scroll { background:radial-gradient(ellipse 110% 300px at 100% 0,#a9d9ffcc,transparent 80%),linear-gradient(180deg,#d7eaff 0,#eef6ff 240px,#fbfcff 460px); }
+.theme-a .content::before,.theme-a .content::after { content:""; position:absolute; width:92px; height:118px; border:1px solid #aac7ed80; border-radius:12px; right:-37px; top:27px; transform:rotate(19deg); }
+.theme-a .content::after { right:-19px; top:39px; opacity:.55; }
 
-/* C: A mint page behind white sheets, calmer than a saturated top bar. */
-.theme-c .status-bar,.theme-c .mini-bar { background:#cdece2; color:#234b43; }
-.theme-c .wechat-capsule { background:#ffffff4d; border-color:#648c8166; }
-.theme-c .capsule-divider { border-color:#648c8166; }
-.theme-c .phone { background:#f1f8f5; }
-.theme-c .phone-scroll { background:linear-gradient(#dcf2e9 0 153px,#f1f8f5 300px); }
-.theme-c .content::before { content:""; position:absolute; width:214px; height:134px; right:-119px; top:22px; border:1px solid #a5cfc3; border-radius:26px; transform:rotate(-27deg); box-shadow:0 10px 0 #c6e4d944,0 11px 0 #b5dace88; pointer-events:none; }
-.theme-c .upload-zone { background:#fff; border:1px solid #c3ddd3; border-radius:20px 20px 20px 5px; box-shadow:0 5px 0 #deece6; }
-.theme-c .file-card { background:#fff; border-color:#dce9e3; }
-.theme-c .bubble { background:#fff; border-color:#d6e5de; }
-.theme-c .phone-bottom { background:#fbfdfc; border-color:#dce9e3; }
+/* B: blue to teal; the cool wash remains subtle beneath the white content. */
+.theme-b { --nav-gradient:linear-gradient(112deg,#2857ca 0%,#2175b5 55%,#087c8e 100%); --surface-border:#c3dfe9; }
+.theme-b .phone { background:#f6fbfd; }
+.theme-b .phone-scroll { background:radial-gradient(ellipse at 100% 0,#c9f0edb3,transparent 60%),linear-gradient(180deg,#e3efff 0,#edf8fb 220px,#fafcfe 440px); }
+.theme-b .content::before { content:""; position:absolute; width:245px; height:160px; border:1px solid #8bbecb33; border-radius:50%; right:-124px; top:27px; transform:rotate(-25deg); box-shadow:0 18px 0 #a3d9e51a; }
+
+/* C: a low-saturation blue-lavender header flows directly into a pale body. */
+.theme-c { --nav-gradient:linear-gradient(112deg,#d2e5ff 0%,#dde8ff 52%,#e9defa 100%); --nav-ink:#27456f; --capsule-line:#607aa166; --surface-border:#d2ddef; }
+.theme-c .phone { background:#f8f9fe; }
+.theme-c .phone-scroll { background:radial-gradient(ellipse at 100% 0,#ece2fc99,transparent 57%),linear-gradient(180deg,#e6eeff 0,#f1f3ff 170px,#fbfcff 400px); }
+.theme-c .content::before { content:""; position:absolute; width:214px; height:134px; right:-119px; top:22px; border:1px solid #bbcae766; border-radius:26px; transform:rotate(-27deg); box-shadow:0 10px 0 #dce4f333; }
 
 /* Concentration: decoration recedes, options retain clean white surfaces. */
 .proposal:not(.original) [data-id="L09"] .content::before,.proposal:not(.original) [data-id="L09"] .content::after { display:none; }
-.theme-a [data-id="L09"] .phone-scroll { background:#f6f8fc; }
-.theme-b [data-id="L09"] .phone-scroll { background:#fffdf7; }
-.theme-c [data-id="L09"] .phone-scroll { background:#f5faf7; }
+.theme-a [data-id="L09"] .phone-scroll { background:linear-gradient(160deg,#dcecff 0,#f4f8ff 190px,#fbfcff 420px); }
+.theme-b [data-id="L09"] .phone-scroll { background:linear-gradient(160deg,#eef5ff 0,#f3fafb 220px,#fbfcff 440px); }
+.theme-c [data-id="L09"] .phone-scroll { background:linear-gradient(160deg,#edf2ff 0,#f6f5fc 240px,#fbfcff 440px); }
 .proposal:not(.original) [data-id="L09"] .option { background:#fff; border-color:#dbe2ec; min-height:68px; box-shadow:0 2px 0 #202a3d03; }
 .proposal:not(.original) [data-id="L09"] .question { margin-top:18px; margin-bottom:24px; }
 .proposal:not(.original) [data-id="L09"] .quiz-progress { padding-bottom:18px; }
 .proposal:not(.original) .phone-bottom .quiz-navigation .btn + .btn { margin-top:0; }
 .proposal:not(.original) [data-id="L09"] .option-code { background:#f2f5fa; border-color:transparent; }
-.theme-b [data-id="L09"] .option-code { background:#fff6d8; }
-.theme-c [data-id="L09"] .option-code { background:#eaf5ef; }
+.theme-b [data-id="L09"] .option-code { background:#eaf5fa; }
+.theme-c [data-id="L09"] .option-code { background:#eff0fc; }
 
 /* Celebration: concentrate extra color in the existing mascot stage. */
 .proposal:not(.original) [data-id="L15"] .content { padding-top:10px; }
 .proposal:not(.original) [data-id="L15"] .hero-stage { height:159px; margin-bottom:15px; }
 .proposal:not(.original) [data-id="L15"] .hero-stage .mascot { height:161px; }
 .proposal:not(.original) [data-id="L15"] .hero-stage::before { width:200px; height:137px; background:#ffe793; border-radius:50%; transform:rotate(-9deg); }
-.proposal.theme-b [data-id="L15"] .hero-stage::before { background:#ffedac; }
-.proposal.theme-c [data-id="L15"] .hero-stage::before { background:#d3eadf; border:1px solid #b9d7ca; box-shadow:8px 8px 0 #e5f1eb; }
+.proposal.theme-b [data-id="L15"] .hero-stage::before { background:linear-gradient(135deg,#d8e8ff,#c7ecec); }
+.proposal.theme-c [data-id="L15"] .hero-stage::before { background:linear-gradient(135deg,#d8e8ff,#e7dcfa); border:1px solid #c7d5ed; }
 .proposal:not(.original) [data-id="L15"] .hero-stage::after { content:""; position:absolute; width:6px; height:16px; top:28px; right:24%; background:#336ae8; border-radius:2px; transform:rotate(24deg); box-shadow:38px 60px 0 -1px #ffd84d,-165px 58px 0 -1px #86b8eb; }
 .proposal:not(.original) [data-id="L15"] .stat-grid { background:#ffffffdb; border:1px solid #dce3ec; border-radius:14px; margin-top:20px; }
 .proposal:not(.original) [data-id="L15"] .stat-grid b { font-size:22px; }

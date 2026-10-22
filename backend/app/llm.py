@@ -76,6 +76,8 @@ class ModelGateway:
 
     def chat_model(self):
         """Unbound client, shared by structured output and tool-calling workflows."""
+        from .model_transport import current_async_model_client
+        client=current_async_model_client()
         return ChatOpenAI(
             model=self.settings.deepseek_model,
             api_key=self.settings.deepseek_api_key.get_secret_value(),
@@ -83,6 +85,7 @@ class ModelGateway:
             extra_body={"thinking":{"type":"disabled"}},
             temperature=0.4, max_tokens=6000,
             timeout=self.settings.model_timeout_seconds, max_retries=0,
+            **({'http_async_client':client} if client is not None else {}),
         )
 
     def runnable(self, schema):

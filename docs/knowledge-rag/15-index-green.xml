@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="6" time="18.195" timestamp="2026-10-18T20:35:04.875423+08:00" hostname="zxy"><testcase classname="tests.test_knowledge_index" name="test_index_refuses_to_open_without_live_directory_and_database_locks" time="0.760" /><testcase classname="tests.test_knowledge_index" name="test_real_chroma_upsert_manifest_and_only_active_owned_selection" time="9.645" /><testcase classname="tests.test_knowledge_index" name="test_manifest_rejects_missing_wrong_dimensions_and_wrong_profile" time="0.751" /><testcase classname="tests.test_knowledge_index" name="test_chroma_payload_cannot_replace_mysql_text_or_smuggle_another_users_chunk" time="1.017" /><testcase classname="tests.test_knowledge_index" name="test_import_batches_are_invisible_until_atomic_activation_and_resume_cache" time="2.567" /><testcase classname="tests.test_knowledge_index" name="test_failed_reindex_preserves_previous_active_revision_and_final_delete_race" time="0.589"><failure message="app.errors.AppError: 未找到可读取文字；扫描件需要先转换为文字版">index = &lt;app.knowledge.index.VectorIndex object at 0x0000028C7AA8AC30&gt;
+repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x0000028C7AA8A690&gt;
+
+    def test_failed_reindex_preserves_previous_active_revision_and_final_delete_race(index,repo):
+        from app.knowledge.indexing import ImportIndexer
+        from app.knowledge.database import Document
+        seed(repo)
+        pipeline = ImportIndexer(repo.accounts,repo.config,index,embedding_factory=lambda claim:None)
+        queued = pipeline.submit_reindex('alice','rebuild','doc')
+        assert pipeline.submit_reindex('alice','rebuild','doc')['id']==queued['id']
+        claim = pipeline.claim('worker')
+&gt;       parsed = pipeline.parse(claim)
+                 ^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_knowledge_index.py:134: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\knowledge\importing.py:49: in parse
+    content = canonical_content(payload['material_content'],max_chars=self.accounts.settings.material_max_chars)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+content = {'title': '真实资料 doc', 'segments': [], 'source_type': 'md'}
+max_chars = 100000
+
+    def canonical_content(content, *, max_chars):
+        result = deepcopy(content)
+        segments, pieces, offset = [], [], 0
+        for block, original in enumerate(content.get('segments',[])):
+            text = original.get('text','').strip()
+            if not text: continue
+            if pieces: offset += 2
+            segment = {**original,'text':text,'block':block+1,'start_index':offset,'end_index':offset+len(text)}
+            segments.append(segment)
+            pieces.append(text)
+            offset += len(text)
+        if not segments:
+&gt;           raise AppError('NO_READABLE_CONTENT','未找到可读取文字；扫描件需要先转换为文字版',422)
+E           app.errors.AppError: 未找到可读取文字；扫描件需要先转换为文字版
+
+app\knowledge\parsing.py:25: AppError</failure></testcase></testsuite></testsuites>

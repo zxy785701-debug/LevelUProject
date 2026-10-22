@@ -1,0 +1,5 @@
+
+> levelup-mini@1.0.0 check:assets
+> node scripts/verify-assets.cjs
+
+{"passed":true,"images":58,"inlineImages":0,"jsBytes":518226}

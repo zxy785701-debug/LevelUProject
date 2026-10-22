@@ -1,0 +1,23 @@
+
+Running 16 tests using 1 worker
+
+(node:31692) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 e2e-accounts\accounts.spec.ts:38:5 › 未登录强制登录，无游客入口；320px 布局 (1.1s)
+  ok  2 e2e-accounts\accounts.spec.ts:56:5 › 真实 MySQL 闭环：答题、报告、海报、昵称、退出 (6.2s)
+  ok  3 e2e-accounts\accounts.spec.ts:82:5 › 暂停刷新恢复、断网不入账、错题复习不加奖励 (5.9s)
+  ok  4 e2e-accounts\accounts.spec.ts:125:5 › 账号隔离与过期回登录 (4.0s)
+  ok  5 e2e-accounts\interactions.spec.ts:26:5 › 任意切题、草稿保留、未答完不出报告、进阶奖励与白色星星 (5.3s)
+  ok  6 e2e-accounts\interactions.spec.ts:74:5 › 头像操作菜单、预览与实际图片下载 (1.5s)
+  ok  7 e2e-accounts\interactions.spec.ts:102:5 › 长页面进入历史再返回，恢复原滚动位置 (1.0s)
+  ok  8 e2e-accounts\materials.spec.ts:23:5 › 文档上传、真实材料确认、来源阅读、出题和答题闭环 (6.4s)
+  ok  9 e2e-accounts\materials.spec.ts:54:5 › 知识地图与周期报告空态、网页错误和 320px 布局 (1.1s)
+  ok 10 e2e-accounts\materials.spec.ts:66:5 › 历史作答聚合、知识节点和周期报告生成导出 (3.0s)
+  ok 11 e2e-accounts\materials.spec.ts:103:5 › 已清理的缓存解析任务能退出轮询并重新选择材料 (1.1s)
+  ok 12 e2e-accounts\materials.spec.ts:114:5 › 取消解析后迟到的材料响应不能跳回学习范围 (1.2s)
+  ok 13 e2e-accounts\quiz-document.spec.ts:71:5 › 逐题判分、多选确认、刷新保留，答完自动报告并返回首页、删除记录 (4.3s)
+  ok 14 e2e-accounts\quiz-document.spec.ts:124:5 › 本题提交失败可重试，不重复提交已经确认的题目 (1.4s)
+  ok 15 e2e-accounts\quiz-document.spec.ts:147:5 › 无文件可选页码，PDF 保留范围、校验错误就地提示并提交正确页码 (1.2s)
+  ok 16 e2e-accounts\quiz-document.spec.ts:174:5 › 切换 TXT 自动使用全文并解释页码不可用 (992ms)
+
+  16 passed (47.9s)

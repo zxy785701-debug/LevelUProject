@@ -1,0 +1,28 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+__ test_repeated_evidence_in_model_messages_obeys_cumulative_context_budget ___
+
+wire = {'calls': [{'url': 'https://api.tavily.com/search', 'body': {'query': 'HTTP semantics', 'max_results': 3, 'search_dept...ps://example.com/', 'content': 'summary', 'raw_content': 'body'}], 'usage': {'credits': 1}}, 'status': 200, 'delay': 0}
+
+    @pytest.mark.anyio
+    async def test_repeated_evidence_in_model_messages_obeys_cumulative_context_budget(wire):
+        from app.knowledge.retrieval import KnowledgeAgent
+        async def search(query,maximum): return [source('˽�����ġ�'*3000)]
+        model = ScriptedModel(replies=[calls(('tavily_search',{'query':'HTTP semantics'})),
+            calls(('knowledge_search',{'query':'��һ����ʵ'})),AIMessage(content='done')])
+        await KnowledgeAgent(settings(),knowledge_search=search,model=model,public_plan=plan()).run('HTTP semantics')
+        used = 0
+        for messages in model.requests:
+            for message in messages:
+                content = message.content
+                if not isinstance(content,str): continue
+                try: payload = json.loads(content if content.startswith('{') else content.split('\n',1)[1])
+                except (ValueError,IndexError): continue
+                used += sum(len(s['text']) for s in payload.get('evidence',[]))
+>       assert 0 < used <= 24000
+E       assert 42006 <= 24000
+
+tests\test_knowledge_agent.py:173: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_knowledge_agent.py::test_repeated_evidence_in_model_messages_obeys_cumulative_context_budget
+1 failed in 7.71s

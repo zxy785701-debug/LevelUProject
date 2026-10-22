@@ -1,0 +1,29 @@
+.F.................                                                      [100%]
+================================== FAILURES ===================================
+_ test_publish_commit_failure_restores_without_new_model_calls_or_duplicate_history _
+
+index = <app.knowledge.index.VectorIndex object at 0x000001EEC77D0A50>
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x000001EEC77D0550>
+
+    def test_publish_commit_failure_restores_without_new_model_calls_or_duplicate_history(index,repo):
+        from app.knowledge.database import Question,Job
+        pipeline,claim,gateway,selected,row = setup_question(repo,index)
+        def fail(session):
+            if any(isinstance(obj,Question) for obj in session.new) or any(isinstance(obj,Question) for obj in session.identity_map.values()):
+                raise RuntimeError('publish commit interruption')
+        event.listen(Session,'before_commit',fail)
+        try:
+>           with pytest.raises(RuntimeError): pipeline.process(claim)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           Failed: DID NOT RAISE RuntimeError
+
+tests\test_knowledge_question_history.py:58: Failed
+---------------------------- Captured stderr call -----------------------------
+[levelup] app.accounts.repository ai_call operation=dc860d72-f0be-41a7-8c1a-839c63d5bf35 kind=knowledgeqa minute_calls=1
+[levelup] app.accounts.repository ai_call operation=dc860d72-f0be-41a7-8c1a-839c63d5bf35 kind=knowledgeqa minute_calls=2
+------------------------------ Captured log call ------------------------------
+INFO     app.accounts.repository:repository.py:430 ai_call operation=dc860d72-f0be-41a7-8c1a-839c63d5bf35 kind=knowledgeqa minute_calls=1
+INFO     app.accounts.repository:repository.py:430 ai_call operation=dc860d72-f0be-41a7-8c1a-839c63d5bf35 kind=knowledgeqa minute_calls=2
+=========================== short test summary info ===========================
+FAILED tests/test_knowledge_question_history.py::test_publish_commit_failure_restores_without_new_model_calls_or_duplicate_history
+1 failed, 18 passed in 16.98s

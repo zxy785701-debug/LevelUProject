@@ -1,0 +1,211 @@
+FFFFFFFFFFF                                                              [100%]
+================================== FAILURES ===================================
+_______ test_answer_has_paragraph_citations_and_separate_support_review _______
+
+    @pytest.mark.anyio
+    async def test_answer_has_paragraph_citations_and_separate_support_review():
+        gateway = SequenceGateway([draft(),review()])
+>       result = await answer(gateway)
+                 ^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_knowledge_answering.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+gateway = <tests.test_grounding_generation.SequenceGateway object at 0x0000021E4CF5F770>
+result = None, kwargs = {}
+
+    async def answer(gateway,result=None,**kwargs):
+>       from app.knowledge.answering import create_answer
+E       ModuleNotFoundError: No module named 'app.knowledge.answering'
+
+tests\test_knowledge_answering.py:24: ModuleNotFoundError
+_ test_no_sources_and_private_dependent_question_with_only_web_are_insufficient _
+
+    @pytest.mark.anyio
+    async def test_no_sources_and_private_dependent_question_with_only_web_are_insufficient():
+        gateway = SequenceGateway([])
+>       assert (await answer(gateway,outcome([])))['status']=='insufficient'
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_knowledge_answering.py:41: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+gateway = <tests.test_grounding_generation.SequenceGateway object at 0x0000021E4CF274D0>
+result = KnowledgeOutcome(evidence=[], trace=[], model_calls=0, tool_calls=0, page_attempts=0, reason_code=None, usage={}, depends_on_documents=True, knowledge_error=None)
+kwargs = {}
+
+    async def answer(gateway,result=None,**kwargs):
+>       from app.knowledge.answering import create_answer
+E       ModuleNotFoundError: No module named 'app.knowledge.answering'
+
+tests\test_knowledge_answering.py:24: ModuleNotFoundError
+_ test_unsupported_claims_are_corrected_once_then_business_insufficient[unsupported] _
+
+status = 'unsupported'
+
+    @pytest.mark.anyio
+    @pytest.mark.parametrize('status',['unsupported','contradicted','ambiguous','off_scope'])
+    async def test_unsupported_claims_are_corrected_once_then_business_insufficient(status):
+        gateway = SequenceGateway([draft(text='δ֧�ֵĽ���'),review(status),draft(text='��δ֧�ֵĽ���'),review(status)])
+>       result = await answer(gateway)
+                 ^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_knowledge_answering.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+gateway = <tests.test_grounding_generation.SequenceGateway object at 0x0000021E4EFE39D0>
+result = None, kwargs = {}
+
+    async def answer(gateway,result=None,**kwargs):
+>       from app.knowledge.answering import create_answer
+E       ModuleNotFoundError: No module named 'app.knowledge.answering'
+
+tests\test_knowledge_answering.py:24: ModuleNotFoundError
+_ test_unsupported_claims_are_corrected_once_then_business_insufficient[contradicted] _
+
+status = 'contradicted'
+
+    @pytest.mark.anyio
+    @pytest.mark.parametrize('status',['unsupported','contradicted','ambiguous','off_scope'])
+    async def test_unsupported_claims_are_corrected_once_then_business_insufficient(status):
+        gateway = SequenceGateway([draft(text='δ֧�ֵĽ���'),review(status),draft(text='��δ֧�ֵĽ���'),review(status)])
+>       result = await answer(gateway)
+                 ^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_knowledge_answering.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+gateway = <tests.test_grounding_generation.SequenceGateway object at 0x0000021E4F0B4770>
+result = None, kwargs = {}
+
+    async def answer(gateway,result=None,**kwargs):
+>       from app.knowledge.answering import create_answer
+E       ModuleNotFoundError: No module named 'app.knowledge.answering'
+
+tests\test_knowledge_answering.py:24: ModuleNotFoundError
+_ test_unsupported_claims_are_corrected_once_then_business_insufficient[ambiguous] _
+
+status = 'ambiguous'
+
+    @pytest.mark.anyio
+    @pytest.mark.parametrize('status',['unsupported','contradicted','ambiguous','off_scope'])
+    async def test_unsupported_claims_are_corrected_once_then_business_insufficient(status):
+        gateway = SequenceGateway([draft(text='δ֧�ֵĽ���'),review(status),draft(text='��δ֧�ֵĽ���'),review(status)])
+>       result = await answer(gateway)
+                 ^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_knowledge_answering.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+gateway = <tests.test_grounding_generation.SequenceGateway object at 0x0000021E4F0B5480>
+result = None, kwargs = {}
+
+    async def answer(gateway,result=None,**kwargs):
+>       from app.knowledge.answering import create_answer
+E       ModuleNotFoundError: No module named 'app.knowledge.answering'
+
+tests\test_knowledge_answering.py:24: ModuleNotFoundError
+_ test_unsupported_claims_are_corrected_once_then_business_insufficient[off_scope] _
+
+status = 'off_scope'
+
+    @pytest.mark.anyio
+    @pytest.mark.parametrize('status',['unsupported','contradicted','ambiguous','off_scope'])
+    async def test_unsupported_claims_are_corrected_once_then_business_insufficient(status):
+        gateway = SequenceGateway([draft(text='δ֧�ֵĽ���'),review(status),draft(text='��δ֧�ֵĽ���'),review(status)])
+>       result = await answer(gateway)
+                 ^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_knowledge_answering.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+gateway = <tests.test_grounding_generation.SequenceGateway object at 0x0000021E4F0D1490>
+result = None, kwargs = {}
+
+    async def answer(gateway,result=None,**kwargs):
+>       from app.knowledge.answering import create_answer
+E       ModuleNotFoundError: No module named 'app.knowledge.answering'
+
+tests\test_knowledge_answering.py:24: ModuleNotFoundError
+_______ test_forged_citations_and_missing_review_paragraphs_cannot_pass _______
+
+    @pytest.mark.anyio
+    async def test_forged_citations_and_missing_review_paragraphs_cannot_pass():
+        for verdict in (review(ids=['forged']),review(paragraphs=[])):
+            gateway = SequenceGateway([draft(ids=['forged']),verdict])
+>           from app.knowledge.answering import create_answer
+E           ModuleNotFoundError: No module named 'app.knowledge.answering'
+
+tests\test_knowledge_answering.py:60: ModuleNotFoundError
+_ test_conflicting_sources_can_be_described_separately_but_not_falsely_unified _
+
+    @pytest.mark.anyio
+    async def test_conflicting_sources_can_be_described_separately_but_not_falsely_unified():
+        first,second = source('���� A: ����Ϊ10%'),source('���� B: ����Ϊ20%')
+        second = second.model_copy(update={'id':'second','knowledge':second.knowledge.model_copy(update={'document_id':'another'})})
+        ids = [first.id,second.id]
+        gateway = SequenceGateway([draft(ids,text='���� A ����10%������ B ����20%����ǰ���ϴ��ڳ�ͻ��'),
+            review(ids=ids,conflicts=[{'source_ids':ids,'reason':'��ֵ��ͻ'}])])
+>       result = await answer(gateway,outcome([first,second]))
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_knowledge_answering.py:72: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+gateway = <tests.test_grounding_generation.SequenceGateway object at 0x0000021E4F0AA9C0>
+result = KnowledgeOutcome(evidence=[EvidenceSegment(id='kb-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', t...el_calls=0, tool_calls=0, page_attempts=0, reason_code=None, usage={}, depends_on_documents=True, knowledge_error=None)
+kwargs = {}
+
+    async def answer(gateway,result=None,**kwargs):
+>       from app.knowledge.answering import create_answer
+E       ModuleNotFoundError: No module named 'app.knowledge.answering'
+
+tests\test_knowledge_answering.py:24: ModuleNotFoundError
+_ test_network_failure_with_supported_private_material_is_honest_material_only _
+
+    @pytest.mark.anyio
+    async def test_network_failure_with_supported_private_material_is_honest_material_only():
+        gateway = SequenceGateway([draft(),review()])
+>       result = await answer(gateway,outcome(reason_code='TAVILY_UNAVAILABLE'))
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_knowledge_answering.py:83: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+gateway = <tests.test_grounding_generation.SequenceGateway object at 0x0000021E4F0D5D50>
+result = KnowledgeOutcome(evidence=[EvidenceSegment(id='kb-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', t..._calls=0, page_attempts=0, reason_code='TAVILY_UNAVAILABLE', usage={}, depends_on_documents=True, knowledge_error=None)
+kwargs = {}
+
+    async def answer(gateway,result=None,**kwargs):
+>       from app.knowledge.answering import create_answer
+E       ModuleNotFoundError: No module named 'app.knowledge.answering'
+
+tests\test_knowledge_answering.py:24: ModuleNotFoundError
+________ test_saved_draft_restores_without_generating_a_second_answer _________
+
+    @pytest.mark.anyio
+    async def test_saved_draft_restores_without_generating_a_second_answer():
+>       from app.knowledge.answering import create_answer
+E       ModuleNotFoundError: No module named 'app.knowledge.answering'
+
+tests\test_knowledge_answering.py:90: ModuleNotFoundError
+____ test_answer_models_reject_oversized_answers_and_unreviewed_free_text _____
+
+    def test_answer_models_reject_oversized_answers_and_unreviewed_free_text():
+>       from app.knowledge.answering import AnswerDraft
+E       ModuleNotFoundError: No module named 'app.knowledge.answering'
+
+tests\test_knowledge_answering.py:103: ModuleNotFoundError
+=========================== short test summary info ===========================
+FAILED tests/test_knowledge_answering.py::test_answer_has_paragraph_citations_and_separate_support_review
+FAILED tests/test_knowledge_answering.py::test_no_sources_and_private_dependent_question_with_only_web_are_insufficient
+FAILED tests/test_knowledge_answering.py::test_unsupported_claims_are_corrected_once_then_business_insufficient[unsupported]
+FAILED tests/test_knowledge_answering.py::test_unsupported_claims_are_corrected_once_then_business_insufficient[contradicted]
+FAILED tests/test_knowledge_answering.py::test_unsupported_claims_are_corrected_once_then_business_insufficient[ambiguous]
+FAILED tests/test_knowledge_answering.py::test_unsupported_claims_are_corrected_once_then_business_insufficient[off_scope]
+FAILED tests/test_knowledge_answering.py::test_forged_citations_and_missing_review_paragraphs_cannot_pass
+FAILED tests/test_knowledge_answering.py::test_conflicting_sources_can_be_described_separately_but_not_falsely_unified
+FAILED tests/test_knowledge_answering.py::test_network_failure_with_supported_private_material_is_honest_material_only
+FAILED tests/test_knowledge_answering.py::test_saved_draft_restores_without_generating_a_second_answer
+FAILED tests/test_knowledge_answering.py::test_answer_models_reject_oversized_answers_and_unreviewed_free_text
+11 failed in 7.70s

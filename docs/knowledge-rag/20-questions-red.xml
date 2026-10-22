@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="4" skipped="0" tests="4" time="9.260" timestamp="2026-10-18T21:13:48.852241+08:00" hostname="zxy"><testcase classname="tests.test_knowledge_questions" name="test_question_input_requires_explicit_scope_and_defaults_network_on" time="0.004"><failure message="ImportError: cannot import name 'QuestionRequest' from 'app.knowledge.models' (D:\nbproject\LevelUpProject\backend\app\knowledge\models.py)">def test_question_input_requires_explicit_scope_and_defaults_network_on():
+&gt;       from app.knowledge.models import QuestionRequest
+E       ImportError: cannot import name 'QuestionRequest' from 'app.knowledge.models' (D:\nbproject\LevelUpProject\backend\app\knowledge\models.py)
+
+tests\test_knowledge_questions.py:13: ImportError</failure></testcase><testcase classname="tests.test_knowledge_questions" name="test_question_submission_is_durable_owned_and_idempotent_without_quiz_or_rewards" time="0.828"><failure message="ModuleNotFoundError: No module named 'app.knowledge.questions'">repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x000001D1A2A36120&gt;
+
+    def test_question_submission_is_durable_owned_and_idempotent_without_quiz_or_rewards(repo):
+&gt;       from app.knowledge.questions import QuestionRepository
+E       ModuleNotFoundError: No module named 'app.knowledge.questions'
+
+tests\test_knowledge_questions.py:25: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_knowledge_questions" name="test_question_daily_submission_limit_is_atomic_and_retry_does_not_charge_twice" time="0.212"><failure message="ModuleNotFoundError: No module named 'app.knowledge.questions'">repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x000001D1A2A77ED0&gt;
+
+    def test_question_daily_submission_limit_is_atomic_and_retry_does_not_charge_twice(repo):
+&gt;       from app.knowledge.questions import QuestionRepository
+E       ModuleNotFoundError: No module named 'app.knowledge.questions'
+
+tests\test_knowledge_questions.py:47: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_knowledge_questions" name="test_question_api_creates_short_job_and_rejects_implicit_history" time="0.354"><failure message="AssertionError: {&quot;code&quot;:&quot;NOT_FOUND&quot;,&quot;message&quot;:&quot;接口不存在&quot;,&quot;data&quot;:null}&#10;assert 404 == 200&#10; +  where 404 = &lt;Response [404 Not Found]&gt;.status_code">knowledge_app = &lt;fastapi.applications.FastAPI object at 0x000001D1A2B60910&gt;
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x000001D1A2B409D0&gt;
+
+    @pytest.mark.anyio
+    async def test_question_api_creates_short_job_and_rejects_implicit_history(knowledge_app,monkeypatch):
+        from app.knowledge.config import KnowledgeSettings
+        from app.knowledge.repository import KnowledgeRepository
+        monkeypatch.setattr(KnowledgeSettings,'unavailable_reason',lambda self,**kw:None)
+        repo = KnowledgeRepository(knowledge_app.state.accounts,knowledge_app.state.knowledge_config)
+        async with httpx.AsyncClient(transport=httpx.ASGITransport(app=knowledge_app),base_url='http://test') as client:
+            assert (await client.post('/api/v1/knowledge/questions',json={'question':'问','all_ready':True})).status_code==401
+            identity = await login(client)
+            seed(repo,uid=identity['user']['id'])
+            response = await client.post('/api/v1/knowledge/questions',headers={'Idempotency-Key':'ask'},json={'question':'问','all_ready':True})
+&gt;           assert response.status_code==200,response.text
+E           AssertionError: {"code":"NOT_FOUND","message":"接口不存在","data":null}
+E           assert 404 == 200
+E            +  where 404 = &lt;Response [404 Not Found]&gt;.status_code
+
+tests\test_knowledge_questions.py:78: AssertionError</failure></testcase></testsuite></testsuites>

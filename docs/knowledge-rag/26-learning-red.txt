@@ -1,0 +1,60 @@
+F.                                                                       [100%]
+================================== FAILURES ===================================
+_ test_knowledge_learning_report_replay_review_and_history_deletion_keep_core_behavior _
+
+index = <app.knowledge.index.VectorIndex object at 0x000002723C157B60>
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x000002723C156A50>
+
+    def test_knowledge_learning_report_replay_review_and_history_deletion_keep_core_behavior(index,repo):
+        from app.accounts.database import Attempt,Quota,Reward
+        from app.models import ReportRequest
+        from app.services import generate_report
+        pipeline,claim,gateway,queued,body = setup_quiz(repo,index)
+        learning = pipeline.process(claim)
+        aid = learning['id']
+        for number,question in enumerate(quiz_payload()['questions']):
+            result = repo.accounts.answer('alice',aid,{'question_id':question['id'],'selected':['B'] if number==0 else question['answers'],'elapsed_ms':1000})
+        assert result['session']['completed_at'] and result['session']['quiz']['source']['segments']
+        before = repo.accounts.me('alice')['stats']
+        trusted = repo.accounts.report_input('alice',aid)
+        report = asyncio.run(generate_report(ReportRequest.model_validate(trusted),repo.accounts.settings,FakeGateway(REPORT)))
+        oid,_ = repo.accounts.reserve('alice','report','report',{'attempt_id':aid},aid)
+        repo.accounts.model_call('alice',oid)
+        repo.accounts.finish('alice',oid,report)
+        assert repo.accounts.attempt('alice',aid)['report']['verification']['status']=='material_only'
+        replay = repo.accounts.replay('alice',learning['quiz']['id'])
+        assert replay['quiz']['source']['segments']==[] and replay['mode']=='replay'
+        repo.accounts.answer('alice',replay['id'],{'question_id':'q0','selected':['A'],'elapsed_ms':100})
+        review = repo.accounts.review('alice',[aid+':q0'])
+        assert review['mode']=='review' and review['quiz']['source']['segments']==[]
+        checked = repo.accounts.answer('alice',review['id'],{'question_id':review['quiz']['questions'][0]['id'],'selected':['A'],'elapsed_ms':100})
+        assert checked['session']['quiz']['source']['segments'][0]['knowledge']['document_id']
+        assert repo.accounts.me('alice')['stats']['xp']==before['xp']
+        repo.accounts.delete_attempt('alice',aid)
+        with pytest.raises(AppError): repo.accounts.attempt('alice',aid)
+        result = pipeline.get('alice',queued['id'])
+        assert result['result'] is None and result['error_code']=='KNOWLEDGE_RESULT_DELETED'
+        from app.knowledge.database import Checkpoint,Job,PublishedResult
+        with repo.database.session() as session:
+>           assert session.get(Job,queued['id']).result is None
+E           AssertionError: assert {'id': 'b3acf380-cf11-4ed3-b340-0972b6772f0e', 'mode': 'new', 'quiz': {'id': 'fefdcac6-9266-4eba-a1e3-453ecd7065da', '...: 2}, 'source': {'url': None, 'type': 'knowledge_base', 'title': '�ҵ�֪ʶ��', 'segments': [], ...}, ...}, 'cursor': 0, ...} is None
+E            +  where {'id': 'b3acf380-cf11-4ed3-b340-0972b6772f0e', 'mode': 'new', 'quiz': {'id': 'fefdcac6-9266-4eba-a1e3-453ecd7065da', '...: 2}, 'source': {'url': None, 'type': 'knowledge_base', 'title': '�ҵ�֪ʶ��', 'segments': [], ...}, ...}, 'cursor': 0, ...} = <app.knowledge.database.Job object at 0x000002725ADA6190>.result
+E            +    where <app.knowledge.database.Job object at 0x000002725ADA6190> = get(<class 'app.knowledge.database.Job'>, 'd6a422ea-abe6-44d6-8514-39723d55b4ca')
+E            +      where get = <sqlalchemy.orm.session.Session object at 0x000002725ACCB4D0>.get
+
+tests\test_knowledge_learning.py:43: AssertionError
+---------------------------- Captured stderr call -----------------------------
+[levelup] app.accounts.repository ai_call operation=984322b9-aa7e-452d-8f01-7b326194f96a kind=material minute_calls=1
+[levelup] app.accounts.repository ai_call operation=74e8739b-daef-48bc-b4f0-7a22214b86cf kind=quiz minute_calls=2
+[levelup] app.accounts.repository ai_call operation=74e8739b-daef-48bc-b4f0-7a22214b86cf kind=quiz minute_calls=3
+[levelup] app.accounts.repository ai_call operation=74bb35f9-6302-4832-b6e9-21a9292e776e kind=report minute_calls=4
+[levelup] app.accounts.repository ai_finished operation=74bb35f9-6302-4832-b6e9-21a9292e776e status=succeeded error_code=None
+------------------------------ Captured log call ------------------------------
+INFO     app.accounts.repository:repository.py:436 ai_call operation=984322b9-aa7e-452d-8f01-7b326194f96a kind=material minute_calls=1
+INFO     app.accounts.repository:repository.py:436 ai_call operation=74e8739b-daef-48bc-b4f0-7a22214b86cf kind=quiz minute_calls=2
+INFO     app.accounts.repository:repository.py:436 ai_call operation=74e8739b-daef-48bc-b4f0-7a22214b86cf kind=quiz minute_calls=3
+INFO     app.accounts.repository:repository.py:436 ai_call operation=74bb35f9-6302-4832-b6e9-21a9292e776e kind=report minute_calls=4
+INFO     app.accounts.repository:repository.py:458 ai_finished operation=74bb35f9-6302-4832-b6e9-21a9292e776e status=succeeded error_code=None
+=========================== short test summary info ===========================
+FAILED tests/test_knowledge_learning.py::test_knowledge_learning_report_replay_review_and_history_deletion_keep_core_behavior
+1 failed, 1 passed in 7.18s

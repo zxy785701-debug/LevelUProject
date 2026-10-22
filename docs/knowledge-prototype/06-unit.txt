@@ -1,0 +1,23 @@
+
+> levelup-mini@1.0.0 test
+> vitest run
+
+
+ RUN  v3.2.7 D:/nbproject/LevelUpProject/frontend
+
+ ✓ tests/features.test.ts (5 tests) 11ms
+ ✓ tests/accounts-api.test.ts (4 tests) 9ms
+ ✓ tests/knowledge-folders.test.ts (6 tests) 12ms
+ ✓ tests/domain.test.ts (11 tests) 42ms
+ ✓ tests/material-api.test.ts (3 tests) 9ms
+ ✓ tests/grounding-api.test.ts (11 tests) 21ms
+ ✓ tests/knowledge-api.test.ts (13 tests) 37ms
+ ✓ tests/avatar-save.test.ts (4 tests) 8ms
+ ✓ tests/knowledge-map.test.ts (3 tests) 548ms
+   ✓ 统一知识地图 > 全部主题在同一个布局中，连线端点唯一，顺序不影响布局  543ms
+
+ Test Files  9 passed (9)
+      Tests  60 passed (60)
+   Start at  09:28:45
+   Duration  1.85s (transform 560ms, setup 0ms, collect 1.79s, tests 697ms, environment 3ms, prepare 4.06s)
+

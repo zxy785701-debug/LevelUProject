@@ -1,0 +1,54 @@
+FFF                                                                      [100%]
+================================== FAILURES ===================================
+__________ test_capabilities_are_authenticated_sanitized_and_honest ___________
+
+knowledge_app = <fastapi.applications.FastAPI object at 0x000001D80462C690>
+
+    @pytest.mark.anyio
+    async def test_capabilities_are_authenticated_sanitized_and_honest(knowledge_app):
+        app = knowledge_app
+        async with httpx.AsyncClient(transport=httpx.ASGITransport(app=app), base_url='http://test') as c:
+            assert (await c.get('/api/v1/knowledge/capabilities')).status_code == 401
+            await login(c)
+            response = await c.get('/api/v1/knowledge/capabilities')
+>           assert response.status_code == 200
+E           assert 404 == 200
+E            +  where 404 = <Response [404 Not Found]>.status_code
+
+tests\test_knowledge_api.py:23: AssertionError
+_____________ test_document_read_api_obeys_account_and_pagination _____________
+
+knowledge_app = <fastapi.applications.FastAPI object at 0x000001D80480A850>
+
+    @pytest.mark.anyio
+    async def test_document_read_api_obeys_account_and_pagination(knowledge_app):
+        app = knowledge_app
+        repo = KnowledgeRepository(app.state.accounts, app.state.knowledge_config)
+        async with httpx.AsyncClient(transport=httpx.ASGITransport(app=app), base_url='http://test') as c:
+            identity = await login(c)
+            seed(repo, uid=identity['user']['id'])
+>           assert (await c.get('/api/v1/knowledge/documents')).json()['data']['total'] == 1
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           TypeError: 'NoneType' object is not subscriptable
+
+tests\test_knowledge_api.py:38: TypeError
+_________ test_disabled_knowledge_preserves_health_and_core_learning __________
+
+knowledge_app = <fastapi.applications.FastAPI object at 0x000001D8048EC7D0>
+
+    @pytest.mark.anyio
+    async def test_disabled_knowledge_preserves_health_and_core_learning(knowledge_app):
+        app = knowledge_app
+        app.state.knowledge_config = KnowledgeSettings(_env_file=None)
+        async with httpx.AsyncClient(transport=httpx.ASGITransport(app=app), base_url='http://test') as c:
+            await login(c)
+>           assert (await c.get('/api/v1/knowledge/capabilities')).json()['data']['reason_code'] == 'KNOWLEDGE_DISABLED'
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           TypeError: 'NoneType' object is not subscriptable
+
+tests\test_knowledge_api.py:54: TypeError
+=========================== short test summary info ===========================
+FAILED tests/test_knowledge_api.py::test_capabilities_are_authenticated_sanitized_and_honest
+FAILED tests/test_knowledge_api.py::test_document_read_api_obeys_account_and_pagination
+FAILED tests/test_knowledge_api.py::test_disabled_knowledge_preserves_health_and_core_learning
+3 failed in 22.72s

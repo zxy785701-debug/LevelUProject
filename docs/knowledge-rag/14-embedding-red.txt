@@ -1,0 +1,191 @@
+EEEEEEEEEEEEEEEEE                                                        [100%]
+=================================== ERRORS ====================================
+_ ERROR at setup of test_native_contract_batching_order_query_async_and_independent_credentials _
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x00000194DFCDF8C0>
+
+    @pytest.fixture
+    def embedding(repo):
+>       from app.knowledge.embeddings import BailianEmbeddings
+E       ModuleNotFoundError: No module named 'app.knowledge.embeddings'
+
+tests\test_knowledge_embeddings.py:17: ModuleNotFoundError
+_ ERROR at setup of test_malformed_vectors_cannot_be_cached_or_published[count] _
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x00000194DFDB6AD0>
+
+    @pytest.fixture
+    def embedding(repo):
+>       from app.knowledge.embeddings import BailianEmbeddings
+E       ModuleNotFoundError: No module named 'app.knowledge.embeddings'
+
+tests\test_knowledge_embeddings.py:17: ModuleNotFoundError
+_ ERROR at setup of test_malformed_vectors_cannot_be_cached_or_published[duplicate] _
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x00000194DFE1B9D0>
+
+    @pytest.fixture
+    def embedding(repo):
+>       from app.knowledge.embeddings import BailianEmbeddings
+E       ModuleNotFoundError: No module named 'app.knowledge.embeddings'
+
+tests\test_knowledge_embeddings.py:17: ModuleNotFoundError
+_ ERROR at setup of test_malformed_vectors_cannot_be_cached_or_published[index] _
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x00000194DFE743E0>
+
+    @pytest.fixture
+    def embedding(repo):
+>       from app.knowledge.embeddings import BailianEmbeddings
+E       ModuleNotFoundError: No module named 'app.knowledge.embeddings'
+
+tests\test_knowledge_embeddings.py:17: ModuleNotFoundError
+_ ERROR at setup of test_malformed_vectors_cannot_be_cached_or_published[dimension] _
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x00000194DFE75810>
+
+    @pytest.fixture
+    def embedding(repo):
+>       from app.knowledge.embeddings import BailianEmbeddings
+E       ModuleNotFoundError: No module named 'app.knowledge.embeddings'
+
+tests\test_knowledge_embeddings.py:17: ModuleNotFoundError
+_ ERROR at setup of test_malformed_vectors_cannot_be_cached_or_published[nan] _
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x00000194DFEE7650>
+
+    @pytest.fixture
+    def embedding(repo):
+>       from app.knowledge.embeddings import BailianEmbeddings
+E       ModuleNotFoundError: No module named 'app.knowledge.embeddings'
+
+tests\test_knowledge_embeddings.py:17: ModuleNotFoundError
+_ ERROR at setup of test_malformed_vectors_cannot_be_cached_or_published[boolean] _
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x00000194DFE1ECF0>
+
+    @pytest.fixture
+    def embedding(repo):
+>       from app.knowledge.embeddings import BailianEmbeddings
+E       ModuleNotFoundError: No module named 'app.knowledge.embeddings'
+
+tests\test_knowledge_embeddings.py:17: ModuleNotFoundError
+_ ERROR at setup of test_bounded_transient_retries_and_no_auth_balance_retry[statuses0-2-True] _
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x00000194DFE1FF00>
+
+    @pytest.fixture
+    def embedding(repo):
+>       from app.knowledge.embeddings import BailianEmbeddings
+E       ModuleNotFoundError: No module named 'app.knowledge.embeddings'
+
+tests\test_knowledge_embeddings.py:17: ModuleNotFoundError
+_ ERROR at setup of test_bounded_transient_retries_and_no_auth_balance_retry[statuses1-2-True] _
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x00000194DFEAEC50>
+
+    @pytest.fixture
+    def embedding(repo):
+>       from app.knowledge.embeddings import BailianEmbeddings
+E       ModuleNotFoundError: No module named 'app.knowledge.embeddings'
+
+tests\test_knowledge_embeddings.py:17: ModuleNotFoundError
+_ ERROR at setup of test_bounded_transient_retries_and_no_auth_balance_retry[statuses2-3-False] _
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x00000194DFD1A050>
+
+    @pytest.fixture
+    def embedding(repo):
+>       from app.knowledge.embeddings import BailianEmbeddings
+E       ModuleNotFoundError: No module named 'app.knowledge.embeddings'
+
+tests\test_knowledge_embeddings.py:17: ModuleNotFoundError
+_ ERROR at setup of test_bounded_transient_retries_and_no_auth_balance_retry[statuses3-1-False] _
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x00000194DFED76B0>
+
+    @pytest.fixture
+    def embedding(repo):
+>       from app.knowledge.embeddings import BailianEmbeddings
+E       ModuleNotFoundError: No module named 'app.knowledge.embeddings'
+
+tests\test_knowledge_embeddings.py:17: ModuleNotFoundError
+_ ERROR at setup of test_bounded_transient_retries_and_no_auth_balance_retry[statuses4-1-False] _
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x00000194DFCF3C50>
+
+    @pytest.fixture
+    def embedding(repo):
+>       from app.knowledge.embeddings import BailianEmbeddings
+E       ModuleNotFoundError: No module named 'app.knowledge.embeddings'
+
+tests\test_knowledge_embeddings.py:17: ModuleNotFoundError
+_ ERROR at setup of test_bounded_transient_retries_and_no_auth_balance_retry[statuses5-1-False] _
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x00000194DFE392B0>
+
+    @pytest.fixture
+    def embedding(repo):
+>       from app.knowledge.embeddings import BailianEmbeddings
+E       ModuleNotFoundError: No module named 'app.knowledge.embeddings'
+
+tests\test_knowledge_embeddings.py:17: ModuleNotFoundError
+_ ERROR at setup of test_bounded_transient_retries_and_no_auth_balance_retry[statuses6-1-False] _
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x00000194DFC1FCB0>
+
+    @pytest.fixture
+    def embedding(repo):
+>       from app.knowledge.embeddings import BailianEmbeddings
+E       ModuleNotFoundError: No module named 'app.knowledge.embeddings'
+
+tests\test_knowledge_embeddings.py:17: ModuleNotFoundError
+_ ERROR at setup of test_cache_is_owned_profile_specific_deduplicated_and_independent_of_query_type _
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x00000194DFE2FD40>
+
+    @pytest.fixture
+    def embedding(repo):
+>       from app.knowledge.embeddings import BailianEmbeddings
+E       ModuleNotFoundError: No module named 'app.knowledge.embeddings'
+
+tests\test_knowledge_embeddings.py:17: ModuleNotFoundError
+_ ERROR at setup of test_input_upper_bounds_fail_before_paid_request_and_safe_parts_preserve_text _
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x00000194DFD26690>
+
+    @pytest.fixture
+    def embedding(repo):
+>       from app.knowledge.embeddings import BailianEmbeddings
+E       ModuleNotFoundError: No module named 'app.knowledge.embeddings'
+
+tests\test_knowledge_embeddings.py:17: ModuleNotFoundError
+_ ERROR at setup of test_budget_exhaustion_response_loss_and_cancelled_response_are_accounted _
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x00000194DFD271D0>
+
+    @pytest.fixture
+    def embedding(repo):
+>       from app.knowledge.embeddings import BailianEmbeddings
+E       ModuleNotFoundError: No module named 'app.knowledge.embeddings'
+
+tests\test_knowledge_embeddings.py:17: ModuleNotFoundError
+=========================== short test summary info ===========================
+ERROR tests/test_knowledge_embeddings.py::test_native_contract_batching_order_query_async_and_independent_credentials
+ERROR tests/test_knowledge_embeddings.py::test_malformed_vectors_cannot_be_cached_or_published[count]
+ERROR tests/test_knowledge_embeddings.py::test_malformed_vectors_cannot_be_cached_or_published[duplicate]
+ERROR tests/test_knowledge_embeddings.py::test_malformed_vectors_cannot_be_cached_or_published[index]
+ERROR tests/test_knowledge_embeddings.py::test_malformed_vectors_cannot_be_cached_or_published[dimension]
+ERROR tests/test_knowledge_embeddings.py::test_malformed_vectors_cannot_be_cached_or_published[nan]
+ERROR tests/test_knowledge_embeddings.py::test_malformed_vectors_cannot_be_cached_or_published[boolean]
+ERROR tests/test_knowledge_embeddings.py::test_bounded_transient_retries_and_no_auth_balance_retry[statuses0-2-True]
+ERROR tests/test_knowledge_embeddings.py::test_bounded_transient_retries_and_no_auth_balance_retry[statuses1-2-True]
+ERROR tests/test_knowledge_embeddings.py::test_bounded_transient_retries_and_no_auth_balance_retry[statuses2-3-False]
+ERROR tests/test_knowledge_embeddings.py::test_bounded_transient_retries_and_no_auth_balance_retry[statuses3-1-False]
+ERROR tests/test_knowledge_embeddings.py::test_bounded_transient_retries_and_no_auth_balance_retry[statuses4-1-False]
+ERROR tests/test_knowledge_embeddings.py::test_bounded_transient_retries_and_no_auth_balance_retry[statuses5-1-False]
+ERROR tests/test_knowledge_embeddings.py::test_bounded_transient_retries_and_no_auth_balance_retry[statuses6-1-False]
+ERROR tests/test_knowledge_embeddings.py::test_cache_is_owned_profile_specific_deduplicated_and_independent_of_query_type
+ERROR tests/test_knowledge_embeddings.py::test_input_upper_bounds_fail_before_paid_request_and_safe_parts_preserve_text
+ERROR tests/test_knowledge_embeddings.py::test_budget_exhaustion_response_loss_and_cancelled_response_are_accounted
+17 errors in 4.58s

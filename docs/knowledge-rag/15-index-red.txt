@@ -1,0 +1,70 @@
+FEEEEE                                                                   [100%]
+=================================== ERRORS ====================================
+_ ERROR at setup of test_real_chroma_upsert_manifest_and_only_active_owned_selection _
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x00000225FC653B10>
+
+    @pytest.fixture
+    def index(repo):
+>       from app.knowledge.index import VectorIndex
+E       ModuleNotFoundError: No module named 'app.knowledge.index'
+
+tests\test_knowledge_index.py:15: ModuleNotFoundError
+_ ERROR at setup of test_manifest_rejects_missing_wrong_dimensions_and_wrong_profile _
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x00000225FC67AD50>
+
+    @pytest.fixture
+    def index(repo):
+>       from app.knowledge.index import VectorIndex
+E       ModuleNotFoundError: No module named 'app.knowledge.index'
+
+tests\test_knowledge_index.py:15: ModuleNotFoundError
+_ ERROR at setup of test_chroma_payload_cannot_replace_mysql_text_or_smuggle_another_users_chunk _
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x00000225FC557100>
+
+    @pytest.fixture
+    def index(repo):
+>       from app.knowledge.index import VectorIndex
+E       ModuleNotFoundError: No module named 'app.knowledge.index'
+
+tests\test_knowledge_index.py:15: ModuleNotFoundError
+_ ERROR at setup of test_import_batches_are_invisible_until_atomic_activation_and_resume_cache _
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x00000225FC6E8510>
+
+    @pytest.fixture
+    def index(repo):
+>       from app.knowledge.index import VectorIndex
+E       ModuleNotFoundError: No module named 'app.knowledge.index'
+
+tests\test_knowledge_index.py:15: ModuleNotFoundError
+_ ERROR at setup of test_failed_reindex_preserves_previous_active_revision_and_final_delete_race _
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x00000225FC726690>
+
+    @pytest.fixture
+    def index(repo):
+>       from app.knowledge.index import VectorIndex
+E       ModuleNotFoundError: No module named 'app.knowledge.index'
+
+tests\test_knowledge_index.py:15: ModuleNotFoundError
+================================== FAILURES ===================================
+____ test_index_refuses_to_open_without_live_directory_and_database_locks _____
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x00000225FC51F770>
+
+    def test_index_refuses_to_open_without_live_directory_and_database_locks(repo):
+>       from app.knowledge.index import VectorIndex
+E       ModuleNotFoundError: No module named 'app.knowledge.index'
+
+tests\test_knowledge_index.py:37: ModuleNotFoundError
+=========================== short test summary info ===========================
+ERROR tests/test_knowledge_index.py::test_real_chroma_upsert_manifest_and_only_active_owned_selection
+ERROR tests/test_knowledge_index.py::test_manifest_rejects_missing_wrong_dimensions_and_wrong_profile
+ERROR tests/test_knowledge_index.py::test_chroma_payload_cannot_replace_mysql_text_or_smuggle_another_users_chunk
+ERROR tests/test_knowledge_index.py::test_import_batches_are_invisible_until_atomic_activation_and_resume_cache
+ERROR tests/test_knowledge_index.py::test_failed_reindex_preserves_previous_active_revision_and_final_delete_race
+FAILED tests/test_knowledge_index.py::test_index_refuses_to_open_without_live_directory_and_database_locks
+1 failed, 5 errors in 2.14s

@@ -1,0 +1,38 @@
+INFO:     Started server process [3860]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8001 (Press CTRL+C to quit)
+[levelup] app.accounts.repository ai_finished operation=6c4c408d-90e5-405f-92e5-a5e855c75ac3 status=succeeded
+[levelup] app.accounts.repository ai_call operation=7bf889b8-42fb-4523-8ea3-37e460438c57 kind=report minute_calls=4
+[levelup] app.accounts.repository ai_finished operation=7bf889b8-42fb-4523-8ea3-37e460438c57 status=succeeded error_code=None
+[levelup] app.accounts.repository ai_finished operation=2ac4b5cd-9e1b-44dc-9661-2069ff99be5b status=succeeded
+[levelup] app.accounts.repository ai_call operation=601af54a-6a07-4b64-8dfd-fcfc3e722ade kind=report minute_calls=4
+[levelup] app.accounts.repository ai_finished operation=601af54a-6a07-4b64-8dfd-fcfc3e722ade status=succeeded error_code=None
+[levelup] app.accounts.repository ai_finished operation=f4eb0686-1f2d-4d0d-8cc4-8bd913893c9d status=succeeded
+[levelup] app.accounts.repository ai_finished operation=c613723c-de7b-4b73-b9fb-82ee8ed5ae66 status=succeeded
+[levelup] app.accounts.repository ai_call operation=54755aa0-b82d-4e40-85ee-73474df54ba2 kind=report minute_calls=4
+[levelup] app.accounts.repository ai_finished operation=54755aa0-b82d-4e40-85ee-73474df54ba2 status=succeeded error_code=None
+[levelup] app.accounts.repository ai_call operation=29dc2a28-6f96-4df1-b98d-16ca6b7d7551 kind=material minute_calls=1
+[levelup] app.accounts.repository ai_finished operation=29dc2a28-6f96-4df1-b98d-16ca6b7d7551 status=succeeded error_code=None
+[levelup] app.accounts.repository ai_finished operation=73864796-f915-4c07-82fd-8ec632a22a0b status=succeeded
+[levelup] app.accounts.repository ai_finished operation=307601f0-838e-430b-90ac-163230001491 status=succeeded
+[levelup] app.accounts.repository ai_call operation=4ad1bbec-7542-4cce-a9a3-7d60b134432d kind=period minute_calls=4
+[levelup] app.accounts.repository ai_finished operation=4ad1bbec-7542-4cce-a9a3-7d60b134432d status=succeeded error_code=None
+[levelup] app.accounts.repository ai_finished operation=2bef6f4b-6151-46e5-8889-d0680e75b9de status=succeeded
+[levelup] app.accounts.repository ai_call operation=efc22692-0d8c-45af-bb5f-e503d28219e1 kind=report minute_calls=4
+[levelup] app.accounts.repository ai_finished operation=efc22692-0d8c-45af-bb5f-e503d28219e1 status=succeeded error_code=None
+[levelup] app.accounts.repository ai_finished operation=728d9530-6ca6-4ce1-acaf-0d52fff7ac73 status=succeeded
+[levelup] app.accounts.repository ai_call operation=cfd54cd4-37c4-4d2f-95b4-7b9d76416e8e kind=report minute_calls=4
+[levelup] app.accounts.repository ai_finished operation=cfd54cd4-37c4-4d2f-95b4-7b9d76416e8e status=succeeded error_code=None
+[levelup] app.accounts.repository ai_finished operation=53ee3720-5a60-4e1d-b5d5-66461d7c54d2 status=succeeded
+[levelup] app.accounts.repository ai_finished operation=384a7301-bbd2-41d9-8599-e5a59e0e132b status=succeeded
+[levelup] app.accounts.repository ai_call operation=7e941f9f-2186-4bd4-9d26-213b5ab0ea47 kind=report minute_calls=4
+[levelup] app.accounts.repository ai_finished operation=7e941f9f-2186-4bd4-9d26-213b5ab0ea47 status=succeeded error_code=None
+[levelup] app.accounts.repository ai_call operation=a65d8c60-7bb9-419e-8990-a3efb5655ec9 kind=material minute_calls=1
+[levelup] app.accounts.repository ai_finished operation=a65d8c60-7bb9-419e-8990-a3efb5655ec9 status=succeeded error_code=None
+[levelup] app.accounts.repository ai_finished operation=ba7ab199-2be6-4f2f-b531-03cda2c44e9e status=succeeded
+[levelup] app.accounts.repository ai_call operation=bea78658-8b2b-4b2c-8f4c-df532e221f71 kind=report minute_calls=4
+[levelup] app.accounts.repository ai_finished operation=bea78658-8b2b-4b2c-8f4c-df532e221f71 status=succeeded error_code=None
+[levelup] app.accounts.repository ai_finished operation=146e7530-54d6-42f0-8c30-f104d83c63f9 status=succeeded
+[levelup] app.accounts.repository ai_call operation=742454d9-ff2a-4798-b422-34a9351a947c kind=period minute_calls=4
+[levelup] app.accounts.repository ai_finished operation=742454d9-ff2a-4798-b422-34a9351a947c status=succeeded error_code=None

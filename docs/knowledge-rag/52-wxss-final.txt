@@ -1,0 +1,13 @@
+
+> levelup-mini@1.0.0 check:wxss
+> node scripts/verify-wxss.cjs D:/development/微信web开发者工具/code/package.nw/node_modules/wcc-exec/wcsc.exe
+
+{
+  "passed": true,
+  "files": [
+    "app.wxss",
+    "pages/index/index.wxss"
+  ],
+  "exit_code": 0,
+  "diagnostics": ""
+}

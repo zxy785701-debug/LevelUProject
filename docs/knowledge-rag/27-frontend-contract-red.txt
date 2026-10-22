@@ -1,0 +1,47 @@
+FF                                                                       [100%]
+================================== FAILURES ===================================
+__ test_material_choices_and_key_lookup_are_owned_and_hide_private_payloads ___
+
+knowledge_app = <fastapi.applications.FastAPI object at 0x0000028758F64F50>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000028757E2B950>
+
+    @pytest.mark.anyio
+    async def test_material_choices_and_key_lookup_are_owned_and_hide_private_payloads(knowledge_app,monkeypatch):
+        from app.accounts.database import Material
+        from app.knowledge.config import KnowledgeSettings
+        monkeypatch.setattr(KnowledgeSettings,'unavailable_reason',lambda self,**kw:None)
+        async with httpx.AsyncClient(transport=httpx.ASGITransport(app=knowledge_app),base_url='http://test') as client:
+            identity = await login(client)
+            uid = identity['user']['id']
+            with knowledge_app.state.accounts.database.session() as session:
+                for kind in ('txt','web','video'):
+                    session.add(Material(id=kind,user_id=uid,content={'title':'ԭ����'+kind,'source_type':kind,'segments':[{'id':'s','text':'private original text'}]}))
+            response = await client.get('/api/v1/knowledge/materials')
+>           assert response.status_code==200,response.text
+E           AssertionError: {"code":"NOT_FOUND","message":"�ӿڲ�����","data":null}
+E           assert 404 == 200
+E            +  where 404 = <Response [404 Not Found]>.status_code
+
+tests\test_knowledge_frontend_contract.py:19: AssertionError
+_____ test_delete_returns_real_durable_cleanup_identity_and_owned_status ______
+
+knowledge_app = <fastapi.applications.FastAPI object at 0x0000028759194A50>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000028758F7E060>
+
+    @pytest.mark.anyio
+    async def test_delete_returns_real_durable_cleanup_identity_and_owned_status(knowledge_app,monkeypatch):
+        from app.knowledge.config import KnowledgeSettings
+        monkeypatch.setattr(KnowledgeSettings,'unavailable_reason',lambda self,**kw:None)
+        async with httpx.AsyncClient(transport=httpx.ASGITransport(app=knowledge_app),base_url='http://test') as client:
+            await login(client)
+            queued = (await client.post('/api/v1/knowledge/documents/upload',files={'file':('a.txt',b'actual body')})).json()['data']
+            response = await client.delete('/api/v1/knowledge/documents/'+queued['document_id'])
+>           cleanup = response.json()['data']['cleanup']
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           KeyError: 'cleanup'
+
+tests\test_knowledge_frontend_contract.py:39: KeyError
+=========================== short test summary info ===========================
+FAILED tests/test_knowledge_frontend_contract.py::test_material_choices_and_key_lookup_are_owned_and_hide_private_payloads
+FAILED tests/test_knowledge_frontend_contract.py::test_delete_returns_real_durable_cleanup_identity_and_owned_status
+2 failed in 9.71s

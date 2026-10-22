@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="11" skipped="0" tests="11" time="7.153" timestamp="2026-10-18T21:19:48.562181+08:00" hostname="zxy"><testcase classname="tests.test_knowledge_answering" name="test_answer_has_paragraph_citations_and_separate_support_review" time="0.013"><failure message="ModuleNotFoundError: No module named 'app.knowledge.answering'">@pytest.mark.anyio
+    async def test_answer_has_paragraph_citations_and_separate_support_review():
+        gateway = SequenceGateway([draft(),review()])
+&gt;       result = await answer(gateway)
+                 ^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_knowledge_answering.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+gateway = &lt;tests.test_grounding_generation.SequenceGateway object at 0x0000021E4CF5F770&gt;
+result = None, kwargs = {}
+
+    async def answer(gateway,result=None,**kwargs):
+&gt;       from app.knowledge.answering import create_answer
+E       ModuleNotFoundError: No module named 'app.knowledge.answering'
+
+tests\test_knowledge_answering.py:24: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_knowledge_answering" name="test_no_sources_and_private_dependent_question_with_only_web_are_insufficient" time="1.116"><failure message="ModuleNotFoundError: No module named 'app.knowledge.answering'">@pytest.mark.anyio
+    async def test_no_sources_and_private_dependent_question_with_only_web_are_insufficient():
+        gateway = SequenceGateway([])
+&gt;       assert (await answer(gateway,outcome([])))['status']=='insufficient'
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_knowledge_answering.py:41: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+gateway = &lt;tests.test_grounding_generation.SequenceGateway object at 0x0000021E4CF274D0&gt;
+result = KnowledgeOutcome(evidence=[], trace=[], model_calls=0, tool_calls=0, page_attempts=0, reason_code=None, usage={}, depends_on_documents=True, knowledge_error=None)
+kwargs = {}
+
+    async def answer(gateway,result=None,**kwargs):
+&gt;       from app.knowledge.answering import create_answer
+E       ModuleNotFoundError: No module named 'app.knowledge.answering'
+
+tests\test_knowledge_answering.py:24: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_knowledge_answering" name="test_unsupported_claims_are_corrected_once_then_business_insufficient[unsupported]" time="0.006"><failure message="ModuleNotFoundError: No module named 'app.knowledge.answering'">status = 'unsupported'
+
+    @pytest.mark.anyio
+    @pytest.mark.parametrize('status',['unsupported','contradicted','ambiguous','off_scope'])
+    async def test_unsupported_claims_are_corrected_once_then_business_insufficient(status):
+        gateway = SequenceGateway([draft(text='未支持的结论'),review(status),draft(text='仍未支持的结论'),review(status)])
+&gt;       result = await answer(gateway)
+                 ^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_knowledge_answering.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+gateway = &lt;tests.test_grounding_generation.SequenceGateway object at 0x0000021E4EFE39D0&gt;
+result = None, kwargs = {}
+
+    async def answer(gateway,result=None,**kwargs):
+&gt;       from app.knowledge.answering import create_answer
+E       ModuleNotFoundError: No module named 'app.knowledge.answering'
+
+tests\test_knowledge_answering.py:24: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_knowledge_answering" name="test_unsupported_claims_are_corrected_once_then_business_insufficient[contradicted]" time="0.006"><failure message="ModuleNotFoundError: No module named 'app.knowledge.answering'">status = 'contradicted'
+
+    @pytest.mark.anyio
+    @pytest.mark.parametrize('status',['unsupported','contradicted','ambiguous','off_scope'])
+    async def test_unsupported_claims_are_corrected_once_then_business_insufficient(status):
+        gateway = SequenceGateway([draft(text='未支持的结论'),review(status),draft(text='仍未支持的结论'),review(status)])
+&gt;       result = await answer(gateway)
+                 ^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_knowledge_answering.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+gateway = &lt;tests.test_grounding_generation.SequenceGateway object at 0x0000021E4F0B4770&gt;
+result = None, kwargs = {}
+
+    async def answer(gateway,result=None,**kwargs):
+&gt;       from app.knowledge.answering import create_answer
+E       ModuleNotFoundError: No module named 'app.knowledge.answering'
+
+tests\test_knowledge_answering.py:24: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_knowledge_answering" name="test_unsupported_claims_are_corrected_once_then_business_insufficient[ambiguous]" time="0.006"><failure message="ModuleNotFoundError: No module named 'app.knowledge.answering'">status = 'ambiguous'
+
+    @pytest.mark.anyio
+    @pytest.mark.parametrize('status',['unsupported','contradicted','ambiguous','off_scope'])
+    async def test_unsupported_claims_are_corrected_once_then_business_insufficient(status):
+        gateway = SequenceGateway([draft(text='未支持的结论'),review(status),draft(text='仍未支持的结论'),review(status)])
+&gt;       result = await answer(gateway)
+                 ^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_knowledge_answering.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+gateway = &lt;tests.test_grounding_generation.SequenceGateway object at 0x0000021E4F0B5480&gt;
+result = None, kwargs = {}
+
+    async def answer(gateway,result=None,**kwargs):
+&gt;       from app.knowledge.answering import create_answer
+E       ModuleNotFoundError: No module named 'app.knowledge.answering'
+
+tests\test_knowledge_answering.py:24: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_knowledge_answering" name="test_unsupported_claims_are_corrected_once_then_business_insufficient[off_scope]" time="0.006"><failure message="ModuleNotFoundError: No module named 'app.knowledge.answering'">status = 'off_scope'
+
+    @pytest.mark.anyio
+    @pytest.mark.parametrize('status',['unsupported','contradicted','ambiguous','off_scope'])
+    async def test_unsupported_claims_are_corrected_once_then_business_insufficient(status):
+        gateway = SequenceGateway([draft(text='未支持的结论'),review(status),draft(text='仍未支持的结论'),review(status)])
+&gt;       result = await answer(gateway)
+                 ^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_knowledge_answering.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+gateway = &lt;tests.test_grounding_generation.SequenceGateway object at 0x0000021E4F0D1490&gt;
+result = None, kwargs = {}
+
+    async def answer(gateway,result=None,**kwargs):
+&gt;       from app.knowledge.answering import create_answer
+E       ModuleNotFoundError: No module named 'app.knowledge.answering'
+
+tests\test_knowledge_answering.py:24: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_knowledge_answering" name="test_forged_citations_and_missing_review_paragraphs_cannot_pass" time="0.005"><failure message="ModuleNotFoundError: No module named 'app.knowledge.answering'">@pytest.mark.anyio
+    async def test_forged_citations_and_missing_review_paragraphs_cannot_pass():
+        for verdict in (review(ids=['forged']),review(paragraphs=[])):
+            gateway = SequenceGateway([draft(ids=['forged']),verdict])
+&gt;           from app.knowledge.answering import create_answer
+E           ModuleNotFoundError: No module named 'app.knowledge.answering'
+
+tests\test_knowledge_answering.py:60: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_knowledge_answering" name="test_conflicting_sources_can_be_described_separately_but_not_falsely_unified" time="0.010"><failure message="ModuleNotFoundError: No module named 'app.knowledge.answering'">@pytest.mark.anyio
+    async def test_conflicting_sources_can_be_described_separately_but_not_falsely_unified():
+        first,second = source('资料 A: 比例为10%'),source('资料 B: 比例为20%')
+        second = second.model_copy(update={'id':'second','knowledge':second.knowledge.model_copy(update={'document_id':'another'})})
+        ids = [first.id,second.id]
+        gateway = SequenceGateway([draft(ids,text='资料 A 给出10%，资料 B 给出20%，当前资料存在冲突。'),
+            review(ids=ids,conflicts=[{'source_ids':ids,'reason':'数值冲突'}])])
+&gt;       result = await answer(gateway,outcome([first,second]))
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_knowledge_answering.py:72: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+gateway = &lt;tests.test_grounding_generation.SequenceGateway object at 0x0000021E4F0AA9C0&gt;
+result = KnowledgeOutcome(evidence=[EvidenceSegment(id='kb-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', t...el_calls=0, tool_calls=0, page_attempts=0, reason_code=None, usage={}, depends_on_documents=True, knowledge_error=None)
+kwargs = {}
+
+    async def answer(gateway,result=None,**kwargs):
+&gt;       from app.knowledge.answering import create_answer
+E       ModuleNotFoundError: No module named 'app.knowledge.answering'
+
+tests\test_knowledge_answering.py:24: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_knowledge_answering" name="test_network_failure_with_supported_private_material_is_honest_material_only" time="0.006"><failure message="ModuleNotFoundError: No module named 'app.knowledge.answering'">@pytest.mark.anyio
+    async def test_network_failure_with_supported_private_material_is_honest_material_only():
+        gateway = SequenceGateway([draft(),review()])
+&gt;       result = await answer(gateway,outcome(reason_code='TAVILY_UNAVAILABLE'))
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_knowledge_answering.py:83: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+gateway = &lt;tests.test_grounding_generation.SequenceGateway object at 0x0000021E4F0D5D50&gt;
+result = KnowledgeOutcome(evidence=[EvidenceSegment(id='kb-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', t..._calls=0, page_attempts=0, reason_code='TAVILY_UNAVAILABLE', usage={}, depends_on_documents=True, knowledge_error=None)
+kwargs = {}
+
+    async def answer(gateway,result=None,**kwargs):
+&gt;       from app.knowledge.answering import create_answer
+E       ModuleNotFoundError: No module named 'app.knowledge.answering'
+
+tests\test_knowledge_answering.py:24: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_knowledge_answering" name="test_saved_draft_restores_without_generating_a_second_answer" time="0.005"><failure message="ModuleNotFoundError: No module named 'app.knowledge.answering'">@pytest.mark.anyio
+    async def test_saved_draft_restores_without_generating_a_second_answer():
+&gt;       from app.knowledge.answering import create_answer
+E       ModuleNotFoundError: No module named 'app.knowledge.answering'
+
+tests\test_knowledge_answering.py:90: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_knowledge_answering" name="test_answer_models_reject_oversized_answers_and_unreviewed_free_text" time="0.002"><failure message="ModuleNotFoundError: No module named 'app.knowledge.answering'">def test_answer_models_reject_oversized_answers_and_unreviewed_free_text():
+&gt;       from app.knowledge.answering import AnswerDraft
+E       ModuleNotFoundError: No module named 'app.knowledge.answering'
+
+tests\test_knowledge_answering.py:103: ModuleNotFoundError</failure></testcase></testsuite></testsuites>

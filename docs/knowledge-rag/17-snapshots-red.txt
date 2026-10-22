@@ -1,0 +1,48 @@
+FFF                                                                      [100%]
+================================== FAILURES ===================================
+_ test_old_snapshots_read_without_new_fields_and_knowledge_locations_are_strict _
+
+    def test_old_snapshots_read_without_new_fields_and_knowledge_locations_are_strict():
+        assert QuizSource(type='txt',title='old').segments == []
+>       source = QuizSource(type='knowledge_base',title='�ҵ�֪ʶ��',segments=[knowledge_segment()])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       pydantic_core._pydantic_core.ValidationError: 2 validation errors for QuizSource
+E       type
+E         Input should be 'topic', 'pdf', 'docx', 'txt', 'web', 'video' or 'review' [type=literal_error, input_value='knowledge_base', input_type=str]
+E           For further information visit https://errors.pydantic.dev/2.14/v/literal_error
+E       segments.0.knowledge
+E         Extra inputs are not permitted [type=extra_forbidden, input_value={'document_id': 'doc', 'r...ex': 0, 'end_index': 30}, input_type=dict]
+E           For further information visit https://errors.pydantic.dev/2.14/v/extra_forbidden
+
+tests\test_knowledge_snapshots.py:20: ValidationError
+_ test_new_provenance_stays_hidden_until_answer_and_deleted_source_keeps_snapshot _
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x0000026EBCCFFA10>
+
+    def test_new_provenance_stays_hidden_until_answer_and_deleted_source_keeps_snapshot(repo):
+        seed(repo)
+        quiz = quiz_payload()
+        quiz.update(id=str(uuid4()),created_at=datetime.now(timezone.utc).isoformat(),source_text='ԭʼ����',difficulty='easy',
+            source={'type':'knowledge_base','title':'�ҵ�֪ʶ��','segments':[knowledge_segment()]})
+        for question in quiz['questions']: question['source_ids'] = ['kb-chunk']
+        result = repo.accounts.store_quiz('alice',quiz)
+        assert result['quiz']['source']['segments'] == []
+        assert all(q['source_ids']==[] and q['answers']==[] for q in result['quiz']['questions'])
+        question = quiz['questions'][0]
+>       result = repo.accounts.answer('alice',result['id'],question['id'],question['answers'],1000)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: Accounts.answer() takes 4 positional arguments but 6 were given
+
+tests\test_knowledge_snapshots.py:40: TypeError
+_ test_index_hit_becomes_true_location_snapshot_including_web_as_stored_material _
+
+    def test_index_hit_becomes_true_location_snapshot_including_web_as_stored_material():
+>       from app.knowledge.evidence import evidence_from_hit
+E       ModuleNotFoundError: No module named 'app.knowledge.evidence'
+
+tests\test_knowledge_snapshots.py:53: ModuleNotFoundError
+=========================== short test summary info ===========================
+FAILED tests/test_knowledge_snapshots.py::test_old_snapshots_read_without_new_fields_and_knowledge_locations_are_strict
+FAILED tests/test_knowledge_snapshots.py::test_new_provenance_stays_hidden_until_answer_and_deleted_source_keeps_snapshot
+FAILED tests/test_knowledge_snapshots.py::test_index_hit_becomes_true_location_snapshot_including_web_as_stored_material
+3 failed in 1.48s

@@ -1,0 +1,97 @@
+FFFFFFF                                                                  [100%]
+================================== FAILURES ===================================
+__ test_web_import_uses_requested_actual_body_with_fetch_time_and_truncation __
+
+wire = {'calls': [], 'body': {'results': [{'url': 'https://example.com/', 'content': 'summary', 'raw_content': 'body'}], 'usage': {'credits': 1}}, 'status': 200, 'delay': 0}
+
+    @pytest.mark.anyio
+    async def test_web_import_uses_requested_actual_body_with_fetch_time_and_truncation(wire):
+>       from app.knowledge.importing import fetch_web
+E       ModuleNotFoundError: No module named 'app.knowledge.importing'
+
+tests\test_knowledge_import_pipeline.py:15: ModuleNotFoundError
+________ test_summary_or_unrequested_redirect_cannot_be_imported[row0] ________
+
+wire = {'calls': [], 'body': {'results': [{'url': 'https://example.com/', 'content': 'summary', 'raw_content': 'body'}], 'usage': {'credits': 1}}, 'status': 200, 'delay': 0}
+row = {'url': 'https://example.com/', 'content': 'A summary cannot become a document'}
+
+    @pytest.mark.anyio
+    @pytest.mark.parametrize('row',[
+        {'url':'https://example.com/','content':'A summary cannot become a document'},
+        {'url':'http://127.0.0.1/private','raw_content':'private redirect'},
+        {'url':'https://different.example/','raw_content':'unrequested redirect'},
+    ])
+    async def test_summary_or_unrequested_redirect_cannot_be_imported(wire,row):
+>       from app.knowledge.importing import fetch_web
+E       ModuleNotFoundError: No module named 'app.knowledge.importing'
+
+tests\test_knowledge_import_pipeline.py:35: ModuleNotFoundError
+________ test_summary_or_unrequested_redirect_cannot_be_imported[row1] ________
+
+wire = {'calls': [], 'body': {'results': [{'url': 'https://example.com/', 'content': 'summary', 'raw_content': 'body'}], 'usage': {'credits': 1}}, 'status': 200, 'delay': 0}
+row = {'url': 'http://127.0.0.1/private', 'raw_content': 'private redirect'}
+
+    @pytest.mark.anyio
+    @pytest.mark.parametrize('row',[
+        {'url':'https://example.com/','content':'A summary cannot become a document'},
+        {'url':'http://127.0.0.1/private','raw_content':'private redirect'},
+        {'url':'https://different.example/','raw_content':'unrequested redirect'},
+    ])
+    async def test_summary_or_unrequested_redirect_cannot_be_imported(wire,row):
+>       from app.knowledge.importing import fetch_web
+E       ModuleNotFoundError: No module named 'app.knowledge.importing'
+
+tests\test_knowledge_import_pipeline.py:35: ModuleNotFoundError
+________ test_summary_or_unrequested_redirect_cannot_be_imported[row2] ________
+
+wire = {'calls': [], 'body': {'results': [{'url': 'https://example.com/', 'content': 'summary', 'raw_content': 'body'}], 'usage': {'credits': 1}}, 'status': 200, 'delay': 0}
+row = {'url': 'https://different.example/', 'raw_content': 'unrequested redirect'}
+
+    @pytest.mark.anyio
+    @pytest.mark.parametrize('row',[
+        {'url':'https://example.com/','content':'A summary cannot become a document'},
+        {'url':'http://127.0.0.1/private','raw_content':'private redirect'},
+        {'url':'https://different.example/','raw_content':'unrequested redirect'},
+    ])
+    async def test_summary_or_unrequested_redirect_cannot_be_imported(wire,row):
+>       from app.knowledge.importing import fetch_web
+E       ModuleNotFoundError: No module named 'app.knowledge.importing'
+
+tests\test_knowledge_import_pipeline.py:35: ModuleNotFoundError
+_ test_parsing_checkpoint_survives_process_reconstruction_without_new_revision_or_file_read _
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x0000013ED57CB770>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000013ED57ECC00>
+
+    def test_parsing_checkpoint_survives_process_reconstruction_without_new_revision_or_file_read(repo,monkeypatch):
+>       from app.knowledge.importing import ImportPipeline
+E       ModuleNotFoundError: No module named 'app.knowledge.importing'
+
+tests\test_knowledge_import_pipeline.py:41: ModuleNotFoundError
+______ test_staging_commit_failure_rolls_back_and_retry_is_deterministic ______
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x0000013ED580B9D0>
+
+    def test_staging_commit_failure_rolls_back_and_retry_is_deterministic(repo):
+>       from app.knowledge.importing import ImportPipeline
+E       ModuleNotFoundError: No module named 'app.knowledge.importing'
+
+tests\test_knowledge_import_pipeline.py:61: ModuleNotFoundError
+____ test_total_text_limit_and_changed_file_are_rejected_before_embedding _____
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x0000013ED580AE90>
+
+    def test_total_text_limit_and_changed_file_are_rejected_before_embedding(repo):
+>       from app.knowledge.importing import ImportPipeline
+E       ModuleNotFoundError: No module named 'app.knowledge.importing'
+
+tests\test_knowledge_import_pipeline.py:76: ModuleNotFoundError
+=========================== short test summary info ===========================
+FAILED tests/test_knowledge_import_pipeline.py::test_web_import_uses_requested_actual_body_with_fetch_time_and_truncation
+FAILED tests/test_knowledge_import_pipeline.py::test_summary_or_unrequested_redirect_cannot_be_imported[row0]
+FAILED tests/test_knowledge_import_pipeline.py::test_summary_or_unrequested_redirect_cannot_be_imported[row1]
+FAILED tests/test_knowledge_import_pipeline.py::test_summary_or_unrequested_redirect_cannot_be_imported[row2]
+FAILED tests/test_knowledge_import_pipeline.py::test_parsing_checkpoint_survives_process_reconstruction_without_new_revision_or_file_read
+FAILED tests/test_knowledge_import_pipeline.py::test_staging_commit_failure_rolls_back_and_retry_is_deterministic
+FAILED tests/test_knowledge_import_pipeline.py::test_total_text_limit_and_changed_file_are_rejected_before_embedding
+7 failed in 4.20s

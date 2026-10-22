@@ -1,0 +1,60 @@
+..........................                                               [100%]
+=============================== tests coverage ================================
+_______________ coverage: platform win32, python 3.13.9-final-0 _______________
+
+Name                                 Stmts   Miss Branch BrPart  Cover   Missing
+--------------------------------------------------------------------------------
+app\accounts\api.py                    146      2     16      3    97%   98->exit, 139->exit, 150-151
+app\accounts\database.py               171      1      4      1    99%   189
+app\accounts\repository.py             461      7    174     38    93%   74, 94, 107, 171, 216->exit, 218->exit, 231->exit, 239->238, 250->253, 274->exit, 276->exit, 280, 287->299, 296->299, 359->exit, 369->exit, 370->exit, 371->exit, 374, 377->exit, 378->exit, 379->exit, 382->exit, 383->exit, 384->exit, 385->exit, 386->exit, 390->exit, 391->exit, 418, 422->exit, 429->exit, 430->exit, 431->exit, 443->exit, 456->459, 473->exit, 503->exit
+app\accounts\wechat.py                  19      1      4      1    91%   12
+app\analytics.py                       127      1     42      5    96%   28, 43->42, 49->48, 90->88, 143->exit
+app\config.py                           73      1     14      1    98%   74
+app\knowledge\answering.py              89      0     28      3    97%   79->exit, 80->exit, 112->exit
+app\knowledge\api.py                   152      8     10      2    94%   35, 49-52, 211-214
+app\knowledge\budgets.py               124      0     50      6    97%   57->exit, 93->exit, 106->exit, 128->exit, 130->exit, 132->exit
+app\knowledge\cleanup.py               115      1     40      9    94%   19->exit, 26->exit, 45->exit, 69->exit, 99->exit, 111->135, 117, 125->exit, 139->142
+app\knowledge\config.py                 86      5     20      1    94%   71, 103-106
+app\knowledge\embeddings.py            134      1     52      1    99%   91->exit, 113
+app\knowledge\evidence.py               13      0      4      1    94%   22->20
+app\knowledge\importing.py              90      1     24      3    96%   40->exit, 63->exit, 98
+app\knowledge\index.py                 164      1     70      5    97%   123->134, 131->124, 151->150, 160->150, 185
+app\knowledge\indexing.py               77      3     22      3    92%   26->exit, 32->exit, 60-61, 79
+app\knowledge\jobs.py                  243      3     94      9    96%   33->exit, 50->exit, 53->59, 95->exit, 110-112, 115->107, 117->107, 198->exit, 225->exit, 261->exit
+app\knowledge\parsing.py                99      1     44      4    97%   39->44, 68->76, 113, 120->exit
+app\knowledge\question_pipeline.py      46      0     10      1    98%   27->exit
+app\knowledge\questions.py              84      0     16      3    97%   19->exit, 25->exit, 80->exit
+app\knowledge\quizzes.py               110      0     30      1    99%   31->exit
+app\knowledge\retrieval.py             188     10     58     10    91%   65, 98->103, 114->exit, 131->exit, 147->exit, 150->149, 156->exit, 158->exit, 168->166, 200-201, 222-228
+app\knowledge\retrieval_store.py        46      2      6      1    94%   40, 44, 45->exit
+app\knowledge\scopes.py                127      0     42      1    99%   45->exit
+app\knowledge\worker.py                225      5     50      3    97%   49-50, 65-66, 268
+app\llm.py                             135      4     50      5    95%   98->167, 115, 133, 151, 153
+app\main.py                             99     20     12      0    80%   30-48, 74-75
+app\materials\api.py                   181     18     58     13    85%   20->exit, 32->exit, 44->exit, 49->exit, 53->exit, 63->exit, 70-72, 77, 78->exit, 85-92, 106-107, 112, 123-124, 144->exit, 171->173, 177, 199->exit, 222->exit
+app\materials\parsers.py               107      1     30      4    96%   73->76, 86, 91->98, 112->118, 122->119
+app\materials\repository.py             91      0     30      5    96%   27->exit, 30->exit, 76->exit, 79->exit, 81->exit
+app\materials\services.py               85     12     18      2    83%   61-78, 127->130, 130->134
+app\materials\sources.py                96      8     32      8    88%   34-37, 41, 51, 83->exit, 84->exit, 85->exit, 96->95, 98->97, 110-111
+app\migrate.py                          10     10      2      0     0%   2-12
+app\models.py                          139      0     54      3    98%   29->exit, 46->exit, 58->exit
+app\quiz_grounding\agent.py            185     12     50     10    90%   54->exit, 90-91, 95->94, 97, 99-100, 108, 123, 129, 139->141, 164, 182, 213, 215
+app\quiz_grounding\api.py               51      1      8      1    97%   38
+app\quiz_grounding\capability.py        45      7     14      2    81%   61, 63, 65, 67, 71, 75-76
+app\quiz_grounding\evidence.py          91      4     34      4    94%   31->36, 34-35, 56, 61, 73->58
+app\quiz_grounding\generation.py       155      4     40      1    97%   178, 214, 220-221
+app\quiz_grounding\models.py           226      2     48      2    99%   110, 202
+app\quiz_grounding\preparation.py       85      6     16      3    91%   32, 36, 90, 95, 127-128
+app\quiz_grounding\reporting.py         29      1     20      1    96%   15
+app\quiz_grounding\repository.py       313     23    102     19    89%   37->40, 40->42, 43, 71, 108, 110, 129, 144, 152, 176->178, 191->193, 206, 209, 248-250, 259, 323, 334, 340->342, 362, 375-381
+app\quiz_grounding\selection.py         29      0     16      2    96%   19->18, 26->25
+app\quiz_grounding\snapshots.py        104      5     18      6    91%   40->exit, 69, 85, 114, 118, 120
+app\quiz_grounding\tavily.py           144     16     52     10    86%   51, 54->57, 59-60, 77-78, 97-100, 102-103, 107->110, 125, 161, 166, 170, 182
+app\services.py                         26      1      4      1    93%   15
+--------------------------------------------------------------------------------
+TOTAL                                 6223    209   1736    218    94%
+
+18 files skipped due to complete coverage.
+Coverage XML written to file ../docs/knowledge-rag/47-combined-coverage.xml
+Coverage JSON written to file ../docs/knowledge-rag/47-combined-coverage.json
+26 passed in 59.48s

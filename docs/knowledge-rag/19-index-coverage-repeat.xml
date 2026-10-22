@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="13" time="26.872" timestamp="2026-10-18T21:08:20.679185+08:00" hostname="zxy"><testcase classname="tests.test_knowledge_index" name="test_index_refuses_to_open_without_live_directory_and_database_locks" time="0.699" /><testcase classname="tests.test_knowledge_index" name="test_real_chroma_upsert_manifest_and_only_active_owned_selection" time="6.233" /><testcase classname="tests.test_knowledge_index" name="test_manifest_rejects_missing_wrong_dimensions_and_wrong_profile" time="0.744" /><testcase classname="tests.test_knowledge_index" name="test_real_collections_separate_users_with_identical_query_vectors" time="1.186" /><testcase classname="tests.test_knowledge_index" name="test_chroma_payload_cannot_replace_mysql_text_or_smuggle_another_users_chunk" time="1.083" /><testcase classname="tests.test_knowledge_index" name="test_import_batches_are_invisible_until_atomic_activation_and_resume_cache" time="2.734" /><testcase classname="tests.test_knowledge_index" name="test_failed_reindex_preserves_previous_active_revision_and_final_delete_race" time="0.894" /><testcase classname="tests.test_knowledge_index" name="test_multi_document_search_keeps_relevant_smaller_document_in_candidate_pool[0]" time="1.719"><failure message="AssertionError: {'selected': ['f8910d49-02e7-43d6-b1c6-e73348ef0129', 'cd5164f9-3c25-4764-900a-9d1b916bdbca'], 'results': [('d0.txt', ...', 1.0), ...], 'indexed': [('f8910d49-02e7-43d6-b1c6-e73348ef0129', 160), ('cd5164f9-3c25-4764-900a-9d1b916bdbca', 1)]}&#10;assert {'f8910d49-02...e73348ef0129'} == {'cd5164f9-3c...e73348ef0129'}&#10;  &#10;  Extra items in the right set:&#10;  'cd5164f9-3c25-4764-900a-9d1b916bdbca'&#10;  Use -v to get more diff">index = &lt;app.knowledge.index.VectorIndex object at 0x0000022E4A4B1040&gt;
+repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x0000022E4A4B1AE0&gt;
+iteration = 0
+
+    @pytest.mark.parametrize('iteration',range(5))
+    def test_multi_document_search_keeps_relevant_smaller_document_in_candidate_pool(index,repo,iteration):
+        from app.knowledge.importing import ImportPipeline
+        from app.knowledge.database import Document,Revision
+        repo.config.chunk_size,repo.config.chunk_overlap = 100,0
+        pipeline = ImportPipeline(repo.accounts,repo.config)
+        selections = []
+        for number,body in enumerate(['\n'.join(f'Fact {n}: '+str(n)*90 for n in range(60)),'Required evidence in smaller document']):
+            queued = repo.submit_file('alice','fair-'+str(number),'d'+str(number)+'.txt',body.encode())
+            claim = pipeline.claim('worker')
+            parsed = pipeline.parse(claim)
+            chunks = pipeline.split(claim,parsed)
+            vector = ([1.0,0.0] if number==0 else [.9,.1])+[0.0]*1022
+            index.upsert(claim,parsed['revision_id'],chunks,[vector]*len(chunks))
+            with repo.database.session() as session:
+                session.get(Revision,parsed['revision_id']).status = 'ready'
+                document = session.get(Document,queued['document_id'])
+                document.status,document.active_revision_id = 'ready',parsed['revision_id']
+            selections.append(queued['document_id'])
+            if number==0: pipeline.complete(claim,lambda s,j:{'ok':True})
+        result = index.search(claim,repo.select_documents('alice',selections),[1.0]+[0.0]*1023)
+&gt;       assert {r['document_id'] for r in result}==set(selections), {'selected':selections,'results':[(r['title'],r['score']) for r in result],
+            'indexed':[(did,len(index.collection('alice').get(where={'document_id':did})['ids'])) for did in selections]}
+E       AssertionError: {'selected': ['f8910d49-02e7-43d6-b1c6-e73348ef0129', 'cd5164f9-3c25-4764-900a-9d1b916bdbca'], 'results': [('d0.txt', ...', 1.0), ...], 'indexed': [('f8910d49-02e7-43d6-b1c6-e73348ef0129', 160), ('cd5164f9-3c25-4764-900a-9d1b916bdbca', 1)]}
+E       assert {'f8910d49-02...e73348ef0129'} == {'cd5164f9-3c...e73348ef0129'}
+E         
+E         Extra items in the right set:
+E         'cd5164f9-3c25-4764-900a-9d1b916bdbca'
+E         Use -v to get more diff
+
+tests\test_knowledge_index.py:187: AssertionError</failure></testcase><testcase classname="tests.test_knowledge_index" name="test_multi_document_search_keeps_relevant_smaller_document_in_candidate_pool[1]" time="1.766" /><testcase classname="tests.test_knowledge_index" name="test_multi_document_search_keeps_relevant_smaller_document_in_candidate_pool[2]" time="1.829" /><testcase classname="tests.test_knowledge_index" name="test_multi_document_search_keeps_relevant_smaller_document_in_candidate_pool[3]" time="1.781"><failure message="AssertionError: {'selected': ['8db07278-5c25-4ce4-b69c-c57b39582fa9', '4cd7b8f9-0966-4665-b58f-f8c983453180'], 'results': [('d0.txt', ...', 1.0), ...], 'indexed': [('8db07278-5c25-4ce4-b69c-c57b39582fa9', 160), ('4cd7b8f9-0966-4665-b58f-f8c983453180', 1)]}&#10;assert {'8db07278-5c...c57b39582fa9'} == {'4cd7b8f9-09...c57b39582fa9'}&#10;  &#10;  Extra items in the right set:&#10;  '4cd7b8f9-0966-4665-b58f-f8c983453180'&#10;  Use -v to get more diff">index = &lt;app.knowledge.index.VectorIndex object at 0x0000022E4A2BD7C0&gt;
+repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x0000022E4A2BC7D0&gt;
+iteration = 3
+
+    @pytest.mark.parametrize('iteration',range(5))
+    def test_multi_document_search_keeps_relevant_smaller_document_in_candidate_pool(index,repo,iteration):
+        from app.knowledge.importing import ImportPipeline
+        from app.knowledge.database import Document,Revision
+        repo.config.chunk_size,repo.config.chunk_overlap = 100,0
+        pipeline = ImportPipeline(repo.accounts,repo.config)
+        selections = []
+        for number,body in enumerate(['\n'.join(f'Fact {n}: '+str(n)*90 for n in range(60)),'Required evidence in smaller document']):
+            queued = repo.submit_file('alice','fair-'+str(number),'d'+str(number)+'.txt',body.encode())
+            claim = pipeline.claim('worker')
+            parsed = pipeline.parse(claim)
+            chunks = pipeline.split(claim,parsed)
+            vector = ([1.0,0.0] if number==0 else [.9,.1])+[0.0]*1022
+            index.upsert(claim,parsed['revision_id'],chunks,[vector]*len(chunks))
+            with repo.database.session() as session:
+                session.get(Revision,parsed['revision_id']).status = 'ready'
+                document = session.get(Document,queued['document_id'])
+                document.status,document.active_revision_id = 'ready',parsed['revision_id']
+            selections.append(queued['document_id'])
+            if number==0: pipeline.complete(claim,lambda s,j:{'ok':True})
+        result = index.search(claim,repo.select_documents('alice',selections),[1.0]+[0.0]*1023)
+&gt;       assert {r['document_id'] for r in result}==set(selections), {'selected':selections,'results':[(r['title'],r['score']) for r in result],
+            'indexed':[(did,len(index.collection('alice').get(where={'document_id':did})['ids'])) for did in selections]}
+E       AssertionError: {'selected': ['8db07278-5c25-4ce4-b69c-c57b39582fa9', '4cd7b8f9-0966-4665-b58f-f8c983453180'], 'results': [('d0.txt', ...', 1.0), ...], 'indexed': [('8db07278-5c25-4ce4-b69c-c57b39582fa9', 160), ('4cd7b8f9-0966-4665-b58f-f8c983453180', 1)]}
+E       assert {'8db07278-5c...c57b39582fa9'} == {'4cd7b8f9-09...c57b39582fa9'}
+E         
+E         Extra items in the right set:
+E         '4cd7b8f9-0966-4665-b58f-f8c983453180'
+E         Use -v to get more diff
+
+tests\test_knowledge_index.py:187: AssertionError</failure></testcase><testcase classname="tests.test_knowledge_index" name="test_multi_document_search_keeps_relevant_smaller_document_in_candidate_pool[4]" time="1.889" /><testcase classname="tests.test_knowledge_index" name="test_only_selected_active_revision_is_retrieved_from_real_index" time="1.452" /></testsuite></testsuites>

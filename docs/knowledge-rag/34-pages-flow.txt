@@ -1,0 +1,43 @@
+
+Running 1 test using 1 worker
+
+(node:17344) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 e2e-knowledge\knowledge.spec.ts:56:5 › 真实存储闭环：Markdown→问答来源→原问题出题→多选主题→确认答题→报告 (31.2s)
+
+
+  1) e2e-knowledge\knowledge.spec.ts:56:5 › 真实存储闭环：Markdown→问答来源→原问题出题→多选主题→确认答题→报告 ────────────────
+
+    Error: expect(locator).toBeChecked() failed
+
+    Locator: locator('taro-switch-core input')
+    Expected: checked
+    Timeout: 20000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeChecked" locator('taro-switch-core input') with timeout 20000ms
+      - waiting for locator('taro-switch-core input')
+
+
+      65 |   await page.locator('.mini-back').click()
+      66 |   await page.getByRole('button', { name: '向资料提问', exact: true }).click()
+    > 67 |   await expect(page.locator('taro-switch-core input')).toBeChecked()
+         |                                                        ^
+      68 |   await page.locator('textarea').fill('根据资料解释 HTTP 与会话')
+      69 |   await page.getByText('全部已就绪资料（提交时固定版本）', { exact: true }).click()
+      70 |   await snapshot(page, 'question')
+        at D:\nbproject\LevelUpProject\frontend\e2e-knowledge\knowledge.spec.ts:67:56
+
+    Error Context: ..\docs\knowledge-rag\page-results\knowledge-真实存储闭环：Markdown→问答来源→原问题出题→多选主题→确认答题→报告\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\docs\knowledge-rag\page-results\knowledge-真实存储闭环：Markdown→问答来源→原问题出题→多选主题→确认答题→报告\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\docs\knowledge-rag\page-results\knowledge-真实存储闭环：Markdown→问答来源→原问题出题→多选主题→确认答题→报告\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    e2e-knowledge\knowledge.spec.ts:56:5 › 真实存储闭环：Markdown→问答来源→原问题出题→多选主题→确认答题→报告 ─────────────────

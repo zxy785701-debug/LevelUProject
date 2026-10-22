@@ -1,0 +1,620 @@
+
+> levelup-mini@1.0.0 build:h5
+> taro build --type h5
+
+👽 Taro v4.3.0
+
+Tips:
+1. 建议开启持久化缓存功能，能有效提升二次编译速度，详情请参考: https://docs.taro.zone/docs/config-detail#cache。
+
+
+
+
+● Webpack █████████████████████████  (0%)  
+ 
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ setup (9%) compilation 
+ TaroH5Plugin
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ setup (9%) compilation 
+ CssMinimizerPlugin
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/1 entries 1/1 dependencie
+s 0/0 modules 0 active 
+ 
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%)  
+ import loader .\node_modules\babel-loader\lib\index.js
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%)  
+ import loader .\node_modules\@tarojs\taro-loader\lib\h5.js
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/1 entries 1/1 dependencie
+s 0/1 modules 1 active 
+ babel-loader › src\app.config.ts
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/1 entries 1/2 dependencie
+s 0/1 modules 1 active 
+ babel-loader › src\app.config.ts
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/1 entries 4/13 dependenci
+es 0/4 modules 3 active 
+ node_modules\react\index.js
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/1 entries 6/13 dependenci
+es 0/6 modules 5 active 
+ node_modules\react-dom\index.js
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/1 entries 10/17 dependenc
+ies 0/8 modules 8 active 
+ babel-loader › node_modules\@tarojs\runtime\dist\index.js
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/1 entries 34/45 dependenc
+ies 0/29 modules 13 active 
+ ....js
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/1 entries 42/56 dependenc
+ies 1/30 modules 29 active 
+ style-loader › css-loader › node_modules\@tarojs\components\global.css
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%)  
+ import loader .\node_modules\css-loader\dist\cjs.js
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/1 entries 42/56 dependenc
+ies 1/30 modules 29 active 
+ style-loader › css-loader › node_modules\@tarojs\components\global.css
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/1 entries 46/62 dependenc
+ies 1/33 modules 30 active 
+ node_modules\react\cjs\react-jsx-runtime.production.min.js
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/1 entries 48/62 dependenc
+ies 1/34 modules 32 active 
+ babel-loader › node_modules\@tarojs\components\lib\react\index.js
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%)  
+ import loader .\node_modules\postcss-loader\dist\cjs.js
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%)  
+ import loader .\node_modules\resolve-url-loader\index.js
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%)  
+ import loader .\node_modules\sass-loader\dist\cjs.js
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/1 entries 49/107 dependen
+cies 3/36 modules 32 active 
+ ...ss
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/1 entries 50/117 dependen
+cies 3/37 modules 33 active 
+ node_modules\react-dom\cjs\react-dom.production.min.js
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/1 entries 188/262 depende
+ncies 4/99 modules 33 active 
+ ...ss
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/1 entries 236/262 depende
+ncies 6/100 modules 52 active 
+ ...l-loader › node_modules\@tarojs\plugin-platform-h5\dist\runtime\apis\taro-
+h5.js
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/1 entries 257/374 depende
+ncies 7/115 modules 104 active 
+ ...loader › postcss-loader › resolve-url-loader › sass-loader › src\knowledge
+.scss
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/1 entries 261/434 depende
+ncies 9/118 modules 102 active 
+ ...loader › postcss-loader › resolve-url-loader › sass-loader › src\knowledge
+.scss
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/1 entries 599/671 depende
+ncies 32/239 modules 80 active 
+ ...ader › node_modules\@tarojs\components\dist\taro-components\taro-component
+s.css
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/1 entries 660/723 depende
+ncies 35/263 modules 103 active 
+ ...oader › node_modules\@tarojs\components\dist\components\taro-cover-view-co
+re.js
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/1 entries 765/829 depende
+ncies 41/312 modules 113 active 
+ ...loader › node_modules\@tarojs\components\dist\components\taro-lifestyle-co
+re.js
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/1 entries 836/877 depende
+ncies 42/313 modules 127 active 
+ ...r › node_modules\@tarojs\components\dist\components\taro-navigation-bar-co
+re.js
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/1 entries 896/1100 depend
+encies 42/315 modules 161 active 
+ ...er › node_modules\@tarojs\components\dist\components\taro-sticky-header-co
+re.js
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/1 entries 1145/1236 depen
+dencies 42/328 modules 162 active 
+ ...r › node_modules\@tarojs\components\dist\components\taro-sticky-section-co
+re.js
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/1 entries 1232/1236 depen
+dencies 42/329 modules 222 active 
+ babel-loader › api-loader › node_modules\@tarojs\taro-h5\dist\api\taro.js
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/1 entries 1236/1300 depen
+dencies 42/332 modules 258 active 
+ asset|D:\nbproject\LevelUpProject\frontend\src\assets\icons\shield.png
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (11%) 0/1 entries 1443/1460 depen
+dencies 118/344 modules 216 active 
+ ...WNpcmNsZQR3YXJuC2luZm8tY2lyY2xlBmNhbmNlbAZzZWFyY2gFY2xlYXIEYmFjawZkZWxldGU
+AAAAA
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (11%) 0/1 entries 1500/1663 depen
+dencies 141/396 modules 203 active 
+ ...bel-loader › node_modules\@tarojs\runtime\dist\dom-external\inner-html\uti
+ls.js
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (11%) 0/1 entries 1622/1668 depen
+dencies 162/465 modules 182 active 
+ ...bel-loader › node_modules\@tarojs\runtime\dist\dom-external\inner-html\sty
+le.js
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (11%) 0/1 entries 1656/1672 depen
+dencies 169/491 modules 254 active 
+ babel-loader › node_modules\@tarojs\taro-h5\dist\api\media\video-decoder.js
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (11%) 0/1 entries 1664/1672 depen
+dencies 169/498 modules 265 active 
+ babel-loader › node_modules\@tarojs\taro-h5\dist\api\open-api\account.js
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (12%) 0/1 entries 1683/1800 depen
+dencies 204/499 modules 231 active 
+ babel-loader › node_modules\@tarojs\taro-h5\dist\api\open-api\address.js
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (12%) 0/1 entries 1869/1939 depen
+dencies 206/509 modules 230 active 
+ babel-loader › node_modules\@tarojs\taro-h5\dist\api\open-api\authorize.js
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (12%) 0/1 entries 1894/1939 depen
+dencies 206/514 modules 280 active 
+ ...ipt\esm|D:\nbproject\LevelUpProject\frontend\node_modules\lodash-es\isObje
+ct.js
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (12%) 0/1 entries 1895/1939 depen
+dencies 206/515 modules 283 active 
+ ...js
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (12%) 0/1 entries 1936/2000 depen
+dencies 206/541 modules 310 active 
+ babel-loader › node_modules\@tarojs\taro-h5\dist\api\network\utils.js
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (12%) 0/1 entries 2009/2100 depen
+dencies 210/544 modules 306 active 
+ babel-loader › node_modules\@tarojs\taro-h5\dist\api\network\utils.js
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (12%) 0/1 entries 2056/2136 depen
+dencies 229/548 modules 287 active 
+ babel-loader › node_modules\@tarojs\taro-h5\dist\api\location\style.scss.js
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (12%) 0/1 entries 2112/2136 depen
+dencies 242/568 modules 326 active 
+ node_modules\path-to-regexp\dist.es2015\index.js
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (12%) 0/1 entries 2113/2136 depen
+dencies 242/569 modules 327 active 
+ ...ript\esm|D:\nbproject\LevelUpProject\frontend\node_modules\query-string\ba
+se.js
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (12%) 0/1 entries 2114/2136 depen
+dencies 242/570 modules 328 active 
+ ...ipt\esm|D:\nbproject\LevelUpProject\frontend\node_modules\lodash-es\deboun
+ce.js
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (13%) 0/1 entries 2187/2250 depen
+dencies 275/583 modules 297 active 
+ ...t\esm|D:\nbproject\LevelUpProject\frontend\node_modules\swiper\shared\util
+s.mjs
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (13%) 0/1 entries 2226/2253 depen
+dencies 277/602 modules 325 active 
+ ...\esm|D:\nbproject\LevelUpProject\frontend\node_modules\lodash-es\_baseGetT
+ag.js
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (13%) 0/1 entries 2239/2253 depen
+dencies 277/603 modules 326 active 
+ babel-loader › node_modules\@tarojs\api\dist\index.js
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (13%) 0/1 entries 2251/2291 depen
+dencies 312/609 modules 296 active 
+ node_modules\ics\dist\index.js
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (13%) 0/1 entries 2276/2309 depen
+dencies 312/619 modules 307 active 
+ ...\esm|D:\nbproject\LevelUpProject\frontend\node_modules\lodash-es\_getAllKe
+ys.js
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (14%) 0/1 entries 2295/2309 depen
+dencies 416/635 modules 218 active 
+ ...pt\esm|D:\nbproject\LevelUpProject\frontend\node_modules\lodash-es\_DataVi
+ew.js
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (14%) 0/1 entries 2299/2309 depen
+dencies 416/639 modules 223 active 
+ ...t\esm|D:\nbproject\LevelUpProject\frontend\node_modules\lodash-es\_getRawT
+ag.js
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (14%) 0/1 entries 2321/2350 depen
+dencies 444/645 modules 199 active 
+ node_modules\whatwg-fetch\fetch.js
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (15%) 0/1 entries 2348/2352 depen
+dencies 463/659 modules 196 active 
+ ...D:\nbproject\LevelUpProject\frontend\node_modules\lodash-es\_trimmedEndInd
+ex.js
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (15%) 0/1 entries 2368/2369 depen
+dencies 499/672 modules 164 active 
+ ...esm|D:\nbproject\LevelUpProject\frontend\node_modules\lodash-es\_arrayFilt
+er.js
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (15%) 0/1 entries 2372/2373 depen
+dencies 502/673 modules 171 active 
+ node_modules\ics\dist\pipeline\index.js
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (17%) 0/1 entries 2385/2386 depen
+dencies 661/678 modules 16 active 
+ node_modules\ics\dist\pipeline\format.js
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (17%) 0/1 entries 2394/2397 depen
+dencies 663/682 modules 17 active 
+ ...› postcss-loader › resolve-url-loader › sass-loader › src\knowledge.scss|0
+|||}}
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (17%) 0/1 entries 2417/2419 depen
+dencies 672/697 modules 25 active 
+ node_modules\ics\dist\utils\format-text.js
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (17%) 0/1 entries 2422/2426 depen
+dencies 679/701 modules 22 active 
+ ...t\LevelUpProject\frontend\node_modules\runes2\dist\index.cjs.production.mi
+n.cjs
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (17%) 0/1 entries 2429/2429 depen
+dencies 691/705 modules 14 active 
+ node_modules\tiny-case\index.js
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (75%) chunk optimization 
+ RemoveEmptyChunksPlugin
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (88%)  
+ runtime requirements
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (92%) asset processing 
+ CssMinimizerPlugin
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (92%) asset processing 
+ HtmlWebpackPlugin
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (92%) asset processing 
+ RealContentHashPlugin
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+√ Webpack
+  Compiled successfully in 1.34m
+
+- 即将开始启动编译，请稍等~
+⚠️ Warnings: 
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 2, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:2:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+2 | @import './prototype.scss';
+
+
+src\app.scss 3:9  root stylesheet
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 3, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:3:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+3 | @import './footer.scss';
+
+
+src\app.scss 4:9  root stylesheet
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 4, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:4:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+4 | @import './features.scss';
+
+
+src\app.scss 5:9  root stylesheet
+
+AssetsOverSizeLimitWarning: asset size limit: The following asset(s) exceed the recommended size limit (244 KiB).
+This can impact web performance.
+Assets: 
+  js/app.js (325 KiB)
+
+EntrypointsOverSizeLimitWarning: entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit (244 KiB). This can impact web performance.
+Entrypoints:
+  app (599 KiB)
+      js/122.js
+      css/app.css
+      js/app.js
+
+⚠️  编译警告. 2026/10/18 22:37:13
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 2, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:2:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+2 | @import './prototype.scss';
+
+
+src\app.scss 3:9  root stylesheet
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 3, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:3:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+3 | @import './footer.scss';
+
+
+src\app.scss 4:9  root stylesheet
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 4, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:4:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+4 | @import './features.scss';
+
+
+src\app.scss 5:9  root stylesheet
+
+AssetsOverSizeLimitWarning: asset size limit: The following asset(s) exceed the recommended size limit (244 KiB).
+This can impact web performance.
+Assets: 
+  js/app.js (325 KiB)
+
+EntrypointsOverSizeLimitWarning: entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit (244 KiB). This can impact web performance.
+Entrypoints:
+  app (599 KiB)
+      js/122.js
+      css/app.css
+      js/app.js
+
+assets by path [1m[32mstatic/images/assets/[39m[22m 474 KiB
+  assets by path [1m[32mstatic/images/assets/*.png[39m[22m 470 KiB 3 assets
+  assets by path [1m[32mstatic/images/assets/icons/*.png[39m[22m 4.63 KiB
+    asset [1m[32mstatic/images/assets/icons/help.png[39m[22m 2.49 KiB [1m[32m[emitted][39m[22m [from: src/assets/icons/help.png] (auxiliary name: app)
+    asset [1m[32mstatic/images/assets/icons/eye.png[39m[22m 2.14 KiB [1m[32m[emitted][39m[22m [from: src/assets/icons/eye.png] (auxiliary name: app)
+assets by path [1m[32mjs/*.js[39m[22m 525 KiB
+  asset [1m[33mjs/app.js[39m[22m [1m[33m325 KiB[39m[22m [1m[32m[emitted][39m[22m [1m[32m[minimized][39m[22m [1m[33m[big][39m[22m (name: app) 1 related asset
+  asset [1m[32mjs/122.js[39m[22m 200 KiB [1m[32m[emitted][39m[22m [1m[32m[minimized][39m[22m (id hint: taro) 1 related asset
+assets by path [1m[32mchunk/*.js[39m[22m 223 KiB
+  asset [1m[32mchunk/803.js[39m[22m 218 KiB [1m[32m[emitted][39m[22m [1m[32m[minimized][39m[22m
+  asset [1m[32mchunk/169.js[39m[22m 4.91 KiB [1m[32m[emitted][39m[22m [1m[32m[minimized][39m[22m 1 related asset
+assets by path [1m[32mcss/*.css[39m[22m 76.2 KiB
+  asset [1m[32mcss/app.css[39m[22m 73.4 KiB [1m[32m[emitted][39m[22m [1m[32m[minimized][39m[22m (name: app)
+  asset [1m[32mcss/803.css[39m[22m 2.77 KiB [1m[32m[emitted][39m[22m [1m[32m[minimized][39m[22m
+asset [1m[32mindex.html[39m[22m 424 bytes [1m[32m[emitted][39m[22m
+Entrypoint [1mapp[39m[22m [1m[33m[big][39m[22m 599 KiB (474 KiB) = [1m[32mjs/122.js[39m[22m 200 KiB [1m[32mcss/app.css[39m[22m 73.4 KiB [1m[32mjs/app.js[39m[22m 325 KiB 5 auxiliary assets
+
+[1m[33mWARNING[39m[22m in [1m./src/app.scss[39m[22m (./src/app.scss.webpack[javascript/auto]!=!./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].oneOf[0].use[0]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[0]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[1]!./src/app.scss)
+[1mModule Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 2, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:2:8:
+Sass @import rules are [1m[33mdeprecated[39m[22m[1m and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+2 | @import './prototype.scss';
+
+
+src\app.scss 3:9  root stylesheet
+[39m[22m
+ @ ./src/app.scss
+ @ ./src/app.tsx 3:0-20
+ @ ./src/app.config.ts 5:0-30 52:26-35
+
+[1m[33mWARNING[39m[22m in [1m./src/app.scss[39m[22m (./src/app.scss.webpack[javascript/auto]!=!./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].oneOf[0].use[0]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[0]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[1]!./src/app.scss)
+[1mModule Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 3, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:3:8:
+Sass @import rules are [1m[33mdeprecated[39m[22m[1m and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+3 | @import './footer.scss';
+
+
+src\app.scss 4:9  root stylesheet
+[39m[22m
+ @ ./src/app.scss
+ @ ./src/app.tsx 3:0-20
+ @ ./src/app.config.ts 5:0-30 52:26-35
+
+[1m[33mWARNING[39m[22m in [1m./src/app.scss[39m[22m (./src/app.scss.webpack[javascript/auto]!=!./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].oneOf[0].use[0]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[0]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[1]!./src/app.scss)
+[1mModule Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 4, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:4:8:
+Sass @import rules are [1m[33mdeprecated[39m[22m[1m and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+4 | @import './features.scss';
+
+
+src\app.scss 5:9  root stylesheet
+[39m[22m
+ @ ./src/app.scss
+ @ ./src/app.tsx 3:0-20
+ @ ./src/app.config.ts 5:0-30 52:26-35
+
+[1m[33mWARNING[39m[22m in [1masset size limit: The following asset(s) exceed the recommended size limit (244 KiB).
+This can impact web performance.
+Assets: 
+  js/app.js (325 KiB)[39m[22m
+
+[1m[33mWARNING[39m[22m in [1mentrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit (244 KiB). This can impact web performance.
+Entrypoints:
+  app (599 KiB)
+      js/122.js
+      css/app.css
+      js/app.js
+[39m[22m
+
+webpack 5.91.0 compiled with [1m[33m5 warnings[39m[22m in 80531 ms
+

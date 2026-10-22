@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="19" time="21.080" timestamp="2026-10-18T18:43:05.059697+08:00" hostname="zxy"><testcase classname="tests.test_knowledge_worker" name="test_directory_lock_refuses_a_second_process_and_releases_after_exit" time="3.816" /><testcase classname="tests.test_knowledge_worker" name="test_database_lease_fences_stale_worker_even_on_different_process" time="0.223" /><testcase classname="tests.test_knowledge_worker" name="test_bounded_worker_threads_leave_heartbeat_alive_and_prioritize_interaction" time="0.693"><failure message="assert datetime.datetime(2026, 10, 18, 10, 43, 17) &gt; datetime.datetime(2026, 10, 18, 10, 43, 17)">repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x0000022A3F031F90&gt;
+
+    @pytest.mark.anyio
+    async def test_bounded_worker_threads_leave_heartbeat_alive_and_prioritize_interaction(repo):
+        from app.knowledge.worker import KnowledgeWorker
+        from app.knowledge.jobs import DurableJobs
+        from app.knowledge.database import Job, WorkerLease
+        rows = [submit(repo,str(i)) for i in range(3)]
+        with repo.database.session() as session:
+            session.get(Job,rows[-1]['id']).priority = 10
+        jobs = DurableJobs(repo.accounts,repo.config)
+        started, ended = [], []
+        gate = threading.Event()
+        def handler(claim):
+            started.append(claim.id)
+            gate.wait(5)
+            ended.append(claim.id)
+            jobs.complete(claim,lambda session,row:{'ok':True})
+        worker = KnowledgeWorker(repo.accounts,repo.config,handlers={'import':handler},poll_seconds=.03,heartbeat_seconds=.06)
+        task = asyncio.create_task(worker.run())
+        try:
+            for _ in range(100):
+                if len(started) == 2: break
+                await asyncio.sleep(.03)
+            assert len(started) == 2 and rows[-1]['id'] in started and not ended
+            with repo.database.session() as session:
+                before = session.get(WorkerLease,worker.guard.identity).heartbeat_at
+            await asyncio.sleep(.2)
+            with repo.database.session() as session:
+                after = session.get(WorkerLease,worker.guard.identity).heartbeat_at
+&gt;           assert after &gt; before
+E           assert datetime.datetime(2026, 10, 18, 10, 43, 17) &gt; datetime.datetime(2026, 10, 18, 10, 43, 17)
+
+tests\test_knowledge_worker.py:85: AssertionError</failure></testcase><testcase classname="tests.test_knowledge_worker" name="test_worker_errors_are_safe_and_disabled_entry_keeps_cleanup_processing" time="0.392" /><testcase classname="tests.test_knowledge_jobs" name="test_only_one_connection_can_claim_the_same_job" time="0.250" /><testcase classname="tests.test_knowledge_jobs" name="test_expired_lease_is_fenced_and_keeps_budget_deadline_and_progress" time="0.255" /><testcase classname="tests.test_knowledge_jobs" name="test_final_result_and_success_publish_in_one_transaction_exactly_once" time="0.223" /><testcase classname="tests.test_knowledge_jobs" name="test_recoverable_failures_are_bounded_and_cannot_refill_budget" time="0.238" /><testcase classname="tests.test_knowledge_jobs" name="test_expired_deadlines_and_queue_wait_end_with_actionable_failure" time="0.180" /><testcase classname="tests.test_knowledge_jobs" name="test_restart_in_a_new_process_recovers_durable_budget_and_fence" time="3.326" /><testcase classname="tests.test_knowledge_jobs" name="test_cancel_and_manual_retry_preserve_operation_and_stop_late_results" time="0.321" /><testcase classname="tests.test_knowledge_jobs" name="test_retry_cannot_reset_deadline_or_bypass_deleted_documents" time="0.258" /><testcase classname="tests.test_knowledge_jobs" name="test_deleted_account_cannot_control_or_publish_a_running_job" time="0.216" /><testcase classname="tests.test_knowledge_api" name="test_capabilities_are_authenticated_sanitized_and_honest" time="0.266" /><testcase classname="tests.test_knowledge_api" name="test_document_read_api_obeys_account_and_pagination" time="0.277" /><testcase classname="tests.test_knowledge_api" name="test_disabled_knowledge_preserves_health_and_core_learning" time="0.235" /><testcase classname="tests.test_knowledge_api" name="test_upload_submission_returns_a_job_and_rejects_client_owned_paths" time="0.482" /><testcase classname="tests.test_knowledge_api" name="test_web_and_owned_material_submission_api" time="0.272" /><testcase classname="tests.test_knowledge_api" name="test_job_query_cancel_retry_and_foreign_account_are_isolated" time="0.583" /></testsuite></testsuites>

@@ -9,6 +9,8 @@ const crypto = require('node:crypto');
   const sourceFiles = ['01-core-learning.html', 'assets/style.css', 'assets/refined-footer.css', 'assets/ui.js', 'assets/screens.js', 'assets/footer-theme.js', 'assets/app.js'];
   const hashes = () => Object.fromEntries(sourceFiles.map(file => [file, crypto.createHash('sha256').update(fs.readFileSync(path.join(prototype, file))).digest('hex')]));
   const before = hashes();
+  const outputDir = process.argv[2] ? path.resolve(process.argv[2]) : __dirname;
+  fs.mkdirSync(outputDir, { recursive: true });
   const browser = await chromium.launch({ executablePath: 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe', headless: true });
   try {
     const context = await browser.newContext({ viewport: { width: 1440, height: 1200 }, deviceScaleFactor: 1 });
@@ -25,7 +27,8 @@ const crypto = require('node:crypto');
       console.log(`Capturing ${screen}`);
       await page.locator(`[data-screen="${screen}"]`).click();
       await page.evaluate(() => Promise.all(Array.from(document.images, image => { image.loading = 'eager'; return image.decode().catch(() => {}); })));
-      await page.locator('.proposal-grid').screenshot({ path: path.join(__dirname, `${filename}.png`) });
+      await page.locator('.proposal-grid').screenshot({ path: path.join(outputDir, `${filename}.png`) });
+      if (screen === 'L02') await page.locator('.theme-a .phone').screenshot({ path: path.join(outputDir, '01-document-a.png') });
       console.log(`Captured ${screen}`);
       checks.push(await page.evaluate(() => ({
         screen: document.querySelector('[data-screen][aria-pressed="true"]').dataset.screen,
@@ -33,7 +36,7 @@ const crypto = require('node:crypto');
         imagesLoaded: [...document.images].every(image => image.complete && image.naturalWidth > 0),
         horizontalOverflow: document.documentElement.scrollWidth > innerWidth,
         scrollAreas: [...document.querySelectorAll('.phone-scroll')].map(el => ({ width: el.clientWidth, scrollWidth: el.scrollWidth, height: el.clientHeight, scrollHeight: el.scrollHeight })),
-        headers: [...document.querySelectorAll('.mini-bar')].map(el => getComputedStyle(el).backgroundColor)
+        headers: [...document.querySelectorAll('.phone-chrome')].map(el => getComputedStyle(el).backgroundImage)
       })));
     }
     await page.locator('.original-toggle').click();
@@ -48,15 +51,15 @@ const crypto = require('node:crypto');
       }
       if (width === 390) {
         await page.locator('[data-screen="L02"]').click();
-        await page.screenshot({ path: path.join(__dirname, '04-mobile.png'), fullPage: true });
+        await page.screenshot({ path: path.join(outputDir, '04-mobile.png'), fullPage: true });
       }
     }
     await page.setViewportSize({ width: 1440, height: 1200 });
     await page.goto(pathToFileURL(path.join(prototype, '01-core-learning.html')).href + '?screen=L02');
-    await page.locator('.phone').screenshot({ path: path.join(__dirname, '00-original-document.png') });
+    await page.locator('.phone').screenshot({ path: path.join(outputDir, '00-original-document.png') });
     const after = hashes();
     const report = { errors, checks, originalsUnchanged: JSON.stringify(before) === JSON.stringify(after), originalHashes: after };
-    fs.writeFileSync(path.join(__dirname, 'verification.json'), JSON.stringify(report, null, 2));
+    fs.writeFileSync(path.join(outputDir, 'verification.json'), JSON.stringify(report, null, 2));
     console.log(JSON.stringify(report));
     if (errors.length || checks.some(check => check.horizontalOverflow || check.phoneOverflow || check.imagesLoaded === false) || !report.originalsUnchanged) process.exitCode = 1;
   } finally { await browser.close(); }

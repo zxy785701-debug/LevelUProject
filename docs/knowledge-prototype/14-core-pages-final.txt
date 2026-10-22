@@ -1,0 +1,68 @@
+
+Running 16 tests using 1 worker
+
+(node:3084) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 e2e-accounts\accounts.spec.ts:38:5 › 未登录强制登录，无游客入口；320px 布局 (629ms)
+  ok  2 e2e-accounts\accounts.spec.ts:56:5 › 真实 MySQL 闭环：答题、报告、海报、昵称、退出 (7.0s)
+  ok  3 e2e-accounts\accounts.spec.ts:82:5 › 暂停刷新恢复、断网不入账、错题复习不加奖励 (6.3s)
+  ok  4 e2e-accounts\accounts.spec.ts:125:5 › 账号隔离与过期回登录 (4.6s)
+  x   5 e2e-accounts\interactions.spec.ts:26:5 › 任意切题、草稿保留、未答完不出报告、进阶奖励与白色星星 (1.0m)
+(node:10444) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  6 e2e-accounts\interactions.spec.ts:74:5 › 头像操作菜单、预览与实际图片下载 (1.4s)
+  ok  7 e2e-accounts\interactions.spec.ts:102:5 › 长页面进入历史再返回，恢复原滚动位置 (1.0s)
+  ok  8 e2e-accounts\materials.spec.ts:23:5 › 文档上传、真实材料确认、来源阅读、出题和答题闭环 (6.1s)
+  ok  9 e2e-accounts\materials.spec.ts:54:5 › 知识地图与周期报告空态、网页错误和 320px 布局 (1.3s)
+  ok 10 e2e-accounts\materials.spec.ts:66:5 › 历史作答聚合、知识节点和周期报告生成导出 (3.1s)
+  ok 11 e2e-accounts\materials.spec.ts:103:5 › 已清理的缓存解析任务能退出轮询并重新选择材料 (794ms)
+  ok 12 e2e-accounts\materials.spec.ts:114:5 › 取消解析后迟到的材料响应不能跳回学习范围 (857ms)
+  ok 13 e2e-accounts\quiz-document.spec.ts:71:5 › 逐题判分、多选确认、刷新保留，答完自动报告并返回首页、删除记录 (4.5s)
+  ok 14 e2e-accounts\quiz-document.spec.ts:124:5 › 本题提交失败可重试，不重复提交已经确认的题目 (1.2s)
+  ok 15 e2e-accounts\quiz-document.spec.ts:147:5 › 无文件可选页码，PDF 保留范围、校验错误就地提示并提交正确页码 (1.1s)
+  ok 16 e2e-accounts\quiz-document.spec.ts:174:5 › 切换 TXT 自动使用全文并解释页码不可用 (827ms)
+
+
+  1) e2e-accounts\interactions.spec.ts:26:5 › 任意切题、草稿保留、未答完不出报告、进阶奖励与白色星星 ──────────────────────────
+
+    Test timeout of 60000ms exceeded.
+
+    Error: locator.click: Test timeout of 60000ms exceeded.
+    Browser logs:
+
+    <launching> C:\Users\20777\AppData\Local\Google\Chrome\Application\chrome.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,NetworkTimeServiceQuerying,AimEnabled,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=C:\Users\20777\AppData\Local\Temp\playwright_chromiumdev_profile-fwN1Kt --remote-debugging-pipe --no-startup-window
+    <launched> pid=8908
+    [pid=8908] <gracefully close start>
+    Call log:
+      - waiting for getByText('确认本题', { exact: true })
+        - locator resolved to <taro-button-core type="" disabled role="button" aria-label="确认本题" aria-disabled="true" class="btn primary is-disabled">确认本题</taro-button-core>
+      - attempting click action
+        2 × waiting for element to be visible, enabled and stable
+          - element is not enabled
+        - retrying click action
+        - waiting 20ms
+        2 × waiting for element to be visible, enabled and stable
+          - element is not enabled
+        - retrying click action
+          - waiting 100ms
+        104 × waiting for element to be visible, enabled and stable
+            - element is not enabled
+          - retrying click action
+            - waiting 500ms
+        - waiting for element to be visible, enabled and stable
+
+
+      65 |   await expect(page.locator('.feedback')).toHaveCount(0)
+      66 |   await expect(page.locator('.ring-value')).toHaveCount(0)
+    > 67 |   await page.getByText('确认本题', { exact: true }).click()
+         |                                                 ^
+      68 |   await expect(page.locator('.ring-value')).toHaveText('100%')
+      69 |   await expect(page.getByText('45', { exact: true })).toBeVisible()
+      70 |   await expect(page.getByText('三句话，带走这关', { exact: true })).toBeVisible()
+        at D:\nbproject\LevelUpProject\frontend\e2e-accounts\interactions.spec.ts:67:49
+
+    Error Context: ..\docs\knowledge-prototype\14-core-results\interactions-任意切题、草稿保留、未答完不出报告、进阶奖励与白色星星\error-context.md
+
+  1 failed
+    e2e-accounts\interactions.spec.ts:26:5 › 任意切题、草稿保留、未答完不出报告、进阶奖励与白色星星 ───────────────────────────
+  15 passed (1.7m)

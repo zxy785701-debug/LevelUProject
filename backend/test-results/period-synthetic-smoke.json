@@ -1,0 +1,43 @@
+{
+  "data_kind": "hard-coded synthetic data only; no database access",
+  "topics": 11,
+  "points": 51,
+  "runs": [
+    {
+      "sections": [
+        "overview",
+        "performance",
+        "advice"
+      ],
+      "seconds": 6.32,
+      "model_attempts": 1,
+      "summary_count": 3,
+      "findings_count": 10,
+      "suggestions_count": 10,
+      "status": "passed"
+    },
+    {
+      "sections": [
+        "advice"
+      ],
+      "seconds": 3.72,
+      "model_attempts": 1,
+      "summary_count": 3,
+      "findings_count": 0,
+      "suggestions_count": 8,
+      "status": "passed"
+    },
+    {
+      "sections": [
+        "overview",
+        "performance"
+      ],
+      "seconds": 5.62,
+      "model_attempts": 1,
+      "summary_count": 3,
+      "findings_count": 0,
+      "suggestions_count": 0,
+      "status": "passed"
+    }
+  ]
+}

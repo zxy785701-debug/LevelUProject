@@ -1,0 +1,109 @@
+
+Running 16 tests using 1 worker
+
+(node:14964) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 e2e-accounts\accounts.spec.ts:38:5 › 未登录强制登录，无游客入口；320px 布局 (763ms)
+  ok  2 e2e-accounts\accounts.spec.ts:56:5 › 真实 MySQL 闭环：答题、报告、海报、昵称、退出 (6.2s)
+  ok  3 e2e-accounts\accounts.spec.ts:82:5 › 暂停刷新恢复、断网不入账、错题复习不加奖励 (5.8s)
+  ok  4 e2e-accounts\accounts.spec.ts:125:5 › 账号隔离与过期回登录 (3.9s)
+  ok  5 e2e-accounts\interactions.spec.ts:26:5 › 任意切题、草稿保留、未答完不出报告、进阶奖励与白色星星 (5.2s)
+  ok  6 e2e-accounts\interactions.spec.ts:74:5 › 头像操作菜单、预览与实际图片下载 (1.4s)
+  ok  7 e2e-accounts\interactions.spec.ts:102:5 › 长页面进入历史再返回，恢复原滚动位置 (977ms)
+  x   8 e2e-accounts\materials.spec.ts:23:5 › 文档上传、真实材料确认、来源阅读、出题和答题闭环 (9.2s)
+(node:2852) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  9 e2e-accounts\materials.spec.ts:53:5 › 知识地图与周期报告空态、网页错误和 320px 布局 (1.3s)
+  ok 10 e2e-accounts\materials.spec.ts:65:5 › 历史作答聚合、知识节点和周期报告生成导出 (2.6s)
+  ok 11 e2e-accounts\materials.spec.ts:102:5 › 已清理的缓存解析任务能退出轮询并重新选择材料 (770ms)
+  ok 12 e2e-accounts\materials.spec.ts:113:5 › 取消解析后迟到的材料响应不能跳回学习范围 (895ms)
+  x  13 e2e-accounts\quiz-document.spec.ts:71:5 › 逐题判分、多选确认、刷新保留，答完自动报告并返回首页、删除记录 (5.8s)
+(node:9012) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  14 e2e-accounts\quiz-document.spec.ts:121:5 › 本题提交失败可重试，不重复提交已经确认的题目 (6.0s)
+(node:5740) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 15 e2e-accounts\quiz-document.spec.ts:142:5 › 无文件可选页码，PDF 保留范围、校验错误就地提示并提交正确页码 (1.2s)
+  ok 16 e2e-accounts\quiz-document.spec.ts:169:5 › 切换 TXT 自动使用全文并解释页码不可用 (820ms)
+
+
+  1) e2e-accounts\materials.spec.ts:23:5 › 文档上传、真实材料确认、来源阅读、出题和答题闭环 ────────────────────────────────
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: locator('.feedback')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" locator('.feedback') with timeout 5000ms
+      - waiting for locator('.feedback')
+
+
+      43 |     await page.locator('.option').first().click()
+      44 |     if (i === 3) { await page.locator('.option').nth(1).click(); await page.getByText('确认本题', { exact: true }).click() }
+    > 45 |     if (i < 4) { await expect(page.locator('.feedback')).toBeVisible(); await page.getByText('下一题', { exact: true }).click() }
+         |                                                          ^
+      46 |   }
+      47 |   await expect(page.getByText('本轮学习报告', { exact: true })).toBeVisible()
+      48 |   await page.getByText('逐题回看', { exact: true }).click()
+        at D:\nbproject\LevelUpProject\frontend\e2e-accounts\materials.spec.ts:45:58
+
+    Error Context: ..\docs\knowledge-rag\61-old-accounts-results\materials-文档上传、真实材料确认、来源阅读、出题和答题闭环\error-context.md
+
+  2) e2e-accounts\quiz-document.spec.ts:71:5 › 逐题判分、多选确认、刷新保留，答完自动报告并返回首页、删除记录 ─────────────────────
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: locator('.feedback')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" locator('.feedback') with timeout 5000ms
+      - waiting for locator('.feedback')
+
+
+      73 |   await startQuiz(page)
+      74 |   await page.locator('.option').first().click()
+    > 75 |   await expect(page.locator('.feedback')).toBeVisible()
+         |                                           ^
+      76 |   await page.locator('.option').nth(1).click()
+      77 |   expect(api.answers).toHaveLength(1)
+      78 |   await page.locator('.mini-back').click()
+        at D:\nbproject\LevelUpProject\frontend\e2e-accounts\quiz-document.spec.ts:75:43
+
+    Error Context: ..\docs\knowledge-rag\61-old-accounts-results\quiz-document-逐题判分、多选确认、刷新保留，答完自动报告并返回首页、删除记录\error-context.md
+
+  3) e2e-accounts\quiz-document.spec.ts:121:5 › 本题提交失败可重试，不重复提交已经确认的题目 ─────────────────────────────
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: locator('.feedback')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" locator('.feedback') with timeout 5000ms
+      - waiting for locator('.feedback')
+
+
+      123 |   await startQuiz(page)
+      124 |   await page.locator('.option').first().click()
+    > 125 |   await expect(page.locator('.feedback')).toBeVisible()
+          |                                           ^
+      126 |   await page.getByText('下一题', { exact: true }).click()
+      127 |   await page.locator('.option').first().click()
+      128 |   await expect(page.getByText('本题答案尚未确认', { exact: true })).toBeVisible()
+        at D:\nbproject\LevelUpProject\frontend\e2e-accounts\quiz-document.spec.ts:125:43
+
+    Error Context: ..\docs\knowledge-rag\61-old-accounts-results\quiz-document-本题提交失败可重试，不重复提交已经确认的题目\error-context.md
+
+  3 failed
+    e2e-accounts\materials.spec.ts:23:5 › 文档上传、真实材料确认、来源阅读、出题和答题闭环 ─────────────────────────────────
+    e2e-accounts\quiz-document.spec.ts:71:5 › 逐题判分、多选确认、刷新保留，答完自动报告并返回首页、删除记录 ──────────────────────
+    e2e-accounts\quiz-document.spec.ts:121:5 › 本题提交失败可重试，不重复提交已经确认的题目 ──────────────────────────────
+  13 passed (58.3s)

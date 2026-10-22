@@ -1,0 +1,478 @@
+.F.FF                                                                    [100%]
+================================== FAILURES ===================================
+_ test_multi_document_search_keeps_relevant_smaller_document_in_candidate_pool[1] _
+
+index = <app.knowledge.index.VectorIndex object at 0x00000206FAB21A90>
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x00000206FAB21450>
+iteration = 1
+
+    @pytest.mark.parametrize('iteration',range(5))
+    def test_multi_document_search_keeps_relevant_smaller_document_in_candidate_pool(index,repo,iteration):
+        from app.knowledge.importing import ImportPipeline
+        from app.knowledge.database import Document,Revision
+        repo.config.chunk_size,repo.config.chunk_overlap = 100,0
+        pipeline = ImportPipeline(repo.accounts,repo.config)
+        selections = []
+        for number,body in enumerate(['\n'.join(f'Fact {n}: '+str(n)*90 for n in range(60)),'Required evidence in smaller document']):
+            queued = repo.submit_file('alice','fair-'+str(number),'d'+str(number)+'.txt',body.encode())
+            claim = pipeline.claim('worker')
+            parsed = pipeline.parse(claim)
+            chunks = pipeline.split(claim,parsed)
+            vector = ([1.0,0.0] if number==0 else [.9,.1])+[0.0]*1022
+            index.upsert(claim,parsed['revision_id'],chunks,[vector]*len(chunks))
+            with repo.database.session() as session:
+                session.get(Revision,parsed['revision_id']).status = 'ready'
+                document = session.get(Document,queued['document_id'])
+                document.status,document.active_revision_id = 'ready',parsed['revision_id']
+            selections.append(queued['document_id'])
+            if number==0: pipeline.complete(claim,lambda s,j:{'ok':True})
+        trace = []
+        original_collection = index.collection
+        collection = original_collection('alice')
+        class TracedCollection:
+            def __getattr__(self,name): return getattr(collection,name)
+            def query(self,**kwargs):
+                result = collection.query(**kwargs)
+                trace.append({'where':kwargs['where'],'ids':result['ids'][0][:2],'distances':result['distances'][0][:2]})
+                return result
+        index.collection = lambda *args,**kwargs:TracedCollection()
+        result = index.search(claim,repo.select_documents('alice',selections),[1.0]+[0.0]*1023)
+        if {r['document_id'] for r in result} != set(selections):
+            import json
+>           pytest.fail(json.dumps({'selected':selections,'results':[(r['title'],r['score']) for r in result],'queries':trace,
+                'indexed':[(did,len(index.collection('alice').get(where={'document_id':did})['ids'])) for did in selections]},indent=2))
+E           Failed: {
+E             "selected": [
+E               "d728f677-6698-4100-b14b-4f920db9c5db",
+E               "02f003b6-693f-4c62-a029-9ff12ffa6374"
+E             ],
+E             "results": [
+E               [
+E                 "d0.txt",
+E                 1.0
+E               ],
+E               [
+E                 "d0.txt",
+E                 1.0
+E               ],
+E               [
+E                 "d0.txt",
+E                 1.0
+E               ],
+E               [
+E                 "d0.txt",
+E                 1.0
+E               ],
+E               [
+E                 "d0.txt",
+E                 1.0
+E               ],
+E               [
+E                 "d0.txt",
+E                 1.0
+E               ],
+E               [
+E                 "d0.txt",
+E                 1.0
+E               ],
+E               [
+E                 "d0.txt",
+E                 1.0
+E               ],
+E               [
+E                 "d0.txt",
+E                 1.0
+E               ],
+E               [
+E                 "d0.txt",
+E                 1.0
+E               ],
+E               [
+E                 "d0.txt",
+E                 1.0
+E               ],
+E               [
+E                 "d0.txt",
+E                 1.0
+E               ]
+E             ],
+E             "queries": [
+E               {
+E                 "where": {
+E                   "$and": [
+E                     {
+E                       "user_id": "alice"
+E                     },
+E                     {
+E                       "profile": "638aa36188ef9de170bd92b7562ae1875ad3e0e09b9bcf026c8cc32b6de51fd4"
+E                     },
+E                     {
+E                       "document_id": "02f003b6-693f-4c62-a029-9ff12ffa6374"
+E                     },
+E                     {
+E                       "revision_id": "5e1d9942-21dc-589b-a6ac-800e7b1e852e"
+E                     }
+E                   ]
+E                 },
+E                 "ids": [],
+E                 "distances": []
+E               },
+E               {
+E                 "where": {
+E                   "$and": [
+E                     {
+E                       "user_id": "alice"
+E                     },
+E                     {
+E                       "profile": "638aa36188ef9de170bd92b7562ae1875ad3e0e09b9bcf026c8cc32b6de51fd4"
+E                     },
+E                     {
+E                       "document_id": "d728f677-6698-4100-b14b-4f920db9c5db"
+E                     },
+E                     {
+E                       "revision_id": "1791d57f-9ad8-57c0-a788-637c81f3d93f"
+E                     }
+E                   ]
+E                 },
+E                 "ids": [
+E                   "41600135642575180ea6c8b15cf878b30fa265fc59285ad1c498f0cdb10323f8",
+E                   "3857e6460f814dd6340ad8132d08f6d1d11f42858a9322976868c9859bdd299c"
+E                 ],
+E                 "distances": [
+E                   0.0,
+E                   0.0
+E                 ]
+E               }
+E             ],
+E             "indexed": [
+E               [
+E                 "d728f677-6698-4100-b14b-4f920db9c5db",
+E                 160
+E               ],
+E               [
+E                 "02f003b6-693f-4c62-a029-9ff12ffa6374",
+E                 1
+E               ]
+E             ]
+E           }
+
+tests\test_knowledge_index.py:199: Failed
+_ test_multi_document_search_keeps_relevant_smaller_document_in_candidate_pool[3] _
+
+index = <app.knowledge.index.VectorIndex object at 0x00000206FACA1480>
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x00000206FACA1350>
+iteration = 3
+
+    @pytest.mark.parametrize('iteration',range(5))
+    def test_multi_document_search_keeps_relevant_smaller_document_in_candidate_pool(index,repo,iteration):
+        from app.knowledge.importing import ImportPipeline
+        from app.knowledge.database import Document,Revision
+        repo.config.chunk_size,repo.config.chunk_overlap = 100,0
+        pipeline = ImportPipeline(repo.accounts,repo.config)
+        selections = []
+        for number,body in enumerate(['\n'.join(f'Fact {n}: '+str(n)*90 for n in range(60)),'Required evidence in smaller document']):
+            queued = repo.submit_file('alice','fair-'+str(number),'d'+str(number)+'.txt',body.encode())
+            claim = pipeline.claim('worker')
+            parsed = pipeline.parse(claim)
+            chunks = pipeline.split(claim,parsed)
+            vector = ([1.0,0.0] if number==0 else [.9,.1])+[0.0]*1022
+            index.upsert(claim,parsed['revision_id'],chunks,[vector]*len(chunks))
+            with repo.database.session() as session:
+                session.get(Revision,parsed['revision_id']).status = 'ready'
+                document = session.get(Document,queued['document_id'])
+                document.status,document.active_revision_id = 'ready',parsed['revision_id']
+            selections.append(queued['document_id'])
+            if number==0: pipeline.complete(claim,lambda s,j:{'ok':True})
+        trace = []
+        original_collection = index.collection
+        collection = original_collection('alice')
+        class TracedCollection:
+            def __getattr__(self,name): return getattr(collection,name)
+            def query(self,**kwargs):
+                result = collection.query(**kwargs)
+                trace.append({'where':kwargs['where'],'ids':result['ids'][0][:2],'distances':result['distances'][0][:2]})
+                return result
+        index.collection = lambda *args,**kwargs:TracedCollection()
+        result = index.search(claim,repo.select_documents('alice',selections),[1.0]+[0.0]*1023)
+        if {r['document_id'] for r in result} != set(selections):
+            import json
+>           pytest.fail(json.dumps({'selected':selections,'results':[(r['title'],r['score']) for r in result],'queries':trace,
+                'indexed':[(did,len(index.collection('alice').get(where={'document_id':did})['ids'])) for did in selections]},indent=2))
+E           Failed: {
+E             "selected": [
+E               "fac553e7-76ae-4d5d-ad02-08c5b0e69e87",
+E               "3ada98a4-5877-4bb3-9976-8e0ddafcd176"
+E             ],
+E             "results": [
+E               [
+E                 "d0.txt",
+E                 1.0
+E               ],
+E               [
+E                 "d0.txt",
+E                 1.0
+E               ],
+E               [
+E                 "d0.txt",
+E                 1.0
+E               ],
+E               [
+E                 "d0.txt",
+E                 1.0
+E               ],
+E               [
+E                 "d0.txt",
+E                 1.0
+E               ],
+E               [
+E                 "d0.txt",
+E                 1.0
+E               ],
+E               [
+E                 "d0.txt",
+E                 1.0
+E               ],
+E               [
+E                 "d0.txt",
+E                 1.0
+E               ],
+E               [
+E                 "d0.txt",
+E                 1.0
+E               ],
+E               [
+E                 "d0.txt",
+E                 1.0
+E               ],
+E               [
+E                 "d0.txt",
+E                 1.0
+E               ],
+E               [
+E                 "d0.txt",
+E                 1.0
+E               ]
+E             ],
+E             "queries": [
+E               {
+E                 "where": {
+E                   "$and": [
+E                     {
+E                       "user_id": "alice"
+E                     },
+E                     {
+E                       "profile": "638aa36188ef9de170bd92b7562ae1875ad3e0e09b9bcf026c8cc32b6de51fd4"
+E                     },
+E                     {
+E                       "document_id": "3ada98a4-5877-4bb3-9976-8e0ddafcd176"
+E                     },
+E                     {
+E                       "revision_id": "d10ee55e-63de-508e-a487-f0482fea3183"
+E                     }
+E                   ]
+E                 },
+E                 "ids": [],
+E                 "distances": []
+E               },
+E               {
+E                 "where": {
+E                   "$and": [
+E                     {
+E                       "user_id": "alice"
+E                     },
+E                     {
+E                       "profile": "638aa36188ef9de170bd92b7562ae1875ad3e0e09b9bcf026c8cc32b6de51fd4"
+E                     },
+E                     {
+E                       "document_id": "fac553e7-76ae-4d5d-ad02-08c5b0e69e87"
+E                     },
+E                     {
+E                       "revision_id": "6dcc6ccc-f95d-5aa1-b71f-9d63ce4d5600"
+E                     }
+E                   ]
+E                 },
+E                 "ids": [
+E                   "9b3241aada568345037c8c9762ac478590a57abac7fecac25513c233febf4e67",
+E                   "51442c12b874bf1185d1877e4de7fe336d205c52d2107323108de58258e9c6e8"
+E                 ],
+E                 "distances": [
+E                   0.0,
+E                   0.0
+E                 ]
+E               }
+E             ],
+E             "indexed": [
+E               [
+E                 "fac553e7-76ae-4d5d-ad02-08c5b0e69e87",
+E                 160
+E               ],
+E               [
+E                 "3ada98a4-5877-4bb3-9976-8e0ddafcd176",
+E                 1
+E               ]
+E             ]
+E           }
+
+tests\test_knowledge_index.py:199: Failed
+_ test_multi_document_search_keeps_relevant_smaller_document_in_candidate_pool[4] _
+
+index = <app.knowledge.index.VectorIndex object at 0x00000206FACA2EA0>
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x00000206FACA29E0>
+iteration = 4
+
+    @pytest.mark.parametrize('iteration',range(5))
+    def test_multi_document_search_keeps_relevant_smaller_document_in_candidate_pool(index,repo,iteration):
+        from app.knowledge.importing import ImportPipeline
+        from app.knowledge.database import Document,Revision
+        repo.config.chunk_size,repo.config.chunk_overlap = 100,0
+        pipeline = ImportPipeline(repo.accounts,repo.config)
+        selections = []
+        for number,body in enumerate(['\n'.join(f'Fact {n}: '+str(n)*90 for n in range(60)),'Required evidence in smaller document']):
+            queued = repo.submit_file('alice','fair-'+str(number),'d'+str(number)+'.txt',body.encode())
+            claim = pipeline.claim('worker')
+            parsed = pipeline.parse(claim)
+            chunks = pipeline.split(claim,parsed)
+            vector = ([1.0,0.0] if number==0 else [.9,.1])+[0.0]*1022
+            index.upsert(claim,parsed['revision_id'],chunks,[vector]*len(chunks))
+            with repo.database.session() as session:
+                session.get(Revision,parsed['revision_id']).status = 'ready'
+                document = session.get(Document,queued['document_id'])
+                document.status,document.active_revision_id = 'ready',parsed['revision_id']
+            selections.append(queued['document_id'])
+            if number==0: pipeline.complete(claim,lambda s,j:{'ok':True})
+        trace = []
+        original_collection = index.collection
+        collection = original_collection('alice')
+        class TracedCollection:
+            def __getattr__(self,name): return getattr(collection,name)
+            def query(self,**kwargs):
+                result = collection.query(**kwargs)
+                trace.append({'where':kwargs['where'],'ids':result['ids'][0][:2],'distances':result['distances'][0][:2]})
+                return result
+        index.collection = lambda *args,**kwargs:TracedCollection()
+        result = index.search(claim,repo.select_documents('alice',selections),[1.0]+[0.0]*1023)
+        if {r['document_id'] for r in result} != set(selections):
+            import json
+>           pytest.fail(json.dumps({'selected':selections,'results':[(r['title'],r['score']) for r in result],'queries':trace,
+                'indexed':[(did,len(index.collection('alice').get(where={'document_id':did})['ids'])) for did in selections]},indent=2))
+E           Failed: {
+E             "selected": [
+E               "e5460265-8438-4f17-a851-3691499929fc",
+E               "9f073905-e9e8-4268-b6a8-f7dee02e68ed"
+E             ],
+E             "results": [
+E               [
+E                 "d0.txt",
+E                 1.0
+E               ],
+E               [
+E                 "d0.txt",
+E                 1.0
+E               ],
+E               [
+E                 "d0.txt",
+E                 1.0
+E               ],
+E               [
+E                 "d0.txt",
+E                 1.0
+E               ],
+E               [
+E                 "d0.txt",
+E                 1.0
+E               ],
+E               [
+E                 "d0.txt",
+E                 1.0
+E               ],
+E               [
+E                 "d0.txt",
+E                 1.0
+E               ],
+E               [
+E                 "d0.txt",
+E                 1.0
+E               ],
+E               [
+E                 "d0.txt",
+E                 1.0
+E               ],
+E               [
+E                 "d0.txt",
+E                 1.0
+E               ],
+E               [
+E                 "d0.txt",
+E                 1.0
+E               ],
+E               [
+E                 "d0.txt",
+E                 1.0
+E               ]
+E             ],
+E             "queries": [
+E               {
+E                 "where": {
+E                   "$and": [
+E                     {
+E                       "user_id": "alice"
+E                     },
+E                     {
+E                       "profile": "638aa36188ef9de170bd92b7562ae1875ad3e0e09b9bcf026c8cc32b6de51fd4"
+E                     },
+E                     {
+E                       "document_id": "9f073905-e9e8-4268-b6a8-f7dee02e68ed"
+E                     },
+E                     {
+E                       "revision_id": "5c8f12e8-48db-5d73-b8b5-0cad7c3a922b"
+E                     }
+E                   ]
+E                 },
+E                 "ids": [],
+E                 "distances": []
+E               },
+E               {
+E                 "where": {
+E                   "$and": [
+E                     {
+E                       "user_id": "alice"
+E                     },
+E                     {
+E                       "profile": "638aa36188ef9de170bd92b7562ae1875ad3e0e09b9bcf026c8cc32b6de51fd4"
+E                     },
+E                     {
+E                       "document_id": "e5460265-8438-4f17-a851-3691499929fc"
+E                     },
+E                     {
+E                       "revision_id": "979b78ea-5eb1-5b23-93d0-4562d36b5d17"
+E                     }
+E                   ]
+E                 },
+E                 "ids": [
+E                   "e58a95a6953bc4dd7b1352c63bf5122f12ec9658afb7ddcd6eceb74a64dc3b53",
+E                   "86c682ec9d9cc4434f568c34078d9c13dc581896739f7eefb98d29954be30b6d"
+E                 ],
+E                 "distances": [
+E                   0.0,
+E                   0.0
+E                 ]
+E               }
+E             ],
+E             "indexed": [
+E               [
+E                 "e5460265-8438-4f17-a851-3691499929fc",
+E                 160
+E               ],
+E               [
+E                 "9f073905-e9e8-4268-b6a8-f7dee02e68ed",
+E                 1
+E               ]
+E             ]
+E           }
+
+tests\test_knowledge_index.py:199: Failed
+=========================== short test summary info ===========================
+FAILED tests/test_knowledge_index.py::test_multi_document_search_keeps_relevant_smaller_document_in_candidate_pool[1]
+FAILED tests/test_knowledge_index.py::test_multi_document_search_keeps_relevant_smaller_document_in_candidate_pool[3]
+FAILED tests/test_knowledge_index.py::test_multi_document_search_keeps_relevant_smaller_document_in_candidate_pool[4]
+3 failed, 2 passed, 8 deselected in 19.32s

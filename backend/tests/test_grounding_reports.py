@@ -69,3 +69,32 @@ async def test_period_narrative_cannot_claim_unknown_or_unverified_sources_are_v
         system.state.gateway = FakeGateway({'summary': ['所有知识已核实。'], 'findings': [], 'suggestions': []})
         response = await c.post('/api/v1/period-reports', json={'days': '7'})
         assert response.status_code == 502 and response.json()['code'] == 'MODEL_INVALID_OUTPUT'
+
+
+@pytest.mark.anyio
+async def test_failed_period_can_retry_with_short_references_and_export_real_points(system):
+    from tests.helpers import quiz_payload
+    async with httpx.AsyncClient(transport=httpx.ASGITransport(app=system), base_url='http://test') as c:
+        await login(c)
+        session = await generate(c)
+        for q in quiz_payload()['questions']: await answer(c, session, q['id'], q['answers'])
+        system.state.gateway = FakeGateway({'summary': ['继续练习。'], 'findings': [],
+            'suggestions': [{'point_id': 'p999', 'action': '回看例子。'}]})
+        failed = await c.post('/api/v1/period-reports', json={'days': '7'}, headers={'Idempotency-Key': 'invalid-period'})
+        assert failed.status_code == 502
+        failed_id = (await c.get('/api/v1/period-reports')).json()['data'][0]['id']
+        gateway = system.state.gateway = FakeGateway({'summary': ['已经掌握验证模型的基本用法，继续练习。'],
+            'findings': [{'point_id': 'p1', 'analysis': '通过例子巩固理解。'}],
+            'suggestions': [{'point_id': 'p1', 'action': '用自己的话解释，再对照材料。'}]})
+        response = await c.post('/api/v1/period-reports', json={'days': '7'}, headers={'Idempotency-Key': 'retry-period'})
+        assert response.status_code == 200, response.text
+        report = response.json()['data']
+        assert report['id'] == failed_id and report['status'] == 'succeeded' and report['attempts'] == 2
+        points = {p['id']: p['name'] for t in report['snapshot']['knowledge']['topics'] for p in t['points']}
+        point_id = sorted(points)[0]
+        assert report['content']['suggestions'][0]['point_id'] == point_id
+        assert report['content']['findings'][0]['point_id'] == point_id
+        exported = (await c.get('/api/v1/period-reports/' + report['id'] + '/export')).json()['data']['text']
+        assert points[point_id] + '：用自己的话解释，再对照材料。' in exported
+        cached = await c.post('/api/v1/period-reports', json={'days': '7'}, headers={'Idempotency-Key': 'cached-period'})
+        assert cached.json()['data']['content'] == report['content'] and len(gateway.calls) == 1

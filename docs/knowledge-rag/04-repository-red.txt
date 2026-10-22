@@ -1,0 +1,92 @@
+EEEEEEEE                                                                 [100%]
+=================================== ERRORS ====================================
+________ ERROR at setup of test_owned_pagination_and_deleted_filtering ________
+
+tmp_path = WindowsPath('C:/Users/20777/AppData/Local/Temp/pytest-of-20777/pytest-69/test_owned_pagination_and_dele0')
+
+    @pytest.fixture
+    def repo(tmp_path):
+>       from app.knowledge.repository import KnowledgeRepository
+E       ModuleNotFoundError: No module named 'app.knowledge.repository'
+
+tests\test_knowledge_repository.py:16: ModuleNotFoundError
+_____________ ERROR at setup of test_pagination_is_bounded[0-20] ______________
+
+tmp_path = WindowsPath('C:/Users/20777/AppData/Local/Temp/pytest-of-20777/pytest-69/test_pagination_is_bounded_0_20')
+
+    @pytest.fixture
+    def repo(tmp_path):
+>       from app.knowledge.repository import KnowledgeRepository
+E       ModuleNotFoundError: No module named 'app.knowledge.repository'
+
+tests\test_knowledge_repository.py:16: ModuleNotFoundError
+______________ ERROR at setup of test_pagination_is_bounded[1-0] ______________
+
+tmp_path = WindowsPath('C:/Users/20777/AppData/Local/Temp/pytest-of-20777/pytest-69/test_pagination_is_bounded_1_00')
+
+    @pytest.fixture
+    def repo(tmp_path):
+>       from app.knowledge.repository import KnowledgeRepository
+E       ModuleNotFoundError: No module named 'app.knowledge.repository'
+
+tests\test_knowledge_repository.py:16: ModuleNotFoundError
+_____________ ERROR at setup of test_pagination_is_bounded[1-101] _____________
+
+tmp_path = WindowsPath('C:/Users/20777/AppData/Local/Temp/pytest-of-20777/pytest-69/test_pagination_is_bounded_1_10')
+
+    @pytest.fixture
+    def repo(tmp_path):
+>       from app.knowledge.repository import KnowledgeRepository
+E       ModuleNotFoundError: No module named 'app.knowledge.repository'
+
+tests\test_knowledge_repository.py:16: ModuleNotFoundError
+____________ ERROR at setup of test_pagination_is_bounded[True-20] ____________
+
+tmp_path = WindowsPath('C:/Users/20777/AppData/Local/Temp/pytest-of-20777/pytest-69/test_pagination_is_bounded_Tru0')
+
+    @pytest.fixture
+    def repo(tmp_path):
+>       from app.knowledge.repository import KnowledgeRepository
+E       ModuleNotFoundError: No module named 'app.knowledge.repository'
+
+tests\test_knowledge_repository.py:16: ModuleNotFoundError
+___________ ERROR at setup of test_pagination_is_bounded[10001-20] ____________
+
+tmp_path = WindowsPath('C:/Users/20777/AppData/Local/Temp/pytest-of-20777/pytest-69/test_pagination_is_bounded_1000')
+
+    @pytest.fixture
+    def repo(tmp_path):
+>       from app.knowledge.repository import KnowledgeRepository
+E       ModuleNotFoundError: No module named 'app.knowledge.repository'
+
+tests\test_knowledge_repository.py:16: ModuleNotFoundError
+____ ERROR at setup of test_only_active_owned_ready_revision_is_previewed _____
+
+tmp_path = WindowsPath('C:/Users/20777/AppData/Local/Temp/pytest-of-20777/pytest-69/test_only_active_owned_ready_r0')
+
+    @pytest.fixture
+    def repo(tmp_path):
+>       from app.knowledge.repository import KnowledgeRepository
+E       ModuleNotFoundError: No module named 'app.knowledge.repository'
+
+tests\test_knowledge_repository.py:16: ModuleNotFoundError
+_ ERROR at setup of test_selection_is_explicit_and_binds_ready_owned_versions _
+
+tmp_path = WindowsPath('C:/Users/20777/AppData/Local/Temp/pytest-of-20777/pytest-69/test_selection_is_explicit_and0')
+
+    @pytest.fixture
+    def repo(tmp_path):
+>       from app.knowledge.repository import KnowledgeRepository
+E       ModuleNotFoundError: No module named 'app.knowledge.repository'
+
+tests\test_knowledge_repository.py:16: ModuleNotFoundError
+=========================== short test summary info ===========================
+ERROR tests/test_knowledge_repository.py::test_owned_pagination_and_deleted_filtering
+ERROR tests/test_knowledge_repository.py::test_pagination_is_bounded[0-20] - ...
+ERROR tests/test_knowledge_repository.py::test_pagination_is_bounded[1-0] - M...
+ERROR tests/test_knowledge_repository.py::test_pagination_is_bounded[1-101]
+ERROR tests/test_knowledge_repository.py::test_pagination_is_bounded[True-20]
+ERROR tests/test_knowledge_repository.py::test_pagination_is_bounded[10001-20]
+ERROR tests/test_knowledge_repository.py::test_only_active_owned_ready_revision_is_previewed
+ERROR tests/test_knowledge_repository.py::test_selection_is_explicit_and_binds_ready_owned_versions
+8 errors in 3.89s

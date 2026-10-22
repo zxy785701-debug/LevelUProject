@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="2" time="6.870" timestamp="2026-10-18T20:57:42.555054+08:00" hostname="zxy"><testcase classname="tests.test_knowledge_retrieval_store" name="test_retrieval_checkpoints_restore_only_original_owned_document_versions" time="3.923"><failure message="ModuleNotFoundError: No module named 'app.knowledge.retrieval_store'">index = &lt;app.knowledge.index.VectorIndex object at 0x0000019896011A90&gt;
+repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x0000019895B6FB60&gt;
+
+    def test_retrieval_checkpoints_restore_only_original_owned_document_versions(index,repo):
+&gt;       from app.knowledge.retrieval_store import KnowledgeRetriever
+E       ModuleNotFoundError: No module named 'app.knowledge.retrieval_store'
+
+tests\test_knowledge_retrieval_store.py:22: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_knowledge_retrieval_store" name="test_index_errors_are_recorded_without_guessing_content_and_scope_failure_can_finish" time="0.403"><failure message="ModuleNotFoundError: No module named 'app.knowledge.retrieval_store'">index = &lt;app.knowledge.index.VectorIndex object at 0x00000198B6091090&gt;
+repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x00000198B6092490&gt;
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x00000198B5F62780&gt;
+
+    def test_index_errors_are_recorded_without_guessing_content_and_scope_failure_can_finish(index,repo,monkeypatch):
+&gt;       from app.knowledge.retrieval_store import KnowledgeRetriever
+E       ModuleNotFoundError: No module named 'app.knowledge.retrieval_store'
+
+tests\test_knowledge_retrieval_store.py:42: ModuleNotFoundError</failure></testcase></testsuite></testsuites>

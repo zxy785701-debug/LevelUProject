@@ -1,0 +1,347 @@
+{
+  "changeName": "add-personal-knowledge-rag",
+  "changeDir": "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag",
+  "schemaName": "spec-driven",
+  "contextFiles": {
+    "proposal": [
+      "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\proposal.md"
+    ],
+    "specs": [
+      "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\specs\\agentic-knowledge-retrieval\\spec.md",
+      "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\specs\\durable-knowledge-tasks\\spec.md",
+      "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\specs\\knowledge-question-answering\\spec.md",
+      "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\specs\\learning-scope-confirmation\\spec.md",
+      "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\specs\\personal-knowledge-library\\spec.md",
+      "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\specs\\quiz-evidence-grounding\\spec.md",
+      "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\specs\\quiz-generation-reliability\\spec.md"
+    ],
+    "design": [
+      "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\design.md"
+    ],
+    "tasks": [
+      "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\tasks.md"
+    ]
+  },
+  "progress": {
+    "total": 44,
+    "complete": 34,
+    "remaining": 10
+  },
+  "tasks": [
+    {
+      "id": "1",
+      "description": "1.1 记录当前工作区用户改动、Alembic head 与旧功能测试基线，输出 `docs/knowledge-rag/实施基线.md`；验证不覆盖既有未提交改动，并区分原有失败与本期回归。",
+      "done": true,
+      "sourcePath": "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\tasks.md",
+      "line": 9
+    },
+    {
+      "id": "2",
+      "description": "1.2 核对 Context7/官方文档与当前 Python 3.13、Windows、LangChain 锁文件，锁定 `chromadb`、`langchain-chroma`、`langchain-text-splitters` 的兼容组合；以隔离安装和 import smoke 验证，并记录版本依据。",
+      "done": true,
+      "sourcePath": "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\tasks.md",
+      "line": 10
+    },
+    {
+      "id": "3",
+      "description": "1.3 TDD 增加知识库功能开关、独立百炼/索引配置及惰性初始化；验证无密钥、错误目录、可选依赖不可用时仅知识库被禁用，旧应用与健康检查照常通过；同步配置示例与说明，不记录真实密钥。",
+      "done": true,
+      "sourcePath": "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\tasks.md",
+      "line": 11
+    },
+    {
+      "id": "4",
+      "description": "1.4 建立隔离 MySQL 测试库、临时索引/文件目录与外部服务替身；通过测试证明拒绝使用生产数据库或用户索引路径，初始化 RED/GREEN 记录目录与运行说明。",
+      "done": true,
+      "sourcePath": "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\tasks.md",
+      "line": 12
+    },
+    {
+      "id": "5",
+      "description": "2.1 TDD 新增文档、版本、片段、任务/检查点、范围、问答及独立清理 outbox 的增量迁移和约束；在测试库验证升级、空数据降级、唯一性及外键行为，旧表与历史数据不被改写。",
+      "done": true,
+      "sourcePath": "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\tasks.md",
+      "line": 16
+    },
+    {
+      "id": "6",
+      "description": "2.2 TDD 实现账号范围内的资料、版本与片段仓储及分页；验证跨账号、越界分页、已删除资料、活动版本筛选和并发修改，输出字段契约。",
+      "done": true,
+      "sourcePath": "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\tasks.md",
+      "line": 17
+    },
+    {
+      "id": "7",
+      "description": "2.3 TDD 实现能力状态、资料列表/详情/片段读取及新 DTO；验证 404 隔离、错误脱敏和功能开关，并更新 API 文档。",
+      "done": true,
+      "sourcePath": "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\tasks.md",
+      "line": 18
+    },
+    {
+      "id": "8",
+      "description": "2.4 TDD 接入文件/公开网址/已有材料导入提交，保存上传文件和幂等任务但暂不执行重处理；验证格式/大小/额度、路径不可由客户端覆盖、重复提交和材料复制独立于临时清理。",
+      "done": true,
+      "sourcePath": "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\tasks.md",
+      "line": 19
+    },
+    {
+      "id": "9",
+      "description": "3.1 TDD 实现原子领取、执行租约、心跳、fencing token、固定截止时间和有限重试；用真实 MySQL 竞争领取与进程重启测试验证无双重提交，恢复不清空预算。",
+      "done": true,
+      "sourcePath": "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\tasks.md",
+      "line": 23
+    },
+    {
+      "id": "10",
+      "description": "3.2 TDD 实现任务查询、取消、重试和单调阶段进度；验证跨账号、客户端重发、终态不反转、迟到响应、取消竞态与已删除账号，并记录状态机/API 示例。",
+      "done": true,
+      "sourcePath": "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\tasks.md",
+      "line": 24
+    },
+    {
+      "id": "11",
+      "description": "3.3 TDD 实现单执行进程入口、索引目录独占锁及受限调度；以第二进程启动失败、线程不阻塞心跳、清理任务优先和进程中断恢复测试验证。",
+      "done": true,
+      "sourcePath": "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\tasks.md",
+      "line": 25
+    },
+    {
+      "id": "12",
+      "description": "3.4 TDD 接入账号实际模型调用计数、执行并发及独立问答/Embedding 额度；验证滚动 10 次/分钟、重试计数、等待有上限、排队不占旧操作资格和重启后不重复扣关卡额度。",
+      "done": true,
+      "sourcePath": "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\tasks.md",
+      "line": 26
+    },
+    {
+      "id": "13",
+      "description": "3.5 扩展本地启动/停止脚本与执行器日志、状态检查说明；通过启用/关闭两种配置的启动和停止 smoke 验证旧后端流程仍可用，脚本只停止自身启动的进程。",
+      "done": true,
+      "sourcePath": "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\tasks.md",
+      "line": 27
+    },
+    {
+      "id": "14",
+      "description": "4.1 TDD 复用 PDF/DOCX/TXT 安全解析并增加 Markdown；验证真实页码、段落表格顺序、中文解码、代码块/标题、空文本、扫描件、恶意压缩与超限，记录支持格式和限制。",
+      "done": true,
+      "sourcePath": "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\tasks.md",
+      "line": 31
+    },
+    {
+      "id": "15",
+      "description": "4.2 TDD 实现按页/标题分组后递归分块及策略版本；验证中文长段、边界、重叠、块哈希和原文位置，确保字符设置不冒充 Token 计数。",
+      "done": true,
+      "sourcePath": "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\tasks.md",
+      "line": 32
+    },
+    {
+      "id": "16",
+      "description": "4.3 TDD 复用官方 Tavily Extract 完成指定网页入库准备；验证公开 URL 校验、内网/重定向边界、真实正文、截断与抓取时间，失败不得转存模型猜测或摘要冒充全文。",
+      "done": true,
+      "sourcePath": "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\tasks.md",
+      "line": 33
+    },
+    {
+      "id": "17",
+      "description": "4.4 TDD 完成解析/分块阶段检查点与原文持久化；模拟落盘/写库中断及重试验证无重复版本、无不安全临时路径泄露，并补齐失败重试文档。",
+      "done": true,
+      "sourcePath": "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\tasks.md",
+      "line": 34
+    },
+    {
+      "id": "18",
+      "description": "5.1 TDD 实现百炼原生 API 的 LangChain Embeddings 适配器；断言 v4、1024 维、document/query、工作空间端点和密钥脱敏，覆盖同步/异步调用与输出顺序。",
+      "done": true,
+      "sourcePath": "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\tasks.md",
+      "line": 38
+    },
+    {
+      "id": "19",
+      "description": "5.2 TDD 实现输入上界检查、每批至多 10 段、超时退避、用量预留回填和同账号缓存；覆盖超长输入、429、认证失败、响应数量/维度/NaN、响应丢失和预算耗尽，更新配置/计费说明。",
+      "done": true,
+      "sourcePath": "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\tasks.md",
+      "line": 39
+    },
+    {
+      "id": "20",
+      "description": "5.3 TDD 实现用户与 Embedding 配置集合、幂等 upsert、限定资料/版本检索和结果回源复核；用真实临时 Chroma + MySQL 验证跨账号、跨版本、相邻重复块和无关片段过滤。",
+      "done": true,
+      "sourcePath": "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\tasks.md",
+      "line": 40
+    },
+    {
+      "id": "21",
+      "description": "5.4 TDD 打通解析→分块→向量化→校验→活动版本切换；中断各批次并重试，验证半成品不可见、重建失败旧版可用、配置改变不能混合维度和单调进度。",
+      "done": true,
+      "sourcePath": "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\tasks.md",
+      "line": 41
+    },
+    {
+      "id": "22",
+      "description": "5.5 TDD 实现文档逻辑删除、向量/文件幂等清理、暂存垃圾回收和账号注销 outbox；验证立即禁用检索、清理失败重试、注销后指令仍存活、迟到任务不复活资料，记录备份/重建/清理操作方式。",
+      "done": true,
+      "sourcePath": "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\tasks.md",
+      "line": 42
+    },
+    {
+      "id": "23",
+      "description": "6.1 TDD 扩展兼容的知识库引用快照与 `knowledge_base` 来源读取；验证旧 JSON 缺字段可读、多资料定位真实、已删来源提示及新增字段不会泄露未答题答案，并更新来源契约。",
+      "done": true,
+      "sourcePath": "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\tasks.md",
+      "line": 46
+    },
+    {
+      "id": "24",
+      "description": "6.2 TDD 实现受服务端范围约束的知识库检索工具与 Agent 路由；验证纯知识库/纯联网/混合、明确依赖文件必须查所选资料、缺 Tavily 不阻断知识库及越权参数拒绝。",
+      "done": true,
+      "sourcePath": "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\tasks.md",
+      "line": 47
+    },
+    {
+      "id": "25",
+      "description": "6.3 TDD 接入现有官方 Tavily 双工具、参数白名单和公开查询约束；验证默认联网、关闭后无外部请求、关键词/网址、摘要/正文、结果数、国家/城市及不同用户参数隔离。",
+      "done": true,
+      "sourcePath": "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\tasks.md",
+      "line": 48
+    },
+    {
+      "id": "26",
+      "description": "6.4 TDD 实现跨工具累计预算、片段去重、24000 字符上下文和主题/资料覆盖分配；验证空结果循环被阻断、失败尝试计数、保留生成审核预算以及片段相似但不支持结论的处理。",
+      "done": true,
+      "sourcePath": "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\tasks.md",
+      "line": 49
+    },
+    {
+      "id": "27",
+      "description": "6.5 TDD 验证文档/网页提示注入、私有哨兵文本不进入公网参数、索引不可用、来源冲突与诚实降级；交付路由和失败处理矩阵及脱敏调用记录。",
+      "done": true,
+      "sourcePath": "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\tasks.md",
+      "line": 50
+    },
+    {
+      "id": "28",
+      "description": "7.1 TDD 实现问题输入、显式多资料/全部范围、问答任务与默认联网权限；验证空范围拒绝、长度限制、无隐式历史上下文及账号隔离，补齐问答 API 示例。",
+      "done": true,
+      "sourcePath": "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\tasks.md",
+      "line": 54
+    },
+    {
+      "id": "29",
+      "description": "7.2 TDD 实现结构化回答、引用登记、独立支持性检查及受限修正；覆盖无依据、虚构引用、事实矛盾、多来源冲突和联网失败但资料充分，验证不能伪造确定结论。",
+      "done": true,
+      "sourcePath": "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\tasks.md",
+      "line": 55
+    },
+    {
+      "id": "30",
+      "description": "7.3 TDD 实现问答结果与任务成功原子发布、历史列表/详情/删除及失去资料后的快照；以事务故障与重复提交验证只发布一次，且不创建作答、奖励或报告。",
+      "done": true,
+      "sourcePath": "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\tasks.md",
+      "line": 56
+    },
+    {
+      "id": "31",
+      "description": "7.4 TDD 实现“按这个问题出题”的原始目标与资料范围衔接；验证不把 AI 回答作证据，资料版本失效时要求更新；同步用户操作与不足说明。",
+      "done": true,
+      "sourcePath": "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\tasks.md",
+      "line": 57
+    },
+    {
+      "id": "32",
+      "description": "8.1 TDD 实现持久范围准备与确认，绑定文档版本/目标/联网开关；验证主题多选、推荐默认值、删除/换版本/改权限需重新准备和跨账号拒绝。",
+      "done": true,
+      "sourcePath": "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\tasks.md",
+      "line": 61
+    },
+    {
+      "id": "33",
+      "description": "8.2 TDD 将多资料证据接入现有生成与独立审核，并显式传递知识库严格依据策略；验证多主题覆盖、正确答案与讲解支持、无依据拒绝和旧一般主题未核实降级保持有效。",
+      "done": true,
+      "sourcePath": "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\tasks.md",
+      "line": 62
+    },
+    {
+      "id": "34",
+      "description": "8.3 TDD 增加关卡发布的可选事务适配，在同一事务写入 Session/操作结果/任务终态；验证取消/租约/删除竞态、提交前后中断、重复恢复、关卡额度只计一次及旧调用默认行为。",
+      "done": true,
+      "sourcePath": "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\tasks.md",
+      "line": 63
+    },
+    {
+      "id": "35",
+      "description": "8.4 TDD 验证知识库关卡的作答、末题报告、重闯、错题复习、记录删除和来源快照；同时回归旧 topic/pdf/docx/txt/web/video/review，交付兼容矩阵与结果。",
+      "done": false,
+      "sourcePath": "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\tasks.md",
+      "line": 64
+    },
+    {
+      "id": "36",
+      "description": "9.1 新增知识库 API 类型、鉴权上传适配、任务存储与轮询状态模块；以契约和组件测试验证任务/Session 区分、字符串上传响应、账号切换隔离、后台暂停恢复和单调进度。",
+      "done": false,
+      "sourcePath": "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\tasks.md",
+      "line": 68
+    },
+    {
+      "id": "37",
+      "description": "9.2 将现有“私有知识库”入口接入独立页面，实现列表、上传/网址/已有材料添加、处理状态、错误重试、详情/片段预览、删除与多资料选择；以 H5 交互测试和 320/390 宽度截图验证完整流程。",
+      "done": false,
+      "sourcePath": "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\tasks.md",
+      "line": 69
+    },
+    {
+      "id": "38",
+      "description": "9.3 实现问答输入、默认开启的联网开关、回答与引用、历史查看/删除及从问题出题；以组件/E2E 验证不足提示、真实来源、原文删除提示和无奖励变化，补齐操作说明。",
+      "done": false,
+      "sourcePath": "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\tasks.md",
+      "line": 70
+    },
+    {
+      "id": "39",
+      "description": "9.4 复用一层多选主题确认与现有关卡，接入知识库生成/取消/恢复及新来源阅读；E2E 验证多选、关卡就绪跳转、确认后判分、末题报告和返回首页。",
+      "done": false,
+      "sourcePath": "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\tasks.md",
+      "line": 71
+    },
+    {
+      "id": "40",
+      "description": "9.5 运行前端类型检查、单元测试及 H5/微信构建，回归旧材料/主题/分析/历史页面；记录结果并修复本期引入的问题，不用构建通过替代真机验收。",
+      "done": false,
+      "sourcePath": "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\tasks.md",
+      "line": 72
+    },
+    {
+      "id": "41",
+      "description": "10.1 执行所有本期后端单元/真实存储集成及旧核心回归，审查新增业务模块分支覆盖目标至少 90% 与关键路径清单；交付可复现命令、RED/GREEN、覆盖及回归报告，不隐藏基线失败。",
+      "done": false,
+      "sourcePath": "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\tasks.md",
+      "line": 76
+    },
+    {
+      "id": "42",
+      "description": "10.2 使用已配置的百炼、DeepSeek 与 Tavily 做受额度约束的真实样本联调；覆盖各文档格式、网页、中文/英文、新知识、资料不足和冲突，记录调用量/耗时/来源并逐项核对回答及题目，模型替身结果单独列出。",
+      "done": false,
+      "sourcePath": "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\tasks.md",
+      "line": 77
+    },
+    {
+      "id": "43",
+      "description": "10.3 完成开发者工具与微信真机的文件上传、切后台恢复、多选范围、问答引用、关卡答题、报告及删除验收；记录设备、基础库版本和通过/失败项，无法自动操作的项目取得用户实际反馈后再勾选。",
+      "done": false,
+      "sourcePath": "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\tasks.md",
+      "line": 78
+    },
+    {
+      "id": "44",
+      "description": "10.4 演练执行器重启、第二执行进程拒绝、索引重建切换、关闭知识库、备份与保留快照的回退；验证旧核心仍可运行、清理 outbox 不被停用开关遗弃，交付运行/回退手册与待处理风险。",
+      "done": false,
+      "sourcePath": "D:\\nbproject\\LevelUpProject\\openspec\\changes\\add-personal-knowledge-rag\\tasks.md",
+      "line": 79
+    }
+  ],
+  "taskTrackingConfigured": true,
+  "state": "ready",
+  "instruction": "Read context files, work through pending tasks, mark complete as you go.\nPause if you hit blockers or need clarification.",
+  "root": {
+    "path": "D:\\nbproject\\LevelUpProject",
+    "source": "nearest"
+  }
+}

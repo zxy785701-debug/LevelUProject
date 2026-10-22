@@ -1,0 +1,10 @@
+
+Running 3 tests using 1 worker
+
+(node:23188) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 e2e-knowledge\knowledge.spec.ts:63:5 › 真实存储闭环：Markdown→问答来源→原问题出题→多选主题→确认答题→报告 (17.0s)
+  ok 2 e2e-knowledge\knowledge.spec.ts:110:5 › 断开响应与重新打开：恢复同一上传任务，不重复创建文档 (4.8s)
+  ok 3 e2e-knowledge\knowledge.spec.ts:127:5 › 资料不足、问答删除和资料删除后的来源快照 (12.7s)
+
+  3 passed (36.1s)

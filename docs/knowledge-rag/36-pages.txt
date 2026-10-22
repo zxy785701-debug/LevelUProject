@@ -1,0 +1,62 @@
+
+Running 3 tests using 1 worker
+
+(node:37556) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 e2e-knowledge\knowledge.spec.ts:63:5 › 真实存储闭环：Markdown→问答来源→原问题出题→多选主题→确认答题→报告 (16.8s)
+  ok 2 e2e-knowledge\knowledge.spec.ts:110:5 › 断开响应与重新打开：恢复同一上传任务，不重复创建文档 (5.4s)
+  x  3 e2e-knowledge\knowledge.spec.ts:127:5 › 资料不足、问答删除和资料删除后的来源快照 (1.5m)
+
+
+  1) e2e-knowledge\knowledge.spec.ts:127:5 › 资料不足、问答删除和资料删除后的来源快照 ──────────────────────────────────
+
+    Test timeout of 90000ms exceeded.
+
+    Error: locator.click: Test timeout of 90000ms exceeded.
+    Browser logs:
+
+    <launching> C:\Users\20777\AppData\Local\Google\Chrome\Application\chrome.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,NetworkTimeServiceQuerying,AimEnabled,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=C:\Users\20777\AppData\Local\Temp\playwright_chromiumdev_profile-8qFBZW --remote-debugging-pipe --no-startup-window
+    <launched> pid=34544
+    [pid=34544] <gracefully close start>
+    Call log:
+      - waiting for getByRole('button', { name: '提交问题', exact: true })
+        - locator resolved to <taro-button-core type="" disabled role="button" aria-label="提交问题" aria-disabled="true" class="btn primary is-disabled">…</taro-button-core>
+      - attempting click action
+        2 × waiting for element to be visible, enabled and stable
+          - element is not enabled
+        - retrying click action
+        - waiting 20ms
+        2 × waiting for element to be visible, enabled and stable
+          - element is not enabled
+        - retrying click action
+          - waiting 100ms
+        157 × waiting for element to be visible, enabled and stable
+            - element is not enabled
+          - retrying click action
+            - waiting 500ms
+        - waiting for element to be visible, enabled and stable
+
+
+      50 |   await page.locator('textarea').fill(question)
+      51 |   await page.getByText('全部已就绪资料（提交时固定版本）', { exact: true }).click()
+    > 52 |   await page.getByRole('button', { name: '提交问题', exact: true }).click()
+         |                                                                 ^
+      53 |   await expect(page.getByTestId('knowledge-answer')).toBeVisible()
+      54 | }
+      55 | async function snapshot(page: Page, name: string) {
+        at ask (D:\nbproject\LevelUpProject\frontend\e2e-knowledge\knowledge.spec.ts:52:65)
+        at D:\nbproject\LevelUpProject\frontend\e2e-knowledge\knowledge.spec.ts:134:45
+
+    Error Context: ..\docs\knowledge-rag\page-results\knowledge-资料不足、问答删除和资料删除后的来源快照\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\docs\knowledge-rag\page-results\knowledge-资料不足、问答删除和资料删除后的来源快照\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\docs\knowledge-rag\page-results\knowledge-资料不足、问答删除和资料删除后的来源快照\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    e2e-knowledge\knowledge.spec.ts:127:5 › 资料不足、问答删除和资料删除后的来源快照 ───────────────────────────────────
+  2 passed (1.9m)

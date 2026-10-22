@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="5" skipped="0" tests="5" time="7.860" timestamp="2026-10-18T23:12:34.751893+08:00" hostname="zxy"><testcase classname="tests.test_knowledge_model_transport" name="test_successive_sync_jobs_have_loop_owned_model_clients_and_close_them[question_pipeline.QuestionPipeline]" time="2.592"><failure message="AssertionError: Worker jobs must bypass process-global async client caching&#10;assert None is not None">monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000016E43CA9220&gt;
+name = 'question_pipeline.QuestionPipeline'
+
+    @pytest.mark.parametrize('name',['question_pipeline.QuestionPipeline','scopes.ScopePipeline','quizzes.QuizPipeline'])
+    def test_successive_sync_jobs_have_loop_owned_model_clients_and_close_them(monkeypatch,name):
+        import importlib
+        module,klass=name.split('.')
+        pipeline_type=getattr(importlib.import_module('app.knowledge.'+module),klass)
+        created=[]
+        def model(**kwargs):
+            client=kwargs.get('http_async_client')
+            assert client is not None, 'Worker jobs must bypass process-global async client caching'
+            assert not client.is_closed
+            created.append((client,asyncio.get_running_loop()))
+            return object()
+        monkeypatch.setattr('app.llm.ChatOpenAI',model)
+        pipeline=pipeline_type.__new__(pipeline_type)
+        async def process(claim):
+            ModelGateway(Settings(_env_file=None)).chat_model()
+            # A separate counted gateway used by independent review shares only this job.
+            from app.quiz_grounding.runtime import counted_gateway
+            counted_gateway(Settings(_env_file=None),None,None,None).chat_model()
+            await asyncio.sleep(0)
+            return claim
+        pipeline.process_async=process
+&gt;       assert pipeline.process('first')=='first'
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_knowledge_model_transport.py:30: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\knowledge\question_pipeline.py:45: in process
+    def process(self, claim): return asyncio.run(self.process_async(claim))
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+D:\anaconda3\Lib\asyncio\runners.py:195: in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+D:\anaconda3\Lib\asyncio\runners.py:118: in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+D:\anaconda3\Lib\asyncio\base_events.py:725: in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+tests\test_knowledge_model_transport.py:23: in process
+    ModelGateway(Settings(_env_file=None)).chat_model()
+app\llm.py:79: in chat_model
+    return ChatOpenAI(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+kwargs = {'model': 'deepseek-flash', 'api_key': '', 'base_url': 'https://api.deepseek.com', 'extra_body': {'thinking': {'type': 'disabled'}}, ...}
+
+    def model(**kwargs):
+        client=kwargs.get('http_async_client')
+&gt;       assert client is not None, 'Worker jobs must bypass process-global async client caching'
+E       AssertionError: Worker jobs must bypass process-global async client caching
+E       assert None is not None
+
+tests\test_knowledge_model_transport.py:16: AssertionError</failure></testcase><testcase classname="tests.test_knowledge_model_transport" name="test_successive_sync_jobs_have_loop_owned_model_clients_and_close_them[scopes.ScopePipeline]" time="0.013"><failure message="AssertionError: Worker jobs must bypass process-global async client caching&#10;assert None is not None">monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000016E466250F0&gt;
+name = 'scopes.ScopePipeline'
+
+    @pytest.mark.parametrize('name',['question_pipeline.QuestionPipeline','scopes.ScopePipeline','quizzes.QuizPipeline'])
+    def test_successive_sync_jobs_have_loop_owned_model_clients_and_close_them(monkeypatch,name):
+        import importlib
+        module,klass=name.split('.')
+        pipeline_type=getattr(importlib.import_module('app.knowledge.'+module),klass)
+        created=[]
+        def model(**kwargs):
+            client=kwargs.get('http_async_client')
+            assert client is not None, 'Worker jobs must bypass process-global async client caching'
+            assert not client.is_closed
+            created.append((client,asyncio.get_running_loop()))
+            return object()
+        monkeypatch.setattr('app.llm.ChatOpenAI',model)
+        pipeline=pipeline_type.__new__(pipeline_type)
+        async def process(claim):
+            ModelGateway(Settings(_env_file=None)).chat_model()
+            # A separate counted gateway used by independent review shares only this job.
+            from app.quiz_grounding.runtime import counted_gateway
+            counted_gateway(Settings(_env_file=None),None,None,None).chat_model()
+            await asyncio.sleep(0)
+            return claim
+        pipeline.process_async=process
+&gt;       assert pipeline.process('first')=='first'
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_knowledge_model_transport.py:30: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\knowledge\scopes.py:160: in process
+    def process(self, claim): return asyncio.run(self.process_async(claim))
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+D:\anaconda3\Lib\asyncio\runners.py:195: in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+D:\anaconda3\Lib\asyncio\runners.py:118: in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+D:\anaconda3\Lib\asyncio\base_events.py:725: in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+tests\test_knowledge_model_transport.py:23: in process
+    ModelGateway(Settings(_env_file=None)).chat_model()
+app\llm.py:79: in chat_model
+    return ChatOpenAI(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+kwargs = {'model': 'deepseek-flash', 'api_key': '', 'base_url': 'https://api.deepseek.com', 'extra_body': {'thinking': {'type': 'disabled'}}, ...}
+
+    def model(**kwargs):
+        client=kwargs.get('http_async_client')
+&gt;       assert client is not None, 'Worker jobs must bypass process-global async client caching'
+E       AssertionError: Worker jobs must bypass process-global async client caching
+E       assert None is not None
+
+tests\test_knowledge_model_transport.py:16: AssertionError</failure></testcase><testcase classname="tests.test_knowledge_model_transport" name="test_successive_sync_jobs_have_loop_owned_model_clients_and_close_them[quizzes.QuizPipeline]" time="0.093"><failure message="AssertionError: Worker jobs must bypass process-global async client caching&#10;assert None is not None">monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000016E43C8E690&gt;
+name = 'quizzes.QuizPipeline'
+
+    @pytest.mark.parametrize('name',['question_pipeline.QuestionPipeline','scopes.ScopePipeline','quizzes.QuizPipeline'])
+    def test_successive_sync_jobs_have_loop_owned_model_clients_and_close_them(monkeypatch,name):
+        import importlib
+        module,klass=name.split('.')
+        pipeline_type=getattr(importlib.import_module('app.knowledge.'+module),klass)
+        created=[]
+        def model(**kwargs):
+            client=kwargs.get('http_async_client')
+            assert client is not None, 'Worker jobs must bypass process-global async client caching'
+            assert not client.is_closed
+            created.append((client,asyncio.get_running_loop()))
+            return object()
+        monkeypatch.setattr('app.llm.ChatOpenAI',model)
+        pipeline=pipeline_type.__new__(pipeline_type)
+        async def process(claim):
+            ModelGateway(Settings(_env_file=None)).chat_model()
+            # A separate counted gateway used by independent review shares only this job.
+            from app.quiz_grounding.runtime import counted_gateway
+            counted_gateway(Settings(_env_file=None),None,None,None).chat_model()
+            await asyncio.sleep(0)
+            return claim
+        pipeline.process_async=process
+&gt;       assert pipeline.process('first')=='first'
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_knowledge_model_transport.py:30: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\knowledge\quizzes.py:127: in process
+    def process(self, claim): return asyncio.run(self.process_async(claim))
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+D:\anaconda3\Lib\asyncio\runners.py:195: in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+D:\anaconda3\Lib\asyncio\runners.py:118: in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+D:\anaconda3\Lib\asyncio\base_events.py:725: in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+tests\test_knowledge_model_transport.py:23: in process
+    ModelGateway(Settings(_env_file=None)).chat_model()
+app\llm.py:79: in chat_model
+    return ChatOpenAI(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+kwargs = {'model': 'deepseek-flash', 'api_key': '', 'base_url': 'https://api.deepseek.com', 'extra_body': {'thinking': {'type': 'disabled'}}, ...}
+
+    def model(**kwargs):
+        client=kwargs.get('http_async_client')
+&gt;       assert client is not None, 'Worker jobs must bypass process-global async client caching'
+E       AssertionError: Worker jobs must bypass process-global async client caching
+E       assert None is not None
+
+tests\test_knowledge_model_transport.py:16: AssertionError</failure></testcase><testcase classname="tests.test_knowledge_model_transport" name="test_client_context_does_not_escape_failed_job_or_touch_core_default" time="0.009"><failure message="assert (None is not None)">monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000016E46AB05A0&gt;
+
+    def test_client_context_does_not_escape_failed_job_or_touch_core_default(monkeypatch):
+        from app.knowledge.question_pipeline import QuestionPipeline
+        seen=[]
+        monkeypatch.setattr('app.llm.ChatOpenAI',lambda **kw:seen.append(kw.get('http_async_client')))
+        pipeline=QuestionPipeline.__new__(QuestionPipeline)
+        async def broken(claim):
+            ModelGateway(Settings(_env_file=None)).chat_model()
+            raise ValueError('controlled')
+        pipeline.process_async=broken
+        with pytest.raises(ValueError): pipeline.process('failed')
+&gt;       assert seen[0] is not None and seen[0].is_closed
+E       assert (None is not None)
+
+tests\test_knowledge_model_transport.py:48: AssertionError</failure></testcase><testcase classname="tests.test_knowledge_model_transport" name="test_parallel_jobs_do_not_share_model_transport_between_worker_threads" time="0.078"><failure message="assert (1 == 4)&#10; +  where 1 = len({140709193775232})">monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000016E46AB08D0&gt;
+
+    def test_parallel_jobs_do_not_share_model_transport_between_worker_threads(monkeypatch):
+        from app.knowledge.question_pipeline import QuestionPipeline
+        seen=[]
+        monkeypatch.setattr('app.llm.ChatOpenAI',lambda **kw:seen.append(kw.get('http_async_client')))
+        def run(number):
+            pipeline=QuestionPipeline.__new__(QuestionPipeline)
+            async def process(claim):
+                ModelGateway(Settings(_env_file=None)).chat_model()
+                await asyncio.sleep(.02)
+                return claim
+            pipeline.process_async=process
+            return pipeline.process(number)
+        with ThreadPoolExecutor(max_workers=2) as pool: assert list(pool.map(run,range(4)))==list(range(4))
+&gt;       assert len({id(c) for c in seen})==4 and all(c.is_closed for c in seen)
+E       assert (1 == 4)
+E        +  where 1 = len({140709193775232})
+
+tests\test_knowledge_model_transport.py:66: AssertionError</failure></testcase></testsuite></testsuites>

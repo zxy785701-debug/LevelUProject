@@ -1,0 +1,131 @@
+
+Running 4 tests using 1 worker
+
+(node:18760) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+row-text-layout {
+  text: '计算机基础',
+  color: 'rgb(32, 42, 61)',
+  display: 'block',
+  width: 225,
+  height: 24.796875
+}
+  ok 1 e2e-knowledge-prototype\library.spec.ts:59:5 › K01–K03：原型书架、搜索、文件夹新增编辑和删除，资料保留 (4.3s)
+  x  2 e2e-knowledge-prototype\library.spec.ts:84:5 › K04–K05：导入切换、真实文件预览、资料引用与展开上下文 (46.9s)
+(node:17456) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  3 e2e-knowledge-prototype\library.spec.ts:102:5 › K06 与 L06：默认联网、一层多选主题、真实提交契约和原型确认页 (45.2s)
+(node:31720) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 4 e2e-knowledge-prototype\library.spec.ts:114:5 › 切换账号后不显示之前的本机书架和资料 (2.4s)
+
+
+  1) e2e-knowledge-prototype\library.spec.ts:84:5 › K04–K05：导入切换、真实文件预览、资料引用与展开上下文 ─────────────────
+
+    Test timeout of 45000ms exceeded.
+
+    Error: locator.click: Test timeout of 45000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: /展开上下文/ })
+        - locator resolved to <taro-button-core type="" role="button" aria-expanded="false" class="knowledge-context-toggle">…</taro-button-core>
+      - attempting click action
+        2 × waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <iframe src="about:blank" id="react-refresh-overlay"></iframe> intercepts pointer events
+        - retrying click action
+        - waiting 20ms
+        2 × waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <iframe src="about:blank" id="react-refresh-overlay"></iframe> intercepts pointer events
+        - retrying click action
+          - waiting 100ms
+        82 × waiting for element to be visible, enabled and stable
+           - element is visible, enabled and stable
+           - scrolling into view if needed
+           - done scrolling
+           - <iframe src="about:blank" id="react-refresh-overlay"></iframe> intercepts pointer events
+         - retrying click action
+           - waiting 500ms
+        - waiting for element to be visible, enabled and stable
+
+
+       96 |   await page.getByRole('button', { name: '查看资料：HTTP 学习笔记.pdf', exact: true }).click()
+       97 |   await snapshot(page, 'K05')
+    >  98 |   await page.getByRole('button', { name: /展开上下文/ }).click()
+          |                                                     ^
+       99 |   await expect(page.locator('.knowledge-context')).toContainText('Cookie 在客户端携带会话标识')
+      100 |   await expect(page.locator('.knowledge-context')).toContainText('第 3 页')
+      101 | })
+        at D:\nbproject\LevelUpProject\frontend\e2e-knowledge-prototype\library.spec.ts:98:53
+
+    Error Context: ..\docs\knowledge-prototype\page-results\library-K04–K05：导入切换、真实文件预览、资料引用与展开上下文\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\docs\knowledge-prototype\page-results\library-K04–K05：导入切换、真实文件预览、资料引用与展开上下文\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\docs\knowledge-prototype\page-results\library-K04–K05：导入切换、真实文件预览、资料引用与展开上下文\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) e2e-knowledge-prototype\library.spec.ts:102:5 › K06 与 L06：默认联网、一层多选主题、真实提交契约和原型确认页 ────────────
+
+    Test timeout of 45000ms exceeded.
+
+    Error: locator.click: Test timeout of 45000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: '生成知识库关卡', exact: true })
+        - locator resolved to <taro-button-core type="" role="button" disabled="false" class="btn primary " aria-label="生成知识库关卡" aria-disabled="false">生成知识库关卡</taro-button-core>
+      - attempting click action
+        2 × waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <iframe src="about:blank" id="react-refresh-overlay"></iframe> intercepts pointer events
+        - retrying click action
+        - waiting 20ms
+        2 × waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <iframe src="about:blank" id="react-refresh-overlay"></iframe> intercepts pointer events
+        - retrying click action
+          - waiting 100ms
+        33 × waiting for element to be visible, enabled and stable
+           - element is visible, enabled and stable
+           - scrolling into view if needed
+           - done scrolling
+           - <iframe src="about:blank" id="react-refresh-overlay"></iframe> intercepts pointer events
+         - retrying click action
+           - waiting 500ms
+        - waiting for element to be visible, enabled and stable
+      - element was detached from the DOM, retrying
+
+
+      105 |   await expect(page.locator('taro-radio-core[value="network"]')).toHaveAttribute('checked')
+      106 |   await snapshot(page, 'K06')
+    > 107 |   await page.getByRole('button', { name: '生成知识库关卡', exact: true }).click()
+          |                                                                    ^
+      108 |   await expect(page.getByTestId('knowledge-confirm')).toBeVisible()
+      109 |   await page.getByText('Cookie 与 Session 的区别', { exact: true }).click()
+      110 |   await expect(page.locator('.knowledge-prototype-topic.selected')).toHaveCount(2)
+        at D:\nbproject\LevelUpProject\frontend\e2e-knowledge-prototype\library.spec.ts:107:68
+
+    Error Context: ..\docs\knowledge-prototype\page-results\library-K06-与-L06：默认联网、一层多选主题、真实提交契约和原型确认页\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\docs\knowledge-prototype\page-results\library-K06-与-L06：默认联网、一层多选主题、真实提交契约和原型确认页\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\docs\knowledge-prototype\page-results\library-K06-与-L06：默认联网、一层多选主题、真实提交契约和原型确认页\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    e2e-knowledge-prototype\library.spec.ts:84:5 › K04–K05：导入切换、真实文件预览、资料引用与展开上下文 ──────────────────
+    e2e-knowledge-prototype\library.spec.ts:102:5 › K06 与 L06：默认联网、一层多选主题、真实提交契约和原型确认页 ─────────────
+  2 passed (1.7m)

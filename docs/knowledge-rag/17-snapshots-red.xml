@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="3" skipped="0" tests="3" time="1.277" timestamp="2026-10-18T20:47:01.871539+08:00" hostname="zxy"><testcase classname="tests.test_knowledge_snapshots" name="test_old_snapshots_read_without_new_fields_and_knowledge_locations_are_strict" time="0.001"><failure message="pydantic_core._pydantic_core.ValidationError: 2 validation errors for QuizSource&#10;type&#10;  Input should be 'topic', 'pdf', 'docx', 'txt', 'web', 'video' or 'review' [type=literal_error, input_value='knowledge_base', input_type=str]&#10;    For further information visit https://errors.pydantic.dev/2.14/v/literal_error&#10;segments.0.knowledge&#10;  Extra inputs are not permitted [type=extra_forbidden, input_value={'document_id': 'doc', 'r...ex': 0, 'end_index': 30}, input_type=dict]&#10;    For further information visit https://errors.pydantic.dev/2.14/v/extra_forbidden">def test_old_snapshots_read_without_new_fields_and_knowledge_locations_are_strict():
+        assert QuizSource(type='txt',title='old').segments == []
+&gt;       source = QuizSource(type='knowledge_base',title='我的知识库',segments=[knowledge_segment()])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       pydantic_core._pydantic_core.ValidationError: 2 validation errors for QuizSource
+E       type
+E         Input should be 'topic', 'pdf', 'docx', 'txt', 'web', 'video' or 'review' [type=literal_error, input_value='knowledge_base', input_type=str]
+E           For further information visit https://errors.pydantic.dev/2.14/v/literal_error
+E       segments.0.knowledge
+E         Extra inputs are not permitted [type=extra_forbidden, input_value={'document_id': 'doc', 'r...ex': 0, 'end_index': 30}, input_type=dict]
+E           For further information visit https://errors.pydantic.dev/2.14/v/extra_forbidden
+
+tests\test_knowledge_snapshots.py:20: ValidationError</failure></testcase><testcase classname="tests.test_knowledge_snapshots" name="test_new_provenance_stays_hidden_until_answer_and_deleted_source_keeps_snapshot" time="0.442"><failure message="TypeError: Accounts.answer() takes 4 positional arguments but 6 were given">repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x0000026EBCCFFA10&gt;
+
+    def test_new_provenance_stays_hidden_until_answer_and_deleted_source_keeps_snapshot(repo):
+        seed(repo)
+        quiz = quiz_payload()
+        quiz.update(id=str(uuid4()),created_at=datetime.now(timezone.utc).isoformat(),source_text='原始问题',difficulty='easy',
+            source={'type':'knowledge_base','title':'我的知识库','segments':[knowledge_segment()]})
+        for question in quiz['questions']: question['source_ids'] = ['kb-chunk']
+        result = repo.accounts.store_quiz('alice',quiz)
+        assert result['quiz']['source']['segments'] == []
+        assert all(q['source_ids']==[] and q['answers']==[] for q in result['quiz']['questions'])
+        question = quiz['questions'][0]
+&gt;       result = repo.accounts.answer('alice',result['id'],question['id'],question['answers'],1000)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: Accounts.answer() takes 4 positional arguments but 6 were given
+
+tests\test_knowledge_snapshots.py:40: TypeError</failure></testcase><testcase classname="tests.test_knowledge_snapshots" name="test_index_hit_becomes_true_location_snapshot_including_web_as_stored_material" time="0.001"><failure message="ModuleNotFoundError: No module named 'app.knowledge.evidence'">def test_index_hit_becomes_true_location_snapshot_including_web_as_stored_material():
+&gt;       from app.knowledge.evidence import evidence_from_hit
+E       ModuleNotFoundError: No module named 'app.knowledge.evidence'
+
+tests\test_knowledge_snapshots.py:53: ModuleNotFoundError</failure></testcase></testsuite></testsuites>

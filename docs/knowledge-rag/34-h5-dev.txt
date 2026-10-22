@@ -1,0 +1,2332 @@
+
+> levelup-mini@1.0.0 dev:h5
+> taro build --type h5 --watch
+
+👽 Taro v4.3.0
+
+Tips:
+1. 建议开启持久化缓存功能，能有效提升二次编译速度，详情请参考: https://docs.taro.zone/docs/config-detail#cache。
+
+
+
+
+● Webpack █████████████████████████ setup (3%)  
+ watch run
+
+- 即将开始启动编译，请稍等~
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ setup (9%) compilation 
+ ChunkPrefetchPreloadPlugin
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/4 entries 1/4 dependencie
+s 0/0 modules 0 active 
+ 
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/4 entries 3/4 dependencie
+s 0/3 modules 3 active 
+ ...d\node_modules\@pmmmwh\react-refresh-webpack-plugin\client\ReactRefreshEnt
+ry.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/4 entries 4/16 dependenci
+es 0/4 modules 4 active 
+ babel-loader › src\app.config.ts
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%)  
+ ...port loader .\node_modules\@pmmmwh\react-refresh-webpack-plugin\loader\ind
+ex.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%)  
+ import loader .\node_modules\babel-loader\lib\index.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%)  
+ import loader .\node_modules\@tarojs\taro-loader\lib\h5.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/4 entries 20/35 dependenc
+ies 3/15 modules 12 active 
+ node_modules\webpack-dev-server\client\utils\reloadApp.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/4 entries 23/35 dependenc
+ies 5/15 modules 10 active 
+ node_modules\webpack-dev-server\client\utils\reloadApp.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/4 entries 31/36 dependenc
+ies 10/22 modules 12 active 
+ node_modules\react-refresh\runtime.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/4 entries 36/53 dependenc
+ies 12/25 modules 13 active 
+ babel-loader › src\app.tsx
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/4 entries 42/62 dependenc
+ies 14/27 modules 13 active 
+ ...ect\frontend\node_modules\@pmmmwh\react-refresh-webpack-plugin\overlay\ind
+ex.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/4 entries 53/65 dependenc
+ies 16/36 modules 19 active 
+ ...nbproject\LevelUpProject\frontend\node_modules\core-js-pure\full\global-th
+is.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/4 entries 66/109 dependen
+cies 18/41 modules 23 active 
+ node_modules\ansi-html-community\index.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/4 entries 79/119 dependen
+cies 20/46 modules 23 active 
+ node_modules\html-entities\lib\index.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (23%)  
+ import loader .\node_modules\css-loader\dist\cjs.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (23%) 1/4 entries 105/121 depende
+ncies 24/66 modules 40 active 
+ style-loader › css-loader › node_modules\@tarojs\components\global.css
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (23%) 1/4 entries 105/121 depende
+ncies 24/66 modules 41 active 
+ ...› css-loader › postcss-loader › resolve-url-loader › sass-loader › src\app
+.scss
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (23%)  
+ import loader .\node_modules\sass-loader\dist\cjs.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (23%) 1/4 entries 110/137 depende
+ncies 26/69 modules 41 active 
+ babel-loader › node_modules\@tarojs\components\lib\react\index.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (23%) 1/4 entries 116/155 depende
+ncies 26/73 modules 44 active 
+ css-loader › node_modules\@tarojs\components\global.css
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (23%) 1/4 entries 120/200 depende
+ncies 26/75 modules 47 active 
+ ...pmmmwh\react-refresh-webpack-plugin\overlay\containers\RuntimeErrorContain
+er.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (23%) 1/4 entries 267/400 depende
+ncies 27/96 modules 46 active 
+ ...pmmmwh\react-refresh-webpack-plugin\overlay\containers\RuntimeErrorContain
+er.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (23%) 1/4 entries 446/495 depende
+ncies 31/191 modules 43 active 
+ ...project\LevelUpProject\frontend\node_modules\core-js-pure\actual\global-th
+is.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (23%) 1/4 entries 475/510 depende
+ncies 31/207 modules 107 active 
+ ...der › node_modules\@tarojs\components\dist\components\taro-comment-list-co
+re.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (23%) 1/4 entries 501/588 depende
+ncies 32/233 modules 133 active 
+ ...bel-loader › node_modules\@tarojs\components\dist\components\taro-login-co
+re.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (23%) 1/4 entries 589/700 depende
+ncies 57/234 modules 108 active 
+ ...bel-loader › node_modules\@tarojs\components\dist\components\taro-login-co
+re.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (23%) 1/4 entries 829/894 depende
+ncies 58/252 modules 108 active 
+ ...der › node_modules\@tarojs\components\dist\components\taro-movable-area-co
+re.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (23%) 1/4 entries 849/901 depende
+ncies 58/261 modules 150 active 
+ ...el-loader › node_modules\@tarojs\components\dist\components\taro-slider-co
+re.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (23%) 1/4 entries 852/1000 depend
+encies 59/261 modules 155 active 
+ ...el-loader › node_modules\@tarojs\components\dist\components\taro-swiper-co
+re.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (37%) 2/4 entries 969/1159 depend
+encies 65/261 modules 149 active 
+ ...el-loader › node_modules\@tarojs\components\dist\components\taro-swiper-co
+re.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (37%) 2/4 entries 1112/1204 depen
+dencies 68/311 modules 147 active 
+ ...r › node_modules\@tarojs\components\dist\components\taro-sticky-section-co
+re.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (37%) 2/4 entries 1268/1271 depen
+dencies 69/318 modules 156 active 
+ ...-loader › node_modules\@tarojs\components\dist\components\taro-video-contr
+ol.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (37%) 2/4 entries 1270/1300 depen
+dencies 70/320 modules 249 active 
+ node_modules\error-stack-parser\error-stack-parser.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (37%) 2/4 entries 1351/1392 depen
+dencies 153/328 modules 168 active 
+ ... \.entry\.js$\|exclude: \.system\.entry\.js$\|groupOptions: {}|namespace o
+bject
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (37%) 2/4 entries 1471/1565 depen
+dencies 164/435 modules 172 active 
+ node_modules\@stencil\core\internal\client\shadow-css.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (37%) 2/4 entries 1553/1565 depen
+dencies 177/515 modules 219 active 
+ babel-loader › node_modules\@tarojs\taro-h5\dist\api\device\gyroscope.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (37%) 2/4 entries 1561/1600 depen
+dencies 178/519 modules 242 active 
+ ....js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (37%) 2/4 entries 1600/1750 depen
+dencies 182/521 modules 238 active 
+ ....js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (37%) 2/4 entries 1720/1777 depen
+dencies 188/529 modules 259 active 
+ babel-loader › node_modules\@tarojs\taro-h5\dist\api\network\download.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (37%) 2/4 entries 1760/1800 depen
+dencies 188/538 modules 309 active 
+ ...ript\esm|D:\nbproject\LevelUpProject\frontend\node_modules\lodash-es\isArr
+ay.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (37%) 2/4 entries 1849/1941 depen
+dencies 194/539 modules 304 active 
+ ...sm|D:\nbproject\LevelUpProject\frontend\node_modules\lodash-es\_stringToPa
+th.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (37%) 2/4 entries 1900/1944 depen
+dencies 197/544 modules 335 active 
+ ...e_modules\@tarojs\components\lib\react\react-component-lib\utils\attachPro
+ps.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (37%) 2/4 entries 1937/2000 depen
+dencies 198/572 modules 374 active 
+ ...|D:\nbproject\LevelUpProject\frontend\node_modules\lodash-es\_defineProper
+ty.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (37%) 2/4 entries 2060/2131 depen
+dencies 371/576 modules 202 active 
+ ...m|D:\nbproject\LevelUpProject\frontend\node_modules\lodash-es\_memoizeCapp
+ed.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (37%) 2/4 entries 2128/2141 depen
+dencies 394/618 modules 222 active 
+ babel-loader › node_modules\@tarojs\api\dist\index.esm.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (37%) 2/4 entries 2160/2185 depen
+dencies 417/620 modules 202 active 
+ ...ript\esm|D:\nbproject\LevelUpProject\frontend\node_modules\lodash-es\memoi
+ze.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (37%) 2/4 entries 2218/2232 depen
+dencies 449/648 modules 188 active 
+ ...ject\LevelUpProject\frontend\node_modules\core-js-pure\internals\classof-r
+aw.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (37%) 2/4 entries 2227/2247 depen
+dencies 451/654 modules 198 active 
+ node_modules\abortcontroller-polyfill\dist\abortcontroller-polyfill-only.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (37%) 2/4 entries 2234/2248 depen
+dencies 564/656 modules 92 active 
+ ...esm|D:\nbproject\LevelUpProject\frontend\node_modules\lodash-es\_arrayFilt
+er.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (37%) 2/4 entries 2280/2289 depen
+dencies 596/674 modules 76 active 
+ ...roject\LevelUpProject\frontend\node_modules\core-js-pure\internals\is-symb
+ol.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (37%) 2/4 entries 2287/2289 depen
+dencies 596/678 modules 81 active 
+ node_modules\jsonp-retry\dist\jsonp.esm.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (37%) 2/4 entries 2314/2317 depen
+dencies 645/688 modules 40 active 
+ ...roject\LevelUpProject\frontend\node_modules\core-js-pure\internals\is-obje
+ct.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (37%) 2/4 entries 2320/2322 depen
+dencies 646/689 modules 43 active 
+ node_modules\ics\dist\pipeline\build.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (37%) 2/4 entries 2363/2365 depen
+dencies 662/709 modules 37 active 
+ node_modules\ics\dist\utils\format-date.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (37%) 2/4 entries 2384/2388 depen
+dencies 676/714 modules 38 active 
+ node_modules\yup\index.esm.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (37%) 2/4 entries 2387/2391 depen
+dencies 679/715 modules 36 active 
+ ...dynamic|D:\nbproject\LevelUpProject\frontend\node_modules\runes2\dist\inde
+x.cjs
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (37%) 2/4 entries 2396/2398 depen
+dencies 685/719 modules 34 active 
+ node_modules\property-expr\index.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (54%) 4/5 entries 2409/2411 depen
+dencies 721/725 modules 2 active 
+ ...modules\@pmmmwh\react-refresh-webpack-plugin\client\utils\errorEventHandle
+rs.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (54%) 4/5 entries 2421/2422 depen
+dencies 724/731 modules 6 active 
+ ...modules\@pmmmwh\react-refresh-webpack-plugin\sockets\utils\getSocketUrlPar
+ts.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (54%) 4/5 entries 2440/2450 depen
+dencies 729/740 modules 11 active 
+ ...ject\frontend\node_modules\core-js-pure\modules\web.url-search-params.dele
+te.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (54%) 4/5 entries 2455/2456 depen
+dencies 734/746 modules 12 active 
+ ...frontend\node_modules\core-js-pure\modules\web.url-search-params.construct
+or.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (54%) 4/5 entries 2494/2520 depen
+dencies 735/749 modules 14 active 
+ ...LevelUpProject\frontend\node_modules\core-js-pure\modules\es.string.iterat
+or.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (54%) 4/5 entries 2513/2520 depen
+dencies 735/762 modules 27 active 
+ ...evelUpProject\frontend\node_modules\core-js-pure\internals\safe-get-built-
+in.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (54%) 4/5 entries 2597/2619 depen
+dencies 749/770 modules 21 active 
+ ...rontend\node_modules\core-js-pure\internals\call-with-safe-iteration-closi
+ng.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (54%) 4/5 entries 2627/2629 depen
+dencies 750/791 modules 41 active 
+ ...roject\frontend\node_modules\core-js-pure\internals\object-define-properti
+es.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (54%) 4/5 entries 2733/2735 depen
+dencies 778/803 modules 25 active 
+ ...roject\frontend\node_modules\core-js-pure\internals\correct-prototype-gett
+er.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (54%) 4/5 entries 2751/2751 depen
+dencies 789/807 modules 18 active 
+ ...UpProject\frontend\node_modules\core-js-pure\internals\is-possible-prototy
+pe.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (70%)  
+ finish module graph
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (73%)  
+ after chunk graph
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (87%)  
+ code generation
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (88%)  
+ runtime requirements
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (89%)  
+ after hashing
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (92%)  
+ asset processing
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ emitting (98%)  
+ after emit
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+√ Webpack
+  Compiled successfully in 31.88s
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:10086/
+<i> [webpack-dev-server] Content not from webpack is served from 'D:\nbproject\LevelUpProject\frontend\dist-h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+⚠️ Warnings: 
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 2, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:2:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+2 | @import './prototype.scss';
+
+
+src\app.scss 3:9  root stylesheet
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 3, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:3:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+3 | @import './footer.scss';
+
+
+src\app.scss 4:9  root stylesheet
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 4, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:4:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+4 | @import './features.scss';
+
+
+src\app.scss 5:9  root stylesheet
+
+→ Watching... [2026/10/18 22:45:13]
+
+⚠️  编译警告. 2026/10/18 22:45:13
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 2, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:2:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+2 | @import './prototype.scss';
+
+
+src\app.scss 3:9  root stylesheet
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 3, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:3:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+3 | @import './footer.scss';
+
+
+src\app.scss 4:9  root stylesheet
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 4, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:4:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+4 | @import './features.scss';
+
+
+src\app.scss 5:9  root stylesheet
+
+
+ℹ️  Listening at http://127.0.0.1:10086/
+
+监听文件修改中...
+
+assets by path static/images/assets/ 474 KiB
+  assets by path static/images/assets/*.png 470 KiB 3 assets
+  assets by path static/images/assets/icons/*.png 4.63 KiB
+    asset static/images/assets/icons/help.png 2.49 KiB [emitted] [from: src/assets/icons/help.png] (auxiliary name: app)
+    asset static/images/assets/icons/eye.png 2.14 KiB [emitted] [from: src/assets/icons/eye.png] (auxiliary name: app)
+assets by path *.js 9.8 MiB
+  asset app.js 6.88 MiB [emitted] (name: app)
+  asset taro.js 2.88 MiB [emitted] (name: taro) (id hint: taro)
+  asset runtime.js 48.8 KiB [emitted] (name: runtime)
+assets by path chunk/*.js 5.06 MiB
+  asset chunk/node_modules_hls_js_dist_hls_mjs.js 3.67 MiB [emitted]
+  asset chunk/src_pages_index_index_tsx.js 1.35 MiB [emitted]
+  asset chunk/node_modules_stencil_core_internal_client_shadow-css_js.js 41 KiB [emitted]
+asset index.html 439 bytes [emitted]
+Entrypoint app 9.8 MiB (474 KiB) = runtime.js 48.8 KiB taro.js 2.88 MiB app.js 6.88 MiB 5 auxiliary assets
+orphan modules 482 KiB [orphan] 254 modules
+runtime modules 32.3 KiB 18 modules
+modules by path ./node_modules/ 4.83 MiB 470 modules
+modules by path ./src/ 755 KiB (javascript) 474 KiB (asset)
+  modules by path ./src/assets/ 66.9 KiB (javascript) 474 KiB (asset) 50 modules
+  modules by path ./src/*.tsx 254 KiB 14 modules
+  modules by path ./src/*.ts 97.7 KiB
+    ./src/app.config.ts 2.88 KiB [built] [code generated]
+    + 12 modules
+  modules by path ./src/*.scss 233 KiB
+    ./src/app.scss 2.88 KiB [built] [code generated]
+    + 3 modules
+  ./src/pages/index/index.tsx 104 KiB [built] [code generated]
+data:application/octet-stream;base64,AAEAAAALAIAAAwAw.. 6.1 KiB [built] [code generated]
+
+WARNING in ./src/app.scss (./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].oneOf[0].use[0]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[0]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[1]!./src/app.scss)
+Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 2, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:2:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+2 | @import './prototype.scss';
+
+
+src\app.scss 3:9  root stylesheet
+ @ ./src/app.scss 8:6-318 22:17-24 26:7-21 52:25-39 53:36-47 53:50-64 57:6-67:7 58:54-65 58:68-82 64:42-53 64:56-70 66:21-28 77:0-288 77:0-288 78:22-29 78:33-47 78:50-64 55:4-68:5
+ @ ./src/app.tsx 5:0-20
+ @ ./src/app.config.ts 7:0-30 54:26-35
+
+WARNING in ./src/app.scss (./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].oneOf[0].use[0]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[0]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[1]!./src/app.scss)
+Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 3, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:3:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+3 | @import './footer.scss';
+
+
+src\app.scss 4:9  root stylesheet
+ @ ./src/app.scss 8:6-318 22:17-24 26:7-21 52:25-39 53:36-47 53:50-64 57:6-67:7 58:54-65 58:68-82 64:42-53 64:56-70 66:21-28 77:0-288 77:0-288 78:22-29 78:33-47 78:50-64 55:4-68:5
+ @ ./src/app.tsx 5:0-20
+ @ ./src/app.config.ts 7:0-30 54:26-35
+
+WARNING in ./src/app.scss (./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].oneOf[0].use[0]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[0]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[1]!./src/app.scss)
+Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 4, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:4:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+4 | @import './features.scss';
+
+
+src\app.scss 5:9  root stylesheet
+ @ ./src/app.scss 8:6-318 22:17-24 26:7-21 52:25-39 53:36-47 53:50-64 57:6-67:7 58:54-65 58:68-82 64:42-53 64:56-70 66:21-28 77:0-288 77:0-288 78:22-29 78:33-47 78:50-64 55:4-68:5
+ @ ./src/app.tsx 5:0-20
+ @ ./src/app.config.ts 7:0-30 54:26-35
+
+webpack 5.91.0 compiled with 3 warnings in 31900 ms
+
+● Webpack █████████████████████████ setup (7%) compile 
+ ExternalsPlugin
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (21%) 1/4 entries 79/93 dependenc
+ies 201/36 modules 0 active 
+ 
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (42%) 3/4 entries 104/105 depende
+ncies 602/47 modules 2 active 
+ src\assets\icons|sync|nonrecursive|\.png$
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (70%)  
+ finish module graph
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (73%)  
+ after chunk graph
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (88%)  
+ runtime requirements
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (92%) asset processing 
+ PersistentChildCompilerSingletonPlugin
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+√ Webpack
+  Compiled successfully in 720.37ms
+
+⚠️ Warnings: 
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 2, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:2:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+2 | @import './prototype.scss';
+
+
+src\app.scss 3:9  root stylesheet
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 3, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:3:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+3 | @import './footer.scss';
+
+
+src\app.scss 4:9  root stylesheet
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 4, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:4:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+4 | @import './features.scss';
+
+
+src\app.scss 5:9  root stylesheet
+
+→ Watching... [2026/10/18 22:49:05]
+
+⚠️  编译警告. 2026/10/18 22:49:06
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 2, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:2:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+2 | @import './prototype.scss';
+
+
+src\app.scss 3:9  root stylesheet
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 3, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:3:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+3 | @import './footer.scss';
+
+
+src\app.scss 4:9  root stylesheet
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 4, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:4:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+4 | @import './features.scss';
+
+
+src\app.scss 5:9  root stylesheet
+
+assets by status 8.4 MiB [cached] 10 assets
+assets by status 6.95 MiB [emitted]
+  assets by info 29.4 KiB [immutable]
+    asset app.7f325c5cdb50da90d133.hot-update.js 28.5 KiB [emitted] [immutable] [hmr] (name: app)
+    asset runtime.7f325c5cdb50da90d133.hot-update.js 870 bytes [emitted] [immutable] [hmr] (name: runtime)
+    asset runtime.7f325c5cdb50da90d133.hot-update.json 37 bytes [emitted] [immutable] [hmr]
+  asset app.js 6.88 MiB [emitted] (name: app)
+  asset runtime.js 48.8 KiB [emitted] (name: runtime)
+Entrypoint app 9.83 MiB (474 KiB) = runtime.js 48.8 KiB runtime.7f325c5cdb50da90d133.hot-update.js 870 bytes taro.js 2.88 MiB app.js 6.88 MiB app.7f325c5cdb50da90d133.hot-update.js 28.5 KiB 5 auxiliary assets
+cached modules 6.03 MiB (javascript) 474 KiB (asset) [cached] 805 modules
+runtime modules 32.3 KiB 18 modules
+javascript modules 10.7 KiB
+  ./src/components.tsx 9.79 KiB [built] [code generated]
+  ./src/assets/icons/ sync nonrecursive \.png$ 929 bytes [built]
+
+WARNING in ./src/app.scss (./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].oneOf[0].use[0]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[0]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[1]!./src/app.scss)
+Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 2, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:2:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+2 | @import './prototype.scss';
+
+
+src\app.scss 3:9  root stylesheet
+ @ ./src/app.scss 8:6-318 22:17-24 26:7-21 52:25-39 53:36-47 53:50-64 57:6-67:7 58:54-65 58:68-82 64:42-53 64:56-70 66:21-28 77:0-288 77:0-288 78:22-29 78:33-47 78:50-64 55:4-68:5
+ @ ./src/app.tsx 5:0-20
+ @ ./src/app.config.ts 7:0-30 54:26-35
+
+WARNING in ./src/app.scss (./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].oneOf[0].use[0]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[0]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[1]!./src/app.scss)
+Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 3, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:3:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+3 | @import './footer.scss';
+
+
+src\app.scss 4:9  root stylesheet
+ @ ./src/app.scss 8:6-318 22:17-24 26:7-21 52:25-39 53:36-47 53:50-64 57:6-67:7 58:54-65 58:68-82 64:42-53 64:56-70 66:21-28 77:0-288 77:0-288 78:22-29 78:33-47 78:50-64 55:4-68:5
+ @ ./src/app.tsx 5:0-20
+ @ ./src/app.config.ts 7:0-30 54:26-35
+
+WARNING in ./src/app.scss (./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].oneOf[0].use[0]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[0]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[1]!./src/app.scss)
+Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 4, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:4:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+4 | @import './features.scss';
+
+
+src\app.scss 5:9  root stylesheet
+ @ ./src/app.scss 8:6-318 22:17-24 26:7-21 52:25-39 53:36-47 53:50-64 57:6-67:7 58:54-65 58:68-82 64:42-53 64:56-70 66:21-28 77:0-288 77:0-288 78:22-29 78:33-47 78:50-64 55:4-68:5
+ @ ./src/app.tsx 5:0-20
+ @ ./src/app.config.ts 7:0-30 54:26-35
+
+webpack 5.91.0 compiled with 3 warnings in 724 ms
+
+● Webpack █████████████████████████ setup (7%) compile 
+ ExternalsPlugin
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (21%) 1/4 entries 23/24 dependenc
+ies 38/22 modules 0 active 
+ 
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (65%) 2/4 entries 152/152 depende
+ncies 658/95 modules 0 active 
+ 
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (70%)  
+ finish module graph
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (73%)  
+ after chunk graph
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (87%)  
+ code generation
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (92%)  
+ asset processing
+
+<i> [webpack-dev-middleware] wait until bundle finished: /static/images/assets/paper.png
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+√ Webpack
+  Compiled successfully in 625.42ms
+
+<i> [webpack-dev-middleware] wait until bundle finished: /static/images/assets/paper.png
+⚠️ Warnings: 
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 2, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:2:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+2 | @import './prototype.scss';
+
+
+src\app.scss 3:9  root stylesheet
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 3, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:3:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+3 | @import './footer.scss';
+
+
+src\app.scss 4:9  root stylesheet
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 4, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:4:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+4 | @import './features.scss';
+
+
+src\app.scss 5:9  root stylesheet
+
+→ Watching... [2026/10/18 22:49:57]
+
+⚠️  编译警告. 2026/10/18 22:49:57
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 2, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:2:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+2 | @import './prototype.scss';
+
+
+src\app.scss 3:9  root stylesheet
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 3, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:3:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+3 | @import './footer.scss';
+
+
+src\app.scss 4:9  root stylesheet
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 4, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:4:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+4 | @import './features.scss';
+
+
+src\app.scss 5:9  root stylesheet
+
+assets by status 8.4 MiB [cached] 10 assets
+assets by status 6.96 MiB [emitted]
+  assets by info 30.1 KiB [immutable]
+    asset app.78cfc1d19613b1d4d8f4.hot-update.js 29.2 KiB [emitted] [immutable] [hmr] (name: app)
+    asset runtime.78cfc1d19613b1d4d8f4.hot-update.js 870 bytes [emitted] [immutable] [hmr] (name: runtime)
+    asset runtime.78cfc1d19613b1d4d8f4.hot-update.json 37 bytes [emitted] [immutable] [hmr]
+  asset app.js 6.88 MiB [emitted] (name: app)
+  asset runtime.js 48.8 KiB [emitted] (name: runtime)
+Entrypoint app 9.83 MiB (474 KiB) = runtime.js 48.8 KiB runtime.78cfc1d19613b1d4d8f4.hot-update.js 870 bytes taro.js 2.88 MiB app.js 6.88 MiB app.78cfc1d19613b1d4d8f4.hot-update.js 29.2 KiB 5 auxiliary assets
+cached modules 6.03 MiB (javascript) 474 KiB (asset) [cached] 806 modules
+runtime modules 32.3 KiB 18 modules
+./src/components.tsx 10 KiB [built] [code generated]
+
+WARNING in ./src/app.scss (./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].oneOf[0].use[0]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[0]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[1]!./src/app.scss)
+Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 2, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:2:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+2 | @import './prototype.scss';
+
+
+src\app.scss 3:9  root stylesheet
+ @ ./src/app.scss 8:6-318 22:17-24 26:7-21 52:25-39 53:36-47 53:50-64 57:6-67:7 58:54-65 58:68-82 64:42-53 64:56-70 66:21-28 77:0-288 77:0-288 78:22-29 78:33-47 78:50-64 55:4-68:5
+ @ ./src/app.tsx 5:0-20
+ @ ./src/app.config.ts 7:0-30 54:26-35
+
+WARNING in ./src/app.scss (./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].oneOf[0].use[0]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[0]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[1]!./src/app.scss)
+Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 3, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:3:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+3 | @import './footer.scss';
+
+
+src\app.scss 4:9  root stylesheet
+ @ ./src/app.scss 8:6-318 22:17-24 26:7-21 52:25-39 53:36-47 53:50-64 57:6-67:7 58:54-65 58:68-82 64:42-53 64:56-70 66:21-28 77:0-288 77:0-288 78:22-29 78:33-47 78:50-64 55:4-68:5
+ @ ./src/app.tsx 5:0-20
+ @ ./src/app.config.ts 7:0-30 54:26-35
+
+WARNING in ./src/app.scss (./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].oneOf[0].use[0]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[0]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[1]!./src/app.scss)
+Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 4, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:4:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+4 | @import './features.scss';
+
+
+src\app.scss 5:9  root stylesheet
+ @ ./src/app.scss 8:6-318 22:17-24 26:7-21 52:25-39 53:36-47 53:50-64 57:6-67:7 58:54-65 58:68-82 64:42-53 64:56-70 66:21-28 77:0-288 77:0-288 78:22-29 78:33-47 78:50-64 55:4-68:5
+ @ ./src/app.tsx 5:0-20
+ @ ./src/app.config.ts 7:0-30 54:26-35
+
+webpack 5.91.0 compiled with 3 warnings in 627 ms
+
+● Webpack █████████████████████████ setup (7%) compile 
+ ExternalsPlugin
+
+<i> [webpack-dev-middleware] wait until bundle finished: /static/images/assets/paper.png
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (39%) 1/4 entries 83/93 dependenc
+ies 216/38 modules 0 active 
+ 
+
+<i> [webpack-dev-middleware] wait until bundle finished: /static/images/assets/paper.png
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (64%) 3/4 entries 152/152 depende
+ncies 665/95 modules 0 active 
+ 
+
+<i> [webpack-dev-middleware] wait until bundle finished: /static/images/assets/paper.png
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (70%)  
+ finish module graph
+
+<i> [webpack-dev-middleware] wait until bundle finished: /static/images/assets/paper.png
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (78%)  
+ after chunk modules optimization
+
+<i> [webpack-dev-middleware] wait until bundle finished: /static/images/assets/paper.png
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (89%)  
+ hashing
+
+<i> [webpack-dev-middleware] wait until bundle finished: /static/images/assets/paper.png
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (93%)  
+ recording
+
+<i> [webpack-dev-middleware] wait until bundle finished: /static/images/assets/paper.png
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+√ Webpack
+  Compiled successfully in 914.92ms
+
+<i> [webpack-dev-middleware] wait until bundle finished: /static/images/assets/paper.png
+⚠️ Warnings: 
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 2, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:2:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+2 | @import './prototype.scss';
+
+
+src\app.scss 3:9  root stylesheet
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 3, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:3:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+3 | @import './footer.scss';
+
+
+src\app.scss 4:9  root stylesheet
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 4, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:4:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+4 | @import './features.scss';
+
+
+src\app.scss 5:9  root stylesheet
+
+→ Watching... [2026/10/18 22:51:31]
+
+⚠️  编译警告. 2026/10/18 22:51:31
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 2, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:2:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+2 | @import './prototype.scss';
+
+
+src\app.scss 3:9  root stylesheet
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 3, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:3:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+3 | @import './footer.scss';
+
+
+src\app.scss 4:9  root stylesheet
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 4, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:4:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+4 | @import './features.scss';
+
+
+src\app.scss 5:9  root stylesheet
+
+assets by status 8.4 MiB [cached] 10 assets
+assets by status 6.96 MiB [emitted]
+  assets by info 30.2 KiB [immutable]
+    asset app.ecb038ae4cc64cc09f50.hot-update.js 29.3 KiB [emitted] [immutable] [hmr] (name: app)
+    asset runtime.ecb038ae4cc64cc09f50.hot-update.js 870 bytes [emitted] [immutable] [hmr] (name: runtime)
+    asset runtime.ecb038ae4cc64cc09f50.hot-update.json 37 bytes [emitted] [immutable] [hmr]
+  asset app.js 6.88 MiB [emitted] (name: app)
+  asset runtime.js 48.8 KiB [emitted] (name: runtime)
+Entrypoint app 9.83 MiB (474 KiB) = runtime.js 48.8 KiB runtime.ecb038ae4cc64cc09f50.hot-update.js 870 bytes taro.js 2.88 MiB app.js 6.88 MiB app.ecb038ae4cc64cc09f50.hot-update.js 29.3 KiB 5 auxiliary assets
+cached modules 6.03 MiB (javascript) 474 KiB (asset) [cached] 806 modules
+runtime modules 32.3 KiB 18 modules
+./src/components.tsx 10 KiB [built] [code generated]
+
+WARNING in ./src/app.scss (./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].oneOf[0].use[0]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[0]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[1]!./src/app.scss)
+Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 2, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:2:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+2 | @import './prototype.scss';
+
+
+src\app.scss 3:9  root stylesheet
+ @ ./src/app.scss 8:6-318 22:17-24 26:7-21 52:25-39 53:36-47 53:50-64 57:6-67:7 58:54-65 58:68-82 64:42-53 64:56-70 66:21-28 77:0-288 77:0-288 78:22-29 78:33-47 78:50-64 55:4-68:5
+ @ ./src/app.tsx 5:0-20
+ @ ./src/app.config.ts 7:0-30 54:26-35
+
+WARNING in ./src/app.scss (./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].oneOf[0].use[0]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[0]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[1]!./src/app.scss)
+Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 3, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:3:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+3 | @import './footer.scss';
+
+
+src\app.scss 4:9  root stylesheet
+ @ ./src/app.scss 8:6-318 22:17-24 26:7-21 52:25-39 53:36-47 53:50-64 57:6-67:7 58:54-65 58:68-82 64:42-53 64:56-70 66:21-28 77:0-288 77:0-288 78:22-29 78:33-47 78:50-64 55:4-68:5
+ @ ./src/app.tsx 5:0-20
+ @ ./src/app.config.ts 7:0-30 54:26-35
+
+WARNING in ./src/app.scss (./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].oneOf[0].use[0]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[0]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[1]!./src/app.scss)
+Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 4, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:4:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+4 | @import './features.scss';
+
+
+src\app.scss 5:9  root stylesheet
+ @ ./src/app.scss 8:6-318 22:17-24 26:7-21 52:25-39 53:36-47 53:50-64 57:6-67:7 58:54-65 58:68-82 64:42-53 64:56-70 66:21-28 77:0-288 77:0-288 78:22-29 78:33-47 78:50-64 55:4-68:5
+ @ ./src/app.tsx 5:0-20
+ @ ./src/app.config.ts 7:0-30 54:26-35
+
+webpack 5.91.0 compiled with 3 warnings in 920 ms
+
+● Webpack █████████████████████████ setup (7%) compile 
+ ExternalsPlugin
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (58%) 1/4 entries 134/136 depende
+ncies 225/82 modules 0 active 
+ 
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (64%) 3/4 entries 155/155 depende
+ncies 670/98 modules 0 active 
+ 
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (70%)  
+ plugins
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (87%)  
+ code generation
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (92%)  
+ asset processing
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+√ Webpack
+  Compiled successfully in 508.08ms
+
+⚠️ Warnings: 
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 2, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:2:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+2 | @import './prototype.scss';
+
+
+src\app.scss 3:9  root stylesheet
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 3, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:3:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+3 | @import './footer.scss';
+
+
+src\app.scss 4:9  root stylesheet
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 4, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:4:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+4 | @import './features.scss';
+
+
+src\app.scss 5:9  root stylesheet
+
+→ Watching... [2026/10/18 23:03:08]
+
+⚠️  编译警告. 2026/10/18 23:03:09
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 2, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:2:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+2 | @import './prototype.scss';
+
+
+src\app.scss 3:9  root stylesheet
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 3, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:3:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+3 | @import './footer.scss';
+
+
+src\app.scss 4:9  root stylesheet
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 4, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:4:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+4 | @import './features.scss';
+
+
+src\app.scss 5:9  root stylesheet
+
+assets by status 13.9 MiB [cached] 10 assets
+assets by path . 1.42 MiB
+  assets by path *.js 69.5 KiB
+    asset runtime.js 48.8 KiB [emitted] (name: runtime)
+    asset src_pages_index_index_tsx.dfc7a0499637a7288e53.hot-update.js 19.9 KiB [emitted] [immutable] [hmr]
+    asset runtime.dfc7a0499637a7288e53.hot-update.js 870 bytes [emitted] [immutable] [hmr] (name: runtime)
+  asset chunk/src_pages_index_index_tsx.js 1.35 MiB [emitted]
+  asset runtime.dfc7a0499637a7288e53.hot-update.json 59 bytes [emitted] [immutable] [hmr]
+Entrypoint app 9.8 MiB (474 KiB) = runtime.js 48.8 KiB runtime.dfc7a0499637a7288e53.hot-update.js 870 bytes taro.js 2.88 MiB app.js 6.88 MiB 5 auxiliary assets
+cached modules 6.03 MiB (javascript) 474 KiB (asset) [cached] 806 modules
+runtime modules 32.3 KiB 18 modules
+./src/knowledge-tasks.ts 8.02 KiB [built] [code generated]
+
+WARNING in ./src/app.scss (./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].oneOf[0].use[0]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[0]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[1]!./src/app.scss)
+Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 2, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:2:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+2 | @import './prototype.scss';
+
+
+src\app.scss 3:9  root stylesheet
+ @ ./src/app.scss 8:6-318 22:17-24 26:7-21 52:25-39 53:36-47 53:50-64 57:6-67:7 58:54-65 58:68-82 64:42-53 64:56-70 66:21-28 77:0-288 77:0-288 78:22-29 78:33-47 78:50-64 55:4-68:5
+ @ ./src/app.tsx 5:0-20
+ @ ./src/app.config.ts 7:0-30 54:26-35
+
+WARNING in ./src/app.scss (./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].oneOf[0].use[0]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[0]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[1]!./src/app.scss)
+Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 3, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:3:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+3 | @import './footer.scss';
+
+
+src\app.scss 4:9  root stylesheet
+ @ ./src/app.scss 8:6-318 22:17-24 26:7-21 52:25-39 53:36-47 53:50-64 57:6-67:7 58:54-65 58:68-82 64:42-53 64:56-70 66:21-28 77:0-288 77:0-288 78:22-29 78:33-47 78:50-64 55:4-68:5
+ @ ./src/app.tsx 5:0-20
+ @ ./src/app.config.ts 7:0-30 54:26-35
+
+WARNING in ./src/app.scss (./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].oneOf[0].use[0]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[0]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[1]!./src/app.scss)
+Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 4, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:4:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+4 | @import './features.scss';
+
+
+src\app.scss 5:9  root stylesheet
+ @ ./src/app.scss 8:6-318 22:17-24 26:7-21 52:25-39 53:36-47 53:50-64 57:6-67:7 58:54-65 58:68-82 64:42-53 64:56-70 66:21-28 77:0-288 77:0-288 78:22-29 78:33-47 78:50-64 55:4-68:5
+ @ ./src/app.tsx 5:0-20
+ @ ./src/app.config.ts 7:0-30 54:26-35
+
+webpack 5.91.0 compiled with 3 warnings in 511 ms
+
+● Webpack █████████████████████████ setup (7%) compile 
+ ExternalsPlugin
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (53%) 2/4 entries 123/126 depende
+ncies 280/79 modules 0 active 
+ 
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (65%) 3/4 entries 156/156 depende
+ncies 676/99 modules 0 active 
+ 
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (70%)  
+ finish module graph
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (70%)  
+ plugins
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (80%)  
+ module ids
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (89%)  
+ after hashing
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+√ Webpack
+  Compiled successfully in 1.60s
+
+⚠️ Warnings: 
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 2, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:2:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+2 | @import './prototype.scss';
+
+
+src\app.scss 3:9  root stylesheet
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 3, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:3:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+3 | @import './footer.scss';
+
+
+src\app.scss 4:9  root stylesheet
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 4, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:4:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+4 | @import './features.scss';
+
+
+src\app.scss 5:9  root stylesheet
+
+→ Watching... [2026/10/18 23:10:19]
+
+⚠️  编译警告. 2026/10/18 23:10:20
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 2, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:2:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+2 | @import './prototype.scss';
+
+
+src\app.scss 3:9  root stylesheet
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 3, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:3:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+3 | @import './footer.scss';
+
+
+src\app.scss 4:9  root stylesheet
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 4, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:4:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+4 | @import './features.scss';
+
+
+src\app.scss 5:9  root stylesheet
+
+assets by status 13.9 MiB [cached] 10 assets
+assets by path . 1.57 MiB
+  assets by path *.js 225 KiB
+    asset src_pages_index_index_tsx.27ab3bcbba90b2665407.hot-update.js 175 KiB [emitted] [immutable] [hmr]
+    asset runtime.js 48.8 KiB [emitted] (name: runtime)
+    asset runtime.27ab3bcbba90b2665407.hot-update.js 870 bytes [emitted] [immutable] [hmr] (name: runtime)
+  asset chunk/src_pages_index_index_tsx.js 1.35 MiB [emitted]
+  asset runtime.27ab3bcbba90b2665407.hot-update.json 59 bytes [emitted] [immutable] [hmr]
+Entrypoint app 9.8 MiB (474 KiB) = runtime.js 48.8 KiB runtime.27ab3bcbba90b2665407.hot-update.js 870 bytes taro.js 2.88 MiB app.js 6.88 MiB 5 auxiliary assets
+cached modules 5.97 MiB (javascript) 474 KiB (asset) [cached] 806 modules
+runtime modules 32.3 KiB 18 modules
+./src/KnowledgeFlow.tsx 78.2 KiB [built] [code generated]
+
+WARNING in ./src/app.scss (./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].oneOf[0].use[0]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[0]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[1]!./src/app.scss)
+Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 2, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:2:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+2 | @import './prototype.scss';
+
+
+src\app.scss 3:9  root stylesheet
+ @ ./src/app.scss 8:6-318 22:17-24 26:7-21 52:25-39 53:36-47 53:50-64 57:6-67:7 58:54-65 58:68-82 64:42-53 64:56-70 66:21-28 77:0-288 77:0-288 78:22-29 78:33-47 78:50-64 55:4-68:5
+ @ ./src/app.tsx 5:0-20
+ @ ./src/app.config.ts 7:0-30 54:26-35
+
+WARNING in ./src/app.scss (./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].oneOf[0].use[0]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[0]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[1]!./src/app.scss)
+Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 3, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:3:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+3 | @import './footer.scss';
+
+
+src\app.scss 4:9  root stylesheet
+ @ ./src/app.scss 8:6-318 22:17-24 26:7-21 52:25-39 53:36-47 53:50-64 57:6-67:7 58:54-65 58:68-82 64:42-53 64:56-70 66:21-28 77:0-288 77:0-288 78:22-29 78:33-47 78:50-64 55:4-68:5
+ @ ./src/app.tsx 5:0-20
+ @ ./src/app.config.ts 7:0-30 54:26-35
+
+WARNING in ./src/app.scss (./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].oneOf[0].use[0]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[0]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[1]!./src/app.scss)
+Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 4, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:4:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+4 | @import './features.scss';
+
+
+src\app.scss 5:9  root stylesheet
+ @ ./src/app.scss 8:6-318 22:17-24 26:7-21 52:25-39 53:36-47 53:50-64 57:6-67:7 58:54-65 58:68-82 64:42-53 64:56-70 66:21-28 77:0-288 77:0-288 78:22-29 78:33-47 78:50-64 55:4-68:5
+ @ ./src/app.tsx 5:0-20
+ @ ./src/app.config.ts 7:0-30 54:26-35
+
+webpack 5.91.0 compiled with 3 warnings in 1604 ms
+
+● Webpack █████████████████████████ setup (7%) compile 
+ ExternalsPlugin
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (53%) 1/4 entries 124/131 depende
+ncies 234/80 modules 0 active 
+ 
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (64%) 3/4 entries 156/156 depende
+ncies 677/99 modules 0 active 
+ 
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (73%)  
+ after chunk graph
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (88%)  
+ runtime requirements
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+√ Webpack
+  Compiled successfully in 853.21ms
+
+⚠️ Warnings: 
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 2, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:2:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+2 | @import './prototype.scss';
+
+
+src\app.scss 3:9  root stylesheet
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 3, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:3:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+3 | @import './footer.scss';
+
+
+src\app.scss 4:9  root stylesheet
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 4, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:4:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+4 | @import './features.scss';
+
+
+src\app.scss 5:9  root stylesheet
+
+→ Watching... [2026/10/18 23:16:24]
+
+⚠️  编译警告. 2026/10/18 23:16:25
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 2, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:2:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+2 | @import './prototype.scss';
+
+
+src\app.scss 3:9  root stylesheet
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 3, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:3:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+3 | @import './footer.scss';
+
+
+src\app.scss 4:9  root stylesheet
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 4, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:4:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+4 | @import './features.scss';
+
+
+src\app.scss 5:9  root stylesheet
+
+assets by status 13.9 MiB [cached] 10 assets
+assets by path . 1.5 MiB
+  assets by path *.js 155 KiB
+    asset src_pages_index_index_tsx.ded1fff14c8d6ad4dd7f.hot-update.js 105 KiB [emitted] [immutable] [hmr]
+    asset runtime.js 48.8 KiB [emitted] (name: runtime)
+    asset runtime.ded1fff14c8d6ad4dd7f.hot-update.js 870 bytes [emitted] [immutable] [hmr] (name: runtime)
+  asset chunk/src_pages_index_index_tsx.js 1.35 MiB [emitted]
+  asset runtime.ded1fff14c8d6ad4dd7f.hot-update.json 59 bytes [emitted] [immutable] [hmr]
+Entrypoint app 9.8 MiB (474 KiB) = runtime.js 48.8 KiB runtime.ded1fff14c8d6ad4dd7f.hot-update.js 870 bytes taro.js 2.88 MiB app.js 6.88 MiB 5 auxiliary assets
+cached modules 6 MiB (javascript) 474 KiB (asset) [cached] 806 modules
+runtime modules 32.3 KiB 18 modules
+./src/MaterialFlow.tsx 43.7 KiB [built] [code generated]
+
+WARNING in ./src/app.scss (./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].oneOf[0].use[0]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[0]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[1]!./src/app.scss)
+Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 2, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:2:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+2 | @import './prototype.scss';
+
+
+src\app.scss 3:9  root stylesheet
+ @ ./src/app.scss 8:6-318 22:17-24 26:7-21 52:25-39 53:36-47 53:50-64 57:6-67:7 58:54-65 58:68-82 64:42-53 64:56-70 66:21-28 77:0-288 77:0-288 78:22-29 78:33-47 78:50-64 55:4-68:5
+ @ ./src/app.tsx 5:0-20
+ @ ./src/app.config.ts 7:0-30 54:26-35
+
+WARNING in ./src/app.scss (./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].oneOf[0].use[0]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[0]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[1]!./src/app.scss)
+Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 3, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:3:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+3 | @import './footer.scss';
+
+
+src\app.scss 4:9  root stylesheet
+ @ ./src/app.scss 8:6-318 22:17-24 26:7-21 52:25-39 53:36-47 53:50-64 57:6-67:7 58:54-65 58:68-82 64:42-53 64:56-70 66:21-28 77:0-288 77:0-288 78:22-29 78:33-47 78:50-64 55:4-68:5
+ @ ./src/app.tsx 5:0-20
+ @ ./src/app.config.ts 7:0-30 54:26-35
+
+WARNING in ./src/app.scss (./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].oneOf[0].use[0]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[0]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[1]!./src/app.scss)
+Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 4, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:4:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+4 | @import './features.scss';
+
+
+src\app.scss 5:9  root stylesheet
+ @ ./src/app.scss 8:6-318 22:17-24 26:7-21 52:25-39 53:36-47 53:50-64 57:6-67:7 58:54-65 58:68-82 64:42-53 64:56-70 66:21-28 77:0-288 77:0-288 78:22-29 78:33-47 78:50-64 55:4-68:5
+ @ ./src/app.tsx 5:0-20
+ @ ./src/app.config.ts 7:0-30 54:26-35
+
+webpack 5.91.0 compiled with 3 warnings in 854 ms
+
+● Webpack █████████████████████████ setup (7%) compile 
+ ExternalsPlugin
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (52%) 1/4 entries 121/124 depende
+ncies 218/77 modules 0 active 
+ 
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (64%) 3/4 entries 156/156 depende
+ncies 681/99 modules 0 active 
+ 
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (70%)  
+ finish module graph
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (71%)  
+ dependencies optimization
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (88%)  
+ runtime requirements
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+√ Webpack
+  Compiled successfully in 1.62s
+
+⚠️ Warnings: 
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 2, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:2:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+2 | @import './prototype.scss';
+
+
+src\app.scss 3:9  root stylesheet
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 3, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:3:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+3 | @import './footer.scss';
+
+
+src\app.scss 4:9  root stylesheet
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 4, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:4:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+4 | @import './features.scss';
+
+
+src\app.scss 5:9  root stylesheet
+
+→ Watching... [2026/10/18 23:26:45]
+
+⚠️  编译警告. 2026/10/18 23:26:46
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 2, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:2:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+2 | @import './prototype.scss';
+
+
+src\app.scss 3:9  root stylesheet
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 3, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:3:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+3 | @import './footer.scss';
+
+
+src\app.scss 4:9  root stylesheet
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 4, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:4:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+4 | @import './features.scss';
+
+
+src\app.scss 5:9  root stylesheet
+
+assets by status 13.9 MiB [cached] 10 assets
+assets by path . 1.57 MiB
+  assets by path *.js 226 KiB
+    asset src_pages_index_index_tsx.18e9f2e06de4e5b20f08.hot-update.js 177 KiB [emitted] [immutable] [hmr]
+    asset runtime.js 48.8 KiB [emitted] (name: runtime)
+    asset runtime.18e9f2e06de4e5b20f08.hot-update.js 870 bytes [emitted] [immutable] [hmr] (name: runtime)
+  asset chunk/src_pages_index_index_tsx.js 1.35 MiB [emitted]
+  asset runtime.18e9f2e06de4e5b20f08.hot-update.json 59 bytes [emitted] [immutable] [hmr]
+Entrypoint app 9.8 MiB (474 KiB) = runtime.js 48.8 KiB runtime.18e9f2e06de4e5b20f08.hot-update.js 870 bytes taro.js 2.88 MiB app.js 6.88 MiB 5 auxiliary assets
+cached modules 5.97 MiB (javascript) 474 KiB (asset) [cached] 806 modules
+runtime modules 32.3 KiB 18 modules
+./src/KnowledgeFlow.tsx 79 KiB [built] [code generated]
+
+WARNING in ./src/app.scss (./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].oneOf[0].use[0]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[0]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[1]!./src/app.scss)
+Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 2, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:2:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+2 | @import './prototype.scss';
+
+
+src\app.scss 3:9  root stylesheet
+ @ ./src/app.scss 8:6-318 22:17-24 26:7-21 52:25-39 53:36-47 53:50-64 57:6-67:7 58:54-65 58:68-82 64:42-53 64:56-70 66:21-28 77:0-288 77:0-288 78:22-29 78:33-47 78:50-64 55:4-68:5
+ @ ./src/app.tsx 5:0-20
+ @ ./src/app.config.ts 7:0-30 54:26-35
+
+WARNING in ./src/app.scss (./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].oneOf[0].use[0]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[0]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[1]!./src/app.scss)
+Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 3, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:3:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+3 | @import './footer.scss';
+
+
+src\app.scss 4:9  root stylesheet
+ @ ./src/app.scss 8:6-318 22:17-24 26:7-21 52:25-39 53:36-47 53:50-64 57:6-67:7 58:54-65 58:68-82 64:42-53 64:56-70 66:21-28 77:0-288 77:0-288 78:22-29 78:33-47 78:50-64 55:4-68:5
+ @ ./src/app.tsx 5:0-20
+ @ ./src/app.config.ts 7:0-30 54:26-35
+
+WARNING in ./src/app.scss (./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].oneOf[0].use[0]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[0]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[1]!./src/app.scss)
+Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 4, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:4:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+4 | @import './features.scss';
+
+
+src\app.scss 5:9  root stylesheet
+ @ ./src/app.scss 8:6-318 22:17-24 26:7-21 52:25-39 53:36-47 53:50-64 57:6-67:7 58:54-65 58:68-82 64:42-53 64:56-70 66:21-28 77:0-288 77:0-288 78:22-29 78:33-47 78:50-64 55:4-68:5
+ @ ./src/app.tsx 5:0-20
+ @ ./src/app.config.ts 7:0-30 54:26-35
+
+webpack 5.91.0 compiled with 3 warnings in 1628 ms
+
+● Webpack █████████████████████████ setup (7%) compile 
+ ExternalsPlugin
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (32%) 2/4 entries 24/24 dependenc
+ies 147/23 modules 0 active 
+ 
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (62%) 2/4 entries 151/151 depende
+ncies 641/94 modules 0 active 
+ 
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (73%)  
+ after chunk graph
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (88%)  
+ runtime requirements
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+√ Webpack
+  Compiled successfully in 453.76ms
+
+⚠️ Warnings: 
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 2, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:2:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+2 | @import './prototype.scss';
+
+
+src\app.scss 3:9  root stylesheet
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 3, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:3:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+3 | @import './footer.scss';
+
+
+src\app.scss 4:9  root stylesheet
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 4, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:4:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+4 | @import './features.scss';
+
+
+src\app.scss 5:9  root stylesheet
+
+→ Watching... [2026/10/18 23:26:47]
+
+⚠️  编译警告. 2026/10/18 23:26:48
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 2, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:2:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+2 | @import './prototype.scss';
+
+
+src\app.scss 3:9  root stylesheet
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 3, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:3:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+3 | @import './footer.scss';
+
+
+src\app.scss 4:9  root stylesheet
+
+ModuleWarning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 4, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:4:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+4 | @import './features.scss';
+
+
+src\app.scss 5:9  root stylesheet
+
+assets by status 13.9 MiB [cached] 10 assets
+assets by path . 1.44 MiB
+  assets by path *.js 84.6 KiB
+    asset runtime.js 48.8 KiB [emitted] (name: runtime)
+    asset src_pages_index_index_tsx.385eb6b79abd8bf566d7.hot-update.js 35 KiB [emitted] [immutable] [hmr]
+    asset runtime.385eb6b79abd8bf566d7.hot-update.js 870 bytes [emitted] [immutable] [hmr] (name: runtime)
+  asset chunk/src_pages_index_index_tsx.js 1.35 MiB [emitted]
+  asset runtime.385eb6b79abd8bf566d7.hot-update.json 59 bytes [emitted] [immutable] [hmr]
+Entrypoint app 9.8 MiB (474 KiB) = runtime.js 48.8 KiB runtime.385eb6b79abd8bf566d7.hot-update.js 870 bytes taro.js 2.88 MiB app.js 6.88 MiB 5 auxiliary assets
+cached modules 6.03 MiB (javascript) 474 KiB (asset) [cached] 806 modules
+runtime modules 32.3 KiB 18 modules
+./src/knowledge-api.ts 13.5 KiB [built] [code generated]
+
+WARNING in ./src/app.scss (./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].oneOf[0].use[0]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[0]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[1]!./src/app.scss)
+Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 2, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:2:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+2 | @import './prototype.scss';
+
+
+src\app.scss 3:9  root stylesheet
+ @ ./src/app.scss 8:6-318 22:17-24 26:7-21 52:25-39 53:36-47 53:50-64 57:6-67:7 58:54-65 58:68-82 64:42-53 64:56-70 66:21-28 77:0-288 77:0-288 78:22-29 78:33-47 78:50-64 55:4-68:5
+ @ ./src/app.tsx 5:0-20
+ @ ./src/app.config.ts 7:0-30 54:26-35
+
+WARNING in ./src/app.scss (./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].oneOf[0].use[0]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[0]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[1]!./src/app.scss)
+Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 3, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:3:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+3 | @import './footer.scss';
+
+
+src\app.scss 4:9  root stylesheet
+ @ ./src/app.scss 8:6-318 22:17-24 26:7-21 52:25-39 53:36-47 53:50-64 57:6-67:7 58:54-65 58:68-82 64:42-53 64:56-70 66:21-28 77:0-288 77:0-288 78:22-29 78:33-47 78:50-64 55:4-68:5
+ @ ./src/app.tsx 5:0-20
+ @ ./src/app.config.ts 7:0-30 54:26-35
+
+WARNING in ./src/app.scss (./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].oneOf[0].use[0]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[0]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[1]!./src/app.scss)
+Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 4, column 8 of file:///D:/nbproject/LevelUpProject/frontend/src/app.scss:4:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+4 | @import './features.scss';
+
+
+src\app.scss 5:9  root stylesheet
+ @ ./src/app.scss 8:6-318 22:17-24 26:7-21 52:25-39 53:36-47 53:50-64 57:6-67:7 58:54-65 58:68-82 64:42-53 64:56-70 66:21-28 77:0-288 77:0-288 78:22-29 78:33-47 78:50-64 55:4-68:5
+ @ ./src/app.tsx 5:0-20
+ @ ./src/app.config.ts 7:0-30 54:26-35
+
+webpack 5.91.0 compiled with 3 warnings in 456 ms

@@ -1,0 +1,35 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+___ test_worker_release_is_immediately_expired_at_mysql_datetime_precision ____
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x000001B2B7027E00>
+
+    def test_worker_release_is_immediately_expired_at_mysql_datetime_precision(repo):
+        from app.knowledge.worker import WorkerGuard
+        instant=int(repo.accounts.clock())+.9
+        repo.accounts.clock=lambda:instant
+        first=WorkerGuard(repo.accounts,repo.config,'first')
+        first.acquire(); first.release()
+        second=WorkerGuard(repo.accounts,repo.config,'second')
+>       second.acquire(); second.release()
+        ^^^^^^^^^^^^^^^^
+
+tests\test_knowledge_worker_boundaries.py:23: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <app.knowledge.worker.WorkerGuard object at 0x000001B2B70FC910>
+
+    def acquire(self):
+        with self.database.session() as session:
+            now = self.now()
+            session.execute(insert(WorkerLease).values(id=self.identity,owner=self.owner,fence=0,
+                            expires_at=now,heartbeat_at=now).on_duplicate_key_update(id=self.identity))
+            row = session.scalar(select(WorkerLease).where(WorkerLease.id == self.identity).with_for_update())
+            if row.owner != self.owner and row.expires_at > now:
+>               raise AppError('KNOWLEDGE_WORKER_LOCKED', '֪ʶ��ִ������������', 409)
+E               app.errors.AppError: ֪ʶ��ִ������������
+
+app\knowledge\worker.py:84: AppError
+=========================== short test summary info ===========================
+FAILED tests/test_knowledge_worker_boundaries.py::test_worker_release_is_immediately_expired_at_mysql_datetime_precision
+1 failed, 8 deselected in 1.43s

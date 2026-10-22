@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="12" time="13.550" timestamp="2026-10-18T21:00:34.102832+08:00" hostname="zxy"><testcase classname="tests.test_knowledge_agent" name="test_pure_knowledge_path_works_without_tavily_and_never_sends_private_text" time="0.074" /><testcase classname="tests.test_knowledge_agent" name="test_pure_web_and_mixed_use_official_tools_with_approved_dynamic_parameters" time="0.128" /><testcase classname="tests.test_knowledge_agent" name="test_private_injection_cannot_expand_scope_or_public_parameters" time="0.047" /><testcase classname="tests.test_knowledge_agent" name="test_disabled_network_never_invokes_public_plan_or_tools" time="0.009" /><testcase classname="tests.test_knowledge_agent" name="test_public_plan_is_built_without_document_content_and_parameters_are_pinned" time="0.056" /><testcase classname="tests.test_knowledge_agent" name="test_empty_repeated_attempts_and_all_tool_failures_still_spend_budget" time="0.046" /><testcase classname="tests.test_knowledge_agent" name="test_context_fairness_deduplication_and_honest_index_failure" time="0.012" /><testcase classname="tests.test_knowledge_agent" name="test_document_coverage_is_allocated_before_one_document_uses_all_slots" time="0.010" /><testcase classname="tests.test_knowledge_agent" name="test_explicit_public_url_is_extracted_as_body_and_absent_tavily_is_honest" time="0.057"><failure message="AssertionError: assert ([EvidenceSegment(id='kb-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', text='PRIVATE_SENTINEL_NEVE...n=1, chunk_position=0, header_path=[], start_index=0, end_index=36, block=None, deleted=False, version_changed=False))] and None == 'TAVILY_NOT_CONFIGURED')&#10; +  where [EvidenceSegment(id='kb-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', text='PRIVATE_SENTINEL_NEVE...n=1, chunk_position=0, header_path=[], start_index=0, end_index=36, block=None, deleted=False, version_changed=False))] = KnowledgeOutcome(evidence=[EvidenceSegment(id='kb-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', t...el_calls=0, tool_calls=1, page_attempts=0, reason_code=None, usage={}, depends_on_documents=True, knowledge_error=None).evidence&#10; +  and   None = KnowledgeOutcome(evidence=[EvidenceSegment(id='kb-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', t...el_calls=0, tool_calls=1, page_attempts=0, reason_code=None, usage={}, depends_on_documents=True, knowledge_error=None).reason_code">wire = {'calls': [{'url': 'https://api.tavily.com/extract', 'body': {'urls': ['https://example.com/'], 'include_images': Fals...ps://example.com/', 'content': 'summary', 'raw_content': 'body'}], 'usage': {'credits': 1}}, 'status': 200, 'delay': 0}
+
+    @pytest.mark.anyio
+    async def test_explicit_public_url_is_extracted_as_body_and_absent_tavily_is_honest(wire):
+        from app.knowledge.retrieval import KnowledgeAgent
+        async def search(query,maximum): return []
+        model = ScriptedModel(replies=[calls(('tavily_extract',{'urls':['https://example.com/']})),AIMessage(content='done')])
+        result = await KnowledgeAgent(settings(),knowledge_search=search,model=model,public_plan=plan(searches=[],urls=['https://example.com/'])).run('学习 https://example.com/')
+        assert result.evidence and result.evidence[0].content_kind=='full_extract'
+        assert 'query' not in wire['calls'][0]['body'] and result.page_attempts==1
+        async def private(query,maximum): return [source()]
+        result = await KnowledgeAgent(Settings(_env_file=None),knowledge_search=private).run('学习资料',allow_web=True)
+&gt;       assert result.evidence and result.reason_code=='TAVILY_NOT_CONFIGURED'
+E       AssertionError: assert ([EvidenceSegment(id='kb-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', text='PRIVATE_SENTINEL_NEVE...n=1, chunk_position=0, header_path=[], start_index=0, end_index=36, block=None, deleted=False, version_changed=False))] and None == 'TAVILY_NOT_CONFIGURED')
+E        +  where [EvidenceSegment(id='kb-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', text='PRIVATE_SENTINEL_NEVE...n=1, chunk_position=0, header_path=[], start_index=0, end_index=36, block=None, deleted=False, version_changed=False))] = KnowledgeOutcome(evidence=[EvidenceSegment(id='kb-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', t...el_calls=0, tool_calls=1, page_attempts=0, reason_code=None, usage={}, depends_on_documents=True, knowledge_error=None).evidence
+E        +  and   None = KnowledgeOutcome(evidence=[EvidenceSegment(id='kb-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', t...el_calls=0, tool_calls=1, page_attempts=0, reason_code=None, usage={}, depends_on_documents=True, knowledge_error=None).reason_code
+
+tests\test_knowledge_agent.py:139: AssertionError</failure></testcase><testcase classname="tests.test_knowledge_agent" name="test_public_parameters_are_not_shared_between_parallel_users" time="0.084" /><testcase classname="tests.test_knowledge_retrieval_store" name="test_retrieval_checkpoints_restore_only_original_owned_document_versions" time="4.619"><failure message="Failed: DID NOT RAISE AppError">index = &lt;app.knowledge.index.VectorIndex object at 0x000001E324800440&gt;
+repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x000001E3247278C0&gt;
+
+    def test_retrieval_checkpoints_restore_only_original_owned_document_versions(index,repo):
+        from app.knowledge.retrieval_store import KnowledgeRetriever
+        from app.knowledge.database import Job,Document
+        from app.knowledge.evidence import evidence_from_hit
+        selected = ready(repo,index)
+        jid = ai_job(repo)
+        with repo.database.session() as session: session.get(Job,jid).payload = {'documents':selected,'question':'原始问题'}
+        queries = []
+        class Embeddings:
+            async def aembed_query(self,text): queries.append(text); return [1.0]*1024
+        retrieval = KnowledgeRetriever(repo.accounts,repo.config,index,embedding_factory=lambda claim:Embeddings())
+        claim = retrieval.claim('worker')
+        result = asyncio.run(retrieval.retrieve(claim,'原始问题',selected,allow_web=False))
+        assert result.evidence[0].text=='Original content' and queries==['原始问题']
+        restored = asyncio.run(KnowledgeRetriever(repo.accounts,repo.config,index,embedding_factory=lambda claim:Embeddings()).retrieve(claim,'原始问题',selected,allow_web=False))
+        assert restored.evidence==result.evidence and len(queries)==1
+&gt;       with pytest.raises(AppError): asyncio.run(retrieval.retrieve(claim,'变更后的问题',selected,allow_web=False))
+             ^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE AppError
+
+tests\test_knowledge_retrieval_store.py:37: Failed</failure></testcase><testcase classname="tests.test_knowledge_retrieval_store" name="test_index_errors_are_recorded_without_guessing_content_and_scope_failure_can_finish" time="1.059" /></testsuite></testsuites>

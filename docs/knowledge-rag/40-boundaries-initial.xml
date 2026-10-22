@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="4" skipped="0" tests="44" time="44.590" timestamp="2026-10-18T23:02:46.997937+08:00" hostname="zxy"><testcase classname="tests.test_knowledge_boundaries" name="test_import_count_and_invalid_idempotency_keys_are_rejected_before_storage" time="1.147" /><testcase classname="tests.test_knowledge_boundaries" name="test_import_transaction_failure_removes_only_its_uncommitted_file" time="0.205"><failure message="TypeError: test_import_transaction_failure_removes_only_its_uncommitted_file.&lt;locals&gt;.interrupt() takes 1 positional argument but 3 were given">repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x00000279D6EEB4D0&gt;
+
+    def test_import_transaction_failure_removes_only_its_uncommitted_file(repo):
+        def interrupt(session):
+            if any(isinstance(x,Job) for x in session.new): raise RuntimeError('injected commit failure')
+        event.listen(Session,'before_flush',interrupt)
+        try:
+&gt;           with pytest.raises(RuntimeError): submit(repo)
+                                              ^^^^^^^^^^^^
+
+tests\test_knowledge_boundaries.py:39: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_knowledge_jobs.py:9: in submit
+    return repo.submit_file('alice', key, 'note.txt', b'Original content')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app\knowledge\repository.py:106: in submit_file
+    return self._submit_import(uid, key, identity, lambda session: (
+app\knowledge\repository.py:67: in _submit_import
+    user = self.accounts._user(session, uid, True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app\accounts\repository.py:92: in _user
+    u = s.scalar(select(User).where(User.id == uid).with_for_update().execution_options(populate_existing=True))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:2421: in scalar
+    return self._execute_internal(
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:2250: in _execute_internal
+    ) = compile_state_cls.orm_pre_session_exec(
+.venv\Lib\site-packages\sqlalchemy\orm\context.py:577: in orm_pre_session_exec
+    session._autoflush()
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:3062: in _autoflush
+    self.flush()
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:4353: in flush
+    self._flush(objects)
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:4381: in _flush
+    self.dispatch.before_flush(self, flush_context, objects)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;sqlalchemy.event.attr._EmptyListener object at 0x00000279D6ECDB80&gt;
+args = (&lt;sqlalchemy.orm.session.Session object at 0x00000279D6DEEF90&gt;, &lt;sqlalchemy.orm.unitofwork.UOWTransaction object at 0x00000279D6DF5AE0&gt;, None)
+kw = {}
+
+    def __call__(self, *args: Any, **kw: Any) -&gt; None:
+        """Execute this event."""
+    
+        for fn in self.parent_listeners:
+&gt;           fn(*args, **kw)
+E           TypeError: test_import_transaction_failure_removes_only_its_uncommitted_file.&lt;locals&gt;.interrupt() takes 1 positional argument but 3 were given
+
+.venv\Lib\site-packages\sqlalchemy\event\attr.py:388: TypeError</failure></testcase><testcase classname="tests.test_knowledge_boundaries" name="test_material_copy_rejects_unsupported_or_empty_canonical_body[content0-UNSUPPORTED_FORMAT]" time="0.228" /><testcase classname="tests.test_knowledge_boundaries" name="test_material_copy_rejects_unsupported_or_empty_canonical_body[content1-NO_READABLE_CONTENT]" time="0.263" /><testcase classname="tests.test_knowledge_boundaries" name="test_unpublished_broken_and_profile_changed_documents_cannot_be_selected" time="0.231" /><testcase classname="tests.test_knowledge_boundaries" name="test_job_validation_and_root_checkpoint_updates_preserve_budget" time="0.397" /><testcase classname="tests.test_knowledge_boundaries" name="test_claim_terminalizes_unrecoverable_queued_work_without_execution[deadline]" time="0.376" /><testcase classname="tests.test_knowledge_boundaries" name="test_claim_terminalizes_unrecoverable_queued_work_without_execution[attempts]" time="0.316" /><testcase classname="tests.test_knowledge_boundaries" name="test_claim_terminalizes_unrecoverable_queued_work_without_execution[deleted]" time="0.259" /><testcase classname="tests.test_knowledge_boundaries" name="test_existing_publication_is_reused_only_for_same_owner" time="0.332" /><testcase classname="tests.test_knowledge_boundaries" name="test_retry_identity_conflict_active_child_and_total_attempt_limit" time="0.336" /><testcase classname="tests.test_knowledge_boundaries" name="test_language_operations_reject_import_and_already_succeeded_operation" time="0.516" /><testcase classname="tests.test_knowledge_boundaries" name="test_publication_lease_validates_reviewed_operation_and_waits_boundedly" time="0.469" /><testcase classname="tests.test_knowledge_boundaries" name="test_wait_model_call_ends_at_original_deadline_and_propagates_other_errors" time="0.397"><failure message="AssertionError: assert 'KNOWLEDGE_JOB_STALE' == 'KNOWLEDGE_JOB_EXPIRED'&#10;  &#10;  - KNOWLEDGE_JOB_EXPIRED&#10;  ?                ------&#10;  + KNOWLEDGE_JOB_STALE&#10;  ?               ++++">repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x00000279D75E57F0&gt;
+
+    def test_wait_model_call_ends_at_original_deadline_and_propagates_other_errors(repo):
+        ai_job(repo); jobs=JobBudgets(repo.accounts,repo.config); claim=jobs.claim('worker')
+        with repo.database.session() as session:
+            quota=jobs.accounts._quota(session,'alice'); quota.busy_id='busy'; quota.busy_until=repo.accounts.clock()+60
+            session.get(Job,claim.id).deadline_at=repo.now()+timedelta(seconds=.5)
+&gt;       fails('KNOWLEDGE_JOB_EXPIRED',lambda:asyncio.run(jobs.wait_model_call(claim,7)))
+
+tests\test_knowledge_boundaries.py:152: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+code = 'KNOWLEDGE_JOB_EXPIRED'
+call = &lt;function test_wait_model_call_ends_at_original_deadline_and_propagates_other_errors.&lt;locals&gt;.&lt;lambda&gt; at 0x00000279D77FBBA0&gt;
+
+    def fails(code,call):
+        with pytest.raises(AppError) as caught: call()
+&gt;       assert caught.value.code==code
+E       AssertionError: assert 'KNOWLEDGE_JOB_STALE' == 'KNOWLEDGE_JOB_EXPIRED'
+E         
+E         - KNOWLEDGE_JOB_EXPIRED
+E         ?                ------
+E         + KNOWLEDGE_JOB_STALE
+E         ?               ++++
+
+tests\test_knowledge_boundaries.py:24: AssertionError</failure></testcase><testcase classname="tests.test_knowledge_boundaries" name="test_embedding_reservation_input_identity_and_settlement_guards" time="0.433" /><testcase classname="tests.test_knowledge_scope_boundaries" name="test_preparation_quota_identity_and_scope_draft_consistency" time="0.204" /><testcase classname="tests.test_knowledge_scope_boundaries" name="test_completed_scope_replays_without_model_and_rejects_expiry_and_duplicate_topics" time="4.430" /><testcase classname="tests.test_knowledge_scope_boundaries" name="test_scope_never_guesses_private_learning_topics[index_error]" time="1.089" /><testcase classname="tests.test_knowledge_scope_boundaries" name="test_scope_never_guesses_private_learning_topics[empty]" time="1.255" /><testcase classname="tests.test_knowledge_scope_boundaries" name="test_scope_never_guesses_private_learning_topics[public_only]" time="1.156" /><testcase classname="tests.test_knowledge_scope_boundaries" name="test_scope_never_guesses_private_learning_topics[unverified]" time="1.296" /><testcase classname="tests.test_knowledge_scope_boundaries" name="test_scope_never_guesses_private_learning_topics[no_model]" time="1.055" /><testcase classname="tests.test_knowledge_scope_boundaries" name="test_scope_checkpoint_restores_draft_without_paid_regeneration" time="1.591" /><testcase classname="tests.test_knowledge_scope_boundaries" name="test_quiz_idempotency_key_quota_and_validated_policy_guards" time="1.738" /><testcase classname="tests.test_knowledge_scope_boundaries" name="test_quiz_checkpoints_validate_prompt_and_reuse_unspent_call_credit" time="1.427"><failure message="AssertionError: assert ('ready' == 'ready'&#10;  &#10;    ready and ['ready', 'ready', 'ready'] == ['ready', 'ready']&#10;  &#10;  Left contains one more item: 'ready'&#10;  Use -v to get more diff)">index = &lt;app.knowledge.index.VectorIndex object at 0x00000279F5EC2B50&gt;
+repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x00000279F60025F0&gt;
+
+    def test_quiz_checkpoints_validate_prompt_and_reuse_unspent_call_credit(index,repo):
+        pipeline,claim,gateway,queued,body=setup_quiz(repo,index)
+        async def exercise():
+            checked=[]
+            first=CheckpointGateway(pipeline,claim,SequenceGateway([{'status':'ready','quiz':quiz_payload()}]))
+            before=first.remaining()
+            await first.generate(QuizDraftResult,'identical prompt',lambda v:checked.append(v.status))
+            restored=CheckpointGateway(pipeline,claim,SequenceGateway([]))
+            assert restored.remaining()==before+1
+            result=await restored.generate(QuizDraftResult,'identical prompt',lambda v:checked.append(v.status))
+            assert result.status=='ready' and checked==['ready','ready']
+            changed=CheckpointGateway(pipeline,claim,SequenceGateway([]))
+            with pytest.raises(AppError) as caught: await changed.generate(QuizDraftResult,'changed prompt')
+            assert caught.value.code=='KNOWLEDGE_CHECKPOINT_CHANGED'
+&gt;       asyncio.run(exercise())
+
+tests\test_knowledge_scope_boundaries.py:102: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+D:\anaconda3\Lib\asyncio\runners.py:195: in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+D:\anaconda3\Lib\asyncio\runners.py:118: in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+D:\anaconda3\Lib\asyncio\base_events.py:725: in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    async def exercise():
+        checked=[]
+        first=CheckpointGateway(pipeline,claim,SequenceGateway([{'status':'ready','quiz':quiz_payload()}]))
+        before=first.remaining()
+        await first.generate(QuizDraftResult,'identical prompt',lambda v:checked.append(v.status))
+        restored=CheckpointGateway(pipeline,claim,SequenceGateway([]))
+        assert restored.remaining()==before+1
+        result=await restored.generate(QuizDraftResult,'identical prompt',lambda v:checked.append(v.status))
+&gt;       assert result.status=='ready' and checked==['ready','ready']
+E       AssertionError: assert ('ready' == 'ready'
+E         
+E           ready and ['ready', 'ready', 'ready'] == ['ready', 'ready']
+E         
+E         Left contains one more item: 'ready'
+E         Use -v to get more diff)
+
+tests\test_knowledge_scope_boundaries.py:98: AssertionError</failure></testcase><testcase classname="tests.test_knowledge_scope_boundaries" name="test_stale_online_quiz_refreshes_sources_and_cannot_reuse_old_web[index_error]" time="1.402" /><testcase classname="tests.test_knowledge_scope_boundaries" name="test_stale_online_quiz_refreshes_sources_and_cannot_reuse_old_web[refresh]" time="1.720" /><testcase classname="tests.test_knowledge_scope_boundaries" name="test_stale_online_quiz_refreshes_sources_and_cannot_reuse_old_web[no_model]" time="1.216" /><testcase classname="tests.test_knowledge_scope_boundaries" name="test_reindex_rejects_unready_wrong_identity_active_work_and_import_quota" time="0.550" /><testcase classname="tests.test_knowledge_storage_boundaries" name="test_web_import_executes_actual_body_budget_and_rejects_summary_only" time="0.291" /><testcase classname="tests.test_knowledge_storage_boundaries" name="test_restored_parse_and_split_reject_corrupted_profile_and_nonstaging_revision" time="0.431" /><testcase classname="tests.test_knowledge_storage_boundaries" name="test_unknown_import_kind_cannot_reach_embedding_or_publish" time="0.317" /><testcase classname="tests.test_knowledge_storage_boundaries" name="test_empty_whitespace_blocks_and_total_canonical_text_limit" time="0.002" /><testcase classname="tests.test_knowledge_storage_boundaries" name="test_upsert_compensates_a_real_delete_committed_during_vector_write" time="0.973" /><testcase classname="tests.test_knowledge_storage_boundaries" name="test_writer_lock_and_collection_identity_are_rechecked_on_every_effect" time="0.533"><failure message="AttributeError: 'VectorIndex' object has no attribute 'delete_user'">index = &lt;app.knowledge.index.VectorIndex object at 0x00000279F7924EF0&gt;
+repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x00000279F661B230&gt;
+
+    def test_writer_lock_and_collection_identity_are_rechecked_on_every_effect(index,repo):
+        collection=index.collection('alice')
+        collection.modify(metadata={**collection.metadata,'owner':'wrong-owner'})
+        fails('KNOWLEDGE_INDEX_PROFILE_MISMATCH',lambda:index.collection('alice'))
+&gt;       fails('KNOWLEDGE_INDEX_PROFILE_MISMATCH',lambda:index.delete_user('alice'))
+
+tests\test_knowledge_storage_boundaries.py:81: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_knowledge_boundaries.py:23: in fails
+    with pytest.raises(AppError) as caught: call()
+                                            ^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+&gt;   fails('KNOWLEDGE_INDEX_PROFILE_MISMATCH',lambda:index.delete_user('alice'))
+                                                    ^^^^^^^^^^^^^^^^^
+E   AttributeError: 'VectorIndex' object has no attribute 'delete_user'
+
+tests\test_knowledge_storage_boundaries.py:81: AttributeError</failure></testcase><testcase classname="tests.test_knowledge_storage_boundaries" name="test_sql_chunk_mismatch_stops_vector_write" time="0.686" /><testcase classname="tests.test_knowledge_storage_boundaries" name="test_disk_vector_manifest_requires_present_valid_vectors[missing]" time="0.699" /><testcase classname="tests.test_knowledge_storage_boundaries" name="test_disk_vector_manifest_requires_present_valid_vectors[dimension]" time="0.644" /><testcase classname="tests.test_knowledge_storage_boundaries" name="test_index_search_validates_input_and_reports_empty_storage_as_technical_failure" time="1.181" /><testcase classname="tests.test_knowledge_storage_boundaries" name="test_exact_fallback_is_bounded_and_never_trusts_corrupt_vectors[too_many]" time="0.904" /><testcase classname="tests.test_knowledge_storage_boundaries" name="test_exact_fallback_is_bounded_and_never_trusts_corrupt_vectors[bad_vector]" time="0.822" /><testcase classname="tests.test_knowledge_storage_boundaries" name="test_exact_fallback_is_bounded_and_never_trusts_corrupt_vectors[no_vectors]" time="1.020" /><testcase classname="tests.test_knowledge_storage_boundaries" name="test_exact_fallback_is_bounded_and_never_trusts_corrupt_vectors[zero_norm]" time="0.804" /><testcase classname="tests.test_knowledge_storage_boundaries" name="test_embedding_corrupt_cache_missing_key_deadline_and_semaphore_are_honest" time="0.322" /></testsuite></testsuites>

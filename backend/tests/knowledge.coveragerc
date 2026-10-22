@@ -1,0 +1,9 @@
+[run]
+branch = true
+source = app
+patch = subprocess
+data_file = test-results/knowledge-coverage/.coverage
+
+[report]
+show_missing = true
+skip_empty = true

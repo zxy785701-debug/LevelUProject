@@ -1,0 +1,24 @@
+......F                                                                  [100%]
+================================== FAILURES ===================================
+_ test_reindex_and_delete_api_are_owned_and_delete_remains_available_when_disabled _
+
+knowledge_app = <fastapi.applications.FastAPI object at 0x000001ADFF5A4CD0>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001ADFF8999D0>
+
+    @pytest.mark.anyio
+    async def test_reindex_and_delete_api_are_owned_and_delete_remains_available_when_disabled(knowledge_app,monkeypatch):
+        monkeypatch.setattr(KnowledgeSettings,'unavailable_reason',lambda self,**kw:None)
+        repo = KnowledgeRepository(knowledge_app.state.accounts,knowledge_app.state.knowledge_config)
+        async with httpx.AsyncClient(transport=httpx.ASGITransport(app=knowledge_app),base_url='http://test') as client:
+            identity = await login(client)
+            seed(repo,uid=identity['user']['id'])
+            response = await client.post('/api/v1/knowledge/documents/doc/reindex',headers={'Idempotency-Key':'reindex'})
+>           assert response.status_code == 200, response.text
+E           AssertionError: {"code":"NOT_FOUND","message":"�ӿڲ�����","data":null}
+E           assert 404 == 200
+E            +  where 404 = <Response [404 Not Found]>.status_code
+
+tests\test_knowledge_api.py:121: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_knowledge_api.py::test_reindex_and_delete_api_are_owned_and_delete_remains_available_when_disabled
+1 failed, 6 passed in 14.83s

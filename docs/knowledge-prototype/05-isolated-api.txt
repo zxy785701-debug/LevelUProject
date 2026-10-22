@@ -1,0 +1,30 @@
+INFO:     Started server process [26764]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8002 (Press CTRL+C to quit)
+[levelup] app.accounts.repository ai_call operation=23754041-11bc-4ded-9d70-d377dea3e3ca kind=knowledgeqa minute_calls=1
+[levelup] app.accounts.repository ai_call operation=23754041-11bc-4ded-9d70-d377dea3e3ca kind=knowledgeqa minute_calls=2
+[levelup] app.accounts.repository ai_call operation=9dd3c874-833b-4515-9976-db4e67178738 kind=material minute_calls=3
+[levelup] app.knowledge.worker job_failed job=b902bbd7-a80d-41cf-880d-f6ee72a67fe1 kind=quiz error_code=KNOWLEDGE_JOB_STALE
+[levelup] app.accounts.repository ai_call operation=eb807a63-fd6b-4184-8c3b-52f30b61025f kind=quiz minute_calls=4
+[levelup] app.accounts.repository ai_call operation=eb807a63-fd6b-4184-8c3b-52f30b61025f kind=quiz minute_calls=5
+[levelup] app.accounts.repository ai_call operation=baed5924-4a63-4390-ac4d-8d84f8e8e146 kind=report minute_calls=6
+[levelup] app.accounts.repository ai_finished operation=baed5924-4a63-4390-ac4d-8d84f8e8e146 status=succeeded error_code=None
+[levelup] app.accounts.repository ai_call operation=0c545f8b-561e-4991-ac36-f6f27328300c kind=knowledgeqa minute_calls=1
+[levelup] app.accounts.repository ai_call operation=19df3662-533f-44a7-a18a-cd8b5ef683ad kind=knowledgeqa minute_calls=2
+[levelup] app.accounts.repository ai_call operation=19df3662-533f-44a7-a18a-cd8b5ef683ad kind=knowledgeqa minute_calls=3
+[levelup] app.knowledge.worker job_failed job=01128e9a-c9cb-4749-a544-2d8f1ddeb7bd kind=reindex error_code=KNOWLEDGE_JOB_STALE
+[levelup] app.accounts.repository ai_call operation=4364a66d-96e1-41e9-9c35-de70ca516a57 kind=knowledgeqa minute_calls=1
+[levelup] app.accounts.repository ai_call operation=4364a66d-96e1-41e9-9c35-de70ca516a57 kind=knowledgeqa minute_calls=2
+[levelup] app.accounts.repository ai_call operation=4a402430-1c0b-4b83-80f4-8b6f09fe920e kind=material minute_calls=3
+[levelup] app.knowledge.worker job_failed job=37514080-f84b-4d86-8443-a7813415fe54 kind=quiz error_code=KNOWLEDGE_JOB_STALE
+[levelup] app.accounts.repository ai_call operation=9e26e3bb-8768-4815-8618-0e2a1c2f4a2c kind=quiz minute_calls=4
+[levelup] app.accounts.repository ai_call operation=9e26e3bb-8768-4815-8618-0e2a1c2f4a2c kind=quiz minute_calls=5
+[levelup] app.accounts.repository ai_call operation=fd5af2cb-6229-4ae6-9dd6-08e94c6c68c9 kind=report minute_calls=6
+[levelup] app.accounts.repository ai_finished operation=fd5af2cb-6229-4ae6-9dd6-08e94c6c68c9 status=succeeded error_code=None
+[levelup] app.accounts.repository ai_call operation=9abd4d58-c0b3-4b40-91d0-e0d54905fbd4 kind=knowledgeqa minute_calls=1
+[levelup] app.accounts.repository ai_call operation=77a5a15d-890d-4586-83eb-05f863ac1599 kind=knowledgeqa minute_calls=2
+[levelup] app.accounts.repository ai_call operation=77a5a15d-890d-4586-83eb-05f863ac1599 kind=knowledgeqa minute_calls=3
+[levelup] app.knowledge.worker job_failed job=2b07b5b7-aa1c-4690-9423-7d991a600c9a kind=reindex error_code=KNOWLEDGE_JOB_STALE
+[levelup] app.accounts.repository ai_call operation=f96287f0-3283-453b-b0c5-6a41d2c0c415 kind=material minute_calls=1
+[levelup] app.accounts.repository ai_finished operation=f96287f0-3283-453b-b0c5-6a41d2c0c415 status=succeeded error_code=None

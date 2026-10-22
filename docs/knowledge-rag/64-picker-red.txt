@@ -1,0 +1,92 @@
+
+> levelup-mini@1.0.0 test
+> vitest run --run tests/knowledge-api.test.ts
+
+
+ RUN  v3.2.7 D:/nbproject/LevelUpProject/frontend
+
+ ❯ tests/knowledge-api.test.ts (13 tests | 2 failed) 52ms
+   ✓ 任务身份和成功结果必须区别于旧材料任务及答题 Session 6ms
+   ✓ 知识库提问使用明确范围和可见联网选择，短请求携带鉴权与原幂等键 3ms
+   ✓ 原生上传解析字符串响应，支持 Markdown 并包含鉴权与幂等键 1ms
+   ✓ H5 上传不带 Cookie；旧账号的迟到响应不会影响新账号 2ms
+   ✓ 上传可随本页查询停止，上传完成通知不能伪造索引已经完成 1ms
+   ✓ 错误上传响应和不支持文件不触发错误的关卡跳转 1ms
+   ✓ 任务存储按账号隔离；进度和终态不会被迟到响应倒退 1ms
+   ✓ 后台暂停只停止查询；恢复后沿用同一任务并保留单调进度 1ms
+   ✓ 账号切换后拒绝旧轮询结果 0ms
+   ✓ 重新打开页面时以本机已确认的进度作为下限 13ms
+   ✓ 微信取消选择不会暴露原生错误，选择失败提供可恢复说明 1ms
+   × 兼容只通过回调返回文件的微信运行时，不能把 undefined 返回值当作选择失败 11ms
+     → expected undefined to be type of 'function'
+   × 开发者工具 fd 错误给出可执行的恢复提示，不暴露本地路径 10ms
+     → expected Error: 暂时无法选择文件，请重新选择或稍后重试。 { …(1) } to match object { …(2) }
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/knowledge-api.test.ts > 兼容只通过回调返回文件的微信运行时，不能把 undefined 返回值当作选择失败
+AssertionError: expected undefined to be type of 'function'
+
+Expected: "function"
+Received: "undefined"
+
+ ❯ tests/knowledge-api.test.ts:121:29
+    119|   state.taro.chooseMessageFile.mockImplementationOnce(options => { cal…
+    120|   const pending = chooseKnowledgeDocument()
+    121|   expect(callbacks.success).toBeTypeOf('function')
+       |                             ^
+    122|   callbacks.success({ tempFiles: [file] })
+    123|   await expect(pending).resolves.toEqual(file)
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/knowledge-api.test.ts > 开发者工具 fd 错误给出可执行的恢复提示，不暴露本地路径
+AssertionError: expected Error: 暂时无法选择文件，请重新选择或稍后重试。 { …(1) } to match object { …(2) }
+
+- Expected
++ Received
+
+- {
+-   "code": "FILE_PICKER_UNAVAILABLE",
+-   "message": "微信开发者工具无法打开文件窗口，请完全退出后重新打开；若仍失败，请更新开发者工具。",
++ ApiError {
++   "code": "FILE_SELECTION_FAILED",
+  }
+
+ ❯ tests/knowledge-api.test.ts:127:3
+    125| it('开发者工具 fd 错误给出可执行的恢复提示，不暴露本地路径', async () => {
+    126|   state.taro.chooseMessageFile.mockRejectedValueOnce({ errMsg: 'choose…
+    127|   await expect(chooseKnowledgeDocument()).rejects.toMatchObject({ code…
+       |   ^
+    128| })
+    129| 
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+⎯⎯⎯⎯⎯⎯ Unhandled Errors ⎯⎯⎯⎯⎯⎯
+
+Vitest caught 1 unhandled error during the test run.
+This might cause false positive tests. Resolve unhandled errors to make sure your tests are not affected.
+
+⎯⎯⎯⎯ Unhandled Rejection ⎯⎯⎯⎯⎯
+Error: 暂时无法选择文件，请重新选择或稍后重试。
+ ❯ Module.chooseKnowledgeDocument src/knowledge-api.ts:46:13
+     44|       if (error instanceof ApiError) throw error
+     45|       if (/cancel/i.test(String((error as { errMsg?: string })?.errMsg…
+     46|       throw new ApiError('暂时无法选择文件，请重新选择或稍后重试。', 'FILE_SELECTION_FAILE…
+       |             ^
+     47|     }
+     48|   }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: 'FILE_SELECTION_FAILED' }
+This error originated in "tests/knowledge-api.test.ts" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 11 passed (13)
+     Errors  1 error
+   Start at  08:51:48
+   Duration  2.54s (transform 152ms, setup 0ms, collect 308ms, tests 52ms, environment 0ms, prepare 1.26s)
+

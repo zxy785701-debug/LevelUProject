@@ -1,0 +1,20 @@
+{"sample": "txt-import", "kind": "import", "status": "succeeded", "error_code": null, "seconds": 5.88}
+{"sample": "pdf-import", "kind": "import", "status": "succeeded", "error_code": null, "seconds": 2.31}
+{"sample": "docx-import", "kind": "import", "status": "succeeded", "error_code": null, "seconds": 2.33}
+{"sample": "md-import", "kind": "import", "status": "succeeded", "error_code": null, "seconds": 1.56}
+{"sample": "conflict_a-import", "kind": "import", "status": "succeeded", "error_code": null, "seconds": 1.55}
+{"sample": "conflict_b-import", "kind": "import", "status": "succeeded", "error_code": null, "seconds": 1.54}
+{"sample": "web-import", "kind": "import", "status": "succeeded", "error_code": null, "seconds": 3.1}
+{"sample": "����", "kind": "question", "status": "succeeded", "error_code": null, "seconds": 5.61}
+job_failed job=c46baa76-2867-4506-860d-4b24c1ce0a9a kind=question error_code=KNOWLEDGE_PROCESSING_FAILED
+{"sample": "Ӣ��PDF", "kind": "question", "status": "failed", "error_code": "KNOWLEDGE_PROCESSING_FAILED", "seconds": 2.32}
+{"sample": "����֪ʶ", "kind": "question", "status": "succeeded", "error_code": null, "seconds": 5.43}
+job_failed job=13ebba62-dce8-4e42-90d2-058bb28429b6 kind=question error_code=KNOWLEDGE_PROCESSING_FAILED
+{"sample": "Markdownע��", "kind": "question", "status": "failed", "error_code": "KNOWLEDGE_PROCESSING_FAILED", "seconds": 2.35}
+{"sample": "���ϲ���", "kind": "question", "status": "succeeded", "error_code": null, "seconds": 1.54}
+{"sample": "��ͻ", "kind": "question", "status": "succeeded", "error_code": null, "seconds": 5.52}
+job_failed job=6c95ff41-ebf6-4ead-9305-bf7c946396cf kind=question error_code=KNOWLEDGE_PROCESSING_FAILED
+{"sample": "��ҳ������", "kind": "question", "status": "failed", "error_code": "KNOWLEDGE_PROCESSING_FAILED", "seconds": 1.56}
+{"sample": "scope", "kind": "prepare", "status": "succeeded", "error_code": null, "seconds": 8.5}
+job_failed job=fbd36df0-0c58-4a28-9d8c-48e832f5dca7 kind=quiz error_code=KNOWLEDGE_PROCESSING_FAILED
+{"sample": "quiz", "kind": "quiz", "status": "failed", "error_code": "KNOWLEDGE_PROCESSING_FAILED", "seconds": 30.98}

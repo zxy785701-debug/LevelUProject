@@ -1,0 +1,78 @@
+FFFF                                                                     [100%]
+================================== FAILURES ===================================
+_ test_knowledge_quiz_has_explicit_strict_policy_and_real_snapshots_without_fake_material _
+
+    @pytest.mark.anyio
+    async def test_knowledge_quiz_has_explicit_strict_policy_and_real_snapshots_without_fake_material():
+        ids = [context()['segments'][0]['id']]
+        gateway = SequenceGateway([{'status':'ready','quiz':quiz_payload()},review(ids=ids)])
+        result = await run(gateway)
+>       assert result['source']['type']=='knowledge_base' and 'material_id' not in result['source']
+E       AssertionError: assert ('topic' == 'knowledge_base'
+E         
+E         - knowledge_base
+E         + topic)
+
+tests\test_knowledge_quiz_generation.py:31: AssertionError
+_ test_unsupported_knowledge_questions_cannot_use_old_general_topic_fallback __
+
+    @pytest.mark.anyio
+    async def test_unsupported_knowledge_questions_cannot_use_old_general_topic_fallback():
+        gateway = SequenceGateway([{'status':'ready','quiz':quiz_payload()},review(statuses=['unsupported']*3)])
+>       with pytest.raises(AppError) as error: await run(gateway,budget=3)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE AppError
+
+tests\test_knowledge_quiz_generation.py:41: Failed
+_ test_no_knowledge_evidence_is_rejected_before_model_and_missing_topic_coverage_fails _
+
+    @pytest.mark.anyio
+    async def test_no_knowledge_evidence_is_rejected_before_model_and_missing_topic_coverage_fails():
+        empty = context()
+        empty['segments']=[]
+        gateway = SequenceGateway([])
+>       with pytest.raises(AppError) as error: await run(gateway,empty)
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_knowledge_quiz_generation.py:50: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_knowledge_quiz_generation.py:22: in run
+    return await generate_grounded(GenerateRequest(text='HTTP',question_count=3),ctx or context(),gateway,Settings(_env_file=None),
+app\quiz_grounding\generation.py:109: in generate_grounded
+    draft = await gateway.generate(QuizDraftResult, draft_prompt(body, context, evidence, correction=correction), check_draft)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <tests.test_grounding_generation.SequenceGateway object at 0x000001B47FB042D0>
+schema = <class 'app.quiz_grounding.models.QuizDraftResult'>
+prompt = 'System: �����Ͻ��ĳ����ߣ�ģ�� unverified-draft-v2������������ȷ�����򡢷����֪ʶ�㣬���л�����\n�� 3 �������⣬�Ѷ� easy�����������ϸ�Ϊ {"single": 1, "multi": 1, "...p1"]},{"candidate_id":"t2","topic":"�Ự״̬","domain":"HTTP","scope_point_ids":["p2"]}]},"evidence":[],"correction":null}'
+check = <function generate_grounded.<locals>.check_draft at 0x000001B47FAC7060>
+
+    async def generate(self, schema, prompt, check=None):
+        self.calls.append((schema.__name__, prompt))
+>       response = self.responses.pop(0)
+                   ^^^^^^^^^^^^^^^^^^^^^
+E       IndexError: pop from empty list
+
+tests\test_grounding_generation.py:39: IndexError
+_ test_failed_network_does_not_mislabel_independently_supported_knowledge_as_unverified _
+
+    @pytest.mark.anyio
+    async def test_failed_network_does_not_mislabel_independently_supported_knowledge_as_unverified():
+        ctx = context()
+        ctx['supplement_failed']=True
+        gateway = SequenceGateway([{'status':'ready','quiz':quiz_payload()},review(ids=[ctx['segments'][0]['id']])])
+        result = await run(gateway,ctx)
+>       assert result['grounding']['status']=='material_only' and result['grounding']['reason_code']=='SUPPLEMENT_FAILED'
+E       AssertionError: assert ('unverified' == 'material_only'
+E         
+E         - material_only
+E         + unverified)
+
+tests\test_knowledge_quiz_generation.py:64: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_knowledge_quiz_generation.py::test_knowledge_quiz_has_explicit_strict_policy_and_real_snapshots_without_fake_material
+FAILED tests/test_knowledge_quiz_generation.py::test_unsupported_knowledge_questions_cannot_use_old_general_topic_fallback
+FAILED tests/test_knowledge_quiz_generation.py::test_no_knowledge_evidence_is_rejected_before_model_and_missing_topic_coverage_fails
+FAILED tests/test_knowledge_quiz_generation.py::test_failed_network_does_not_mislabel_independently_supported_knowledge_as_unverified
+4 failed in 3.75s

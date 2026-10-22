@@ -1,0 +1,18 @@
+INFO:     Started server process [24456]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8002 (Press CTRL+C to quit)
+[levelup] app.accounts.repository ai_call operation=fa944e0e-99e1-4291-bb61-4c44820007a2 kind=knowledgeqa minute_calls=1
+[levelup] app.accounts.repository ai_call operation=fa944e0e-99e1-4291-bb61-4c44820007a2 kind=knowledgeqa minute_calls=2
+[levelup] app.accounts.repository ai_call operation=30325d5d-0a38-4e98-880f-1054d6d5634d kind=material minute_calls=3
+[levelup] app.knowledge.worker job_failed job=0f2076ae-05b3-4c3d-8f3e-cc99c2d3d821 kind=quiz error_code=KNOWLEDGE_JOB_STALE
+[levelup] app.accounts.repository ai_call operation=3d6fa869-a5dc-4b18-b947-91493d62acc0 kind=quiz minute_calls=4
+[levelup] app.accounts.repository ai_call operation=3d6fa869-a5dc-4b18-b947-91493d62acc0 kind=quiz minute_calls=5
+[levelup] app.accounts.repository ai_call operation=e4084995-6cbd-4d82-931d-827d5cf30600 kind=report minute_calls=6
+[levelup] app.accounts.repository ai_finished operation=e4084995-6cbd-4d82-931d-827d5cf30600 status=succeeded error_code=None
+[levelup] app.accounts.repository ai_call operation=8c7855e6-7a4b-4050-be46-5a7693da0c59 kind=knowledgeqa minute_calls=1
+[levelup] app.accounts.repository ai_call operation=9e33d0b0-cde1-41b7-9371-937fa1aefe15 kind=knowledgeqa minute_calls=2
+[levelup] app.accounts.repository ai_call operation=9e33d0b0-cde1-41b7-9371-937fa1aefe15 kind=knowledgeqa minute_calls=3
+[levelup] app.knowledge.worker job_failed job=06a38cb4-9303-4d90-addc-a96b353f2a67 kind=reindex error_code=KNOWLEDGE_JOB_STALE
+[levelup] app.accounts.repository ai_call operation=6e309ef4-5de1-4260-8f5a-7a6614713570 kind=material minute_calls=1
+[levelup] app.accounts.repository ai_finished operation=6e309ef4-5de1-4260-8f5a-7a6614713570 status=succeeded error_code=None

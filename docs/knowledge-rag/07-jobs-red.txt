@@ -1,0 +1,54 @@
+FFFFF                                                                    [100%]
+================================== FAILURES ===================================
+_______________ test_only_one_connection_can_claim_the_same_job _______________
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x00000199AB64F230>
+
+    def test_only_one_connection_can_claim_the_same_job(repo):
+>       from app.knowledge.jobs import DurableJobs
+E       ModuleNotFoundError: No module named 'app.knowledge.jobs'
+
+tests\test_knowledge_jobs.py:13: ModuleNotFoundError
+_____ test_expired_lease_is_fenced_and_keeps_budget_deadline_and_progress _____
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x00000199AB773ED0>
+
+    def test_expired_lease_is_fenced_and_keeps_budget_deadline_and_progress(repo):
+>       from app.knowledge.jobs import DurableJobs
+E       ModuleNotFoundError: No module named 'app.knowledge.jobs'
+
+tests\test_knowledge_jobs.py:24: ModuleNotFoundError
+____ test_final_result_and_success_publish_in_one_transaction_exactly_once ____
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x00000199AB767110>
+
+    def test_final_result_and_success_publish_in_one_transaction_exactly_once(repo):
+>       from app.knowledge.jobs import DurableJobs
+E       ModuleNotFoundError: No module named 'app.knowledge.jobs'
+
+tests\test_knowledge_jobs.py:46: ModuleNotFoundError
+_______ test_recoverable_failures_are_bounded_and_cannot_refill_budget ________
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x00000199AB7C9810>
+
+    def test_recoverable_failures_are_bounded_and_cannot_refill_budget(repo):
+>       from app.knowledge.jobs import DurableJobs
+E       ModuleNotFoundError: No module named 'app.knowledge.jobs'
+
+tests\test_knowledge_jobs.py:69: ModuleNotFoundError
+______ test_expired_deadlines_and_queue_wait_end_with_actionable_failure ______
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x00000199AB7CA9E0>
+
+    def test_expired_deadlines_and_queue_wait_end_with_actionable_failure(repo):
+>       from app.knowledge.jobs import DurableJobs
+E       ModuleNotFoundError: No module named 'app.knowledge.jobs'
+
+tests\test_knowledge_jobs.py:83: ModuleNotFoundError
+=========================== short test summary info ===========================
+FAILED tests/test_knowledge_jobs.py::test_only_one_connection_can_claim_the_same_job
+FAILED tests/test_knowledge_jobs.py::test_expired_lease_is_fenced_and_keeps_budget_deadline_and_progress
+FAILED tests/test_knowledge_jobs.py::test_final_result_and_success_publish_in_one_transaction_exactly_once
+FAILED tests/test_knowledge_jobs.py::test_recoverable_failures_are_bounded_and_cannot_refill_budget
+FAILED tests/test_knowledge_jobs.py::test_expired_deadlines_and_queue_wait_end_with_actionable_failure
+5 failed in 8.11s

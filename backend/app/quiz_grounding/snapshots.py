@@ -20,6 +20,27 @@ class GroundingStatus(GroundingModel):
     check_version: str = Field(default="evidence-review-v1", min_length=1, max_length=80)
 
 
+class KnowledgeCitation(GroundingModel):
+    document_id: str = Field(min_length=1,max_length=36)
+    revision_id: str = Field(min_length=1,max_length=36)
+    chunk_id: str = Field(pattern=r'^[0-9a-f]{64}$')
+    document_title: str = Field(min_length=1,max_length=180)
+    source_type: Literal['pdf','docx','txt','md','markdown','web']
+    document_version: int = Field(ge=1,strict=True)
+    chunk_position: int = Field(ge=0,strict=True)
+    header_path: list[Annotated[str,StringConstraints(max_length=500)]] = Field(default_factory=list,max_length=6)
+    start_index: int = Field(ge=0,strict=True)
+    end_index: int = Field(ge=0,strict=True)
+    block: int | None = Field(default=None,ge=1)
+    deleted: bool = False
+    version_changed: bool = False
+
+    @model_validator(mode='after')
+    def position_valid(self):
+        if self.end_index < self.start_index: raise ValueError('原文位置范围不正确')
+        return self
+
+
 class EvidenceSegment(GroundingModel):
     id: Identifier
     text: str = Field(min_length=1, max_length=100000)
@@ -40,6 +61,7 @@ class EvidenceSegment(GroundingModel):
     source_chars: int | None = Field(default=None, ge=0)
     original_id: Identifier | None = None
     original_quiz_id: str | None = Field(default=None, min_length=1, max_length=64)
+    knowledge: KnowledgeCitation | None = None
 
     @model_validator(mode="after")
     def range_valid(self):
@@ -51,7 +73,7 @@ class EvidenceSegment(GroundingModel):
 
 
 class QuizSource(GroundingModel):
-    type: Literal["topic", "pdf", "docx", "txt", "web", "video", "review"]
+    type: Literal["topic", "pdf", "docx", "txt", "web", "video", "review", "knowledge_base"]
     title: str = Field(min_length=1, max_length=500)
     material_id: str | None = Field(default=None, min_length=1, max_length=36)
     url: str | None = Field(default=None, max_length=2048)

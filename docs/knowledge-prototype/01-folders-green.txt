@@ -1,0 +1,14 @@
+
+> levelup-mini@1.0.0 test
+> vitest run --run tests/knowledge-folders.test.ts
+
+
+ RUN  v3.2.7 D:/nbproject/LevelUpProject/frontend
+
+ ✓ tests/knowledge-folders.test.ts (6 tests) 17ms
+
+ Test Files  1 passed (1)
+      Tests  6 passed (6)
+   Start at  09:09:34
+   Duration  965ms (transform 64ms, setup 0ms, collect 198ms, tests 17ms, environment 0ms, prepare 215ms)
+

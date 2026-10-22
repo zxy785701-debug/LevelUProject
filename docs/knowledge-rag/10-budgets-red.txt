@@ -1,0 +1,64 @@
+FFFFFF                                                                   [100%]
+================================== FAILURES ===================================
+__ test_waiting_queue_never_blocks_core_ai_and_actual_calls_share_rate_limit __
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x000002A945A43770>
+
+    def test_waiting_queue_never_blocks_core_ai_and_actual_calls_share_rate_limit(repo):
+>       from app.knowledge.budgets import JobBudgets
+E       ModuleNotFoundError: No module named 'app.knowledge.budgets'
+
+tests\test_knowledge_budgets.py:23: ModuleNotFoundError
+___ test_model_retries_keep_core_quiz_charge_and_cancellation_releases_busy ___
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x000002A945B1A850>
+
+    def test_model_retries_keep_core_quiz_charge_and_cancellation_releases_busy(repo):
+>       from app.knowledge.budgets import JobBudgets
+E       ModuleNotFoundError: No module named 'app.knowledge.budgets'
+
+tests\test_knowledge_budgets.py:47: ModuleNotFoundError
+__________ test_question_and_preparation_have_separate_daily_limits ___________
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x000002A945B774D0>
+
+    def test_question_and_preparation_have_separate_daily_limits(repo):
+>       from app.knowledge.budgets import JobBudgets
+E       ModuleNotFoundError: No module named 'app.knowledge.budgets'
+
+tests\test_knowledge_budgets.py:67: ModuleNotFoundError
+_ test_embedding_reservation_is_durable_separate_and_late_settlement_is_idempotent _
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x000002A945BADBA0>
+
+    def test_embedding_reservation_is_durable_separate_and_late_settlement_is_idempotent(repo):
+>       from app.knowledge.budgets import JobBudgets
+E       ModuleNotFoundError: No module named 'app.knowledge.budgets'
+
+tests\test_knowledge_budgets.py:84: ModuleNotFoundError
+______ test_unconfirmed_embedding_response_keeps_reservation_on_restart _______
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x000002A945BAED70>
+
+    def test_unconfirmed_embedding_response_keeps_reservation_on_restart(repo):
+>       from app.knowledge.budgets import JobBudgets
+E       ModuleNotFoundError: No module named 'app.knowledge.budgets'
+
+tests\test_knowledge_budgets.py:105: ModuleNotFoundError
+__ test_rate_wait_has_original_deadline_and_does_not_charge_unsent_requests ___
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x000002A945C2CA70>
+
+    def test_rate_wait_has_original_deadline_and_does_not_charge_unsent_requests(repo):
+>       from app.knowledge.budgets import JobBudgets
+E       ModuleNotFoundError: No module named 'app.knowledge.budgets'
+
+tests\test_knowledge_budgets.py:120: ModuleNotFoundError
+=========================== short test summary info ===========================
+FAILED tests/test_knowledge_budgets.py::test_waiting_queue_never_blocks_core_ai_and_actual_calls_share_rate_limit
+FAILED tests/test_knowledge_budgets.py::test_model_retries_keep_core_quiz_charge_and_cancellation_releases_busy
+FAILED tests/test_knowledge_budgets.py::test_question_and_preparation_have_separate_daily_limits
+FAILED tests/test_knowledge_budgets.py::test_embedding_reservation_is_durable_separate_and_late_settlement_is_idempotent
+FAILED tests/test_knowledge_budgets.py::test_unconfirmed_embedding_response_keeps_reservation_on_restart
+FAILED tests/test_knowledge_budgets.py::test_rate_wait_has_original_deadline_and_does_not_charge_unsent_requests
+6 failed in 7.62s

@@ -41,7 +41,8 @@ test('文档上传、真实材料确认、来源阅读、出题和答题闭环',
   for (let i = 0; i < 5; i++) {
     await expect(page.locator('.question')).toHaveText(`第 ${i + 1} 个问题？`)
     await page.locator('.option').first().click()
-    if (i === 3) { await page.locator('.option').nth(1).click(); await page.getByText('确认本题', { exact: true }).click() }
+    if (i === 3) await page.locator('.option').nth(1).click()
+    await page.getByText('确认本题', { exact: true }).click()
     if (i < 4) { await expect(page.locator('.feedback')).toBeVisible(); await page.getByText('下一题', { exact: true }).click() }
   }
   await expect(page.getByText('本轮学习报告', { exact: true })).toBeVisible()
@@ -69,7 +70,7 @@ test('历史作答聚合、知识节点和周期报告生成导出', async ({ pa
   for (const [i, selected] of [['A'], ['A','B'], ['B']].entries()) await request.post(`${apiOrigin}/api/v1/attempts/${session.id}/answers`, { headers, data: { question_id: 'q'+i, selected, elapsed_ms: 1000 } })
   await page.reload(); await page.getByText('复盘', { exact: true }).click()
   await page.getByText('知识地图', { exact: true }).click(); await expect(page.locator('.knowledge-map')).toBeVisible()
-  await expect(page.locator('.map-lines')).toBeVisible()
+  await expect(page.locator('.atlas-edge').first()).toBeAttached()
   await page.screenshot({ path: screenshots+'/R04-390.png' })
   await page.setViewportSize({ width: 320, height: 700 })
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBeTruthy()

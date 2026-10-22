@@ -1,0 +1,38 @@
+.......F.                                                                [100%]
+================================== FAILURES ===================================
+_ test_multi_document_search_keeps_relevant_smaller_document_in_candidate_pool _
+
+index = <app.knowledge.index.VectorIndex object at 0x000002413E291040>
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x000002413E291AE0>
+
+    def test_multi_document_search_keeps_relevant_smaller_document_in_candidate_pool(index,repo):
+        from app.knowledge.importing import ImportPipeline
+        from app.knowledge.database import Document,Revision
+        repo.config.chunk_size,repo.config.chunk_overlap = 100,0
+        pipeline = ImportPipeline(repo.accounts,repo.config)
+        selections = []
+        for number,body in enumerate(['\n'.join(f'Fact {n}: '+str(n)*90 for n in range(60)),'Required evidence in smaller document']):
+            queued = repo.submit_file('alice','fair-'+str(number),'d'+str(number)+'.txt',body.encode())
+            claim = pipeline.claim('worker')
+            parsed = pipeline.parse(claim)
+            chunks = pipeline.split(claim,parsed)
+            vector = ([1.0,0.0] if number==0 else [.9,.1])+[0.0]*1022
+            index.upsert(claim,parsed['revision_id'],chunks,[vector]*len(chunks))
+            with repo.database.session() as session:
+                session.get(Revision,parsed['revision_id']).status = 'ready'
+                document = session.get(Document,queued['document_id'])
+                document.status,document.active_revision_id = 'ready',parsed['revision_id']
+            selections.append(queued['document_id'])
+            if number==0: pipeline.complete(claim,lambda s,j:{'ok':True})
+        result = index.search(claim,repo.select_documents('alice',selections),[1.0]+[0.0]*1023)
+>       assert {r['document_id'] for r in result}==set(selections)
+E       AssertionError: assert {'8dcf39a8-b0...f1e7cf16fc9f'} == {'8dcf39a8-b0...4922502263ac'}
+E         
+E         Extra items in the right set:
+E         'da075d67-b8ea-4d14-ba1b-4922502263ac'
+E         Use -v to get more diff
+
+tests\test_knowledge_index.py:186: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_knowledge_index.py::test_multi_document_search_keeps_relevant_smaller_document_in_candidate_pool
+1 failed, 8 passed in 20.33s

@@ -1,0 +1,165 @@
+.F...........F..........F.........F.........                             [100%]
+================================== FAILURES ===================================
+______ test_import_transaction_failure_removes_only_its_uncommitted_file ______
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x00000279D6EEB4D0>
+
+    def test_import_transaction_failure_removes_only_its_uncommitted_file(repo):
+        def interrupt(session):
+            if any(isinstance(x,Job) for x in session.new): raise RuntimeError('injected commit failure')
+        event.listen(Session,'before_flush',interrupt)
+        try:
+>           with pytest.raises(RuntimeError): submit(repo)
+                                              ^^^^^^^^^^^^
+
+tests\test_knowledge_boundaries.py:39: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_knowledge_jobs.py:9: in submit
+    return repo.submit_file('alice', key, 'note.txt', b'Original content')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app\knowledge\repository.py:106: in submit_file
+    return self._submit_import(uid, key, identity, lambda session: (
+app\knowledge\repository.py:67: in _submit_import
+    user = self.accounts._user(session, uid, True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app\accounts\repository.py:92: in _user
+    u = s.scalar(select(User).where(User.id == uid).with_for_update().execution_options(populate_existing=True))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:2421: in scalar
+    return self._execute_internal(
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:2250: in _execute_internal
+    ) = compile_state_cls.orm_pre_session_exec(
+.venv\Lib\site-packages\sqlalchemy\orm\context.py:577: in orm_pre_session_exec
+    session._autoflush()
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:3062: in _autoflush
+    self.flush()
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:4353: in flush
+    self._flush(objects)
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:4381: in _flush
+    self.dispatch.before_flush(self, flush_context, objects)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <sqlalchemy.event.attr._EmptyListener object at 0x00000279D6ECDB80>
+args = (<sqlalchemy.orm.session.Session object at 0x00000279D6DEEF90>, <sqlalchemy.orm.unitofwork.UOWTransaction object at 0x00000279D6DF5AE0>, None)
+kw = {}
+
+    def __call__(self, *args: Any, **kw: Any) -> None:
+        """Execute this event."""
+    
+        for fn in self.parent_listeners:
+>           fn(*args, **kw)
+E           TypeError: test_import_transaction_failure_removes_only_its_uncommitted_file.<locals>.interrupt() takes 1 positional argument but 3 were given
+
+.venv\Lib\site-packages\sqlalchemy\event\attr.py:388: TypeError
+_ test_wait_model_call_ends_at_original_deadline_and_propagates_other_errors __
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x00000279D75E57F0>
+
+    def test_wait_model_call_ends_at_original_deadline_and_propagates_other_errors(repo):
+        ai_job(repo); jobs=JobBudgets(repo.accounts,repo.config); claim=jobs.claim('worker')
+        with repo.database.session() as session:
+            quota=jobs.accounts._quota(session,'alice'); quota.busy_id='busy'; quota.busy_until=repo.accounts.clock()+60
+            session.get(Job,claim.id).deadline_at=repo.now()+timedelta(seconds=.5)
+>       fails('KNOWLEDGE_JOB_EXPIRED',lambda:asyncio.run(jobs.wait_model_call(claim,7)))
+
+tests\test_knowledge_boundaries.py:152: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+code = 'KNOWLEDGE_JOB_EXPIRED'
+call = <function test_wait_model_call_ends_at_original_deadline_and_propagates_other_errors.<locals>.<lambda> at 0x00000279D77FBBA0>
+
+    def fails(code,call):
+        with pytest.raises(AppError) as caught: call()
+>       assert caught.value.code==code
+E       AssertionError: assert 'KNOWLEDGE_JOB_STALE' == 'KNOWLEDGE_JOB_EXPIRED'
+E         
+E         - KNOWLEDGE_JOB_EXPIRED
+E         ?                ------
+E         + KNOWLEDGE_JOB_STALE
+E         ?               ++++
+
+tests\test_knowledge_boundaries.py:24: AssertionError
+_____ test_quiz_checkpoints_validate_prompt_and_reuse_unspent_call_credit _____
+
+index = <app.knowledge.index.VectorIndex object at 0x00000279F5EC2B50>
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x00000279F60025F0>
+
+    def test_quiz_checkpoints_validate_prompt_and_reuse_unspent_call_credit(index,repo):
+        pipeline,claim,gateway,queued,body=setup_quiz(repo,index)
+        async def exercise():
+            checked=[]
+            first=CheckpointGateway(pipeline,claim,SequenceGateway([{'status':'ready','quiz':quiz_payload()}]))
+            before=first.remaining()
+            await first.generate(QuizDraftResult,'identical prompt',lambda v:checked.append(v.status))
+            restored=CheckpointGateway(pipeline,claim,SequenceGateway([]))
+            assert restored.remaining()==before+1
+            result=await restored.generate(QuizDraftResult,'identical prompt',lambda v:checked.append(v.status))
+            assert result.status=='ready' and checked==['ready','ready']
+            changed=CheckpointGateway(pipeline,claim,SequenceGateway([]))
+            with pytest.raises(AppError) as caught: await changed.generate(QuizDraftResult,'changed prompt')
+            assert caught.value.code=='KNOWLEDGE_CHECKPOINT_CHANGED'
+>       asyncio.run(exercise())
+
+tests\test_knowledge_scope_boundaries.py:102: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+D:\anaconda3\Lib\asyncio\runners.py:195: in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+D:\anaconda3\Lib\asyncio\runners.py:118: in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+D:\anaconda3\Lib\asyncio\base_events.py:725: in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    async def exercise():
+        checked=[]
+        first=CheckpointGateway(pipeline,claim,SequenceGateway([{'status':'ready','quiz':quiz_payload()}]))
+        before=first.remaining()
+        await first.generate(QuizDraftResult,'identical prompt',lambda v:checked.append(v.status))
+        restored=CheckpointGateway(pipeline,claim,SequenceGateway([]))
+        assert restored.remaining()==before+1
+        result=await restored.generate(QuizDraftResult,'identical prompt',lambda v:checked.append(v.status))
+>       assert result.status=='ready' and checked==['ready','ready']
+E       AssertionError: assert ('ready' == 'ready'
+E         
+E           ready and ['ready', 'ready', 'ready'] == ['ready', 'ready']
+E         
+E         Left contains one more item: 'ready'
+E         Use -v to get more diff)
+
+tests\test_knowledge_scope_boundaries.py:98: AssertionError
+---------------------------- Captured stderr call -----------------------------
+[levelup] app.accounts.repository ai_call operation=f4b3d294-1236-4d02-8c1f-0c33aa4d2f98 kind=material minute_calls=1
+------------------------------ Captured log call ------------------------------
+INFO     app.accounts.repository:repository.py:438 ai_call operation=f4b3d294-1236-4d02-8c1f-0c33aa4d2f98 kind=material minute_calls=1
+___ test_writer_lock_and_collection_identity_are_rechecked_on_every_effect ____
+
+index = <app.knowledge.index.VectorIndex object at 0x00000279F7924EF0>
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x00000279F661B230>
+
+    def test_writer_lock_and_collection_identity_are_rechecked_on_every_effect(index,repo):
+        collection=index.collection('alice')
+        collection.modify(metadata={**collection.metadata,'owner':'wrong-owner'})
+        fails('KNOWLEDGE_INDEX_PROFILE_MISMATCH',lambda:index.collection('alice'))
+>       fails('KNOWLEDGE_INDEX_PROFILE_MISMATCH',lambda:index.delete_user('alice'))
+
+tests\test_knowledge_storage_boundaries.py:81: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_knowledge_boundaries.py:23: in fails
+    with pytest.raises(AppError) as caught: call()
+                                            ^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+>   fails('KNOWLEDGE_INDEX_PROFILE_MISMATCH',lambda:index.delete_user('alice'))
+                                                    ^^^^^^^^^^^^^^^^^
+E   AttributeError: 'VectorIndex' object has no attribute 'delete_user'
+
+tests\test_knowledge_storage_boundaries.py:81: AttributeError
+=========================== short test summary info ===========================
+FAILED tests/test_knowledge_boundaries.py::test_import_transaction_failure_removes_only_its_uncommitted_file
+FAILED tests/test_knowledge_boundaries.py::test_wait_model_call_ends_at_original_deadline_and_propagates_other_errors
+FAILED tests/test_knowledge_scope_boundaries.py::test_quiz_checkpoints_validate_prompt_and_reuse_unspent_call_credit
+FAILED tests/test_knowledge_storage_boundaries.py::test_writer_lock_and_collection_identity_are_rechecked_on_every_effect
+4 failed, 40 passed in 45.18s

@@ -1,0 +1,4 @@
+Original test log preserved losslessly in 06-import-red.txt.gz
+SHA256 6d75d2862eaca77164e0cee3bd96bb45b8f0428762197f2f1748fe86c730e678
+Original bytes 83902769
+Compact rerun uses explicit short parameter ids.

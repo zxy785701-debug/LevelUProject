@@ -1,0 +1,55 @@
+F.............F..                                                        [100%]
+================================== FAILURES ===================================
+_ test_native_contract_batching_order_query_async_and_independent_credentials _
+
+embedding = (<app.knowledge.embeddings.BailianEmbeddings object at 0x0000020C38486510>, {'calls': [<Request('POST', 'https://test-...es/2bd806c97f0e00af1a1fc3328fa763a9269723c8db8fac4f93af71db186d6e90/92c0b6bb5d26417fb6b78c6bfdff3956.bin'}, budget={}))
+
+    def test_native_contract_batching_order_query_async_and_independent_credentials(embedding):
+        from langchain_core.embeddings import Embeddings
+        adapter,state,_,_ = embedding
+        assert isinstance(adapter,Embeddings)
+        state['mutate'] = lambda body: body['output']['embeddings'].reverse()
+        texts = ['����Ƭ��'+str(n) for n in range(12)]
+        vectors = adapter.embed_documents(texts)
+        assert len(vectors) == 12 and all(len(v)==1024 for v in vectors)
+        assert len(state['calls']) == 2
+        assert [len(json.loads(r.content)['input']['texts']) for r in state['calls']] == [10,2]
+        request = state['calls'][0]
+        assert str(request.url) == 'https://test-space.cn-beijing.maas.aliyuncs.com/api/v1/services/embeddings/text-embedding/text-embedding'
+        assert request.headers['Authorization'] == 'Bearer fake-independent-bailian-key'
+        body = json.loads(request.content)
+        assert body['model'] == 'text-embedding-v4'
+        assert body['parameters'] == {'dimension':1024,'text_type':'document'}
+        expected = embedding_response(httpx.Request('POST','https://fake',json={'input':{'texts':texts}})).json()['output']['embeddings']
+        assert vectors == [r['embedding'] for r in expected]
+        query = asyncio.run(adapter.aembed_query('��������'))
+        assert len(query) == 1024
+        assert json.loads(state['calls'][-1].content)['parameters']['text_type'] == 'query'
+>       assert asyncio.run(adapter.aembed_documents(texts)) == vectors
+E       AssertionError: assert [[-0.12156862...16, ...], ...] == [[-0.12156862...16, ...], ...]
+E         
+E         At index 0 diff: [-0.1215686274509804, 0.2784313725490196, 0.4901960784313726, 0.6, 0.5450980392156862, 0.6784313725490196, 0.788235294117647, -0.592156862745098, 0.6470588235294118, -0.03529411764705882, -0.4588235294117647, 0.08235294117647059, 0.984313725490196, -0.4117647058823529, 0.4901960784313726, 0.3803921568627451, -0.3568627450980392, -0.6235294117647059, 0.7176470588235294, 0.2235294117647059, 0.3176470588235294, 0.4117647058823529, -0.1450980392156863, -0.7019607843137254, 0.6549019607843137, 0.7333333333333333, 0.058823529411764705, 0.6235294117647059, 0.1...
+E         
+E         ...Full output truncated (2 lines hidden), use '-vv' to show
+
+tests\test_knowledge_embeddings.py:64: AssertionError
+_ test_cache_is_owned_profile_specific_deduplicated_and_independent_of_query_type _
+
+embedding = (<app.knowledge.embeddings.BailianEmbeddings object at 0x0000020C38661F30>, {'calls': [<Request('POST', 'https://test-...es/2bd806c97f0e00af1a1fc3328fa763a9269723c8db8fac4f93af71db186d6e90/19f0370a6958469d9c344c144d90a08a.bin'}, budget={}))
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x0000020C38754D50>
+
+    def test_cache_is_owned_profile_specific_deduplicated_and_independent_of_query_type(embedding,repo):
+        from app.knowledge.embeddings import BailianEmbeddings
+        from app.knowledge.budgets import JobBudgets
+        adapter,state,_,claim = embedding
+>       assert adapter.embed_documents(['same','same'])[0] == adapter.embed_documents(['same'])[0]
+E       assert [-0.929411764...21568627, ...] == [-0.929411764...21568627, ...]
+E         
+E         At index 9 diff: 0.36470588235294116 != 0.3647058823529411
+E         Use -v to get more diff
+
+tests\test_knowledge_embeddings.py:107: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_knowledge_embeddings.py::test_native_contract_batching_order_query_async_and_independent_credentials
+FAILED tests/test_knowledge_embeddings.py::test_cache_is_owned_profile_specific_deduplicated_and_independent_of_query_type
+2 failed, 15 passed in 4.46s

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="5" skipped="0" tests="5" time="8.351" timestamp="2026-10-18T20:38:44.239207+08:00" hostname="zxy"><testcase classname="tests.test_knowledge_cleanup" name="test_delete_is_immediate_outbox_is_durable_and_cleanup_idempotent" time="4.267"><failure message="ModuleNotFoundError: No module named 'app.knowledge.cleanup'">index = &lt;app.knowledge.index.VectorIndex object at 0x000001F998DC5550&gt;
+repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x000001F99890F8C0&gt;
+
+    def test_delete_is_immediate_outbox_is_durable_and_cleanup_idempotent(index,repo):
+&gt;       from app.knowledge.cleanup import LibraryManagement,CleanupManager
+E       ModuleNotFoundError: No module named 'app.knowledge.cleanup'
+
+tests\test_knowledge_cleanup.py:11: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_knowledge_cleanup" name="test_cleanup_failure_retries_without_restoring_document" time="0.488"><failure message="ModuleNotFoundError: No module named 'app.knowledge.cleanup'">index = &lt;app.knowledge.index.VectorIndex object at 0x000001F9B8F14A50&gt;
+repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x000001F9B8F15E50&gt;
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x000001F9B8D1DF30&gt;
+
+    def test_cleanup_failure_retries_without_restoring_document(index,repo,monkeypatch):
+&gt;       from app.knowledge.cleanup import LibraryManagement,CleanupManager
+E       ModuleNotFoundError: No module named 'app.knowledge.cleanup'
+
+tests\test_knowledge_cleanup.py:34: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_knowledge_cleanup" name="test_account_deletion_records_outbox_before_cascade_and_removes_private_storage" time="0.456"><failure message="ModuleNotFoundError: No module named 'app.knowledge.cleanup'">index = &lt;app.knowledge.index.VectorIndex object at 0x000001F9B8F89D10&gt;
+repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x000001F9B8F8BB10&gt;
+
+    def test_account_deletion_records_outbox_before_cascade_and_removes_private_storage(index,repo):
+&gt;       from app.knowledge.cleanup import CleanupManager
+E       ModuleNotFoundError: No module named 'app.knowledge.cleanup'
+
+tests\test_knowledge_cleanup.py:54: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_knowledge_cleanup" name="test_staging_garbage_collection_never_cleans_active_or_live_work" time="0.466"><failure message="ModuleNotFoundError: No module named 'app.knowledge.cleanup'">index = &lt;app.knowledge.index.VectorIndex object at 0x000001F9B8D1F360&gt;
+repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x000001F9B8D1FE10&gt;
+
+    def test_staging_garbage_collection_never_cleans_active_or_live_work(index,repo):
+&gt;       from app.knowledge.cleanup import CleanupManager
+E       ModuleNotFoundError: No module named 'app.knowledge.cleanup'
+
+tests\test_knowledge_cleanup.py:72: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_knowledge_cleanup" name="test_worker_runtime_drives_real_import_batches_with_controlled_embedding" time="0.162"><failure message="ModuleNotFoundError: No module named 'app.knowledge.runtime'">repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x000001F9B8FA5220&gt;
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x000001F9B8FA5350&gt;
+
+    def test_worker_runtime_drives_real_import_batches_with_controlled_embedding(repo,monkeypatch):
+        from app.knowledge.worker import KnowledgeWorker
+&gt;       from app.knowledge.runtime import WorkerRuntime
+E       ModuleNotFoundError: No module named 'app.knowledge.runtime'
+
+tests\test_knowledge_cleanup.py:89: ModuleNotFoundError</failure></testcase></testsuite></testsuites>

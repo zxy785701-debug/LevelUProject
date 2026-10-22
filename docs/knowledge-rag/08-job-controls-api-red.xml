@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="26.804" timestamp="2026-10-18T18:37:03.652800+08:00" hostname="zxy"><testcase classname="tests.test_knowledge_api" name="test_job_query_cancel_retry_and_foreign_account_are_isolated" time="2.623"><failure message="TypeError: 'NoneType' object is not subscriptable">knowledge_app = &lt;fastapi.applications.FastAPI object at 0x000002A3BC45B9D0&gt;
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x000002A3BC366FD0&gt;
+
+    @pytest.mark.anyio
+    async def test_job_query_cancel_retry_and_foreign_account_are_isolated(knowledge_app, monkeypatch):
+        monkeypatch.setattr(KnowledgeSettings, 'unavailable_reason', lambda self, **kw: None)
+        async with httpx.AsyncClient(transport=httpx.ASGITransport(app=knowledge_app), base_url='http://test') as c:
+            await login(c)
+            job = (await c.post('/api/v1/knowledge/documents/upload',files={'file':('note.txt',b'Notes')})).json()['data']
+            path = '/api/v1/knowledge/jobs/'+job['id']
+&gt;           assert (await c.get(path)).json()['data']['status'] == 'queued'
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           TypeError: 'NoneType' object is not subscriptable
+
+tests\test_knowledge_api.py:103: TypeError</failure></testcase></testsuite></testsuites>

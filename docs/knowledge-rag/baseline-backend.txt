@@ -1,0 +1,54 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.9, pytest-9.1.1, pluggy-1.6.0
+rootdir: D:\nbproject\LevelUpProject\backend
+configfile: pytest.ini
+testpaths: tests
+plugins: anyio-4.15.1, cov-7.1.0
+collected 391 items
+
+tests\test_account_foundation.py ...............                         [  3%]
+tests\test_analytics_math.py ..                                          [  4%]
+tests\test_base.py ................                                      [  8%]
+tests\test_content.py .......                                            [ 10%]
+tests\test_delete_learning.py ..                                         [ 10%]
+tests\test_edges.py .........                                            [ 13%]
+tests\test_feature_edges.py ......                                       [ 14%]
+tests\test_gateway.py ..........                                         [ 17%]
+tests\test_grounding_agent.py ...............                            [ 20%]
+tests\test_grounding_api.py ........                                     [ 23%]
+tests\test_grounding_budgets.py .....                                    [ 24%]
+tests\test_grounding_capability.py ......                                [ 25%]
+tests\test_grounding_config.py ..................                        [ 30%]
+tests\test_grounding_database.py ...                                     [ 31%]
+tests\test_grounding_eval_entry.py ...                                   [ 31%]
+tests\test_grounding_evidence.py .............                           [ 35%]
+tests\test_grounding_fallback.py .......                                 [ 37%]
+tests\test_grounding_generation.py ............                          [ 40%]
+tests\test_grounding_generation_api.py ..........                        [ 42%]
+tests\test_grounding_history.py ...                                      [ 43%]
+tests\test_grounding_materials.py ...                                    [ 44%]
+tests\test_grounding_models.py ............................              [ 51%]
+tests\test_grounding_policy.py ......                                    [ 52%]
+tests\test_grounding_preparation.py ......                               [ 54%]
+tests\test_grounding_recovery.py .......                                 [ 56%]
+tests\test_grounding_release.py .                                        [ 56%]
+tests\test_grounding_reports.py .....                                    [ 57%]
+tests\test_grounding_review_summary.py .......                           [ 59%]
+tests\test_grounding_snapshots.py ...                                    [ 60%]
+tests\test_grounding_tavily.py ...........................               [ 67%]
+tests\test_material_parsers.py ...................                       [ 72%]
+tests\test_model_reliability.py ...................                      [ 76%]
+tests\test_multisource_accounts.py ....                                  [ 78%]
+tests\test_mysql_accounts.py .........................                   [ 84%]
+tests\test_period_reliability.py ..................                      [ 89%]
+tests\test_quiz.py ...............                                       [ 92%]
+tests\test_report.py ..............                                      [ 96%]
+tests\test_sources.py .......                                            [ 98%]
+tests\test_topic_multiselect.py .......                                  [100%]
+
+- generated xml file: D:\nbproject\LevelUpProject\docs\knowledge-rag\baseline-backend.xml -
+=============================== tests coverage ================================
+_______________ coverage: platform win32, python 3.13.9-final-0 _______________
+
+Coverage XML written to file ../docs/knowledge-rag/baseline-coverage.xml
+======================= 391 passed in 313.57s (0:05:13) =======================

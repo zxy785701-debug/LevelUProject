@@ -22,12 +22,36 @@
 .source-excerpt{margin-top:18px;padding-bottom:18px;border-bottom:1px solid #e1e6ef}
 .source-excerpt .body-copy{white-space:pre-wrap;overflow-wrap:anywhere}
 .source-excerpt .row{flex-wrap:wrap;gap:8px}
-.map-lines{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
-.map-node{max-width:40%;overflow-wrap:anywhere;text-align:center}
-.map-node.root{max-width:28%}
-.map-node.state-mastered{background:#eaf6ed;border-color:#a8d5bb}
-.map-node.state-weak{background:#fcecea;border-color:#e5b4ad}
-.map-node.state-explore{background:#edf3ff;border-color:#b9c9e5}
+.topic-atlas{margin-top:20px}
+.atlas-summary{display:flex;flex-direction:column;gap:3px;margin-bottom:12px}
+.atlas-search{display:flex;align-items:center;gap:8px;border:1px solid #dce3ee;border-radius:12px;padding:0 12px;background:#fff;min-height:46px}
+.atlas-search taro-input-core{display:block;flex:1 1 0;width:0;min-width:0;font-size:13px}
+.atlas-search input{width:100%;min-width:0;font-size:13px}
+.topic-atlas button{font-size:12px;line-height:1.5;min-height:44px;padding:8px 12px;border:1px solid #dce3ee;border-radius:10px;background:#fff;color:#285cbd;display:flex;align-items:center;justify-content:center}
+.atlas-search button{border:0;padding-right:0;flex:none;width:auto}
+.atlas-search-results{margin-top:8px;padding:12px;background:#f7f9fd;border:1px solid #e1e6ef;border-radius:12px}
+.topic-atlas .atlas-search-result{justify-content:space-between;gap:12px;width:100%;margin-top:8px;text-align:left;overflow-wrap:anywhere}
+.atlas-search-result text{white-space:nowrap;flex:none;font-size:11px}
+.knowledge-map.atlas-viewport{position:relative;width:100%;margin:14px 0 0;padding:0;overflow:hidden;border:1px solid #e1e8f4;border-radius:16px;background-color:#f7faff;background-image:radial-gradient(#cad8f2 1px,transparent 1px);background-size:16px 16px;touch-action:none}
+.atlas-world{position:absolute;display:block;left:0;top:0;transform-origin:0 0}
+.atlas-edge{position:absolute;height:1px;background:#bfceea;transform-origin:0 50%;pointer-events:none}
+.atlas-hub{position:absolute;width:110px;height:70px;border-radius:22px;background:#336ae8;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 5px 16px #336ae82b;font-weight:800;font-size:17px}
+.atlas-hub text+text{font-size:12px;font-weight:400;opacity:.9}
+.atlas-node{position:absolute;border:1px solid #c5d5ef;border-radius:14px;background:#fff;box-shadow:0 3px 8px #202a3d08;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6px;gap:3px}
+.atlas-node.selected{border:2px solid #336ae8;background:#edf3ff;box-shadow:0 0 0 4px #336ae814}
+.atlas-node-title{line-height:1.35;font-weight:700;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow-wrap:anywhere;max-width:100%}
+.atlas-node-meta{color:#69758a;line-height:1.4}
+.atlas-node-meta.weak{color:#b34841}
+.atlas-gesture-hint{position:absolute;bottom:12px;left:12px;pointer-events:none;font-size:11px;background:#ffffffeb;color:#69758a;padding:5px 9px;border-radius:8px}
+.atlas-tools,.atlas-browse,.atlas-pagination{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:10px}
+.atlas-tools>button{min-width:44px;padding:8px}.atlas-tools .atlas-reset{margin-left:auto;padding:8px 12px}
+.atlas-browse>button{flex:1}.atlas-browse>text{white-space:nowrap;text-align:center;font-size:11px}
+.atlas-pagination>text{font-size:12px;white-space:nowrap}
+.atlas-explanation{margin-top:10px;font-size:11px}
+.atlas-detail{margin-top:18px;border-top:1px solid #e1e6ef;padding-top:16px}
+.atlas-detail-heading{display:flex;align-items:center;gap:12px;justify-content:space-between}
+.atlas-detail-heading .strong{overflow-wrap:anywhere;flex:1;min-width:0;font-size:16px}
+.atlas-detail-heading button{flex:none}
 .field-error{line-height:1.8;overflow-wrap:anywhere}
 // Learning scope uses the existing cards and type scale.
 .scope-option { display: flex; gap: 12px; align-items: flex-start; padding: 16px; margin: 10px 0; border: 1px solid #dce3ef; border-radius: 16px; min-height: 52px; box-sizing: border-box; cursor: pointer; }

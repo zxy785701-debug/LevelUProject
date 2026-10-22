@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="3" skipped="0" tests="3" time="22.656" timestamp="2026-10-18T18:17:33.258435+08:00" hostname="zxy"><testcase classname="tests.test_knowledge_api" name="test_capabilities_are_authenticated_sanitized_and_honest" time="2.079"><failure message="assert 404 == 200&#10; +  where 404 = &lt;Response [404 Not Found]&gt;.status_code">knowledge_app = &lt;fastapi.applications.FastAPI object at 0x000001D80462C690&gt;
+
+    @pytest.mark.anyio
+    async def test_capabilities_are_authenticated_sanitized_and_honest(knowledge_app):
+        app = knowledge_app
+        async with httpx.AsyncClient(transport=httpx.ASGITransport(app=app), base_url='http://test') as c:
+            assert (await c.get('/api/v1/knowledge/capabilities')).status_code == 401
+            await login(c)
+            response = await c.get('/api/v1/knowledge/capabilities')
+&gt;           assert response.status_code == 200
+E           assert 404 == 200
+E            +  where 404 = &lt;Response [404 Not Found]&gt;.status_code
+
+tests\test_knowledge_api.py:23: AssertionError</failure></testcase><testcase classname="tests.test_knowledge_api" name="test_document_read_api_obeys_account_and_pagination" time="0.506"><failure message="TypeError: 'NoneType' object is not subscriptable">knowledge_app = &lt;fastapi.applications.FastAPI object at 0x000001D80480A850&gt;
+
+    @pytest.mark.anyio
+    async def test_document_read_api_obeys_account_and_pagination(knowledge_app):
+        app = knowledge_app
+        repo = KnowledgeRepository(app.state.accounts, app.state.knowledge_config)
+        async with httpx.AsyncClient(transport=httpx.ASGITransport(app=app), base_url='http://test') as c:
+            identity = await login(c)
+            seed(repo, uid=identity['user']['id'])
+&gt;           assert (await c.get('/api/v1/knowledge/documents')).json()['data']['total'] == 1
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           TypeError: 'NoneType' object is not subscriptable
+
+tests\test_knowledge_api.py:38: TypeError</failure></testcase><testcase classname="tests.test_knowledge_api" name="test_disabled_knowledge_preserves_health_and_core_learning" time="0.487"><failure message="TypeError: 'NoneType' object is not subscriptable">knowledge_app = &lt;fastapi.applications.FastAPI object at 0x000001D8048EC7D0&gt;
+
+    @pytest.mark.anyio
+    async def test_disabled_knowledge_preserves_health_and_core_learning(knowledge_app):
+        app = knowledge_app
+        app.state.knowledge_config = KnowledgeSettings(_env_file=None)
+        async with httpx.AsyncClient(transport=httpx.ASGITransport(app=app), base_url='http://test') as c:
+            await login(c)
+&gt;           assert (await c.get('/api/v1/knowledge/capabilities')).json()['data']['reason_code'] == 'KNOWLEDGE_DISABLED'
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           TypeError: 'NoneType' object is not subscriptable
+
+tests\test_knowledge_api.py:54: TypeError</failure></testcase></testsuite></testsuites>

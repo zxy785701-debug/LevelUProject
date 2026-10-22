@@ -1,0 +1,21 @@
+.knowledge-flow { min-width: 0; overflow-wrap: anywhere;
+  .knowledge-card, .knowledge-candidate { margin: 14px 0; padding: 16px; border: 1px solid #d5d9df; border-radius: 16px; background: #fffdf8; min-width: 0; }
+  .knowledge-candidate { cursor: pointer; }
+  .knowledge-candidate.selected { border: 2px solid #4269a5; padding: 15px; background: #edf3fa; }
+  .knowledge-document-title { font-size: 18px; font-weight: 700; line-height: 1.6; cursor: pointer; }
+  .knowledge-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 10px 0; font-size: 13px; color: #566172; }
+  .knowledge-actions { display: flex; gap: 8px; margin: 12px 0; > .btn { flex: 1; min-width: 0; margin: 0; padding-left: 9px; padding-right: 9px; } }
+  .knowledge-check { display: flex; align-items: center; gap: 8px; min-height: 48px; padding: 8px 0; line-height: 1.6; cursor: pointer; > checkbox { flex-shrink: 0; } }
+  .knowledge-choices { border-top: 1px solid #d5d9df; border-bottom: 1px solid #d5d9df; margin-bottom: 16px; }
+  .knowledge-network { display: flex; align-items: center; gap: 12px; margin: 16px 0; > view:first-child { flex: 1; min-width: 0; } > switch { flex-shrink: 0; } }
+  .knowledge-input, .knowledge-textarea { box-sizing: border-box; width: 100%; border: 1px solid #b5beca; border-radius: 12px; padding: 14px; font-size: 16px; background: #fff; color: #202a3d; }
+  .knowledge-input { min-height: 52px; height: 52px; }
+  .knowledge-textarea { height: 150px; line-height: 1.65; }
+  .knowledge-filename { padding: 12px 0; font-size: 14px; line-height: 1.7; word-break: break-all; }
+  .knowledge-disclosure { padding: 14px; margin: 16px 0; color: #45536b; font-size: 13px; line-height: 1.8; background: #edf3fa; border-radius: 12px; }
+  .knowledge-error { margin: 14px 0; padding: 14px; border: 1px solid #ca6d5d; background: #fff0e9; border-radius: 12px; color: #83392a; line-height: 1.8; }
+  .knowledge-progress { background: #e6e8eb; height: 12px; border-radius: 10px; overflow: hidden; margin: 28px 0 12px; > view { height: 100%; background: #4269a5; transition: width .2s; } }
+  .btn { min-height: 48px; }
+  .body-copy { white-space: pre-wrap; word-break: break-word; }
+}
+.knowledge-citation { margin-top: 10px; padding: 12px; border-radius: 10px; background: #edf3fa; line-height: 1.75; font-size: 13px; overflow-wrap: anywhere; }

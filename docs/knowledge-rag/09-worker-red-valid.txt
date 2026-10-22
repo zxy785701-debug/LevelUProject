@@ -1,0 +1,46 @@
+FFFF                                                                     [100%]
+================================== FAILURES ===================================
+____ test_directory_lock_refuses_a_second_process_and_releases_after_exit _____
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x0000022978C0F4D0>
+
+    def test_directory_lock_refuses_a_second_process_and_releases_after_exit(repo):
+>       from app.knowledge.worker import DirectoryLock
+E       ModuleNotFoundError: No module named 'app.knowledge.worker'
+
+tests\test_knowledge_worker.py:21: ModuleNotFoundError
+______ test_database_lease_fences_stale_worker_even_on_different_process ______
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x0000022978CF2850>
+
+    def test_database_lease_fences_stale_worker_even_on_different_process(repo):
+>       from app.knowledge.worker import WorkerGuard
+E       ModuleNotFoundError: No module named 'app.knowledge.worker'
+
+tests\test_knowledge_worker.py:43: ModuleNotFoundError
+_ test_bounded_worker_threads_leave_heartbeat_alive_and_prioritize_interaction _
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x0000022978D334D0>
+
+    @pytest.mark.anyio
+    async def test_bounded_worker_threads_leave_heartbeat_alive_and_prioritize_interaction(repo):
+>       from app.knowledge.worker import KnowledgeWorker
+E       ModuleNotFoundError: No module named 'app.knowledge.worker'
+
+tests\test_knowledge_worker.py:59: ModuleNotFoundError
+___ test_worker_errors_are_safe_and_disabled_entry_keeps_cleanup_processing ___
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x0000022978D295B0>
+
+    @pytest.mark.anyio
+    async def test_worker_errors_are_safe_and_disabled_entry_keeps_cleanup_processing(repo):
+>       from app.knowledge.worker import KnowledgeWorker
+E       ModuleNotFoundError: No module named 'app.knowledge.worker'
+
+tests\test_knowledge_worker.py:100: ModuleNotFoundError
+=========================== short test summary info ===========================
+FAILED tests/test_knowledge_worker.py::test_directory_lock_refuses_a_second_process_and_releases_after_exit
+FAILED tests/test_knowledge_worker.py::test_database_lease_fences_stale_worker_even_on_different_process
+FAILED tests/test_knowledge_worker.py::test_bounded_worker_threads_leave_heartbeat_alive_and_prioritize_interaction
+FAILED tests/test_knowledge_worker.py::test_worker_errors_are_safe_and_disabled_entry_keeps_cleanup_processing
+4 failed in 2.33s

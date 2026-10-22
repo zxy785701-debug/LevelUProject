@@ -24,6 +24,7 @@ import { Trend } from '../../Trend'
 import { WeeklyReview } from '../../WeeklyReview'
 import { useMaterialFlow, SourceReader } from '../../MaterialFlow'
 import { useTopicFlow } from '../../TopicFlow'
+import { useKnowledgeFlow } from '../../KnowledgeFlow'
 import { getPendingStudy } from '../../grounding-api'
 import { splitTopicInput, groundingLabel, Grounding } from '../../grounding-domain'
 import { GroundingNotice } from '../../GroundingNotice'
@@ -64,6 +65,7 @@ type Screen =
   | 'detail'
   | 'analytics'
   | 'materials'
+  | 'knowledge'
   | 'topic'
   | 'source'
   | 'map'
@@ -93,6 +95,7 @@ const labels: Record<Screen, string> = {
   detail: '学习详情',
   analytics: '学习数据',
   materials: '导入学习材料',
+  knowledge: '私有知识库',
   topic: '确认学习范围',
   source: '材料详情',
   map: '知识地图',
@@ -217,6 +220,7 @@ function LearningPage() {
   const back = () => {
     if (['report', 'reportLoading', 'result', 'reviewResult'].includes(screen)) { root('home'); return }
     if (screen === 'materials') { materialFlow.back(); return }
+    if (screen === 'knowledge') { knowledgeFlow.back(); return }
     if (screen === 'topic') { void topicFlow.back(); return }
     if (screen === 'quiz') {
       if (busy.current) return
@@ -427,6 +431,7 @@ function LearningPage() {
 
   const materialFlow = useMaterialFlow({ uid: auth.user.id, active: screen === 'materials', draft: data.draft, onSession: s => { openSession(s); void api<User>('/api/v1/me').then(auth.update).catch(() => {}) }, onExit: () => setScreen(stack.current.pop() || 'home'), onScope: id => { setScreen('topic'); void topicFlow.adopt(id) } })
   const topicFlow = useTopicFlow({ uid: auth.user.id, active: screen === 'topic', draft: data.draft, onSession: s => { openSession(s); void api<User>('/api/v1/me').then(auth.update).catch(() => {}) }, onExit: () => root('home'), onMaterial: hint => { materialFlow.open('web', { url: hint.url, instruction: hint.learning_instruction }); setScreen('materials') } })
+  const knowledgeFlow = useKnowledgeFlow({ uid: auth.user.id, active: screen === 'knowledge', onSession: s => { openSession(s); void api<User>('/api/v1/me').then(auth.update).catch(() => {}) }, onExit: () => setScreen(stack.current.pop() || 'mine') })
   const analysis = usePersonalAnalysis({ screen, navigate: go, onReview: () => go('queue'), onPoint: (point, topic) => {
     if (point.status === 'explore') { dispatch({ type: 'DRAFT', draft: { ...data.draft, text: `${topic}：${point.name}` } }); root('home'); return }
     const w = wrongs.find(w => point.wrong_keys.includes(w.key))
@@ -435,7 +440,7 @@ function LearningPage() {
     if (s) { openRecord(s); return }
     void api<Session>('/api/v1/attempts/'+point.attempt_ids[0]).then(s => { upsert(s); openRecord(s) }).catch(e => setDialog({ title: '记录暂时无法读取', message: e.message }))
   } })
-  const id = screen === 'materials' ? materialFlow.id : screen === 'topic' ? topicFlow.id :
+  const id = screen === 'knowledge' ? knowledgeFlow.id : screen === 'materials' ? materialFlow.id : screen === 'topic' ? topicFlow.id :
     screen === 'quiz'
       ? paused
         ? 'L14'
@@ -1314,6 +1319,7 @@ function LearningPage() {
       )
   }
   if (screen === 'materials') { body = materialFlow.body; footer = materialFlow.footer }
+  if (screen === 'knowledge') { body = knowledgeFlow.body; footer = knowledgeFlow.footer }
   if (screen === 'topic') { body = topicFlow.body; footer = topicFlow.footer }
   if (screen === 'source' && sourceView) body = <SourceReader title={sourceView.title} segments={sourceView.segments} grounding={sourceView.grounding} />
   if (['map', 'analytics', 'periodSetup', 'periodReport'].includes(screen)) { body = analysis.body; footer = analysis.footer }
@@ -1458,7 +1464,7 @@ function LearningPage() {
       </Btn>
     )
   }
-  if (screen === 'mine') body = <Mine profile={profile} go={go} future={future} />
+  if (screen === 'mine') body = <Mine profile={profile} go={go} future={future} onKnowledge={() => go('knowledge')} />
   if (screen === 'settings')
     body = (
       <SettingsView
@@ -1561,6 +1567,7 @@ function LearningPage() {
       status = 20
     }
   }
+  const currentScrollKey = screen === 'knowledge' ? `${knowledgeFlow.id}-${knowledgeFlow.locationKey}` : scrollKey
   return (
     <View
       className={`app-shell ${refined ? 'footer-refined' : ''} ${screen === 'quiz' ? 'question-layout' : ''}`}
@@ -1588,7 +1595,7 @@ function LearningPage() {
             </View>
           )}
           <Text className="mini-label">
-            {screen === 'quiz' && active?.mode === 'review' ? '旧识重温' : screen === 'materials' ? materialFlow.label : screen === 'topic' ? topicFlow.label : labels[screen]}
+            {screen === 'quiz' && active?.mode === 'review' ? '旧识重温' : screen === 'knowledge' ? knowledgeFlow.label : screen === 'materials' ? materialFlow.label : screen === 'topic' ? topicFlow.label : labels[screen]}
           </Text>
         </View>
         {process.env.TARO_ENV === 'h5' && (
@@ -1600,9 +1607,9 @@ function LearningPage() {
       <ScrollView
         scrollY
         className="phone-scroll"
-        key={scrollKey}
-        scrollTop={scrollPositions.current[scrollKey] || 0}
-        onScroll={e => { scrollPositions.current[scrollKey] = e.detail.scrollTop }}
+        key={currentScrollKey}
+        scrollTop={scrollPositions.current[currentScrollKey] || 0}
+        onScroll={e => { const top = e.detail?.scrollTop; if (typeof top === 'number' && Number.isFinite(top)) scrollPositions.current[currentScrollKey] = top }}
       >
         <View className="content">{cloudLoading && <View className="notice">正在同步云端学习记录…</View>}{cloudError && <View className="notice" onClick={() => void refresh().catch(() => {})}>{cloudError} 点击重试同步</View>}{body}</View>
       </ScrollView>

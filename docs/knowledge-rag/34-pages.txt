@@ -1,0 +1,185 @@
+
+Running 3 tests using 1 worker
+
+(node:31044) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 e2e-knowledge\knowledge.spec.ts:53:5 › 真实存储闭环：Markdown→问答来源→原问题出题→多选主题→确认答题→报告 (1.5m)
+(node:34492) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  2 e2e-knowledge\knowledge.spec.ts:100:5 › 断开响应与重新打开：恢复同一上传任务，不重复创建文档 (1.5m)
+(node:33104) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  3 e2e-knowledge\knowledge.spec.ts:117:5 › 资料不足、问答删除和资料删除后的来源快照 (1.5m)
+
+
+  1) e2e-knowledge\knowledge.spec.ts:53:5 › 真实存储闭环：Markdown→问答来源→原问题出题→多选主题→确认答题→报告 ────────────────
+
+    Test timeout of 90000ms exceeded.
+
+    Error: locator.click: Test timeout of 90000ms exceeded.
+    Browser logs:
+
+    <launching> C:\Users\20777\AppData\Local\Google\Chrome\Application\chrome.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,NetworkTimeServiceQuerying,AimEnabled,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=C:\Users\20777\AppData\Local\Temp\playwright_chromiumdev_profile-k72WHt --remote-debugging-pipe --no-startup-window
+    <launched> pid=32944
+    [pid=32944] <gracefully close start>
+    Call log:
+      - waiting for getByText('我的', { exact: true })
+        - locator resolved to <taro-text-core class="">…</taro-text-core>
+      - attempting click action
+        2 × waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <iframe src="about:blank" id="webpack-dev-server-client-overlay"></iframe> intercepts pointer events
+        - retrying click action
+        - waiting 20ms
+        2 × waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <iframe src="about:blank" id="webpack-dev-server-client-overlay"></iframe> intercepts pointer events
+        - retrying click action
+          - waiting 100ms
+        168 × waiting for element to be visible, enabled and stable
+            - element is visible, enabled and stable
+            - scrolling into view if needed
+            - done scrolling
+            - <iframe src="about:blank" id="webpack-dev-server-client-overlay"></iframe> intercepts pointer events
+          - retrying click action
+            - waiting 500ms
+        - waiting for element to be visible, enabled and stable
+
+
+      22 | }
+      23 | async function enter(page: Page) {
+    > 24 |   await page.getByText('我的', { exact: true }).click()
+         |                                               ^
+      25 |   await page.getByText('私有知识库', { exact: true }).click()
+      26 |   await expect(page.getByTestId('knowledge-library')).toBeVisible()
+      27 |   await expect(page.getByRole('button', { name: '添加资料', exact: true })).toBeEnabled()
+        at enter (D:\nbproject\LevelUpProject\frontend\e2e-knowledge\knowledge.spec.ts:24:47)
+        at D:\nbproject\LevelUpProject\frontend\e2e-knowledge\knowledge.spec.ts:54:53
+
+    Error Context: ..\docs\knowledge-rag\page-results\knowledge-真实存储闭环：Markdown→问答来源→原问题出题→多选主题→确认答题→报告\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\docs\knowledge-rag\page-results\knowledge-真实存储闭环：Markdown→问答来源→原问题出题→多选主题→确认答题→报告\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\docs\knowledge-rag\page-results\knowledge-真实存储闭环：Markdown→问答来源→原问题出题→多选主题→确认答题→报告\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) e2e-knowledge\knowledge.spec.ts:100:5 › 断开响应与重新打开：恢复同一上传任务，不重复创建文档 ────────────────────────────
+
+    Test timeout of 90000ms exceeded.
+
+    Error: locator.click: Test timeout of 90000ms exceeded.
+    Call log:
+      - waiting for getByText('我的', { exact: true })
+        - locator resolved to <taro-text-core class="">…</taro-text-core>
+      - attempting click action
+        2 × waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <iframe src="about:blank" id="webpack-dev-server-client-overlay"></iframe> intercepts pointer events
+        - retrying click action
+        - waiting 20ms
+        2 × waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <iframe src="about:blank" id="webpack-dev-server-client-overlay"></iframe> intercepts pointer events
+        - retrying click action
+          - waiting 100ms
+        166 × waiting for element to be visible, enabled and stable
+            - element is visible, enabled and stable
+            - scrolling into view if needed
+            - done scrolling
+            - <iframe src="about:blank" id="webpack-dev-server-client-overlay"></iframe> intercepts pointer events
+          - retrying click action
+            - waiting 500ms
+        - waiting for element to be visible, enabled and stable
+
+
+      22 |   await page.locator('#webpack-dev-server-client-overlay').evaluateAll(nodes => nodes.forEach(n => n.remove()))
+      23 |   await expect(page.getByText('正在同步云端学习记录…')).toHaveCount(0)
+    > 24 |   return { ...account, headers: { Authorization: 'Bearer ' + account.token } }
+         |                                               ^
+      25 | }
+      26 | async function enter(page: Page) {
+      27 |   await page.getByText('我的', { exact: true }).click()
+        at enter (D:\nbproject\LevelUpProject\frontend\e2e-knowledge\knowledge.spec.ts:24:47)
+        at D:\nbproject\LevelUpProject\frontend\e2e-knowledge\knowledge.spec.ts:101:53
+
+    Error Context: ..\docs\knowledge-rag\page-results\knowledge-断开响应与重新打开：恢复同一上传任务，不重复创建文档\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\docs\knowledge-rag\page-results\knowledge-断开响应与重新打开：恢复同一上传任务，不重复创建文档\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\docs\knowledge-rag\page-results\knowledge-断开响应与重新打开：恢复同一上传任务，不重复创建文档\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) e2e-knowledge\knowledge.spec.ts:117:5 › 资料不足、问答删除和资料删除后的来源快照 ──────────────────────────────────
+
+    Test timeout of 90000ms exceeded.
+
+    Error: apiRequestContext._wrapApiCall: ENOENT: no such file or directory, copyfile 'D:\nbproject\LevelUpProject\docs\knowledge-rag\page-results\.playwright-artifacts-2\traces\0828a03cd0e93ee0ce1b-ce27b0f51029cdea3133-recording2.network' -> 'D:\nbproject\LevelUpProject\docs\knowledge-rag\page-results\.playwright-artifacts-2\traces\0828a03cd0e93ee0ce1b-ce27b0f51029cdea3133-recording2-pwnetcopy-1.network'
+
+    Error: apiRequestContext._wrapApiCall: ENOENT: no such file or directory, open 'D:\nbproject\LevelUpProject\docs\knowledge-rag\page-results\.playwright-artifacts-2\traces\0828a03cd0e93ee0ce1b-ce27b0f51029cdea3133-recording1.trace'
+
+    Error: browserContext._wrapApiCall: ENOENT: no such file or directory, open 'D:\nbproject\LevelUpProject\docs\knowledge-rag\page-results\.playwright-artifacts-2\traces\0828a03cd0e93ee0ce1b-ce27b0f51029cdea3133.trace'
+
+    Error: locator.click: Test ended.
+    Browser logs:
+
+    <launching> C:\Users\20777\AppData\Local\Google\Chrome\Application\chrome.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,NetworkTimeServiceQuerying,AimEnabled,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=C:\Users\20777\AppData\Local\Temp\playwright_chromiumdev_profile-V3M1ZC --remote-debugging-pipe --no-startup-window
+    <launched> pid=27572
+    [pid=27572] <gracefully close start>
+    Call log:
+      - waiting for getByRole('button', { name: '向资料提问', exact: true })
+        - locator resolved to <taro-button-core type="" role="button" disabled="false" aria-label="向资料提问" class="btn secondary">…</taro-button-core>
+      - attempting click action
+        2 × waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <iframe src="about:blank" id="webpack-dev-server-client-overlay"></iframe> intercepts pointer events
+        - retrying click action
+        - waiting 20ms
+        2 × waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <iframe src="about:blank" id="webpack-dev-server-client-overlay"></iframe> intercepts pointer events
+        - retrying click action
+          - waiting 100ms
+        68 × waiting for element to be visible, enabled and stable
+           - element is visible, enabled and stable
+           - scrolling into view if needed
+           - done scrolling
+           - <iframe src="about:blank" id="webpack-dev-server-client-overlay"></iframe> intercepts pointer events
+         - retrying click action
+           - waiting 500ms
+        - waiting for element to be visible, enabled and stable
+
+
+      37 |   await (await chooser).setFiles({ name, mimeType: 'text/markdown', buffer: Buffer.from('# 请求与会话\nHTTP 每次请求独立。Cookie 用来保存状态。Session 保存会话信息。\n\n## 错误处理\nHTTP 404 表示未找到请求资源。') })
+      38 |   await page.getByRole('button', { name: '上传并建库', exact: true }).click()
+    > 39 |   await expect(page.getByText('资料已就绪，可以提问或准备关卡。', { exact: true })).toBeVisible()
+         |                                                                  ^
+      40 | }
+      41 | async function ask(page: Page, question = '根据资料解释 HTTP 与会话') {
+      42 |   await page.getByRole('button', { name: '向资料提问', exact: true }).click()
+        at ask (D:\nbproject\LevelUpProject\frontend\e2e-knowledge\knowledge.spec.ts:39:66)
+        at D:\nbproject\LevelUpProject\frontend\e2e-knowledge\knowledge.spec.ts:119:9
+
+    Error: ENOENT: no such file or directory, open 'D:\nbproject\LevelUpProject\docs\knowledge-rag\page-results\.playwright-artifacts-2\1e37b46e745f125c5b38ab8eec9873c4.zip'
+
+  3 failed
+    e2e-knowledge\knowledge.spec.ts:53:5 › 真实存储闭环：Markdown→问答来源→原问题出题→多选主题→确认答题→报告 ─────────────────
+    e2e-knowledge\knowledge.spec.ts:100:5 › 断开响应与重新打开：恢复同一上传任务，不重复创建文档 ─────────────────────────────
+    e2e-knowledge\knowledge.spec.ts:117:5 › 资料不足、问答删除和资料删除后的来源快照 ───────────────────────────────────

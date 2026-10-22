@@ -1,0 +1,120 @@
+
+Running 3 tests using 1 worker
+
+(node:27532) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 e2e-knowledge\knowledge.spec.ts:53:5 › 真实存储闭环：Markdown→问答来源→原问题出题→多选主题→确认答题→报告 (21.3s)
+(node:33304) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  2 e2e-knowledge\knowledge.spec.ts:100:5 › 断开响应与重新打开：恢复同一上传任务，不重复创建文档 (21.2s)
+(node:22472) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  3 e2e-knowledge\knowledge.spec.ts:117:5 › 资料不足、问答删除和资料删除后的来源快照 (21.3s)
+
+
+  1) e2e-knowledge\knowledge.spec.ts:53:5 › 真实存储闭环：Markdown→问答来源→原问题出题→多选主题→确认答题→报告 ────────────────
+
+    Error: expect(locator).toBeEnabled() failed
+
+    Locator: getByRole('button', { name: '添加资料', exact: true })
+    Expected: enabled
+    Timeout: 20000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeEnabled" getByRole('button', { name: '添加资料', exact: true }) with timeout 20000ms
+      - waiting for getByRole('button', { name: '添加资料', exact: true })
+
+
+      25 |   await page.getByText('私有知识库', { exact: true }).click()
+      26 |   await expect(page.getByTestId('knowledge-library')).toBeVisible()
+    > 27 |   await expect(page.getByRole('button', { name: '添加资料', exact: true })).toBeEnabled()
+         |                                                                         ^
+      28 | }
+      29 | async function upload(page: Page, name = '协议学习笔记.md') {
+      30 |   await page.getByRole('button', { name: '添加资料', exact: true }).click()
+        at enter (D:\nbproject\LevelUpProject\frontend\e2e-knowledge\knowledge.spec.ts:27:73)
+        at D:\nbproject\LevelUpProject\frontend\e2e-knowledge\knowledge.spec.ts:54:47
+
+    Error Context: ..\docs\knowledge-rag\page-results\knowledge-真实存储闭环：Markdown→问答来源→原问题出题→多选主题→确认答题→报告\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\docs\knowledge-rag\page-results\knowledge-真实存储闭环：Markdown→问答来源→原问题出题→多选主题→确认答题→报告\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\docs\knowledge-rag\page-results\knowledge-真实存储闭环：Markdown→问答来源→原问题出题→多选主题→确认答题→报告\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) e2e-knowledge\knowledge.spec.ts:100:5 › 断开响应与重新打开：恢复同一上传任务，不重复创建文档 ────────────────────────────
+
+    Error: expect(locator).toBeEnabled() failed
+
+    Locator: getByRole('button', { name: '添加资料', exact: true })
+    Expected: enabled
+    Timeout: 20000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeEnabled" getByRole('button', { name: '添加资料', exact: true }) with timeout 20000ms
+      - waiting for getByRole('button', { name: '添加资料', exact: true })
+
+
+      25 |   await page.getByText('私有知识库', { exact: true }).click()
+      26 |   await expect(page.getByTestId('knowledge-library')).toBeVisible()
+    > 27 |   await expect(page.getByRole('button', { name: '添加资料', exact: true })).toBeEnabled()
+         |                                                                         ^
+      28 | }
+      29 | async function upload(page: Page, name = '协议学习笔记.md') {
+      30 |   await page.getByRole('button', { name: '添加资料', exact: true }).click()
+        at enter (D:\nbproject\LevelUpProject\frontend\e2e-knowledge\knowledge.spec.ts:27:73)
+        at D:\nbproject\LevelUpProject\frontend\e2e-knowledge\knowledge.spec.ts:101:47
+
+    Error Context: ..\docs\knowledge-rag\page-results\knowledge-断开响应与重新打开：恢复同一上传任务，不重复创建文档\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\docs\knowledge-rag\page-results\knowledge-断开响应与重新打开：恢复同一上传任务，不重复创建文档\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\docs\knowledge-rag\page-results\knowledge-断开响应与重新打开：恢复同一上传任务，不重复创建文档\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) e2e-knowledge\knowledge.spec.ts:117:5 › 资料不足、问答删除和资料删除后的来源快照 ──────────────────────────────────
+
+    Error: expect(locator).toBeEnabled() failed
+
+    Locator: getByRole('button', { name: '添加资料', exact: true })
+    Expected: enabled
+    Timeout: 20000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeEnabled" getByRole('button', { name: '添加资料', exact: true }) with timeout 20000ms
+      - waiting for getByRole('button', { name: '添加资料', exact: true })
+
+
+      25 |   await page.getByText('私有知识库', { exact: true }).click()
+      26 |   await expect(page.getByTestId('knowledge-library')).toBeVisible()
+    > 27 |   await expect(page.getByRole('button', { name: '添加资料', exact: true })).toBeEnabled()
+         |                                                                         ^
+      28 | }
+      29 | async function upload(page: Page, name = '协议学习笔记.md') {
+      30 |   await page.getByRole('button', { name: '添加资料', exact: true }).click()
+        at enter (D:\nbproject\LevelUpProject\frontend\e2e-knowledge\knowledge.spec.ts:27:73)
+        at D:\nbproject\LevelUpProject\frontend\e2e-knowledge\knowledge.spec.ts:118:47
+
+    Error Context: ..\docs\knowledge-rag\page-results\knowledge-资料不足、问答删除和资料删除后的来源快照\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\docs\knowledge-rag\page-results\knowledge-资料不足、问答删除和资料删除后的来源快照\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\docs\knowledge-rag\page-results\knowledge-资料不足、问答删除和资料删除后的来源快照\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3 failed
+    e2e-knowledge\knowledge.spec.ts:53:5 › 真实存储闭环：Markdown→问答来源→原问题出题→多选主题→确认答题→报告 ─────────────────
+    e2e-knowledge\knowledge.spec.ts:100:5 › 断开响应与重新打开：恢复同一上传任务，不重复创建文档 ─────────────────────────────
+    e2e-knowledge\knowledge.spec.ts:117:5 › 资料不足、问答删除和资料删除后的来源快照 ───────────────────────────────────

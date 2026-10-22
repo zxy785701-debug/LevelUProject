@@ -1,0 +1,142 @@
+[
+  {
+    "path": "frontend/src/api.ts",
+    "sha256": "7189124e5c257b151d1373fe34eb241557a27144e7007b2616c2b1f6d4888152"
+  },
+  {
+    "path": "frontend/src/app.config.ts",
+    "sha256": "8b0474cf84023bff74e96b6897995cde6f81b9a5fa1be8ad0f88cf1bf0db92b2"
+  },
+  {
+    "path": "frontend/src/credentials.ts",
+    "sha256": "57d8c9b2ac5bc5e3ecb8b75789ba35bb11c024b0071670c696f8e82698f0996d"
+  },
+  {
+    "path": "frontend/src/domain.ts",
+    "sha256": "d09e3a357a0173a3ca1762c4bf3b5a159359d268811605c3ff8c95883ac680c1"
+  },
+  {
+    "path": "frontend/src/features-api.ts",
+    "sha256": "cf027cb10a731f4b51056bf0a5ccf67208a0301997bcc090b73f948ec950a904"
+  },
+  {
+    "path": "frontend/src/features-domain.ts",
+    "sha256": "73ee957f40205503e823e9cc0fcf9d8d96a754b3b5b8b3df6d346adc60c01091"
+  },
+  {
+    "path": "frontend/src/global.d.ts",
+    "sha256": "871f180e2c0034708b545f5f07a1161a54163ccd9b9e5d53dfdd47e1b0f4d09f"
+  },
+  {
+    "path": "frontend/src/grounding-api.ts",
+    "sha256": "3accf75965681a39a52091448be1b86cd1e0e36102e16907d120a55944c2f6fa"
+  },
+  {
+    "path": "frontend/src/grounding-domain.ts",
+    "sha256": "c8625ad3dd65a99b69f6e3b0ad81fa4f8f38a0b6e77237b68960c68991bbe516"
+  },
+  {
+    "path": "frontend/src/knowledge-api.ts",
+    "sha256": "a50859a35c9b8f22ee0e36a3dd5a5384c42700730782f8f73f905f77aaa3c3da"
+  },
+  {
+    "path": "frontend/src/knowledge-domain.ts",
+    "sha256": "5ee047590b145d00d9a1c772b51e31902f6c0979ae5c91cbd0e0f701a40a1817"
+  },
+  {
+    "path": "frontend/src/knowledge-map.ts",
+    "sha256": "377d53cc194d0abf67d5455e919c7107b5f3cb9c36a5db7e5de2847a08b0619d"
+  },
+  {
+    "path": "frontend/src/knowledge-tasks.ts",
+    "sha256": "2787a8811f141a95c1ab52763ce9930a77d442f0dba7447f5fab7a8729fb0d0b"
+  },
+  {
+    "path": "frontend/src/platform.ts",
+    "sha256": "0a55e776e289e7142fde8f106ba27efe3434034adb9083c1f65db0c1deeab6d5"
+  },
+  {
+    "path": "frontend/src/pages/index/index.config.ts",
+    "sha256": "4c1c91a88843229454b47334ae30b3885384c17cc722a2ae9752d155be19afe3"
+  },
+  {
+    "path": "frontend/src/account.tsx",
+    "sha256": "eca59f351fdccd01d97fbf9fee09521c315b6d2e7cb0c9c707182bfe2cb434a8"
+  },
+  {
+    "path": "frontend/src/app.tsx",
+    "sha256": "a2d21ebb7b069c6713a39c01a18dba6f52b77c6b5935c267d1335e313ea5bfa7"
+  },
+  {
+    "path": "frontend/src/auth.tsx",
+    "sha256": "b255a707dec711bf24844ec887b015bae2f3de4d96122b628343699fabf06e52"
+  },
+  {
+    "path": "frontend/src/components.tsx",
+    "sha256": "0d967fc98b74bf3d1a12a23ccdc49e65761105809459648f46c8bd4273ea37b0"
+  },
+  {
+    "path": "frontend/src/GenerationProgress.tsx",
+    "sha256": "86904e4b5ac895522544f97449f6409e066f8108d61adb3271d5642b893e2802"
+  },
+  {
+    "path": "frontend/src/GroundingNotice.tsx",
+    "sha256": "5d429055b5e1e54ccf41220a2561cc3a3f952e4b0b4663c6fb0f0f320ca10155"
+  },
+  {
+    "path": "frontend/src/KnowledgeAtlas.tsx",
+    "sha256": "9cd531820301006d9d5c0b124d0c8d939cc7cf9838735a1c06031878564ebc64"
+  },
+  {
+    "path": "frontend/src/KnowledgeFlow.tsx",
+    "sha256": "a016f098eee4f2cbc489ac2fe60b205ac260a0654a10442ec2f58e33b14e470f"
+  },
+  {
+    "path": "frontend/src/MaterialFlow.tsx",
+    "sha256": "04d80eae10609fd6cedb46bd1454e6dde8dd2297b19efe50908efc70dbf2eb6e"
+  },
+  {
+    "path": "frontend/src/PersonalAnalysis.tsx",
+    "sha256": "27568f302199968fd3122e1f12abc05c16c884755907b9c92509740f0f327947"
+  },
+  {
+    "path": "frontend/src/store.tsx",
+    "sha256": "c6cace7fd7f09adaac8c8d8d970508276fac52ee8a2ac500a2904d58ab4cf335"
+  },
+  {
+    "path": "frontend/src/TopicFlow.tsx",
+    "sha256": "6a3412455933dd8357d2a1c8499bb53633a09f2d8c270f7061391e808942d657"
+  },
+  {
+    "path": "frontend/src/Trend.tsx",
+    "sha256": "212a6ec7aa27b3c9bafc4ff4b1a28823eeef310af3539829d245d798fdfabf5e"
+  },
+  {
+    "path": "frontend/src/WeeklyReview.tsx",
+    "sha256": "056d64cbdb2f3d90cb25450648179e41be87bc9f44354a09b049730d9af58ba1"
+  },
+  {
+    "path": "frontend/src/pages/index/index.tsx",
+    "sha256": "316053ad864f5cb0307593858fa4d03fb0ae12fd69c70d16db27ede97a6eed93"
+  },
+  {
+    "path": "frontend/src/app.scss",
+    "sha256": "673a1b7341003af1ae7ff14616f8bc439da9a3634075ced11401bdd8ea4a4a69"
+  },
+  {
+    "path": "frontend/src/features.scss",
+    "sha256": "4044afe2b9959176a42f72fbdfc9a111af613d714dc55048f68d041336b5e4b5"
+  },
+  {
+    "path": "frontend/src/footer.scss",
+    "sha256": "630b88fc5a2585bc70c98df65e878a400c14e7277e2017f607c22a62bfe41148"
+  },
+  {
+    "path": "frontend/src/knowledge.scss",
+    "sha256": "fa25228828e36e18da003508ed6fd0aa91cf7e67b6705e2b41381c3a9aea35f8"
+  },
+  {
+    "path": "frontend/src/prototype.scss",
+    "sha256": "34912cd6f3840b872159d07bb7c1a99f14d1f92c5c0620bc8ccf1dcf154f4f58"
+  }
+]

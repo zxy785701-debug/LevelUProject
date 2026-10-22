@@ -1,0 +1,20 @@
+....F......                                                              [100%]
+================================== FAILURES ===================================
+_ test_unused_public_sources_do_not_claim_network_support_for_knowledge_quiz __
+
+    @pytest.mark.anyio
+    async def test_unused_public_sources_do_not_claim_network_support_for_knowledge_quiz():
+        ctx = context()
+        ctx['segments'].append({'id':'unused-web','text':'δ������Ŀ����ҳ','url':'https://example.com/',
+            'retrieved_at':'2026-10-18T00:00:00Z','content_kind':'snippet','supplement':True})
+        gateway = SequenceGateway([{'status':'ready','quiz':quiz_payload()},review(ids=[ctx['segments'][0]['id']])])
+        result = await run(gateway,ctx)
+>       assert result['grounding']['status']=='material_only' and result['grounding']['provider'] is None
+E       AssertionError: assert ('material_only' == 'material_only'
+E         
+E           material_only and 'tavily' is None)
+
+tests\test_knowledge_quiz_generation.py:74: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_knowledge_quiz_generation.py::test_unused_public_sources_do_not_claim_network_support_for_knowledge_quiz
+1 failed, 10 passed in 21.26s

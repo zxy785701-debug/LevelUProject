@@ -1,0 +1,45 @@
+
+> levelup-mini@1.0.0 test
+> vitest run --run tests/knowledge-api.test.ts
+
+
+ RUN  v3.2.7 D:/nbproject/LevelUpProject/frontend
+
+ ❯ tests/knowledge-api.test.ts (10 tests | 1 failed) 37ms
+   ✓ 任务身份和成功结果必须区别于旧材料任务及答题 Session 7ms
+   ✓ 知识库提问使用明确范围和可见联网选择，短请求携带鉴权与原幂等键 3ms
+   ✓ 原生上传解析字符串响应，支持 Markdown 并包含鉴权与幂等键 2ms
+   ✓ H5 上传不带 Cookie；旧账号的迟到响应不会影响新账号 2ms
+   ✓ 上传可随本页查询停止，上传完成通知不能伪造索引已经完成 1ms
+   ✓ 错误上传响应和不支持文件不触发错误的关卡跳转 0ms
+   ✓ 任务存储按账号隔离；进度和终态不会被迟到响应倒退 1ms
+   ✓ 后台暂停只停止查询；恢复后沿用同一任务并保留单调进度 1ms
+   ✓ 账号切换后拒绝旧轮询结果 0ms
+   × 重新打开页面时以本机已确认的进度作为下限 20ms
+     → expected [ 40, 100 ] to deeply equal [ 70, 100 ]
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/knowledge-api.test.ts > 重新打开页面时以本机已确认的进度作为下限
+AssertionError: expected [ 40, 100 ] to deeply equal [ 70, 100 ]
+
+- Expected
++ Received
+
+  [
+-   70,
++   40,
+    100,
+  ]
+
+ ❯ tests/knowledge-api.test.ts:109:18
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 9 passed (10)
+   Start at  23:02:36
+   Duration  862ms (transform 84ms, setup 0ms, collect 364ms, tests 37ms, environment 0ms, prepare 199ms)
+

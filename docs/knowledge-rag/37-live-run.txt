@@ -1,0 +1,12 @@
+job_failed job=2c13276a-192c-49a5-8a1b-f1477a760eda kind=import error_code=KNOWLEDGE_FILE_MISSING
+{"sample": "txt-import", "kind": "import", "status": "succeeded", "error_code": null, "seconds": 5.67}
+{"sample": "pdf-import", "kind": "import", "status": "succeeded", "error_code": null, "seconds": 1.58}
+{"sample": "docx-import", "kind": "import", "status": "succeeded", "error_code": null, "seconds": 1.56}
+{"sample": "md-import", "kind": "import", "status": "succeeded", "error_code": null, "seconds": 1.55}
+{"sample": "conflict_a-import", "kind": "import", "status": "succeeded", "error_code": null, "seconds": 1.56}
+{"sample": "conflict_b-import", "kind": "import", "status": "succeeded", "error_code": null, "seconds": 1.54}
+{"sample": "web-import", "kind": "import", "status": "succeeded", "error_code": null, "seconds": 4.66}
+{"sample": "����", "kind": "question", "status": "succeeded", "error_code": null, "seconds": 4.73}
+job_failed job=b7ef9d10-db50-43ce-9ce2-61b0d83f89bb kind=question error_code=KNOWLEDGE_PROCESSING_FAILED
+{"sample": "Ӣ��PDF", "kind": "question", "status": "failed", "error_code": "KNOWLEDGE_PROCESSING_FAILED", "seconds": 1.55}
+{"status": "failed", "error_code": "IDEMPOTENCY_CONFLICT"}

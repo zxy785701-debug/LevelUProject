@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="4" time="9.977" timestamp="2026-10-18T23:04:39.131551+08:00" hostname="zxy"><testcase classname="tests.test_knowledge_storage_boundaries" name="test_exact_fallback_is_bounded_and_never_trusts_corrupt_vectors[too_many]" time="3.883" /><testcase classname="tests.test_knowledge_storage_boundaries" name="test_exact_fallback_is_bounded_and_never_trusts_corrupt_vectors[bad_vector]" time="0.690" /><testcase classname="tests.test_knowledge_storage_boundaries" name="test_exact_fallback_is_bounded_and_never_trusts_corrupt_vectors[no_vectors]" time="0.848"><failure message="Failed: DID NOT RAISE AppError">index = &lt;app.knowledge.index.VectorIndex object at 0x000001A688630E10&gt;
+repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x000001A688631450&gt;
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x000001A68809B2F0&gt;
+case = 'no_vectors'
+
+    @pytest.mark.parametrize('case',['too_many','bad_vector','no_vectors','zero_norm'])
+    def test_exact_fallback_is_bounded_and_never_trusts_corrupt_vectors(index,repo,monkeypatch,case):
+        import numpy as np
+        selected=ready(repo,index); ai_job(repo); claim=index.jobs.claim('worker')
+        ids=['unknown']*257 if case=='too_many' else ['unknown']
+        values=None if case=='no_vectors' else [np.array([1.0] if case=='bad_vector' else [0.0]*1024)]
+        collection=SimpleNamespace(count=lambda:300,query=lambda **kw:{'ids':[[]],'distances':[[]]},get=lambda **kw:{'ids':ids,'embeddings':values})
+        monkeypatch.setattr(index,'collection',lambda uid:collection)
+&gt;       fails('KNOWLEDGE_INDEX_UNAVAILABLE',lambda:index.search(claim,selected,[1.0]*1024))
+
+tests\test_knowledge_storage_boundaries.py:120: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+code = 'KNOWLEDGE_INDEX_UNAVAILABLE'
+call = &lt;function test_exact_fallback_is_bounded_and_never_trusts_corrupt_vectors.&lt;locals&gt;.&lt;lambda&gt; at 0x000001A688612480&gt;
+
+    def fails(code,call):
+&gt;       with pytest.raises(AppError) as caught: call()
+             ^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE AppError
+
+tests\test_knowledge_boundaries.py:23: Failed</failure></testcase><testcase classname="tests.test_knowledge_storage_boundaries" name="test_exact_fallback_is_bounded_and_never_trusts_corrupt_vectors[zero_norm]" time="0.950"><failure message="Failed: DID NOT RAISE AppError">index = &lt;app.knowledge.index.VectorIndex object at 0x000001A6880B1810&gt;
+repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x000001A6880B1E00&gt;
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x000001A6880919D0&gt;
+case = 'zero_norm'
+
+    @pytest.mark.parametrize('case',['too_many','bad_vector','no_vectors','zero_norm'])
+    def test_exact_fallback_is_bounded_and_never_trusts_corrupt_vectors(index,repo,monkeypatch,case):
+        import numpy as np
+        selected=ready(repo,index); ai_job(repo); claim=index.jobs.claim('worker')
+        ids=['unknown']*257 if case=='too_many' else ['unknown']
+        values=None if case=='no_vectors' else [np.array([1.0] if case=='bad_vector' else [0.0]*1024)]
+        collection=SimpleNamespace(count=lambda:300,query=lambda **kw:{'ids':[[]],'distances':[[]]},get=lambda **kw:{'ids':ids,'embeddings':values})
+        monkeypatch.setattr(index,'collection',lambda uid:collection)
+&gt;       fails('KNOWLEDGE_INDEX_UNAVAILABLE',lambda:index.search(claim,selected,[1.0]*1024))
+
+tests\test_knowledge_storage_boundaries.py:120: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+code = 'KNOWLEDGE_INDEX_UNAVAILABLE'
+call = &lt;function test_exact_fallback_is_bounded_and_never_trusts_corrupt_vectors.&lt;locals&gt;.&lt;lambda&gt; at 0x000001A6881B5300&gt;
+
+    def fails(code,call):
+&gt;       with pytest.raises(AppError) as caught: call()
+             ^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE AppError
+
+tests\test_knowledge_boundaries.py:23: Failed</failure></testcase></testsuite></testsuites>

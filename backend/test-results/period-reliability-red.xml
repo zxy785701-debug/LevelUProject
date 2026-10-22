@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="5" skipped="0" tests="11" time="0.889" timestamp="2026-10-16T17:41:07.070735+08:00" hostname="zxy"><testcase classname="tests.test_period_reliability" name="test_short_model_references_map_back_to_real_ids_without_changing_snapshot" time="0.011"><failure message="app.errors.AppError: 报告引用未通过校验">tests\test_period_reliability.py:43: in test_short_model_references_map_back_to_real_ids_without_changing_snapshot
+    result = await period_narrative(original, gateway)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app\materials\services.py:101: in period_narrative
+    result = await gateway.generate(PeriodNarrative, prompt, validate)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\test_period_reliability.py:34: in generate
+    if check: check(result)
+              ^^^^^^^^^^^^^
+app\materials\services.py:86: in validate
+    if any(v.point_id not in ids for v in [*result.findings, *result.suggestions]): raise AppError('MODEL_INVALID_OUTPUT', '报告引用未通过校验', 502)
+                                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   app.errors.AppError: 报告引用未通过校验</failure></testcase><testcase classname="tests.test_period_reliability" name="test_unknown_short_reference_is_rejected" time="0.003" /><testcase classname="tests.test_period_reliability" name="test_technical_validation_and_uncertainty_are_not_false_verification_claims[\u5df2\u7ecf\u638c\u63e1\u9a8c\u8bc1\u6a21\u578b\u7684\u57fa\u672c\u7528\u6cd5\uff0c\u7ee7\u7eed\u7ec3\u4e60\u3002]" time="0.001"><failure message="app.errors.AppError: 复盘不能把未核实知识改写为已核实">tests\test_period_reliability.py:72: in test_technical_validation_and_uncertainty_are_not_false_verification_claims
+    check_report_claims({'summary': [text]}, {'status': 'unknown', 'counts': {'unknown': 3}})
+app\quiz_grounding\reporting.py:26: in check_report_claims
+    raise AppError('MODEL_INVALID_OUTPUT', '复盘不能把未核实知识改写为已核实', 502)
+E   app.errors.AppError: 复盘不能把未核实知识改写为已核实</failure></testcase><testcase classname="tests.test_period_reliability" name="test_technical_validation_and_uncertainty_are_not_false_verification_claims[\u5df2\u4e86\u89e3\u9a8c\u8bc1\u5b57\u6bb5\u4e0e\u4e1a\u52a1\u6821\u9a8c\u7684\u533a\u522b\u3002]" time="0.001"><failure message="app.errors.AppError: 复盘不能把未核实知识改写为已核实">tests\test_period_reliability.py:72: in test_technical_validation_and_uncertainty_are_not_false_verification_claims
+    check_report_claims({'summary': [text]}, {'status': 'unknown', 'counts': {'unknown': 3}})
+app\quiz_grounding\reporting.py:26: in check_report_claims
+    raise AppError('MODEL_INVALID_OUTPUT', '复盘不能把未核实知识改写为已核实', 502)
+E   app.errors.AppError: 复盘不能把未核实知识改写为已核实</failure></testcase><testcase classname="tests.test_period_reliability" name="test_technical_validation_and_uncertainty_are_not_false_verification_claims[\u672a\u8054\u7f51\uff0c\u65e0\u6cd5\u786e\u8ba4\u8fd9\u4e9b\u7ed3\u8bba\u3002]" time="0.002"><failure message="app.errors.AppError: 复盘不能把未核实知识改写为已核实">tests\test_period_reliability.py:72: in test_technical_validation_and_uncertainty_are_not_false_verification_claims
+    check_report_claims({'summary': [text]}, {'status': 'unknown', 'counts': {'unknown': 3}})
+app\quiz_grounding\reporting.py:26: in check_report_claims
+    raise AppError('MODEL_INVALID_OUTPUT', '复盘不能把未核实知识改写为已核实', 502)
+E   app.errors.AppError: 复盘不能把未核实知识改写为已核实</failure></testcase><testcase classname="tests.test_period_reliability" name="test_technical_validation_and_uncertainty_are_not_false_verification_claims[\u8fd9\u4e9b\u77e5\u8bc6\u5c1a\u672a\u8054\u7f51\u6838\u5b9e\uff0c\u9700\u8981\u56de\u770b\u539f\u59cb\u6750\u6599\u3002]" time="0.001" /><testcase classname="tests.test_period_reliability" name="test_technical_validation_and_uncertainty_are_not_false_verification_claims[\u7b54\u5bf9\u4e0d\u4ee3\u8868\u77e5\u8bc6\u5df2\u6838\u5b9e\u3002]" time="0.001"><failure message="app.errors.AppError: 复盘不能把未核实知识改写为已核实">tests\test_period_reliability.py:72: in test_technical_validation_and_uncertainty_are_not_false_verification_claims
+    check_report_claims({'summary': [text]}, {'status': 'unknown', 'counts': {'unknown': 3}})
+app\quiz_grounding\reporting.py:26: in check_report_claims
+    raise AppError('MODEL_INVALID_OUTPUT', '复盘不能把未核实知识改写为已核实', 502)
+E   app.errors.AppError: 复盘不能把未核实知识改写为已核实</failure></testcase><testcase classname="tests.test_period_reliability" name="test_actual_upgrades_of_unknown_knowledge_still_fail[\u6240\u6709\u77e5\u8bc6\u5df2\u6838\u5b9e\u3002]" time="0.001" /><testcase classname="tests.test_period_reliability" name="test_actual_upgrades_of_unknown_knowledge_still_fail[\u77e5\u8bc6\u5df2\u7ecf\u8054\u7f51\u6838\u5b9e\u3002]" time="0.001" /><testcase classname="tests.test_period_reliability" name="test_actual_upgrades_of_unknown_knowledge_still_fail[\u6240\u6709\u7b54\u6848\u5df2\u88ab\u5145\u5206\u9a8c\u8bc1\u3002]" time="0.002" /><testcase classname="tests.test_period_reliability" name="test_actual_upgrades_of_unknown_knowledge_still_fail[\u8054\u7f51\u5df2\u786e\u8ba4\u6240\u6709\u7ed3\u8bba\u3002]" time="0.002" /></testsuite></testsuites>

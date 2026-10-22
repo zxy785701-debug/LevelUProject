@@ -1,0 +1,11 @@
+{
+  "business_module_files": 26,
+  "covered_branches": 693,
+  "total_branches": 766,
+  "branch_percent": 90.47,
+  "covered_lines": 2706,
+  "total_lines": 2747,
+  "line_percent": 98.5075,
+  "source": "58-final-coverage.json",
+  "backend_passed": 632
+}

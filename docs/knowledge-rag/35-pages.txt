@@ -1,0 +1,77 @@
+
+Running 3 tests using 1 worker
+
+(node:28164) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 e2e-knowledge\knowledge.spec.ts:56:5 › 真实存储闭环：Markdown→问答来源→原问题出题→多选主题→确认答题→报告 (17.3s)
+  x  2 e2e-knowledge\knowledge.spec.ts:103:5 › 断开响应与重新打开：恢复同一上传任务，不重复创建文档 (1.6m)
+(node:12736) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  3 e2e-knowledge\knowledge.spec.ts:120:5 › 资料不足、问答删除和资料删除后的来源快照 (1.5m)
+
+
+  1) e2e-knowledge\knowledge.spec.ts:103:5 › 断开响应与重新打开：恢复同一上传任务，不重复创建文档 ────────────────────────────
+
+    Test timeout of 90000ms exceeded.
+
+    Error Context: ..\docs\knowledge-rag\page-results\knowledge-断开响应与重新打开：恢复同一上传任务，不重复创建文档\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\docs\knowledge-rag\page-results\knowledge-断开响应与重新打开：恢复同一上传任务，不重复创建文档\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\docs\knowledge-rag\page-results\knowledge-断开响应与重新打开：恢复同一上传任务，不重复创建文档\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) e2e-knowledge\knowledge.spec.ts:120:5 › 资料不足、问答删除和资料删除后的来源快照 ──────────────────────────────────
+
+    Test timeout of 90000ms exceeded.
+
+    Error: apiRequestContext._wrapApiCall: ENOENT: no such file or directory, copyfile 'D:\nbproject\LevelUpProject\docs\knowledge-rag\page-results\.playwright-artifacts-1\traces\0828a03cd0e93ee0ce1b-ce27b0f51029cdea3133-recording2.network' -> 'D:\nbproject\LevelUpProject\docs\knowledge-rag\page-results\.playwright-artifacts-1\traces\0828a03cd0e93ee0ce1b-ce27b0f51029cdea3133-recording2-pwnetcopy-1.network'
+
+    Error: apiRequestContext._wrapApiCall: ENOENT: no such file or directory, copyfile 'D:\nbproject\LevelUpProject\docs\knowledge-rag\page-results\.playwright-artifacts-1\traces\0828a03cd0e93ee0ce1b-ce27b0f51029cdea3133-recording1.network' -> 'D:\nbproject\LevelUpProject\docs\knowledge-rag\page-results\.playwright-artifacts-1\traces\0828a03cd0e93ee0ce1b-ce27b0f51029cdea3133-recording1-pwnetcopy-1.network'
+
+    Error: browserContext._wrapApiCall: ENOENT: no such file or directory, open 'D:\nbproject\LevelUpProject\docs\knowledge-rag\page-results\.playwright-artifacts-1\traces\0828a03cd0e93ee0ce1b-ce27b0f51029cdea3133.trace'
+
+    Error: locator.click: Test ended.
+    Browser logs:
+
+    <launching> C:\Users\20777\AppData\Local\Google\Chrome\Application\chrome.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,NetworkTimeServiceQuerying,AimEnabled,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=C:\Users\20777\AppData\Local\Temp\playwright_chromiumdev_profile-r5h3mo --remote-debugging-pipe --no-startup-window
+    <launched> pid=18092
+    [pid=18092] <gracefully close start>
+    Call log:
+      - waiting for getByRole('button', { name: '提交问题', exact: true })
+        - locator resolved to <taro-button-core type="" disabled role="button" aria-label="提交问题" aria-disabled="true" class="btn primary is-disabled">…</taro-button-core>
+      - attempting click action
+        2 × waiting for element to be visible, enabled and stable
+          - element is not enabled
+        - retrying click action
+        - waiting 20ms
+        2 × waiting for element to be visible, enabled and stable
+          - element is not enabled
+        - retrying click action
+          - waiting 100ms
+        158 × waiting for element to be visible, enabled and stable
+            - element is not enabled
+          - retrying click action
+            - waiting 500ms
+        - waiting for element to be visible, enabled and stable
+
+
+      43 |   await page.getByRole('button', { name: '选择文件', exact: true }).click()
+      44 |   await (await chooser).setFiles({ name, mimeType: 'text/markdown', buffer: Buffer.from('# 请求与会话\nHTTP 每次请求独立。Cookie 用来保存状态。Session 保存会话信息。\n\n## 错误处理\nHTTP 404 表示未找到请求资源。') })
+    > 45 |   await page.getByRole('button', { name: '上传并建库', exact: true }).click()
+         |                                                                 ^
+      46 |   await expect(page.getByText('资料已就绪，可以提问或准备关卡。', { exact: true })).toBeVisible()
+      47 | }
+      48 | async function ask(page: Page, question = '根据资料解释 HTTP 与会话') {
+        at ask (D:\nbproject\LevelUpProject\frontend\e2e-knowledge\knowledge.spec.ts:45:65)
+        at D:\nbproject\LevelUpProject\frontend\e2e-knowledge\knowledge.spec.ts:127:45
+
+    Error: ENOENT: no such file or directory, open 'D:\nbproject\LevelUpProject\docs\knowledge-rag\page-results\.playwright-artifacts-1\33d31ae8c9661434a5709ef7cf4ea70f.zip'
+
+  2 failed
+    e2e-knowledge\knowledge.spec.ts:103:5 › 断开响应与重新打开：恢复同一上传任务，不重复创建文档 ─────────────────────────────
+    e2e-knowledge\knowledge.spec.ts:120:5 › 资料不足、问答删除和资料删除后的来源快照 ───────────────────────────────────
+  1 passed (3.4m)

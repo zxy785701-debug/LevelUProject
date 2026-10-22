@@ -32,7 +32,8 @@ def render(instruction, data):
 def draft_prompt(body, context, evidence, *, correction=None):
     mix = {'single': 1, 'multi': 1, 'judge': 1} if body.question_count == 3 else {'single': 3, 'multi': 1, 'judge': 1}
     material = context.get('material') is not None
-    version = DRAFT_VERSION if evidence or material else FALLBACK_VERSION
+    knowledge = context.get('knowledge_policy') == 'strict'
+    version = DRAFT_VERSION if evidence or material or knowledge else FALLBACK_VERSION
     instruction = f'''你是严谨的出题者，模板 {version}。完整保留已确认领域、方向和知识点，不切换领域。
 出 {body.question_count} 道中文题，难度 {body.difficulty}，题型数量严格为 {json.dumps(mix)}。
 单选/多选四个不同 A-D 选项，判断仅 A=正确、B=错误；单选/判断一个答案，多选至少两个。ID 唯一，讲解自包含。
@@ -40,7 +41,7 @@ def draft_prompt(body, context, evidence, *, correction=None):
 覆盖用户选定方向，不能只用标题或其他无关常识凑题。争议必须用明确出处限定，不能把有争议的归属写成定论。
 如果 selected_topics 非空，每个已选主题都至少覆盖一个知识点；可以用比较题同时覆盖多个主题，不得忽略任何已选主题。
 材料的自动标题和知识点只作为内容线索；在所选片段范围内，优先满足 input_text / focus 中的原始学习说明。要求比较、机制或应用时不能用附近的背景常识替代；资料无法支持该要求时返回 insufficient_knowledge。
-{'本次为材料学习，只能依据所选原材料及明确补充片段。原材料不足就返回 insufficient_knowledge，不能用外部常识填满。' if material else '资料缺失时允许基于同一确认主题的可靠已有知识出题，source_ids=[]，将由程序标为未联网核实；不确定的知识不要编造，不足时返回 insufficient_knowledge。'}
+{'本次为知识库学习，只能依据所选知识库资料及明确补充片段。资料不足返回 insufficient_knowledge，不能用外部常识填满。' if knowledge else '本次为材料学习，只能依据所选原材料及明确补充片段。原材料不足就返回 insufficient_knowledge，不能用外部常识填满。' if material else '资料缺失时允许基于同一确认主题的可靠已有知识出题，source_ids=[]，将由程序标为未联网核实；不确定的知识不要编造，不足时返回 insufficient_knowledge。'}
 不要自行设置 grounding，核实状态由独立审核及程序决定。修正任务必须逐项处理审核发现，不改用户范围。
 {UNTRUSTED_DATA_RULE}
 只输出符合 Schema 的 JSON：{json.dumps(QuizDraftResult.model_json_schema(), ensure_ascii=False)}'''
@@ -91,7 +92,7 @@ def review_decision(quiz, review, evidence, context):
         else:
             question.source_ids = []
             question.grounding = GroundingStatus(status='unverified', reason_code='INSUFFICIENT_SUPPORT', check_version=REVIEW_VERSION)
-    if context.get('material') and any(q.grounding.status == 'unverified' for q in quiz.questions):
+    if (context.get('material') or context.get('knowledge_policy') == 'strict') and any(q.grounding.status == 'unverified' for q in quiz.questions):
         return False  # Material-only failure cannot turn into unrelated model knowledge.
     return True
 
@@ -99,6 +100,9 @@ def review_decision(quiz, review, evidence, context):
 async def generate_grounded(body, context, gateway, settings, *, stage, remaining):
     segments = [EvidenceSegment.model_validate(s) for s in context['segments']]
     evidence = EvidenceContextBudget(settings.evidence_max_chars).select(segments, context.get('point_evidence'))
+    knowledge = context.get('knowledge_policy') == 'strict'
+    if knowledge and not evidence:
+        raise AppError('INSUFFICIENT_KNOWLEDGE','所选知识库没有充分依据，请补充资料或缩小范围',422)
     mix = Counter({'single': 1, 'multi': 1, 'judge': 1} if body.question_count == 3 else {'single': 3, 'multi': 1, 'judge': 1})
     def check_draft(draft):
         if draft.status == 'ready' and Counter(q.type for q in draft.quiz.questions) != mix:
@@ -126,15 +130,16 @@ async def generate_grounded(body, context, gateway, settings, *, stage, remainin
         correction = {'previous_quiz': quiz.model_dump(mode='json'), 'review': review.model_dump(mode='json')}
     unverified = any(q.grounding.status == 'unverified' for q in quiz.questions)
     failed_supplement = context.get('supplement_failed', False)
-    status = 'unverified' if unverified or failed_supplement else 'source_backed' if any(q.grounding.status == 'source_backed' for q in quiz.questions) else 'material_only'
+    status = 'unverified' if unverified or failed_supplement and not knowledge else 'source_backed' if any(q.grounding.status == 'source_backed' for q in quiz.questions) else 'material_only'
+    cited = {sid for q in quiz.questions for sid in q.source_ids}
+    provenance = [s for s in evidence if s.id in cited and s.content_kind != 'material'] if knowledge else evidence
     grounding = GroundingStatus(status=status, reason_code='SUPPLEMENT_FAILED' if failed_supplement else context.get('fallback_reason') or 'INSUFFICIENT_SUPPORT' if unverified else None,
         check_version=REVIEW_VERSION,
-        provider='tavily' if any(s.content_kind != 'material' for s in evidence) else None,
-        retrieved_at=max((s.retrieved_at for s in evidence if s.retrieved_at), default=None))
+        provider='tavily' if any(s.content_kind != 'material' for s in provenance) else None,
+        retrieved_at=max((s.retrieved_at for s in provenance if s.retrieved_at), default=None))
     material = context.get('material')
-    cited = {sid for q in quiz.questions for sid in q.source_ids}
     used = {s.id: s for s in evidence}
-    source = {'type': material['source_type'] if material else 'topic', 'title': material['title'] if material else context['scope']['topic'],
+    source = {'type': 'knowledge_base' if knowledge else material['source_type'] if material else 'topic', 'title': '我的知识库' if knowledge else material['title'] if material else context['scope']['topic'],
               'segments': [s.model_copy(update={'context_truncated': used[s.id].context_truncated}).model_dump(mode='json') for s in segments if s.id in cited]}
     if material:
         source.update(material_id=material['id'], url=material.get('url'))

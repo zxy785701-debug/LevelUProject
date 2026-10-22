@@ -1,0 +1,7 @@
+
+> levelup-mini@1.0.0 typecheck
+> tsc --noEmit
+
+tests/knowledge-api.test.ts(100,64): error TS2322: Type 'Mock<() => Promise<unknown>>' is not assignable to type '(id: string, scope?: RequestScope | undefined) => Promise<KnowledgeJob>'.
+  Type 'Promise<unknown>' is not assignable to type 'Promise<KnowledgeJob>'.
+    Type 'unknown' is not assignable to type 'KnowledgeJob'.

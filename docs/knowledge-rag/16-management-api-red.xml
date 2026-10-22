@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="7" time="14.189" timestamp="2026-10-18T20:42:10.191110+08:00" hostname="zxy"><testcase classname="tests.test_knowledge_api" name="test_capabilities_are_authenticated_sanitized_and_honest" time="1.328" /><testcase classname="tests.test_knowledge_api" name="test_document_read_api_obeys_account_and_pagination" time="0.453" /><testcase classname="tests.test_knowledge_api" name="test_disabled_knowledge_preserves_health_and_core_learning" time="0.384" /><testcase classname="tests.test_knowledge_api" name="test_upload_submission_returns_a_job_and_rejects_client_owned_paths" time="0.415" /><testcase classname="tests.test_knowledge_api" name="test_web_and_owned_material_submission_api" time="0.450" /><testcase classname="tests.test_knowledge_api" name="test_job_query_cancel_retry_and_foreign_account_are_isolated" time="0.923" /><testcase classname="tests.test_knowledge_api" name="test_reindex_and_delete_api_are_owned_and_delete_remains_available_when_disabled" time="0.321"><failure message="AssertionError: {&quot;code&quot;:&quot;NOT_FOUND&quot;,&quot;message&quot;:&quot;接口不存在&quot;,&quot;data&quot;:null}&#10;assert 404 == 200&#10; +  where 404 = &lt;Response [404 Not Found]&gt;.status_code">knowledge_app = &lt;fastapi.applications.FastAPI object at 0x000001ADFF5A4CD0&gt;
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x000001ADFF8999D0&gt;
+
+    @pytest.mark.anyio
+    async def test_reindex_and_delete_api_are_owned_and_delete_remains_available_when_disabled(knowledge_app,monkeypatch):
+        monkeypatch.setattr(KnowledgeSettings,'unavailable_reason',lambda self,**kw:None)
+        repo = KnowledgeRepository(knowledge_app.state.accounts,knowledge_app.state.knowledge_config)
+        async with httpx.AsyncClient(transport=httpx.ASGITransport(app=knowledge_app),base_url='http://test') as client:
+            identity = await login(client)
+            seed(repo,uid=identity['user']['id'])
+            response = await client.post('/api/v1/knowledge/documents/doc/reindex',headers={'Idempotency-Key':'reindex'})
+&gt;           assert response.status_code == 200, response.text
+E           AssertionError: {"code":"NOT_FOUND","message":"接口不存在","data":null}
+E           assert 404 == 200
+E            +  where 404 = &lt;Response [404 Not Found]&gt;.status_code
+
+tests\test_knowledge_api.py:121: AssertionError</failure></testcase></testsuite></testsuites>

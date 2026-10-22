@@ -1,0 +1,52 @@
+........F.F.                                                             [100%]
+================================== FAILURES ===================================
+__ test_explicit_public_url_is_extracted_as_body_and_absent_tavily_is_honest __
+
+wire = {'calls': [{'url': 'https://api.tavily.com/extract', 'body': {'urls': ['https://example.com/'], 'include_images': Fals...ps://example.com/', 'content': 'summary', 'raw_content': 'body'}], 'usage': {'credits': 1}}, 'status': 200, 'delay': 0}
+
+    @pytest.mark.anyio
+    async def test_explicit_public_url_is_extracted_as_body_and_absent_tavily_is_honest(wire):
+        from app.knowledge.retrieval import KnowledgeAgent
+        async def search(query,maximum): return []
+        model = ScriptedModel(replies=[calls(('tavily_extract',{'urls':['https://example.com/']})),AIMessage(content='done')])
+        result = await KnowledgeAgent(settings(),knowledge_search=search,model=model,public_plan=plan(searches=[],urls=['https://example.com/'])).run('ѧϰ https://example.com/')
+        assert result.evidence and result.evidence[0].content_kind=='full_extract'
+        assert 'query' not in wire['calls'][0]['body'] and result.page_attempts==1
+        async def private(query,maximum): return [source()]
+        result = await KnowledgeAgent(Settings(_env_file=None),knowledge_search=private).run('ѧϰ����',allow_web=True)
+>       assert result.evidence and result.reason_code=='TAVILY_NOT_CONFIGURED'
+E       AssertionError: assert ([EvidenceSegment(id='kb-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', text='PRIVATE_SENTINEL_NEVE...n=1, chunk_position=0, header_path=[], start_index=0, end_index=36, block=None, deleted=False, version_changed=False))] and None == 'TAVILY_NOT_CONFIGURED')
+E        +  where [EvidenceSegment(id='kb-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', text='PRIVATE_SENTINEL_NEVE...n=1, chunk_position=0, header_path=[], start_index=0, end_index=36, block=None, deleted=False, version_changed=False))] = KnowledgeOutcome(evidence=[EvidenceSegment(id='kb-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', t...el_calls=0, tool_calls=1, page_attempts=0, reason_code=None, usage={}, depends_on_documents=True, knowledge_error=None).evidence
+E        +  and   None = KnowledgeOutcome(evidence=[EvidenceSegment(id='kb-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', t...el_calls=0, tool_calls=1, page_attempts=0, reason_code=None, usage={}, depends_on_documents=True, knowledge_error=None).reason_code
+
+tests\test_knowledge_agent.py:139: AssertionError
+__ test_retrieval_checkpoints_restore_only_original_owned_document_versions ___
+
+index = <app.knowledge.index.VectorIndex object at 0x000001E324800440>
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x000001E3247278C0>
+
+    def test_retrieval_checkpoints_restore_only_original_owned_document_versions(index,repo):
+        from app.knowledge.retrieval_store import KnowledgeRetriever
+        from app.knowledge.database import Job,Document
+        from app.knowledge.evidence import evidence_from_hit
+        selected = ready(repo,index)
+        jid = ai_job(repo)
+        with repo.database.session() as session: session.get(Job,jid).payload = {'documents':selected,'question':'ԭʼ����'}
+        queries = []
+        class Embeddings:
+            async def aembed_query(self,text): queries.append(text); return [1.0]*1024
+        retrieval = KnowledgeRetriever(repo.accounts,repo.config,index,embedding_factory=lambda claim:Embeddings())
+        claim = retrieval.claim('worker')
+        result = asyncio.run(retrieval.retrieve(claim,'ԭʼ����',selected,allow_web=False))
+        assert result.evidence[0].text=='Original content' and queries==['ԭʼ����']
+        restored = asyncio.run(KnowledgeRetriever(repo.accounts,repo.config,index,embedding_factory=lambda claim:Embeddings()).retrieve(claim,'ԭʼ����',selected,allow_web=False))
+        assert restored.evidence==result.evidence and len(queries)==1
+>       with pytest.raises(AppError): asyncio.run(retrieval.retrieve(claim,'����������',selected,allow_web=False))
+             ^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE AppError
+
+tests\test_knowledge_retrieval_store.py:37: Failed
+=========================== short test summary info ===========================
+FAILED tests/test_knowledge_agent.py::test_explicit_public_url_is_extracted_as_body_and_absent_tavily_is_honest
+FAILED tests/test_knowledge_retrieval_store.py::test_retrieval_checkpoints_restore_only_original_owned_document_versions
+2 failed, 10 passed in 14.25s

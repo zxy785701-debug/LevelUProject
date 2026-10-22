@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="3" time="9.118" timestamp="2026-10-18T18:50:34.204979+08:00" hostname="zxy"><testcase classname="tests.test_knowledge_launcher" name="test_cli_check_does_not_open_index_or_require_optional_credentials" time="1.191" /><testcase classname="tests.test_knowledge_launcher" name="test_cli_enabled_and_disabled_process_smoke_uses_only_test_storage" time="4.965" /><testcase classname="tests.test_knowledge_launcher" name="test_launcher_starts_and_stops_only_its_worker" time="0.263"><failure message="AssertionError: The argument 'D:\nbproject\LevelUpProject\scripts\tests\knowledge-launcher.ps1' to the -File parameter does not exist. Provide the path to an existing '.ps1' file as an argument to the -File parameter.&#10;  &#10;assert 4294770688 == 0&#10; +  where 4294770688 = CompletedProcess(args=['powershell', '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', 'D:\\nbproject\\LevelUpProje... -File parameter does not exist. Provide the path to an existing '.ps1' file as an argument to the -File parameter.\n&quot;).returncode">def test_launcher_starts_and_stops_only_its_worker():
+        root = Path(__file__).resolve().parents[2]
+        script = root/'scripts/tests/knowledge-launcher.ps1'
+        process = subprocess.run(['powershell','-NoProfile','-ExecutionPolicy','Bypass','-File',str(script)],
+                                cwd=root,capture_output=True,text=True,timeout=30)
+&gt;       assert process.returncode == 0, process.stderr
+E       AssertionError: The argument 'D:\nbproject\LevelUpProject\scripts\tests\knowledge-launcher.ps1' to the -File parameter does not exist. Provide the path to an existing '.ps1' file as an argument to the -File parameter.
+E         
+E       assert 4294770688 == 0
+E        +  where 4294770688 = CompletedProcess(args=['powershell', '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', 'D:\\nbproject\\LevelUpProje... -File parameter does not exist. Provide the path to an existing '.ps1' file as an argument to the -File parameter.\n").returncode
+
+tests\test_knowledge_launcher.py:45: AssertionError</failure></testcase></testsuite></testsuites>

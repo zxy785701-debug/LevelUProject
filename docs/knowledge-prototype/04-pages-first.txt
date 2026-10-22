@@ -1,0 +1,112 @@
+
+Running 4 tests using 1 worker
+
+(node:19156) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 e2e-knowledge-prototype\library.spec.ts:58:5 › K01–K03：原型书架、搜索、文件夹新增编辑和删除，资料保留 (45.6s)
+(node:30892) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  2 e2e-knowledge-prototype\library.spec.ts:83:5 › K04–K05：导入切换、真实文件预览、资料引用与展开上下文 (2.5s)
+(node:25712) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  3 e2e-knowledge-prototype\library.spec.ts:101:5 › K06 与 L06：默认联网、一层多选主题、真实提交契约和原型确认页 (12.1s)
+(node:25480) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 4 e2e-knowledge-prototype\library.spec.ts:113:5 › 切换账号后不显示之前的本机书架和资料 (3.8s)
+
+
+  1) e2e-knowledge-prototype\library.spec.ts:58:5 › K01–K03：原型书架、搜索、文件夹新增编辑和删除，资料保留 ────────────────
+
+    Test timeout of 45000ms exceeded.
+
+    Error: locator.click: Test timeout of 45000ms exceeded.
+    Call log:
+      - waiting for getByText('删除文件夹', { exact: true })
+
+
+      73 |   await page.getByRole('button', { name: '编辑文件夹', exact: true }).click()
+      74 |   await page.getByRole('button', { name: '删除此文件夹', exact: true }).click()
+    > 75 |   await page.getByText('删除文件夹', { exact: true }).click()
+         |                                                  ^
+      76 |   await expect(page.getByRole('button', { name: '未分类资料', exact: true })).toBeVisible()
+      77 |   expect(mutations.filter(x => x.includes('/knowledge/documents'))).toEqual([])
+      78 |   await page.getByRole('button', { name: /新建知识文件夹/ }).click()
+        at D:\nbproject\LevelUpProject\frontend\e2e-knowledge-prototype\library.spec.ts:75:50
+
+    Error Context: ..\docs\knowledge-prototype\page-results\library-K01–K03：原型书架、搜索、文件夹新增编辑和删除，资料保留\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\docs\knowledge-prototype\page-results\library-K01–K03：原型书架、搜索、文件夹新增编辑和删除，资料保留\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\docs\knowledge-prototype\page-results\library-K01–K03：原型书架、搜索、文件夹新增编辑和删除，资料保留\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) e2e-knowledge-prototype\library.spec.ts:83:5 › K04–K05：导入切换、真实文件预览、资料引用与展开上下文 ─────────────────
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "rgb(51, 106, 232)"
+    Received: "rgb(172, 193, 240)"
+
+      51 |     await page.setViewportSize({ width, height: 812 })
+      52 |     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
+    > 53 |     expect(await page.locator('.phone-bottom .btn').first().evaluate(el => getComputedStyle(el).backgroundColor)).toBe('rgb(51, 106, 232)')
+         |                                                                                                                   ^
+      54 |     await page.screenshot({ path: `${screenshots}/${id}-${width}.png` })
+      55 |   }
+      56 |   await page.setViewportSize({ width: 390, height: 812 })
+        at snapshot (D:\nbproject\LevelUpProject\frontend\e2e-knowledge-prototype\library.spec.ts:53:115)
+        at D:\nbproject\LevelUpProject\frontend\e2e-knowledge-prototype\library.spec.ts:89:3
+
+    Error Context: ..\docs\knowledge-prototype\page-results\library-K04–K05：导入切换、真实文件预览、资料引用与展开上下文\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\docs\knowledge-prototype\page-results\library-K04–K05：导入切换、真实文件预览、资料引用与展开上下文\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\docs\knowledge-prototype\page-results\library-K04–K05：导入切换、真实文件预览、资料引用与展开上下文\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) e2e-knowledge-prototype\library.spec.ts:101:5 › K06 与 L06：默认联网、一层多选主题、真实提交契约和原型确认页 ────────────
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator:  locator('taro-radio-core[value="network"]')
+    Expected: "true"
+    Received: ""
+    Timeout:  10000ms
+
+    Call log:
+      - Expect "toHaveAttribute" locator('taro-radio-core[value="network"]') with timeout 10000ms
+      - waiting for locator('taro-radio-core[value="network"]')
+        23 × locator resolved to <taro-radio-core checked value="network" color="#336ae8" name="mvekj7go" class="weui-cells_checkbox">…</taro-radio-core>
+           - unexpected value ""
+
+
+      102 |   const mutations = await setup(page)
+      103 |   await page.getByRole('button', { name: '根据资料出题', exact: true }).click()
+    > 104 |   await expect(page.locator('taro-radio-core[value="network"]')).toHaveAttribute('checked', 'true')
+          |                                                                  ^
+      105 |   await snapshot(page, 'K06')
+      106 |   await page.getByRole('button', { name: '生成知识库关卡', exact: true }).click()
+      107 |   await expect(page.getByTestId('knowledge-confirm')).toBeVisible()
+        at D:\nbproject\LevelUpProject\frontend\e2e-knowledge-prototype\library.spec.ts:104:66
+
+    Error Context: ..\docs\knowledge-prototype\page-results\library-K06-与-L06：默认联网、一层多选主题、真实提交契约和原型确认页\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\docs\knowledge-prototype\page-results\library-K06-与-L06：默认联网、一层多选主题、真实提交契约和原型确认页\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\docs\knowledge-prototype\page-results\library-K06-与-L06：默认联网、一层多选主题、真实提交契约和原型确认页\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3 failed
+    e2e-knowledge-prototype\library.spec.ts:58:5 › K01–K03：原型书架、搜索、文件夹新增编辑和删除，资料保留 ─────────────────
+    e2e-knowledge-prototype\library.spec.ts:83:5 › K04–K05：导入切换、真实文件预览、资料引用与展开上下文 ──────────────────
+    e2e-knowledge-prototype\library.spec.ts:101:5 › K06 与 L06：默认联网、一层多选主题、真实提交契约和原型确认页 ─────────────
+  1 passed (1.2m)

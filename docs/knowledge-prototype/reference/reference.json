@@ -1,0 +1,65 @@
+[
+  {
+    "id": "K01",
+    "footer": "新建知识文件夹",
+    "button": {
+      "background": "rgb(51, 106, 232)",
+      "color": "rgb(255, 255, 255)"
+    },
+    "title": "给自己的知识，\n一个小书架"
+  },
+  {
+    "id": "K02",
+    "footer": "选择材料，生成关卡",
+    "button": {
+      "background": "rgb(51, 106, 232)",
+      "color": "rgb(255, 255, 255)"
+    },
+    "title": "计算机基础"
+  },
+  {
+    "id": "K03",
+    "footer": "保存文件夹",
+    "button": {
+      "background": "rgb(51, 106, 232)",
+      "color": "rgb(255, 255, 255)"
+    },
+    "title": "整理一个新主题"
+  },
+  {
+    "id": "K04",
+    "footer": "添加并处理材料",
+    "button": {
+      "background": "rgb(51, 106, 232)",
+      "color": "rgb(255, 255, 255)"
+    },
+    "title": "给书架添点新知识"
+  },
+  {
+    "id": "K05",
+    "footer": "用这份材料出题",
+    "button": {
+      "background": "rgb(51, 106, 232)",
+      "color": "rgb(255, 255, 255)"
+    },
+    "title": "HTTP 学习笔记"
+  },
+  {
+    "id": "K06",
+    "footer": "生成知识库关卡",
+    "button": {
+      "background": "rgb(51, 106, 232)",
+      "color": "rgb(255, 255, 255)"
+    },
+    "title": "这次，从书架里学"
+  },
+  {
+    "id": "L06",
+    "footer": "确认范围，生成关卡",
+    "button": {
+      "background": "rgb(51, 106, 232)",
+      "color": "rgb(255, 255, 255)"
+    },
+    "title": "这一关，学这些"
+  }
+]

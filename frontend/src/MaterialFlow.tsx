@@ -15,7 +15,20 @@ import type { Data, Session } from './domain'
 export function SourceReader({ title, summary, segments, grounding }: { title: string; summary?: string; segments: SourceSegment[]; grounding?: Grounding | Verification | null }) {
   return <><Tag color="blue">参考资料</Tag><Title>{title}</Title>{grounding && <GroundingNotice value={grounding} />}{summary && <><Section>内容摘要</Section><View className="body-copy">{summary}</View></>}<Section>原文与引用</Section>
     {!segments.length && <View className="hint-note">没有可展示的引用片段，请保留当前核实状态。</View>}
-    {segments.map(s => <View className="source-excerpt" key={s.id}><View className="row"><Tag color={s.supplement ? 'yellow' : 'blue'}>{s.supplement ? '联网补充 / ' : ''}{segmentLabel(s)}</Tag>{s.url && <Text className="text-btn" onClick={() => void Taro.setClipboardData({ data: s.url! })}>复制来源链接</Text>}</View>{s.title && <View className="strong mt">{s.title}</View>}{s.url && <View className="small muted mt source-url">{s.url}</View>}<View className="small muted mt">获取：{sourceDate(s.retrieved_at)} · 发布：{sourceDate(s.published_at)}</View><View className="small muted mt">{s.truncated ? '获取内容已截断' : s.acquisition_status === 'partial' ? '页面仅部分可读取' : s.content_kind === 'snippet' ? '仅搜索摘要' : s.content_kind === 'focused_extract' ? '仅定向片段' : s.content_kind === 'full_extract' ? '网页正文（以实际返回内容为准）' : '所选材料片段'}{s.context_truncated ? ' · 出题时仅使用其中部分内容' : ''}</View><View className="body-copy mt">{s.text}</View></View>)}</>
+    {segments.map(s => <View className="source-excerpt" key={s.id}>
+      <View className="row"><Tag color={s.supplement ? 'yellow' : 'blue'}>{s.supplement ? '联网补充 / ' : ''}{segmentLabel(s)}</Tag>{s.url && <Text className="text-btn" onClick={() => void Taro.setClipboardData({ data: s.url! })}>复制来源链接</Text>}</View>
+      {s.title && <View className="strong mt">{s.title}</View>}
+      {s.knowledge && <View className="knowledge-citation">
+        <View className="strong">{s.knowledge.document_title} · v{s.knowledge.document_version}</View>
+        <View>{s.knowledge.source_type.toUpperCase()} · {s.page ? `第 ${s.page} 页 · ` : ''}片段 {s.knowledge.chunk_position + 1}{s.knowledge.header_path.length ? ' · ' + s.knowledge.header_path.join(' / ') : ''}</View>
+        {s.knowledge.deleted && <View>原资料已删除，以下保留当时的引用快照。</View>}
+        {s.knowledge.version_changed && <View>原资料已更新，以下引用来自当时的版本。</View>}
+      </View>}
+      {s.url && <View className="small muted mt source-url">{s.url}</View>}
+      <View className="small muted mt">获取：{sourceDate(s.retrieved_at)} · 发布：{sourceDate(s.published_at)}</View>
+      <View className="small muted mt">{s.truncated ? '获取内容已截断' : s.acquisition_status === 'partial' ? '页面仅部分可读取' : s.content_kind === 'snippet' ? '仅搜索摘要' : s.content_kind === 'focused_extract' ? '仅定向片段' : s.content_kind === 'full_extract' ? '网页正文（以实际返回内容为准）' : '所选材料片段'}{s.context_truncated ? ' · 出题时仅使用其中部分内容' : ''}</View>
+      <View className="body-copy mt">{s.text}</View>
+    </View>)}</>
 }
 
 type Kind = 'document' | 'web' | 'video'

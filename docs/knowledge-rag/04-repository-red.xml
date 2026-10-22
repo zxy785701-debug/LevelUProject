@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="8" failures="0" skipped="0" tests="8" time="3.826" timestamp="2026-10-18T18:15:27.197476+08:00" hostname="zxy"><testcase classname="tests.test_knowledge_repository" name="test_owned_pagination_and_deleted_filtering" time="0.063"><error message="failed on setup with &quot;ModuleNotFoundError: No module named 'app.knowledge.repository'&quot;">tmp_path = WindowsPath('C:/Users/20777/AppData/Local/Temp/pytest-of-20777/pytest-69/test_owned_pagination_and_dele0')
+
+    @pytest.fixture
+    def repo(tmp_path):
+&gt;       from app.knowledge.repository import KnowledgeRepository
+E       ModuleNotFoundError: No module named 'app.knowledge.repository'
+
+tests\test_knowledge_repository.py:16: ModuleNotFoundError</error></testcase><testcase classname="tests.test_knowledge_repository" name="test_pagination_is_bounded[0-20]" time="0.017"><error message="failed on setup with &quot;ModuleNotFoundError: No module named 'app.knowledge.repository'&quot;">tmp_path = WindowsPath('C:/Users/20777/AppData/Local/Temp/pytest-of-20777/pytest-69/test_pagination_is_bounded_0_20')
+
+    @pytest.fixture
+    def repo(tmp_path):
+&gt;       from app.knowledge.repository import KnowledgeRepository
+E       ModuleNotFoundError: No module named 'app.knowledge.repository'
+
+tests\test_knowledge_repository.py:16: ModuleNotFoundError</error></testcase><testcase classname="tests.test_knowledge_repository" name="test_pagination_is_bounded[1-0]" time="0.015"><error message="failed on setup with &quot;ModuleNotFoundError: No module named 'app.knowledge.repository'&quot;">tmp_path = WindowsPath('C:/Users/20777/AppData/Local/Temp/pytest-of-20777/pytest-69/test_pagination_is_bounded_1_00')
+
+    @pytest.fixture
+    def repo(tmp_path):
+&gt;       from app.knowledge.repository import KnowledgeRepository
+E       ModuleNotFoundError: No module named 'app.knowledge.repository'
+
+tests\test_knowledge_repository.py:16: ModuleNotFoundError</error></testcase><testcase classname="tests.test_knowledge_repository" name="test_pagination_is_bounded[1-101]" time="0.015"><error message="failed on setup with &quot;ModuleNotFoundError: No module named 'app.knowledge.repository'&quot;">tmp_path = WindowsPath('C:/Users/20777/AppData/Local/Temp/pytest-of-20777/pytest-69/test_pagination_is_bounded_1_10')
+
+    @pytest.fixture
+    def repo(tmp_path):
+&gt;       from app.knowledge.repository import KnowledgeRepository
+E       ModuleNotFoundError: No module named 'app.knowledge.repository'
+
+tests\test_knowledge_repository.py:16: ModuleNotFoundError</error></testcase><testcase classname="tests.test_knowledge_repository" name="test_pagination_is_bounded[True-20]" time="0.015"><error message="failed on setup with &quot;ModuleNotFoundError: No module named 'app.knowledge.repository'&quot;">tmp_path = WindowsPath('C:/Users/20777/AppData/Local/Temp/pytest-of-20777/pytest-69/test_pagination_is_bounded_Tru0')
+
+    @pytest.fixture
+    def repo(tmp_path):
+&gt;       from app.knowledge.repository import KnowledgeRepository
+E       ModuleNotFoundError: No module named 'app.knowledge.repository'
+
+tests\test_knowledge_repository.py:16: ModuleNotFoundError</error></testcase><testcase classname="tests.test_knowledge_repository" name="test_pagination_is_bounded[10001-20]" time="0.015"><error message="failed on setup with &quot;ModuleNotFoundError: No module named 'app.knowledge.repository'&quot;">tmp_path = WindowsPath('C:/Users/20777/AppData/Local/Temp/pytest-of-20777/pytest-69/test_pagination_is_bounded_1000')
+
+    @pytest.fixture
+    def repo(tmp_path):
+&gt;       from app.knowledge.repository import KnowledgeRepository
+E       ModuleNotFoundError: No module named 'app.knowledge.repository'
+
+tests\test_knowledge_repository.py:16: ModuleNotFoundError</error></testcase><testcase classname="tests.test_knowledge_repository" name="test_only_active_owned_ready_revision_is_previewed" time="0.017"><error message="failed on setup with &quot;ModuleNotFoundError: No module named 'app.knowledge.repository'&quot;">tmp_path = WindowsPath('C:/Users/20777/AppData/Local/Temp/pytest-of-20777/pytest-69/test_only_active_owned_ready_r0')
+
+    @pytest.fixture
+    def repo(tmp_path):
+&gt;       from app.knowledge.repository import KnowledgeRepository
+E       ModuleNotFoundError: No module named 'app.knowledge.repository'
+
+tests\test_knowledge_repository.py:16: ModuleNotFoundError</error></testcase><testcase classname="tests.test_knowledge_repository" name="test_selection_is_explicit_and_binds_ready_owned_versions" time="0.015"><error message="failed on setup with &quot;ModuleNotFoundError: No module named 'app.knowledge.repository'&quot;">tmp_path = WindowsPath('C:/Users/20777/AppData/Local/Temp/pytest-of-20777/pytest-69/test_selection_is_explicit_and0')
+
+    @pytest.fixture
+    def repo(tmp_path):
+&gt;       from app.knowledge.repository import KnowledgeRepository
+E       ModuleNotFoundError: No module named 'app.knowledge.repository'
+
+tests\test_knowledge_repository.py:16: ModuleNotFoundError</error></testcase></testsuite></testsuites>

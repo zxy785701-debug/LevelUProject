@@ -1,0 +1,4 @@
+Original test log preserved losslessly in 06-import-green.txt.gz
+SHA256 d06f7e7ee698b600ceeeb3cc13ab321ae281c5ec3aaa06c18d3fa6d8ce90f684
+Original bytes 83892768
+Compact rerun uses explicit short parameter ids.

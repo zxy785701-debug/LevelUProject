@@ -1,0 +1,22 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+________ test_job_query_cancel_retry_and_foreign_account_are_isolated _________
+
+knowledge_app = <fastapi.applications.FastAPI object at 0x000002A3BC45B9D0>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000002A3BC366FD0>
+
+    @pytest.mark.anyio
+    async def test_job_query_cancel_retry_and_foreign_account_are_isolated(knowledge_app, monkeypatch):
+        monkeypatch.setattr(KnowledgeSettings, 'unavailable_reason', lambda self, **kw: None)
+        async with httpx.AsyncClient(transport=httpx.ASGITransport(app=knowledge_app), base_url='http://test') as c:
+            await login(c)
+            job = (await c.post('/api/v1/knowledge/documents/upload',files={'file':('note.txt',b'Notes')})).json()['data']
+            path = '/api/v1/knowledge/jobs/'+job['id']
+>           assert (await c.get(path)).json()['data']['status'] == 'queued'
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           TypeError: 'NoneType' object is not subscriptable
+
+tests\test_knowledge_api.py:103: TypeError
+=========================== short test summary info ===========================
+FAILED tests/test_knowledge_api.py::test_job_query_cancel_retry_and_foreign_account_are_isolated
+1 failed, 5 deselected in 27.83s

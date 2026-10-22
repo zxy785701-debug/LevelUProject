@@ -1,0 +1,20 @@
+Log: D:\nbproject\LevelUpProject\backend\logs\launcher-exit-regression\exit-0.log
+Errors: D:\nbproject\LevelUpProject\backend\logs\launcher-exit-regression\exit-0.error.log
+Log: D:\nbproject\LevelUpProject\backend\logs\launcher-exit-regression\exit-7.log
+Errors: D:\nbproject\LevelUpProject\backend\logs\launcher-exit-regression\exit-7.error.log
+{
+    "powershell":  "5.1.26100.9711",
+    "passed":  true,
+    "results":  [
+                    {
+                        "expected":  0,
+                        "actual":  0,
+                        "passed":  true
+                    },
+                    {
+                        "expected":  7,
+                        "actual":  7,
+                        "passed":  true
+                    }
+                ]
+}

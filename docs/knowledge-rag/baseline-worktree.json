@@ -1,0 +1,225 @@
+{
+  "head": "9d49458fd63539abe9a68739b85f42064f789e48",
+  "entries": [
+    {
+      "status": " M",
+      "path": "backend/app/materials/services.py",
+      "sha256": "d298c5c24cd4213313e3ed546704348ed741bd58dc1d4a1c25038df33aa87798"
+    },
+    {
+      "status": " M",
+      "path": "backend/app/quiz_grounding/reporting.py",
+      "sha256": "ab54bf973862f42c3778814c09220075e32d9151cd0c26f2eb20fe22a2d01a58"
+    },
+    {
+      "status": " M",
+      "path": "backend/tests/test_grounding_reports.py",
+      "sha256": "c3aa62f5646a7820b778befff7a2ddbeb42a5c6bb70e8b059df4085e27cd8a37"
+    },
+    {
+      "status": " M",
+      "path": "frontend/e2e-accounts/materials.spec.ts",
+      "sha256": "021ad8dc38e6e3c5ba0e150df239ef871fd02238bc700be63420f6061ba4bbad"
+    },
+    {
+      "status": " M",
+      "path": "frontend/src/PersonalAnalysis.tsx",
+      "sha256": "27568f302199968fd3122e1f12abc05c16c884755907b9c92509740f0f327947"
+    },
+    {
+      "status": " M",
+      "path": "frontend/src/features.scss",
+      "sha256": "4044afe2b9959176a42f72fbdfc9a111af613d714dc55048f68d041336b5e4b5"
+    },
+    {
+      "status": " D",
+      "path": "openspec/changes/improve-quiz-grounding/.openspec.yaml",
+      "sha256": null
+    },
+    {
+      "status": " D",
+      "path": "openspec/changes/improve-quiz-grounding/design.md",
+      "sha256": null
+    },
+    {
+      "status": " D",
+      "path": "openspec/changes/improve-quiz-grounding/proposal.md",
+      "sha256": null
+    },
+    {
+      "status": " D",
+      "path": "openspec/changes/improve-quiz-grounding/specs/learning-scope-confirmation/spec.md",
+      "sha256": null
+    },
+    {
+      "status": " D",
+      "path": "openspec/changes/improve-quiz-grounding/specs/quiz-evidence-grounding/spec.md",
+      "sha256": null
+    },
+    {
+      "status": " D",
+      "path": "openspec/changes/improve-quiz-grounding/specs/quiz-generation-reliability/spec.md",
+      "sha256": null
+    },
+    {
+      "status": " D",
+      "path": "openspec/changes/improve-quiz-grounding/tasks.md",
+      "sha256": null
+    },
+    {
+      "status": " M",
+      "path": "prototype/08-visual-directions.html",
+      "sha256": "648d3ac69f881d9509b423a3b65c191a28b991d8c65b9962bfd09c8397e8adc1"
+    },
+    {
+      "status": " M",
+      "path": "prototype/assets/visual-directions.css",
+      "sha256": "4cbb7462e1c0d41113d36cc1cc8f96ec225ccabe1710b6442197c93d5b145c52"
+    },
+    {
+      "status": " M",
+      "path": "prototype/assets/visual-directions.js",
+      "sha256": "0dd10b0e0a2cdf440bd0263975ca6492fa72e0bb71dd1dcacbcf017d2fd09db4"
+    },
+    {
+      "status": " M",
+      "path": "prototype/qa/visual-directions/capture.cjs",
+      "sha256": "e860bc43daef2b77d95c35d31fa2794b04a738ce551990de5128c3f70ea88d86"
+    },
+    {
+      "status": "??",
+      "path": "backend/scripts/live_period_smoke.py",
+      "sha256": "485637c6050d8316e34c95177c3cb6c8bf38707c57fdb98d01b2d45c82d18210"
+    },
+    {
+      "status": "??",
+      "path": "backend/test-results/analysis-browser.json",
+      "sha256": "adf63cd0cfe1ce4f555376f4b1f441b2f912324decb736305ccf6977f4b025ca"
+    },
+    {
+      "status": "??",
+      "path": "backend/test-results/analysis-coverage.xml",
+      "sha256": "d4e485201c1280af24ab04c73e4644ce434529202db63423479f3bfbd1228266"
+    },
+    {
+      "status": "??",
+      "path": "backend/test-results/analysis-regression.xml",
+      "sha256": "c6c262cf2852cf308bc9c44f667c324acf580c0dd54657e5866fd616c7432a16"
+    },
+    {
+      "status": "??",
+      "path": "backend/test-results/atlas-wxss.json",
+      "sha256": "6ed8d76ddaf3bb7142b0d500e1e7f4e7bbb4efa976001a1ab0886b34625980b6"
+    },
+    {
+      "status": "??",
+      "path": "backend/test-results/period-api-roundtrip.xml",
+      "sha256": "85931d3c0cb46a83b0fc2580bab741ba2cb909290e8f3a67fe8911d3b0d034eb"
+    },
+    {
+      "status": "??",
+      "path": "backend/test-results/period-claims-green.xml",
+      "sha256": "fb98f53c51465fbe64d083a321dfa715db49e9f8fd51ba6114bcd00d9b8aefcc"
+    },
+    {
+      "status": "??",
+      "path": "backend/test-results/period-claims-red.xml",
+      "sha256": "718159ba00ddb4d58153486d46c7c5351b8ba920796cf6dfadf4743d47f9e423"
+    },
+    {
+      "status": "??",
+      "path": "backend/test-results/period-reliability-green.xml",
+      "sha256": "5b7ae60455b95294fcbeb96733f25988889fd029a48f341539177bb765bbcb1d"
+    },
+    {
+      "status": "??",
+      "path": "backend/test-results/period-reliability-red.xml",
+      "sha256": "8e8eab313356058effc219e3243eb61c2c9f131041ab5ffb2e97ddf3a01d51bd"
+    },
+    {
+      "status": "??",
+      "path": "backend/test-results/period-synthetic-smoke.json",
+      "sha256": "0f7930c4b779418a4b6d7fc68cc385dc18be6fae3338d121d2ea61cfa79cba16"
+    },
+    {
+      "status": "??",
+      "path": "backend/tests/test_period_reliability.py",
+      "sha256": "24d88dc21a31f4f292f333133ac8dd6da92622af2d3bd7de2398a5000ed95f1e"
+    },
+    {
+      "status": "??",
+      "path": "docs/quiz-grounding/screenshots/knowledge-atlas-1000-320.png",
+      "sha256": "b04d590e6ff7633b8bf4ed0c83198554f232486523470046a3946db002c6f614"
+    },
+    {
+      "status": "??",
+      "path": "docs/quiz-grounding/screenshots/knowledge-atlas-390.png",
+      "sha256": "a6e180015634cc7e68f61180d41ad02220faa11add51ce853509d2d7dce1dbac"
+    },
+    {
+      "status": "??",
+      "path": "docs/quiz-grounding/screenshots/period-retry-390.png",
+      "sha256": "b443187ffb68033fcbfc1a1fc329145ce51bb9961b5c757c40c286a6952fadb4"
+    },
+    {
+      "status": "??",
+      "path": "docs/quiz-grounding/知识地图与周期报告修复-20261016.md",
+      "sha256": "1d500a5a316826f0658040a8a292e4eda93678bcf34cdf1f411e39cc4dcc9066"
+    },
+    {
+      "status": "??",
+      "path": "frontend/e2e-grounding/analysis.spec.ts",
+      "sha256": "a47dd493b354fe6b596f99d105e2188f13575fcfd9614308f71581e4e5ff2fc7"
+    },
+    {
+      "status": "??",
+      "path": "frontend/src/KnowledgeAtlas.tsx",
+      "sha256": "9cd531820301006d9d5c0b124d0c8d939cc7cf9838735a1c06031878564ebc64"
+    },
+    {
+      "status": "??",
+      "path": "frontend/src/knowledge-map.ts",
+      "sha256": "377d53cc194d0abf67d5455e919c7107b5f3cb9c36a5db7e5de2847a08b0619d"
+    },
+    {
+      "status": "??",
+      "path": "frontend/tests/knowledge-map.test.ts",
+      "sha256": "3e78642a906f1101be8a91a17d80f081b21fa4e62f4df7f984b63642197c4d92"
+    },
+    {
+      "status": "??",
+      "path": "openspec/changes/add-personal-knowledge-rag/",
+      "sha256": null
+    },
+    {
+      "status": "??",
+      "path": "openspec/changes/archive/2026-10-18-improve-quiz-grounding/",
+      "sha256": null
+    },
+    {
+      "status": "??",
+      "path": "openspec/specs/learning-scope-confirmation/",
+      "sha256": null
+    },
+    {
+      "status": "??",
+      "path": "openspec/specs/quiz-evidence-grounding/",
+      "sha256": null
+    },
+    {
+      "status": "??",
+      "path": "openspec/specs/quiz-generation-reliability/",
+      "sha256": null
+    },
+    {
+      "status": "??",
+      "path": "prototype/qa/blue-gradients-strong/",
+      "sha256": null
+    },
+    {
+      "status": "??",
+      "path": "prototype/qa/blue-gradients/",
+      "sha256": null
+    }
+  ]
+}

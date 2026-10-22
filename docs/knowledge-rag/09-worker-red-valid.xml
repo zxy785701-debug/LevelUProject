@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="4" skipped="0" tests="4" time="2.152" timestamp="2026-10-18T18:42:08.237430+08:00" hostname="zxy"><testcase classname="tests.test_knowledge_worker" name="test_directory_lock_refuses_a_second_process_and_releases_after_exit" time="0.630"><failure message="ModuleNotFoundError: No module named 'app.knowledge.worker'">repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x0000022978C0F4D0&gt;
+
+    def test_directory_lock_refuses_a_second_process_and_releases_after_exit(repo):
+&gt;       from app.knowledge.worker import DirectoryLock
+E       ModuleNotFoundError: No module named 'app.knowledge.worker'
+
+tests\test_knowledge_worker.py:21: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_knowledge_worker" name="test_database_lease_fences_stale_worker_even_on_different_process" time="0.130"><failure message="ModuleNotFoundError: No module named 'app.knowledge.worker'">repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x0000022978CF2850&gt;
+
+    def test_database_lease_fences_stale_worker_even_on_different_process(repo):
+&gt;       from app.knowledge.worker import WorkerGuard
+E       ModuleNotFoundError: No module named 'app.knowledge.worker'
+
+tests\test_knowledge_worker.py:43: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_knowledge_worker" name="test_bounded_worker_threads_leave_heartbeat_alive_and_prioritize_interaction" time="0.128"><failure message="ModuleNotFoundError: No module named 'app.knowledge.worker'">repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x0000022978D334D0&gt;
+
+    @pytest.mark.anyio
+    async def test_bounded_worker_threads_leave_heartbeat_alive_and_prioritize_interaction(repo):
+&gt;       from app.knowledge.worker import KnowledgeWorker
+E       ModuleNotFoundError: No module named 'app.knowledge.worker'
+
+tests\test_knowledge_worker.py:59: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_knowledge_worker" name="test_worker_errors_are_safe_and_disabled_entry_keeps_cleanup_processing" time="0.154"><failure message="ModuleNotFoundError: No module named 'app.knowledge.worker'">repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x0000022978D295B0&gt;
+
+    @pytest.mark.anyio
+    async def test_worker_errors_are_safe_and_disabled_entry_keeps_cleanup_processing(repo):
+&gt;       from app.knowledge.worker import KnowledgeWorker
+E       ModuleNotFoundError: No module named 'app.knowledge.worker'
+
+tests\test_knowledge_worker.py:100: ModuleNotFoundError</failure></testcase></testsuite></testsuites>

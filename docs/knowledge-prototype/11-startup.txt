@@ -1,0 +1,5 @@
+
+> levelup-mini@1.0.0 check:startup
+> node scripts/verify-startup.cjs
+
+WeApp App/page module loading and initial lifecycle: PASS

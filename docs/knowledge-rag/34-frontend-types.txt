@@ -1,0 +1,6 @@
+
+> levelup-mini@1.0.0 typecheck
+> tsc --noEmit
+
+src/components.tsx(97,7): error TS2322: Type '{ children: ReactNode; role: string; "aria-label": string | undefined; className: string; disabled: boolean; onClick: (() => void) | undefined; openType: "share" | undefined; }' is not assignable to type 'IntrinsicAttributes & ButtonProps'.
+  Property 'role' does not exist on type 'IntrinsicAttributes & ButtonProps'.

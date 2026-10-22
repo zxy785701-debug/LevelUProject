@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="5" skipped="0" tests="5" time="6.973" timestamp="2026-10-18T18:33:11.418401+08:00" hostname="zxy"><testcase classname="tests.test_knowledge_jobs" name="test_only_one_connection_can_claim_the_same_job" time="2.474"><failure message="ModuleNotFoundError: No module named 'app.knowledge.jobs'">repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x00000199AB64F230&gt;
+
+    def test_only_one_connection_can_claim_the_same_job(repo):
+&gt;       from app.knowledge.jobs import DurableJobs
+E       ModuleNotFoundError: No module named 'app.knowledge.jobs'
+
+tests\test_knowledge_jobs.py:13: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_knowledge_jobs" name="test_expired_lease_is_fenced_and_keeps_budget_deadline_and_progress" time="0.345"><failure message="ModuleNotFoundError: No module named 'app.knowledge.jobs'">repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x00000199AB773ED0&gt;
+
+    def test_expired_lease_is_fenced_and_keeps_budget_deadline_and_progress(repo):
+&gt;       from app.knowledge.jobs import DurableJobs
+E       ModuleNotFoundError: No module named 'app.knowledge.jobs'
+
+tests\test_knowledge_jobs.py:24: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_knowledge_jobs" name="test_final_result_and_success_publish_in_one_transaction_exactly_once" time="0.338"><failure message="ModuleNotFoundError: No module named 'app.knowledge.jobs'">repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x00000199AB767110&gt;
+
+    def test_final_result_and_success_publish_in_one_transaction_exactly_once(repo):
+&gt;       from app.knowledge.jobs import DurableJobs
+E       ModuleNotFoundError: No module named 'app.knowledge.jobs'
+
+tests\test_knowledge_jobs.py:46: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_knowledge_jobs" name="test_recoverable_failures_are_bounded_and_cannot_refill_budget" time="0.340"><failure message="ModuleNotFoundError: No module named 'app.knowledge.jobs'">repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x00000199AB7C9810&gt;
+
+    def test_recoverable_failures_are_bounded_and_cannot_refill_budget(repo):
+&gt;       from app.knowledge.jobs import DurableJobs
+E       ModuleNotFoundError: No module named 'app.knowledge.jobs'
+
+tests\test_knowledge_jobs.py:69: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_knowledge_jobs" name="test_expired_deadlines_and_queue_wait_end_with_actionable_failure" time="0.290"><failure message="ModuleNotFoundError: No module named 'app.knowledge.jobs'">repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x00000199AB7CA9E0&gt;
+
+    def test_expired_deadlines_and_queue_wait_end_with_actionable_failure(repo):
+&gt;       from app.knowledge.jobs import DurableJobs
+E       ModuleNotFoundError: No module named 'app.knowledge.jobs'
+
+tests\test_knowledge_jobs.py:83: ModuleNotFoundError</failure></testcase></testsuite></testsuites>

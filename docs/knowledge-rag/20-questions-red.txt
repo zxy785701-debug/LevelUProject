@@ -1,0 +1,55 @@
+FFFF                                                                     [100%]
+================================== FAILURES ===================================
+_____ test_question_input_requires_explicit_scope_and_defaults_network_on _____
+
+    def test_question_input_requires_explicit_scope_and_defaults_network_on():
+>       from app.knowledge.models import QuestionRequest
+E       ImportError: cannot import name 'QuestionRequest' from 'app.knowledge.models' (D:\nbproject\LevelUpProject\backend\app\knowledge\models.py)
+
+tests\test_knowledge_questions.py:13: ImportError
+_ test_question_submission_is_durable_owned_and_idempotent_without_quiz_or_rewards _
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x000001D1A2A36120>
+
+    def test_question_submission_is_durable_owned_and_idempotent_without_quiz_or_rewards(repo):
+>       from app.knowledge.questions import QuestionRepository
+E       ModuleNotFoundError: No module named 'app.knowledge.questions'
+
+tests\test_knowledge_questions.py:25: ModuleNotFoundError
+_ test_question_daily_submission_limit_is_atomic_and_retry_does_not_charge_twice _
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x000001D1A2A77ED0>
+
+    def test_question_daily_submission_limit_is_atomic_and_retry_does_not_charge_twice(repo):
+>       from app.knowledge.questions import QuestionRepository
+E       ModuleNotFoundError: No module named 'app.knowledge.questions'
+
+tests\test_knowledge_questions.py:47: ModuleNotFoundError
+______ test_question_api_creates_short_job_and_rejects_implicit_history _______
+
+knowledge_app = <fastapi.applications.FastAPI object at 0x000001D1A2B60910>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001D1A2B409D0>
+
+    @pytest.mark.anyio
+    async def test_question_api_creates_short_job_and_rejects_implicit_history(knowledge_app,monkeypatch):
+        from app.knowledge.config import KnowledgeSettings
+        from app.knowledge.repository import KnowledgeRepository
+        monkeypatch.setattr(KnowledgeSettings,'unavailable_reason',lambda self,**kw:None)
+        repo = KnowledgeRepository(knowledge_app.state.accounts,knowledge_app.state.knowledge_config)
+        async with httpx.AsyncClient(transport=httpx.ASGITransport(app=knowledge_app),base_url='http://test') as client:
+            assert (await client.post('/api/v1/knowledge/questions',json={'question':'��','all_ready':True})).status_code==401
+            identity = await login(client)
+            seed(repo,uid=identity['user']['id'])
+            response = await client.post('/api/v1/knowledge/questions',headers={'Idempotency-Key':'ask'},json={'question':'��','all_ready':True})
+>           assert response.status_code==200,response.text
+E           AssertionError: {"code":"NOT_FOUND","message":"�ӿڲ�����","data":null}
+E           assert 404 == 200
+E            +  where 404 = <Response [404 Not Found]>.status_code
+
+tests\test_knowledge_questions.py:78: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_knowledge_questions.py::test_question_input_requires_explicit_scope_and_defaults_network_on
+FAILED tests/test_knowledge_questions.py::test_question_submission_is_durable_owned_and_idempotent_without_quiz_or_rewards
+FAILED tests/test_knowledge_questions.py::test_question_daily_submission_limit_is_atomic_and_retry_does_not_charge_twice
+FAILED tests/test_knowledge_questions.py::test_question_api_creates_short_job_and_rejects_implicit_history
+4 failed in 10.13s

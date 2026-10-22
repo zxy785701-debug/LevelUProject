@@ -1,0 +1,109 @@
+
+Running 16 tests using 1 worker
+
+(node:17424) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 e2e-accounts\accounts.spec.ts:38:5 › 未登录强制登录，无游客入口；320px 布局 (1.6s)
+  ok  2 e2e-accounts\accounts.spec.ts:56:5 › 真实 MySQL 闭环：答题、报告、海报、昵称、退出 (11.0s)
+  x   3 e2e-accounts\accounts.spec.ts:82:5 › 暂停刷新恢复、断网不入账、错题复习不加奖励 (12.7s)
+(node:10812) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  4 e2e-accounts\accounts.spec.ts:125:5 › 账号隔离与过期回登录 (4.4s)
+  x   5 e2e-accounts\interactions.spec.ts:26:5 › 任意切题、草稿保留、未答完不出报告、进阶奖励与白色星星 (10.8s)
+(node:33548) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  6 e2e-accounts\interactions.spec.ts:74:5 › 头像操作菜单、预览与实际图片下载 (1.6s)
+  x   7 e2e-accounts\interactions.spec.ts:102:5 › 长页面进入历史再返回，恢复原滚动位置 (5.1s)
+(node:19648) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  8 e2e-accounts\materials.spec.ts:23:5 › 文档上传、真实材料确认、来源阅读、出题和答题闭环 (6.1s)
+  ok  9 e2e-accounts\materials.spec.ts:54:5 › 知识地图与周期报告空态、网页错误和 320px 布局 (2.0s)
+  ok 10 e2e-accounts\materials.spec.ts:66:5 › 历史作答聚合、知识节点和周期报告生成导出 (5.5s)
+  ok 11 e2e-accounts\materials.spec.ts:103:5 › 已清理的缓存解析任务能退出轮询并重新选择材料 (1.5s)
+  ok 12 e2e-accounts\materials.spec.ts:114:5 › 取消解析后迟到的材料响应不能跳回学习范围 (1.7s)
+  ok 13 e2e-accounts\quiz-document.spec.ts:71:5 › 逐题判分、多选确认、刷新保留，答完自动报告并返回首页、删除记录 (5.6s)
+  ok 14 e2e-accounts\quiz-document.spec.ts:124:5 › 本题提交失败可重试，不重复提交已经确认的题目 (1.2s)
+  ok 15 e2e-accounts\quiz-document.spec.ts:147:5 › 无文件可选页码，PDF 保留范围、校验错误就地提示并提交正确页码 (1.2s)
+  ok 16 e2e-accounts\quiz-document.spec.ts:174:5 › 切换 TXT 自动使用全文并解释页码不可用 (904ms)
+
+
+  1) e2e-accounts\accounts.spec.ts:82:5 › 暂停刷新恢复、断网不入账、错题复习不加奖励 ────────────────────────────────────
+
+    Error: expect(locator).toHaveText(expected) failed
+
+    Locator:  locator('.ring-value')
+    Expected: "67%"
+    Received: "33%"
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveText" locator('.ring-value') with timeout 5000ms
+      - waiting for locator('.ring-value')
+        11 × locator resolved to <taro-text-core class="ring-value">…</taro-text-core>
+           - unexpected value "33%"
+
+
+      104 |   await page.unroute('**/attempts/*/answers')
+      105 |   await page.getByText('确认操作', { exact: true }).click()
+    > 106 |   await expect(page.locator('.ring-value')).toHaveText('67%')
+          |                                             ^
+      107 |   await expect(page.getByText('三句话，带走这关', { exact: true })).toBeVisible()
+      108 |   const headers = { Authorization: `Bearer ${session.token}` }
+      109 |   const before = (await (await request.get(apiOrigin + '/api/v1/me', { headers })).json()).data.stats.xp
+        at D:\nbproject\LevelUpProject\frontend\e2e-accounts\accounts.spec.ts:106:45
+
+    Error Context: ..\docs\knowledge-prototype\11-core-results\accounts-暂停刷新恢复、断网不入账、错题复习不加奖励\error-context.md
+
+  2) e2e-accounts\interactions.spec.ts:26:5 › 任意切题、草稿保留、未答完不出报告、进阶奖励与白色星星 ──────────────────────────
+
+    Error: expect(locator).toHaveCount(expected) failed
+
+    Locator:  locator('.feedback')
+    Expected: 0
+    Received: 1
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveCount" locator('.feedback') with timeout 5000ms
+      - waiting for locator('.feedback')
+        14 × locator resolved to 1 element
+           - unexpected value "1"
+
+
+      63 |   await page.locator('.quiz-step').nth(0).click()
+      64 |   await page.locator('.option').nth(0).click()
+    > 65 |   await expect(page.locator('.feedback')).toHaveCount(0)
+         |                                           ^
+      66 |   await expect(page.locator('.ring-value')).toHaveCount(0)
+      67 |   await page.getByText('确认本题', { exact: true }).click()
+      68 |   await expect(page.locator('.ring-value')).toHaveText('100%')
+        at D:\nbproject\LevelUpProject\frontend\e2e-accounts\interactions.spec.ts:65:43
+
+    Error Context: ..\docs\knowledge-prototype\11-core-results\interactions-任意切题、草稿保留、未答完不出报告、进阶奖励与白色星星\error-context.md
+
+  3) e2e-accounts\interactions.spec.ts:102:5 › 长页面进入历史再返回，恢复原滚动位置 ──────────────────────────────────
+
+    Error: expect(received).toBeLessThan(expected)
+
+    Expected: < 3
+    Received:   600
+
+    Call Log:
+    - Timeout 5000ms exceeded while waiting on the predicate
+
+      113 |   await page.locator('.mini-back').click()
+      114 |   await expect(page.getByText('查看全部', { exact: true })).toBeVisible()
+    > 115 |   await expect.poll(async () => Math.abs(await scroll.evaluate(element => element.scrollTop) - before)).toBeLessThan(3)
+          |                                                                                                         ^
+      116 |   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
+      117 |   await page.screenshot({ path: '../docs/quiz-grounding/account-screenshots/interactions-scroll-return-320.png' })
+      118 | })
+        at D:\nbproject\LevelUpProject\frontend\e2e-accounts\interactions.spec.ts:115:105
+
+    Error Context: ..\docs\knowledge-prototype\11-core-results\interactions-长页面进入历史再返回，恢复原滚动位置\error-context.md
+
+  3 failed
+    e2e-accounts\accounts.spec.ts:82:5 › 暂停刷新恢复、断网不入账、错题复习不加奖励 ─────────────────────────────────────
+    e2e-accounts\interactions.spec.ts:26:5 › 任意切题、草稿保留、未答完不出报告、进阶奖励与白色星星 ───────────────────────────
+    e2e-accounts\interactions.spec.ts:102:5 › 长页面进入历史再返回，恢复原滚动位置 ───────────────────────────────────
+  13 passed (1.3m)

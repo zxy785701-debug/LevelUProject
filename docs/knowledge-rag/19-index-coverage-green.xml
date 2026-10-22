@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="21" time="23.947" timestamp="2026-10-18T21:04:16.320683+08:00" hostname="zxy"><testcase classname="tests.test_knowledge_index" name="test_index_refuses_to_open_without_live_directory_and_database_locks" time="0.919" /><testcase classname="tests.test_knowledge_index" name="test_real_chroma_upsert_manifest_and_only_active_owned_selection" time="3.841" /><testcase classname="tests.test_knowledge_index" name="test_manifest_rejects_missing_wrong_dimensions_and_wrong_profile" time="0.558" /><testcase classname="tests.test_knowledge_index" name="test_real_collections_separate_users_with_identical_query_vectors" time="1.300" /><testcase classname="tests.test_knowledge_index" name="test_chroma_payload_cannot_replace_mysql_text_or_smuggle_another_users_chunk" time="0.932" /><testcase classname="tests.test_knowledge_index" name="test_import_batches_are_invisible_until_atomic_activation_and_resume_cache" time="2.260" /><testcase classname="tests.test_knowledge_index" name="test_failed_reindex_preserves_previous_active_revision_and_final_delete_race" time="1.058" /><testcase classname="tests.test_knowledge_index" name="test_multi_document_search_keeps_relevant_smaller_document_in_candidate_pool" time="1.660"><failure message="AssertionError: assert {'de1fa20a-09...9bcf6a806b35'} == {'b2130fb7-cf...9bcf6a806b35'}&#10;  &#10;  Extra items in the right set:&#10;  'b2130fb7-cfdd-4af6-97de-b48aa0939000'&#10;  Use -v to get more diff">index = &lt;app.knowledge.index.VectorIndex object at 0x00000247528BB020&gt;
+repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x00000247528BA580&gt;
+
+    def test_multi_document_search_keeps_relevant_smaller_document_in_candidate_pool(index,repo):
+        from app.knowledge.importing import ImportPipeline
+        from app.knowledge.database import Document,Revision
+        repo.config.chunk_size,repo.config.chunk_overlap = 100,0
+        pipeline = ImportPipeline(repo.accounts,repo.config)
+        selections = []
+        for number,body in enumerate(['\n'.join(f'Fact {n}: '+str(n)*90 for n in range(60)),'Required evidence in smaller document']):
+            queued = repo.submit_file('alice','fair-'+str(number),'d'+str(number)+'.txt',body.encode())
+            claim = pipeline.claim('worker')
+            parsed = pipeline.parse(claim)
+            chunks = pipeline.split(claim,parsed)
+            vector = ([1.0,0.0] if number==0 else [.9,.1])+[0.0]*1022
+            index.upsert(claim,parsed['revision_id'],chunks,[vector]*len(chunks))
+            with repo.database.session() as session:
+                session.get(Revision,parsed['revision_id']).status = 'ready'
+                document = session.get(Document,queued['document_id'])
+                document.status,document.active_revision_id = 'ready',parsed['revision_id']
+            selections.append(queued['document_id'])
+            if number==0: pipeline.complete(claim,lambda s,j:{'ok':True})
+        result = index.search(claim,repo.select_documents('alice',selections),[1.0]+[0.0]*1023)
+&gt;       assert {r['document_id'] for r in result}==set(selections)
+E       AssertionError: assert {'de1fa20a-09...9bcf6a806b35'} == {'b2130fb7-cf...9bcf6a806b35'}
+E         
+E         Extra items in the right set:
+E         'b2130fb7-cfdd-4af6-97de-b48aa0939000'
+E         Use -v to get more diff
+
+tests\test_knowledge_index.py:186: AssertionError</failure></testcase><testcase classname="tests.test_knowledge_index" name="test_only_selected_active_revision_is_retrieved_from_real_index" time="1.390" /><testcase classname="tests.test_knowledge_agent" name="test_pure_knowledge_path_works_without_tavily_and_never_sends_private_text" time="0.029" /><testcase classname="tests.test_knowledge_agent" name="test_pure_web_and_mixed_use_official_tools_with_approved_dynamic_parameters" time="0.144" /><testcase classname="tests.test_knowledge_agent" name="test_private_injection_cannot_expand_scope_or_public_parameters" time="0.050" /><testcase classname="tests.test_knowledge_agent" name="test_disabled_network_never_invokes_public_plan_or_tools" time="0.011" /><testcase classname="tests.test_knowledge_agent" name="test_public_plan_is_built_without_document_content_and_parameters_are_pinned" time="0.054" /><testcase classname="tests.test_knowledge_agent" name="test_empty_repeated_attempts_and_all_tool_failures_still_spend_budget" time="0.053" /><testcase classname="tests.test_knowledge_agent" name="test_context_fairness_deduplication_and_honest_index_failure" time="0.011" /><testcase classname="tests.test_knowledge_agent" name="test_document_coverage_is_allocated_before_one_document_uses_all_slots" time="0.012" /><testcase classname="tests.test_knowledge_agent" name="test_explicit_public_url_is_extracted_as_body_and_absent_tavily_is_honest" time="0.051" /><testcase classname="tests.test_knowledge_agent" name="test_public_parameters_are_not_shared_between_parallel_users" time="0.084" /><testcase classname="tests.test_knowledge_retrieval_store" name="test_retrieval_checkpoints_restore_only_original_owned_document_versions" time="1.168" /><testcase classname="tests.test_knowledge_retrieval_store" name="test_index_errors_are_recorded_without_guessing_content_and_scope_failure_can_finish" time="1.058" /></testsuite></testsuites>

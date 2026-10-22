@@ -1,0 +1,19 @@
+..F                                                                      [100%]
+================================== FAILURES ===================================
+_______________ test_launcher_starts_and_stops_only_its_worker ________________
+
+    def test_launcher_starts_and_stops_only_its_worker():
+        root = Path(__file__).resolve().parents[2]
+        script = root/'scripts/tests/knowledge-launcher.ps1'
+        process = subprocess.run(['powershell','-NoProfile','-ExecutionPolicy','Bypass','-File',str(script)],
+                                cwd=root,capture_output=True,text=True,timeout=30)
+>       assert process.returncode == 0, process.stderr
+E       AssertionError: The argument 'D:\nbproject\LevelUpProject\scripts\tests\knowledge-launcher.ps1' to the -File parameter does not exist. Provide the path to an existing '.ps1' file as an argument to the -File parameter.
+E         
+E       assert 4294770688 == 0
+E        +  where 4294770688 = CompletedProcess(args=['powershell', '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', 'D:\\nbproject\\LevelUpProje... -File parameter does not exist. Provide the path to an existing '.ps1' file as an argument to the -File parameter.\n").returncode
+
+tests\test_knowledge_launcher.py:45: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_knowledge_launcher.py::test_launcher_starts_and_stops_only_its_worker
+1 failed, 2 passed in 10.17s

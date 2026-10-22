@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="10" skipped="0" tests="10" time="0.800" timestamp="2026-10-18T18:05:17.538616+08:00" hostname="zxy"><testcase classname="tests.test_knowledge_config" name="test_disabled_without_credentials_and_secrets_are_hidden" time="0.046"><failure message="ModuleNotFoundError: No module named 'app.knowledge'">tmp_path = WindowsPath('C:/Users/20777/AppData/Local/Temp/pytest-of-20777/pytest-65/test_disabled_without_credenti0')
+
+    def test_disabled_without_credentials_and_secrets_are_hidden(tmp_path):
+&gt;       value = config()
+                ^^^^^^^^
+
+tests\test_knowledge_config.py:15: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+values = {}
+
+    def config(**values):
+&gt;       from app.knowledge.config import KnowledgeSettings
+E       ModuleNotFoundError: No module named 'app.knowledge'
+
+tests\test_knowledge_config.py:10: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_knowledge_config" name="test_invalid_directory_and_missing_key_disable_only_knowledge" time="0.028"><failure message="ModuleNotFoundError: No module named 'app.knowledge'">tmp_path = WindowsPath('C:/Users/20777/AppData/Local/Temp/pytest-of-20777/pytest-65/test_invalid_directory_and_mis0')
+
+    def test_invalid_directory_and_missing_key_disable_only_knowledge(tmp_path):
+&gt;       value = config(enabled=True, storage_root=tmp_path)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_knowledge_config.py:27: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+values = {'enabled': True, 'storage_root': WindowsPath('C:/Users/20777/AppData/Local/Temp/pytest-of-20777/pytest-65/test_invalid_directory_and_mis0')}
+
+    def config(**values):
+&gt;       from app.knowledge.config import KnowledgeSettings
+E       ModuleNotFoundError: No module named 'app.knowledge'
+
+tests\test_knowledge_config.py:10: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_knowledge_config" name="test_invalid_config_is_rejected_without_printing_credentials[values0]" time="0.001"><failure message="ModuleNotFoundError: No module named 'app.knowledge'">values = {'embedding_dimension': 768}
+
+    @pytest.mark.parametrize('values', [
+        {'embedding_dimension': 768}, {'embedding_model': 'other'}, {'embedding_distance': 'l2'},
+        {'embedding_base_url': 'http://localhost:9000'}, {'worker_concurrency': 3},
+        {'chunk_overlap': 1000}, {'embedding_batch_size': 11},
+    ])
+    def test_invalid_config_is_rejected_without_printing_credentials(values):
+        with pytest.raises(ValidationError) as error:
+&gt;           config(embedding_api_key='secret-sentinel', **values)
+
+tests\test_knowledge_config.py:43: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+values = {'embedding_api_key': 'secret-sentinel', 'embedding_dimension': 768}
+
+    def config(**values):
+&gt;       from app.knowledge.config import KnowledgeSettings
+E       ModuleNotFoundError: No module named 'app.knowledge'
+
+tests\test_knowledge_config.py:10: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_knowledge_config" name="test_invalid_config_is_rejected_without_printing_credentials[values1]" time="0.002"><failure message="ModuleNotFoundError: No module named 'app.knowledge'">values = {'embedding_model': 'other'}
+
+    @pytest.mark.parametrize('values', [
+        {'embedding_dimension': 768}, {'embedding_model': 'other'}, {'embedding_distance': 'l2'},
+        {'embedding_base_url': 'http://localhost:9000'}, {'worker_concurrency': 3},
+        {'chunk_overlap': 1000}, {'embedding_batch_size': 11},
+    ])
+    def test_invalid_config_is_rejected_without_printing_credentials(values):
+        with pytest.raises(ValidationError) as error:
+&gt;           config(embedding_api_key='secret-sentinel', **values)
+
+tests\test_knowledge_config.py:43: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+values = {'embedding_api_key': 'secret-sentinel', 'embedding_model': 'other'}
+
+    def config(**values):
+&gt;       from app.knowledge.config import KnowledgeSettings
+E       ModuleNotFoundError: No module named 'app.knowledge'
+
+tests\test_knowledge_config.py:10: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_knowledge_config" name="test_invalid_config_is_rejected_without_printing_credentials[values2]" time="0.003"><failure message="ModuleNotFoundError: No module named 'app.knowledge'">values = {'embedding_distance': 'l2'}
+
+    @pytest.mark.parametrize('values', [
+        {'embedding_dimension': 768}, {'embedding_model': 'other'}, {'embedding_distance': 'l2'},
+        {'embedding_base_url': 'http://localhost:9000'}, {'worker_concurrency': 3},
+        {'chunk_overlap': 1000}, {'embedding_batch_size': 11},
+    ])
+    def test_invalid_config_is_rejected_without_printing_credentials(values):
+        with pytest.raises(ValidationError) as error:
+&gt;           config(embedding_api_key='secret-sentinel', **values)
+
+tests\test_knowledge_config.py:43: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+values = {'embedding_api_key': 'secret-sentinel', 'embedding_distance': 'l2'}
+
+    def config(**values):
+&gt;       from app.knowledge.config import KnowledgeSettings
+E       ModuleNotFoundError: No module named 'app.knowledge'
+
+tests\test_knowledge_config.py:10: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_knowledge_config" name="test_invalid_config_is_rejected_without_printing_credentials[values3]" time="0.002"><failure message="ModuleNotFoundError: No module named 'app.knowledge'">values = {'embedding_base_url': 'http://localhost:9000'}
+
+    @pytest.mark.parametrize('values', [
+        {'embedding_dimension': 768}, {'embedding_model': 'other'}, {'embedding_distance': 'l2'},
+        {'embedding_base_url': 'http://localhost:9000'}, {'worker_concurrency': 3},
+        {'chunk_overlap': 1000}, {'embedding_batch_size': 11},
+    ])
+    def test_invalid_config_is_rejected_without_printing_credentials(values):
+        with pytest.raises(ValidationError) as error:
+&gt;           config(embedding_api_key='secret-sentinel', **values)
+
+tests\test_knowledge_config.py:43: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+values = {'embedding_api_key': 'secret-sentinel', 'embedding_base_url': 'http://localhost:9000'}
+
+    def config(**values):
+&gt;       from app.knowledge.config import KnowledgeSettings
+E       ModuleNotFoundError: No module named 'app.knowledge'
+
+tests\test_knowledge_config.py:10: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_knowledge_config" name="test_invalid_config_is_rejected_without_printing_credentials[values4]" time="0.002"><failure message="ModuleNotFoundError: No module named 'app.knowledge'">values = {'worker_concurrency': 3}
+
+    @pytest.mark.parametrize('values', [
+        {'embedding_dimension': 768}, {'embedding_model': 'other'}, {'embedding_distance': 'l2'},
+        {'embedding_base_url': 'http://localhost:9000'}, {'worker_concurrency': 3},
+        {'chunk_overlap': 1000}, {'embedding_batch_size': 11},
+    ])
+    def test_invalid_config_is_rejected_without_printing_credentials(values):
+        with pytest.raises(ValidationError) as error:
+&gt;           config(embedding_api_key='secret-sentinel', **values)
+
+tests\test_knowledge_config.py:43: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+values = {'embedding_api_key': 'secret-sentinel', 'worker_concurrency': 3}
+
+    def config(**values):
+&gt;       from app.knowledge.config import KnowledgeSettings
+E       ModuleNotFoundError: No module named 'app.knowledge'
+
+tests\test_knowledge_config.py:10: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_knowledge_config" name="test_invalid_config_is_rejected_without_printing_credentials[values5]" time="0.003"><failure message="ModuleNotFoundError: No module named 'app.knowledge'">values = {'chunk_overlap': 1000}
+
+    @pytest.mark.parametrize('values', [
+        {'embedding_dimension': 768}, {'embedding_model': 'other'}, {'embedding_distance': 'l2'},
+        {'embedding_base_url': 'http://localhost:9000'}, {'worker_concurrency': 3},
+        {'chunk_overlap': 1000}, {'embedding_batch_size': 11},
+    ])
+    def test_invalid_config_is_rejected_without_printing_credentials(values):
+        with pytest.raises(ValidationError) as error:
+&gt;           config(embedding_api_key='secret-sentinel', **values)
+
+tests\test_knowledge_config.py:43: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+values = {'embedding_api_key': 'secret-sentinel', 'chunk_overlap': 1000}
+
+    def config(**values):
+&gt;       from app.knowledge.config import KnowledgeSettings
+E       ModuleNotFoundError: No module named 'app.knowledge'
+
+tests\test_knowledge_config.py:10: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_knowledge_config" name="test_invalid_config_is_rejected_without_printing_credentials[values6]" time="0.002"><failure message="ModuleNotFoundError: No module named 'app.knowledge'">values = {'embedding_batch_size': 11}
+
+    @pytest.mark.parametrize('values', [
+        {'embedding_dimension': 768}, {'embedding_model': 'other'}, {'embedding_distance': 'l2'},
+        {'embedding_base_url': 'http://localhost:9000'}, {'worker_concurrency': 3},
+        {'chunk_overlap': 1000}, {'embedding_batch_size': 11},
+    ])
+    def test_invalid_config_is_rejected_without_printing_credentials(values):
+        with pytest.raises(ValidationError) as error:
+&gt;           config(embedding_api_key='secret-sentinel', **values)
+
+tests\test_knowledge_config.py:43: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+values = {'embedding_api_key': 'secret-sentinel', 'embedding_batch_size': 11}
+
+    def config(**values):
+&gt;       from app.knowledge.config import KnowledgeSettings
+E       ModuleNotFoundError: No module named 'app.knowledge'
+
+tests\test_knowledge_config.py:10: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_knowledge_config" name="test_optional_dependencies_are_probed_without_import_or_initialization" time="0.004"><failure message="ModuleNotFoundError: No module named 'app.knowledge'">monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x000001FE306076F0&gt;
+tmp_path = WindowsPath('C:/Users/20777/AppData/Local/Temp/pytest-of-20777/pytest-65/test_optional_dependencies_are0')
+
+    def test_optional_dependencies_are_probed_without_import_or_initialization(monkeypatch, tmp_path):
+&gt;       value = config(enabled=True, embedding_api_key='test', embedding_base_url='https://ws-test.cn-beijing.maas.aliyuncs.com/api/v1', storage_root=tmp_path)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_knowledge_config.py:48: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+values = {'enabled': True, 'embedding_api_key': 'test', 'embedding_base_url': 'https://ws-test.cn-beijing.maas.aliyuncs.com/api...rage_root': WindowsPath('C:/Users/20777/AppData/Local/Temp/pytest-of-20777/pytest-65/test_optional_dependencies_are0')}
+
+    def config(**values):
+&gt;       from app.knowledge.config import KnowledgeSettings
+E       ModuleNotFoundError: No module named 'app.knowledge'
+
+tests\test_knowledge_config.py:10: ModuleNotFoundError</failure></testcase></testsuite></testsuites>

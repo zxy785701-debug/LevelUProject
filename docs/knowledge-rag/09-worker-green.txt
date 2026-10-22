@@ -1,0 +1,41 @@
+..F................                                                      [100%]
+================================== FAILURES ===================================
+_ test_bounded_worker_threads_leave_heartbeat_alive_and_prioritize_interaction _
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x0000022A3F031F90>
+
+    @pytest.mark.anyio
+    async def test_bounded_worker_threads_leave_heartbeat_alive_and_prioritize_interaction(repo):
+        from app.knowledge.worker import KnowledgeWorker
+        from app.knowledge.jobs import DurableJobs
+        from app.knowledge.database import Job, WorkerLease
+        rows = [submit(repo,str(i)) for i in range(3)]
+        with repo.database.session() as session:
+            session.get(Job,rows[-1]['id']).priority = 10
+        jobs = DurableJobs(repo.accounts,repo.config)
+        started, ended = [], []
+        gate = threading.Event()
+        def handler(claim):
+            started.append(claim.id)
+            gate.wait(5)
+            ended.append(claim.id)
+            jobs.complete(claim,lambda session,row:{'ok':True})
+        worker = KnowledgeWorker(repo.accounts,repo.config,handlers={'import':handler},poll_seconds=.03,heartbeat_seconds=.06)
+        task = asyncio.create_task(worker.run())
+        try:
+            for _ in range(100):
+                if len(started) == 2: break
+                await asyncio.sleep(.03)
+            assert len(started) == 2 and rows[-1]['id'] in started and not ended
+            with repo.database.session() as session:
+                before = session.get(WorkerLease,worker.guard.identity).heartbeat_at
+            await asyncio.sleep(.2)
+            with repo.database.session() as session:
+                after = session.get(WorkerLease,worker.guard.identity).heartbeat_at
+>           assert after > before
+E           assert datetime.datetime(2026, 10, 18, 10, 43, 17) > datetime.datetime(2026, 10, 18, 10, 43, 17)
+
+tests\test_knowledge_worker.py:85: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_knowledge_worker.py::test_bounded_worker_threads_leave_heartbeat_alive_and_prioritize_interaction
+1 failed, 18 passed in 21.44s

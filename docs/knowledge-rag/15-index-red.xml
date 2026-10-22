@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="5" failures="1" skipped="0" tests="6" time="1.962" timestamp="2026-10-18T20:33:38.671873+08:00" hostname="zxy"><testcase classname="tests.test_knowledge_index" name="test_index_refuses_to_open_without_live_directory_and_database_locks" time="0.418"><failure message="ModuleNotFoundError: No module named 'app.knowledge.index'">repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x00000225FC51F770&gt;
+
+    def test_index_refuses_to_open_without_live_directory_and_database_locks(repo):
+&gt;       from app.knowledge.index import VectorIndex
+E       ModuleNotFoundError: No module named 'app.knowledge.index'
+
+tests\test_knowledge_index.py:37: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_knowledge_index" name="test_real_chroma_upsert_manifest_and_only_active_owned_selection" time="0.104"><error message="failed on setup with &quot;ModuleNotFoundError: No module named 'app.knowledge.index'&quot;">repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x00000225FC653B10&gt;
+
+    @pytest.fixture
+    def index(repo):
+&gt;       from app.knowledge.index import VectorIndex
+E       ModuleNotFoundError: No module named 'app.knowledge.index'
+
+tests\test_knowledge_index.py:15: ModuleNotFoundError</error></testcase><testcase classname="tests.test_knowledge_index" name="test_manifest_rejects_missing_wrong_dimensions_and_wrong_profile" time="0.100"><error message="failed on setup with &quot;ModuleNotFoundError: No module named 'app.knowledge.index'&quot;">repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x00000225FC67AD50&gt;
+
+    @pytest.fixture
+    def index(repo):
+&gt;       from app.knowledge.index import VectorIndex
+E       ModuleNotFoundError: No module named 'app.knowledge.index'
+
+tests\test_knowledge_index.py:15: ModuleNotFoundError</error></testcase><testcase classname="tests.test_knowledge_index" name="test_chroma_payload_cannot_replace_mysql_text_or_smuggle_another_users_chunk" time="0.065"><error message="failed on setup with &quot;ModuleNotFoundError: No module named 'app.knowledge.index'&quot;">repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x00000225FC557100&gt;
+
+    @pytest.fixture
+    def index(repo):
+&gt;       from app.knowledge.index import VectorIndex
+E       ModuleNotFoundError: No module named 'app.knowledge.index'
+
+tests\test_knowledge_index.py:15: ModuleNotFoundError</error></testcase><testcase classname="tests.test_knowledge_index" name="test_import_batches_are_invisible_until_atomic_activation_and_resume_cache" time="0.086"><error message="failed on setup with &quot;ModuleNotFoundError: No module named 'app.knowledge.index'&quot;">repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x00000225FC6E8510&gt;
+
+    @pytest.fixture
+    def index(repo):
+&gt;       from app.knowledge.index import VectorIndex
+E       ModuleNotFoundError: No module named 'app.knowledge.index'
+
+tests\test_knowledge_index.py:15: ModuleNotFoundError</error></testcase><testcase classname="tests.test_knowledge_index" name="test_failed_reindex_preserves_previous_active_revision_and_final_delete_race" time="0.098"><error message="failed on setup with &quot;ModuleNotFoundError: No module named 'app.knowledge.index'&quot;">repo = &lt;app.knowledge.repository.KnowledgeRepository object at 0x00000225FC726690&gt;
+
+    @pytest.fixture
+    def index(repo):
+&gt;       from app.knowledge.index import VectorIndex
+E       ModuleNotFoundError: No module named 'app.knowledge.index'
+
+tests\test_knowledge_index.py:15: ModuleNotFoundError</error></testcase></testsuite></testsuites>
