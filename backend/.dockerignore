@@ -1,0 +1,18 @@
+# Only send runtime source, migrations, and locked dependencies to the builder.
+**
+!Dockerfile
+!.dockerignore
+!requirements.lock
+!alembic.ini
+!app/
+!app/**
+!migrations/
+!migrations/**
+
+# Keep secrets and generated Python files out even under an allowed directory.
+**/.env
+**/.env.*
+**/__pycache__
+**/*.py[cod]
+**/.pytest_cache
+**/.coverage*

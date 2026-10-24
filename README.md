@@ -8,6 +8,8 @@
 
 所有闯关来源支持手动开启“生成图片”（默认关闭），使用百炼 qwen-image-2.0 生成 512×512 配图并转存腾讯云 COS。默认每人每天最多 20 次请求，额度不足或生图失败仍返回文字题目；历史、报告、重闯及错题复习复用原图。配置、运行与验收见 [题目配图说明](docs/quiz-images/README.md)。
 
+微信云托管容器文件位于 `backend/Dockerfile`，构建目录选 `backend`、服务端口填 `8080`。环境变量、数据库迁移与知识库／后台任务的适配边界见 [云托管部署说明](docs/wechat-cloud-hosting.md)。
+
 ## 本地启动（Windows PowerShell）
 
 需要 Python 3.11+、Node.js 20+、npm、MySQL 8.0+。当前验收使用 Python 3.13.9、Node.js 24.14.1、MySQL 8.0.45。前端统一维护在 `frontend/`，已移除不再使用的 `frontend-comic/` 目录。
