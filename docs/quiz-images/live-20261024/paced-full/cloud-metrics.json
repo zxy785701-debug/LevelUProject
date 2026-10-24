@@ -1,0 +1,168 @@
+{
+  "image_calls": [
+    {
+      "prompt": "Square educational illustration, one clear visual scene, simple background. A single red apple rests on a pale wooden tabletop, soft daylight from a nearby window, realistic skin texture and a small green leaf on the stem. Natural proportions, clear details. No text, letters, labels, captions or watermark.",
+      "dispatched_after_seconds": 0.0,
+      "http_status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "content_encoding": "gzip",
+      "wire_bytes": 354,
+      "json_bytes": 423,
+      "root_keys": [
+        "request_id",
+        "output",
+        "usage"
+      ],
+      "code": null,
+      "request_id": "5d720665-c3c8-996a-a226-805241d9de3c",
+      "message": "",
+      "output_keys": [
+        "choices"
+      ],
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "role": "assistant",
+          "content_keys": [
+            [
+              "image"
+            ]
+          ],
+          "image_hosts": [
+            "dashscope-0484.oss-accelerate.aliyuncs.com"
+          ]
+        }
+      ],
+      "elapsed_seconds": 3.22
+    },
+    {
+      "prompt": "Square educational illustration, one clear visual scene, simple background. A yellow banana and a small bunch of purple grapes lie side by side on a light wooden surface, soft daylight, realistic textures. Natural proportions, clear details. No text, letters, labels, captions or watermark.",
+      "dispatched_after_seconds": 1.672,
+      "http_status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "content_encoding": "gzip",
+      "wire_bytes": 355,
+      "json_bytes": 425,
+      "root_keys": [
+        "request_id",
+        "output",
+        "usage"
+      ],
+      "code": null,
+      "request_id": "76cc5a44-b3ef-96b5-b427-c6240125e989",
+      "message": "",
+      "output_keys": [
+        "choices"
+      ],
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "role": "assistant",
+          "content_keys": [
+            [
+              "image"
+            ]
+          ],
+          "image_hosts": [
+            "dashscope-0484.oss-accelerate.aliyuncs.com"
+          ]
+        }
+      ],
+      "elapsed_seconds": 1.55
+    },
+    {
+      "prompt": "Square educational illustration, one clear visual scene, simple background. Five fresh fruits are spread across a pale cloth: a red apple, an orange, a yellow banana, a cluster of purple grapes and a green pear, lit by gentle window light. Natural proportions, clear details. No text, letters, labels, captions or watermark.",
+      "dispatched_after_seconds": 2.254,
+      "http_status": 429,
+      "content_type": "application/json",
+      "content_encoding": "gzip",
+      "wire_bytes": 205,
+      "json_bytes": 239,
+      "root_keys": [
+        "request_id",
+        "code",
+        "message"
+      ],
+      "code": "Throttling.RateQuota",
+      "request_id": "8e2374b6-79b1-9021-8294-18a388de8d50",
+      "message": "Requests rate limit exceeded, please try again later. For details, see: https://www.alibabacloud.com/help/en/model-studio/error-code#rate-limit",
+      "output_keys": [],
+      "elapsed_seconds": 0.36
+    },
+    {
+      "prompt": "Square educational illustration, one clear visual scene, simple background. A whole orange sits on a light kitchen counter beside a small paring knife, bright natural light, dimpled peel texture clearly visible. Natural proportions, clear details. No text, letters, labels, captions or watermark.",
+      "dispatched_after_seconds": 2.825,
+      "http_status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "content_encoding": "gzip",
+      "wire_bytes": 354,
+      "json_bytes": 425,
+      "root_keys": [
+        "request_id",
+        "output",
+        "usage"
+      ],
+      "code": null,
+      "request_id": "062f8029-e515-9049-abcc-8d884e9373a3",
+      "message": "",
+      "output_keys": [
+        "choices"
+      ],
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "role": "assistant",
+          "content_keys": [
+            [
+              "image"
+            ]
+          ],
+          "image_hosts": [
+            "dashscope-0484.oss-accelerate.aliyuncs.com"
+          ]
+        }
+      ],
+      "elapsed_seconds": 1.55
+    },
+    {
+      "prompt": "Square educational illustration, one clear visual scene, simple background. A woven basket on a wooden table holds an apple, an orange, a banana, a bunch of grapes and a pear arranged side by side in soft daylight. Natural proportions, clear details. No text, letters, labels, captions or watermark.",
+      "dispatched_after_seconds": 3.412,
+      "http_status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "content_encoding": "gzip",
+      "wire_bytes": 353,
+      "json_bytes": 423,
+      "root_keys": [
+        "request_id",
+        "output",
+        "usage"
+      ],
+      "code": null,
+      "request_id": "4015e764-6c77-9116-bdc9-64cbe376b5c4",
+      "message": "",
+      "output_keys": [
+        "choices"
+      ],
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "role": "assistant",
+          "content_keys": [
+            [
+              "image"
+            ]
+          ],
+          "image_hosts": [
+            "dashscope-0484.oss-accelerate.aliyuncs.com"
+          ]
+        }
+      ],
+      "elapsed_seconds": 1.2
+    }
+  ],
+  "maximum_concurrency": 3,
+  "downloads": [
+    "image-289b33bcd20945399729f737bc2f1fb8.png",
+    "image-7495d2b0ff414114af42bc989acf2856.png"
+  ]
+}

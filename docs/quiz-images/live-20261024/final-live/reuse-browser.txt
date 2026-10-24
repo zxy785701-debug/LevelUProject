@@ -1,0 +1,10 @@
+
+Running 1 test using 1 worker
+
+
+
+[1/1] e2e-images-live\reuse.spec.ts:3:5 › 既有真实图片在重新登录后继续重闯展示
+  1 passed (2.9s)
+
+(node:42928) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node.EXE --trace-warnings ...` to show where the warning was created)

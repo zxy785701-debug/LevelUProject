@@ -1,0 +1,66 @@
+{
+  "user_id": "27a6ab90-9a2c-4921-99ec-412824b48b08",
+  "elapsed_seconds": 1.29,
+  "quota_before": {
+    "remaining": 20,
+    "daily_limit": 20
+  },
+  "quota_after": {
+    "remaining": 19,
+    "daily_limit": 20
+  },
+  "provider": {
+    "http_status": 200,
+    "content_type": "application/json; charset=utf-8",
+    "content_encoding": "gzip",
+    "wire_bytes": 352,
+    "json_bytes": 423,
+    "root_keys": [
+      "request_id",
+      "output",
+      "usage"
+    ],
+    "code": null,
+    "request_id": "7bd39a81-1124-9287-99c8-79a8a3574065",
+    "message": "",
+    "output_keys": [
+      "choices"
+    ],
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "role": "assistant",
+        "content_keys": [
+          [
+            "image"
+          ]
+        ],
+        "image_hosts": [
+          "dashscope-0484.oss-accelerate.aliyuncs.com"
+        ]
+      }
+    ]
+  },
+  "result": {
+    "title": "英语水果词汇",
+    "questions": [
+      {
+        "id": "apple",
+        "stem": "英语单词 apple 所指的是哪种水果？",
+        "knowledge_point": "英语水果词汇"
+      }
+    ],
+    "image_generation": {
+      "requested": 1,
+      "generated": 0,
+      "reason_code": "IMAGE_INVALID_RESPONSE"
+    }
+  },
+  "calls": [
+    {
+      "status": "failed",
+      "error_code": "IMAGE_INVALID_RESPONSE",
+      "object_key": "question-images/6bdd920f21b8410881c860c3f2aea6b2.png"
+    }
+  ]
+}

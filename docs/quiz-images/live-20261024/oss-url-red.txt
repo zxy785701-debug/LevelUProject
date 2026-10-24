@@ -1,0 +1,40 @@
+.............F....                                                       [100%]
+================================== FAILURES ===================================
+_______________ test_current_official_oss_accelerate_image_url ________________
+
+    @pytest.mark.anyio
+    async def test_current_official_oss_accelerate_image_url():
+        from app.question_images.provider import QwenImages
+        from app.question_images.storage import download_png
+        url='https://dashscope-0484.oss-accelerate.aliyuncs.com/result.png?Expires=123&Signature=temporary'
+        provider=QwenImages(config(),transport=httpx.MockTransport(lambda r:httpx.Response(200,json=response(url))))
+>       assert await provider.generate('apple')==url
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_question_images_transport.py:88: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\question_images\provider.py:66: in generate
+    return result_url(content[0]['image'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = 'https://dashscope-0484.oss-accelerate.aliyuncs.com/result.png?Expires=123&Signature=temporary'
+
+    def result_url(value):
+        if not isinstance(value,str) or len(value)>4096:
+            raise AppError('IMAGE_INVALID_RESPONSE','配图服务返回的图片地址不可用',502)
+        try:
+            p=urlsplit(value)
+            valid=(p.scheme=='https' and p.hostname and p.path and not p.username and not p.password
+                and p.port in (None,443) and not p.fragment and not any(c.isspace() for c in value) and '\\' not in value
+                and re.fullmatch(r'dashscope-result-[a-z0-9-]+\.oss-[a-z0-9-]+\.aliyuncs\.com',p.hostname))
+        except ValueError:
+            valid=False
+        if not valid:
+>           raise AppError('IMAGE_INVALID_RESPONSE','配图服务返回的图片地址不可用',502)
+E           app.errors.AppError: 配图服务返回的图片地址不可用
+
+app\question_images\provider.py:30: AppError
+=========================== short test summary info ===========================
+FAILED tests/test_question_images_transport.py::test_current_official_oss_accelerate_image_url
+1 failed, 17 passed in 2.43s

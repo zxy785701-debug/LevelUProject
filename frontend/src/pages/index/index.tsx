@@ -28,6 +28,7 @@ import { useKnowledgeFlow } from '../../KnowledgeFlow'
 import { getPendingStudy } from '../../grounding-api'
 import { splitTopicInput, groundingLabel, Grounding } from '../../grounding-domain'
 import { GroundingNotice } from '../../GroundingNotice'
+import { ImageChoice, QuestionIllustration, ImageGenerationNotice, useImageCapabilities } from '../../QuestionImages'
 import { usePersonalAnalysis } from '../../PersonalAnalysis'
 import type { SourceSegment } from '../../features-domain'
 import { Mine, SettingsView } from '../../account'
@@ -159,6 +160,8 @@ function LearningPage() {
   const auth = useAuth()
   const profile = { ...totals(data), ...auth.user.stats },
     wrongs = wrongList(data)
+  const imageCapabilities = useImageCapabilities(auth.user.id, auth.user.quota.remaining)
+  const onImageChange = (value: boolean) => dispatch({ type: 'DRAFT', draft: { ...data.draft, generate_images: value } })
   const [screen, setScreen] = useState<Screen>(() => (data.welcome ? 'home' : 'welcome'))
   const [recordId, setRecordId] = useState(data.activeId || ''),
     [wrongKey, setWrongKey] = useState(''),
@@ -429,9 +432,9 @@ function LearningPage() {
     path: `/pages/index/index?topic=${encodeURIComponent((record?.quiz.title || data.draft.text).slice(0, 60))}`,
   }))
 
-  const materialFlow = useMaterialFlow({ uid: auth.user.id, active: screen === 'materials', draft: data.draft, onSession: s => { openSession(s); void api<User>('/api/v1/me').then(auth.update).catch(() => {}) }, onExit: () => setScreen(stack.current.pop() || 'home'), onScope: id => { setScreen('topic'); void topicFlow.adopt(id) } })
-  const topicFlow = useTopicFlow({ uid: auth.user.id, active: screen === 'topic', draft: data.draft, onSession: s => { openSession(s); void api<User>('/api/v1/me').then(auth.update).catch(() => {}) }, onExit: () => root('home'), onMaterial: hint => { materialFlow.open('web', { url: hint.url, instruction: hint.learning_instruction }); setScreen('materials') } })
-  const knowledgeFlow = useKnowledgeFlow({ uid: auth.user.id, active: screen === 'knowledge', onSession: s => { openSession(s); void api<User>('/api/v1/me').then(auth.update).catch(() => {}) }, onExit: () => setScreen(stack.current.pop() || 'mine') })
+  const materialFlow = useMaterialFlow({ uid: auth.user.id, active: screen === 'materials', draft: data.draft, imageCapabilities, onImageChange, onSession: s => { openSession(s); void api<User>('/api/v1/me').then(auth.update).catch(() => {}) }, onExit: () => setScreen(stack.current.pop() || 'home'), onScope: id => { setScreen('topic'); void topicFlow.adopt(id) } })
+  const topicFlow = useTopicFlow({ uid: auth.user.id, active: screen === 'topic', draft: data.draft, imageCapabilities, onImageChange, onSession: s => { openSession(s); void api<User>('/api/v1/me').then(auth.update).catch(() => {}) }, onExit: () => root('home'), onMaterial: hint => { materialFlow.open('web', { url: hint.url, instruction: hint.learning_instruction }); setScreen('materials') } })
+  const knowledgeFlow = useKnowledgeFlow({ uid: auth.user.id, active: screen === 'knowledge', imageCapabilities, onSession: s => { openSession(s); void api<User>('/api/v1/me').then(auth.update).catch(() => {}) }, onExit: () => setScreen(stack.current.pop() || 'mine') })
   const analysis = usePersonalAnalysis({ screen, navigate: go, onReview: () => go('queue'), onPoint: (point, topic) => {
     if (point.status === 'explore') { dispatch({ type: 'DRAFT', draft: { ...data.draft, text: `${topic}：${point.name}` } }); root('home'); return }
     const w = wrongs.find(w => point.wrong_keys.includes(w.key))
@@ -642,6 +645,7 @@ function LearningPage() {
                 }
               />
             </View>
+            <ImageChoice checked={draft.generate_images === true} onChange={onImageChange} capabilities={imageCapabilities} />
           </>
         )}
         <Btn disabled={!draft.text.trim() || cloudLoading} onClick={start}>
@@ -729,6 +733,7 @@ function LearningPage() {
           ]}
         />
         <GroundingNotice value={active.quiz.grounding} scope={active.quiz.learning_scope} />
+        <ImageGenerationNotice quiz={active.quiz} />
         <View className="panel">
           <View className="row mb">
             <Tag color="blue">本轮路线</Tag>
@@ -784,6 +789,7 @@ function LearningPage() {
           <Text className="muted">{active.mode === 'review' ? '旧识重温' : active.quiz.title}</Text>
         </View>
         <View className="question">{current.stem}</View>
+        <QuestionIllustration key={current.id + current.image_url} question={current} />
         <View className={current.type === 'judge' ? 'judge-grid' : 'option-list'}>
           {current.options.map((o) => (
             <View
@@ -1058,7 +1064,7 @@ function LearningPage() {
         <Section>本轮答案与解析</Section>
         {record.answers.map(answer => {
           const question = record.quiz.questions.find(q => q.id === answer.question_id)!
-          return <View className="panel mt" key={question.id}><View className="strong">{question.stem}</View><View className="small muted mt">你的答案：{optionText(question, answer.selected)}</View>{feedback(question, answer.selected)}</View>
+          return <View className="panel mt" key={question.id}><View className="strong">{question.stem}</View><QuestionIllustration question={question} /><View className="small muted mt">你的答案：{optionText(question, answer.selected)}</View>{feedback(question, answer.selected)}</View>
         })}
         <Row
           title="再巩固一下薄弱知识"
@@ -1304,6 +1310,7 @@ function LearningPage() {
             {typeName(q.type)} / {record.quiz.title}
           </Tag>
           <View className="question">{q.stem}</View>
+          <QuestionIllustration key={q.id + q.image_url} question={q} />
           <View className="panel blue answer-detail">
             <View>你的答案：{optionText(q, a.selected)}</View>
             <View className="mt">正确答案：{optionText(q, q.answers)}</View>
@@ -1383,6 +1390,7 @@ function LearningPage() {
           {typeName(wrong.question.type)} / {wrong.session.quiz.title}
         </Tag>
         <View className="question">{wrong.question.stem}</View>
+        <QuestionIllustration key={wrong.question.id + wrong.question.image_url} question={wrong.question} />
         <View className="panel red answer-detail">
           <View>当时选择：{optionText(wrong.question, wrong.answer.selected)}</View>
           <View className="mt">正确答案：{optionText(wrong.question, wrong.question.answers)}</View>

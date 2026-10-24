@@ -1,0 +1,33 @@
+.........F...................................                            [100%]
+================================== FAILURES ===================================
+___________ test_cleanup_retries_and_does_not_remove_active_images ____________
+
+system = <fastapi.applications.FastAPI object at 0x00000239BDF82AD0>
+
+    def test_cleanup_retries_and_does_not_remove_active_images(system):
+        from app.question_images.database import ImageAsset
+        from app.accounts.database import utcnow
+        a,uid,repo=setup(system)
+        call=repo.start(uid,'operation','q','a'*64)
+        class Storage:
+            fail=True
+            calls=[]
+            def delete(self,key,**kwargs):
+                self.calls.append(key)
+                if self.fail: raise RuntimeError('temporary')
+        store=Storage()
+        assert repo.cleanup(store)==0
+        a.delete_account(uid,{'openid':'image-alice'})
+        with a.database.session() as s:
+            s.scalar(select(ImageAsset)).delete_after=utcnow()
+        assert repo.cleanup(store)==0
+        with a.database.session() as s:
+            asset=s.scalar(select(ImageAsset))
+>           assert asset.attempts==1
+E           assert 0 == 1
+E            +  where 0 = <app.question_images.database.ImageAsset object at 0x00000239BDF76270>.attempts
+
+tests\test_question_images_repository.py:103: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_question_images_repository.py::test_cleanup_retries_and_does_not_remove_active_images
+1 failed, 44 passed in 31.95s

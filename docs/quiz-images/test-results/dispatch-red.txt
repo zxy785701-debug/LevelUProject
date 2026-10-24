@@ -1,0 +1,19 @@
+F.                                                                       [100%]
+================================== FAILURES ===================================
+_______ test_cancel_before_dispatch_refunds_only_the_original_day_once ________
+
+system = <fastapi.applications.FastAPI object at 0x0000028BD7BDB390>
+
+    def test_cancel_before_dispatch_refunds_only_the_original_day_once(system):
+        a,uid,repo=setup(system)
+        a.clock=lambda:datetime(2026,10,22,15,59,59,tzinfo=timezone.utc).timestamp()
+        repo.start(uid,'op','q','a'*64)
+        assert repo.quota(uid)['remaining']==19
+>       assert repo.abandon(uid,'op','q')
+               ^^^^^^^^^^^^
+E       AttributeError: 'ImageRepository' object has no attribute 'abandon'
+
+tests\test_question_images_repository.py:122: AttributeError
+=========================== short test summary info ===========================
+FAILED tests/test_question_images_repository.py::test_cancel_before_dispatch_refunds_only_the_original_day_once
+1 failed, 1 passed in 4.98s

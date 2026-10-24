@@ -14,7 +14,7 @@ export async function submitGeneration(body: GenerationBody, key: string, scope?
 export const getOperation = (key: string, scope?: RequestScope) => api<OperationResult>('/api/v1/operations/' + encodeURIComponent(key), 'GET', undefined, undefined, { scope, timeout: 15000 })
 export const pollDelay = (attempt: number, retry = 0) => retry > 0 ? Math.min(15000, Math.max(1000, retry * 1000)) : Math.min(5000, Math.round(750 * 1.5 ** Math.min(attempt, 8)))
 export const generationPollDelay = (attempt: number, value: OperationResult) =>
-  !value.retry_after_seconds && ['generating', 'reviewing'].includes(value.stage || '') ? 1000 : pollDelay(attempt, value.retry_after_seconds)
+  !value.retry_after_seconds && ['generating', 'reviewing', 'generating_images'].includes(value.stage || '') ? 1000 : pollDelay(attempt, value.retry_after_seconds)
 export const operationError = (code?: string | null) => ({
   MODEL_UNAVAILABLE: '暂时无法连接 AI 模型服务，请稍后重试；输入已保留',
   MODEL_TIMEOUT: 'AI 模型响应超时，请稍后重试；输入已保留',
@@ -39,9 +39,9 @@ export async function pollPreparation(id: string, scope: RequestScope, update: (
   }
   throw new ApiError('查询暂未结束，任务仍可通过原操作恢复', 'QUERY_PENDING')
 }
-export async function pollGeneration(key: string, scope: RequestScope, update: (value: OperationResult) => void): Promise<Session> {
-  let until = Date.now() + 330000
-  for (let attempt = 0, errors = 0; attempt < 330 && Date.now() < until; attempt++) {
+export async function pollGeneration(key: string, scope: RequestScope, update: (value: OperationResult) => void, withImages = false): Promise<Session> {
+  let until = Date.now() + 330000 + (withImages ? 180000 : 0)
+  for (let attempt = 0, errors = 0; attempt < 510 && Date.now() < until; attempt++) {
     scope.assertCurrent()
     let value: OperationResult
     try { value = await getOperation(key, scope); errors = 0 }
@@ -59,7 +59,7 @@ export async function pollGeneration(key: string, scope: RequestScope, update: (
 }
 export async function generateConfirmed(body: GenerationBody, key: string, scope: RequestScope, update: (value: OperationResult) => void) {
   await submitGeneration(body, key, scope)
-  return pollGeneration(key, scope, update)
+  return pollGeneration(key, scope, update, body.generate_images === true)
 }
 const pendingKey = (uid: string) => 'levelup.grounding.' + uid
 export function savePendingStudy(uid: string, value: PendingStudy) { Taro.setStorageSync(pendingKey(uid), value) }

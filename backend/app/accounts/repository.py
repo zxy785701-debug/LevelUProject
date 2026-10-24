@@ -507,6 +507,8 @@ class Accounts:
             q.retire_after = max(tomorrow, q.busy_until, self.clock() + 60)
             from ..knowledge.cleanup import record_account_cleanup
             record_account_cleanup(s,uid)
+            from ..question_images.repository import record_account_cleanup as record_image_cleanup
+            record_image_cleanup(s,uid,datetime.fromtimestamp(self.clock(),timezone.utc).replace(tzinfo=None))
             s.delete(u)
 
     def cleanup(self):

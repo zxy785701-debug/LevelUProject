@@ -157,7 +157,7 @@ async def process_generation(state, uid, oid, body, context, *, sleep=asyncio.sl
     async def stage(value):
         nonlocal phase, reserve
         phase = value
-        reserve = 1 if value == 'generating' else 0 if value == 'reviewing' else 2
+        reserve = 1 if value == 'generating' else 0 if value in ('reviewing','generating_images') else 2
         await run_in_threadpool(repo.generation_stage, uid, oid, value)
 
     async def before_model():
@@ -179,7 +179,11 @@ async def process_generation(state, uid, oid, body, context, *, sleep=asyncio.sl
 
     try:
         remaining_seconds = await run_in_threadpool(repo.remaining_seconds, uid, oid)
-        async with asyncio.timeout(remaining_seconds):
+        text_seconds = remaining_seconds
+        if body.generate_images and body.execution == 'background':
+            from ..question_images.service import stage_budget
+            text_seconds = max(.001,remaining_seconds-stage_budget())
+        async with asyncio.timeout(text_seconds):
             material = context.get('material')
             segments = [EvidenceSegment.model_validate(s) for s in context['segments']]
             now = datetime.now(timezone.utc)
@@ -215,7 +219,15 @@ async def process_generation(state, uid, oid, body, context, *, sleep=asyncio.sl
             gateway = counted_gateway(settings, state.gateway, before_model, oid)
             quiz = await generate_grounded(body, context, gateway, settings, stage=stage,
                                           remaining=lambda: settings.generation_model_call_limit - calls)
-            await run_in_threadpool(state.accounts.store_quiz, uid, quiz, oid)
+        if body.generate_images:
+            from ..question_images.service import enrich_quiz
+            await stage('generating_images')
+            available = await run_in_threadpool(repo.remaining_seconds,uid,oid)
+            async def image_guard():
+                await run_in_threadpool(repo.remaining_seconds,uid,oid)
+            quiz = await enrich_quiz(state.accounts,uid,oid,quiz,service=getattr(state,'images',None),
+                                     seconds=max(0,available-10),guard=image_guard,gateway=gateway)
+        await run_in_threadpool(state.accounts.store_quiz, uid, quiz, oid)
     except asyncio.CancelledError:
         await run_in_threadpool(state.accounts.finish, uid, oid, None, 'OPERATION_INTERRUPTED')
         raise

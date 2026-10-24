@@ -1,0 +1,169 @@
+{
+  "image_calls": [
+    {
+      "prompt": "Square educational illustration, one clear visual scene, simple background. A single red apple rests on a pale wooden tabletop, with soft daylight highlighting its smooth skin and realistic texture. Natural proportions, clear details. No text, letters, labels, captions or watermark.",
+      "dispatched_after_seconds": 0.0,
+      "http_status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "content_encoding": "gzip",
+      "wire_bytes": 352,
+      "json_bytes": 423,
+      "root_keys": [
+        "request_id",
+        "output",
+        "usage"
+      ],
+      "code": null,
+      "request_id": "c51da992-7082-99c6-892e-dae1f680057d",
+      "message": "",
+      "output_keys": [
+        "choices"
+      ],
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "role": "assistant",
+          "content_keys": [
+            [
+              "image"
+            ]
+          ],
+          "image_hosts": [
+            "dashscope-0484.oss-accelerate.aliyuncs.com"
+          ]
+        }
+      ],
+      "elapsed_seconds": 0.96
+    },
+    {
+      "prompt": "Square educational illustration, one clear visual scene, simple background. A bunch of purple grapes lies on a light surface, with soft daylight showing the round, glossy fruit. Natural proportions, clear details. No text, letters, labels, captions or watermark.",
+      "dispatched_after_seconds": 0.009,
+      "http_status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "content_encoding": "gzip",
+      "wire_bytes": 354,
+      "json_bytes": 423,
+      "root_keys": [
+        "request_id",
+        "output",
+        "usage"
+      ],
+      "code": null,
+      "request_id": "f7652372-932f-93b6-94d7-7b75197640cc",
+      "message": "",
+      "output_keys": [
+        "choices"
+      ],
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "role": "assistant",
+          "content_keys": [
+            [
+              "image"
+            ]
+          ],
+          "image_hosts": [
+            "dashscope-0484.oss-accelerate.aliyuncs.com"
+          ]
+        }
+      ],
+      "elapsed_seconds": 1.17
+    },
+    {
+      "prompt": "Square educational illustration, one clear visual scene, simple background. A single yellow banana rests on a pale tabletop, with soft daylight showing its curved shape and realistic texture. Natural proportions, clear details. No text, letters, labels, captions or watermark.",
+      "dispatched_after_seconds": 0.569,
+      "http_status": 429,
+      "content_type": "application/json",
+      "content_encoding": "gzip",
+      "wire_bytes": 204,
+      "json_bytes": 239,
+      "root_keys": [
+        "request_id",
+        "code",
+        "message"
+      ],
+      "code": "Throttling.RateQuota",
+      "request_id": "dbbc3e01-1d79-9535-852b-e952d000ac03",
+      "message": "Requests rate limit exceeded, please try again later. For details, see: https://www.alibabacloud.com/help/en/model-studio/error-code#rate-limit",
+      "output_keys": [],
+      "elapsed_seconds": 0.14
+    },
+    {
+      "prompt": "Square educational illustration, one clear visual scene, simple background. A wooden table holds an apple, a pear, a banana, and a bunch of grapes arranged side by side in soft daylight. Natural proportions, clear details. No text, letters, labels, captions or watermark.",
+      "dispatched_after_seconds": 1.169,
+      "http_status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "content_encoding": "gzip",
+      "wire_bytes": 356,
+      "json_bytes": 423,
+      "root_keys": [
+        "request_id",
+        "output",
+        "usage"
+      ],
+      "code": null,
+      "request_id": "6aac9b0b-3c23-9495-9091-c21757219376",
+      "message": "",
+      "output_keys": [
+        "choices"
+      ],
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "role": "assistant",
+          "content_keys": [
+            [
+              "image"
+            ]
+          ],
+          "image_hosts": [
+            "dashscope-0484.oss-accelerate.aliyuncs.com"
+          ]
+        }
+      ],
+      "elapsed_seconds": 1.0
+    },
+    {
+      "prompt": "Square educational illustration, one clear visual scene, simple background. A ripe green pear sits alone on a pale tabletop, with soft daylight revealing its smooth skin and realistic texture. Natural proportions, clear details. No text, letters, labels, captions or watermark.",
+      "dispatched_after_seconds": 1.742,
+      "http_status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "content_encoding": "gzip",
+      "wire_bytes": 352,
+      "json_bytes": 423,
+      "root_keys": [
+        "request_id",
+        "output",
+        "usage"
+      ],
+      "code": null,
+      "request_id": "4266e4fc-06d4-9e2b-a037-b2ba80631538",
+      "message": "",
+      "output_keys": [
+        "choices"
+      ],
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "role": "assistant",
+          "content_keys": [
+            [
+              "image"
+            ]
+          ],
+          "image_hosts": [
+            "dashscope-0484.oss-accelerate.aliyuncs.com"
+          ]
+        }
+      ],
+      "elapsed_seconds": 1.31
+    }
+  ],
+  "maximum_concurrency": 3,
+  "downloads": [
+    "image-f5268ce180874151b86719b022141e04.png",
+    "image-6dfcc1303ebd4c03957f336c703c87e8.png",
+    "image-9ebed4f9cccd4fa9917431a068b6e4b0.png"
+  ]
+}

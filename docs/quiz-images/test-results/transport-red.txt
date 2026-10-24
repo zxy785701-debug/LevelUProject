@@ -1,0 +1,188 @@
+FFFFFFFFFFFFFFFF                                                         [100%]
+================================== FAILURES ===================================
+_________________ test_qwen_sync_request_and_question_prompt __________________
+
+    @pytest.mark.anyio
+    async def test_qwen_sync_request_and_question_prompt():
+>       from app.question_images.provider import QwenImages, image_prompt
+E       ModuleNotFoundError: No module named 'app.question_images.provider'
+
+tests\test_question_images_transport.py:29: ModuleNotFoundError
+__ test_provider_error_is_sanitized_without_paid_retry[401-IMAGE_AUTH_ERROR] __
+
+status = 401, code = 'IMAGE_AUTH_ERROR'
+
+    @pytest.mark.anyio
+    @pytest.mark.parametrize('status,code',[(401,'IMAGE_AUTH_ERROR'),(403,'IMAGE_AUTH_ERROR'),(429,'IMAGE_RATE_LIMIT'),(500,'IMAGE_UNAVAILABLE'),(400,'IMAGE_REJECTED')])
+    async def test_provider_error_is_sanitized_without_paid_retry(status,code):
+>       from app.question_images.provider import QwenImages
+E       ModuleNotFoundError: No module named 'app.question_images.provider'
+
+tests\test_question_images_transport.py:51: ModuleNotFoundError
+__ test_provider_error_is_sanitized_without_paid_retry[403-IMAGE_AUTH_ERROR] __
+
+status = 403, code = 'IMAGE_AUTH_ERROR'
+
+    @pytest.mark.anyio
+    @pytest.mark.parametrize('status,code',[(401,'IMAGE_AUTH_ERROR'),(403,'IMAGE_AUTH_ERROR'),(429,'IMAGE_RATE_LIMIT'),(500,'IMAGE_UNAVAILABLE'),(400,'IMAGE_REJECTED')])
+    async def test_provider_error_is_sanitized_without_paid_retry(status,code):
+>       from app.question_images.provider import QwenImages
+E       ModuleNotFoundError: No module named 'app.question_images.provider'
+
+tests\test_question_images_transport.py:51: ModuleNotFoundError
+__ test_provider_error_is_sanitized_without_paid_retry[429-IMAGE_RATE_LIMIT] __
+
+status = 429, code = 'IMAGE_RATE_LIMIT'
+
+    @pytest.mark.anyio
+    @pytest.mark.parametrize('status,code',[(401,'IMAGE_AUTH_ERROR'),(403,'IMAGE_AUTH_ERROR'),(429,'IMAGE_RATE_LIMIT'),(500,'IMAGE_UNAVAILABLE'),(400,'IMAGE_REJECTED')])
+    async def test_provider_error_is_sanitized_without_paid_retry(status,code):
+>       from app.question_images.provider import QwenImages
+E       ModuleNotFoundError: No module named 'app.question_images.provider'
+
+tests\test_question_images_transport.py:51: ModuleNotFoundError
+_ test_provider_error_is_sanitized_without_paid_retry[500-IMAGE_UNAVAILABLE] __
+
+status = 500, code = 'IMAGE_UNAVAILABLE'
+
+    @pytest.mark.anyio
+    @pytest.mark.parametrize('status,code',[(401,'IMAGE_AUTH_ERROR'),(403,'IMAGE_AUTH_ERROR'),(429,'IMAGE_RATE_LIMIT'),(500,'IMAGE_UNAVAILABLE'),(400,'IMAGE_REJECTED')])
+    async def test_provider_error_is_sanitized_without_paid_retry(status,code):
+>       from app.question_images.provider import QwenImages
+E       ModuleNotFoundError: No module named 'app.question_images.provider'
+
+tests\test_question_images_transport.py:51: ModuleNotFoundError
+___ test_provider_error_is_sanitized_without_paid_retry[400-IMAGE_REJECTED] ___
+
+status = 400, code = 'IMAGE_REJECTED'
+
+    @pytest.mark.anyio
+    @pytest.mark.parametrize('status,code',[(401,'IMAGE_AUTH_ERROR'),(403,'IMAGE_AUTH_ERROR'),(429,'IMAGE_RATE_LIMIT'),(500,'IMAGE_UNAVAILABLE'),(400,'IMAGE_REJECTED')])
+    async def test_provider_error_is_sanitized_without_paid_retry(status,code):
+>       from app.question_images.provider import QwenImages
+E       ModuleNotFoundError: No module named 'app.question_images.provider'
+
+tests\test_question_images_transport.py:51: ModuleNotFoundError
+_____________ test_malformed_or_untrusted_provider_output[data0] ______________
+
+data = {}
+
+    @pytest.mark.anyio
+    @pytest.mark.parametrize('data',[{}, {'code':'invalid','message':'private'}, {'output':{'choices':[]}}, response('http://127.0.0.1/private'),
+        response('https://attacker.example/a.png'), response('https://dashscope-result-sh.oss-cn-shanghai.aliyuncs.com@evil.example/a.png')])
+    async def test_malformed_or_untrusted_provider_output(data):
+>       from app.question_images.provider import QwenImages
+E       ModuleNotFoundError: No module named 'app.question_images.provider'
+
+tests\test_question_images_transport.py:66: ModuleNotFoundError
+_____________ test_malformed_or_untrusted_provider_output[data1] ______________
+
+data = {'code': 'invalid', 'message': 'private'}
+
+    @pytest.mark.anyio
+    @pytest.mark.parametrize('data',[{}, {'code':'invalid','message':'private'}, {'output':{'choices':[]}}, response('http://127.0.0.1/private'),
+        response('https://attacker.example/a.png'), response('https://dashscope-result-sh.oss-cn-shanghai.aliyuncs.com@evil.example/a.png')])
+    async def test_malformed_or_untrusted_provider_output(data):
+>       from app.question_images.provider import QwenImages
+E       ModuleNotFoundError: No module named 'app.question_images.provider'
+
+tests\test_question_images_transport.py:66: ModuleNotFoundError
+_____________ test_malformed_or_untrusted_provider_output[data2] ______________
+
+data = {'output': {'choices': []}}
+
+    @pytest.mark.anyio
+    @pytest.mark.parametrize('data',[{}, {'code':'invalid','message':'private'}, {'output':{'choices':[]}}, response('http://127.0.0.1/private'),
+        response('https://attacker.example/a.png'), response('https://dashscope-result-sh.oss-cn-shanghai.aliyuncs.com@evil.example/a.png')])
+    async def test_malformed_or_untrusted_provider_output(data):
+>       from app.question_images.provider import QwenImages
+E       ModuleNotFoundError: No module named 'app.question_images.provider'
+
+tests\test_question_images_transport.py:66: ModuleNotFoundError
+_____________ test_malformed_or_untrusted_provider_output[data3] ______________
+
+data = {'output': {'choices': [{'finish_reason': 'stop', 'message': {'role': 'assistant', 'content': [{...}]}}]}}
+
+    @pytest.mark.anyio
+    @pytest.mark.parametrize('data',[{}, {'code':'invalid','message':'private'}, {'output':{'choices':[]}}, response('http://127.0.0.1/private'),
+        response('https://attacker.example/a.png'), response('https://dashscope-result-sh.oss-cn-shanghai.aliyuncs.com@evil.example/a.png')])
+    async def test_malformed_or_untrusted_provider_output(data):
+>       from app.question_images.provider import QwenImages
+E       ModuleNotFoundError: No module named 'app.question_images.provider'
+
+tests\test_question_images_transport.py:66: ModuleNotFoundError
+_____________ test_malformed_or_untrusted_provider_output[data4] ______________
+
+data = {'output': {'choices': [{'finish_reason': 'stop', 'message': {'role': 'assistant', 'content': [{...}]}}]}}
+
+    @pytest.mark.anyio
+    @pytest.mark.parametrize('data',[{}, {'code':'invalid','message':'private'}, {'output':{'choices':[]}}, response('http://127.0.0.1/private'),
+        response('https://attacker.example/a.png'), response('https://dashscope-result-sh.oss-cn-shanghai.aliyuncs.com@evil.example/a.png')])
+    async def test_malformed_or_untrusted_provider_output(data):
+>       from app.question_images.provider import QwenImages
+E       ModuleNotFoundError: No module named 'app.question_images.provider'
+
+tests\test_question_images_transport.py:66: ModuleNotFoundError
+_____________ test_malformed_or_untrusted_provider_output[data5] ______________
+
+data = {'output': {'choices': [{'finish_reason': 'stop', 'message': {'role': 'assistant', 'content': [{...}]}}]}}
+
+    @pytest.mark.anyio
+    @pytest.mark.parametrize('data',[{}, {'code':'invalid','message':'private'}, {'output':{'choices':[]}}, response('http://127.0.0.1/private'),
+        response('https://attacker.example/a.png'), response('https://dashscope-result-sh.oss-cn-shanghai.aliyuncs.com@evil.example/a.png')])
+    async def test_malformed_or_untrusted_provider_output(data):
+>       from app.question_images.provider import QwenImages
+E       ModuleNotFoundError: No module named 'app.question_images.provider'
+
+tests\test_question_images_transport.py:66: ModuleNotFoundError
+_____________________ test_provider_timeout_and_non_json ______________________
+
+    @pytest.mark.anyio
+    async def test_provider_timeout_and_non_json():
+>       from app.question_images.provider import QwenImages
+E       ModuleNotFoundError: No module named 'app.question_images.provider'
+
+tests\test_question_images_transport.py:73: ModuleNotFoundError
+________ test_download_validates_source_bytes_size_and_redirect_target ________
+
+    def test_download_validates_source_bytes_size_and_redirect_target():
+>       from app.question_images.storage import download_png
+E       ModuleNotFoundError: No module named 'app.question_images.storage'
+
+tests\test_question_images_transport.py:83: ModuleNotFoundError
+______ test_cos_upload_is_bounded_and_returns_permanent_distribution_url ______
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000002603E7409D0>
+
+    def test_cos_upload_is_bounded_and_returns_permanent_distribution_url(monkeypatch):
+>       from app.question_images.storage import CosImageStorage
+E       ModuleNotFoundError: No module named 'app.question_images.storage'
+
+tests\test_question_images_transport.py:94: ModuleNotFoundError
+________________ test_cos_failure_does_not_expose_credentials _________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000002603E740C30>
+
+    def test_cos_failure_does_not_expose_credentials(monkeypatch):
+>       from app.question_images.storage import CosImageStorage
+E       ModuleNotFoundError: No module named 'app.question_images.storage'
+
+tests\test_question_images_transport.py:114: ModuleNotFoundError
+=========================== short test summary info ===========================
+FAILED tests/test_question_images_transport.py::test_qwen_sync_request_and_question_prompt
+FAILED tests/test_question_images_transport.py::test_provider_error_is_sanitized_without_paid_retry[401-IMAGE_AUTH_ERROR]
+FAILED tests/test_question_images_transport.py::test_provider_error_is_sanitized_without_paid_retry[403-IMAGE_AUTH_ERROR]
+FAILED tests/test_question_images_transport.py::test_provider_error_is_sanitized_without_paid_retry[429-IMAGE_RATE_LIMIT]
+FAILED tests/test_question_images_transport.py::test_provider_error_is_sanitized_without_paid_retry[500-IMAGE_UNAVAILABLE]
+FAILED tests/test_question_images_transport.py::test_provider_error_is_sanitized_without_paid_retry[400-IMAGE_REJECTED]
+FAILED tests/test_question_images_transport.py::test_malformed_or_untrusted_provider_output[data0]
+FAILED tests/test_question_images_transport.py::test_malformed_or_untrusted_provider_output[data1]
+FAILED tests/test_question_images_transport.py::test_malformed_or_untrusted_provider_output[data2]
+FAILED tests/test_question_images_transport.py::test_malformed_or_untrusted_provider_output[data3]
+FAILED tests/test_question_images_transport.py::test_malformed_or_untrusted_provider_output[data4]
+FAILED tests/test_question_images_transport.py::test_malformed_or_untrusted_provider_output[data5]
+FAILED tests/test_question_images_transport.py::test_provider_timeout_and_non_json
+FAILED tests/test_question_images_transport.py::test_download_validates_source_bytes_size_and_redirect_target
+FAILED tests/test_question_images_transport.py::test_cos_upload_is_bounded_and_returns_permanent_distribution_url
+FAILED tests/test_question_images_transport.py::test_cos_failure_does_not_expose_credentials
+16 failed in 0.92s

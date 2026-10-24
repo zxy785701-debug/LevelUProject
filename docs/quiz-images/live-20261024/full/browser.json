@@ -1,0 +1,186 @@
+{
+  "config": {
+    "argv": [
+      "D:\\development\\nodejs\\node.exe",
+      "D:\\nbproject\\LevelUpProject\\frontend\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=playwright.images-live.config.ts"
+    ],
+    "configFile": "D:\\nbproject\\LevelUpProject\\frontend\\playwright.images-live.config.ts",
+    "rootDir": "D:/nbproject/LevelUpProject/frontend/e2e-images-live",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/nbproject/LevelUpProject/docs/quiz-images/live-20261024/full/browser-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "D:/nbproject/LevelUpProject/frontend/e2e-images-live",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 300000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "D:\\nbproject\\LevelUpProject\\docs\\quiz-images\\live-20261024\\full\\browser-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "D:\\nbproject\\LevelUpProject\\frontend\\e2e-images-live",
+        "snapshotDir": "D:\\nbproject\\LevelUpProject\\frontend\\e2e-images-live",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 300000,
+        "use": {
+          "baseURL": "http://127.0.0.1:18086",
+          "viewport": {
+            "width": 390,
+            "height": 812
+          },
+          "headless": true,
+          "channel": "chrome",
+          "screenshot": "only-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "../docs/quiz-images/live-20261024/full/browser.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "live.spec.ts",
+      "file": "live.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "真实资料五题配图、答题、历史回看和重闯复用",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 300000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 47416,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.question-image img')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" locator('.question-image img') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.question-image img')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.question-image img')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" locator('.question-image img') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.question-image img')\u001b[22m\n\n    at D:\\nbproject\\LevelUpProject\\frontend\\e2e-images-live\\live.spec.ts:59:25",
+                    "location": {
+                      "file": "D:\\nbproject\\LevelUpProject\\frontend\\e2e-images-live\\live.spec.ts",
+                      "column": 25,
+                      "line": 59
+                    },
+                    "snippet": "  57 |   for(let i=0;i<5;i++){\n  58 |     const image=page.locator('.question-image img')\n> 59 |     await expect(image).toBeVisible()\n     |                         ^\n  60 |     await expect.poll(()=>image.evaluate((img:HTMLImageElement)=>img.complete&&img.naturalWidth===512)).toBeTruthy()\n  61 |     decodedImages.push(await image.getAttribute('src'))\n  62 |     await page.locator('.option').first().click()"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\nbproject\\LevelUpProject\\frontend\\e2e-images-live\\live.spec.ts",
+                        "column": 25,
+                        "line": 59
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.question-image img')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" locator('.question-image img') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.question-image img')\u001b[22m\n\n\n  57 |   for(let i=0;i<5;i++){\n  58 |     const image=page.locator('.question-image img')\n> 59 |     await expect(image).toBeVisible()\n     |                         ^\n  60 |     await expect.poll(()=>image.evaluate((img:HTMLImageElement)=>img.complete&&img.naturalWidth===512)).toBeTruthy()\n  61 |     decodedImages.push(await image.getAttribute('src'))\n  62 |     await page.locator('.option').first().click()\n    at D:\\nbproject\\LevelUpProject\\frontend\\e2e-images-live\\live.spec.ts:59:25"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T04:22:41.246Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\nbproject\\LevelUpProject\\docs\\quiz-images\\live-20261024\\full\\browser-results\\live-真实资料五题配图、答题、历史回看和重闯复用\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\nbproject\\LevelUpProject\\docs\\quiz-images\\live-20261024\\full\\browser-results\\live-真实资料五题配图、答题、历史回看和重闯复用\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\nbproject\\LevelUpProject\\frontend\\e2e-images-live\\live.spec.ts",
+                    "column": 25,
+                    "line": 59
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "b37044e47a10d94689f2-b50b5f506c9c2855663b",
+          "file": "live.spec.ts",
+          "line": 8,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-24T04:22:40.739Z",
+    "duration": 48760.852000000006,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

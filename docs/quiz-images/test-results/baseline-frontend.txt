@@ -1,0 +1,14 @@
+
+> levelup-mini@1.0.0 test
+> vitest run --reporter=dot
+
+
+ RUN  v3.2.7 D:/nbproject/LevelUpProject/frontend
+
+····························································
+
+ Test Files  9 passed (9)
+      Tests  60 passed (60)
+   Start at  11:51:11
+   Duration  1.17s (transform 645ms, setup 0ms, collect 1.93s, tests 543ms, environment 2ms, prepare 2.59s)
+

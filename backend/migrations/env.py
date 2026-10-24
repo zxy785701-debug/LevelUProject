@@ -1,6 +1,7 @@
 from alembic import context
 from app.accounts.database import Base, Database
 from app.knowledge import database as knowledge_models  # Register additive tables for migration/test metadata.
+from app.question_images import database as image_models
 from app.config import Settings
 
 config = context.config

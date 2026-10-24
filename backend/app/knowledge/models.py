@@ -91,6 +91,7 @@ class ScopeRequest(DocumentSelection):
 
 
 class QuizRequest(StrictModel):
+    generate_images: bool = Field(default=False,strict=True)
     scope_id: str = Field(min_length=1,max_length=36)
     scope_version: int = Field(ge=1,strict=True)
     candidate_ids: list[str] = Field(min_length=1,max_length=5)

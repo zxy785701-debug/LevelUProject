@@ -5,7 +5,7 @@ import { api, User } from './api'
 import { credentials, clearCredentials, saveCredentials, onCredentialsCleared } from './credentials'
 import { Btn, Stage, Title, Icon } from './components'
 export const AGREEMENT = '2026-10-12'
-export const PRIVACY = '登录身份、资料、题库、作答、错题和报告保存在服务端 MySQL，用于账号同步与学习统计。AI 生成时，学习材料及本轮作答发送至后端和 DeepSeek。头像昵称可选。退出登录撤销当前会话；注销删除资料和学习数据，当期防刷身份摘要和计数在额度周期结束后清理。'
+export const PRIVACY = '登录身份、资料、题库、作答、错题和报告保存在服务端 MySQL，用于账号同步与学习统计。AI 生成时，学习材料及本轮作答发送至后端和 DeepSeek。开启“生成图片”时，题目描述会发送至阿里云百炼，配图存储在腾讯云 COS，并通过公开图片链接展示；请勿用于包含个人隐私的题目。头像昵称可选。退出登录撤销当前会话；注销删除资料和学习数据，当期防刷身份摘要和计数在额度周期结束后清理。'
 export const TERMS = 'AI 出题和讲解可能有误，请结合原始资料核实。新生成关卡每题首次答对：入门 10 XP、2 金币，进阶 15 XP、3 金币；历史关卡沿用原奖励。每 100 XP 升一级，重闯和复习不重复发奖。每日出题与 AI 调用受额度限制；已开始的模型调用失败也占用额度。'
 const Auth = createContext<{ user: User; update: (u: User) => void; logout: () => Promise<void>; loading: boolean; loginView: React.ReactNode }>({ user: null as unknown as User, update: () => {}, logout: async () => {}, loading: true, loginView: null })
 export const useAuth = () => useContext(Auth)

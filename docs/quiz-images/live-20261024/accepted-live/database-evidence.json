@@ -1,0 +1,98 @@
+{
+  "users": [
+    {
+      "user_id": "0148c0da-e3ba-4819-a4ca-3accd33365bc",
+      "images": [
+        {
+          "question_id": "q1",
+          "status": "succeeded",
+          "object_key": "question-images/4ef9e28b85d3461fb4419a1924fa84f3.png",
+          "image_url": "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/4ef9e28b85d3461fb4419a1924fa84f3.png"
+        },
+        {
+          "question_id": "q2",
+          "status": "succeeded",
+          "object_key": "question-images/fe7e082a928a4db18359ff675fb6b4a9.png",
+          "image_url": "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/fe7e082a928a4db18359ff675fb6b4a9.png"
+        },
+        {
+          "question_id": "q3",
+          "status": "succeeded",
+          "object_key": "question-images/8c0e7991f33b4450bcec78bbeabf6d60.png",
+          "image_url": "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/8c0e7991f33b4450bcec78bbeabf6d60.png"
+        },
+        {
+          "question_id": "q4",
+          "status": "succeeded",
+          "object_key": "question-images/d8b75830eab149579298dde826ed9353.png",
+          "image_url": "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/d8b75830eab149579298dde826ed9353.png"
+        },
+        {
+          "question_id": "q5",
+          "status": "succeeded",
+          "object_key": "question-images/225b8f90a7524295a402f7b55055daa4.png",
+          "image_url": "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/225b8f90a7524295a402f7b55055daa4.png"
+        }
+      ],
+      "plans": [
+        {
+          "status": "ready",
+          "scenes": {
+            "q1": "A single glossy red apple rests on a pale wooden tabletop. Soft daylight falls from a nearby window, showing realistic skin texture and a small green leaf on the stem.",
+            "q2": "A small cluster of purple grapes hangs from a green stem on a light kitchen counter. Soft daylight highlights the smooth, slightly dusty skin of each round grape.",
+            "q3": "A woven basket on a wooden table holds a red apple, a yellow banana, a purple grape cluster, a green pear, and an orange. Soft daylight shows their natural colors and textures.",
+            "q4": "Five fresh fruits sit side by side on a pale surface: a red apple, a yellow banana, a purple grape cluster, a green pear, and an orange. Soft daylight reveals their distinct shapes and skins.",
+            "q5": "A single green pear with a slender brown stem stands on a pale tabletop. Soft daylight shows its smooth, slightly speckled skin and realistic texture."
+          }
+        }
+      ],
+      "operations": [
+        {
+          "kind": "material",
+          "status": "succeeded",
+          "model_calls": 1,
+          "error_code": null
+        },
+        {
+          "kind": "quiz",
+          "status": "succeeded",
+          "model_calls": 3,
+          "error_code": null
+        },
+        {
+          "kind": "report",
+          "status": "succeeded",
+          "model_calls": 1,
+          "error_code": null
+        }
+      ],
+      "attempts": [
+        {
+          "id": "075c183f-47bc-452e-b2d4-c9a8e00f8455",
+          "mode": "new",
+          "completed": true,
+          "image_urls": [
+            "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/4ef9e28b85d3461fb4419a1924fa84f3.png",
+            "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/fe7e082a928a4db18359ff675fb6b4a9.png",
+            "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/8c0e7991f33b4450bcec78bbeabf6d60.png",
+            "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/d8b75830eab149579298dde826ed9353.png",
+            "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/225b8f90a7524295a402f7b55055daa4.png"
+          ]
+        },
+        {
+          "id": "ab10165b-5499-4e5d-a7bf-fcee2a131909",
+          "mode": "replay",
+          "completed": false,
+          "image_urls": [
+            "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/4ef9e28b85d3461fb4419a1924fa84f3.png",
+            "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/fe7e082a928a4db18359ff675fb6b4a9.png",
+            "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/8c0e7991f33b4450bcec78bbeabf6d60.png",
+            "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/d8b75830eab149579298dde826ed9353.png",
+            "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/225b8f90a7524295a402f7b55055daa4.png"
+          ]
+        }
+      ]
+    }
+  ],
+  "topic_failure": null
+}

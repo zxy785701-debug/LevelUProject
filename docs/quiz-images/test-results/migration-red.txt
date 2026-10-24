@@ -1,0 +1,254 @@
+E
+=================================== ERRORS ====================================
+_ ERROR at setup of test_migration_and_first_call_persists_across_repository_instances _
+
+self = <sqlalchemy.engine.base.Connection object at 0x000001C3945E2D50>
+dialect = <sqlalchemy.dialects.mysql.pymysql.MySQLDialect_pymysql object at 0x000001C3945D7770>
+context = <sqlalchemy.dialects.mysql.mysqldb.MySQLExecutionContext_mysqldb object at 0x000001C394619370>
+statement = <sqlalchemy.dialects.mysql.mysqldb.MySQLCompiler_mysqldb object at 0x000001C39468C7D0>
+parameters = [{}]
+
+    def _exec_single_context(
+        self,
+        dialect: Dialect,
+        context: ExecutionContext,
+        statement: Union[str, Compiled],
+        parameters: Optional[_AnyMultiExecuteParams],
+    ) -> CursorResult[Any]:
+        """continue the _execute_context() method for a single DBAPI
+        cursor.execute() or cursor.executemany() call.
+    
+        """
+        if dialect.bind_typing is BindTyping.SETINPUTSIZES:
+            generic_setinputsizes = context._prepare_set_input_sizes()
+    
+            if generic_setinputsizes:
+                try:
+                    dialect.do_set_input_sizes(
+                        context.cursor, generic_setinputsizes, context
+                    )
+                except BaseException as e:
+                    self._handle_dbapi_exception(
+                        e, str(statement), parameters, None, context
+                    )
+    
+        cursor, str_statement, parameters = (
+            context.cursor,
+            context.statement,
+            context.parameters,
+        )
+    
+        effective_parameters: Optional[_AnyExecuteParams]
+    
+        if not context.executemany:
+            effective_parameters = parameters[0]
+        else:
+            effective_parameters = parameters
+    
+        if self._has_events or self.engine._has_events:
+            for fn in self.dispatch.before_cursor_execute:
+                str_statement, effective_parameters = fn(
+                    self,
+                    cursor,
+                    str_statement,
+                    effective_parameters,
+                    context,
+                    context.executemany,
+                )
+    
+        if self._echo:
+            self._log_info(str_statement)
+    
+            stats = context._get_cache_stats()
+    
+            if not self.engine.hide_parameters:
+                self._log_info(
+                    "[%s] %r",
+                    stats,
+                    sql_util._repr_params(
+                        effective_parameters,
+                        batches=10,
+                        ismulti=context.executemany,
+                    ),
+                )
+            else:
+                self._log_info(
+                    "[%s] [SQL parameters hidden due to hide_parameters=True]",
+                    stats,
+                )
+    
+        evt_handled: bool = False
+        try:
+            if context.execute_style is ExecuteStyle.EXECUTEMANY:
+                effective_parameters = cast(
+                    "_CoreMultiExecuteParams", effective_parameters
+                )
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_executemany:
+                        if fn(
+                            cursor,
+                            str_statement,
+                            effective_parameters,
+                            context,
+                        ):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+                    self.dialect.do_executemany(
+                        cursor,
+                        str_statement,
+                        effective_parameters,
+                        context,
+                    )
+            elif not effective_parameters and context.no_parameters:
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_execute_no_params:
+                        if fn(cursor, str_statement, context):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+                    self.dialect.do_execute_no_params(
+                        cursor, str_statement, context
+                    )
+            else:
+                effective_parameters = cast(
+                    "_CoreSingleExecuteParams", effective_parameters
+                )
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_execute:
+                        if fn(
+                            cursor,
+                            str_statement,
+                            effective_parameters,
+                            context,
+                        ):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+>                   self.dialect.do_execute(
+                        cursor, str_statement, effective_parameters, context
+                    )
+
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1969: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv\Lib\site-packages\sqlalchemy\engine\default.py:952: in do_execute
+    cursor.execute(statement, parameters)
+.venv\Lib\site-packages\pymysql\cursors.py:170: in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\pymysql\cursors.py:335: in _query
+    conn.query(q)
+.venv\Lib\site-packages\pymysql\connections.py:581: in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\pymysql\connections.py:857: in _read_query_result
+    result.read()
+.venv\Lib\site-packages\pymysql\connections.py:1290: in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\pymysql\connections.py:810: in _read_packet
+    packet.raise_for_error()
+.venv\Lib\site-packages\pymysql\protocol.py:219: in raise_for_error
+    err.raise_mysql_exception(self._data)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+data = b"\xffz\x04#42S02Table 'levelup_test.question_image_calls' doesn't exist"
+
+    def raise_mysql_exception(data):
+        errno = struct.unpack("<h", data[1:3])[0]
+        # https://dev.mysql.com/doc/dev/mysql-server/latest/page_protocol_basic_err_packet.html
+        # Error packet has optional sqlstate that is 5 bytes and starts with '#'.
+        sqlstate = None
+        if data[3] == 0x23:  # '#'
+            sqlstate = data[4:9].decode()
+            errval = data[9:].decode("utf-8", "replace")
+        else:
+            errval = data[3:].decode("utf-8", "replace")
+        errorclass = error_map.get(errno)
+        if errorclass is None:
+            errorclass = InternalError if errno < 1000 else OperationalError
+>       raise errorclass(errno, errval, sqlstate=sqlstate)
+E       pymysql.err.ProgrammingError: (1146, "Table 'levelup_test.question_image_calls' doesn't exist")
+
+.venv\Lib\site-packages\pymysql\err.py:154: ProgrammingError
+
+The above exception was the direct cause of the following exception:
+
+    @pytest.fixture
+    def system():
+        from app.accounts.database import Database, Base
+        from app.accounts.repository import Accounts
+        settings = Settings(database_testing=True, wechat_app_id='test-app', identity_hash_secret='test-secret-only-' * 3, ai_minute_limit=1000, login_minute_limit=10000, tavily_api_key='')
+        assert settings.mysql_user, '���� backend/.env ���� MYSQL_*�����Ա���ʹ����ʵ MySQL'
+        database = Database(settings)
+        database.migrate()
+        with database.engine.begin() as connection:
+            from sqlalchemy import text
+            actual = connection.scalar(text('SELECT DATABASE()'))
+            assert settings.database_testing and actual == settings.mysql_test_database
+            assert actual != settings.mysql_database and actual.endswith('_test')
+            for table in reversed(Base.metadata.sorted_tables):
+>               connection.execute(delete(table))
+
+tests\test_mysql_accounts.py:35: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1421: in execute
+    return meth(
+.venv\Lib\site-packages\sqlalchemy\sql\elements.py:526: in _execute_on_connection
+    return connection._execute_clauseelement(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1643: in _execute_clauseelement
+    ret = self._execute_context(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1848: in _execute_context
+    return self._exec_single_context(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1988: in _exec_single_context
+    self._handle_dbapi_exception(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:2365: in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1969: in _exec_single_context
+    self.dialect.do_execute(
+.venv\Lib\site-packages\sqlalchemy\engine\default.py:952: in do_execute
+    cursor.execute(statement, parameters)
+.venv\Lib\site-packages\pymysql\cursors.py:170: in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\pymysql\cursors.py:335: in _query
+    conn.query(q)
+.venv\Lib\site-packages\pymysql\connections.py:581: in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\pymysql\connections.py:857: in _read_query_result
+    result.read()
+.venv\Lib\site-packages\pymysql\connections.py:1290: in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\pymysql\connections.py:810: in _read_packet
+    packet.raise_for_error()
+.venv\Lib\site-packages\pymysql\protocol.py:219: in raise_for_error
+    err.raise_mysql_exception(self._data)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+data = b"\xffz\x04#42S02Table 'levelup_test.question_image_calls' doesn't exist"
+
+    def raise_mysql_exception(data):
+        errno = struct.unpack("<h", data[1:3])[0]
+        # https://dev.mysql.com/doc/dev/mysql-server/latest/page_protocol_basic_err_packet.html
+        # Error packet has optional sqlstate that is 5 bytes and starts with '#'.
+        sqlstate = None
+        if data[3] == 0x23:  # '#'
+            sqlstate = data[4:9].decode()
+            errval = data[9:].decode("utf-8", "replace")
+        else:
+            errval = data[3:].decode("utf-8", "replace")
+        errorclass = error_map.get(errno)
+        if errorclass is None:
+            errorclass = InternalError if errno < 1000 else OperationalError
+>       raise errorclass(errno, errval, sqlstate=sqlstate)
+E       sqlalchemy.exc.ProgrammingError: (pymysql.err.ProgrammingError) (1146, "Table 'levelup_test.question_image_calls' doesn't exist")
+E       [SQL: DELETE FROM question_image_calls]
+E       (Background on this error at: https://sqlalche.me/e/20/f405)
+
+.venv\Lib\site-packages\pymysql\err.py:154: ProgrammingError
+=========================== short test summary info ===========================
+ERROR tests/test_question_images_repository.py::test_migration_and_first_call_persists_across_repository_instances
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!
+1 error in 11.61s

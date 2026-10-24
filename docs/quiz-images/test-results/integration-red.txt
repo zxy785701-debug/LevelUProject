@@ -1,0 +1,218 @@
+FFFFFFFFF                                                                [100%]
+================================== FAILURES ===================================
+__________ test_capability_is_authenticated_and_reports_server_quota __________
+
+system = <fastapi.applications.FastAPI object at 0x000001AB7A85C690>
+
+    @pytest.mark.anyio
+    async def test_capability_is_authenticated_and_reports_server_quota(system):
+        async with httpx.AsyncClient(transport=httpx.ASGITransport(app=system),base_url='http://test') as c:
+            assert (await c.get('/api/v1/quiz/images/capabilities')).status_code==401
+            await login(c)
+            provider=images(system)
+            result=(await c.get('/api/v1/quiz/images/capabilities')).json()['data']
+>           assert result['available'] and result['remaining']==20 and result['daily_limit']==20
+                   ^^^^^^^^^^^^^^^^^^^
+E           TypeError: 'NoneType' object is not subscriptable
+
+tests\test_question_images_api.py:40: TypeError
+______ test_missing_and_invalid_image_configuration_only_disable_images _______
+
+system = <fastapi.applications.FastAPI object at 0x000001AB7BA9FC50>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001AB7B95C8A0>
+
+    @pytest.mark.anyio
+    async def test_missing_and_invalid_image_configuration_only_disable_images(system,monkeypatch):
+        async with httpx.AsyncClient(transport=httpx.ASGITransport(app=system),base_url='http://test') as c:
+            await login(c)
+            monkeypatch.setenv('IMAGE_CONCURRENCY','invalid')
+            result=(await c.get('/api/v1/quiz/images/capabilities')).json()['data']
+>           assert not result['available'] and result['reason_code']=='IMAGE_CONFIGURATION_INVALID'
+                       ^^^^^^^^^^^^^^^^^^^
+E           TypeError: 'NoneType' object is not subscriptable
+
+tests\test_question_images_api.py:53: TypeError
+___ test_topic_public_result_history_report_replay_and_wrongs_reuse_images ____
+
+system = <fastapi.applications.FastAPI object at 0x000001AB7BBA6710>
+
+    @pytest.mark.anyio
+    async def test_topic_public_result_history_report_replay_and_wrongs_reuse_images(system):
+        provider=images(system)
+        async with httpx.AsyncClient(transport=httpx.ASGITransport(app=system),base_url='http://test') as c:
+            identity=await login(c)
+            session,body=await generated(c,generate_images=True)
+>           expected=[q['image_url'] for q in session['quiz']['questions']]
+                      ^^^^^^^^^^^^^^
+E           KeyError: 'image_url'
+
+tests\test_question_images_api.py:65: KeyError
+---------------------------- Captured stderr call -----------------------------
+[levelup] app.accounts.repository ai_finished operation=db673d29-c683-437d-aaea-badcf2c2bd9e status=succeeded
+------------------------------ Captured log call ------------------------------
+INFO     app.accounts.repository:repository.py:192 ai_finished operation=db673d29-c683-437d-aaea-badcf2c2bd9e status=succeeded
+______________ test_default_off_preserves_old_idempotency_digest ______________
+
+system = <fastapi.applications.FastAPI object at 0x000001AB7BAA6D50>
+
+    @pytest.mark.anyio
+    async def test_default_off_preserves_old_idempotency_digest(system):
+        provider=images(system)
+        async with httpx.AsyncClient(transport=httpx.ASGITransport(app=system),base_url='http://test') as c:
+            await login(c)
+            _,body=await generated(c)
+            legacy=GenerateRequest.model_validate(body).model_dump()
+            legacy.pop('generate_images')
+            legacy.pop('candidate_ids')
+            with system.state.accounts.database.session() as s:
+                row=s.scalar(select(Operation).where(Operation.key=='image'))
+>               assert row.digest==digest(json.dumps(legacy,ensure_ascii=False,sort_keys=True))
+E               AssertionError: assert '305e9d6cef13...6d16425fbee0b' == 'b26b021e326e...efc7886d66343'
+E                 
+E                 - b26b021e326e2930eefd34e78f71d32e0b8a8f434ef2b6438eeefc7886d66343
+E                 + 305e9d6cef13d6d1d469ce44235a9212ff7b6e202532f6925516d16425fbee0b
+
+tests\test_question_images_api.py:98: AssertionError
+---------------------------- Captured stderr call -----------------------------
+[levelup] app.accounts.repository ai_finished operation=bf9b0a41-cc23-49d7-b6ba-e8b2ab3fd794 status=succeeded
+------------------------------ Captured log call ------------------------------
+INFO     app.accounts.repository:repository.py:192 ai_finished operation=bf9b0a41-cc23-49d7-b6ba-e8b2ab3fd794 status=succeeded
+_________ test_material_sync_and_background_both_support_images[sync] _________
+
+system = <fastapi.applications.FastAPI object at 0x000001AB7BCF16D0>
+execution = 'sync'
+
+    @pytest.mark.anyio
+    @pytest.mark.parametrize('execution',['sync','background'])
+    async def test_material_sync_and_background_both_support_images(system,execution):
+        provider=images(system)
+        system.state.gateway=FeatureGateway()
+        async with httpx.AsyncClient(transport=httpx.ASGITransport(app=system),base_url='http://test') as c:
+            await login(c)
+            material=await upload(c)
+            response=await c.post('/api/v1/quiz/generate',headers={'Idempotency-Key':'material-image'},json={
+                'material_id':material['id'],'point_ids':['s1'],'question_count':3,'execution':execution,'generate_images':True})
+            assert response.status_code==200,response.text
+            result=response.json()['data'] if execution=='sync' else (await c.get('/api/v1/operations/material-image')).json()['data']['result']
+>           assert all(q['image_url'] for q in result['quiz']['questions']) and len(provider.prompts)==3
+E           assert (False)
+E            +  where False = all(<generator object test_material_sync_and_background_both_support_images.<locals>.<genexpr> at 0x000001AB7BCA7370>)
+
+tests\test_question_images_api.py:117: AssertionError
+---------------------------- Captured stderr call -----------------------------
+[levelup] app.accounts.repository ai_call operation=a2ee428f-8305-490f-8e72-4a15e2d83316 kind=material minute_calls=1
+[levelup] app.accounts.repository ai_finished operation=a2ee428f-8305-490f-8e72-4a15e2d83316 status=succeeded error_code=None
+[levelup] app.accounts.repository ai_finished operation=ccdd06c0-2c66-4ab5-99a6-17f3ff8d60d0 status=succeeded
+------------------------------ Captured log call ------------------------------
+INFO     app.accounts.repository:repository.py:438 ai_call operation=a2ee428f-8305-490f-8e72-4a15e2d83316 kind=material minute_calls=1
+INFO     app.accounts.repository:repository.py:460 ai_finished operation=a2ee428f-8305-490f-8e72-4a15e2d83316 status=succeeded error_code=None
+INFO     app.accounts.repository:repository.py:192 ai_finished operation=ccdd06c0-2c66-4ab5-99a6-17f3ff8d60d0 status=succeeded
+______ test_material_sync_and_background_both_support_images[background] ______
+
+system = <fastapi.applications.FastAPI object at 0x000001AB7BAA5310>
+execution = 'background'
+
+    @pytest.mark.anyio
+    @pytest.mark.parametrize('execution',['sync','background'])
+    async def test_material_sync_and_background_both_support_images(system,execution):
+        provider=images(system)
+        system.state.gateway=FeatureGateway()
+        async with httpx.AsyncClient(transport=httpx.ASGITransport(app=system),base_url='http://test') as c:
+            await login(c)
+            material=await upload(c)
+            response=await c.post('/api/v1/quiz/generate',headers={'Idempotency-Key':'material-image'},json={
+                'material_id':material['id'],'point_ids':['s1'],'question_count':3,'execution':execution,'generate_images':True})
+            assert response.status_code==200,response.text
+            result=response.json()['data'] if execution=='sync' else (await c.get('/api/v1/operations/material-image')).json()['data']['result']
+>           assert all(q['image_url'] for q in result['quiz']['questions']) and len(provider.prompts)==3
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_question_images_api.py:117: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+.0 = <list_iterator object at 0x000001AB7BAC7BE0>
+
+>   assert all(q['image_url'] for q in result['quiz']['questions']) and len(provider.prompts)==3
+               ^^^^^^^^^^^^^^
+E   KeyError: 'image_url'
+
+tests\test_question_images_api.py:117: KeyError
+---------------------------- Captured stderr call -----------------------------
+[levelup] app.accounts.repository ai_call operation=a467d64d-a51b-4a85-86a7-e6a7ca849d0b kind=material minute_calls=1
+[levelup] app.accounts.repository ai_finished operation=a467d64d-a51b-4a85-86a7-e6a7ca849d0b status=succeeded error_code=None
+[levelup] app.accounts.repository ai_finished operation=1125ac1e-3f6a-4f3b-8624-5e3f2c9c4aa7 status=succeeded
+------------------------------ Captured log call ------------------------------
+INFO     app.accounts.repository:repository.py:438 ai_call operation=a467d64d-a51b-4a85-86a7-e6a7ca849d0b kind=material minute_calls=1
+INFO     app.accounts.repository:repository.py:460 ai_finished operation=a467d64d-a51b-4a85-86a7-e6a7ca849d0b status=succeeded error_code=None
+INFO     app.accounts.repository:repository.py:192 ai_finished operation=1125ac1e-3f6a-4f3b-8624-5e3f2c9c4aa7 status=succeeded
+_________ test_image_timeout_and_quota_exhaustion_still_publish_text __________
+
+system = <fastapi.applications.FastAPI object at 0x000001AB7BE4AC10>
+
+    @pytest.mark.anyio
+    async def test_image_timeout_and_quota_exhaustion_still_publish_text(system):
+        images(system,IMAGE_DAILY_LIMIT=2,IMAGE_STAGE_TIMEOUT_SECONDS=.03)
+        system.state.images.provider=Provider(delay=1)
+        async with httpx.AsyncClient(transport=httpx.ASGITransport(app=system),base_url='http://test') as c:
+            await login(c)
+            first,_=await generated(c,generate_images=True)
+>           assert first['quiz']['image_generation']['generated']==0
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           KeyError: 'image_generation'
+
+tests\test_question_images_api.py:127: KeyError
+---------------------------- Captured stderr call -----------------------------
+[levelup] app.accounts.repository ai_finished operation=2bf589ad-e35a-41d7-ae8d-c92610c86f3e status=succeeded
+------------------------------ Captured log call ------------------------------
+INFO     app.accounts.repository:repository.py:192 ai_finished operation=2bf589ad-e35a-41d7-ae8d-c92610c86f3e status=succeeded
+_____ test_knowledge_images_are_published_and_recovered_without_new_calls _____
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x000001AB7A6FC590>
+index = <app.knowledge.index.VectorIndex object at 0x000001AB7A833A10>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001AB1A1F55B0>
+
+    def test_knowledge_images_are_published_and_recovered_without_new_calls(repo,index,monkeypatch):
+        pipeline,claim,provider,gateway,job=setup_images(repo,index)
+        original=pipeline.complete
+        monkeypatch.setattr(pipeline,'complete',lambda *a,**kw:(_ for _ in ()).throw(RuntimeError('publication interrupted')))
+        with pytest.raises(RuntimeError):pipeline.process(claim)
+>       assert len(provider.prompts)==3
+E       assert 0 == 3
+E        +  where 0 = len([])
+E        +    where [] = <tests.test_question_images_service.Provider object at 0x000001AB1A5F9D00>.prompts
+
+tests\test_question_images_knowledge.py:25: AssertionError
+---------------------------- Captured stderr call -----------------------------
+[levelup] app.accounts.repository ai_call operation=c1c1673e-d645-4a69-86a6-938889816819 kind=material minute_calls=1
+[levelup] app.accounts.repository ai_call operation=1cd97230-e68e-49b5-b667-6b52198df8b1 kind=quiz minute_calls=2
+[levelup] app.accounts.repository ai_call operation=1cd97230-e68e-49b5-b667-6b52198df8b1 kind=quiz minute_calls=3
+------------------------------ Captured log call ------------------------------
+INFO     app.accounts.repository:repository.py:438 ai_call operation=c1c1673e-d645-4a69-86a6-938889816819 kind=material minute_calls=1
+INFO     app.accounts.repository:repository.py:438 ai_call operation=1cd97230-e68e-49b5-b667-6b52198df8b1 kind=quiz minute_calls=2
+INFO     app.accounts.repository:repository.py:438 ai_call operation=1cd97230-e68e-49b5-b667-6b52198df8b1 kind=quiz minute_calls=3
+__________ test_knowledge_image_option_is_part_of_recovery_identity ___________
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x000001AB1AE85950>
+index = <app.knowledge.index.VectorIndex object at 0x000001AB1AE87ED0>
+
+    def test_knowledge_image_option_is_part_of_recovery_identity(repo,index):
+>       pipeline,_,_,_,_,body=setup_quiz(repo,index)
+        ^^^^^^^^^^^^^^^^^^^^^
+E       ValueError: not enough values to unpack (expected 6, got 5)
+
+tests\test_question_images_knowledge.py:37: ValueError
+---------------------------- Captured stderr call -----------------------------
+[levelup] app.accounts.repository ai_call operation=50fd3198-e4aa-4e71-8ad1-df0141c847ff kind=material minute_calls=1
+------------------------------ Captured log call ------------------------------
+INFO     app.accounts.repository:repository.py:438 ai_call operation=50fd3198-e4aa-4e71-8ad1-df0141c847ff kind=material minute_calls=1
+=========================== short test summary info ===========================
+FAILED tests/test_question_images_api.py::test_capability_is_authenticated_and_reports_server_quota
+FAILED tests/test_question_images_api.py::test_missing_and_invalid_image_configuration_only_disable_images
+FAILED tests/test_question_images_api.py::test_topic_public_result_history_report_replay_and_wrongs_reuse_images
+FAILED tests/test_question_images_api.py::test_default_off_preserves_old_idempotency_digest
+FAILED tests/test_question_images_api.py::test_material_sync_and_background_both_support_images[sync]
+FAILED tests/test_question_images_api.py::test_material_sync_and_background_both_support_images[background]
+FAILED tests/test_question_images_api.py::test_image_timeout_and_quota_exhaustion_still_publish_text
+FAILED tests/test_question_images_knowledge.py::test_knowledge_images_are_published_and_recovered_without_new_calls
+FAILED tests/test_question_images_knowledge.py::test_knowledge_image_option_is_part_of_recovery_identity
+9 failed in 10.52s

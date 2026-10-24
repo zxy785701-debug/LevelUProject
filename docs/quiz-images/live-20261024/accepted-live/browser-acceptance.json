@@ -1,0 +1,717 @@
+{
+  "user_id": "0148c0da-e3ba-4819-a4ca-3accd33365bc",
+  "elapsed_seconds": 18.747,
+  "quota_before": 20,
+  "quota_after": 15,
+  "decoded_images": [
+    "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/4ef9e28b85d3461fb4419a1924fa84f3.png",
+    "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/fe7e082a928a4db18359ff675fb6b4a9.png",
+    "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/8c0e7991f33b4450bcec78bbeabf6d60.png",
+    "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/d8b75830eab149579298dde826ed9353.png",
+    "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/225b8f90a7524295a402f7b55055daa4.png"
+  ],
+  "maximum_concurrency": 2,
+  "generated_responses": [
+    {
+      "code": 0,
+      "message": "ok",
+      "data": {
+        "kind": "generation_operation",
+        "key": "mvlz3jbv-ahmadfocxxi-rxcac802jfe",
+        "status": "running",
+        "stage": "retrieving",
+        "retry_after_seconds": 0,
+        "deadline": "2026-10-24T05:49:53.861362Z",
+        "error_code": null
+      }
+    }
+  ],
+  "attempts": [
+    {
+      "id": "ab10165b-5499-4e5d-a7bf-fcee2a131909",
+      "quiz": {
+        "id": "f6c79e7d-03d1-461a-a66a-a8f2d474444c",
+        "title": "英语水果词汇小测",
+        "reward": {
+          "xp": 10,
+          "coins": 2
+        },
+        "source": {
+          "url": null,
+          "type": "txt",
+          "title": "fruit-vocabulary.txt",
+          "segments": [],
+          "material_id": "01e62cab-d426-4611-aec4-4574d1c36b86"
+        },
+        "summary": "依据学习资料，考查 apple、banana、orange、grape、pear 五个英语水果单词与中文名称的一一对应关系，以及它们都表示水果、彼此不同等知识点。",
+        "grounding": {
+          "status": "material_only",
+          "provider": null,
+          "reason_code": null,
+          "retrieved_at": null,
+          "check_version": "evidence-review-v2"
+        },
+        "questions": [
+          {
+            "id": "q1",
+            "stem": "根据资料，英语单词 apple 的中文意思是什么？",
+            "type": "single",
+            "origin": null,
+            "answers": [],
+            "options": [
+              {
+                "id": "A",
+                "text": "香蕉"
+              },
+              {
+                "id": "B",
+                "text": "苹果"
+              },
+              {
+                "id": "C",
+                "text": "橙子"
+              },
+              {
+                "id": "D",
+                "text": "梨"
+              }
+            ],
+            "grounding": {
+              "status": "material_only"
+            },
+            "image_url": "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/4ef9e28b85d3461fb4419a1924fa84f3.png",
+            "source_ids": [],
+            "explanation": "",
+            "knowledge_point": "apple 的中文意思：苹果"
+          },
+          {
+            "id": "q2",
+            "stem": "根据资料，英语单词 grape 的中文意思是什么？",
+            "type": "single",
+            "origin": null,
+            "answers": [],
+            "options": [
+              {
+                "id": "A",
+                "text": "葡萄"
+              },
+              {
+                "id": "B",
+                "text": "梨"
+              },
+              {
+                "id": "C",
+                "text": "苹果"
+              },
+              {
+                "id": "D",
+                "text": "香蕉"
+              }
+            ],
+            "grounding": {
+              "status": "material_only"
+            },
+            "image_url": "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/fe7e082a928a4db18359ff675fb6b4a9.png",
+            "source_ids": [],
+            "explanation": "",
+            "knowledge_point": "grape 的中文意思：葡萄"
+          },
+          {
+            "id": "q3",
+            "stem": "根据资料，下列哪一组英语单词与中文名称的对应是正确的？",
+            "type": "single",
+            "origin": null,
+            "answers": [],
+            "options": [
+              {
+                "id": "A",
+                "text": "orange——梨"
+              },
+              {
+                "id": "B",
+                "text": "pear——橙子"
+              },
+              {
+                "id": "C",
+                "text": "banana——香蕉"
+              },
+              {
+                "id": "D",
+                "text": "apple——葡萄"
+              }
+            ],
+            "grounding": {
+              "status": "material_only"
+            },
+            "image_url": "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/8c0e7991f33b4450bcec78bbeabf6d60.png",
+            "source_ids": [],
+            "explanation": "",
+            "knowledge_point": "学习目标：掌握五个英语单词与中文名称的一一对应关系"
+          },
+          {
+            "id": "q4",
+            "stem": "根据资料，下列说法正确的有哪些？",
+            "type": "multi",
+            "origin": null,
+            "answers": [],
+            "options": [
+              {
+                "id": "A",
+                "text": "这五个词都表示水果"
+              },
+              {
+                "id": "B",
+                "text": "apple 与 pear 是不同的水果"
+              },
+              {
+                "id": "C",
+                "text": "banana 与 grape 不相同"
+              },
+              {
+                "id": "D",
+                "text": "orange 的中文意思是葡萄"
+              }
+            ],
+            "grounding": {
+              "status": "material_only"
+            },
+            "image_url": "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/d8b75830eab149579298dde826ed9353.png",
+            "source_ids": [],
+            "explanation": "",
+            "knowledge_point": "五个词都表示水果；apple 与 pear 是不同的水果；banana 与 grape 不相同"
+          },
+          {
+            "id": "q5",
+            "stem": "根据资料，pear 的中文意思是梨。",
+            "type": "judge",
+            "origin": null,
+            "answers": [],
+            "options": [
+              {
+                "id": "A",
+                "text": "正确"
+              },
+              {
+                "id": "B",
+                "text": "错误"
+              }
+            ],
+            "grounding": {
+              "status": "material_only"
+            },
+            "image_url": "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/225b8f90a7524295a402f7b55055daa4.png",
+            "source_ids": [],
+            "explanation": "",
+            "knowledge_point": "pear 的中文意思：梨"
+          }
+        ],
+        "created_at": "2026-10-24T05:43:29.918489+00:00",
+        "difficulty": "easy",
+        "source_text": "英语水果词汇学习范围",
+        "learning_scope": {
+          "focus": "所选材料知识点",
+          "topic": "英语水果词汇学习范围",
+          "domain": "用户提供的材料",
+          "points": [
+            "apple 的中文意思：苹果",
+            "banana 的中文意思：香蕉",
+            "orange 的中文意思：橙子",
+            "grape 的中文意思：葡萄",
+            "pear 的中文意思：梨",
+            "五个词都表示水果",
+            "apple 与 pear 是不同的水果",
+            "banana 与 grape 不相同",
+            "学习目标：掌握五个英语单词与中文名称的一一对应关系"
+          ],
+          "focus_id": null,
+          "input_text": "英语水果词汇学习范围",
+          "candidate_id": null,
+          "scope_version": null,
+          "preparation_id": null,
+          "scope_point_ids": [],
+          "selected_topics": []
+        },
+        "image_generation": {
+          "generated": 5,
+          "requested": 5,
+          "reason_code": null
+        }
+      },
+      "mode": "replay",
+      "answers": [],
+      "cursor": 0,
+      "pending_ms": 0,
+      "started_at": "2026-10-24T05:43:48+00:00",
+      "completed_at": null,
+      "report": null,
+      "review_keys": []
+    },
+    {
+      "id": "075c183f-47bc-452e-b2d4-c9a8e00f8455",
+      "quiz": {
+        "id": "f6c79e7d-03d1-461a-a66a-a8f2d474444c",
+        "title": "英语水果词汇小测",
+        "reward": {
+          "xp": 10,
+          "coins": 2
+        },
+        "source": {
+          "url": null,
+          "type": "txt",
+          "title": "fruit-vocabulary.txt",
+          "segments": [
+            {
+              "id": "s1",
+              "end": null,
+              "url": null,
+              "page": null,
+              "text": "英语水果词汇学习资料。apple 的中文意思是苹果。banana 的中文意思是香蕉。orange 的中文意思是橙子。grape 的中文意思是葡萄。pear 的中文意思是梨。这五个词都表示水果。apple 与 pear 是不同的水果，banana 与 grape 也不相同。学习目标是掌握这五个英语单词和中文名称的一一对应关系。",
+              "start": null,
+              "title": null,
+              "knowledge": null,
+              "truncated": false,
+              "supplement": false,
+              "original_id": null,
+              "content_hash": null,
+              "content_kind": "material",
+              "original_url": null,
+              "published_at": null,
+              "retrieved_at": null,
+              "source_chars": null,
+              "original_quiz_id": null,
+              "context_truncated": false,
+              "acquisition_status": "unknown"
+            }
+          ],
+          "material_id": "01e62cab-d426-4611-aec4-4574d1c36b86"
+        },
+        "summary": "依据学习资料，考查 apple、banana、orange、grape、pear 五个英语水果单词与中文名称的一一对应关系，以及它们都表示水果、彼此不同等知识点。",
+        "grounding": {
+          "status": "material_only",
+          "provider": null,
+          "reason_code": null,
+          "retrieved_at": null,
+          "check_version": "evidence-review-v2"
+        },
+        "questions": [
+          {
+            "id": "q1",
+            "stem": "根据资料，英语单词 apple 的中文意思是什么？",
+            "type": "single",
+            "origin": null,
+            "answers": [
+              "B"
+            ],
+            "options": [
+              {
+                "id": "A",
+                "text": "香蕉"
+              },
+              {
+                "id": "B",
+                "text": "苹果"
+              },
+              {
+                "id": "C",
+                "text": "橙子"
+              },
+              {
+                "id": "D",
+                "text": "梨"
+              }
+            ],
+            "grounding": {
+              "status": "material_only",
+              "provider": null,
+              "reason_code": null,
+              "retrieved_at": null,
+              "check_version": "evidence-review-v2"
+            },
+            "image_url": "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/4ef9e28b85d3461fb4419a1924fa84f3.png",
+            "source_ids": [
+              "s1"
+            ],
+            "explanation": "资料明确说明“apple 的中文意思是苹果”，因此选 B。其余选项分别是 banana、orange、pear 的中文意思。",
+            "knowledge_point": "apple 的中文意思：苹果"
+          },
+          {
+            "id": "q2",
+            "stem": "根据资料，英语单词 grape 的中文意思是什么？",
+            "type": "single",
+            "origin": null,
+            "answers": [
+              "A"
+            ],
+            "options": [
+              {
+                "id": "A",
+                "text": "葡萄"
+              },
+              {
+                "id": "B",
+                "text": "梨"
+              },
+              {
+                "id": "C",
+                "text": "苹果"
+              },
+              {
+                "id": "D",
+                "text": "香蕉"
+              }
+            ],
+            "grounding": {
+              "status": "material_only",
+              "provider": null,
+              "reason_code": null,
+              "retrieved_at": null,
+              "check_version": "evidence-review-v2"
+            },
+            "image_url": "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/fe7e082a928a4db18359ff675fb6b4a9.png",
+            "source_ids": [
+              "s1"
+            ],
+            "explanation": "资料明确说明“grape 的中文意思是葡萄”，因此选 A。B、C、D 分别是 pear、apple、banana 的中文意思。",
+            "knowledge_point": "grape 的中文意思：葡萄"
+          },
+          {
+            "id": "q3",
+            "stem": "根据资料，下列哪一组英语单词与中文名称的对应是正确的？",
+            "type": "single",
+            "origin": null,
+            "answers": [
+              "C"
+            ],
+            "options": [
+              {
+                "id": "A",
+                "text": "orange——梨"
+              },
+              {
+                "id": "B",
+                "text": "pear——橙子"
+              },
+              {
+                "id": "C",
+                "text": "banana——香蕉"
+              },
+              {
+                "id": "D",
+                "text": "apple——葡萄"
+              }
+            ],
+            "grounding": {
+              "status": "material_only",
+              "provider": null,
+              "reason_code": null,
+              "retrieved_at": null,
+              "check_version": "evidence-review-v2"
+            },
+            "image_url": "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/8c0e7991f33b4450bcec78bbeabf6d60.png",
+            "source_ids": [
+              "s1"
+            ],
+            "explanation": "资料说明 banana 的中文意思是香蕉，因此 C 正确。orange 对应橙子而非梨，pear 对应梨而非橙子，apple 对应苹果而非葡萄，故 A、B、D 均错误。",
+            "knowledge_point": "学习目标：掌握五个英语单词与中文名称的一一对应关系"
+          },
+          {
+            "id": "q4",
+            "stem": "根据资料，下列说法正确的有哪些？",
+            "type": "multi",
+            "origin": null,
+            "answers": [
+              "A",
+              "B",
+              "C"
+            ],
+            "options": [
+              {
+                "id": "A",
+                "text": "这五个词都表示水果"
+              },
+              {
+                "id": "B",
+                "text": "apple 与 pear 是不同的水果"
+              },
+              {
+                "id": "C",
+                "text": "banana 与 grape 不相同"
+              },
+              {
+                "id": "D",
+                "text": "orange 的中文意思是葡萄"
+              }
+            ],
+            "grounding": {
+              "status": "material_only",
+              "provider": null,
+              "reason_code": null,
+              "retrieved_at": null,
+              "check_version": "evidence-review-v2"
+            },
+            "image_url": "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/d8b75830eab149579298dde826ed9353.png",
+            "source_ids": [
+              "s1"
+            ],
+            "explanation": "资料说明这五个词都表示水果，apple 与 pear 是不同的水果，banana 与 grape 也不相同，因此 A、B、C 正确。资料说明 orange 的中文意思是橙子，不是葡萄，故 D 错误。",
+            "knowledge_point": "五个词都表示水果；apple 与 pear 是不同的水果；banana 与 grape 不相同"
+          },
+          {
+            "id": "q5",
+            "stem": "根据资料，pear 的中文意思是梨。",
+            "type": "judge",
+            "origin": null,
+            "answers": [
+              "A"
+            ],
+            "options": [
+              {
+                "id": "A",
+                "text": "正确"
+              },
+              {
+                "id": "B",
+                "text": "错误"
+              }
+            ],
+            "grounding": {
+              "status": "material_only",
+              "provider": null,
+              "reason_code": null,
+              "retrieved_at": null,
+              "check_version": "evidence-review-v2"
+            },
+            "image_url": "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/225b8f90a7524295a402f7b55055daa4.png",
+            "source_ids": [
+              "s1"
+            ],
+            "explanation": "资料明确说明“pear 的中文意思是梨”，因此该说法正确，选 A。",
+            "knowledge_point": "pear 的中文意思：梨"
+          }
+        ],
+        "created_at": "2026-10-24T05:43:29.918489+00:00",
+        "difficulty": "easy",
+        "source_text": "英语水果词汇学习范围",
+        "learning_scope": {
+          "focus": "所选材料知识点",
+          "topic": "英语水果词汇学习范围",
+          "domain": "用户提供的材料",
+          "points": [
+            "apple 的中文意思：苹果",
+            "banana 的中文意思：香蕉",
+            "orange 的中文意思：橙子",
+            "grape 的中文意思：葡萄",
+            "pear 的中文意思：梨",
+            "五个词都表示水果",
+            "apple 与 pear 是不同的水果",
+            "banana 与 grape 不相同",
+            "学习目标：掌握五个英语单词与中文名称的一一对应关系"
+          ],
+          "focus_id": null,
+          "input_text": "英语水果词汇学习范围",
+          "candidate_id": null,
+          "scope_version": null,
+          "preparation_id": null,
+          "scope_point_ids": [],
+          "selected_topics": []
+        },
+        "image_generation": {
+          "generated": 5,
+          "requested": 5,
+          "reason_code": null
+        }
+      },
+      "mode": "new",
+      "answers": [
+        {
+          "selected": [
+            "A"
+          ],
+          "elapsed_ms": 0,
+          "question_id": "q1"
+        },
+        {
+          "selected": [
+            "A"
+          ],
+          "elapsed_ms": 0,
+          "question_id": "q2"
+        },
+        {
+          "selected": [
+            "A"
+          ],
+          "elapsed_ms": 0,
+          "question_id": "q3"
+        },
+        {
+          "selected": [
+            "A",
+            "B"
+          ],
+          "elapsed_ms": 0,
+          "question_id": "q4"
+        },
+        {
+          "selected": [
+            "A"
+          ],
+          "elapsed_ms": 0,
+          "question_id": "q5"
+        }
+      ],
+      "cursor": 4,
+      "pending_ms": 0,
+      "started_at": "2026-10-24T05:43:41+00:00",
+      "completed_at": "2026-10-24T05:43:45+00:00",
+      "report": {
+        "stats": {
+          "xp": 20,
+          "coins": 4,
+          "total": 5,
+          "results": [
+            {
+              "is_correct": false,
+              "question_id": "q1"
+            },
+            {
+              "is_correct": true,
+              "question_id": "q2"
+            },
+            {
+              "is_correct": false,
+              "question_id": "q3"
+            },
+            {
+              "is_correct": false,
+              "question_id": "q4"
+            },
+            {
+              "is_correct": true,
+              "question_id": "q5"
+            }
+          ],
+          "accuracy": 40,
+          "duration_ms": 0,
+          "correct_count": 2,
+          "knowledge_points": [
+            {
+              "name": "apple 的中文意思：苹果",
+              "total": 1,
+              "correct": 0,
+              "accuracy": 0
+            },
+            {
+              "name": "grape 的中文意思：葡萄",
+              "total": 1,
+              "correct": 1,
+              "accuracy": 100
+            },
+            {
+              "name": "学习目标：掌握五个英语单词与中文名称的一一对应关系",
+              "total": 1,
+              "correct": 0,
+              "accuracy": 0
+            },
+            {
+              "name": "五个词都表示水果；apple 与 pear 是不同的水果；banana 与 grape 不相同",
+              "total": 1,
+              "correct": 0,
+              "accuracy": 0
+            },
+            {
+              "name": "pear 的中文意思：梨",
+              "total": 1,
+              "correct": 1,
+              "accuracy": 100
+            }
+          ]
+        },
+        "source": {
+          "url": null,
+          "type": "txt",
+          "title": "fruit-vocabulary.txt",
+          "segments": [
+            {
+              "id": "s1",
+              "end": null,
+              "url": null,
+              "page": null,
+              "text": "英语水果词汇学习资料。apple 的中文意思是苹果。banana 的中文意思是香蕉。orange 的中文意思是橙子。grape 的中文意思是葡萄。pear 的中文意思是梨。这五个词都表示水果。apple 与 pear 是不同的水果，banana 与 grape 也不相同。学习目标是掌握这五个英语单词和中文名称的一一对应关系。",
+              "start": null,
+              "title": null,
+              "knowledge": null,
+              "truncated": false,
+              "supplement": false,
+              "original_id": null,
+              "content_hash": null,
+              "content_kind": "material",
+              "original_url": null,
+              "published_at": null,
+              "retrieved_at": null,
+              "source_chars": null,
+              "original_quiz_id": null,
+              "context_truncated": false,
+              "acquisition_status": "unknown"
+            }
+          ],
+          "material_id": "01e62cab-d426-4611-aec4-4574d1c36b86"
+        },
+        "quiz_id": "f6c79e7d-03d1-461a-a66a-a8f2d474444c",
+        "summary": [
+          "本轮共作答 5 题，答对 2 题，正确率 40%，获得 20 XP 与 4 金币。",
+          "答对的是 grape 对应葡萄、pear 对应梨；答错的是 apple 对应苹果、五词对应关系综合题、水果词义辨析多选题。",
+          "本轮知识核实状态均为 material_only，即仅依据学习材料，答对不代表事实已被联网核实。"
+        ],
+        "share_quote": "错题是路标，不是终点；把每一个对应关系记牢，词汇就会越积越稳。",
+        "suggestions": [
+          "对照材料逐条朗读并抄写五个单词与中文对应：apple—苹果、banana—香蕉、orange—橙子、grape—葡萄、pear—梨。",
+          "重点复习 apple 与 banana 的对应，避免把 apple 误选为香蕉；可用遮盖法自测。",
+          "做多选题时逐项核对材料原句，尤其注意“orange 是橙子不是葡萄”这类干扰项。",
+          "把五个词做成配对卡片，每天快速过一遍，直到能不看材料全部说对。"
+        ],
+        "weak_points": [
+          "apple 的中文意思：苹果",
+          "学习目标：掌握五个英语单词与中文名称的一一对应关系",
+          "五个词都表示水果；apple 与 pear 是不同的水果；banana 与 grape 不相同"
+        ],
+        "verification": {
+          "rule": "正确率与知识核实状态不同；未核实和旧题库的未知状态不能升级为已核实。",
+          "counts": {
+            "material_only": 5
+          },
+          "status": "material_only"
+        },
+        "learning_scope": {
+          "focus": "所选材料知识点",
+          "topic": "英语水果词汇学习范围",
+          "domain": "用户提供的材料",
+          "points": [
+            "apple 的中文意思：苹果",
+            "banana 的中文意思：香蕉",
+            "orange 的中文意思：橙子",
+            "grape 的中文意思：葡萄",
+            "pear 的中文意思：梨",
+            "五个词都表示水果",
+            "apple 与 pear 是不同的水果",
+            "banana 与 grape 不相同",
+            "学习目标：掌握五个英语单词与中文名称的一一对应关系"
+          ],
+          "focus_id": null,
+          "input_text": "英语水果词汇学习范围",
+          "candidate_id": null,
+          "scope_version": null,
+          "preparation_id": null,
+          "scope_point_ids": [],
+          "selected_topics": []
+        },
+        "mastered_points": [
+          "grape 的中文意思：葡萄",
+          "pear 的中文意思：梨"
+        ]
+      },
+      "review_keys": []
+    }
+  ],
+  "errors": []
+}

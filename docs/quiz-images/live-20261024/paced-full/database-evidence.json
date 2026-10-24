@@ -1,0 +1,80 @@
+{
+  "users": [
+    {
+      "user_id": "4d6f110a-7827-4d2a-bd83-565c06c1cf38",
+      "images": [
+        {
+          "question_id": "q1",
+          "status": "succeeded",
+          "object_key": "question-images/93d7aec940a24deb998a987502eb162e.png",
+          "image_url": "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/93d7aec940a24deb998a987502eb162e.png"
+        },
+        {
+          "question_id": "q2",
+          "status": "succeeded",
+          "object_key": "question-images/a74d72d8bb6548dd93601e64ce099f9b.png",
+          "image_url": "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/a74d72d8bb6548dd93601e64ce099f9b.png"
+        },
+        {
+          "question_id": "q3",
+          "status": "succeeded",
+          "object_key": "question-images/68f7634d0e3d439284360f649f59319c.png",
+          "image_url": "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/68f7634d0e3d439284360f649f59319c.png"
+        },
+        {
+          "question_id": "q4",
+          "status": "failed",
+          "object_key": "question-images/08d12b099ee14b78a9b9895b9b015cfc.png",
+          "image_url": null
+        },
+        {
+          "question_id": "q5",
+          "status": "succeeded",
+          "object_key": "question-images/b00727af447a4664acc54ac36ff16e22.png",
+          "image_url": "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/b00727af447a4664acc54ac36ff16e22.png"
+        }
+      ],
+      "plans": [
+        {
+          "status": "ready",
+          "scenes": {
+            "q1": "A single red apple rests on a pale wooden tabletop, soft daylight from a nearby window, realistic skin texture and a small green leaf on the stem.",
+            "q2": "A whole orange sits on a light kitchen counter beside a small paring knife, bright natural light, dimpled peel texture clearly visible.",
+            "q3": "A woven basket on a wooden table holds an apple, an orange, a banana, a bunch of grapes and a pear arranged side by side in soft daylight.",
+            "q4": "Five fresh fruits are spread across a pale cloth: a red apple, an orange, a yellow banana, a cluster of purple grapes and a green pear, lit by gentle window light.",
+            "q5": "A yellow banana and a small bunch of purple grapes lie side by side on a light wooden surface, soft daylight, realistic textures."
+          }
+        }
+      ],
+      "operations": [
+        {
+          "kind": "material",
+          "status": "succeeded",
+          "model_calls": 1,
+          "error_code": null
+        },
+        {
+          "kind": "quiz",
+          "status": "succeeded",
+          "model_calls": 3,
+          "error_code": null
+        }
+      ],
+      "attempts": [
+        {
+          "id": "1d007020-eb6d-43ff-b92b-fbf03a50f4d5",
+          "mode": "new",
+          "completed": false,
+          "image_urls": [
+            "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/93d7aec940a24deb998a987502eb162e.png",
+            "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/a74d72d8bb6548dd93601e64ce099f9b.png",
+            "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/68f7634d0e3d439284360f649f59319c.png",
+            null,
+            "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/b00727af447a4664acc54ac36ff16e22.png"
+          ]
+        }
+      ]
+    }
+  ],
+  "topic_failure": null
+}

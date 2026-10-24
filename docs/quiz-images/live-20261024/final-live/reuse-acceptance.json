@@ -1,0 +1,17 @@
+{
+  "user_id": "8d2dfe9c-be86-4c6d-bdf8-14f6467701f5",
+  "quota_before_reuse": 15,
+  "quota_after_reuse": 15,
+  "image_requests": 5,
+  "relogin_same_identity": true,
+  "history_reuses_urls": true,
+  "replay_reuses_urls": true,
+  "image_urls": [
+    "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/69a74fa042e14dd2b9acf29a14f9ded8.png",
+    "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/f3ddb1d24f624df498623f399b7c7b89.png",
+    "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/5182bff1d4e3483bbebdcae356a1f923.png",
+    "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/ac9d6fb453894d468c731bae552f9266.png",
+    "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/f0d61f9e33e944bdba533b012ac91b8e.png"
+  ],
+  "maximum_concurrency": 2
+}

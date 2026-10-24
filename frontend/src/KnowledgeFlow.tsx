@@ -83,7 +83,10 @@ type Page =
   | 'answer'
   | 'history'
   | 'source'
-type Draft = { text: string; ids: string[]; all: boolean; supplement: boolean }
+import { ImageChoice } from './QuestionImages'
+import type { ImageCapabilities } from './image-domain'
+
+type Draft = { text: string; ids: string[]; all: boolean; supplement: boolean; generate_images?: boolean }
 const emptyDraft = (): Draft => ({ text: '', ids: [], all: false, supplement: true })
 const draftKey = (uid: string) => 'levelup.knowledge.draft.v1:' + uid
 function readDraft(uid: string): Draft {
@@ -100,6 +103,7 @@ function readDraft(uid: string): Draft {
         ids: d.ids,
         all: d.all === true,
         supplement: d.supplement !== false,
+        generate_images: d.generate_images === true,
       }
   } catch {}
   return emptyDraft()
@@ -113,11 +117,13 @@ export function useKnowledgeFlow({
   active,
   onSession,
   onExit,
+  imageCapabilities,
 }: {
   uid: string
   active: boolean
   onSession: (session: Session) => void
   onExit: () => void
+  imageCapabilities?: ImageCapabilities
 }) {
   const [page, setPage] = useState<Page>('library'),
     [cap, setCap] = useState<KnowledgeCapabilities>()
@@ -1416,6 +1422,7 @@ export function useKnowledgeFlow({
                   <Text>{difficulty === 'easy' ? '入门' : '进阶'}⌄</Text>
                 </Picker>
               </View>
+              <ImageChoice checked={draft.generate_images === true} onChange={value => setDraft(d => ({ ...d, generate_images: value }))} capabilities={imageCapabilities} />
             </View>
           )}
         </View>
@@ -1626,6 +1633,7 @@ export function useKnowledgeFlow({
             <View className="small muted mt">
               {count} 题 / {difficulty === 'easy' ? '入门' : '进阶'} · 本轮目标：{scope.goal}
             </View>
+            <ImageChoice checked={draft.generate_images === true} onChange={value => setDraft(d => ({ ...d, generate_images: value }))} capabilities={imageCapabilities} />
             <GroundingNotice value={scope.grounding} />
             <Button
               className="text-btn knowledge-edit-scope"
@@ -1655,6 +1663,7 @@ export function useKnowledgeFlow({
                 question_count: count,
                 difficulty,
                 supplement: scope.supplement,
+                generate_images: draft.generate_images === true,
               },
             }),
           )

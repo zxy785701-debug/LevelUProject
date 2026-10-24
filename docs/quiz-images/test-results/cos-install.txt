@@ -1,0 +1,33 @@
+Collecting cos-python-sdk-v5==1.9.44
+  Downloading cos_python_sdk_v5-1.9.44-py3-none-any.whl.metadata (1.5 kB)
+Requirement already satisfied: requests>=2.8 in d:\nbproject\levelupproject\backend\.venv\lib\site-packages (from cos-python-sdk-v5==1.9.44) (2.34.2)
+Collecting xmltodict (from cos-python-sdk-v5==1.9.44)
+  Downloading xmltodict-1.0.4-py3-none-any.whl.metadata (14 kB)
+Requirement already satisfied: six in d:\nbproject\levelupproject\backend\.venv\lib\site-packages (from cos-python-sdk-v5==1.9.44) (1.17.0)
+Collecting crcmod (from cos-python-sdk-v5==1.9.44)
+  Downloading crcmod-1.7.tar.gz (89 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting pycryptodome (from cos-python-sdk-v5==1.9.44)
+  Downloading pycryptodome-4.1.0-cp39-abi3-win_amd64.whl.metadata (6.0 kB)
+Requirement already satisfied: charset_normalizer<4,>=2 in d:\nbproject\levelupproject\backend\.venv\lib\site-packages (from requests>=2.8->cos-python-sdk-v5==1.9.44) (3.5.2)
+Requirement already satisfied: idna<4,>=2.5 in d:\nbproject\levelupproject\backend\.venv\lib\site-packages (from requests>=2.8->cos-python-sdk-v5==1.9.44) (3.20)
+Requirement already satisfied: urllib3<3,>=1.26 in d:\nbproject\levelupproject\backend\.venv\lib\site-packages (from requests>=2.8->cos-python-sdk-v5==1.9.44) (2.8.0)
+Requirement already satisfied: certifi>=2023.5.7 in d:\nbproject\levelupproject\backend\.venv\lib\site-packages (from requests>=2.8->cos-python-sdk-v5==1.9.44) (2026.7.22)
+Downloading cos_python_sdk_v5-1.9.44-py3-none-any.whl (99 kB)
+Downloading pycryptodome-4.1.0-cp39-abi3-win_amd64.whl (1.5 MB)
+   ---------------------------------------- 1.5/1.5 MB 3.4 MB/s  0:00:00
+Downloading xmltodict-1.0.4-py3-none-any.whl (13 kB)
+Building wheels for collected packages: crcmod
+  Building wheel for crcmod (pyproject.toml): started
+  Building wheel for crcmod (pyproject.toml): finished with status 'done'
+  Created wheel for crcmod: filename=crcmod-1.7-cp313-cp313-win_amd64.whl size=25445 sha256=1d17ebf312515c742330df07ec307ff4fca6fc9c35837184b45d26fb4fc157b2
+  Stored in directory: c:\users\20777\appdata\local\pip\cache\wheels\c5\b4\7d\51d3485a8022501c7f7dba78b6c945088ff93d40142c9a96f4
+Successfully built crcmod
+Installing collected packages: crcmod, xmltodict, pycryptodome, cos-python-sdk-v5
+
+Successfully installed cos-python-sdk-v5-1.9.44 crcmod-1.7 pycryptodome-4.1.0 xmltodict-1.0.4

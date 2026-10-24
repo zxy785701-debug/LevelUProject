@@ -6,6 +6,8 @@
 
 答题支持任意切题与上一题／下一题，全部作答后结算，首次答案锁定。新生成关卡每题首次答对：入门 10 XP＋2 金币，进阶 15 XP＋3 金币；历史奖励不追溯，重闯与复习不重复发奖。头像可预览、保存到相册及更换，页面返回保留滚动位置。
 
+所有闯关来源支持手动开启“生成图片”（默认关闭），使用百炼 qwen-image-2.0 生成 512×512 配图并转存腾讯云 COS。默认每人每天最多 20 次请求，额度不足或生图失败仍返回文字题目；历史、报告、重闯及错题复习复用原图。配置、运行与验收见 [题目配图说明](docs/quiz-images/README.md)。
+
 ## 本地启动（Windows PowerShell）
 
 需要 Python 3.11+、Node.js 20+、npm、MySQL 8.0+。当前验收使用 Python 3.13.9、Node.js 24.14.1、MySQL 8.0.45。前端统一维护在 `frontend/`，已移除不再使用的 `frontend-comic/` 目录。
@@ -16,13 +18,19 @@
 # 参照 backend/.env.example 配置 MySQL、微信和身份摘要密钥，保留原有 AI 配置
 
 # 一键启动：后端 + 微信小程序持续编译
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\start.ps1
+.\start.bat
 
 # 或启动后端 + H5 浏览器预览
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\start.ps1 -Target h5
+.\start.bat -Target h5
+
+# 后端 + 知识库任务 + 微信编译 + H5 预览一起启动
+.\start.bat -Target all
+
+# 只检查环境，不启动服务
+.\start.bat -Check
 ```
 
-在项目根目录执行一键启动命令，MySQL 需已运行。脚本检查依赖与端口、执行数据库迁移，再启动后端与前端；微信模式在开发者工具导入 `frontend/`。保持终端打开，按 Ctrl+C 停止本次启动的进程。已运行且包含本轮接口的后端会复用，退出时保留该已有服务；被无关或旧服务占用的端口会提示处理，不自动终止其他进程。
+也可直接双击根目录的 `start.bat`，默认启动微信开发环境；脚本从自身位置定位项目，不要求先切换终端目录。MySQL 需已运行。脚本检查依赖与端口、执行数据库迁移，再启动后端、已配置的知识库执行器与前端；微信模式在开发者工具导入 `frontend/`。保持启动窗口打开，按 Ctrl+C 停止本次启动的进程。同一项目重复启动时直接提示已有启动器，不重复启动编译或迁移；切换微信、H5 或同时启动模式前先停止原启动窗口。已运行且包含本轮接口的后端会复用，退出时保留该已有服务；被无关或旧服务占用的端口会提示处理，不自动终止其他进程。
 
 启动日志集中在 `backend/logs/` 和 `frontend/logs/`。追加 `-Check` 可仅检查依赖及端口。仍可分别运行 `scripts/start-backend.ps1` 和 `scripts/start-h5.ps1`；只想持续编译微信前端时，在 `frontend/` 执行 `npm run dev:weapp`。
 

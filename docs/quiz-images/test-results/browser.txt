@@ -1,0 +1,12 @@
+
+Running 5 tests using 1 worker
+
+(node:24484) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 e2e-images\images.spec.ts:51:5 › 配图开关→答题与坏图降级→报告→历史回看→重闯复用，320/390px (6.3s)
+  ok 2 e2e-images\images.spec.ts:88:41 › 服务未配置仍可正常出文字题目 (3.9s)
+  ok 3 e2e-images\images.spec.ts:88:41 › 额度用完仍可正常出文字题目 (3.9s)
+  ok 4 e2e-images\images.spec.ts:96:5 › 材料来源同样提交配图选择 (4.0s)
+  ok 5 e2e-images\images.spec.ts:112:5 › 知识库出题设置默认关闭，配图选择按账号保存 (1.4s)
+
+  5 passed (20.9s)

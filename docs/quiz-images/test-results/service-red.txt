@@ -1,0 +1,139 @@
+FFFFFFF                                                                  [100%]
+================================== FAILURES ===================================
+______ test_five_questions_run_concurrently_and_map_to_stable_questions _______
+
+    @pytest.mark.anyio
+    async def test_five_questions_run_concurrently_and_map_to_stable_questions():
+>       service,ledger,provider,store=setup()
+                                      ^^^^^^^
+
+tests\test_question_images_service.py:53: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+limit = 20, provider = None, values = {}
+
+    def setup(*,limit=20,provider=None,**values):
+>       from app.question_images.service import QuestionImages
+E       ModuleNotFoundError: No module named 'app.question_images.service'
+
+tests\test_question_images_service.py:44: ModuleNotFoundError
+__________ test_partial_quota_and_zero_quota_return_normal_questions __________
+
+    @pytest.mark.anyio
+    async def test_partial_quota_and_zero_quota_return_normal_questions():
+        for limit,generated in [(2,2),(0,0)]:
+>           service,ledger,provider,_=setup(limit=limit)
+                                      ^^^^^^^^^^^^^^^^^^
+
+tests\test_question_images_service.py:68: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+limit = 2, provider = None, values = {}
+
+    def setup(*,limit=20,provider=None,**values):
+>       from app.question_images.service import QuestionImages
+E       ModuleNotFoundError: No module named 'app.question_images.service'
+
+tests\test_question_images_service.py:44: ModuleNotFoundError
+_________ test_single_or_total_failure_does_not_change_text_or_retry __________
+
+    @pytest.mark.anyio
+    async def test_single_or_total_failure_does_not_change_text_or_retry():
+        for failures,expected in [(('�� 1 ������',),2),(('����',),0)]:
+>           service,ledger,provider,_=setup(provider=Provider(fail=failures))
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_question_images_service.py:78: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+limit = 20
+provider = <tests.test_question_images_service.Provider object at 0x000001BCA02092B0>
+values = {}
+
+    def setup(*,limit=20,provider=None,**values):
+>       from app.question_images.service import QuestionImages
+E       ModuleNotFoundError: No module named 'app.question_images.service'
+
+tests\test_question_images_service.py:44: ModuleNotFoundError
+_____ test_stage_timeout_returns_text_and_does_not_retry_unknown_requests _____
+
+    @pytest.mark.anyio
+    async def test_stage_timeout_returns_text_and_does_not_retry_unknown_requests():
+>       service,ledger,provider,_=setup(provider=Provider(delay=1),IMAGE_STAGE_TIMEOUT_SECONDS=.03)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_question_images_service.py:90: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+limit = 20
+provider = <tests.test_question_images_service.Provider object at 0x000001BCA32B34D0>
+values = {'IMAGE_STAGE_TIMEOUT_SECONDS': 0.03}
+
+    def setup(*,limit=20,provider=None,**values):
+>       from app.question_images.service import QuestionImages
+E       ModuleNotFoundError: No module named 'app.question_images.service'
+
+tests\test_question_images_service.py:44: ModuleNotFoundError
+_____ test_unavailable_config_deadline_and_cancelled_guard_do_not_request _____
+
+    @pytest.mark.anyio
+    async def test_unavailable_config_deadline_and_cancelled_guard_do_not_request():
+>       service,ledger,provider,_=setup(QUIZ_IMAGES_ENABLED=False)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_question_images_service.py:100: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+limit = 20, provider = None, values = {'QUIZ_IMAGES_ENABLED': False}
+
+    def setup(*,limit=20,provider=None,**values):
+>       from app.question_images.service import QuestionImages
+E       ModuleNotFoundError: No module named 'app.question_images.service'
+
+tests\test_question_images_service.py:44: ModuleNotFoundError
+____________ test_download_upload_and_ledger_failure_are_isolated _____________
+
+    @pytest.mark.anyio
+    async def test_download_upload_and_ledger_failure_are_isolated():
+        for boundary in ('download','upload','ledger'):
+>           service,ledger,provider,store=setup()
+                                          ^^^^^^^
+
+tests\test_question_images_service.py:113: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+limit = 20, provider = None, values = {}
+
+    def setup(*,limit=20,provider=None,**values):
+>       from app.question_images.service import QuestionImages
+E       ModuleNotFoundError: No module named 'app.question_images.service'
+
+tests\test_question_images_service.py:44: ModuleNotFoundError
+____________________ test_external_cancellation_propagates ____________________
+
+    @pytest.mark.anyio
+    async def test_external_cancellation_propagates():
+>       service,_,provider,_=setup(provider=Provider(delay=1))
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_question_images_service.py:125: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+limit = 20
+provider = <tests.test_question_images_service.Provider object at 0x000001BCA33A0B90>
+values = {}
+
+    def setup(*,limit=20,provider=None,**values):
+>       from app.question_images.service import QuestionImages
+E       ModuleNotFoundError: No module named 'app.question_images.service'
+
+tests\test_question_images_service.py:44: ModuleNotFoundError
+=========================== short test summary info ===========================
+FAILED tests/test_question_images_service.py::test_five_questions_run_concurrently_and_map_to_stable_questions
+FAILED tests/test_question_images_service.py::test_partial_quota_and_zero_quota_return_normal_questions
+FAILED tests/test_question_images_service.py::test_single_or_total_failure_does_not_change_text_or_retry
+FAILED tests/test_question_images_service.py::test_stage_timeout_returns_text_and_does_not_retry_unknown_requests
+FAILED tests/test_question_images_service.py::test_unavailable_config_deadline_and_cancelled_guard_do_not_request
+FAILED tests/test_question_images_service.py::test_download_upload_and_ledger_failure_are_isolated
+FAILED tests/test_question_images_service.py::test_external_cancellation_propagates
+7 failed in 0.84s

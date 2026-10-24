@@ -91,7 +91,8 @@ async def test_legacy_recovery_digest_unchanged(system):
         body = await confirmed_body(client)
         response = await client.post('/api/v1/quiz/generate', headers={'Idempotency-Key': 'legacy'}, json=body)
         assert response.status_code == 200
-        legacy = GenerateRequest.model_validate(body).model_dump(exclude={'candidate_ids'})
+        # Freeze the pre-extension request shape when checking old recovery keys.
+        legacy = GenerateRequest.model_validate(body).model_dump(exclude={'candidate_ids','generate_images'})
         with system.state.accounts.database.session() as db:
             operation = db.scalar(select(Operation).where(Operation.key == 'legacy'))
             assert operation.digest == digest(json.dumps(legacy, ensure_ascii=False, sort_keys=True))

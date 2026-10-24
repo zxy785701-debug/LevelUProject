@@ -1,0 +1,50 @@
+.....................F.................................................. [ 48%]
+........................................................................ [ 96%]
+......                                                                   [100%]
+================================== FAILURES ===================================
+__ test_scope_cannot_fabricate_evidence_and_insufficient_result_is_explicit ___
+tests\test_knowledge_scopes.py:85: in test_scope_cannot_fabricate_evidence_and_insufficient_result_is_explicit
+    value = pipeline.process(claim)
+            ^^^^^^^^^^^^^^^^^^^^^^^
+app\knowledge\scopes.py:161: in process
+    def process(self, claim): return run_model_job(lambda:self.process_async(claim))
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app\model_transport.py:22: in run_model_job
+    return asyncio.run(execute())
+           ^^^^^^^^^^^^^^^^^^^^^^
+D:\anaconda3\Lib\asyncio\runners.py:195: in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+D:\anaconda3\Lib\asyncio\runners.py:118: in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+D:\anaconda3\Lib\asyncio\base_events.py:725: in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+app\model_transport.py:20: in execute
+    try: return await operation()
+                ^^^^^^^^^^^^^^^^^
+app\knowledge\scopes.py:113: in process_async
+    outcome = await self.retriever.retrieve(claim,payload['goal'],payload['documents'],allow_web=payload['supplement'],
+app\knowledge\retrieval_store.py:23: in retrieve
+    checkpoint = await asyncio.to_thread(self.read_checkpoint,claim,'retrieval')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+D:\anaconda3\Lib\asyncio\threads.py:25: in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+D:\anaconda3\Lib\concurrent\futures\thread.py:59: in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app\knowledge\jobs.py:173: in read_checkpoint
+    row = self._active(session, claim)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app\knowledge\jobs.py:141: in _active
+    raise AppError('KNOWLEDGE_JOB_STALE', '任务已取消、过期或交由新的执行器处理', 409)
+E   app.errors.AppError: 任务已取消、过期或交由新的执行器处理
+---------------------------- Captured stderr call -----------------------------
+[levelup] app.accounts.repository ai_call operation=1f13cdac-84c6-4586-bce1-0c2ae8cfb1f6 kind=material minute_calls=1
+------------------------------ Captured log call ------------------------------
+INFO     app.accounts.repository:repository.py:438 ai_call operation=1f13cdac-84c6-4586-bce1-0c2ae8cfb1f6 kind=material minute_calls=1
+=========================== short test summary info ===========================
+FAILED tests/test_knowledge_scopes.py::test_scope_cannot_fabricate_evidence_and_insufficient_result_is_explicit
+1 failed, 149 passed in 501.16s (0:08:21)

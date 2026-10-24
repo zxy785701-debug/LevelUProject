@@ -34,6 +34,8 @@ def create_app(settings: Settings | None = None, gateway=None, accounts=None, we
                         await run_in_threadpool(app.state.accounts.cleanup)
                         await run_in_threadpool(app.state.features.cleanup)
                         await run_in_threadpool(app.state.grounding.cleanup)
+                        from .question_images.service import cleanup_images
+                        await run_in_threadpool(cleanup_images,app.state.accounts)
                     except (SQLAlchemyError, AppError):
                         pass
                 await asyncio.sleep(60)
@@ -105,6 +107,8 @@ def create_app(settings: Settings | None = None, gateway=None, accounts=None, we
     app.include_router(grounding_router)
     from .knowledge.api import router as knowledge_router
     app.include_router(knowledge_router)
+    from .question_images.api import router as image_router
+    app.include_router(image_router)
 
     return app
 

@@ -7,11 +7,14 @@ import { cancelPreparation, clearPendingStudy, generateConfirmed, getPendingStud
 import { GenerationBody, MaterialEntryHint, OperationResult, Preparation, isMaterialEntry, stageLabel } from './grounding-domain'
 import { SourceReader } from './MaterialFlow'
 import type { Data, Session } from './domain'
+import { ImageChoice } from './QuestionImages'
+import type { ImageCapabilities } from './image-domain'
 
 type Step = 'preparing' | 'confirm' | 'source' | 'generating' | 'failure'
-export function useTopicFlow({ uid, active, draft, onSession, onExit, onMaterial }: {
+export function useTopicFlow({ uid, active, draft, onSession, onExit, onMaterial, imageCapabilities, onImageChange }: {
   uid: string; active: boolean; draft: Data['draft']; onSession: (session: Session) => void
   onExit: () => void; onMaterial: (hint: MaterialEntryHint) => void
+  imageCapabilities?: ImageCapabilities; onImageChange: (value: boolean) => void
 }) {
   const [step, setStep] = useState<Step>('preparing'), [prepared, setPrepared] = useState<Preparation>()
   const [candidateIds, setCandidateIds] = useState<string[]>([])
@@ -59,7 +62,7 @@ export function useTopicFlow({ uid, active, draft, onSession, onExit, onMaterial
   }
   async function generate(body?: GenerationBody, existingKey?: string) {
     if (working.current || !body && (!prepared || !candidateIds.length)) return
-    const selection = body || { preparation_id: prepared!.id, scope_version: prepared!.version, candidate_ids: prepared!.content!.candidates.filter(c => candidateIds.includes(c.id)).map(c => c.id), question_count: draft.count, difficulty: draft.difficulty }
+    const selection = body || { preparation_id: prepared!.id, scope_version: prepared!.version, candidate_ids: prepared!.content!.candidates.filter(c => candidateIds.includes(c.id)).map(c => c.id), question_count: draft.count, difficulty: draft.difficulty, generate_images: draft.generate_images === true }
     const { request, id } = begin()
     const operation = existingKey || key.current || (key.current = operationKey())
     setStep('generating'); setProgress(undefined)
@@ -123,7 +126,7 @@ export function useTopicFlow({ uid, active, draft, onSession, onExit, onMaterial
           <View className="scope-card-copy"><View className="strong">{value.topic} · {value.domain}</View>{index === 0 && <Text className="scope-recommended">推荐</Text>}<View className="small muted scope-description">{value.description}</View></View></View>
         </Label>)}
       </CheckboxGroup>
-      {prepared.evidence.length > 0 && <Btn secondary onClick={() => setStep('source')}>预览学习资料</Btn>}<View className="small muted mt">{draft.count} 题 · {draft.difficulty === 'easy' ? '轻松入门' : '稍有挑战'}。确认后才开始出题。</View><Buddy>方向不对，可以回去补充领域或改写主题。</Buddy></View>
+      {prepared.evidence.length > 0 && <Btn secondary onClick={() => setStep('source')}>预览学习资料</Btn>}<View className="small muted mt">{draft.count} 题 · {draft.difficulty === 'easy' ? '轻松入门' : '稍有挑战'}。确认后才开始出题。</View><ImageChoice checked={draft.generate_images === true} onChange={value => { key.current = ''; onImageChange(value) }} capabilities={imageCapabilities} /><Buddy>方向不对，可以回去补充领域或改写主题。</Buddy></View>
     footer = <><Btn disabled={!candidateIds.length} onClick={() => void generate()}>确认范围，生成关卡</Btn><Btn secondary onClick={() => void back()}>返回修改主题</Btn></>
   } else if (step === 'source' && prepared) {
     body = <SourceReader title="本次取得的学习资料" segments={prepared.evidence} grounding={prepared.grounding} />

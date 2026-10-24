@@ -1,0 +1,80 @@
+{
+  "users": [
+    {
+      "user_id": "54e96af3-e2e8-4724-8454-a618d918b7ea",
+      "images": [
+        {
+          "question_id": "q1",
+          "status": "succeeded",
+          "object_key": "question-images/5f4659d7104c463eb6f44a2f917e4d65.png",
+          "image_url": "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/5f4659d7104c463eb6f44a2f917e4d65.png"
+        },
+        {
+          "question_id": "q2",
+          "status": "succeeded",
+          "object_key": "question-images/7d4a1af4f94c4f8e94915d3a4bfadd5f.png",
+          "image_url": "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/7d4a1af4f94c4f8e94915d3a4bfadd5f.png"
+        },
+        {
+          "question_id": "q3",
+          "status": "succeeded",
+          "object_key": "question-images/d9d8bc1d3b7f45f7af6be1d08b8338ca.png",
+          "image_url": "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/d9d8bc1d3b7f45f7af6be1d08b8338ca.png"
+        },
+        {
+          "question_id": "q4",
+          "status": "succeeded",
+          "object_key": "question-images/abeffd03f3a94fe4bf28ffb1d52ee884.png",
+          "image_url": "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/abeffd03f3a94fe4bf28ffb1d52ee884.png"
+        },
+        {
+          "question_id": "q5",
+          "status": "failed",
+          "object_key": "question-images/31aec367ba39467da27c24b7b6b2058f.png",
+          "image_url": null
+        }
+      ],
+      "plans": [
+        {
+          "status": "ready",
+          "scenes": {
+            "q1": "A single red apple rests on a pale wooden tabletop, with soft daylight highlighting its smooth skin and realistic texture.",
+            "q2": "A bunch of purple grapes lies on a light surface, with soft daylight showing the round, glossy fruit.",
+            "q3": "A ripe green pear sits alone on a pale tabletop, with soft daylight revealing its smooth skin and realistic texture.",
+            "q4": "A wooden table holds an apple, a pear, a banana, and a bunch of grapes arranged side by side in soft daylight.",
+            "q5": "A single yellow banana rests on a pale tabletop, with soft daylight showing its curved shape and realistic texture."
+          }
+        }
+      ],
+      "operations": [
+        {
+          "kind": "material",
+          "status": "succeeded",
+          "model_calls": 1,
+          "error_code": null
+        },
+        {
+          "kind": "quiz",
+          "status": "succeeded",
+          "model_calls": 3,
+          "error_code": null
+        }
+      ],
+      "attempts": [
+        {
+          "id": "c65831ce-19d1-4d9d-8575-510341f0d812",
+          "mode": "new",
+          "completed": false,
+          "image_urls": [
+            "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/5f4659d7104c463eb6f44a2f917e4d65.png",
+            "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/7d4a1af4f94c4f8e94915d3a4bfadd5f.png",
+            "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/d9d8bc1d3b7f45f7af6be1d08b8338ca.png",
+            "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/abeffd03f3a94fe4bf28ffb1d52ee884.png",
+            null
+          ]
+        }
+      ]
+    }
+  ],
+  "topic_failure": null
+}

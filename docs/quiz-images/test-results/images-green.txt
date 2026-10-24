@@ -1,0 +1,20 @@
+.........................................................                [100%]
+=============================== tests coverage ================================
+_______________ coverage: platform win32, python 3.13.9-final-0 _______________
+
+Name                                Stmts   Miss Branch BrPart  Cover   Missing
+-------------------------------------------------------------------------------
+app\question_images\__init__.py         0      0      0      0   100%
+app\question_images\api.py             16      0      2      0   100%
+app\question_images\config.py          59      0     16      0   100%
+app\question_images\contracts.py       26      0      6      0   100%
+app\question_images\database.py        30      0      0      0   100%
+app\question_images\provider.py        52      0     18      1    99%   57->67
+app\question_images\repository.py      92      0     24      7    94%   15->exit, 71->exit, 75->exit, 83->exit, 87->exit, 103->100, 110->100
+app\question_images\service.py        107      2     28      1    98%   62->66, 64-65
+app\question_images\storage.py         49      0      8      0   100%
+-------------------------------------------------------------------------------
+TOTAL                                 431      2    102      9    98%
+Coverage HTML written to dir ../docs/quiz-images/test-results/coverage
+Coverage JSON written to file ../docs/quiz-images/test-results/image-coverage.json
+57 passed in 72.95s (0:01:12)

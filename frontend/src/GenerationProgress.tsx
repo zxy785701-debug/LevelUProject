@@ -4,7 +4,7 @@ import { stageLabel } from './grounding-domain'
 
 export const stageProgress = (stage?: string | null) => ({
   planning: 10, retrieving: 20, searching: 25, extracting: 40,
-  summarizing: 70, generating: 65, reviewing: 90, ready: 100, succeeded: 100,
+  summarizing: 70, generating: 65, reviewing: 90, generating_images: 95, ready: 100, succeeded: 100,
 })[stage || ''] || 5
 
 export function GenerationProgress({ stage }: { stage?: string | null }) {

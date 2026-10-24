@@ -1,0 +1,30 @@
+F.                                                                       [100%]
+================================== FAILURES ===================================
+_____ test_knowledge_images_are_published_and_recovered_without_new_calls _____
+
+repo = <app.knowledge.repository.KnowledgeRepository object at 0x000002BC70E3A900>
+index = <app.knowledge.index.VectorIndex object at 0x000002BC70E3BA10>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000002BC7F40B100>
+
+    def test_knowledge_images_are_published_and_recovered_without_new_calls(repo,index,monkeypatch):
+        pipeline,claim,provider,gateway,job=setup_images(repo,index)
+        original=pipeline.complete
+        monkeypatch.setattr(pipeline,'complete',lambda *a,**kw:(_ for _ in ()).throw(RuntimeError('publication interrupted')))
+        with pytest.raises(RuntimeError):pipeline.process(claim)
+>       assert len(provider.prompts)==3
+E       assert 0 == 3
+E        +  where 0 = len([])
+E        +    where [] = <tests.test_question_images_service.Provider object at 0x000002BC7FB3E120>.prompts
+
+tests\test_question_images_knowledge.py:25: AssertionError
+---------------------------- Captured stderr call -----------------------------
+[levelup] app.accounts.repository ai_call operation=87640827-0bb3-4773-94d0-756dffff8991 kind=material minute_calls=1
+[levelup] app.accounts.repository ai_call operation=7840ce91-4770-4fb7-bd0e-fc4fdc6d878f kind=quiz minute_calls=2
+[levelup] app.accounts.repository ai_call operation=7840ce91-4770-4fb7-bd0e-fc4fdc6d878f kind=quiz minute_calls=3
+------------------------------ Captured log call ------------------------------
+INFO     app.accounts.repository:repository.py:438 ai_call operation=87640827-0bb3-4773-94d0-756dffff8991 kind=material minute_calls=1
+INFO     app.accounts.repository:repository.py:438 ai_call operation=7840ce91-4770-4fb7-bd0e-fc4fdc6d878f kind=quiz minute_calls=2
+INFO     app.accounts.repository:repository.py:438 ai_call operation=7840ce91-4770-4fb7-bd0e-fc4fdc6d878f kind=quiz minute_calls=3
+=========================== short test summary info ===========================
+FAILED tests/test_question_images_knowledge.py::test_knowledge_images_are_published_and_recovered_without_new_calls
+1 failed, 1 passed in 9.34s

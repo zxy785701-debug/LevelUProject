@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="8.056" timestamp="2026-10-24T13:31:48.689517+08:00" hostname="zxy"><testcase classname="tests.test_question_images_dispatch" name="test_stale_sql_ticket_is_rebooked_instead_of_sending_a_burst" time="0.063"><failure message="assert (0 == 2)&#10; +  where 0 = len([])">tests\test_question_images_dispatch.py:102: in test_stale_sql_ticket_is_rebooked_instead_of_sending_a_burst
+    assert len(slots)==2 and len(provider.prompts)==1 and ledger.remaining==19
+E   assert (0 == 2)
+E    +  where 0 = len([])</failure></testcase></testsuite></testsuites>

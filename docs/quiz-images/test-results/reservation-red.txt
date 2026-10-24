@@ -1,0 +1,22 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+______ test_timeout_during_reservation_does_not_charge_an_unsent_request ______
+
+    @pytest.mark.anyio
+    async def test_timeout_during_reservation_does_not_charge_an_unsent_request():
+        import time
+        service,ledger,provider,_=setup(IMAGE_STAGE_TIMEOUT_SECONDS=.01)
+        original=ledger.start
+        def slow(*args):time.sleep(.05);return original(*args)
+        ledger.start=slow
+        result=await service.attach('uid','operation',quiz_payload())
+        assert result['image_generation']['generated']==0 and not provider.prompts
+        await asyncio.sleep(.08)  # Observe the already-running reservation thread too.
+>       assert ledger.remaining==20
+E       assert 17 == 20
+E        +  where 17 = <tests.test_question_images_service.Ledger object at 0x0000026D1A510830>.remaining
+
+tests\test_question_images_service.py:147: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_question_images_service.py::test_timeout_during_reservation_does_not_charge_an_unsent_request
+1 failed in 3.11s

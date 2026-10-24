@@ -1,8 +1,9 @@
 # Windows PowerShell 5.1 / PowerShell 7 local development launcher.
 [CmdletBinding()]
 param(
-    [ValidateSet('weapp', 'h5')]
+    [ValidateSet('weapp', 'h5', 'all')]
     [string]$Target = 'weapp',
+    [string]$NodePath,
     [switch]$Check
 )
 
@@ -15,6 +16,50 @@ $pythonPath = Join-Path $backendRoot '.venv/Scripts/python.exe'
 $taroPath = Join-Path $frontendRoot 'node_modules/@tarojs/cli/bin/taro'
 $ownedProcesses = @()
 $optionalWorkerId = 0
+$launcherMutex = $null
+$launcherLockHeld = $false
+
+function Resolve-LevelUpNode([string]$ExplicitPath) {
+    $candidates = @()
+    if ($ExplicitPath) {
+        $candidates += $ExplicitPath
+    } else {
+        $command = Get-Command node.exe -ErrorAction SilentlyContinue
+        if ($command) { $candidates += $command.Source }
+        foreach ($scope in @('Machine', 'User')) {
+            $savedPath = [Environment]::GetEnvironmentVariable('Path', $scope)
+            foreach ($directory in ($savedPath -split ';')) {
+                if ($directory.Trim()) {
+                    $candidates += Join-Path ([Environment]::ExpandEnvironmentVariables($directory.Trim().Trim('"'))) 'node.exe'
+                }
+            }
+        }
+        foreach ($directory in @($env:NODE_HOME, $env:NVM_SYMLINK, "$env:ProgramFiles\nodejs", "${env:ProgramFiles(x86)}\nodejs", "$env:LOCALAPPDATA\Programs\nodejs")) {
+            if ($directory) { $candidates += Join-Path $directory 'node.exe' }
+        }
+    }
+    foreach ($candidate in ($candidates | Select-Object -Unique)) {
+        if (-not (Test-Path -LiteralPath $candidate -PathType Leaf)) { continue }
+        $versionText = & $candidate --version 2>$null
+        if ($LASTEXITCODE -eq 0 -and "$versionText" -match '^v(\d+)\.') {
+            if ([int]$Matches[1] -ge 20) {
+                $resolved = (Resolve-Path -LiteralPath $candidate).ProviderPath
+                Write-Host "Node.js: $versionText ($resolved)"
+                return $resolved
+            }
+        }
+    }
+    throw 'Node.js 20+ was not found. Install Node.js with npm, reopen this window, or pass -NodePath with the full path to node.exe.'
+}
+
+function Get-LevelUpLauncherMutexName([string]$Root) {
+    $hash = [Security.Cryptography.SHA256]::Create()
+    try {
+        $identity = [IO.Path]::GetFullPath($Root).TrimEnd('\', '/').ToUpperInvariant()
+        $digest = [BitConverter]::ToString($hash.ComputeHash([Text.Encoding]::UTF8.GetBytes($identity))).Replace('-', '')
+        return "Local\LevelUpLauncher-$digest"
+    } finally { $hash.Dispose() }
+}
 
 function Test-LocalPort([int]$Port) {
     $connection = New-Object System.Net.Sockets.TcpClient
@@ -31,7 +76,8 @@ function Test-LevelUpBackend {
             $routes -contains '/api/v1/knowledge-map' -and
             $routes -contains '/api/v1/analytics' -and
             $routes -contains '/api/v1/materials/document' -and
-            $routes -contains '/api/v1/knowledge/capabilities'
+            $routes -contains '/api/v1/knowledge/capabilities' -and
+            $routes -contains '/api/v1/quiz/images/capabilities'
     } catch { return $false }
 }
 
@@ -71,45 +117,56 @@ function Get-KnowledgeWorkerPlan {
     return $output | ConvertFrom-Json
 }
 
-foreach ($requiredPath in @($pythonPath, $taroPath, (Join-Path $backendRoot '.env'))) {
-    if (-not (Test-Path -LiteralPath $requiredPath -PathType Leaf)) {
-        throw "Missing $requiredPath. Run scripts/setup.ps1 and configure backend/.env first."
-    }
-}
-$nodePath = (Get-Command node.exe -ErrorAction Stop).Source
-$reuseBackend = Test-LocalPort 8000
-if ($reuseBackend -and -not (Test-LevelUpBackend)) {
-    throw 'Port 8000 is occupied by an outdated or unrelated service. Stop that service and run this script again.'
-}
-if ($Target -eq 'h5' -and (Test-LocalPort 10086)) {
-    throw 'Port 10086 is occupied. Stop the existing H5 preview before starting another one.'
-}
-if ($Check) {
-    Write-Host 'Dependencies and backend/.env found; required ports checked.'
-    Write-Host "Frontend target: $Target"
-    Write-Host "Reuse existing compatible backend: $reuseBackend"
-    Push-Location -LiteralPath $backendRoot
-    try { Get-KnowledgeWorkerPlan | ConvertTo-Json -Compress } finally { Pop-Location }
-    return
-}
-
-$backendLogRoot = Join-Path $backendRoot 'logs'
-$frontendLogRoot = Join-Path $frontendRoot 'logs'
-New-Item -ItemType Directory -Path $backendLogRoot, $frontendLogRoot -Force | Out-Null
-
 try {
-        Write-Host 'Applying database migrations...'
-        # PowerShell 5.1 can lose ExitCode when redirected processes are only polled.
-        # Wait here so both zero and nonzero migration exits remain distinguishable.
-        $migrationProcess = Start-LoggedProcess $pythonPath @('-m', 'app.migrate') $backendRoot (Join-Path $backendLogRoot 'start-migrate') -Wait
-        $ownedProcesses += $migrationProcess
-        if ($null -eq $migrationProcess.ExitCode) {
-            throw "Unable to read the migration process exit code. Read $backendLogRoot/start-migrate.log and start-migrate.error.log."
+    if (-not $Check) {
+        $launcherMutex = New-Object Threading.Mutex($false, (Get-LevelUpLauncherMutexName $projectRoot))
+        try { $launcherLockHeld = $launcherMutex.WaitOne(0) }
+        catch [Threading.AbandonedMutexException] { $launcherLockHeld = $true }
+        if (-not $launcherLockHeld) {
+            Write-Host 'LevelUp is already running for this project. Use the existing launcher window. To change target, stop it with Ctrl+C first.'
+            return
         }
-        if ($migrationProcess.ExitCode -ne 0) {
-            throw "Database migration failed (exit $($migrationProcess.ExitCode)). Check MySQL and backend/.env. Details: $backendLogRoot/start-migrate.error.log"
+    }
+    foreach ($requiredPath in @($pythonPath, $taroPath, (Join-Path $backendRoot '.env'))) {
+        if (-not (Test-Path -LiteralPath $requiredPath -PathType Leaf)) {
+            throw "Missing $requiredPath. Run scripts/setup.ps1 and configure backend/.env first."
         }
-        $ownedProcesses = @($ownedProcesses | Where-Object { $_.Id -ne $migrationProcess.Id })
+    }
+    $nodeExecutable = Resolve-LevelUpNode $NodePath
+    # Child tools inherit this process-local PATH; saved system/user settings stay intact.
+    $env:Path = (Split-Path -Parent $nodeExecutable) + ';' + $env:Path
+    $reuseBackend = Test-LocalPort 8000
+    if ($reuseBackend -and -not (Test-LevelUpBackend)) {
+        throw 'Port 8000 is occupied by an outdated or unrelated service. Stop that service and run this script again.'
+    }
+    if ($Target -in @('h5', 'all') -and (Test-LocalPort 10086)) {
+        throw 'Port 10086 is occupied. Stop the existing H5 preview before starting another one.'
+    }
+    if ($Check) {
+        Write-Host 'Dependencies and backend/.env found; required ports checked.'
+        Write-Host "Frontend target: $Target"
+        Write-Host "Reuse existing compatible backend: $reuseBackend"
+        Push-Location -LiteralPath $backendRoot
+        try { Get-KnowledgeWorkerPlan | ConvertTo-Json -Compress } finally { Pop-Location }
+        return
+    }
+
+    $backendLogRoot = Join-Path $backendRoot 'logs'
+    $frontendLogRoot = Join-Path $frontendRoot 'logs'
+    New-Item -ItemType Directory -Path $backendLogRoot, $frontendLogRoot -Force | Out-Null
+
+    Write-Host 'Applying database migrations...'
+    # PowerShell 5.1 can lose ExitCode when redirected processes are only polled.
+    # Wait here so both zero and nonzero migration exits remain distinguishable.
+    $migrationProcess = Start-LoggedProcess $pythonPath @('-m', 'app.migrate') $backendRoot (Join-Path $backendLogRoot 'start-migrate') -Wait
+    $ownedProcesses += $migrationProcess
+    if ($null -eq $migrationProcess.ExitCode) {
+        throw "Unable to read the migration process exit code. Read $backendLogRoot/start-migrate.log and start-migrate.error.log."
+    }
+    if ($migrationProcess.ExitCode -ne 0) {
+        throw "Database migration failed (exit $($migrationProcess.ExitCode)). Check MySQL and backend/.env. Details: $backendLogRoot/start-migrate.error.log"
+    }
+    $ownedProcesses = @($ownedProcesses | Where-Object { $_.Id -ne $migrationProcess.Id })
     if ($reuseBackend) {
         Write-Host 'Using the existing compatible LevelUp backend on port 8000.'
     } else {
@@ -146,13 +203,18 @@ try {
         Write-Host "Knowledge executor inactive: $($knowledgePlan.reason_code)"
     }
 
-    $frontendProcess = Start-LoggedProcess $nodePath @("`"$taroPath`"", 'build', '--type', $Target, '--watch') $frontendRoot (Join-Path $frontendLogRoot "start-$Target")
-    $ownedProcesses += $frontendProcess
+    $frontendTargets = @($Target)
+    if ($Target -eq 'all') { $frontendTargets = @('weapp', 'h5') }
+    foreach ($frontendTarget in $frontendTargets) {
+        $frontendProcess = Start-LoggedProcess $nodeExecutable @("`"$taroPath`"", 'build', '--type', $frontendTarget, '--watch') $frontendRoot (Join-Path $frontendLogRoot "start-$frontendTarget")
+        $ownedProcesses += $frontendProcess
+    }
     Write-Host ''
     Write-Host 'API documentation: http://127.0.0.1:8000/docs'
-    if ($Target -eq 'weapp') {
+    if ($Target -in @('weapp', 'all')) {
         Write-Host "WeChat compilation is starting. Import $frontendRoot into WeChat DevTools."
-    } else {
+    }
+    if ($Target -in @('h5', 'all')) {
         Write-Host 'H5 preview (available after compilation): http://127.0.0.1:10086'
     }
     Write-Host 'Keep this terminal open. Press Ctrl+C to stop the processes started here.'
@@ -163,5 +225,7 @@ try {
     }
 } finally {
     for ($index = $ownedProcesses.Count - 1; $index -ge 0; $index--) { Stop-OwnedProcess $ownedProcesses[$index] }
-    Write-Host 'Stopped processes started by this launcher.'
+    if ($ownedProcesses.Count) { Write-Host 'Stopped processes started by this launcher.' }
+    if ($launcherLockHeld) { $launcherMutex.ReleaseMutex() }
+    if ($launcherMutex) { $launcherMutex.Dispose() }
 }

@@ -1,0 +1,136 @@
+ M .gitignore
+ M backend/.env.example
+ M backend/app/accounts/repository.py
+ M backend/app/llm.py
+ M backend/app/main.py
+ M backend/app/materials/services.py
+ M backend/app/quiz_grounding/generation.py
+ M backend/app/quiz_grounding/reporting.py
+ M backend/app/quiz_grounding/snapshots.py
+ M backend/migrations/env.py
+ M backend/requirements.in
+ M backend/requirements.lock
+ M backend/tests/test_grounding_reports.py
+ M docs/quiz-grounding/account-screenshots/R04-320.png
+ M docs/quiz-grounding/account-screenshots/R04-390.png
+ M docs/quiz-grounding/account-screenshots/R05-390.png
+ M docs/quiz-grounding/account-screenshots/R06-320.png
+ M docs/quiz-grounding/account-screenshots/R06-390.png
+ M docs/quiz-grounding/account-screenshots/R07-320.png
+ M docs/quiz-grounding/account-screenshots/R07-390.png
+ M docs/quiz-grounding/screenshots/scope-confirmation.png
+ M docs/quiz-grounding/screenshots/scope-unverified-320.png
+ M docs/quiz-grounding/screenshots/source-details-320.png
+ M frontend/e2e-accounts/interactions.spec.ts
+ M frontend/e2e-accounts/materials.spec.ts
+ M frontend/e2e-accounts/quiz-document.spec.ts
+ M frontend/src/MaterialFlow.tsx
+ M frontend/src/PersonalAnalysis.tsx
+ M frontend/src/account.tsx
+ M frontend/src/api.ts
+ M frontend/src/components.tsx
+ M frontend/src/features.scss
+ M frontend/src/grounding-domain.ts
+ M frontend/src/pages/index/index.tsx
+ D openspec/changes/improve-quiz-grounding/.openspec.yaml
+ D openspec/changes/improve-quiz-grounding/design.md
+ D openspec/changes/improve-quiz-grounding/proposal.md
+ D openspec/changes/improve-quiz-grounding/specs/learning-scope-confirmation/spec.md
+ D openspec/changes/improve-quiz-grounding/specs/quiz-evidence-grounding/spec.md
+ D openspec/changes/improve-quiz-grounding/specs/quiz-generation-reliability/spec.md
+ D openspec/changes/improve-quiz-grounding/tasks.md
+ M prototype/08-visual-directions.html
+ M prototype/assets/visual-directions.css
+ M prototype/assets/visual-directions.js
+ M prototype/qa/visual-directions/capture.cjs
+ M scripts/start.ps1
+?? backend/app/knowledge/
+?? backend/app/model_transport.py
+?? backend/migrations/versions/007_personal_knowledge.py
+?? backend/scripts/live_period_smoke.py
+?? backend/test-results/analysis-browser.json
+?? backend/test-results/analysis-coverage.xml
+?? backend/test-results/analysis-regression.xml
+?? backend/test-results/atlas-wxss.json
+?? backend/test-results/period-api-roundtrip.xml
+?? backend/test-results/period-claims-green.xml
+?? backend/test-results/period-claims-red.xml
+?? backend/test-results/period-reliability-green.xml
+?? backend/test-results/period-reliability-red.xml
+?? backend/test-results/period-synthetic-smoke.json
+?? backend/tests/knowledge.coveragerc
+?? backend/tests/knowledge_support.py
+?? backend/tests/run_knowledge_live.py
+?? backend/tests/serve_knowledge_e2e.py
+?? backend/tests/test_knowledge_agent.py
+?? backend/tests/test_knowledge_answering.py
+?? backend/tests/test_knowledge_api.py
+?? backend/tests/test_knowledge_boundaries.py
+?? backend/tests/test_knowledge_budgets.py
+?? backend/tests/test_knowledge_cleanup.py
+?? backend/tests/test_knowledge_config.py
+?? backend/tests/test_knowledge_database.py
+?? backend/tests/test_knowledge_embeddings.py
+?? backend/tests/test_knowledge_frontend_contract.py
+?? backend/tests/test_knowledge_import_pipeline.py
+?? backend/tests/test_knowledge_import_submission.py
+?? backend/tests/test_knowledge_index.py
+?? backend/tests/test_knowledge_isolation.py
+?? backend/tests/test_knowledge_jobs.py
+?? backend/tests/test_knowledge_launcher.py
+?? backend/tests/test_knowledge_learning.py
+?? backend/tests/test_knowledge_model_transport.py
+?? backend/tests/test_knowledge_parsing.py
+?? backend/tests/test_knowledge_question_history.py
+?? backend/tests/test_knowledge_questions.py
+?? backend/tests/test_knowledge_quiz_generation.py
+?? backend/tests/test_knowledge_quiz_publication.py
+?? backend/tests/test_knowledge_remaining_boundaries.py
+?? backend/tests/test_knowledge_repository.py
+?? backend/tests/test_knowledge_retrieval_store.py
+?? backend/tests/test_knowledge_scope_boundaries.py
+?? backend/tests/test_knowledge_scopes.py
+?? backend/tests/test_knowledge_snapshots.py
+?? backend/tests/test_knowledge_storage_boundaries.py
+?? backend/tests/test_knowledge_worker.py
+?? backend/tests/test_knowledge_worker_boundaries.py
+?? backend/tests/test_period_reliability.py
+?? docs/knowledge-prototype/
+?? docs/knowledge-rag/
+?? docs/quiz-grounding/screenshots/knowledge-atlas-1000-320.png
+?? docs/quiz-grounding/screenshots/knowledge-atlas-390.png
+?? docs/quiz-grounding/screenshots/period-retry-390.png
+?? "docs/quiz-grounding/\347\237\245\350\257\206\345\234\260\345\233\276\344\270\216\345\221\250\346\234\237\346\212\245\345\221\212\344\277\256\345\244\215-20261016.md"
+?? docs/quiz-images/
+?? frontend/e2e-grounding/analysis.spec.ts
+?? frontend/e2e-knowledge-prototype/
+?? frontend/e2e-knowledge/
+?? frontend/playwright.knowledge-prototype-regression.config.ts
+?? frontend/playwright.knowledge-prototype.config.ts
+?? frontend/playwright.knowledge.config.ts
+?? frontend/scripts/raster-knowledge-icons.cjs
+?? frontend/src/KnowledgeAtlas.tsx
+?? frontend/src/KnowledgeFlow.tsx
+?? frontend/src/KnowledgePresentation.tsx
+?? frontend/src/assets/knowledge-icons/
+?? frontend/src/knowledge-api.ts
+?? frontend/src/knowledge-domain.ts
+?? frontend/src/knowledge-folders.ts
+?? frontend/src/knowledge-map.ts
+?? frontend/src/knowledge-prototype.scss
+?? frontend/src/knowledge-tasks.ts
+?? frontend/src/knowledge.scss
+?? frontend/tests/knowledge-api.test.ts
+?? frontend/tests/knowledge-folders.test.ts
+?? frontend/tests/knowledge-map.test.ts
+?? openspec/changes/add-personal-knowledge-rag/
+?? openspec/changes/add-question-images/
+?? openspec/changes/archive/2026-10-18-improve-quiz-grounding/
+?? openspec/specs/learning-scope-confirmation/
+?? openspec/specs/quiz-evidence-grounding/
+?? openspec/specs/quiz-generation-reliability/
+?? prototype/qa/blue-gradients-strong/
+?? prototype/qa/blue-gradients/
+?? scripts/start-knowledge.ps1
+?? scripts/tests/knowledge-launcher.ps1
+?? scripts/tests/knowledge-optional.ps1

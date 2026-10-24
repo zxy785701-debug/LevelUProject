@@ -1,0 +1,95 @@
+{
+  "image_calls": [
+    {
+      "prompt": "Square educational illustration, one clear visual scene, simple background. A bunch of purple grapes lies on a light ceramic plate, soft natural light, visible round fruit and a few green leaves beside it. Natural proportions, clear details. No text, letters, labels, captions or watermark.",
+      "http_status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "content_encoding": "gzip",
+      "wire_bytes": 356,
+      "json_bytes": 425,
+      "root_keys": [
+        "request_id",
+        "output",
+        "usage"
+      ],
+      "code": null,
+      "request_id": "55891204-f74a-9d69-a4bc-6b7acf55b8af",
+      "message": "",
+      "output_keys": [
+        "choices"
+      ],
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "role": "assistant",
+          "content_keys": [
+            [
+              "image"
+            ]
+          ],
+          "image_hosts": [
+            "dashscope-0484.oss-accelerate.aliyuncs.com"
+          ]
+        }
+      ],
+      "elapsed_seconds": 24.5
+    },
+    {
+      "prompt": "Square educational illustration, one clear visual scene, simple background. A single red apple rests on a pale wooden tabletop, soft daylight from a nearby window, realistic skin texture and a small green leaf on the stem. Natural proportions, clear details. No text, letters, labels, captions or watermark.",
+      "http_status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "content_encoding": "gzip",
+      "wire_bytes": 351,
+      "json_bytes": 423,
+      "root_keys": [
+        "request_id",
+        "output",
+        "usage"
+      ],
+      "code": null,
+      "request_id": "5b65ec1e-9f22-92bd-b000-613ea9ac2fe2",
+      "message": "",
+      "output_keys": [
+        "choices"
+      ],
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "role": "assistant",
+          "content_keys": [
+            [
+              "image"
+            ]
+          ],
+          "image_hosts": [
+            "dashscope-0484.oss-accelerate.aliyuncs.com"
+          ]
+        }
+      ],
+      "elapsed_seconds": 19.24
+    },
+    {
+      "prompt": "Square educational illustration, one clear visual scene, simple background. A yellow banana, a bright orange, and a green pear are arranged side by side on a clean wooden surface under soft daylight. Natural proportions, clear details. No text, letters, labels, captions or watermark.",
+      "http_status": 429,
+      "content_type": "application/json",
+      "content_encoding": "gzip",
+      "elapsed_seconds": 13.96
+    },
+    {
+      "prompt": "Square educational illustration, one clear visual scene, simple background. A yellow banana and a bunch of purple grapes rest apart on a light wooden table, soft daylight, clearly separate fruits. Natural proportions, clear details. No text, letters, labels, captions or watermark.",
+      "http_status": 429,
+      "content_type": "application/json",
+      "content_encoding": "gzip",
+      "elapsed_seconds": 9.41
+    },
+    {
+      "prompt": "Square educational illustration, one clear visual scene, simple background. A whole orange and a whole pear sit next to each other on a pale tabletop, soft daylight showing their distinct shapes and colors. Natural proportions, clear details. No text, letters, labels, captions or watermark.",
+      "http_status": 429,
+      "content_type": "application/json",
+      "content_encoding": "gzip",
+      "elapsed_seconds": 4.82
+    }
+  ],
+  "maximum_concurrency": 5,
+  "downloads": []
+}

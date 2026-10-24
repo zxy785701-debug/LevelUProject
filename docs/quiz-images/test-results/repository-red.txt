@@ -1,0 +1,124 @@
+FFFFFFF                                                                  [100%]
+================================== FAILURES ===================================
+_____ test_migration_and_first_call_persists_across_repository_instances ______
+
+system = <fastapi.applications.FastAPI object at 0x00000193B1D09090>
+
+    def test_migration_and_first_call_persists_across_repository_instances(system):
+>       a,uid,repo=setup(system)
+                   ^^^^^^^^^^^^^
+
+tests\test_question_images_repository.py:19: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+system = <fastapi.applications.FastAPI object at 0x00000193B1D09090>, limit = 20
+
+    def setup(system, limit=20):
+        from app.question_images.config import ImageSettings
+>       from app.question_images.repository import ImageRepository
+E       ModuleNotFoundError: No module named 'app.question_images.repository'
+
+tests\test_question_images_repository.py:11: ModuleNotFoundError
+_________________ test_success_failure_and_account_isolation __________________
+
+system = <fastapi.applications.FastAPI object at 0x00000193B1DDE210>
+
+    def test_success_failure_and_account_isolation(system):
+>       a,uid,repo=setup(system)
+                   ^^^^^^^^^^^^^
+
+tests\test_question_images_repository.py:35: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+system = <fastapi.applications.FastAPI object at 0x00000193B1DDE210>, limit = 20
+
+    def setup(system, limit=20):
+        from app.question_images.config import ImageSettings
+>       from app.question_images.repository import ImageRepository
+E       ModuleNotFoundError: No module named 'app.question_images.repository'
+
+tests\test_question_images_repository.py:11: ModuleNotFoundError
+_______________ test_concurrent_calls_never_exceed_daily_limit ________________
+
+system = <fastapi.applications.FastAPI object at 0x00000193B2DD5A90>
+
+    def test_concurrent_calls_never_exceed_daily_limit(system):
+>       _,uid,repo=setup(system,2)
+                   ^^^^^^^^^^^^^^^
+
+tests\test_question_images_repository.py:50: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+system = <fastapi.applications.FastAPI object at 0x00000193B2DD5A90>, limit = 2
+
+    def setup(system, limit=20):
+        from app.question_images.config import ImageSettings
+>       from app.question_images.repository import ImageRepository
+E       ModuleNotFoundError: No module named 'app.question_images.repository'
+
+tests\test_question_images_repository.py:11: ModuleNotFoundError
+__________ test_shanghai_midnight_and_recovery_do_not_charge_new_day __________
+
+system = <fastapi.applications.FastAPI object at 0x00000193B2DD7890>
+
+    def test_shanghai_midnight_and_recovery_do_not_charge_new_day(system):
+>       a,uid,repo=setup(system)
+                   ^^^^^^^^^^^^^
+
+tests\test_question_images_repository.py:59: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+system = <fastapi.applications.FastAPI object at 0x00000193B2DD7890>, limit = 20
+
+    def setup(system, limit=20):
+        from app.question_images.config import ImageSettings
+>       from app.question_images.repository import ImageRepository
+E       ModuleNotFoundError: No module named 'app.question_images.repository'
+
+tests\test_question_images_repository.py:11: ModuleNotFoundError
+___ test_delete_account_preserves_quota_and_schedules_all_reserved_objects ____
+
+system = <fastapi.applications.FastAPI object at 0x00000193B1DDCF50>
+
+    def test_delete_account_preserves_quota_and_schedules_all_reserved_objects(system):
+>       from app.question_images.database import ImageAsset
+E       ModuleNotFoundError: No module named 'app.question_images.database'
+
+tests\test_question_images_repository.py:72: ModuleNotFoundError
+___________ test_cleanup_retries_and_does_not_remove_active_images ____________
+
+system = <fastapi.applications.FastAPI object at 0x00000193B1D0BED0>
+
+    def test_cleanup_retries_and_does_not_remove_active_images(system):
+>       from app.question_images.database import ImageAsset
+E       ModuleNotFoundError: No module named 'app.question_images.database'
+
+tests\test_question_images_repository.py:85: ModuleNotFoundError
+________________ test_ledger_rejects_invalid_and_deleted_users ________________
+
+system = <fastapi.applications.FastAPI object at 0x00000193B2DD4B90>
+
+    def test_ledger_rejects_invalid_and_deleted_users(system):
+>       a,uid,repo=setup(system)
+                   ^^^^^^^^^^^^^
+
+tests\test_question_images_repository.py:110: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+system = <fastapi.applications.FastAPI object at 0x00000193B2DD4B90>, limit = 20
+
+    def setup(system, limit=20):
+        from app.question_images.config import ImageSettings
+>       from app.question_images.repository import ImageRepository
+E       ModuleNotFoundError: No module named 'app.question_images.repository'
+
+tests\test_question_images_repository.py:11: ModuleNotFoundError
+=========================== short test summary info ===========================
+FAILED tests/test_question_images_repository.py::test_migration_and_first_call_persists_across_repository_instances
+FAILED tests/test_question_images_repository.py::test_success_failure_and_account_isolation
+FAILED tests/test_question_images_repository.py::test_concurrent_calls_never_exceed_daily_limit
+FAILED tests/test_question_images_repository.py::test_shanghai_midnight_and_recovery_do_not_charge_new_day
+FAILED tests/test_question_images_repository.py::test_delete_account_preserves_quota_and_schedules_all_reserved_objects
+FAILED tests/test_question_images_repository.py::test_cleanup_retries_and_does_not_remove_active_images
+FAILED tests/test_question_images_repository.py::test_ledger_rejects_invalid_and_deleted_users
+7 failed in 5.02s

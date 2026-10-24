@@ -1,0 +1,32 @@
+
+> levelup-mini@1.0.0 test
+> vitest run --reporter=dot tests/question-images.test.ts
+
+
+ RUN  v3.2.7 D:/nbproject/LevelUpProject/frontend
+
+
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/question-images.test.ts [ tests/question-images.test.ts ]
+Error: Cannot find module '../src/image-api' imported from 'D:/nbproject/LevelUpProject/frontend/tests/question-images.test.ts'
+ ❯ tests/question-images.test.ts:6:1
+      4| import { saveCredentials } from '../src/credentials'
+      5| import { RequestScope } from '../src/api'
+      6| import { getImageCapabilities } from '../src/image-api'
+       | ^
+      7| import { imageAvailability, imageGenerationMessage } from '../src/imag…
+      8| import { savePendingStudy, getPendingStudy, generateConfirmed } from '…
+
+Caused by: Error: Failed to load url ../src/image-api (resolved id: ../src/image-api) in D:/nbproject/LevelUpProject/frontend/tests/question-images.test.ts. Does the file exist?
+ ❯ loadAndTransform node_modules/vitest/node_modules/vite/dist/node/chunks/config.js:22907:33
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  no tests
+   Start at  12:20:09
+   Duration  675ms (transform 58ms, setup 0ms, collect 0ms, tests 0ms, environment 0ms, prepare 208ms)
+

@@ -31,6 +31,7 @@ export interface KnowledgeScope {
   evidence: EvidenceSegment[]; grounding: Grounding | null; recommended_candidate_ids: string[]; created_at: string; expires_at: string
 }
 export interface KnowledgeQuizSelection {
+  generate_images?: boolean
   scope_id: string; scope_version: number; candidate_ids: string[]; question_count: 3 | 5; difficulty: 'easy' | 'medium'; supplement: boolean
 }
 export interface KnowledgeAnswer {
@@ -64,6 +65,6 @@ export function knowledgeFileProblem(name: string, size: number) {
   if (!size || size > 20 * 1024 * 1024) return '请选择非空且不超过 20 MB 的文件。'
   return ''
 }
-export const knowledgeStage = (stage: string) => ({ queued: '正在排队', starting: '开始处理', parsing: '正在读取文档', parsed: '原文已保存', split: '分块已完成', embedding: '正在建立资料索引', retrieving: '正在检索所选资料', retrieved: '依据已准备', planning: '正在规划资料获取', searching: '正在搜索公开资料', extracting: '正在读取公开网页', summarizing: '正在整理学习主题', scope_ready: '范围已整理', answering: '正在生成回答', checking_answer: '正在核对回答依据', generating: '正在准备题目', reviewing: '正在审核题目', publishing: '正在保存结果', waiting_ai: '正在等待学习服务额度', succeeded: '处理完成', failed: '本次处理未完成', cancelled: '已取消处理' })[stage] || '正在处理'
+export const knowledgeStage = (stage: string) => ({ queued: '正在排队', starting: '开始处理', parsing: '正在读取文档', parsed: '原文已保存', split: '分块已完成', embedding: '正在建立资料索引', retrieving: '正在检索所选资料', retrieved: '依据已准备', planning: '正在规划资料获取', searching: '正在搜索公开资料', extracting: '正在读取公开网页', summarizing: '正在整理学习主题', scope_ready: '范围已整理', answering: '正在生成回答', checking_answer: '正在核对回答依据', generating: '正在准备题目', generating_images: '正在生成题目配图', reviewing: '正在审核题目', publishing: '正在保存结果', waiting_ai: '正在等待学习服务额度', succeeded: '处理完成', failed: '本次处理未完成', cancelled: '已取消处理' })[stage] || '正在处理'
 export const knowledgeStatus = (status: KnowledgeDocument['status']) => ({ ready: '已就绪', processing: '处理中', failed: '处理失败', cancelled: '已取消', deleted: '已删除' })[status]
 export const knowledgeUnavailable = (code?: string | null) => ({ KNOWLEDGE_DISABLED: '个人知识库尚未启用，现有学习功能可继续使用。', EMBEDDING_NOT_CONFIGURED: '资料处理服务尚未配置，请完成服务配置后再添加资料。', KNOWLEDGE_WORKER_UNAVAILABLE: '知识库处理服务暂未运行，请稍后重试。', KNOWLEDGE_MIGRATION_REQUIRED: '知识库数据服务需要更新，请完成更新后重试。', KNOWLEDGE_CONFIGURATION_INVALID: '知识库配置需要检查，现有学习功能可继续使用。', KNOWLEDGE_DEPENDENCY_UNAVAILABLE: '知识库处理服务尚未就绪，请稍后重试。' })[code || ''] || '知识库服务暂未就绪，请稍后重试。'

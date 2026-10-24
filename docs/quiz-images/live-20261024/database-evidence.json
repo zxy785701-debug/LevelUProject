@@ -1,0 +1,89 @@
+{
+  "users": [
+    {
+      "user_id": "262d18a4-4a91-47e9-aefc-ef1cb7824a85",
+      "images": [
+        {
+          "question_id": "apple",
+          "status": "succeeded",
+          "object_key": "question-images/8b6aebb055a24a44b6abd8879f9280a3.png",
+          "image_url": "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/8b6aebb055a24a44b6abd8879f9280a3.png"
+        }
+      ],
+      "plans": [
+        {
+          "status": "ready",
+          "scenes": {
+            "apple": "A single red apple rests on a pale wooden tabletop. Soft daylight falls across its smooth, realistic skin."
+          }
+        }
+      ],
+      "operations": [],
+      "attempts": []
+    },
+    {
+      "user_id": "785bb5fd-20fc-4b69-9b94-24aee1b26733",
+      "images": [
+        {
+          "question_id": "q2",
+          "status": "succeeded",
+          "object_key": "question-images/dbee537f5c1047b788877f5189fa2436.png",
+          "image_url": "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/dbee537f5c1047b788877f5189fa2436.png"
+        },
+        {
+          "question_id": "q1",
+          "status": "succeeded",
+          "object_key": "question-images/798e1571fcb745ab8929787649740372.png",
+          "image_url": "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/798e1571fcb745ab8929787649740372.png"
+        }
+      ],
+      "plans": [
+        {
+          "status": "ready",
+          "scenes": {
+            "q1": "A single red apple rests on a pale wooden tabletop, soft daylight from a nearby window, realistic skin texture and a small green leaf on the stem.",
+            "q2": "A bunch of purple grapes lies on a light ceramic plate, soft natural light, visible round fruit and a few green leaves beside it.",
+            "q3": "A yellow banana, a bright orange, and a green pear are arranged side by side on a clean wooden surface under soft daylight.",
+            "q4": "A whole orange and a whole pear sit next to each other on a pale tabletop, soft daylight showing their distinct shapes and colors.",
+            "q5": "A yellow banana and a bunch of purple grapes rest apart on a light wooden table, soft daylight, clearly separate fruits."
+          }
+        }
+      ],
+      "operations": [
+        {
+          "kind": "material",
+          "status": "succeeded",
+          "model_calls": 1,
+          "error_code": null
+        },
+        {
+          "kind": "quiz",
+          "status": "succeeded",
+          "model_calls": 3,
+          "error_code": null
+        }
+      ],
+      "attempts": [
+        {
+          "id": "4395bab4-c5a9-4ceb-a4a1-3c0e92821654",
+          "mode": "new",
+          "completed": false,
+          "image_urls": [
+            "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/798e1571fcb745ab8929787649740372.png",
+            "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/dbee537f5c1047b788877f5189fa2436.png",
+            null,
+            null,
+            null
+          ]
+        }
+      ]
+    }
+  ],
+  "topic_failure": {
+    "operation_id": "7dbad105-2a79-4b71-8380-3a1f11d87348",
+    "status": "failed",
+    "error_code": "QUIZ_REVIEW_FAILED",
+    "model_calls": 6,
+    "image_calls": 0
+  }
+}

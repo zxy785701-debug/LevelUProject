@@ -1,0 +1,16 @@
+{
+  "collected": 710,
+  "verified_unique": 710,
+  "all_final_outcomes_passed": true,
+  "initial_failures": [
+    "tests.test_knowledge_scopes::test_scope_cannot_fabricate_evidence_and_insufficient_result_is_explicit"
+  ],
+  "reruns": [
+    {
+      "case": "tests.test_knowledge_scopes::test_scope_cannot_fabricate_evidence_and_insufficient_result_is_explicit",
+      "passed": true,
+      "evidence": "lease-rerun.xml"
+    }
+  ],
+  "illustration_cases": 78
+}

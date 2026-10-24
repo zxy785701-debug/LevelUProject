@@ -1,6 +1,8 @@
 export type Kind = 'single' | 'multi' | 'judge'
 import type { Grounding, LearningScope, QuizSource, Verification } from './grounding-domain'
+import type { ImageGeneration } from './image-domain'
 export interface Question {
+  image_url?: string | null
   id: string
   type: Kind
   stem: string
@@ -13,6 +15,7 @@ export interface Question {
   origin?: { quiz_id: string; question_id: string; title: string; learning_scope?: LearningScope | null } | null
 }
 export interface Quiz {
+  image_generation?: ImageGeneration | null
   id: string
   created_at: string
   source_text: string
@@ -74,7 +77,7 @@ export interface Data {
   activeId?: string
   wrongs: Record<string, WrongState>
   welcome: boolean
-  draft: { text: string; count: 3 | 5; difficulty: 'easy' | 'medium' }
+  draft: { text: string; count: 3 | 5; difficulty: 'easy' | 'medium'; generate_images?: boolean }
   answerDrafts?: Record<string, Record<string, string[]>>
 }
 export const emptyData = (): Data => ({

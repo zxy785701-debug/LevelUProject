@@ -1,0 +1,7 @@
+An old backend without the images endpoint must not be reused.
+At D:\nbproject\LevelUpProject\scripts\verify-image-launcher.ps1:23 char:28
++ ... pBackend) { throw 'An old backend without the images endpoint must no ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (An old backend ... not be reused.:String) [], RuntimeException
+    + FullyQualifiedErrorId : An old backend without the images endpoint must not be reused.
+ 

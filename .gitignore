@@ -43,5 +43,7 @@ docs/quiz-grounding/playwright-report/
 docs/quiz-grounding/e2e-results/
 docs/quiz-grounding/account-playwright-report/
 docs/quiz-grounding/account-e2e-results/
+docs/quiz-images/playwright-report/
+docs/quiz-images/**/browser-results/
 # Legacy environment diagnostics contain local database credentials.
 backend/test-results/multisource/dependencies.txt

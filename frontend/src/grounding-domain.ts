@@ -20,8 +20,8 @@ export interface ScopeCandidate { id: string; topic: string; domain: string; des
 export type PreparationStatus = 'running' | 'ready' | 'failed' | 'cancelled' | 'expired'
 export interface Preparation { id: string; version: number; input_text: string; status: PreparationStatus; stage: string; content?: { candidates: ScopeCandidate[] } | null; grounding?: Grounding | null; evidence: EvidenceSegment[]; error_code?: string | null; retry_after_seconds: number; created_at: string; expires_at: string }
 export interface MaterialEntryHint { kind: 'material_entry'; url: string; learning_instruction?: string | null; message: string }
-export interface TopicSelection { preparation_id: string; scope_version: number; candidate_ids?: string[]; candidate_id?: string; focus_id?: string; scope_point_ids?: string[]; question_count: 3 | 5; difficulty: 'easy' | 'medium' }
-export interface MaterialSelection { material_id: string; point_ids: string[]; supplement: boolean; question_count: 3 | 5; difficulty: 'easy' | 'medium'; execution: 'background' }
+export interface TopicSelection { preparation_id: string; scope_version: number; candidate_ids?: string[]; candidate_id?: string; focus_id?: string; scope_point_ids?: string[]; question_count: 3 | 5; difficulty: 'easy' | 'medium'; generate_images?: boolean }
+export interface MaterialSelection { material_id: string; point_ids: string[]; supplement: boolean; question_count: 3 | 5; difficulty: 'easy' | 'medium'; execution: 'background'; generate_images?: boolean }
 export type GenerationBody = TopicSelection | MaterialSelection
 export interface GenerationOperation { kind: 'generation_operation'; key: string; status: 'running' | 'succeeded' | 'failed'; stage: string; retry_after_seconds: number; deadline: string; error_code?: string | null }
 export interface OperationResult { status: 'running' | 'succeeded' | 'failed'; stage?: string | null; retry_after_seconds?: number; deadline?: string | null; error_code?: string | null; result?: Session | null }
@@ -36,7 +36,7 @@ export function isSession(value: unknown): value is Session {
   return !!v && typeof v.id === 'string' && !!v.quiz && Array.isArray(v.quiz.questions) && Array.isArray(v.answers)
 }
 export const groundingLabel = (value?: Grounding | Verification | null) => !value || value.status === 'unknown' ? '未记录核实状态' : ({ source_backed: '有来源支持', unverified: '未联网核实', material_only: '仅依据所选材料' })[value.status]
-export const stageLabel = (stage?: string | null) => ({ planning: '正在规划资料获取', retrieving: '正在准备学习依据', searching: '正在搜索相关资料', extracting: '正在读取网页正文', summarizing: '正在整理待确认范围', waiting_rate_limit: '正在等待模型额度', generating: '正在生成题目与讲解', reviewing: '正在审核题目依据', ready: '学习范围已就绪', succeeded: '关卡已生成', failed: '本次操作未完成', cancelled: '已取消范围准备', expired: '学习范围已过期' })[stage || ''] || '正在处理'
+export const stageLabel = (stage?: string | null) => ({ planning: '正在规划资料获取', retrieving: '正在准备学习依据', searching: '正在搜索相关资料', extracting: '正在读取网页正文', summarizing: '正在整理待确认范围', waiting_rate_limit: '正在等待模型额度', generating: '正在生成题目与讲解', generating_images: '正在生成题目配图', reviewing: '正在审核题目依据', ready: '学习范围已就绪', succeeded: '关卡已生成', failed: '本次操作未完成', cancelled: '已取消范围准备', expired: '学习范围已过期' })[stage || ''] || '正在处理'
 export function splitTopicInput(text: string) {
   const matches = [...text.matchAll(/https?:\/\/[^\s<>"\u3000]+/gi)]
   if (!matches.length) return undefined

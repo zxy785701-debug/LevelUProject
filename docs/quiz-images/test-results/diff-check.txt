@@ -1,0 +1,10 @@
+warning: in the working copy of 'README.md', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of 'backend/requirements.lock', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of 'frontend/src/KnowledgeFlow.tsx', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of 'frontend/src/MaterialFlow.tsx', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of 'frontend/src/TopicFlow.tsx', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of 'frontend/src/auth.tsx', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of 'frontend/src/grounding-api.ts', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of 'frontend/src/grounding-domain.ts', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of 'frontend/src/knowledge-domain.ts', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of 'frontend/src/pages/index/index.tsx', CRLF will be replaced by LF the next time Git touches it

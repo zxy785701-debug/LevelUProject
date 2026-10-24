@@ -5,6 +5,8 @@ import { View, Text, Input, Switch, Radio, RadioGroup, Label } from '@tarojs/com
 import { Btn, Buddy, Icon, Section, Stage, Tag, Title } from './components'
 import { operationKey, ApiError, RequestScope } from './api'
 import { chooseDocument, uploadMaterial, parseLink, getJob, cancelJob, getMaterial, DocumentFile } from './features-api'
+import { ImageChoice } from './QuestionImages'
+import type { ImageCapabilities } from './image-domain'
 import { generateConfirmed, getPendingStudy, savePendingStudy, clearPendingStudy, pollDelay } from './grounding-api'
 import { OperationResult, stageLabel } from './grounding-domain'
 import { GroundingNotice, sourceDate } from './GroundingNotice'
@@ -33,7 +35,7 @@ export function SourceReader({ title, summary, segments, grounding }: { title: s
 
 type Kind = 'document' | 'web' | 'video'
 type Step = 'input' | 'parsing' | 'confirm' | 'source' | 'generating' | 'failure'
-export function useMaterialFlow({ uid, active, draft, onSession, onExit, onScope }: { uid: string; active: boolean; draft: Data['draft']; onSession: (s: Session) => void; onExit: () => void; onScope?: (id: string) => void }) {
+export function useMaterialFlow({ uid, active, draft, onSession, onExit, onScope, imageCapabilities, onImageChange }: { uid: string; active: boolean; draft: Data['draft']; onSession: (s: Session) => void; onExit: () => void; onScope?: (id: string) => void; imageCapabilities?: ImageCapabilities; onImageChange: (value: boolean) => void }) {
   const [kind, setKind] = useState<Kind>('document'), [step, setStep] = useState<Step>('input')
   const [file, setFile] = useState<DocumentFile>(), [url, setUrl] = useState(''), [pages, setPages] = useState(''), [ranged, setRanged] = useState(false), [rangeError, setRangeError] = useState('')
   const [instruction, setInstruction] = useState('')
@@ -123,7 +125,7 @@ export function useMaterialFlow({ uid, active, draft, onSession, onExit, onScope
       working.current = true; setError(''); setStep('generating')
       setProgress(undefined); generationRequest.current?.cancel(); const request = generationRequest.current = new RequestScope()
       const key = quizKey.current || (quizKey.current = operationKey())
-      const body = { material_id: material.id, point_ids: ids, supplement, question_count: draft.count, difficulty: draft.difficulty, execution: 'background' as const }
+      const body = { material_id: material.id, point_ids: ids, supplement, question_count: draft.count, difficulty: draft.difficulty, execution: 'background' as const, generate_images: draft.generate_images === true }
       savePendingStudy(uid, { kind: 'generation', key, body, saved_at: Date.now() })
       const result = await generateConfirmed(body, key, request, value => { if (alive.current && ticket === currentTicket.current) setProgress(value) })
       if (!alive.current || !isActive.current || ticket !== currentTicket.current) return
@@ -168,7 +170,7 @@ export function useMaterialFlow({ uid, active, draft, onSession, onExit, onScope
     if (step === 'generating') body = <><Stage sticker="关卡正在准备" /><Title>你的关卡，正在成形</Title><View className="panel blue mt" ariaRole="status"><View className="strong">{progress ? stageLabel(progress.stage) : '正在提交所选材料范围'}</View><View className="body-copy mt">{progress?.retry_after_seconds ? `约 ${progress.retry_after_seconds} 秒后继续。` : '根据所选材料生成题目，并审核依据。'} 可以离开，稍后恢复原任务。</View></View><GenerationProgress stage={progress?.stage} /></>
     footer = <Btn secondary onClick={back}>{step === 'parsing' ? '取消解析，返回输入' : '返回首页，稍后恢复'}</Btn>
   } else if (step === 'confirm' && material) {
-    id = 'L06'; body = <><Title sub="开始前，确认一下材料和学习范围。">这一关，学这些</Title><Section>学习主题</Section><View className="panel blue"><View className="strong">{material.learning_title}</View><View className="small muted mt">{material.summary}</View></View><Section>你的材料</Section>{fileCard}<View className="source-link" onClick={() => setStep('source')}><Icon name="eye" />查看原文与引用</View><Section>本轮知识点</Section><View className="chips">{material.points.map((p, i) => <View key={p.name+i} className={selected.includes(i) ? 'active' : ''} ariaRole="checkbox" ariaChecked={selected.includes(i)} onClick={() => { setSelected(old => old.includes(i) ? old.filter(v => v !== i) : [...old, i]); quizKey.current = '' }}>{p.name}</View>)}</View><View className="setting-row mt"><Text>允许联网补充知识</Text><Switch color="#336ae8" checked={supplement} disabled={!material.search_available} onChange={e => { setSupplement(e.detail.value); quizKey.current = '' }} /></View><View className="small muted mt">{material.search_available ? '补充来源将在题目讲解中单独标明。你也可以只依据自己的材料出题。' : '联网补充暂未配置，当前仅依据自己的材料出题。'}</View></>
+    id = 'L06'; body = <><Title sub="开始前，确认一下材料和学习范围。">这一关，学这些</Title><Section>学习主题</Section><View className="panel blue"><View className="strong">{material.learning_title}</View><View className="small muted mt">{material.summary}</View></View><Section>你的材料</Section>{fileCard}<View className="source-link" onClick={() => setStep('source')}><Icon name="eye" />查看原文与引用</View><Section>本轮知识点</Section><View className="chips">{material.points.map((p, i) => <View key={p.name+i} className={selected.includes(i) ? 'active' : ''} ariaRole="checkbox" ariaChecked={selected.includes(i)} onClick={() => { setSelected(old => old.includes(i) ? old.filter(v => v !== i) : [...old, i]); quizKey.current = '' }}>{p.name}</View>)}</View><View className="setting-row mt"><Text>允许联网补充知识</Text><Switch color="#336ae8" checked={supplement} disabled={!material.search_available} onChange={e => { setSupplement(e.detail.value); quizKey.current = '' }} /></View><View className="small muted mt">{material.search_available ? '补充来源将在题目讲解中单独标明。你也可以只依据自己的材料出题。' : '联网补充暂未配置，当前仅依据自己的材料出题。'}</View><ImageChoice checked={draft.generate_images === true} onChange={value => { quizKey.current = ''; onImageChange(value) }} capabilities={imageCapabilities} /></>
     footer = <Btn disabled={!selected.length} onClick={() => void generate()}>确认范围，生成关卡</Btn>
   } else if (step === 'source' && material) { id = 'K05'; body = <SourceReader title={material.title} summary={material.summary} segments={material.segments} /> }
   else { id = failureKind === 'parse' ? 'E05' : 'E06'; body = <><Stage who="paper" sticker="材料还在，慢慢来" /><Title sub={error}>{failureKind === 'parse' ? '暂时没能读懂材料' : '暂时没能生成关卡'}</Title><View className="hint-note">输入内容已保留，可以重试或调整范围。</View></>; footer = <><Btn onClick={() => void (failureKind === 'parse' ? read() : generate())}>重新试一次</Btn><Btn secondary onClick={back}>{failureKind === 'parse' ? '返回修改材料' : '返回学习范围'}</Btn></> }

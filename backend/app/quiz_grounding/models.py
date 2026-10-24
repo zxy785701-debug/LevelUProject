@@ -9,6 +9,7 @@ from pydantic import Field, field_validator, model_validator
 from ..models import GenerateRequest, QuizContent, Quiz, Option
 from .snapshots import EvidenceSegment, GroundingModel, GroundingStatus, Identifier, QuestionOrigin
 from .countries import COUNTRIES
+from ..question_images.contracts import ImageURL
 
 
 def unique(values, label):
@@ -240,7 +241,7 @@ class GenerationOperation(GroundingModel):
     kind: Literal["generation_operation"] = "generation_operation"
     key: str = Field(min_length=1, max_length=128)
     status: Literal["running", "succeeded", "failed"]
-    stage: Literal["retrieving", "planning", "searching", "extracting", "generating", "reviewing", "waiting_rate_limit", "succeeded", "failed"]
+    stage: Literal["retrieving", "planning", "searching", "extracting", "generating", "reviewing", "generating_images", "waiting_rate_limit", "succeeded", "failed"]
     retry_after_seconds: int = Field(default=0, ge=0)
     deadline: datetime
     error_code: str | None = Field(default=None, max_length=80)
@@ -258,6 +259,7 @@ class PublicQuestion(GroundingModel):
     source_ids: list[str] = Field(default_factory=list, max_length=20)
     grounding: GroundingStatus | None = None
     origin: QuestionOrigin | None = None
+    image_url: ImageURL | None = None
 
 
 class PublicQuiz(Quiz):

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="7.641" timestamp="2026-10-24T13:13:59.011034+08:00" hostname="zxy"><testcase classname="tests.test_question_images_dispatch" name="test_rate_gate_runs_after_transport_preparation" time="0.030"><failure message="AssertionError: assert ['slot', 'prepared', 'sent'] == ['prepared', 'slot', 'sent']&#10;  &#10;  At index 0 diff: 'slot' != 'prepared'&#10;  Use -v to get more diff">tests\test_question_images_dispatch.py:87: in test_rate_gate_runs_after_transport_preparation
+    assert events==['prepared','slot','sent']
+E   AssertionError: assert ['slot', 'prepared', 'sent'] == ['prepared', 'slot', 'sent']
+E     
+E     At index 0 diff: 'slot' != 'prepared'
+E     Use -v to get more diff</failure></testcase></testsuite></testsuites>

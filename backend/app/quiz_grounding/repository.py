@@ -232,6 +232,8 @@ class GroundingRepository:
 
     def submit_generation(self, uid, key, body):
         payload = body.model_dump()
+        if not body.generate_images:
+            payload.pop('generate_images')  # Preserve pre-image recovery digests.
         if not body.candidate_ids:
             payload.pop('candidate_ids')  # Keep existing recovery keys compatible.
         else:
@@ -300,6 +302,9 @@ class GroundingRepository:
                 raise AppError('DAILY_QUOTA_EXCEEDED', '今天的出题额度已用完', 429)
             oid = str(uuid4())
             duration = 90 if body.execution == 'sync' else self.settings.grounded_generation_timeout_seconds
+            if body.generate_images and body.execution == 'background':
+                from ..question_images.service import stage_budget
+                duration += stage_budget()
             op = Operation(id=oid, user_id=uid, key=key, digest=hashed, kind='quiz', stage='retrieving',
                            created_at=self.now(), deadline_at=self.now() + timedelta(seconds=duration))
             s.add(op)

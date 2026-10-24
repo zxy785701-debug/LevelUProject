@@ -1,0 +1,18 @@
+{
+  "stage": "cos_probe",
+  "uploaded": true,
+  "public_read": true,
+  "deleted": true,
+  "upload_seconds": 0.47,
+  "public_status": 200,
+  "content_type": "image/png",
+  "content_disposition": "attachment",
+  "nosniff": null,
+  "probe_url": "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com/question-images/3f140d55dfa54922a8f1513a8a4d13aa.png",
+  "object_key": "question-images/3f140d55dfa54922a8f1513a8a4d13aa.png",
+  "browser": {
+    "loaded": true,
+    "width": 512,
+    "height": 512
+  }
+}

@@ -1,0 +1,187 @@
+{
+  "image_calls": [
+    {
+      "prompt": "Square educational illustration, one clear visual scene, simple background. A single green pear with a slender brown stem stands on a pale tabletop. Soft daylight shows its smooth, slightly speckled skin and realistic texture. Natural proportions, clear details. No text, letters, labels, captions or watermark.",
+      "dispatched_after_seconds": 0.0,
+      "http_status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "content_encoding": "gzip",
+      "wire_bytes": 351,
+      "json_bytes": 423,
+      "root_keys": [
+        "request_id",
+        "output",
+        "usage"
+      ],
+      "code": null,
+      "request_id": "e73b3bef-3e8b-9087-8222-ea8a29a7486f",
+      "message": "",
+      "output_keys": [
+        "choices"
+      ],
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "role": "assistant",
+          "content_keys": [
+            [
+              "image"
+            ]
+          ],
+          "image_hosts": [
+            "dashscope-0484.oss-accelerate.aliyuncs.com"
+          ]
+        }
+      ],
+      "elapsed_seconds": 1.07
+    },
+    {
+      "prompt": "Square educational illustration, one clear visual scene, simple background. Five fresh fruits sit side by side on a pale surface: a red apple, a yellow banana, a purple grape cluster, a green pear, and an orange. Soft daylight reveals their distinct shapes and skins. Natural proportions, clear details. No text, letters, labels, captions or watermark.",
+      "dispatched_after_seconds": 0.558,
+      "http_status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "content_encoding": "gzip",
+      "wire_bytes": 352,
+      "json_bytes": 423,
+      "root_keys": [
+        "request_id",
+        "output",
+        "usage"
+      ],
+      "code": null,
+      "request_id": "0b16ca1f-7b75-90ce-9b85-0d67913011f1",
+      "message": "",
+      "output_keys": [
+        "choices"
+      ],
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "role": "assistant",
+          "content_keys": [
+            [
+              "image"
+            ]
+          ],
+          "image_hosts": [
+            "dashscope-0484.oss-accelerate.aliyuncs.com"
+          ]
+        }
+      ],
+      "elapsed_seconds": 0.86
+    },
+    {
+      "prompt": "Square educational illustration, one clear visual scene, simple background. A small cluster of purple grapes hangs from a green stem on a light kitchen counter. Soft daylight highlights the smooth, slightly dusty skin of each round grape. Natural proportions, clear details. No text, letters, labels, captions or watermark.",
+      "dispatched_after_seconds": 1.653,
+      "http_status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "content_encoding": "gzip",
+      "wire_bytes": 352,
+      "json_bytes": 423,
+      "root_keys": [
+        "request_id",
+        "output",
+        "usage"
+      ],
+      "code": null,
+      "request_id": "3d2164b2-ffd3-983a-ab19-94222ce2dd54",
+      "message": "",
+      "output_keys": [
+        "choices"
+      ],
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "role": "assistant",
+          "content_keys": [
+            [
+              "image"
+            ]
+          ],
+          "image_hosts": [
+            "dashscope-0484.oss-accelerate.aliyuncs.com"
+          ]
+        }
+      ],
+      "elapsed_seconds": 0.89
+    },
+    {
+      "prompt": "Square educational illustration, one clear visual scene, simple background. A woven basket on a wooden table holds a red apple, a yellow banana, a purple grape cluster, a green pear, and an orange. Soft daylight shows their natural colors and textures. Natural proportions, clear details. No text, letters, labels, captions or watermark.",
+      "dispatched_after_seconds": 2.75,
+      "http_status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "content_encoding": "gzip",
+      "wire_bytes": 359,
+      "json_bytes": 429,
+      "root_keys": [
+        "request_id",
+        "output",
+        "usage"
+      ],
+      "code": null,
+      "request_id": "d58db9c9-c470-9f61-a966-d996876b6a89",
+      "message": "",
+      "output_keys": [
+        "choices"
+      ],
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "role": "assistant",
+          "content_keys": [
+            [
+              "image"
+            ]
+          ],
+          "image_hosts": [
+            "dashscope-0484.oss-accelerate.aliyuncs.com"
+          ]
+        }
+      ],
+      "elapsed_seconds": 0.97
+    },
+    {
+      "prompt": "Square educational illustration, one clear visual scene, simple background. A single glossy red apple rests on a pale wooden tabletop. Soft daylight falls from a nearby window, showing realistic skin texture and a small green leaf on the stem. Natural proportions, clear details. No text, letters, labels, captions or watermark.",
+      "dispatched_after_seconds": 3.305,
+      "http_status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "content_encoding": "gzip",
+      "wire_bytes": 350,
+      "json_bytes": 423,
+      "root_keys": [
+        "request_id",
+        "output",
+        "usage"
+      ],
+      "code": null,
+      "request_id": "a757e8a6-8767-9973-a9b5-ef4446caa17d",
+      "message": "",
+      "output_keys": [
+        "choices"
+      ],
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "role": "assistant",
+          "content_keys": [
+            [
+              "image"
+            ]
+          ],
+          "image_hosts": [
+            "dashscope-0484.oss-accelerate.aliyuncs.com"
+          ]
+        }
+      ],
+      "elapsed_seconds": 0.89
+    }
+  ],
+  "maximum_concurrency": 2,
+  "downloads": [
+    "image-7b9c36be1aec491e9d0760898d93390e.png",
+    "image-fbd1b5c9a8a740a7940fdd6b6c692066.png",
+    "image-35b66166138649d58aedf86f82ce5e85.png",
+    "image-aa2bacf6accf4c61914f53097bc5ca87.png",
+    "image-590a181b62d642e994275f410c961b01.png"
+  ]
+}

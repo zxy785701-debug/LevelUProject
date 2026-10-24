@@ -1,0 +1,178 @@
+{
+  "config": {
+    "argv": [
+      "D:\\development\\nodejs\\node.exe",
+      "D:\\nbproject\\LevelUpProject\\frontend\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=playwright.images-live.config.ts"
+    ],
+    "configFile": "D:\\nbproject\\LevelUpProject\\frontend\\playwright.images-live.config.ts",
+    "rootDir": "D:/nbproject/LevelUpProject/frontend/e2e-images-live",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/nbproject/LevelUpProject/docs/quiz-images/live-20261024/final-live/browser-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "D:/nbproject/LevelUpProject/frontend/e2e-images-live",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 300000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "D:\\nbproject\\LevelUpProject\\docs\\quiz-images\\live-20261024\\final-live\\browser-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "D:\\nbproject\\LevelUpProject\\frontend\\e2e-images-live",
+        "snapshotDir": "D:\\nbproject\\LevelUpProject\\frontend\\e2e-images-live",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 300000,
+        "use": {
+          "baseURL": "http://127.0.0.1:18086",
+          "viewport": {
+            "width": 390,
+            "height": 812
+          },
+          "headless": true,
+          "channel": "chrome",
+          "screenshot": "only-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "../docs/quiz-images/live-20261024/final-live/browser.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "live.spec.ts",
+      "file": "live.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "真实资料五题配图、答题、历史回看和重闯复用",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 300000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 300073,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 300000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 300000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 300000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "D:\\nbproject\\LevelUpProject\\frontend\\e2e-images-live\\live.spec.ts",
+                        "column": 46,
+                        "line": 78
+                      },
+                      "message": "Error: locator.click: Test timeout of 300000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByText('开始这一关', { exact: true })\u001b[22m\n\n\n  76 |   await page.locator('.mini-back').click()\n  77 |   await page.getByText('再闯一次这一关',{exact:true}).click()\n> 78 |   await page.getByText('开始这一关',{exact:true}).click()\n     |                                              ^\n  79 |   await expect(page.locator('.question-image img')).toHaveAttribute('src',imageUrl!)\n  80 |   const after=(await (await request.get(api+'/api/v1/quiz/images/capabilities',{headers})).json()).data\n  81 |   const metrics=await (await request.get(api+'/__live_metrics')).json()\n    at D:\\nbproject\\LevelUpProject\\frontend\\e2e-images-live\\live.spec.ts:78:46"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T05:34:49.710Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\nbproject\\LevelUpProject\\docs\\quiz-images\\live-20261024\\final-live\\browser-results\\live-真实资料五题配图、答题、历史回看和重闯复用\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\nbproject\\LevelUpProject\\docs\\quiz-images\\live-20261024\\final-live\\browser-results\\live-真实资料五题配图、答题、历史回看和重闯复用\\error-context.md"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "b37044e47a10d94689f2-b50b5f506c9c2855663b",
+          "file": "live.spec.ts",
+          "line": 8,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-24T05:34:49.207Z",
+    "duration": 301243.70399999997,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

@@ -4,6 +4,7 @@ from typing import Literal
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 from .quiz_grounding.snapshots import GroundingStatus, Identifier, LearningScopeSnapshot, QuizSource, QuestionOrigin
+from .question_images.contracts import ImageURL, ImageGeneration
 
 class StrictModel(BaseModel):
     model_config = ConfigDict(extra="forbid", str_strip_whitespace=True)
@@ -22,6 +23,7 @@ class GenerateRequest(StrictModel):
     execution: Literal["sync", "background"] = "sync"
     question_count: Literal[3, 5] = 5
     difficulty: Literal["easy", "medium"] = "easy"
+    generate_images: bool = Field(default=False, strict=True)
 
     @field_validator("text", mode="before")
     @classmethod
@@ -108,7 +110,11 @@ class RewardRate(StrictModel):
     xp: Literal[10, 15]
     coins: Literal[2, 3]
 
+class StoredQuestion(Question):
+    image_url: ImageURL | None = None
+
 class Quiz(QuizContent):
+    questions: list[StoredQuestion] = Field(min_length=3, max_length=5)
     id: str = Field(min_length=1, max_length=64)
     created_at: datetime
     source_text: str = Field(min_length=1, max_length=6000)
@@ -117,6 +123,7 @@ class Quiz(QuizContent):
     source: QuizSource | None = None
     learning_scope: LearningScopeSnapshot | None = None
     grounding: GroundingStatus | None = None
+    image_generation: ImageGeneration | None = None
 
 class Answer(StrictModel):
     question_id: str = Field(min_length=1, max_length=64)

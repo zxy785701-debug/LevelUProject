@@ -129,3 +129,7 @@ xxhash==4.0.1
 yarl==1.25.1
 yt-dlp==2026.8.19
 zstandard==0.25.0
+cos-python-sdk-v5==1.9.44
+crcmod==1.7
+pycryptodome==4.1.0
+xmltodict==1.0.4

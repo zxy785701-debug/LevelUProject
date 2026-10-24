@@ -1,0 +1,12 @@
+.image-choice { margin: 14px 0; }
+.image-setting { gap: 16px; align-items: center; }
+.image-setting > view:first-child { flex: 1; min-width: 0; }
+.image-choice-note { margin-top: 8px; line-height: 1.6; }
+.image-generation-notice { margin: 14px 0; padding: 12px 14px; background: #f1f5fc; border-radius: 12px; line-height: 1.6; }
+.question-illustration { max-width: 260px; margin: 16px auto; overflow: hidden; border: 1px solid #e1e6ef; border-radius: 14px; background: #fafbfd; }
+.question-image-frame { position: relative; width: 260px; max-width: 100%; height: 260px; }
+.question-image { width: 100%; height: 100%; display: block; }
+.image-loading { position: absolute; left: 0; right: 0; bottom: 10px; padding: 4px; text-align: center; background: rgba(250, 251, 253, .9); }
+.image-caption { padding: 7px 10px; text-align: center; border-top: 1px solid #e1e6ef; }
+.image-failed { max-width: none; background: #f1f5fc; }
+.image-load-message { padding: 12px 14px; line-height: 1.6; }

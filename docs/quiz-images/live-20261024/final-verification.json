@@ -1,0 +1,12 @@
+{
+  "unique_backend_cases_verified": 712,
+  "all_final_results_passed": true,
+  "full_regression_baseline": 710,
+  "final_illustration_cases": 80,
+  "final_illustration_evidence": [
+    "ticket-green.xml",
+    "http-gate-knowledge-green.xml"
+  ],
+  "first_pass_timing_failures_preserved": true,
+  "production_lease_rules_changed": false
+}

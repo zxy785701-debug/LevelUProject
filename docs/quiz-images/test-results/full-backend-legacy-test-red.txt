@@ -1,0 +1,40 @@
+........................................................................ [ 10%]
+........................................................................ [ 20%]
+........................................................................ [ 31%]
+........................................................................ [ 41%]
+........................................................................ [ 52%]
+........................................................................ [ 62%]
+........................................................................ [ 73%]
+........................................................................ [ 83%]
+........................................................................ [ 94%]
+........................................F
+================================== FAILURES ===================================
+____________________ test_legacy_recovery_digest_unchanged ____________________
+
+system = <fastapi.applications.FastAPI object at 0x0000022075A32210>
+
+    @pytest.mark.anyio
+    async def test_legacy_recovery_digest_unchanged(system):
+        async with httpx.AsyncClient(transport=httpx.ASGITransport(app=system), base_url='http://test') as client:
+            await login(client)
+            body = await confirmed_body(client)
+            response = await client.post('/api/v1/quiz/generate', headers={'Idempotency-Key': 'legacy'}, json=body)
+            assert response.status_code == 200
+            legacy = GenerateRequest.model_validate(body).model_dump(exclude={'candidate_ids'})
+            with system.state.accounts.database.session() as db:
+                operation = db.scalar(select(Operation).where(Operation.key == 'legacy'))
+>               assert operation.digest == digest(json.dumps(legacy, ensure_ascii=False, sort_keys=True))
+E               AssertionError: assert 'de3a994d0bf4...bcdefce040a35' == '84084ff2418a...950dfcf9d8c95'
+E                 
+E                 - 84084ff2418a96e70151f270047f80bf2591eba1b0e64d8ed14950dfcf9d8c95
+E                 + de3a994d0bf48496020d83054b14f2c095eda71d13d0799dd99bcdefce040a35
+
+tests\test_topic_multiselect.py:97: AssertionError
+---------------------------- Captured stderr call -----------------------------
+[levelup] app.accounts.repository ai_finished operation=6335e76e-4fa3-415a-a47b-8e9703ada6c7 status=succeeded
+------------------------------ Captured log call ------------------------------
+INFO     app.accounts.repository:repository.py:192 ai_finished operation=6335e76e-4fa3-415a-a47b-8e9703ada6c7 status=succeeded
+=========================== short test summary info ===========================
+FAILED tests/test_topic_multiselect.py::test_legacy_recovery_digest_unchanged
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 688 passed in 553.67s (0:09:13)

@@ -1,0 +1,33 @@
+F......                                                                  [100%]
+================================== FAILURES ===================================
+_______ test_optional_initialization_error_still_returns_reviewed_text ________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000290AFFD3100>
+
+    @pytest.mark.anyio
+    async def test_optional_initialization_error_still_returns_reviewed_text(monkeypatch):
+        import app.question_images.service as module
+        monkeypatch.setattr(module,'load_settings',lambda:(config(),None))
+        def broken(*args,**kwargs):raise RuntimeError('private-infrastructure-detail')
+        monkeypatch.setattr(module,'QuestionImages',broken)
+>       result=await module.enrich_quiz(None,'uid','op',quiz_payload())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_question_images_boundaries.py:16: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\question_images\service.py:115: in enrich_quiz
+    service=QuestionImages(accounts,config)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+args = (None, ImageSettings(enabled=True, api_key=SecretStr('**********'), base_url='https://workspace.cn-beijing.maas.aliyun...tStr('**********'), cos_region='ap-shanghai', cos_bucket='images-12345', public_base_url='https://images.example.com'))
+kwargs = {}
+
+>   def broken(*args,**kwargs):raise RuntimeError('private-infrastructure-detail')
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: private-infrastructure-detail
+
+tests\test_question_images_boundaries.py:14: RuntimeError
+=========================== short test summary info ===========================
+FAILED tests/test_question_images_boundaries.py::test_optional_initialization_error_still_returns_reviewed_text
+1 failed, 6 passed in 2.23s

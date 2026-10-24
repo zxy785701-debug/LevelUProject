@@ -1,0 +1,393 @@
+........................................................................ [ 10%]
+........................................................................ [ 20%]
+........................................................................ [ 31%]
+........................................................................ [ 41%]
+........................................................................ [ 52%]
+.............................E
+=================================== ERRORS ====================================
+______ ERROR at setup of test_only_one_connection_can_claim_the_same_job ______
+
+self = <pymysql.connections.Connection object at 0x0000027CF6F87ED0>
+sock = None
+
+    def connect(self, sock=None):
+        self._closed = False
+        try:
+            if sock is None:
+                if self.unix_socket:
+                    sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+                    sock.settimeout(self.connect_timeout)
+                    sock.connect(self.unix_socket)
+                    self.host_info = "Localhost via UNIX socket"
+                    self._secure = True
+                    if DEBUG:
+                        print("connected using unix_socket")
+                else:
+                    kwargs = {}
+                    if self.bind_address is not None:
+                        kwargs["source_address"] = (self.bind_address, 0)
+                    while True:
+                        try:
+>                           sock = socket.create_connection(
+                                (self.host, self.port), self.connect_timeout, **kwargs
+                            )
+
+.venv\Lib\site-packages\pymysql\connections.py:681: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+D:\anaconda3\Lib\socket.py:864: in create_connection
+    raise exceptions[0]
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+address = ('127.0.0.1', 3306), timeout = 5, source_address = None
+all_errors = False
+
+    def create_connection(address, timeout=_GLOBAL_DEFAULT_TIMEOUT,
+                          source_address=None, *, all_errors=False):
+        """Connect to *address* and return the socket object.
+    
+        Convenience function.  Connect to *address* (a 2-tuple ``(host,
+        port)``) and return the socket object.  Passing the optional
+        *timeout* parameter will set the timeout on the socket instance
+        before attempting to connect.  If no *timeout* is supplied, the
+        global default timeout setting returned by :func:`getdefaulttimeout`
+        is used.  If *source_address* is set it must be a tuple of (host, port)
+        for the socket to bind as a source address before making the connection.
+        A host of '' or port 0 tells the OS to use the default. When a connection
+        cannot be created, raises the last error if *all_errors* is False,
+        and an ExceptionGroup of all errors if *all_errors* is True.
+        """
+    
+        host, port = address
+        exceptions = []
+        for res in getaddrinfo(host, port, 0, SOCK_STREAM):
+            af, socktype, proto, canonname, sa = res
+            sock = None
+            try:
+                sock = socket(af, socktype, proto)
+                if timeout is not _GLOBAL_DEFAULT_TIMEOUT:
+                    sock.settimeout(timeout)
+                if source_address:
+                    sock.bind(source_address)
+>               sock.connect(sa)
+E               TimeoutError: timed out
+
+D:\anaconda3\Lib\socket.py:849: TimeoutError
+
+During handling of the above exception, another exception occurred:
+
+self = <sqlalchemy.engine.base.Connection object at 0x0000027CD13196D0>
+engine = Engine(mysql+pymysql://levelup:***@127.0.0.1:3306/levelup_test?charset=utf8mb4)
+connection = None, _has_events = None, _allow_revalidate = True
+_allow_autobegin = True
+
+    def __init__(
+        self,
+        engine: Engine,
+        connection: Optional[PoolProxiedConnection] = None,
+        _has_events: Optional[bool] = None,
+        _allow_revalidate: bool = True,
+        _allow_autobegin: bool = True,
+    ):
+        """Construct a new Connection."""
+        self.engine = engine
+        self.dialect = dialect = engine.dialect
+    
+        if connection is None:
+            try:
+>               self._dbapi_connection = engine.raw_connection()
+                                         ^^^^^^^^^^^^^^^^^^^^^^^
+
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:144: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:3319: in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\pool\base.py:448: in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\pool\base.py:1290: in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\pool\base.py:712: in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\pool\impl.py:178: in _do_get
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py:122: in __exit__
+    raise exc_value.with_traceback(exc_tb)
+.venv\Lib\site-packages\sqlalchemy\pool\impl.py:176: in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\pool\base.py:389: in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\pool\base.py:674: in __init__
+    self.__connect()
+.venv\Lib\site-packages\sqlalchemy\pool\base.py:900: in __connect
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py:122: in __exit__
+    raise exc_value.with_traceback(exc_tb)
+.venv\Lib\site-packages\sqlalchemy\pool\base.py:896: in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\engine\create.py:667: in connect
+    return dialect.connect(*cargs_tup, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\engine\default.py:630: in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\pymysql\connections.py:373: in __init__
+    self.connect()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <pymysql.connections.Connection object at 0x0000027CF6F87ED0>
+sock = None
+
+    def connect(self, sock=None):
+        self._closed = False
+        try:
+            if sock is None:
+                if self.unix_socket:
+                    sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+                    sock.settimeout(self.connect_timeout)
+                    sock.connect(self.unix_socket)
+                    self.host_info = "Localhost via UNIX socket"
+                    self._secure = True
+                    if DEBUG:
+                        print("connected using unix_socket")
+                else:
+                    kwargs = {}
+                    if self.bind_address is not None:
+                        kwargs["source_address"] = (self.bind_address, 0)
+                    while True:
+                        try:
+                            sock = socket.create_connection(
+                                (self.host, self.port), self.connect_timeout, **kwargs
+                            )
+                            break
+                        except OSError as e:
+                            if e.errno == errno.EINTR:
+                                continue
+                            raise
+                    self.host_info = "socket %s:%d" % (self.host, self.port)
+                    if DEBUG:
+                        print("connected using socket")
+                    sock.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
+                    sock.setsockopt(socket.SOL_SOCKET, socket.SO_KEEPALIVE, 1)
+    
+            self._sock = sock
+            sock.settimeout(self._read_timeout)
+            self._current_timeout = self._read_timeout
+            self._rfile = sock.makefile("rb")
+            self._next_seq_id = 0
+    
+            self._get_server_information()
+            self._request_authentication()
+    
+            # Send "SET NAMES" query on init for:
+            # - Ensure charset (and collation) is set to the server.
+            #   - collation_id in handshake packet may be ignored.
+            # - If collation is not specified, we don't know what is server's
+            #   default collation for the charset. For example, default collation
+            #   of utf8mb4 is:
+            #   - MySQL 5.7, MariaDB 10.x: utf8mb4_general_ci
+            #   - MySQL 8.0: utf8mb4_0900_ai_ci
+            #
+            # Reference:
+            # - https://github.com/PyMySQL/PyMySQL/issues/1092
+            # - https://github.com/wagtail/wagtail/issues/9477
+            # - https://zenn.dev/methane/articles/2023-mysql-collation (Japanese)
+            self.set_character_set(self.charset, self.collation)
+    
+            if self.sql_mode is not None:
+                c = self.cursor()
+                c.execute("SET sql_mode=%s", (self.sql_mode,))
+                c.close()
+    
+            if self.init_command is not None:
+                c = self.cursor()
+                c.execute(self.init_command)
+                c.close()
+    
+            if self.autocommit_mode is not None:
+                self.autocommit(self.autocommit_mode)
+        except BaseException as e:
+            self._force_close()
+    
+            if isinstance(e, OSError):
+                exc = err.OperationalError(
+                    CR.CR_CONN_HOST_ERROR,
+                    f"Can't connect to MySQL server on {self.host!r} ({e})",
+                )
+                # Keep original exception and traceback to investigate error.
+                exc.original_exception = e
+                exc.traceback = traceback.format_exc()
+                if DEBUG:
+                    print(exc.traceback)
+>               raise exc
+E               pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on '127.0.0.1' (timed out)")
+
+.venv\Lib\site-packages\pymysql\connections.py:744: OperationalError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path = WindowsPath('C:/Users/20777/AppData/Local/Temp/pytest-of-20777/pytest-154/test_only_one_connection_can_c0')
+
+    @pytest.fixture
+    def repo(tmp_path):
+        from app.knowledge.repository import KnowledgeRepository
+        settings = Settings(database_testing=True, wechat_app_id='knowledge-test', identity_hash_secret='knowledge-test-secret-'*3)
+        database = Database(settings)
+>       with database.engine.connect() as connection:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_knowledge_repository.py:19: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:3295: in connect
+    return self._connection_cls(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:146: in __init__
+    Connection._handle_dbapi_exception_noconnection(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:2450: in _handle_dbapi_exception_noconnection
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:144: in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:3319: in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\pool\base.py:448: in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\pool\base.py:1290: in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\pool\base.py:712: in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\pool\impl.py:178: in _do_get
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py:122: in __exit__
+    raise exc_value.with_traceback(exc_tb)
+.venv\Lib\site-packages\sqlalchemy\pool\impl.py:176: in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\pool\base.py:389: in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\pool\base.py:674: in __init__
+    self.__connect()
+.venv\Lib\site-packages\sqlalchemy\pool\base.py:900: in __connect
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py:122: in __exit__
+    raise exc_value.with_traceback(exc_tb)
+.venv\Lib\site-packages\sqlalchemy\pool\base.py:896: in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\engine\create.py:667: in connect
+    return dialect.connect(*cargs_tup, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\engine\default.py:630: in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\pymysql\connections.py:373: in __init__
+    self.connect()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <pymysql.connections.Connection object at 0x0000027CF6F87ED0>
+sock = None
+
+    def connect(self, sock=None):
+        self._closed = False
+        try:
+            if sock is None:
+                if self.unix_socket:
+                    sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+                    sock.settimeout(self.connect_timeout)
+                    sock.connect(self.unix_socket)
+                    self.host_info = "Localhost via UNIX socket"
+                    self._secure = True
+                    if DEBUG:
+                        print("connected using unix_socket")
+                else:
+                    kwargs = {}
+                    if self.bind_address is not None:
+                        kwargs["source_address"] = (self.bind_address, 0)
+                    while True:
+                        try:
+                            sock = socket.create_connection(
+                                (self.host, self.port), self.connect_timeout, **kwargs
+                            )
+                            break
+                        except OSError as e:
+                            if e.errno == errno.EINTR:
+                                continue
+                            raise
+                    self.host_info = "socket %s:%d" % (self.host, self.port)
+                    if DEBUG:
+                        print("connected using socket")
+                    sock.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
+                    sock.setsockopt(socket.SOL_SOCKET, socket.SO_KEEPALIVE, 1)
+    
+            self._sock = sock
+            sock.settimeout(self._read_timeout)
+            self._current_timeout = self._read_timeout
+            self._rfile = sock.makefile("rb")
+            self._next_seq_id = 0
+    
+            self._get_server_information()
+            self._request_authentication()
+    
+            # Send "SET NAMES" query on init for:
+            # - Ensure charset (and collation) is set to the server.
+            #   - collation_id in handshake packet may be ignored.
+            # - If collation is not specified, we don't know what is server's
+            #   default collation for the charset. For example, default collation
+            #   of utf8mb4 is:
+            #   - MySQL 5.7, MariaDB 10.x: utf8mb4_general_ci
+            #   - MySQL 8.0: utf8mb4_0900_ai_ci
+            #
+            # Reference:
+            # - https://github.com/PyMySQL/PyMySQL/issues/1092
+            # - https://github.com/wagtail/wagtail/issues/9477
+            # - https://zenn.dev/methane/articles/2023-mysql-collation (Japanese)
+            self.set_character_set(self.charset, self.collation)
+    
+            if self.sql_mode is not None:
+                c = self.cursor()
+                c.execute("SET sql_mode=%s", (self.sql_mode,))
+                c.close()
+    
+            if self.init_command is not None:
+                c = self.cursor()
+                c.execute(self.init_command)
+                c.close()
+    
+            if self.autocommit_mode is not None:
+                self.autocommit(self.autocommit_mode)
+        except BaseException as e:
+            self._force_close()
+    
+            if isinstance(e, OSError):
+                exc = err.OperationalError(
+                    CR.CR_CONN_HOST_ERROR,
+                    f"Can't connect to MySQL server on {self.host!r} ({e})",
+                )
+                # Keep original exception and traceback to investigate error.
+                exc.original_exception = e
+                exc.traceback = traceback.format_exc()
+                if DEBUG:
+                    print(exc.traceback)
+>               raise exc
+E               sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on '127.0.0.1' (timed out)")
+E               (Background on this error at: https://sqlalche.me/e/20/e3q8)
+
+.venv\Lib\site-packages\pymysql\connections.py:744: OperationalError
+=========================== short test summary info ===========================
+ERROR tests/test_knowledge_jobs.py::test_only_one_connection_can_claim_the_same_job
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!
+389 passed, 1 error in 123.69s (0:02:03)

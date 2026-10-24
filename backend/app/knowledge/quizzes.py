@@ -22,6 +22,8 @@ class QuizRepository(ScopeRepository):
         body = QuizRequest.model_validate(body)
         if not isinstance(key,str) or not 1 <= len(key) <= 128: raise AppError('INVALID_INPUT','操作标识不正确',422)
         identity = body.model_dump(mode='json')
+        if not body.generate_images:
+            identity.pop('generate_images')  # Legacy queued tasks keep their identity.
         identity['candidate_ids'] = sorted(identity['candidate_ids'])
         hashed = hashlib.sha256(json.dumps(identity,ensure_ascii=False,sort_keys=True).encode()).hexdigest()
         with self.database.session() as session:
@@ -36,9 +38,13 @@ class QuizRepository(ScopeRepository):
                 raise AppError('DAILY_QUOTA_EXCEEDED','今天的出题额度已用完，明天再来吧',429)
             scope = self._scope(session,uid,body.scope_id)
             context['prepared_at'] = scope.created_at.replace(tzinfo=timezone.utc).isoformat()
+            duration=self.config.quiz_timeout_seconds
+            if body.generate_images:
+                from ..question_images.service import stage_budget
+                duration+=stage_budget()
             row = Job(id=str(uuid4()),user_id=uid,kind='quiz',key=key,digest=hashed,operation_id=str(uuid4()),priority=5,
                 payload={'selection':identity,'documents':deepcopy(context['documents']),'context':context},
-                deadline_at=self.now()+timedelta(seconds=self.config.quiz_timeout_seconds),created_at=self.now())
+                deadline_at=self.now()+timedelta(seconds=duration),created_at=self.now())
             session.add(row)
             session.flush()
             return self.job_data(row)
@@ -79,9 +85,10 @@ class CheckpointGateway:
 
 
 class QuizPipeline(QuizRepository):
-    def __init__(self, accounts, config, index, *, gateway=None,retriever=None):
+    def __init__(self, accounts, config, index, *, gateway=None,retriever=None,images=None):
         super().__init__(accounts,config)
         self.gateway,self.retriever = gateway,retriever or KnowledgeRetriever(accounts,config,index)
+        self.images=images
 
     async def process_async(self, claim):
         old = self.processed_result(claim)
@@ -119,6 +126,18 @@ class QuizPipeline(QuizRepository):
             quiz = await generate_grounded(body,context,gateway,self.accounts.settings,stage=stage,remaining=gateway.remaining)
             quiz = Quiz.model_validate(quiz).model_dump(mode='json')
             await asyncio.to_thread(self.checkpoint,claim,'validated-quiz',{'quiz':quiz,'draft_version':DRAFT_VERSION,'review_version':REVIEW_VERSION},stage='publishing',progress=95)
+        if selected.generate_images:
+            from ..question_images.service import enrich_quiz
+            await asyncio.to_thread(self.advance,claim,'generating_images',95)
+            def verify_image_claim():
+                with self.database.session() as session:self._active(session,claim)
+            async def image_guard():
+                await asyncio.to_thread(verify_image_claim)
+            async def before_image_plan():
+                await self.wait_model_call(claim,self.accounts.settings.generation_model_call_limit)
+            image_gateway=counted_gateway(self.accounts.settings,self.gateway,before_image_plan,claim.operation_id)
+            quiz=await enrich_quiz(self.accounts,claim.user_id,claim.operation_id,quiz,service=self.images,
+                seconds=max(0,(claim.deadline_at-self.now()).total_seconds()-15),guard=image_guard,gateway=image_gateway)
         await self.wait_publication(claim)
         def publish(session,row):
             self.confirm_scope(row.user_id,selected.scope_id,selected.scope_version,selected.candidate_ids,supplement=selected.supplement,session=session)

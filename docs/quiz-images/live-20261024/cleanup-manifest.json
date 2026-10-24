@@ -1,0 +1,129 @@
+{
+  "status": "completed",
+  "public_base_url": "https://levelupproject-1502373861.cos.ap-beijing.myqcloud.com",
+  "proposed_delete": [
+    "question-images/5182bff1d4e3483bbebdcae356a1f923.png",
+    "question-images/5f4659d7104c463eb6f44a2f917e4d65.png",
+    "question-images/68f7634d0e3d439284360f649f59319c.png",
+    "question-images/69a74fa042e14dd2b9acf29a14f9ded8.png",
+    "question-images/798e1571fcb745ab8929787649740372.png",
+    "question-images/7d4a1af4f94c4f8e94915d3a4bfadd5f.png",
+    "question-images/8b6aebb055a24a44b6abd8879f9280a3.png",
+    "question-images/93d7aec940a24deb998a987502eb162e.png",
+    "question-images/a74d72d8bb6548dd93601e64ce099f9b.png",
+    "question-images/abeffd03f3a94fe4bf28ffb1d52ee884.png",
+    "question-images/ac9d6fb453894d468c731bae552f9266.png",
+    "question-images/b00727af447a4664acc54ac36ff16e22.png",
+    "question-images/bbc5b87d386a4818b250ecc4aca51964.png",
+    "question-images/d9d8bc1d3b7f45f7af6be1d08b8338ca.png",
+    "question-images/dbee537f5c1047b788877f5189fa2436.png",
+    "question-images/f0d61f9e33e944bdba533b012ac91b8e.png",
+    "question-images/f3ddb1d24f624df498623f399b7c7b89.png"
+  ],
+  "retain_latest": [
+    "question-images/225b8f90a7524295a402f7b55055daa4.png",
+    "question-images/4ef9e28b85d3461fb4419a1924fa84f3.png",
+    "question-images/8c0e7991f33b4450bcec78bbeabf6d60.png",
+    "question-images/d8b75830eab149579298dde826ed9353.png",
+    "question-images/fe7e082a928a4db18359ff675fb6b4a9.png"
+  ],
+  "delete_count": 17,
+  "retain_count": 5,
+  "authorization": "User explicitly approved deletion of the 17 manifest objects on 2026-10-24.",
+  "started_at": "2026-10-24T08:25:02.897045+00:00",
+  "delete_acknowledged": [
+    "question-images/5182bff1d4e3483bbebdcae356a1f923.png",
+    "question-images/5f4659d7104c463eb6f44a2f917e4d65.png",
+    "question-images/68f7634d0e3d439284360f649f59319c.png",
+    "question-images/69a74fa042e14dd2b9acf29a14f9ded8.png",
+    "question-images/798e1571fcb745ab8929787649740372.png",
+    "question-images/7d4a1af4f94c4f8e94915d3a4bfadd5f.png",
+    "question-images/8b6aebb055a24a44b6abd8879f9280a3.png",
+    "question-images/93d7aec940a24deb998a987502eb162e.png",
+    "question-images/a74d72d8bb6548dd93601e64ce099f9b.png",
+    "question-images/abeffd03f3a94fe4bf28ffb1d52ee884.png",
+    "question-images/ac9d6fb453894d468c731bae552f9266.png",
+    "question-images/b00727af447a4664acc54ac36ff16e22.png",
+    "question-images/bbc5b87d386a4818b250ecc4aca51964.png",
+    "question-images/d9d8bc1d3b7f45f7af6be1d08b8338ca.png",
+    "question-images/dbee537f5c1047b788877f5189fa2436.png",
+    "question-images/f0d61f9e33e944bdba533b012ac91b8e.png",
+    "question-images/f3ddb1d24f624df498623f399b7c7b89.png"
+  ],
+  "delete_errors": [],
+  "deleted_object_head_status": {
+    "question-images/5182bff1d4e3483bbebdcae356a1f923.png": 404,
+    "question-images/5f4659d7104c463eb6f44a2f917e4d65.png": 404,
+    "question-images/68f7634d0e3d439284360f649f59319c.png": 404,
+    "question-images/69a74fa042e14dd2b9acf29a14f9ded8.png": 404,
+    "question-images/798e1571fcb745ab8929787649740372.png": 404,
+    "question-images/7d4a1af4f94c4f8e94915d3a4bfadd5f.png": 404,
+    "question-images/8b6aebb055a24a44b6abd8879f9280a3.png": 404,
+    "question-images/93d7aec940a24deb998a987502eb162e.png": 404,
+    "question-images/a74d72d8bb6548dd93601e64ce099f9b.png": 404,
+    "question-images/abeffd03f3a94fe4bf28ffb1d52ee884.png": 404,
+    "question-images/ac9d6fb453894d468c731bae552f9266.png": 404,
+    "question-images/b00727af447a4664acc54ac36ff16e22.png": 404,
+    "question-images/bbc5b87d386a4818b250ecc4aca51964.png": 404,
+    "question-images/d9d8bc1d3b7f45f7af6be1d08b8338ca.png": 404,
+    "question-images/dbee537f5c1047b788877f5189fa2436.png": 404,
+    "question-images/f0d61f9e33e944bdba533b012ac91b8e.png": 404,
+    "question-images/f3ddb1d24f624df498623f399b7c7b89.png": 404
+  },
+  "retained_object_head_status": {
+    "question-images/225b8f90a7524295a402f7b55055daa4.png": 200,
+    "question-images/4ef9e28b85d3461fb4419a1924fa84f3.png": 200,
+    "question-images/8c0e7991f33b4450bcec78bbeabf6d60.png": 200,
+    "question-images/d8b75830eab149579298dde826ed9353.png": 200,
+    "question-images/fe7e082a928a4db18359ff675fb6b4a9.png": 200
+  },
+  "retained_public_access": {
+    "question-images/225b8f90a7524295a402f7b55055daa4.png": {
+      "status": 200,
+      "content_type": "image/png"
+    },
+    "question-images/4ef9e28b85d3461fb4419a1924fa84f3.png": {
+      "status": 200,
+      "content_type": "image/png"
+    },
+    "question-images/8c0e7991f33b4450bcec78bbeabf6d60.png": {
+      "status": 200,
+      "content_type": "image/png"
+    },
+    "question-images/d8b75830eab149579298dde826ed9353.png": {
+      "status": 200,
+      "content_type": "image/png"
+    },
+    "question-images/fe7e082a928a4db18359ff675fb6b4a9.png": {
+      "status": 200,
+      "content_type": "image/png"
+    }
+  },
+  "verified_absent": [
+    "question-images/5182bff1d4e3483bbebdcae356a1f923.png",
+    "question-images/5f4659d7104c463eb6f44a2f917e4d65.png",
+    "question-images/68f7634d0e3d439284360f649f59319c.png",
+    "question-images/69a74fa042e14dd2b9acf29a14f9ded8.png",
+    "question-images/798e1571fcb745ab8929787649740372.png",
+    "question-images/7d4a1af4f94c4f8e94915d3a4bfadd5f.png",
+    "question-images/8b6aebb055a24a44b6abd8879f9280a3.png",
+    "question-images/93d7aec940a24deb998a987502eb162e.png",
+    "question-images/a74d72d8bb6548dd93601e64ce099f9b.png",
+    "question-images/abeffd03f3a94fe4bf28ffb1d52ee884.png",
+    "question-images/ac9d6fb453894d468c731bae552f9266.png",
+    "question-images/b00727af447a4664acc54ac36ff16e22.png",
+    "question-images/bbc5b87d386a4818b250ecc4aca51964.png",
+    "question-images/d9d8bc1d3b7f45f7af6be1d08b8338ca.png",
+    "question-images/dbee537f5c1047b788877f5189fa2436.png",
+    "question-images/f0d61f9e33e944bdba533b012ac91b8e.png",
+    "question-images/f3ddb1d24f624df498623f399b7c7b89.png"
+  ],
+  "retained_verified": [
+    "question-images/225b8f90a7524295a402f7b55055daa4.png",
+    "question-images/4ef9e28b85d3461fb4419a1924fa84f3.png",
+    "question-images/8c0e7991f33b4450bcec78bbeabf6d60.png",
+    "question-images/d8b75830eab149579298dde826ed9353.png",
+    "question-images/fe7e082a928a4db18359ff675fb6b4a9.png"
+  ],
+  "finished_at": "2026-10-24T08:25:07.777426+00:00"
+}
